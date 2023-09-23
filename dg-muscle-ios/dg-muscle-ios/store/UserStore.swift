@@ -6,6 +6,7 @@
 //
 
 import Combine
+import SwiftUI
 import FirebaseAuth
 
 final class UserStore {
@@ -13,11 +14,15 @@ final class UserStore {
     
     @Published private(set) var login = false
     @Published private(set) var displayName: String?
+    @Published private(set) var photoURL: URL?
     
     private init() {
         Auth.auth().addStateDidChangeListener { _, user in
-            self.login = user != nil
-            self.displayName = user?.displayName
+            withAnimation {
+                self.login = user != nil
+                self.displayName = user?.displayName
+                self.photoURL = user?.photoURL
+            }
         }
     }
 }
