@@ -8,13 +8,31 @@
 import SwiftUI
 import FirebaseCore
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
+struct WindowKey: EnvironmentKey {
+    struct Value {
+        weak var value: UIWindow?
+    }
+    
+    static let defaultValue: Value = .init(value: nil)
+}
 
-    return true
-  }
+extension EnvironmentValues {
+    var window: UIWindow? {
+        get {
+            return self[WindowKey.self].value
+        }
+        set {
+            self[WindowKey.self] = .init(value: newValue)
+        }
+    }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        return true
+    }
 }
 
 @main
