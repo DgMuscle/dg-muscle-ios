@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC62ABF1CAC008ADECE /* UserStore.swift */; };
+		707B8FC92ABF1D37008ADECE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC82ABF1D37008ADECE /* Store.swift */; };
 		7083E6B42ABF065F007D43CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */; };
 		7083E6B72ABF06B7007D43CE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6B62ABF06B7007D43CE /* FirebaseAnalytics */; };
 		7083E6B92ABF06B7007D43CE /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6B82ABF06B7007D43CE /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		707B8FC62ABF1CAC008ADECE /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
+		707B8FC82ABF1D37008ADECE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7083E6C22ABF0C62007D43CE /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthCoordinator.swift; sourceTree = "<group>"; };
@@ -51,6 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		707B8FC52ABF1C92008ADECE /* store */ = {
+			isa = PBXGroup;
+			children = (
+				707B8FC82ABF1D37008ADECE /* Store.swift */,
+				707B8FC62ABF1CAC008ADECE /* UserStore.swift */,
+			);
+			path = store;
+			sourceTree = "<group>";
+		};
 		7083E6C02ABF0C44007D43CE /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +108,7 @@
 		70E555FE2ABF010C006D4DA0 /* dg-muscle-ios */ = {
 			isa = PBXGroup;
 			children = (
+				707B8FC52ABF1C92008ADECE /* store */,
 				7083E6C02ABF0C44007D43CE /* view */,
 				70E555FF2ABF010C006D4DA0 /* dg_muscle_iosApp.swift */,
 				70E556012ABF010C006D4DA0 /* ContentView.swift */,
@@ -197,7 +211,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7083E6C32ABF0C62007D43CE /* SignInView.swift in Sources */,
+				707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */,
 				7083E6C62ABF0EC9007D43CE /* AppleAuthCoordinator.swift in Sources */,
+				707B8FC92ABF1D37008ADECE /* Store.swift in Sources */,
 				70E556022ABF010C006D4DA0 /* ContentView.swift in Sources */,
 				70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */,
 			);

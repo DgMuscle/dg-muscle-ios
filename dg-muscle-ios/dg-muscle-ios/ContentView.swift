@@ -6,18 +6,18 @@
 //
 
 import SwiftUI
-import FirebaseAuth
+import Combine
 
 struct ContentView: View {
     
     @State private var login = false
     
+    private var cancellables: Set<AnyCancellable> = []
+    
     init() {
-        Auth.auth().addStateDidChangeListener { [self] _, user in
-            withAnimation {
-                self.login = user != nil
-            }
-        }
+        store.user.$login.sink { [self] login in
+            self.login = login
+        }.store(in: &cancellables)
     }
     
     var body: some View {
