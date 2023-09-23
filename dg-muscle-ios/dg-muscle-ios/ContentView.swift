@@ -6,9 +6,27 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ContentView: View {
+    
+    @State private var login = false
+    
+    init() {
+        Auth.auth().addStateDidChangeListener { [self] _, user in
+            withAnimation {
+                self.login = user != nil
+            }
+        }
+    }
+    
     var body: some View {
-        SignInView()
+        ZStack {
+            if login {
+                SignInView()
+            } else {
+                Text("logged in")
+            }
+        }
     }
 }
