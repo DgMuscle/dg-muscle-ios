@@ -6,25 +6,13 @@
 //
 
 import SwiftUI
-import Combine
 
 struct ContentView: View {
-    
-    @State private var login = false
-    
-    private var cancellables: Set<AnyCancellable> = []
-    
-    init() {
-        store.user.$login.sink { [self] login in
-            withAnimation {
-                self.login = login
-            }
-        }.store(in: &cancellables)
-    }
+    @StateObject var userStore = store.user
     
     var body: some View {
         ZStack {
-            if login {
+            if userStore.login {
                 TabView()
             } else {
                 SignInView()
