@@ -10,13 +10,31 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var userStore = store.user
     
+    let settingViewInjection: SettingViewInjection = .init {
+        print("tap profile")
+    } error: { error in
+        print(error)
+    }
+
+    
     var body: some View {
         ZStack {
             if userStore.login {
-                TabView()
+                TabView(settingViewDependency: settingViewInjection)
             } else {
                 SignInView()
             }
         }
+    }
+}
+
+
+struct SettingViewInjection: SettingViewDependency {
+    var tapProfile: (() -> ())?
+    
+    var error: ((Error) -> ())?
+    
+    func signOut() throws {
+        try Authenticator().signOut()
     }
 }

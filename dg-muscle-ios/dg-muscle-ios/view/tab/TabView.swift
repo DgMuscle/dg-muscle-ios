@@ -8,27 +8,22 @@
 import SwiftUI
 
 struct TabView: View {
-    struct settingViewDependency: SettingViewDependency {
-        var tapProfile: (() -> ())?
-        var error: ((Error) -> ())?
-        
-        func signOut() throws {
-            try Authenticator().signOut()
-        }
-    }
-    
-    let settingDependency: settingViewDependency = .init {
-        print("tap profile")
-    } error: { error in
-        print(error.localizedDescription)
-    }
-
+    @State var selectedTab: TabItemsView.Tab = .temp
+    let settingViewDependency: SettingViewDependency
     
     var body: some View {
         VStack {
-            SettingView(dependency: settingDependency)
-            
-            Text("Tab")
+            switch selectedTab {
+            case .temp:
+                VStack {
+                    Text("temp")
+                    Spacer()
+                }
+                
+            case .setting:
+                SettingView(dependency: settingViewDependency)
+            }
+            TabItemsView(selectedTab: $selectedTab)
         }
         
     }
