@@ -83,6 +83,7 @@
 		707B8FD12ABF204A008ADECE /* util */ = {
 			isa = PBXGroup;
 			children = (
+				7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */,
 				707B8FD22ABF207F008ADECE /* Authenticator.swift */,
 			);
 			path = util;
@@ -107,7 +108,6 @@
 		7083E6CA2ABF1614007D43CE /* signin */ = {
 			isa = PBXGroup;
 			children = (
-				7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */,
 				7083E6C22ABF0C62007D43CE /* SignInView.swift */,
 			);
 			path = signin;
