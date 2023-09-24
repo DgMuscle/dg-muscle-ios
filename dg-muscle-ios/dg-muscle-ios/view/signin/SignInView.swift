@@ -14,9 +14,12 @@ struct SignInView: View {
     
     var body: some View {
         VStack {
-            Button("apple sign in ") {
+            Button {
                 appleLoginCoordinator = AppleAuthCoordinator(window: window)
                 appleLoginCoordinator?.startAppleLogin()
+            } label: {
+                Label("Sign in with apple ID", systemImage: "applelogo")
+                    .foregroundStyle(Color(uiColor: .label))
             }
         }
     }
