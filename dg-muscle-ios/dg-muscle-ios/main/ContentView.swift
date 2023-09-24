@@ -25,7 +25,7 @@ struct ContentView: View {
             if login {
                 SignInView()
             } else {
-                Text("logged in")
+                TabView()
             }
         }
     }
