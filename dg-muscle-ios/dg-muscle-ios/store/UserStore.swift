@@ -9,7 +9,7 @@ import Combine
 import SwiftUI
 import FirebaseAuth
 
-final class UserStore {
+final class UserStore: ObservableObject {
     static let shared = UserStore()
     
     @Published private(set) var login = false
