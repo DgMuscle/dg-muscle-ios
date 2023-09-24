@@ -16,16 +16,18 @@ struct ContentView: View {
     
     init() {
         store.user.$login.sink { [self] login in
-            self.login = login
+            withAnimation {
+                self.login = login
+            }
         }.store(in: &cancellables)
     }
     
     var body: some View {
         ZStack {
             if login {
-                SignInView()
-            } else {
                 TabView()
+            } else {
+                SignInView()
             }
         }
     }

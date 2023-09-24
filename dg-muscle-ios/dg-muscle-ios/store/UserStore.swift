@@ -6,7 +6,6 @@
 //
 
 import Combine
-import SwiftUI
 import FirebaseAuth
 
 final class UserStore: ObservableObject {
@@ -18,11 +17,9 @@ final class UserStore: ObservableObject {
     
     private init() {
         Auth.auth().addStateDidChangeListener { _, user in
-            withAnimation {
-                self.login = user != nil
-                self.displayName = user?.displayName
-                self.photoURL = user?.photoURL
-            }
+            self.login = user != nil
+            self.displayName = user?.displayName
+            self.photoURL = user?.photoURL
         }
     }
 }
