@@ -13,16 +13,27 @@ final class DependencyInjection {
     
     private init () { }
     
-    func setting(isShowingPhotoPickerView: Binding<Bool>) -> SettingViewDependency {
-        SettingViewDependencyImpl(isShowingPhotoPickerView: isShowingPhotoPickerView)
+    func setting(isShowingProfilePhotoPicker: Binding<Bool>, isShowingDisplayName: Binding<Bool>) -> SettingViewDependency {
+        SettingViewDependencyImpl(isShowingProfilePhotoPicker: isShowingProfilePhotoPicker, isShowingDisplayName: isShowingDisplayName)
     }
     
-    func photo() -> PhotoPickerViewDependency {
-        PhotoPickerViewDependencyImpl()
+    func profilePhotoPicker() -> PhotoPickerViewDependency {
+        ProfilePhotoPickerDependencyImpl()
+    }
+    
+    func displayNameTextInput() -> SimpleTextInputDependency {
+        DisplayNameTextInputDependency()
     }
 }
 
-struct PhotoPickerViewDependencyImpl: PhotoPickerViewDependency {
+struct DisplayNameTextInputDependency: SimpleTextInputDependency {
+    func save(text: String) async throws {
+        try await Authenticator().updateUser(displayName: text.isEmpty ? nil : text, photoURL: store.user.photoURL)
+        store.user.updateUser()
+    }
+}
+
+struct ProfilePhotoPickerDependencyImpl: PhotoPickerViewDependency {
     func saveProfileImage(image: UIImage?) async throws {
         guard let uid = store.user.uid else { throw CustomError.authentication }
         
@@ -42,13 +53,18 @@ struct PhotoPickerViewDependencyImpl: PhotoPickerViewDependency {
 
 struct SettingViewDependencyImpl: SettingViewDependency {
     
-    @Binding var isShowingPhotoPickerView: Bool
+    @Binding var isShowingProfilePhotoPicker: Bool
+    @Binding var isShowingDisplayName: Bool
     
-    func tapDisplayName() { }
+    func tapDisplayName() {
+        withAnimation {
+            isShowingDisplayName.toggle()
+        }
+    }
     
     func tapProfileImage() {
         withAnimation {
-            isShowingPhotoPickerView.toggle()
+            isShowingProfilePhotoPicker.toggle()
         }
     }
     
@@ -60,7 +76,11 @@ struct SettingViewDependencyImpl: SettingViewDependency {
         try Authenticator().signOut()
     }
     
-    init(isShowingPhotoPickerView: Binding<Bool>) {
-        _isShowingPhotoPickerView = isShowingPhotoPickerView
+    init(
+        isShowingProfilePhotoPicker: Binding<Bool>,
+        isShowingDisplayName: Binding<Bool>
+    ) {
+        _isShowingProfilePhotoPicker = isShowingProfilePhotoPicker
+        _isShowingDisplayName = isShowingDisplayName
     }
 }
