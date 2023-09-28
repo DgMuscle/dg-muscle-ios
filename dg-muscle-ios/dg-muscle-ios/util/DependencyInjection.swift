@@ -44,7 +44,8 @@ struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
     
     func delete() {
         Task {
-            let _ = await Authenticator().withDrawal()
+            let error = await Authenticator().withDrawal()
+            self.error = error
             store.user.updateUser()
         }
     }
