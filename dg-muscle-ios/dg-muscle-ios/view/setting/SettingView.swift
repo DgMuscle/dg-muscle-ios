@@ -9,7 +9,8 @@ import SwiftUI
 import Kingfisher
 
 protocol SettingViewDependency {
-    var tapProfile: (() -> ())? { get }
+    var tapDisplayName: (() -> ())? { get }
+    var tapProfileImage: (() -> ())? { get }
     var error: ((Error) -> ())? { get }
     
     func signOut() throws
@@ -23,8 +24,15 @@ struct SettingView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Button {
-                dependency.tapProfile?()
+            
+            Menu {
+                Button("display name", systemImage: "pencil") {
+                    dependency.tapDisplayName?()
+                }
+                
+                Button("profile image", systemImage: "person") {
+                    dependency.tapProfileImage?()
+                }
             } label: {
                 HStack {
                     KFImage(userStore.photoURL)
@@ -45,9 +53,8 @@ struct SettingView: View {
                     RoundedRectangle(cornerRadius: 8).fill(Color(uiColor: .systemBackground).gradient)
                         .shadow(radius: 0.1)
                 }
-                
             }
-            
+
             Button("sign out") {
                 do {
                     try dependency.signOut()

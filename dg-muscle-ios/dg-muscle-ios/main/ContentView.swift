@@ -10,13 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var userStore = store.user
     
-    let settingViewInjection: SettingViewInjection = .init {
-        print("tap profile")
-    } error: { error in
-        print(error)
-    }
+    let settingViewInjection: SettingViewInjection = .init()
 
-    
     var body: some View {
         ZStack {
             if userStore.login {
@@ -28,9 +23,10 @@ struct ContentView: View {
     }
 }
 
-
 struct SettingViewInjection: SettingViewDependency {
-    var tapProfile: (() -> ())?
+    var tapDisplayName: (() -> ())?
+    
+    var tapProfileImage: (() -> ())?
     
     var error: ((Error) -> ())?
     
