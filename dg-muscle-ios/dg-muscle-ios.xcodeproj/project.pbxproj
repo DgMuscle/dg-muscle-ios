@@ -30,6 +30,7 @@
 		70B5080C2AC51D4300FC0540 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */; };
 		70B5080F2AC51FD900FC0540 /* DependencyInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */; };
 		70D9033D2AC5A70A001DDC0B /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D9033C2AC5A70A001DDC0B /* Vibration.swift */; };
+		70D9033F2AC5A73E001DDC0B /* ProfileBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D9033E2AC5A73E001DDC0B /* ProfileBoxView.swift */; };
 		70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E555FF2ABF010C006D4DA0 /* dg_muscle_iosApp.swift */; };
 		70E556022ABF010C006D4DA0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E556012ABF010C006D4DA0 /* ContentView.swift */; };
 		70E556042ABF010D006D4DA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70E556032ABF010D006D4DA0 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjection.swift; sourceTree = "<group>"; };
 		70D9033C2AC5A70A001DDC0B /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
+		70D9033E2AC5A73E001DDC0B /* ProfileBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBoxView.swift; sourceTree = "<group>"; };
 		70E555FC2ABF010C006D4DA0 /* dg-muscle-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dg-muscle-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70E555FF2ABF010C006D4DA0 /* dg_muscle_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dg_muscle_iosApp.swift; sourceTree = "<group>"; };
 		70E556012ABF010C006D4DA0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		70AC465D2ABFF81800BFE46D /* setting */ = {
 			isa = PBXGroup;
 			children = (
+				70D9033E2AC5A73E001DDC0B /* ProfileBoxView.swift */,
 				70AC465E2ABFF82D00BFE46D /* SettingView.swift */,
 			);
 			path = setting;
@@ -291,6 +294,7 @@
 				707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */,
 				707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */,
 				7083E6C62ABF0EC9007D43CE /* AppleAuthCoordinator.swift in Sources */,
+				70D9033F2AC5A73E001DDC0B /* ProfileBoxView.swift in Sources */,
 				707B8FC92ABF1D37008ADECE /* Store.swift in Sources */,
 				703CD5F02AC015C900BC76D4 /* CustomError.swift in Sources */,
 				70AC465F2ABFF82D00BFE46D /* SettingView.swift in Sources */,
