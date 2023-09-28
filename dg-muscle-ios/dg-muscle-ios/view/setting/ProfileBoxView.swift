@@ -31,26 +31,37 @@ struct ProfileBoxView: View {
                 .padding(.vertical)
                 
                 VStack(alignment: .trailing, spacing: 0) {
-                    HStack {
-                        Image(systemName: "pencil")
-                        Text("display name")
-                        Spacer()
-                    }
-                    .padding()
-                    .onTapGesture {
+                    Button {
+                        withAnimation {
+                            isShowing.toggle()
+                        }
                         dependency.tapDisplayName()
+                    } label: {
+                        HStack {
+                            Image(systemName: "pencil")
+                            Text("display name")
+                            Spacer()
+                        }
+                        .padding()
+                        .foregroundStyle(Color(uiColor: .label))
                     }
-                    
                     
                     Divider()
-                    HStack {
-                        Image(systemName: "photo")
-                        Text("profile photo")
-                        Spacer()
-                    }.padding()
-                        .onTapGesture {
-                            dependency.tapProfileImage()
+                    
+                    Button {
+                        withAnimation {
+                            isShowing.toggle()
                         }
+                        dependency.tapProfileImage()
+                    } label: {
+                        HStack {
+                            Image(systemName: "photo")
+                            Text("profile photo")
+                            Spacer()
+                        }
+                        .padding()
+                        .foregroundStyle(Color(uiColor: .label))
+                    }
                 }
                 .background(Color(uiColor: .systemBackground))
                 .padding(.bottom, 25)

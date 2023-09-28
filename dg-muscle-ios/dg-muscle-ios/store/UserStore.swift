@@ -34,10 +34,12 @@ final class UserStore: ObservableObject {
     }
     
     private func set(user: User?) {
-        self.login = user != nil
-        self.displayName = user?.displayName
-        self.photoURL = user?.photoURL
-        self.uid = user?.uid
+        DispatchQueue.main.async {
+            self.login = user != nil
+            self.displayName = user?.displayName
+            self.photoURL = user?.photoURL
+            self.uid = user?.uid
+        }
     }
     
     private func bind() {
