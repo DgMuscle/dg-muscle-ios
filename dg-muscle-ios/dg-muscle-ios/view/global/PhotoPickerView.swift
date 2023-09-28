@@ -50,6 +50,8 @@ struct PhotoPickerView: View {
                 }
             }
         }
+        .frame(maxWidth: .infinity)
+        .background(Color(uiColor: .systemBackground))
         .onChange(of: selectedItem) { _, newValue in
             Task {
                 guard let data = try? await newValue?.loadTransferable(type: Data.self) else { return }
