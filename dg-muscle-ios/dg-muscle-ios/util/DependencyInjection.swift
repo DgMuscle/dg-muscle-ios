@@ -29,6 +29,7 @@ final class DependencyInjection {
 struct DisplayNameTextInputDependency: SimpleTextInputDependency {
     func save(text: String) async throws {
         try await Authenticator().updateUser(displayName: text.isEmpty ? nil : text, photoURL: store.user.photoURL)
+        store.user.updateUser()
     }
 }
 
