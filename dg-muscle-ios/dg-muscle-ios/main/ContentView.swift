@@ -14,12 +14,10 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if userStore.login {
-                ZStack {
-                    TabView(settingViewDependency: DependencyInjection.shared.setting(isShowingPhotoPickerView: $isShowingPhotoPickerView))
-                    
-                    if isShowingPhotoPickerView {
-                        PhotoPickerView(uiImage: userStore.photoUiImage, isShowing: $isShowingPhotoPickerView, dependency: DependencyInjection.shared.photo())
-                    }
+                TabView(settingViewDependency: DependencyInjection.shared.setting(isShowingPhotoPickerView: $isShowingPhotoPickerView))
+                
+                if isShowingPhotoPickerView {
+                    PhotoPickerView(uiImage: userStore.photoUiImage, isShowing: $isShowingPhotoPickerView, dependency: DependencyInjection.shared.photo())
                 }
             } else {
                 SignInView()

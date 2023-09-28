@@ -15,17 +15,13 @@ struct TabItemsView: View {
             Image(systemName: selectedTab == .temp ? "doc.fill" : "doc")
                 .frame(maxWidth: .infinity)
                 .onTapGesture {
-                    withAnimation {
-                        selectedTab = .temp
-                    }
+                    selectedTab = .temp
                 }
                 
             Image(systemName: selectedTab == .setting ? "gearshape.fill" : "gearshape")
                 .frame(maxWidth: .infinity)
                 .onTapGesture {
-                    withAnimation {
-                        selectedTab = .setting
-                    }
+                    selectedTab = .setting
                 }
         }
         .padding(.top, 10)
