@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TabView: View {
-    @State var selectedTab: TabItemsView.Tab = .temp
+    @Binding var selectedTab: TabItemsView.Tab
     let settingViewDependency: SettingViewDependency
     
     var body: some View {

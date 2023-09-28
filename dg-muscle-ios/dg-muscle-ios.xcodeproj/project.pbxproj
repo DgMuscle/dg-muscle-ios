@@ -28,6 +28,7 @@
 		70AC46622ABFF8D700BFE46D /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AC46612ABFF8D700BFE46D /* TabView.swift */; };
 		70AC46692AC00A8000BFE46D /* TabItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AC46682AC00A8000BFE46D /* TabItemsView.swift */; };
 		70B5080C2AC51D4300FC0540 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */; };
+		70B5080F2AC51FD900FC0540 /* DependencyInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */; };
 		70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E555FF2ABF010C006D4DA0 /* dg_muscle_iosApp.swift */; };
 		70E556022ABF010C006D4DA0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E556012ABF010C006D4DA0 /* ContentView.swift */; };
 		70E556042ABF010D006D4DA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70E556032ABF010D006D4DA0 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		70AC46612ABFF8D700BFE46D /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		70AC46682AC00A8000BFE46D /* TabItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemsView.swift; sourceTree = "<group>"; };
 		70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
+		70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjection.swift; sourceTree = "<group>"; };
 		70E555FC2ABF010C006D4DA0 /* dg-muscle-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dg-muscle-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70E555FF2ABF010C006D4DA0 /* dg_muscle_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dg_muscle_iosApp.swift; sourceTree = "<group>"; };
 		70E556012ABF010C006D4DA0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */,
 				707B8FD22ABF207F008ADECE /* Authenticator.swift */,
+				70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */,
 				703CD5E92AC0139600BC76D4 /* FileUploader.swift */,
 			);
 			path = util;
@@ -293,6 +296,7 @@
 				70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */,
 				70AC46692AC00A8000BFE46D /* TabItemsView.swift in Sources */,
 				70B5080C2AC51D4300FC0540 /* PhotoPickerView.swift in Sources */,
+				70B5080F2AC51FD900FC0540 /* DependencyInjection.swift in Sources */,
 				703CD5EA2AC0139600BC76D4 /* FileUploader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,9 +9,9 @@ import SwiftUI
 import Kingfisher
 
 protocol SettingViewDependency {
-    var tapDisplayName: (() -> ())? { get }
-    var tapProfileImage: (() -> ())? { get }
-    var error: ((Error) -> ())? { get }
+    func tapDisplayName()
+    func tapProfileImage()
+    func error(error: Error)
     
     func signOut() throws
 }
@@ -27,11 +27,11 @@ struct SettingView: View {
             
             Menu {
                 Button("display name", systemImage: "pencil") {
-                    dependency.tapDisplayName?()
+                    dependency.tapDisplayName()
                 }
                 
                 Button("profile image", systemImage: "person") {
-                    dependency.tapProfileImage?()
+                    dependency.tapProfileImage()
                 }
             } label: {
                 HStack {
@@ -59,7 +59,7 @@ struct SettingView: View {
                 do {
                     try dependency.signOut()
                 } catch {
-                    dependency.error?(error)
+                    dependency.error(error: error)
                 }
             }
             .padding(.top, 20)

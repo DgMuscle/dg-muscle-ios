@@ -8,29 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isShowingPhotoPickerView = false
+    @State var selectedTab: TabItemsView.Tab = .temp
     @StateObject var userStore = store.user
     
-    let settingViewInjection: SettingViewInjection = .init()
-
     var body: some View {
         ZStack {
             if userStore.login {
-                TabView(settingViewDependency: settingViewInjection)
+                if isShowingPhotoPickerView {
+                    PhotoPickerView(uiImage: userStore.photoUiImage, isShowing: $isShowingPhotoPickerView, dependency: DependencyInjection.shared.photo())
+                } else {
+                    TabView(selectedTab: $selectedTab, settingViewDependency: DependencyInjection.shared.setting(isShowingPhotoPickerView: $isShowingPhotoPickerView))
+                }
             } else {
                 SignInView()
             }
         }
-    }
-}
-
-struct SettingViewInjection: SettingViewDependency {
-    var tapDisplayName: (() -> ())?
-    
-    var tapProfileImage: (() -> ())?
-    
-    var error: ((Error) -> ())?
-    
-    func signOut() throws {
-        try Authenticator().signOut()
     }
 }
