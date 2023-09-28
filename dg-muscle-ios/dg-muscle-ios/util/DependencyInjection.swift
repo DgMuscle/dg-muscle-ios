@@ -43,27 +43,31 @@ struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
 }
 
 struct DisplayNameTextInputDependencyImpl: SimpleTextInputDependency {
-    func save(text: String) async throws {
-        try await Authenticator().updateUser(displayName: text.isEmpty ? nil : text, photoURL: store.user.photoURL)
-        store.user.updateUser()
+    func save(text: String) {
+        Task {
+            try await Authenticator().updateUser(displayName: text.isEmpty ? nil : text, photoURL: store.user.photoURL)
+            store.user.updateUser()
+        }
     }
 }
 
 struct ProfilePhotoPickerDependencyImpl: PhotoPickerViewDependency {
-    func saveProfileImage(image: UIImage?) async throws {
-        guard let uid = store.user.uid else { throw CustomError.authentication }
-        
-        if let previousPhotoURLString = store.user.photoURL?.absoluteString, let path = URL(string: previousPhotoURLString)?.lastPathComponent {
-            try await FileUploader.shared.deleteImage(path: "profilePhoto/\(uid)/\(path)")
-            try await Authenticator().updateUser(displayName: store.user.displayName, photoURL: nil)
+    func saveProfileImage(image: UIImage?) {
+        Task {
+            guard let uid = store.user.uid else { throw CustomError.authentication }
+            
+            if let previousPhotoURLString = store.user.photoURL?.absoluteString, let path = URL(string: previousPhotoURLString)?.lastPathComponent {
+                try await FileUploader.shared.deleteImage(path: "profilePhoto/\(uid)/\(path)")
+                try await Authenticator().updateUser(displayName: store.user.displayName, photoURL: nil)
+            }
+            
+            if let image {
+                let url = try await FileUploader.shared.uploadImage(path: "profilePhoto/\(uid)/\(UUID().uuidString).png", image: image)
+                try await Authenticator().updateUser(displayName: store.user.displayName, photoURL: url)
+            }
+            
+            store.user.updateUser()
         }
-        
-        if let image {
-            let url = try await FileUploader.shared.uploadImage(path: "profilePhoto/\(uid)/\(UUID().uuidString).png", image: image)
-            try await Authenticator().updateUser(displayName: store.user.displayName, photoURL: url)
-        }
-        
-        store.user.updateUser()
     }
 }
 
