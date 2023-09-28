@@ -72,7 +72,7 @@ struct ProfileBoxView: View {
                         dependency.tapWithdrawal()
                     } label: {
                         HStack {
-                            Image(systemName: "photo")
+                            Image(systemName: "person.badge.minus")
                             Text("withdrawal")
                             Spacer()
                         }

@@ -13,8 +13,16 @@ final class DependencyInjection {
     
     private init () { }
     
-    func setting(isShowingProfilePhotoPicker: Binding<Bool>, isShowingDisplayName: Binding<Bool>) -> SettingViewDependency {
-        SettingViewDependencyImpl(isShowingProfilePhotoPicker: isShowingProfilePhotoPicker, isShowingDisplayName: isShowingDisplayName)
+    func setting(
+        isShowingProfilePhotoPicker: Binding<Bool>,
+        isShowingDisplayName: Binding<Bool>,
+        isPresentedWithDrawalConfirm: Binding<Bool>
+    ) -> SettingViewDependency {
+        SettingViewDependencyImpl(
+            isShowingProfilePhotoPicker: isShowingProfilePhotoPicker,
+            isShowingDisplayName: isShowingDisplayName,
+            isPresentedWithDrawalConfirm: isPresentedWithDrawalConfirm
+        )
     }
     
     func profilePhotoPicker() -> PhotoPickerViewDependency {
@@ -22,11 +30,19 @@ final class DependencyInjection {
     }
     
     func displayNameTextInput() -> SimpleTextInputDependency {
-        DisplayNameTextInputDependency()
+        DisplayNameTextInputDependencyImpl()
     }
 }
 
-struct DisplayNameTextInputDependency: SimpleTextInputDependency {
+struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
+    func delete() {
+        Task {
+            await Authenticator().withDrawal()
+        }
+    }
+}
+
+struct DisplayNameTextInputDependencyImpl: SimpleTextInputDependency {
     func save(text: String) async throws {
         try await Authenticator().updateUser(displayName: text.isEmpty ? nil : text, photoURL: store.user.photoURL)
         store.user.updateUser()
@@ -55,6 +71,7 @@ struct SettingViewDependencyImpl: SettingViewDependency {
     
     @Binding var isShowingProfilePhotoPicker: Bool
     @Binding var isShowingDisplayName: Bool
+    @Binding var isPresentedWithDrawalConfirm: Bool
     
     func tapDisplayName() {
         withAnimation {
@@ -69,7 +86,9 @@ struct SettingViewDependencyImpl: SettingViewDependency {
     }
     
     func tapWithdrawal() {
-        print("tapWithdrawal")
+        withAnimation {
+            isPresentedWithDrawalConfirm.toggle()
+        }
     }
     
     func error(error: Error) {
@@ -82,9 +101,11 @@ struct SettingViewDependencyImpl: SettingViewDependency {
     
     init(
         isShowingProfilePhotoPicker: Binding<Bool>,
-        isShowingDisplayName: Binding<Bool>
+        isShowingDisplayName: Binding<Bool>,
+        isPresentedWithDrawalConfirm: Binding<Bool>
     ) {
         _isShowingProfilePhotoPicker = isShowingProfilePhotoPicker
         _isShowingDisplayName = isShowingDisplayName
+        _isPresentedWithDrawalConfirm = isPresentedWithDrawalConfirm
     }
 }
