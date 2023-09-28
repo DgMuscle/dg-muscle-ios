@@ -39,8 +39,10 @@ struct SettingView: View {
                         .placeholder {
                             Circle().fill(Color(uiColor: .secondarySystemBackground).gradient)
                         }
-                        .clipShape(.circle)
+                        .resizable()
                         .frame(width: profileImageSize, height: profileImageSize)
+                        .scaledToFit()
+                        .clipShape(.circle)
                     
                     Text(userStore.displayName ?? "display name")
                         .foregroundStyle(userStore.displayName == nil ? Color(uiColor: .secondaryLabel) : Color(uiColor: .label))

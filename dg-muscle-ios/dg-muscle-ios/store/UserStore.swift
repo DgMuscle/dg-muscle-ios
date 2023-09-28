@@ -13,6 +13,7 @@ final class UserStore: ObservableObject {
     static let shared = UserStore()
     
     @Published private(set) var login = true
+    @Published private(set) var uid: String?
     @Published private(set) var displayName: String?
     @Published private(set) var photoURL: URL?
     @Published private(set) var photoUiImage: UIImage?
@@ -21,13 +22,22 @@ final class UserStore: ObservableObject {
     private init() {
         Auth.auth().addStateDidChangeListener { _, user in
             withAnimation {
-                self.login = user != nil
-                self.displayName = user?.displayName
-                self.photoURL = user?.photoURL
+                self.set(user: user)
             }
         }
         
         bind()
+    }
+    
+    func updateUser() {
+        set(user: Auth.auth().currentUser)
+    }
+    
+    private func set(user: User?) {
+        self.login = user != nil
+        self.displayName = user?.displayName
+        self.photoURL = user?.photoURL
+        self.uid = user?.uid
     }
     
     private func bind() {
@@ -36,7 +46,9 @@ final class UserStore: ObservableObject {
                 if let url {
                     Task {
                         let uiImage = await self.uiImage(from: url)
-                        self.photoUiImage = uiImage
+                        DispatchQueue.main.async {
+                            self.photoUiImage = uiImage
+                        }
                     }
                 } else {
                     self.photoUiImage = nil 

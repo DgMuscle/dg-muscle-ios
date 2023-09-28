@@ -9,7 +9,7 @@ import SwiftUI
 import PhotosUI
 
 protocol PhotoPickerViewDependency {
-    func savePhoto(image: UIImage?)
+    func saveProfileImage(image: UIImage?) async throws
 }
 
 struct PhotoPickerView: View {
@@ -43,7 +43,9 @@ struct PhotoPickerView: View {
             VStack {
                 Spacer()
                 Button("Save") {
-                    dependency.savePhoto(image: uiImage)
+                    Task {
+                        try await dependency.saveProfileImage(image: uiImage)
+                    }
                     withAnimation {
                         isShowing.toggle()
                     }

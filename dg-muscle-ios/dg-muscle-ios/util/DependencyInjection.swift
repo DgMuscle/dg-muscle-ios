@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 final class DependencyInjection {
     static let shared = DependencyInjection()
@@ -22,8 +23,20 @@ final class DependencyInjection {
 }
 
 struct PhotoPickerViewDependencyImpl: PhotoPickerViewDependency {
-    func savePhoto(image: UIImage?) {
-        print("save photo")
+    func saveProfileImage(image: UIImage?) async throws {
+        guard let uid = store.user.uid else { throw CustomError.authentication }
+        
+        if let previousPhotoURLString = store.user.photoURL?.absoluteString, let path = URL(string: previousPhotoURLString)?.lastPathComponent {
+            try await FileUploader.shared.deleteImage(path: "profilePhoto/\(uid)/\(path)")
+            try await Authenticator().updateUser(displayName: store.user.displayName, photoURL: nil)
+        }
+        
+        if let image {
+            let url = try await FileUploader.shared.uploadImage(path: "profilePhoto/\(uid)/\(UUID().uuidString).png", image: image)
+            try await Authenticator().updateUser(displayName: store.user.displayName, photoURL: url)
+        }
+        
+        store.user.updateUser()
     }
 }
 
