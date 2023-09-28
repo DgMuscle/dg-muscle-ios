@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var isShowingPhotoPickerView = false
+    @State var isShowingProfilePhotoPicker = false
+    
     @StateObject var userStore = store.user
     
     var body: some View {
         ZStack {
             if userStore.login {
-                TabView(settingViewDependency: DependencyInjection.shared.setting(isShowingPhotoPickerView: $isShowingPhotoPickerView))
+                TabView(settingViewDependency: DependencyInjection.shared.setting(isShowingProfilePhotoPicker: $isShowingProfilePhotoPicker))
                 
-                if isShowingPhotoPickerView {
-                    PhotoPickerView(uiImage: userStore.photoUiImage, isShowing: $isShowingPhotoPickerView, dependency: DependencyInjection.shared.photo())
+                if isShowingProfilePhotoPicker {
+                    PhotoPickerView(uiImage: userStore.photoUiImage, isShowing: $isShowingProfilePhotoPicker, dependency: DependencyInjection.shared.photo())
                 }
             } else {
                 SignInView()

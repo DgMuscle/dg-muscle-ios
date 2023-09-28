@@ -13,8 +13,8 @@ final class DependencyInjection {
     
     private init () { }
     
-    func setting(isShowingPhotoPickerView: Binding<Bool>) -> SettingViewDependency {
-        SettingViewDependencyImpl(isShowingPhotoPickerView: isShowingPhotoPickerView)
+    func setting(isShowingProfilePhotoPicker: Binding<Bool>) -> SettingViewDependency {
+        SettingViewDependencyImpl(isShowingProfilePhotoPicker: isShowingProfilePhotoPicker)
     }
     
     func photo() -> PhotoPickerViewDependency {
@@ -42,13 +42,13 @@ struct PhotoPickerViewDependencyImpl: PhotoPickerViewDependency {
 
 struct SettingViewDependencyImpl: SettingViewDependency {
     
-    @Binding var isShowingPhotoPickerView: Bool
+    @Binding var isShowingProfilePhotoPicker: Bool
     
     func tapDisplayName() { }
     
     func tapProfileImage() {
         withAnimation {
-            isShowingPhotoPickerView.toggle()
+            isShowingProfilePhotoPicker.toggle()
         }
     }
     
@@ -60,7 +60,7 @@ struct SettingViewDependencyImpl: SettingViewDependency {
         try Authenticator().signOut()
     }
     
-    init(isShowingPhotoPickerView: Binding<Bool>) {
-        _isShowingPhotoPickerView = isShowingPhotoPickerView
+    init(isShowingProfilePhotoPicker: Binding<Bool>) {
+        _isShowingProfilePhotoPicker = isShowingProfilePhotoPicker
     }
 }
