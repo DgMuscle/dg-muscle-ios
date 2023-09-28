@@ -8,14 +8,15 @@
 import SwiftUI
 
 protocol SimpleTextInputDependency {
-    func save(text: String)
+    func save(text: String) async throws
 }
 
 struct SimpleTextInputView: View {
     
     @State var text: String
     @Binding var isShowing: Bool
-    let displayName: String
+    @FocusState var focus: Bool
+    let placeholder: String
     let dependency: SimpleTextInputDependency
     
     var body: some View {
@@ -26,9 +27,12 @@ struct SimpleTextInputView: View {
                         isShowing.toggle()
                     }
                 }
-            TextField(displayName, text: $text)
+            TextField(placeholder, text: $text)
+                .focused($focus)
                 .onSubmit {
-                    dependency.save(text: text)
+                    Task {
+                        try await dependency.save(text: text)
+                    }
                     withAnimation {
                         isShowing.toggle()
                     }
@@ -40,6 +44,10 @@ struct SimpleTextInputView: View {
                 .padding()
         }
         .ignoresSafeArea()
+        .onAppear {
+            DispatchQueue.main.async {
+                focus = true
+            }
+        }
     }
 }
-
