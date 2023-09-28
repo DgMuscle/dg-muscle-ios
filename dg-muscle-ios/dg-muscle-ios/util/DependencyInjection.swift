@@ -32,12 +32,20 @@ final class DependencyInjection {
     func displayNameTextInput() -> SimpleTextInputDependency {
         DisplayNameTextInputDependencyImpl()
     }
+    
+    func withdrawalConfirm(error: Binding<Error?>) -> WithdrawalConfirmDependency {
+        WithdrawalConfirmDependencyImpl(error: error)
+    }
 }
 
 struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
+    
+    @Binding var error: Error?
+    
     func delete() {
         Task {
-            await Authenticator().withDrawal()
+            let _ = await Authenticator().withDrawal()
+            store.user.updateUser()
         }
     }
 }

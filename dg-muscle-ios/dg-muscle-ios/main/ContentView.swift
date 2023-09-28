@@ -12,6 +12,8 @@ struct ContentView: View {
     @State var isShowingDisplayName = false
     @State var isPresentedWithDrawalConfirm = false
     
+    @State var error: Error?
+    
     @StateObject var userStore = store.user
     
     var body: some View {
@@ -23,7 +25,9 @@ struct ContentView: View {
                                                                               isPresentedWithDrawalConfirm: $isPresentedWithDrawalConfirm)
                 )
                 .sheet(isPresented: $isPresentedWithDrawalConfirm, content: {
-                    WithdrawalConfirmView(isPresented: $isPresentedWithDrawalConfirm, dependency: WithdrawalConfirmDependencyImpl())
+                    WithdrawalConfirmView(
+                        isPresented: $isPresentedWithDrawalConfirm,
+                        dependency: DependencyInjection.shared.withdrawalConfirm(error: $error))
                 })
                 
                 if isShowingProfilePhotoPicker {
