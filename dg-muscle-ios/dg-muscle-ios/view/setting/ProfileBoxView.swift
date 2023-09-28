@@ -62,6 +62,23 @@ struct ProfileBoxView: View {
                         .padding()
                         .foregroundStyle(Color(uiColor: .label))
                     }
+                    
+                    Divider()
+                    
+                    Button {
+                        withAnimation {
+                            isShowing.toggle()
+                        }
+                        dependency.tapWithdrawal()
+                    } label: {
+                        HStack {
+                            Image(systemName: "photo")
+                            Text("withdrawal")
+                            Spacer()
+                        }
+                        .padding()
+                        .foregroundStyle(Color.red)
+                    }
                 }
                 .background(Color(uiColor: .systemBackground))
                 .padding(.bottom, 25)

@@ -11,6 +11,7 @@ import Kingfisher
 protocol SettingViewDependency {
     func tapDisplayName()
     func tapProfileImage()
+    func tapWithdrawal()
     func error(error: Error)
     func signOut() throws
 }

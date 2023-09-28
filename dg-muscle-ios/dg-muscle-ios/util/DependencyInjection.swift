@@ -68,6 +68,10 @@ struct SettingViewDependencyImpl: SettingViewDependency {
         }
     }
     
+    func tapWithdrawal() {
+        print("tapWithdrawal")
+    }
+    
     func error(error: Error) {
         print(error)
     }
