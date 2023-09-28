@@ -33,19 +33,23 @@ final class DependencyInjection {
         DisplayNameTextInputDependencyImpl()
     }
     
-    func withdrawalConfirm(error: Binding<Error?>) -> WithdrawalConfirmDependency {
-        WithdrawalConfirmDependencyImpl(error: error)
+    func withdrawalConfirm(error: Binding<Error?>, isShowingErrorView: Binding<Bool>) -> WithdrawalConfirmDependency {
+        WithdrawalConfirmDependencyImpl(error: error, isShowingErrorView: isShowingErrorView)
     }
 }
 
 struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
     
     @Binding var error: Error?
+    @Binding var isShowingErrorView: Bool
     
     func delete() {
         Task {
             let error = await Authenticator().withDrawal()
-            self.error = error
+            withAnimation {
+                self.error = error
+                self.isShowingErrorView = true
+            }
             store.user.updateUser()
         }
     }

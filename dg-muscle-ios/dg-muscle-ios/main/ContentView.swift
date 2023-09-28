@@ -11,6 +11,7 @@ struct ContentView: View {
     @State var isShowingProfilePhotoPicker = false
     @State var isShowingDisplayName = false
     @State var isPresentedWithDrawalConfirm = false
+    @State var isShowingErrorView = false
     
     @State var error: Error?
     
@@ -27,7 +28,7 @@ struct ContentView: View {
                 .sheet(isPresented: $isPresentedWithDrawalConfirm, content: {
                     WithdrawalConfirmView(
                         isPresented: $isPresentedWithDrawalConfirm,
-                        dependency: DependencyInjection.shared.withdrawalConfirm(error: $error))
+                        dependency: DependencyInjection.shared.withdrawalConfirm(error: $error, isShowingErrorView: $isShowingErrorView))
                 })
                 
                 if isShowingProfilePhotoPicker {
@@ -40,6 +41,10 @@ struct ContentView: View {
                 
             } else {
                 SignInView()
+            }
+            
+            if isShowingErrorView {
+                ErrorView(message: error?.localizedDescription ?? "unknown error", isShowing: $isShowingErrorView)
             }
         }
     }
