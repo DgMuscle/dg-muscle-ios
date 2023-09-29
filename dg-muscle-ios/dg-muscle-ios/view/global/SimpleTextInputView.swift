@@ -21,7 +21,7 @@ struct SimpleTextInputView: View {
     
     var body: some View {
         ZStack {
-            Rectangle().fill(Color(uiColor: .systemBackground).opacity(0.9))
+            Rectangle().fill(Color(uiColor: .systemBackground).opacity(0.8))
                 .onTapGesture {
                     withAnimation {
                         isShowing.toggle()

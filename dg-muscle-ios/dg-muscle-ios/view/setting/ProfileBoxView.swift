@@ -15,7 +15,7 @@ struct ProfileBoxView: View {
     
     var body: some View {
         ZStack {
-            Rectangle().fill(Color(uiColor: .systemBackground).opacity(0.9))
+            Rectangle().fill(Color(uiColor: .systemBackground).opacity(0.8))
                 .onTapGesture {
                     withAnimation {
                         isShowing.toggle()
@@ -84,9 +84,9 @@ struct ProfileBoxView: View {
                 .padding(.bottom, 25)
             }
             .background {
-                RoundedRectangle(cornerRadius: 25.0).fill(Color(uiColor: .secondarySystemGroupedBackground))
+                RoundedRectangle(cornerRadius: 25.0).fill(Color(uiColor: .secondarySystemBackground))
             }
-            .padding()
+            .padding(40)
         }
         .ignoresSafeArea()
     }
