@@ -13,8 +13,16 @@ final class DependencyInjection {
     
     private init () { }
     
-    func setting(isShowingProfilePhotoPicker: Binding<Bool>, isShowingDisplayName: Binding<Bool>) -> SettingViewDependency {
-        SettingViewDependencyImpl(isShowingProfilePhotoPicker: isShowingProfilePhotoPicker, isShowingDisplayName: isShowingDisplayName)
+    func setting(
+        isShowingProfilePhotoPicker: Binding<Bool>,
+        isShowingDisplayName: Binding<Bool>,
+        isPresentedWithDrawalConfirm: Binding<Bool>
+    ) -> SettingViewDependency {
+        SettingViewDependencyImpl(
+            isShowingProfilePhotoPicker: isShowingProfilePhotoPicker,
+            isShowingDisplayName: isShowingDisplayName,
+            isPresentedWithDrawalConfirm: isPresentedWithDrawalConfirm
+        )
     }
     
     func profilePhotoPicker() -> PhotoPickerViewDependency {
@@ -22,32 +30,59 @@ final class DependencyInjection {
     }
     
     func displayNameTextInput() -> SimpleTextInputDependency {
-        DisplayNameTextInputDependency()
+        DisplayNameTextInputDependencyImpl()
+    }
+    
+    func withdrawalConfirm(error: Binding<Error?>, isShowingErrorView: Binding<Bool>) -> WithdrawalConfirmDependency {
+        WithdrawalConfirmDependencyImpl(error: error, isShowingErrorView: isShowingErrorView)
     }
 }
 
-struct DisplayNameTextInputDependency: SimpleTextInputDependency {
-    func save(text: String) async throws {
-        try await Authenticator().updateUser(displayName: text.isEmpty ? nil : text, photoURL: store.user.photoURL)
-        store.user.updateUser()
+struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
+    
+    @Binding var error: Error?
+    @Binding var isShowingErrorView: Bool
+    
+    func delete() {
+        Task {
+            if let error = await Authenticator().withDrawal() {
+                withAnimation {
+                    self.error = error
+                    self.isShowingErrorView = true
+                }
+                
+            }
+            store.user.updateUser()
+        }
+    }
+}
+
+struct DisplayNameTextInputDependencyImpl: SimpleTextInputDependency {
+    func save(text: String) {
+        Task {
+            try await Authenticator().updateUser(displayName: text.isEmpty ? nil : text, photoURL: store.user.photoURL)
+            store.user.updateUser()
+        }
     }
 }
 
 struct ProfilePhotoPickerDependencyImpl: PhotoPickerViewDependency {
-    func saveProfileImage(image: UIImage?) async throws {
-        guard let uid = store.user.uid else { throw CustomError.authentication }
-        
-        if let previousPhotoURLString = store.user.photoURL?.absoluteString, let path = URL(string: previousPhotoURLString)?.lastPathComponent {
-            try await FileUploader.shared.deleteImage(path: "profilePhoto/\(uid)/\(path)")
-            try await Authenticator().updateUser(displayName: store.user.displayName, photoURL: nil)
+    func saveProfileImage(image: UIImage?) {
+        Task {
+            guard let uid = store.user.uid else { throw CustomError.authentication }
+            
+            if let previousPhotoURLString = store.user.photoURL?.absoluteString, let path = URL(string: previousPhotoURLString)?.lastPathComponent {
+                try await FileUploader.shared.deleteImage(path: "profilePhoto/\(uid)/\(path)")
+                try await Authenticator().updateUser(displayName: store.user.displayName, photoURL: nil)
+            }
+            
+            if let image {
+                let url = try await FileUploader.shared.uploadImage(path: "profilePhoto/\(uid)/\(UUID().uuidString).png", image: image)
+                try await Authenticator().updateUser(displayName: store.user.displayName, photoURL: url)
+            }
+            
+            store.user.updateUser()
         }
-        
-        if let image {
-            let url = try await FileUploader.shared.uploadImage(path: "profilePhoto/\(uid)/\(UUID().uuidString).png", image: image)
-            try await Authenticator().updateUser(displayName: store.user.displayName, photoURL: url)
-        }
-        
-        store.user.updateUser()
     }
 }
 
@@ -55,6 +90,7 @@ struct SettingViewDependencyImpl: SettingViewDependency {
     
     @Binding var isShowingProfilePhotoPicker: Bool
     @Binding var isShowingDisplayName: Bool
+    @Binding var isPresentedWithDrawalConfirm: Bool
     
     func tapDisplayName() {
         withAnimation {
@@ -68,6 +104,12 @@ struct SettingViewDependencyImpl: SettingViewDependency {
         }
     }
     
+    func tapWithdrawal() {
+        withAnimation {
+            isPresentedWithDrawalConfirm.toggle()
+        }
+    }
+    
     func error(error: Error) {
         print(error)
     }
@@ -78,9 +120,11 @@ struct SettingViewDependencyImpl: SettingViewDependency {
     
     init(
         isShowingProfilePhotoPicker: Binding<Bool>,
-        isShowingDisplayName: Binding<Bool>
+        isShowingDisplayName: Binding<Bool>,
+        isPresentedWithDrawalConfirm: Binding<Bool>
     ) {
         _isShowingProfilePhotoPicker = isShowingProfilePhotoPicker
         _isShowingDisplayName = isShowingDisplayName
+        _isPresentedWithDrawalConfirm = isPresentedWithDrawalConfirm
     }
 }

@@ -15,7 +15,7 @@ struct ProfileBoxView: View {
     
     var body: some View {
         ZStack {
-            Rectangle().fill(Color(uiColor: .systemBackground).opacity(0.9))
+            Rectangle().fill(Color(uiColor: .systemBackground).opacity(0.8))
                 .onTapGesture {
                     withAnimation {
                         isShowing.toggle()
@@ -62,14 +62,31 @@ struct ProfileBoxView: View {
                         .padding()
                         .foregroundStyle(Color(uiColor: .label))
                     }
+                    
+                    Divider()
+                    
+                    Button {
+                        withAnimation {
+                            isShowing.toggle()
+                        }
+                        dependency.tapWithdrawal()
+                    } label: {
+                        HStack {
+                            Image(systemName: "person.badge.minus")
+                            Text("withdrawal")
+                            Spacer()
+                        }
+                        .padding()
+                        .foregroundStyle(Color.red)
+                    }
                 }
                 .background(Color(uiColor: .systemBackground))
                 .padding(.bottom, 25)
             }
             .background {
-                RoundedRectangle(cornerRadius: 25.0).fill(Color(uiColor: .secondarySystemGroupedBackground))
+                RoundedRectangle(cornerRadius: 25.0).fill(Color(uiColor: .secondarySystemBackground))
             }
-            .padding()
+            .padding(40)
         }
         .ignoresSafeArea()
     }

@@ -19,4 +19,12 @@ final class Authenticator {
         changeRequest?.photoURL = photoURL
         try await changeRequest?.commitChanges()
     }
+    
+    func withDrawal() async -> Error? {
+        return await withCheckedContinuation { continuation in
+            Auth.auth().currentUser?.delete(completion: { error in
+                continuation.resume(returning: error)
+            })
+        }
+    }
 }

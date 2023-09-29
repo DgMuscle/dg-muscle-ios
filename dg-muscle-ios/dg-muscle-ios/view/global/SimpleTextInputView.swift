@@ -8,7 +8,7 @@
 import SwiftUI
 
 protocol SimpleTextInputDependency {
-    func save(text: String) async throws
+    func save(text: String)
 }
 
 struct SimpleTextInputView: View {
@@ -21,7 +21,7 @@ struct SimpleTextInputView: View {
     
     var body: some View {
         ZStack {
-            Rectangle().fill(Color(uiColor: .systemBackground).opacity(0.9))
+            Rectangle().fill(Color(uiColor: .systemBackground).opacity(0.8))
                 .onTapGesture {
                     withAnimation {
                         isShowing.toggle()
@@ -30,9 +30,7 @@ struct SimpleTextInputView: View {
             TextField(placeholder, text: $text)
                 .focused($focus)
                 .onSubmit {
-                    Task {
-                        try await dependency.save(text: text)
-                    }
+                    dependency.save(text: text)
                     withAnimation {
                         isShowing.toggle()
                     }
