@@ -37,14 +37,50 @@ final class DependencyInjection {
         WithdrawalConfirmDependencyImpl(error: error, isShowingErrorView: isShowingErrorView)
     }
     
-    func exerciseDiary() -> ExerciseDiaryDependency {
-        ExerciseDiaryDependencyImpl()
+    func exerciseDiary(paths: Binding<[ContentView.NavigationPath]>) -> ExerciseDiaryDependency {
+        ExerciseDiaryDependencyImpl(paths: paths)
+    }
+    
+    func historyForm(isShowingErrorView: Binding<Bool>, error: Binding<Error?>) -> HistoryFormDependency {
+        return HistoryFormDependencyImpl(isShowingErrorView: isShowingErrorView, error: error)
+    }
+}
+
+struct HistoryFormDependencyImpl: HistoryFormDependency {
+    
+    @Binding var isShowingErrorView: Bool
+    @Binding var error: Error?
+    
+    func tap(record: Record) {
+        print("tap \(record)")
+    }
+    
+    func tapAdd() {
+        print("add")
+    }
+    
+    func tapSave(data: ExerciseHistory) {
+        Task {
+            do {
+                let _ = try await HistoryRepository.shared.post(data: data)
+            } catch {
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.error = error
+                        self.isShowingErrorView = true
+                    }
+                }
+            }
+        }
     }
 }
 
 struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
+    
+    @Binding var paths: [ContentView.NavigationPath]
+    
     func tapAddHistory() {
-        print("add history")
+        paths.append(.historyForm)
     }
     
     func tapHistory(history: ExerciseHistory) {
@@ -64,11 +100,12 @@ struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
     func delete() {
         Task {
             if let error = await Authenticator().withDrawal() {
-                withAnimation {
-                    self.error = error
-                    self.isShowingErrorView = true
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.error = error
+                        self.isShowingErrorView = true
+                    }
                 }
-                
             }
             store.user.updateUser()
         }

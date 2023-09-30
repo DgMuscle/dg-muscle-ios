@@ -16,7 +16,7 @@ struct ExerciseHistory: Codable, Identifiable, Equatable {
     let date: String
     let memo: String?
     let records: [Record]
-    let createdAt: CreatedAt
+    let createdAt: CreatedAt?
     
     var volume: Int {
         let allSets: [ExerciseSet] = records.map({ $0.sets }).flatMap({ $0 })

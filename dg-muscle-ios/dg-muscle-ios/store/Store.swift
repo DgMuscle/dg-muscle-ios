@@ -8,6 +8,7 @@
 let store = Store()
 
 final class Store {
+    let exercise = ExerciseStore.shared
     let history = HistoryStore.shared
     let user = UserStore.shared
     

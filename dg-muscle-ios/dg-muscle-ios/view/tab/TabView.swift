@@ -19,6 +19,7 @@ struct TabView: View {
         exerciseDiaryView = .init(dependency: exerciseDiaryDependency)
         settingView = .init(dependency: settingViewDependency)
         store.history.updateHistories()
+        store.exercise.updateExercises()
     }
     
     var body: some View {
@@ -31,6 +32,5 @@ struct TabView: View {
             }
             TabItemsView(selectedTab: $selectedTab)
         }
-        
     }
 }
