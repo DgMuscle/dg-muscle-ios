@@ -10,7 +10,7 @@ import SwiftUI
 protocol HistoryFormDependency {
     func tap(record: Record)
     func tapAdd()
-    func tapSave()
+    func tapSave(data: ExerciseHistory)
 }
 
 struct HistoryFormView: View {
@@ -60,7 +60,11 @@ struct HistoryFormView: View {
             }
             
             Button {
-                dependency.tapSave()
+                // TODO: add date selector, add memo input form
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyyMMdd"
+                let data = ExerciseHistory(id: UUID().uuidString, date: dateFormatter.string(from: Date()), memo: nil, records: records, createdAt: nil)
+                dependency.tapSave(data: data)
             } label: {
                 Text("Save").foregroundStyle(Color(uiColor: .label))
                     .frame(maxWidth: .infinity)

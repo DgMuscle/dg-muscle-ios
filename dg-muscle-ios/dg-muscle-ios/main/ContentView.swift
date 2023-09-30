@@ -12,7 +12,7 @@ struct ContentView: View {
     @State var isShowingDisplayName = false
     @State var isPresentedWithDrawalConfirm = false
     @State var isShowingErrorView = false
-    
+
     @State var error: Error?
     
     @StateObject var userStore = store.user

@@ -32,6 +32,5 @@ struct TabView: View {
             }
             TabItemsView(selectedTab: $selectedTab)
         }
-        
     }
 }

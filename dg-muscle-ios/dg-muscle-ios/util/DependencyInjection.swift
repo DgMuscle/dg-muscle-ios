@@ -42,6 +42,35 @@ final class DependencyInjection {
     }
 }
 
+struct HistoryFormDependencyImpl: HistoryFormDependency {
+    
+    @Binding var isShowingErrorView: Bool
+    @Binding var error: Error?
+    
+    func tap(record: Record) {
+        print("tap \(record)")
+    }
+    
+    func tapAdd() {
+        print("add")
+    }
+    
+    func tapSave(data: ExerciseHistory) {
+        Task {
+            do {
+                let _ = try await HistoryRepository.shared.post(data: data)
+            } catch {
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.error = error
+                        self.isShowingErrorView = true
+                    }
+                }
+            }
+        }
+    }
+}
+
 struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
     func tapAddHistory() {
         print("add history")
@@ -64,11 +93,12 @@ struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
     func delete() {
         Task {
             if let error = await Authenticator().withDrawal() {
-                withAnimation {
-                    self.error = error
-                    self.isShowingErrorView = true
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.error = error
+                        self.isShowingErrorView = true
+                    }
                 }
-                
             }
             store.user.updateUser()
         }
