@@ -9,6 +9,8 @@ import Foundation
 
 enum CustomError: Error {
     case authentication
+    case invalidUrl
+    case invalidResponse
     case unknown
 }
 
@@ -17,6 +19,10 @@ extension CustomError: CustomStringConvertible {
         switch self {
         case .authentication:
             return "authentication error"
+        case .invalidUrl:
+            return "invalid url error"
+        case .invalidResponse:
+            return "invalid response error"
         case .unknown:
             return "unknown error"
         }

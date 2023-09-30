@@ -36,6 +36,24 @@ final class DependencyInjection {
     func withdrawalConfirm(error: Binding<Error?>, isShowingErrorView: Binding<Bool>) -> WithdrawalConfirmDependency {
         WithdrawalConfirmDependencyImpl(error: error, isShowingErrorView: isShowingErrorView)
     }
+    
+    func exerciseDiary() -> ExerciseDiaryDependency {
+        ExerciseDiaryDependencyImpl()
+    }
+}
+
+struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
+    func tapAddHistory() {
+        print("add history")
+    }
+    
+    func tapHistory(history: ExerciseHistory) {
+        print("tap \(history)")
+    }
+    
+    func scrollBottom() {
+        store.history.appendHistories()
+    }
 }
 
 struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
