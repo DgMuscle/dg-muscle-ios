@@ -21,9 +21,11 @@ struct ContentView: View {
         ZStack {
             if userStore.login {
                 TabView(
-                    settingViewDependency: DependencyInjection.shared.setting(isShowingProfilePhotoPicker: $isShowingProfilePhotoPicker, 
-                                                                              isShowingDisplayName: $isShowingDisplayName,
-                                                                              isPresentedWithDrawalConfirm: $isPresentedWithDrawalConfirm)
+                    settingViewDependency: DependencyInjection.shared.setting(
+                        isShowingProfilePhotoPicker: $isShowingProfilePhotoPicker,
+                        isShowingDisplayName: $isShowingDisplayName,
+                        isPresentedWithDrawalConfirm: $isPresentedWithDrawalConfirm),
+                    exerciseDiaryDependency: DependencyInjection.shared.exerciseDiary()
                 )
                 .sheet(isPresented: $isPresentedWithDrawalConfirm, content: {
                     WithdrawalConfirmView(

@@ -9,19 +9,24 @@ import SwiftUI
 
 struct TabView: View {
     @State var selectedTab: TabItemsView.Tab = .diary
-    let settingViewDependency: SettingViewDependency
+    var exerciseDiaryView: ExerciseDiaryView
+    var settingView: SettingView
+    
+    init(
+        settingViewDependency: SettingViewDependency,
+        exerciseDiaryDependency: ExerciseDiaryDependency
+    ) {
+        exerciseDiaryView = .init(dependency: exerciseDiaryDependency)
+        settingView = .init(dependency: settingViewDependency)
+    }
     
     var body: some View {
         VStack {
             switch selectedTab {
             case .diary:
-                VStack {
-                    Text("temp")
-                    Spacer()
-                }
-                
+                exerciseDiaryView
             case .setting:
-                SettingView(dependency: settingViewDependency)
+                settingView
             }
             TabItemsView(selectedTab: $selectedTab)
         }
