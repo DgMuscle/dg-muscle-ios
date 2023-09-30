@@ -22,10 +22,9 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            if let uid = userStore.uid {
+            if userStore.login {
                 NavigationStack(path: $paths) {
                     TabView(
-                        uid: uid,
                         settingViewDependency: DependencyInjection.shared.setting(
                             isShowingProfilePhotoPicker: $isShowingProfilePhotoPicker,
                             isShowingDisplayName: $isShowingDisplayName,

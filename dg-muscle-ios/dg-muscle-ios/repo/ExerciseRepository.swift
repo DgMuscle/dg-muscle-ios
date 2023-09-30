@@ -11,12 +11,8 @@ final class ExerciseRepository {
     static let shared = ExerciseRepository()
     private init() { }
     
-    func get(uid: String? = nil) async throws -> [Exercise] {
-        if let uid {
-            try await APIClient.shared.request(url: "https://exercise-getexercises-kpjvgnqz6a-uc.a.run.app", additionalHeaders: ["uid": uid])
-        } else {
-            try await APIClient.shared.request(url: "https://exercise-getexercises-kpjvgnqz6a-uc.a.run.app")
-        }
+    func get() async throws -> [Exercise] {
+        try await APIClient.shared.request(url: "https://exercise-getexercises-kpjvgnqz6a-uc.a.run.app")
     }
     
     func delete(id: String) async throws -> DefaultResponse {

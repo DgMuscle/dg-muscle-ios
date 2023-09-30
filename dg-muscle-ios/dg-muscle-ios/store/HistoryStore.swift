@@ -16,36 +16,29 @@ final class HistoryStore: ObservableObject {
     
     private(set) var newHistoryIsEmpty = false
     
-    private var updateHistoriesTask: Task<(), Error>?
-    private var appendHistoriesTask: Task<(), Error>?
-    
     private var cancellables: Set<AnyCancellable> = []
     private init() {
         bind()
     }
     
-    func updateHistories(uid: String? = nil) {
+    func updateHistories() {
         newHistoryIsEmpty = false
-        guard updateHistoriesTask == nil else { return }
-        updateHistoriesTask = Task {
-            let histories = try await HistoryRepository.shared.get(lastId: nil, uid: uid)
+        Task {
+            let histories = try await HistoryRepository.shared.get(lastId: nil)
             DispatchQueue.main.async {
                 self.histories = histories
             }
-            updateHistoriesTask = nil
         }
     }
     
     func appendHistories() {
         guard newHistoryIsEmpty == false else { return }
-        guard appendHistoriesTask == nil else { return }
-        appendHistoriesTask = Task {
+        Task {
             let histories = try await HistoryRepository.shared.get(lastId: self.histories.last?.id)
             newHistoryIsEmpty = histories.isEmpty
             DispatchQueue.main.async {
                 self.histories.append(contentsOf: histories)
             }
-            appendHistoriesTask = nil
         }
     }
     

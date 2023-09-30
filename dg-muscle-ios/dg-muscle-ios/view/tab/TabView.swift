@@ -13,14 +13,13 @@ struct TabView: View {
     var settingView: SettingView
     
     init(
-        uid: String,
         settingViewDependency: SettingViewDependency,
         exerciseDiaryDependency: ExerciseDiaryDependency
     ) {
         exerciseDiaryView = .init(dependency: exerciseDiaryDependency)
         settingView = .init(dependency: settingViewDependency)
-        store.history.updateHistories(uid: uid)
-        store.exercise.updateExercises(uid: uid)
+        store.history.updateHistories()
+        store.exercise.updateExercises()
     }
     
     var body: some View {
