@@ -8,7 +8,7 @@
 let store = Store()
 
 final class Store {
-    
+    let history = HistoryStore.shared
     let user = UserStore.shared
     
     fileprivate init() { }

@@ -44,6 +44,7 @@
 		70F838A42AC7FE96009725EF /* ExerciseHistorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A32AC7FE96009725EF /* ExerciseHistorySection.swift */; };
 		70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A52AC7FEA8009725EF /* ExerciseSet.swift */; };
 		70F838A82AC7FEB6009725EF /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A72AC7FEB6009725EF /* Record.swift */; };
+		70F838AA2AC7FEE1009725EF /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A92AC7FEE1009725EF /* HistoryStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		70F838A32AC7FE96009725EF /* ExerciseHistorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistorySection.swift; sourceTree = "<group>"; };
 		70F838A52AC7FEA8009725EF /* ExerciseSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSet.swift; sourceTree = "<group>"; };
 		70F838A72AC7FEB6009725EF /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		70F838A92AC7FEE1009725EF /* HistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				707B8FC82ABF1D37008ADECE /* Store.swift */,
+				70F838A92AC7FEE1009725EF /* HistoryStore.swift */,
 				707B8FC62ABF1CAC008ADECE /* UserStore.swift */,
 			);
 			path = store;
@@ -345,6 +348,7 @@
 				70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */,
 				70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */,
 				70F838A42AC7FE96009725EF /* ExerciseHistorySection.swift in Sources */,
+				70F838AA2AC7FEE1009725EF /* HistoryStore.swift in Sources */,
 				70AC46692AC00A8000BFE46D /* TabItemsView.swift in Sources */,
 				70B5080C2AC51D4300FC0540 /* PhotoPickerView.swift in Sources */,
 				70D9033D2AC5A70A001DDC0B /* Vibration.swift in Sources */,
