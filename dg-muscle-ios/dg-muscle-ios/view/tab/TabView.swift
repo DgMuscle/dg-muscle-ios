@@ -18,8 +18,10 @@ struct TabView: View {
     ) {
         exerciseDiaryView = .init(dependency: exerciseDiaryDependency)
         settingView = .init(dependency: settingViewDependency)
-        store.history.updateHistories()
-        store.exercise.updateExercises()
+        if store.user.uid != nil {
+            store.history.updateHistories()
+            store.exercise.updateExercises()
+        }
     }
     
     var body: some View {
