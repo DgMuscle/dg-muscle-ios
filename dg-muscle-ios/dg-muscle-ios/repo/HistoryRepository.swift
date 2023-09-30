@@ -12,7 +12,7 @@ final class HistoryRepository {
     
     private init () { }
     
-    func get(lastId: Int?) async throws -> [ExerciseHistory] {
+    func get(lastId: String?) async throws -> [ExerciseHistory] {
         var url = "https://exercisehistory-gethistories-kpjvgnqz6a-uc.a.run.app"
         
         if let lastId {
