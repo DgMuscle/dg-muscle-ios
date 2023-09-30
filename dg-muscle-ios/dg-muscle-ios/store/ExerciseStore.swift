@@ -18,8 +18,9 @@ final class ExerciseStore {
     func updateExercises() {
         Task {
             let exercises = try await ExerciseRepository.shared.get()
+            
             DispatchQueue.main.async {
-                self.exercises = exercises
+                self.exercises = exercises.sorted(by: { $0.order < $1.order })
             }
         }
     }
