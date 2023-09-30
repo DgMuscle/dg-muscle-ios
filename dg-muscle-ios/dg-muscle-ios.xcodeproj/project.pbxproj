@@ -45,6 +45,7 @@
 		70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A52AC7FEA8009725EF /* ExerciseSet.swift */; };
 		70F838A82AC7FEB6009725EF /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A72AC7FEB6009725EF /* Record.swift */; };
 		70F838AA2AC7FEE1009725EF /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A92AC7FEE1009725EF /* HistoryStore.swift */; };
+		70F838AD2AC7FFB5009725EF /* ExerciseDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838AC2AC7FFB5009725EF /* ExerciseDiaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		70F838A52AC7FEA8009725EF /* ExerciseSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSet.swift; sourceTree = "<group>"; };
 		70F838A72AC7FEB6009725EF /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		70F838A92AC7FEE1009725EF /* HistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
+		70F838AC2AC7FFB5009725EF /* ExerciseDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDiaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				70B5080A2AC51D3400FC0540 /* global */,
+				70F838AB2AC7FFA6009725EF /* history */,
 				70AC465D2ABFF81800BFE46D /* setting */,
 				7083E6CA2ABF1614007D43CE /* signin */,
 				70AC46602ABFF8C700BFE46D /* tab */,
@@ -242,6 +245,14 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		70F838AB2AC7FFA6009725EF /* history */ = {
+			isa = PBXGroup;
+			children = (
+				70F838AC2AC7FFB5009725EF /* ExerciseDiaryView.swift */,
+			);
+			path = history;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -330,6 +341,7 @@
 			files = (
 				70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */,
 				70D17E0D2AC5D70B00B86E37 /* WithdrawalConfirmView.swift in Sources */,
+				70F838AD2AC7FFB5009725EF /* ExerciseDiaryView.swift in Sources */,
 				70F838A82AC7FEB6009725EF /* Record.swift in Sources */,
 				7083E6C32ABF0C62007D43CE /* SignInView.swift in Sources */,
 				7060FDB02AC5E1C3001A2198 /* ErrorView.swift in Sources */,
