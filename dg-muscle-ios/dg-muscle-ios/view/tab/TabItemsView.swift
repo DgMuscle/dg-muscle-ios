@@ -12,26 +12,30 @@ struct TabItemsView: View {
     
     var body: some View {
         HStack {
-            Image(systemName: selectedTab == .temp ? "doc.fill" : "doc")
-                .frame(maxWidth: .infinity)
-                .onTapGesture {
-                    selectedTab = .temp
-                }
-                
-            Image(systemName: selectedTab == .setting ? "gearshape.fill" : "gearshape")
-                .frame(maxWidth: .infinity)
-                .onTapGesture {
-                    selectedTab = .setting
-                }
+            Button {
+                selectedTab = .diary
+            } label: {
+                Image(systemName: selectedTab == .diary ? "doc.fill" : "doc")
+            }
+            .frame(maxWidth: .infinity)
+            .foregroundStyle(Color(uiColor: .label))
+            
+            Button {
+                selectedTab = .setting
+            } label: {
+                Image(systemName: "ellipsis")
+            }
+            .foregroundStyle(selectedTab == .setting ? Color(uiColor: .label) : Color(uiColor: .secondaryLabel))
+            .frame(maxWidth: .infinity)
         }
-        .padding(.top, 10)
+        .padding(.top, 4)
+        .padding(.bottom, 4)
     }
 }
 
 extension TabItemsView {
     enum Tab {
-        case temp
+        case diary
         case setting
     }
 }
-
