@@ -14,7 +14,7 @@ final class HistoryStore: ObservableObject {
     @Published private(set) var histories: [ExerciseHistory] = []
     @Published private(set) var historySections: [ExerciseHistorySection] = []
     
-    private(set) var newHistoryIsEmpty = false
+    private var newHistoryIsEmpty = false
     
     private var cancellables: Set<AnyCancellable> = []
     private init() {
