@@ -8,20 +8,24 @@
 import Combine
 import Foundation
 
-final class ExerciseStore {
+final class ExerciseStore: ObservableObject {
     static let shared = ExerciseStore()
     
     @Published private(set) var exercises: [Exercise] = []
     
+    private var updateExercisesTask: Task<(), Error>?
+    
     private init() { }
     
-    func updateExercises() {
-        Task {
-            let exercises = try await ExerciseRepository.shared.get()
+    func updateExercises(uid: String? = nil) {
+        guard updateExercisesTask == nil else { return }
+        updateExercisesTask = Task {
+            let exercises = try await ExerciseRepository.shared.get(uid: uid)
             
             DispatchQueue.main.async {
                 self.exercises = exercises.sorted(by: { $0.order < $1.order })
             }
+            updateExercisesTask = nil
         }
     }
 }

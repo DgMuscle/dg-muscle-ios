@@ -22,9 +22,10 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            if userStore.login {
+            if let uid = userStore.uid {
                 NavigationStack(path: $paths) {
                     TabView(
+                        uid: uid,
                         settingViewDependency: DependencyInjection.shared.setting(
                             isShowingProfilePhotoPicker: $isShowingProfilePhotoPicker,
                             isShowingDisplayName: $isShowingDisplayName,
@@ -36,10 +37,12 @@ struct ContentView: View {
                         case .historyForm:
                             HistoryFormView(
                                 dependency:
-                                    DependencyInjection.shared.historyForm(isShowingErrorView: $isShowingErrorView, error: $error),
+                                    DependencyInjection.shared.historyForm(isShowingErrorView: $isShowingErrorView, error: $error, paths: $paths),
                                 records: [],
                                 saveButtonDisabled: true
                             )
+                        case .recordForm:
+                            RecordFormView(dependency: DependencyInjection.shared.recordForm(paths: $paths))
                         }
                     }
                 }
@@ -71,5 +74,6 @@ struct ContentView: View {
 extension ContentView {
     enum NavigationPath {
         case historyForm
+        case recordForm
     }
 }
