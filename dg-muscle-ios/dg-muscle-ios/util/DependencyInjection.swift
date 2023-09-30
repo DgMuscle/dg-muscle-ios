@@ -52,7 +52,7 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
     }
     
     func scrollBottom() {
-        print("scroll bottom")
+        store.history.appendHistories()
     }
 }
 
