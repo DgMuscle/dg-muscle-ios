@@ -14,15 +14,18 @@ final class HistoryStore: ObservableObject {
     @Published private(set) var histories: [ExerciseHistory] = []
     @Published private(set) var historySections: [ExerciseHistorySection] = []
     
+    private(set) var newHistoryIsEmpty = false
+    
     private var updateHistoriesTask: Task<(), Error>?
     private var appendHistoriesTask: Task<(), Error>?
     
-    private(set) var cancellables: Set<AnyCancellable> = []
+    private var cancellables: Set<AnyCancellable> = []
     private init() {
         bind()
     }
     
     func updateHistories(uid: String? = nil) {
+        newHistoryIsEmpty = false
         guard updateHistoriesTask == nil else { return }
         updateHistoriesTask = Task {
             let histories = try await HistoryRepository.shared.get(lastId: nil, uid: uid)
@@ -34,9 +37,11 @@ final class HistoryStore: ObservableObject {
     }
     
     func appendHistories() {
+        guard newHistoryIsEmpty == false else { return }
         guard appendHistoriesTask == nil else { return }
         appendHistoriesTask = Task {
             let histories = try await HistoryRepository.shared.get(lastId: self.histories.last?.id)
+            newHistoryIsEmpty = histories.isEmpty
             DispatchQueue.main.async {
                 self.histories.append(contentsOf: histories)
             }
