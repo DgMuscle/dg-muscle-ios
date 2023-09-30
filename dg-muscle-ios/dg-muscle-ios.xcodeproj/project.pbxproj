@@ -27,6 +27,7 @@
 		7083E6C92ABF0F45007D43CE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6C82ABF0F45007D43CE /* FirebaseAuth */; };
 		7084B1862AC5B8F50011A91B /* SimpleTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7084B1852AC5B8F50011A91B /* SimpleTextInputView.swift */; };
 		70A74E8A2AC8433F00EA7A35 /* ExerciseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */; };
+		70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */; };
 		70AC465F2ABFF82D00BFE46D /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AC465E2ABFF82D00BFE46D /* SettingView.swift */; };
 		70AC46622ABFF8D700BFE46D /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AC46612ABFF8D700BFE46D /* TabView.swift */; };
 		70AC46692AC00A8000BFE46D /* TabItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AC46682AC00A8000BFE46D /* TabItemsView.swift */; };
@@ -65,6 +66,7 @@
 		7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthCoordinator.swift; sourceTree = "<group>"; };
 		7084B1852AC5B8F50011A91B /* SimpleTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTextInputView.swift; sourceTree = "<group>"; };
 		70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStore.swift; sourceTree = "<group>"; };
+		70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormView.swift; sourceTree = "<group>"; };
 		70AC465E2ABFF82D00BFE46D /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		70AC46612ABFF8D700BFE46D /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		70AC46682AC00A8000BFE46D /* TabItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemsView.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				70F838AC2AC7FFB5009725EF /* ExerciseDiaryView.swift */,
+				70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */,
 			);
 			path = history;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				70AC46622ABFF8D700BFE46D /* TabView.swift in Sources */,
 				70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */,
 				70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */,
+				70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */,
 				70F838A42AC7FE96009725EF /* ExerciseHistorySection.swift in Sources */,
 				70F838AA2AC7FEE1009725EF /* HistoryStore.swift in Sources */,
 				70AC46692AC00A8000BFE46D /* TabItemsView.swift in Sources */,
