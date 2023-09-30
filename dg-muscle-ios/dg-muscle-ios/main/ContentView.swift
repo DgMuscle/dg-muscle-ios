@@ -36,10 +36,12 @@ struct ContentView: View {
                         case .historyForm:
                             HistoryFormView(
                                 dependency:
-                                    DependencyInjection.shared.historyForm(isShowingErrorView: $isShowingErrorView, error: $error),
+                                    DependencyInjection.shared.historyForm(isShowingErrorView: $isShowingErrorView, error: $error, paths: $paths),
                                 records: [],
                                 saveButtonDisabled: true
                             )
+                        case .recordForm:
+                            RecordFormView(dependency: DependencyInjection.shared.recordForm(paths: $paths))
                         }
                     }
                 }
@@ -71,5 +73,6 @@ struct ContentView: View {
 extension ContentView {
     enum NavigationPath {
         case historyForm
+        case recordForm
     }
 }

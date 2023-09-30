@@ -41,8 +41,30 @@ final class DependencyInjection {
         ExerciseDiaryDependencyImpl(paths: paths)
     }
     
-    func historyForm(isShowingErrorView: Binding<Bool>, error: Binding<Error?>) -> HistoryFormDependency {
-        return HistoryFormDependencyImpl(isShowingErrorView: isShowingErrorView, error: error)
+    func historyForm(isShowingErrorView: Binding<Bool>, error: Binding<Error?>, paths: Binding<[ContentView.NavigationPath]>) -> HistoryFormDependency {
+        return HistoryFormDependencyImpl(isShowingErrorView: isShowingErrorView, error: error, paths: paths)
+    }
+    
+    func recordForm(paths: Binding<[ContentView.NavigationPath]>) -> RecordFormDependency {
+        RecordFormDependencyImpl(paths: paths)
+    }
+}
+
+struct RecordFormDependencyImpl: RecordFormDependency {
+    
+    @Binding var paths: [ContentView.NavigationPath]
+    
+    func addExercise() {
+        print("add exercise")
+    }
+    
+    func addSet() {
+        print("add set")
+    }
+    
+    func save(record: Record) {
+        print("record")
+        let _ = paths.popLast()
     }
 }
 
@@ -50,13 +72,14 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
     
     @Binding var isShowingErrorView: Bool
     @Binding var error: Error?
+    @Binding var paths: [ContentView.NavigationPath]
     
     func tap(record: Record) {
         print("tap \(record)")
     }
     
     func tapAdd() {
-        print("add")
+        paths.append(.recordForm)
     }
     
     func tapSave(data: ExerciseHistory) {
