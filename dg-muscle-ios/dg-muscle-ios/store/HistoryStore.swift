@@ -19,6 +19,24 @@ final class HistoryStore: ObservableObject {
         bind()
     }
     
+    func updateHistories() {
+        Task {
+            let histories = try await HistoryRepository.shared.get(lastId: nil)
+            DispatchQueue.main.async {
+                self.histories = histories
+            }
+        }
+    }
+    
+    func appendHistories() {
+        Task {
+            let histories = try await HistoryRepository.shared.get(lastId: self.histories.last?.id)
+            DispatchQueue.main.async {
+                self.histories.append(contentsOf: histories)
+            }
+        }
+    }
+    
     private func bind() {
         $histories
             .receive(on: DispatchQueue.main)
