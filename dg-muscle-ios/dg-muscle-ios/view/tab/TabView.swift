@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct TabView: View {
-    @State var selectedTab: TabItemsView.Tab = .temp
+    @State var selectedTab: TabItemsView.Tab = .diary
     let settingViewDependency: SettingViewDependency
     
     var body: some View {
         VStack {
             switch selectedTab {
-            case .temp:
+            case .diary:
                 VStack {
                     Text("temp")
                     Spacer()
