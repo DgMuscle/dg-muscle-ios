@@ -37,8 +37,12 @@ final class DependencyInjection {
         WithdrawalConfirmDependencyImpl(error: error, isShowingErrorView: isShowingErrorView)
     }
     
-    func exerciseDiary() -> ExerciseDiaryDependency {
-        ExerciseDiaryDependencyImpl()
+    func exerciseDiary(paths: Binding<[ContentView.NavigationPath]>) -> ExerciseDiaryDependency {
+        ExerciseDiaryDependencyImpl(paths: paths)
+    }
+    
+    func historyForm(isShowingErrorView: Binding<Bool>, error: Binding<Error?>) -> HistoryFormDependency {
+        return HistoryFormDependencyImpl(isShowingErrorView: isShowingErrorView, error: error)
     }
 }
 
@@ -72,8 +76,11 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
 }
 
 struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
+    
+    @Binding var paths: [ContentView.NavigationPath]
+    
     func tapAddHistory() {
-        print("add history")
+        paths.append(.historyForm)
     }
     
     func tapHistory(history: ExerciseHistory) {

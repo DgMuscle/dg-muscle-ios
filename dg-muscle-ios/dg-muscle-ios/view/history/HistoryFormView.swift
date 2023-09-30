@@ -78,7 +78,7 @@ struct HistoryFormView: View {
         }
         .onChange(of: records) { oldValue, newValue in
             withAnimation {
-                saveButtonDisabled = newValue.isEmpty
+                saveButtonDisabled = newValue.filter { record in store.exercise.exercises.contains(where: { $0.id == record.exerciseId }) }.isEmpty
             }
         }
     }

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var paths: [NavigationPath] = []
+    
     @State var isShowingProfilePhotoPicker = false
     @State var isShowingDisplayName = false
     @State var isPresentedWithDrawalConfirm = false
@@ -20,13 +23,26 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if userStore.login {
-                TabView(
-                    settingViewDependency: DependencyInjection.shared.setting(
-                        isShowingProfilePhotoPicker: $isShowingProfilePhotoPicker,
-                        isShowingDisplayName: $isShowingDisplayName,
-                        isPresentedWithDrawalConfirm: $isPresentedWithDrawalConfirm),
-                    exerciseDiaryDependency: DependencyInjection.shared.exerciseDiary()
-                )
+                NavigationStack(path: $paths) {
+                    TabView(
+                        settingViewDependency: DependencyInjection.shared.setting(
+                            isShowingProfilePhotoPicker: $isShowingProfilePhotoPicker,
+                            isShowingDisplayName: $isShowingDisplayName,
+                            isPresentedWithDrawalConfirm: $isPresentedWithDrawalConfirm),
+                        exerciseDiaryDependency: DependencyInjection.shared.exerciseDiary(paths: $paths)
+                    )
+                    .navigationDestination(for: NavigationPath.self) { path in
+                        switch path {
+                        case .historyForm:
+                            HistoryFormView(
+                                dependency:
+                                    DependencyInjection.shared.historyForm(isShowingErrorView: $isShowingErrorView, error: $error),
+                                records: [],
+                                saveButtonDisabled: true
+                            )
+                        }
+                    }
+                }
                 .sheet(isPresented: $isPresentedWithDrawalConfirm, content: {
                     WithdrawalConfirmView(
                         isPresented: $isPresentedWithDrawalConfirm,
@@ -49,5 +65,11 @@ struct ContentView: View {
                 ErrorView(message: error?.localizedDescription ?? "unknown error", isShowing: $isShowingErrorView)
             }
         }
+    }
+}
+
+extension ContentView {
+    enum NavigationPath {
+        case historyForm
     }
 }
