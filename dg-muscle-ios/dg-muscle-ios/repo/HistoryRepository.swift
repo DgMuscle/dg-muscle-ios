@@ -12,14 +12,18 @@ final class HistoryRepository {
     
     private init () { }
     
-    func get(lastId: String?) async throws -> [ExerciseHistory] {
+    func get(lastId: String?, uid: String? = nil) async throws -> [ExerciseHistory] {
         var url = "https://exercisehistory-gethistories-kpjvgnqz6a-uc.a.run.app"
         
         if let lastId {
             url = url + "?lastId=\(lastId)"
         }
         
-        return try await APIClient.shared.request(url: url)
+        if let uid {
+            return try await APIClient.shared.request(url: url, additionalHeaders: ["uid": uid])
+        } else {
+            return try await APIClient.shared.request(url: url)
+        }
     }
     
     func post(data: ExerciseHistory) async throws -> DefaultResponse {

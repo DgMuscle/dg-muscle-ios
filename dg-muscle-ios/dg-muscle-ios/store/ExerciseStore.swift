@@ -17,10 +17,10 @@ final class ExerciseStore: ObservableObject {
     
     private init() { }
     
-    func updateExercises() {
+    func updateExercises(uid: String? = nil) {
         guard updateExercisesTask == nil else { return }
         updateExercisesTask = Task {
-            let exercises = try await ExerciseRepository.shared.get()
+            let exercises = try await ExerciseRepository.shared.get(uid: uid)
             
             DispatchQueue.main.async {
                 self.exercises = exercises.sorted(by: { $0.order < $1.order })

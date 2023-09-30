@@ -22,10 +22,10 @@ final class HistoryStore: ObservableObject {
         bind()
     }
     
-    func updateHistories() {
+    func updateHistories(uid: String? = nil) {
         guard updateHistoriesTask == nil else { return }
         updateHistoriesTask = Task {
-            let histories = try await HistoryRepository.shared.get(lastId: nil)
+            let histories = try await HistoryRepository.shared.get(lastId: nil, uid: uid)
             DispatchQueue.main.async {
                 self.histories = histories
             }
