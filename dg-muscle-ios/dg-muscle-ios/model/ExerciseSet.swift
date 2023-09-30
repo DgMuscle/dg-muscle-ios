@@ -5,7 +5,10 @@
 //  Created by 신동규 on 2023/09/30.
 //
 
-struct ExerciseSet: Codable {
+import Foundation
+
+struct ExerciseSet: Codable, Identifiable {
+    var id = UUID().uuidString
     let unit: Unit
     let reps: Int
     let weight: Int

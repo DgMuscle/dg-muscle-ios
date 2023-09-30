@@ -5,7 +5,11 @@
 //  Created by 신동규 on 2023/09/30.
 //
 
-struct Exercise: Codable, Identifiable {
+struct Exercise: Codable, Identifiable, Equatable {
+    static func == (lhs: Exercise, rhs: Exercise) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     let id: String
     let name: String
     let parts: [Part]

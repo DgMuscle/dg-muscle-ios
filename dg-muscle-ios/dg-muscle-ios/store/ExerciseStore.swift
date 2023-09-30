@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-final class ExerciseStore {
+final class ExerciseStore: ObservableObject {
     static let shared = ExerciseStore()
     
     @Published private(set) var exercises: [Exercise] = []
