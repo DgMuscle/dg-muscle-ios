@@ -19,7 +19,7 @@ final class HistoryRepository {
             url = url + "?lastId=\(lastId)"
         }
         
-        return try await APIClient.shared.request(url: url) as [ExerciseHistory]
+        return try await APIClient.shared.request(url: url)
     }
     
     func post(data: ExerciseHistory) async throws -> DefaultResponse {
