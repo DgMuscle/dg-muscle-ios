@@ -63,7 +63,7 @@ struct RecordFormView: View {
                 .padding()
                 
                 List {
-                    ForEach(sets, id: \.self) { set in
+                    ForEach(sets) { set in
                         Text("\(set.weight)\(set.unit.rawValue) x \(set.reps)")
                     }
                     Button("Add", systemImage: "plus.app") {
