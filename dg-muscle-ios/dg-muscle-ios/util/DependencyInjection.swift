@@ -48,6 +48,23 @@ final class DependencyInjection {
     func recordForm(paths: Binding<[ContentView.NavigationPath]>) -> RecordFormDependency {
         RecordFormDependencyImpl(paths: paths)
     }
+    
+    func exerciseForm(paths: Binding<[ContentView.NavigationPath]>) -> ExerciseFormDependency {
+        ExerciseFormDependencyImpl(paths: paths)
+    }
+}
+
+struct ExerciseFormDependencyImpl: ExerciseFormDependency {
+    
+    @Binding var paths: [ContentView.NavigationPath]
+    
+    func tapSave(data: Exercise) {
+        let _ = paths.popLast()
+        Task {
+            let _ = try await ExerciseRepository.shared.post(data: data)
+            store.exercise.updateExercises()
+        }
+    }
 }
 
 struct RecordFormDependencyImpl: RecordFormDependency {
@@ -55,7 +72,7 @@ struct RecordFormDependencyImpl: RecordFormDependency {
     @Binding var paths: [ContentView.NavigationPath]
     
     func addExercise() {
-        print("add exercise")
+        paths.append(.exerciseForm)
     }
     
     func addSet() {
