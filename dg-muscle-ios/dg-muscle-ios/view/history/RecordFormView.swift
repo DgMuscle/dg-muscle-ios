@@ -91,6 +91,11 @@ struct RecordFormView: View {
                                 .foregroundStyle(.tint)
                         }
                     }
+                    .onDelete { indexSet in
+                        withAnimation {
+                            indexSet.forEach({ sets.remove(at: $0) })
+                        }
+                    }
                     
                     if let lastSet = sets.last {
                         Button {
