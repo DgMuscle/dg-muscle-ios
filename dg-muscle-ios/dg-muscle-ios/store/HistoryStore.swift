@@ -14,7 +14,7 @@ final class HistoryStore: ObservableObject {
     @Published private(set) var histories: [ExerciseHistory] = []
     @Published private(set) var historySections: [ExerciseHistorySection] = []
     
-    private var newHistoryIsEmpty = false
+    private var canLoadMoreHistoryFromServer = false
     
     private var cancellables: Set<AnyCancellable> = []
     private init() {
@@ -22,9 +22,9 @@ final class HistoryStore: ObservableObject {
     }
     
     func updateHistories() {
-        newHistoryIsEmpty = false
         Task {
             let histories = try await HistoryRepository.shared.get(lastId: nil)
+            canLoadMoreHistoryFromServer = histories.count >= 100
             DispatchQueue.main.async {
                 self.histories = histories
             }
@@ -32,10 +32,10 @@ final class HistoryStore: ObservableObject {
     }
     
     func appendHistories() {
-        guard newHistoryIsEmpty == false else { return }
+        guard canLoadMoreHistoryFromServer else { return }
         Task {
             let histories = try await HistoryRepository.shared.get(lastId: self.histories.last?.id)
-            newHistoryIsEmpty = histories.isEmpty
+            canLoadMoreHistoryFromServer = histories.count >= 100
             DispatchQueue.main.async {
                 self.histories.append(contentsOf: histories)
             }
