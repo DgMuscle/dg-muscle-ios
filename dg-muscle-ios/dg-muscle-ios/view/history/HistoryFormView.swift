@@ -67,7 +67,8 @@ struct HistoryFormView: View {
                     let data = ExerciseHistory(id: UUID().uuidString, date: dateFormatter.string(from: Date()), memo: nil, records: records, createdAt: nil)
                     dependency.tapSave(data: data)
                 } label: {
-                    Text("Save").foregroundStyle(Color(uiColor: .label))
+                    Text("Save")
+                        .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background {

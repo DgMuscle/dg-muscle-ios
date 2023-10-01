@@ -114,7 +114,8 @@ struct RecordFormView: View {
                         let record = Record(exerciseId: selectedExercise.id, sets: sets)
                         dependency.save(record: record)
                     } label: {
-                        Text("Save").foregroundStyle(.white)
+                        Text("Save")
+                            .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background {
