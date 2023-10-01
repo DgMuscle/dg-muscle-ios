@@ -65,7 +65,7 @@ struct ExerciseFormView: View {
                 } label: {
                     Text("Save")
                         .frame(maxWidth: .infinity)
-                        .foregroundStyle(Color(uiColor: .label))
+                        .foregroundStyle(.white)
                         .padding()
                         .background {
                             RoundedRectangle(cornerRadius: 10).fill(.blue)
