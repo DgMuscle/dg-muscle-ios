@@ -59,22 +59,23 @@ struct HistoryFormView: View {
                 }
             }
             
-            Button {
-                // TODO: add date selector, add memo input form
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyyMMdd"
-                let data = ExerciseHistory(id: UUID().uuidString, date: dateFormatter.string(from: Date()), memo: nil, records: records, createdAt: nil)
-                dependency.tapSave(data: data)
-            } label: {
-                Text("Save").foregroundStyle(Color(uiColor: .label))
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background {
-                        RoundedRectangle(cornerRadius: 10).fill(saveButtonDisabled ? Color(uiColor: .secondarySystemFill) : .blue)
-                    }
-                    .padding()
+            if saveButtonDisabled == false {
+                Button {
+                    // TODO: add date selector, add memo input form
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyyMMdd"
+                    let data = ExerciseHistory(id: UUID().uuidString, date: dateFormatter.string(from: Date()), memo: nil, records: records, createdAt: nil)
+                    dependency.tapSave(data: data)
+                } label: {
+                    Text("Save").foregroundStyle(Color(uiColor: .label))
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background {
+                            RoundedRectangle(cornerRadius: 10).fill(.blue)
+                        }
+                        .padding()
+                }
             }
-            .disabled(saveButtonDisabled)
         }
         .onChange(of: records) { oldValue, newValue in
             withAnimation {

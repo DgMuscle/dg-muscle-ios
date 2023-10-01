@@ -17,17 +17,17 @@ struct RecordFormView: View {
     
     @StateObject var exerciseStore = store.exercise
     @State var selectedExercise: Exercise?
-    @State var title = "Select exercise"
     @State var sets: [ExerciseSet] = []
     let dependency: RecordFormDependency
     
     var body: some View {
         VStack {
-            Text(title)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.largeTitle)
-                .padding()
-            
+            if selectedExercise == nil {
+                Text("Select exercise")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.largeTitle)
+                    .padding()
+            }
             ScrollView(.horizontal) {
                 HStack(spacing: 12) {
                     Spacer(minLength: 12)
@@ -54,10 +54,13 @@ struct RecordFormView: View {
             .scrollIndicators(.hidden)
             
             if let selectedExercise {
-                Text("Sets(\(selectedExercise.name))")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.largeTitle)
-                    .padding()
+                
+                HStack {
+                    Text("Record sets").font(.largeTitle)
+                    Text("(\(selectedExercise.name))").italic()
+                    Spacer()
+                }
+                .padding()
                 
                 List {
                     ForEach(sets, id: \.self) { set in
@@ -85,11 +88,5 @@ struct RecordFormView: View {
             }
             Spacer()
         }
-        .onChange(of: selectedExercise) { _, newValue in
-            withAnimation {
-                title = newValue == nil ? "Select exercise" : "Write your sets"
-            }
-        }
     }
 }
-
