@@ -33,6 +33,7 @@ struct RecordFormView: View {
                     Spacer(minLength: 12)
                     ForEach(exerciseStore.exercises) { exercise in
                         Text(exercise.name)
+                            .foregroundStyle(selectedExercise == exercise ? .white : Color(uiColor: .label))
                             .padding(8)
                             .background {
                                 RoundedRectangle(cornerRadius: 8).fill(
@@ -63,9 +64,46 @@ struct RecordFormView: View {
                 .padding()
                 
                 List {
-                    ForEach(sets) { set in
-                        Text("\(set.weight)\(set.unit.rawValue) x \(set.reps)")
+                    ForEach($sets) { $set in
+                        HStack {
+                            
+                            Text("\(set.weight)\(set.unit.rawValue) x \(set.reps)")
+                            Spacer()
+                            
+                            Image(systemName: "plus")
+                                .padding(6)
+                                .onTapGesture {
+                                    withAnimation {
+                                        set.reps = set.reps + 1
+                                    }
+                                }
+                                .foregroundStyle(.tint)
+                            
+                            Image(systemName: "minus")
+                                .padding(6)
+                                .onTapGesture {
+                                    withAnimation {
+                                        if set.reps > 1 {
+                                            set.reps = set.reps - 1
+                                        }
+                                    }
+                                }
+                                .foregroundStyle(.tint)
+                        }
                     }
+                    
+                    if let lastSet = sets.last {
+                        Button {
+                            withAnimation {
+                                sets.append(lastSet)
+                            }
+                        } label: {
+                            Text("\(lastSet.weight)\(lastSet.unit.rawValue) x \(lastSet.reps)")
+                                .italic()
+                        }
+                        .foregroundStyle(Color(uiColor: .secondaryLabel))
+                    }
+                    
                     Button("Add", systemImage: "plus.app") {
                         dependency.addSet()
                     }
@@ -76,7 +114,7 @@ struct RecordFormView: View {
                         let record = Record(exerciseId: selectedExercise.id, sets: sets)
                         dependency.save(record: record)
                     } label: {
-                        Text("Save").foregroundStyle(Color(uiColor: .label))
+                        Text("Save").foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background {
