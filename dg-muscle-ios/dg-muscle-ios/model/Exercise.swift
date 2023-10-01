@@ -15,11 +15,11 @@ struct Exercise: Codable, Identifiable, Equatable {
     let parts: [Part]
     let favorite: Bool
     let order: Int
-    let createdAt: CreatedAt
+    let createdAt: CreatedAt?
 }
 
 extension Exercise {
-    enum Part: String, Codable {
+    enum Part: String, Codable, CaseIterable {
         case arm
         case back
         case chest
