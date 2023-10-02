@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-final class RecordFormNotificationCenter {
+final class RecordFormNotificationCenter: ObservableObject {
     static let shared = RecordFormNotificationCenter()
     
     @Published var set: ExerciseSet?
@@ -25,6 +25,7 @@ protocol RecordFormDependency {
 struct RecordFormView: View {
     
     @StateObject var exerciseStore = store.exercise
+    @StateObject var notificationCenter = RecordFormNotificationCenter.shared
     @State var selectedExercise: Exercise?
     @State var sets: [ExerciseSet]
     let dependency: RecordFormDependency
@@ -141,7 +142,7 @@ struct RecordFormView: View {
             }
             Spacer()
         }
-        .onChange(of: RecordFormNotificationCenter.shared.set) { _, value in
+        .onChange(of: notificationCenter.set) { _, value in
             if let value {
                 withAnimation {
                     sets.append(value)
