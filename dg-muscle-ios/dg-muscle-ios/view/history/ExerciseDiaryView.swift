@@ -11,6 +11,7 @@ protocol ExerciseDiaryDependency {
     func tapAddHistory()
     func tapHistory(history: ExerciseHistory)
     func scrollBottom()
+    func delete(data: ExerciseHistory)
 }
 
 struct ExerciseDiaryView: View {
@@ -45,7 +46,7 @@ struct ExerciseDiaryView: View {
                             } label: {
                                 HStack {
                                     Text(history.date).frame(maxWidth: .infinity, alignment: .leading)
-                                    Text("\(history.volume)").frame(maxWidth: .infinity, alignment: .leading)
+                                    Text("\(Int(history.volume))").frame(maxWidth: .infinity, alignment: .leading)
                                 }
                                 .foregroundStyle(Color(uiColor: .label))
                             }
@@ -55,10 +56,15 @@ struct ExerciseDiaryView: View {
                                 }
                             }
                         }
+                        .onDelete { indexSet in
+                            indexSet.forEach({
+                                dependency.delete(data: section.histories[$0])
+                            })
+                        }
                     } header: {
                         Text(section.header)
                     } footer: {
-                        Text("total volume: \(section.footer)")
+                        Text("total volume: \(Int(section.footer))")
                     }
                 }
             }
@@ -79,4 +85,3 @@ struct ExerciseDiaryView: View {
         }
     }
 }
-
