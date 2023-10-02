@@ -116,8 +116,8 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
     func tapSave(data: ExerciseHistory) {
         Task {
             do {
-                let _ = try await HistoryRepository.shared.post(data: data)
                 let _ = paths.popLast()
+                let _ = try await HistoryRepository.shared.post(data: data)
                 store.history.updateHistories()
             } catch {
                 DispatchQueue.main.async {
@@ -136,11 +136,20 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
     @Binding var paths: [ContentView.NavigationPath]
     
     func tapAddHistory() {
-        paths.append(.historyForm)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        let dateString = dateFormatter.string(from: Date())
+        
+        if let history = store.history.histories.first(where: { $0.date == dateString }) {
+            paths.append(.historyForm(history.id, history.records))
+        } else {
+            paths.append(.historyForm(nil, []))
+        }
     }
     
     func tapHistory(history: ExerciseHistory) {
-        print("tap \(history)")
+        paths.append(.historyForm(history.id, history.records))
     }
     
     func scrollBottom() {

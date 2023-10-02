@@ -33,12 +33,18 @@ struct ContentView: View {
                     )
                     .navigationDestination(for: NavigationPath.self) { path in
                         switch path {
-                        case .historyForm:
+                        case .historyForm(let id, let records):
+                            
+                            let validRecords = records.filter({ record in
+                                store.exercise.exercises.contains(where: { $0.id == record.exerciseId })
+                            })
+                            
                             HistoryFormView(
                                 dependency:
                                     DependencyInjection.shared.historyForm(isShowingErrorView: $isShowingErrorView, error: $error, paths: $paths),
-                                records: [],
-                                saveButtonDisabled: true
+                                id: id,
+                                records: records,
+                                saveButtonDisabled: validRecords.isEmpty
                             )
                         case .recordForm:
                             RecordFormView(sets: [], dependency: DependencyInjection.shared.recordForm(paths: $paths))
@@ -85,10 +91,18 @@ struct ContentView: View {
 }
 
 extension ContentView {
-    enum NavigationPath {
-        case historyForm
+    enum NavigationPath: Hashable {
+        case historyForm(String?, [Record])
         case recordForm
         case exerciseForm
         case setForm
+        
+        func hash(into hasher: inout Hasher) {
+            switch self {
+            case .historyForm(let value, _):
+                hasher.combine(value)
+            case .recordForm, .exerciseForm, .setForm: break
+            }
+        }
     }
 }
