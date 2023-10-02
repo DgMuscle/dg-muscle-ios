@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+final class HistoryFormNotificationCenter: ObservableObject {
+    static let shared = HistoryFormNotificationCenter()
+    @Published var record: Record?
+    private init() { }
+}
+
 protocol HistoryFormDependency {
     func tap(record: Record)
     func tapAdd()
@@ -15,6 +21,9 @@ protocol HistoryFormDependency {
 
 struct HistoryFormView: View {
     let dependency: HistoryFormDependency
+    @StateObject var notificationCenter = HistoryFormNotificationCenter.shared
+    let id: String?
+    let dateString: String?
     @State var records: [Record]
     @State var saveButtonDisabled: Bool
     
@@ -64,7 +73,7 @@ struct HistoryFormView: View {
                     // TODO: add date selector, add memo input form
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyyMMdd"
-                    let data = ExerciseHistory(id: UUID().uuidString, date: dateFormatter.string(from: Date()), memo: nil, records: records, createdAt: nil)
+                    let data = ExerciseHistory(id: id ?? UUID().uuidString, date: dateString ?? dateFormatter.string(from: Date()), memo: nil, records: records, createdAt: nil)
                     dependency.tapSave(data: data)
                 } label: {
                     Text("Save")
@@ -83,6 +92,13 @@ struct HistoryFormView: View {
                 saveButtonDisabled = newValue.filter { record in store.exercise.exercises.contains(where: { $0.id == record.exerciseId }) }.isEmpty
             }
         }
+        .onChange(of: notificationCenter.record) { _, value in
+            if let value {
+                guard !records.contains(where: { $0.exerciseId == value.exerciseId }) else { return }
+                withAnimation {
+                    records.append(value)
+                }
+            }
+        }
     }
 }
-

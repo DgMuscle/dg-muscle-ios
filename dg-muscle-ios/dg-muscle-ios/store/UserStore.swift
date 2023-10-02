@@ -39,6 +39,11 @@ final class UserStore: ObservableObject {
             self.displayName = user?.displayName
             self.photoURL = user?.photoURL
             self.uid = user?.uid
+            
+            if self.uid != nil {
+                store.history.updateHistories()
+                store.exercise.updateExercises()
+            }
         }
     }
     

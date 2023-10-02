@@ -74,7 +74,7 @@ struct RecordFormView: View {
                 .padding()
                 
                 List {
-                    ForEach($sets) { $set in
+                    ForEach($sets, id: \.self) { $set in
                         HStack {
                             
                             Text("\(set.weight)\(set.unit.rawValue) x \(set.reps)")
@@ -110,7 +110,7 @@ struct RecordFormView: View {
                     if let lastSet = sets.last {
                         Button {
                             withAnimation {
-                                sets.append(lastSet)
+                                sets.append(.init(unit: lastSet.unit, reps: lastSet.reps, weight: lastSet.weight))
                             }
                         } label: {
                             Text("\(lastSet.weight)\(lastSet.unit.rawValue) x \(lastSet.reps)")

@@ -7,13 +7,11 @@
 
 import Foundation
 
-struct ExerciseSet: Codable, Identifiable, Equatable {
+struct ExerciseSet: Codable, Equatable, Hashable, Identifiable {
     let unit: Unit
     var reps: Int
     let weight: Double
-    var id: String {
-        UUID().uuidString
-    }
+    var id: String? = UUID().uuidString
 }
 
 extension ExerciseSet {

@@ -33,15 +33,22 @@ struct ContentView: View {
                     )
                     .navigationDestination(for: NavigationPath.self) { path in
                         switch path {
-                        case .historyForm:
+                        case .historyForm(let id, let dateString, let records):
+                            
+                            let validRecords = records.filter({ record in
+                                store.exercise.exercises.contains(where: { $0.id == record.exerciseId })
+                            })
+                            
                             HistoryFormView(
                                 dependency:
                                     DependencyInjection.shared.historyForm(isShowingErrorView: $isShowingErrorView, error: $error, paths: $paths),
-                                records: [],
-                                saveButtonDisabled: true
+                                id: id,
+                                dateString: dateString,
+                                records: records,
+                                saveButtonDisabled: validRecords.isEmpty
                             )
-                        case .recordForm:
-                            RecordFormView(sets: [], dependency: DependencyInjection.shared.recordForm(paths: $paths))
+                        case .recordForm(let selectedExercise, let sets):
+                            RecordFormView(selectedExercise: selectedExercise, sets: sets, dependency: DependencyInjection.shared.recordForm(paths: $paths))
                         case .exerciseForm:
                             ExerciseFormView(
                                 dependency: DependencyInjection.shared.exerciseForm(paths: $paths),
@@ -85,10 +92,20 @@ struct ContentView: View {
 }
 
 extension ContentView {
-    enum NavigationPath {
-        case historyForm
-        case recordForm
+    enum NavigationPath: Hashable {
+        case historyForm(String?, String?, [Record])
+        case recordForm(Exercise?, [ExerciseSet])
         case exerciseForm
         case setForm
+        
+        func hash(into hasher: inout Hasher) {
+            switch self {
+            case .historyForm(let value, _, _):
+                hasher.combine(value)
+            case .recordForm(let value, _):
+                hasher.combine(value)
+            case .exerciseForm, .setForm: break
+            }
+        }
     }
 }

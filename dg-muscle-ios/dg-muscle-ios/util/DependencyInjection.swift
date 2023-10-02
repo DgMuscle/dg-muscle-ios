@@ -94,8 +94,8 @@ struct RecordFormDependencyImpl: RecordFormDependency {
     }
     
     func save(record: Record) {
-        print("save record \(record)")
         let _ = paths.popLast()
+        HistoryFormNotificationCenter.shared.record = record
     }
 }
 
@@ -106,17 +106,20 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
     @Binding var paths: [ContentView.NavigationPath]
     
     func tap(record: Record) {
-        print("tap \(record)")
+        let exercise = store.exercise.exercises.first(where: { $0.id == record.exerciseId })
+        paths.append(.recordForm(exercise, record.sets))
     }
     
     func tapAdd() {
-        paths.append(.recordForm)
+        paths.append(.recordForm(nil, []))
     }
     
     func tapSave(data: ExerciseHistory) {
         Task {
             do {
+                let _ = paths.popLast()
                 let _ = try await HistoryRepository.shared.post(data: data)
+                store.history.updateHistories()
             } catch {
                 DispatchQueue.main.async {
                     withAnimation {
@@ -134,11 +137,20 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
     @Binding var paths: [ContentView.NavigationPath]
     
     func tapAddHistory() {
-        paths.append(.historyForm)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        let dateString = dateFormatter.string(from: Date())
+        
+        if let history = store.history.histories.first(where: { $0.date == dateString }) {
+            paths.append(.historyForm(history.id, history.date, history.records))
+        } else {
+            paths.append(.historyForm(nil, nil, []))
+        }
     }
     
     func tapHistory(history: ExerciseHistory) {
-        print("tap \(history)")
+        paths.append(.historyForm(history.id, history.date, history.records))
     }
     
     func scrollBottom() {

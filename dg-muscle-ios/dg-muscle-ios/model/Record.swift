@@ -5,12 +5,10 @@
 //  Created by 신동규 on 2023/09/30.
 //
 
-struct Record: Codable, Identifiable, Equatable {
-    static func == (lhs: Record, rhs: Record) -> Bool {
-        lhs.id == rhs.id
-    }
-    
-    var id: String { exerciseId }
+import Foundation
+
+struct Record: Codable, Equatable, Identifiable {
+    var id: String? = UUID().uuidString
     let exerciseId: String
     let sets: [ExerciseSet]
 }
