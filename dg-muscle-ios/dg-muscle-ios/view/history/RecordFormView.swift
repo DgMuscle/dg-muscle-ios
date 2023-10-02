@@ -110,7 +110,7 @@ struct RecordFormView: View {
                     if let lastSet = sets.last {
                         Button {
                             withAnimation {
-                                sets.append(lastSet)
+                                sets.append(.init(unit: lastSet.unit, reps: lastSet.reps, weight: lastSet.weight))
                             }
                         } label: {
                             Text("\(lastSet.weight)\(lastSet.unit.rawValue) x \(lastSet.reps)")

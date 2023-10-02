@@ -34,7 +34,7 @@ struct HistoryFormView: View {
                 .padding()
             
             List {
-                ForEach(records, id: \.self) { record in
+                ForEach(records) { record in
                     if let exercise = store.exercise.exercises.first(where: { $0.id ==  record.exerciseId}) {
                         
                         Button {
@@ -93,6 +93,7 @@ struct HistoryFormView: View {
         }
         .onChange(of: notificationCenter.record) { _, value in
             if let value {
+                guard !records.contains(where: { $0.exerciseId == value.exerciseId }) else { return }
                 withAnimation {
                     records.append(value)
                 }
