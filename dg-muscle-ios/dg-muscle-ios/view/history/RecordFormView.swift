@@ -143,7 +143,9 @@ struct RecordFormView: View {
         }
         .onChange(of: RecordFormNotificationCenter.shared.set) { _, value in
             if let value {
-                sets.append(value)
+                withAnimation {
+                    sets.append(value)
+                }
             }
         }
     }
