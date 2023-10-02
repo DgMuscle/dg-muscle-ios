@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+final class HistoryFormNotificationCenter: ObservableObject {
+    static let shared = HistoryFormNotificationCenter()
+    @Published var record: Record?
+    private init() { }
+}
+
 protocol HistoryFormDependency {
     func tap(record: Record)
     func tapAdd()
@@ -15,6 +21,7 @@ protocol HistoryFormDependency {
 
 struct HistoryFormView: View {
     let dependency: HistoryFormDependency
+    @StateObject var notificationCenter = HistoryFormNotificationCenter.shared
     @State var records: [Record]
     @State var saveButtonDisabled: Bool
     
@@ -81,6 +88,13 @@ struct HistoryFormView: View {
         .onChange(of: records) { oldValue, newValue in
             withAnimation {
                 saveButtonDisabled = newValue.filter { record in store.exercise.exercises.contains(where: { $0.id == record.exerciseId }) }.isEmpty
+            }
+        }
+        .onChange(of: notificationCenter.record) { _, value in
+            if let value {
+                withAnimation {
+                    records.append(value)
+                }
             }
         }
     }

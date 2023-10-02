@@ -94,8 +94,8 @@ struct RecordFormDependencyImpl: RecordFormDependency {
     }
     
     func save(record: Record) {
-        print("save record \(record)")
         let _ = paths.popLast()
+        HistoryFormNotificationCenter.shared.record = record
     }
 }
 
