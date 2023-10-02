@@ -41,11 +41,21 @@ struct ContentView: View {
                                 saveButtonDisabled: true
                             )
                         case .recordForm:
-                            RecordFormView(dependency: DependencyInjection.shared.recordForm(paths: $paths))
+                            RecordFormView(sets: [], dependency: DependencyInjection.shared.recordForm(paths: $paths))
                         case .exerciseForm:
-                            ExerciseFormView(dependency: DependencyInjection.shared.exerciseForm(paths: $paths))
+                            ExerciseFormView(
+                                dependency: DependencyInjection.shared.exerciseForm(paths: $paths),
+                                name: "",
+                                selectedParts: [],
+                                favorite: false,
+                                saveButtonVisible: false)
                         case .setForm:
-                            SetFormView(dependency: DependencyInjection.shared.setForm(paths: $paths))
+                            SetFormView(
+                                dependency: DependencyInjection.shared.setForm(paths: $paths),
+                                unit: .kg,
+                                reps: 0,
+                                weight: 0
+                            )
                         }
                     }
                 }

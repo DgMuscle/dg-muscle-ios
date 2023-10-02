@@ -15,9 +15,9 @@ struct SetFormView: View {
     
     let dependency: SetFormViewDependency
     
-    @State var unit: ExerciseSet.Unit = .kg
-    @State var reps = 0
-    @State var weight = 0.0
+    @State var unit: ExerciseSet.Unit
+    @State var reps: Int
+    @State var weight: Double
     
     var body: some View {
         VStack {

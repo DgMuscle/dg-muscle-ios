@@ -17,7 +17,7 @@ struct RecordFormView: View {
     
     @StateObject var exerciseStore = store.exercise
     @State var selectedExercise: Exercise?
-    @State var sets: [ExerciseSet] = []
+    @State var sets: [ExerciseSet]
     let dependency: RecordFormDependency
     
     var body: some View {
