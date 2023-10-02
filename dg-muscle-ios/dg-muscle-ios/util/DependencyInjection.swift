@@ -156,6 +156,13 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
     func scrollBottom() {
         store.history.appendHistories()
     }
+    
+    func delete(data: ExerciseHistory) {
+        Task {
+            let _ = try await HistoryRepository.shared.delete(data: data)
+            store.history.updateHistories()
+        }
+    }
 }
 
 struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
