@@ -13,11 +13,10 @@ protocol ExerciseFormDependency {
 
 struct ExerciseFormView: View {
     let dependency: ExerciseFormDependency
-    @State var name = ""
-    @State var selectedParts: [Exercise.Part] = []
-    @State var favorite = false
-    
-    @State var saveButtonVisible = false
+    @State var name: String
+    @State var selectedParts: [Exercise.Part]
+    @State var favorite: Bool
+    @State var saveButtonVisible: Bool
     
     var body: some View {
         VStack {
