@@ -5,9 +5,13 @@
 //  Created by 신동규 on 2023/09/30.
 //
 
-struct Exercise: Codable, Identifiable, Equatable {
+struct Exercise: Codable, Identifiable, Hashable, Equatable {
     static func == (lhs: Exercise, rhs: Exercise) -> Bool {
         lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
     
     let id: String

@@ -106,11 +106,12 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
     @Binding var paths: [ContentView.NavigationPath]
     
     func tap(record: Record) {
-        print("tap \(record)")
+        let exercise = store.exercise.exercises.first(where: { $0.id == record.exerciseId })
+        paths.append(.recordForm(exercise, record.sets))
     }
     
     func tapAdd() {
-        paths.append(.recordForm)
+        paths.append(.recordForm(nil, []))
     }
     
     func tapSave(data: ExerciseHistory) {

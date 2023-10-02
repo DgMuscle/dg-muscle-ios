@@ -34,7 +34,7 @@ struct HistoryFormView: View {
                 .padding()
             
             List {
-                ForEach(records) { record in
+                ForEach(records, id: \.self) { record in
                     if let exercise = store.exercise.exercises.first(where: { $0.id ==  record.exerciseId}) {
                         
                         Button {
@@ -100,4 +100,3 @@ struct HistoryFormView: View {
         }
     }
 }
-
