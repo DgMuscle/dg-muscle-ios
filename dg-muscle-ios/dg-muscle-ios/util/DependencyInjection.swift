@@ -117,6 +117,8 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
         Task {
             do {
                 let _ = try await HistoryRepository.shared.post(data: data)
+                let _ = paths.popLast()
+                store.history.updateHistories()
             } catch {
                 DispatchQueue.main.async {
                     withAnimation {
