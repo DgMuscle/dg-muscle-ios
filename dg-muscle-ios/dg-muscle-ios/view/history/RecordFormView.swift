@@ -6,6 +6,15 @@
 //
 
 import SwiftUI
+import Combine
+
+final class RecordFormNotificationCenter {
+    static let shared = RecordFormNotificationCenter()
+    
+    @Published var set: ExerciseSet?
+    
+    private init() { }
+}
 
 protocol RecordFormDependency {
     func addExercise()
@@ -131,6 +140,11 @@ struct RecordFormView: View {
                 }
             }
             Spacer()
+        }
+        .onChange(of: RecordFormNotificationCenter.shared.set) { _, value in
+            if let value {
+                sets.append(value)
+            }
         }
     }
 }

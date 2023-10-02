@@ -63,8 +63,8 @@ struct SetFormViewDependencyImpl: SetFormViewDependency {
     @Binding var paths: [ContentView.NavigationPath]
     
     func save(data: ExerciseSet) {
-        print("save set \(data)")
         let _ = paths.popLast()
+        RecordFormNotificationCenter.shared.set = data
     }
 }
 
