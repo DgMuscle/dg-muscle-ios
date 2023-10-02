@@ -44,6 +44,8 @@ struct ContentView: View {
                             RecordFormView(dependency: DependencyInjection.shared.recordForm(paths: $paths))
                         case .exerciseForm:
                             ExerciseFormView(dependency: DependencyInjection.shared.exerciseForm(paths: $paths))
+                        case .setForm:
+                            SetFormView(dependency: DependencyInjection.shared.setForm(paths: $paths))
                         }
                     }
                 }
@@ -77,5 +79,6 @@ extension ContentView {
         case historyForm
         case recordForm
         case exerciseForm
+        case setForm
     }
 }
