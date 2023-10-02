@@ -64,7 +64,7 @@ struct ExerciseDiaryView: View {
                     } header: {
                         Text(section.header)
                     } footer: {
-                        Text("total volume: \(section.footer)")
+                        Text("total volume: \(Int(section.footer))")
                     }
                 }
             }
