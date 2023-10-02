@@ -143,14 +143,14 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
         let dateString = dateFormatter.string(from: Date())
         
         if let history = store.history.histories.first(where: { $0.date == dateString }) {
-            paths.append(.historyForm(history.id, history.records))
+            paths.append(.historyForm(history.id, history.date, history.records))
         } else {
-            paths.append(.historyForm(nil, []))
+            paths.append(.historyForm(nil, nil, []))
         }
     }
     
     func tapHistory(history: ExerciseHistory) {
-        paths.append(.historyForm(history.id, history.records))
+        paths.append(.historyForm(history.id, history.date, history.records))
     }
     
     func scrollBottom() {

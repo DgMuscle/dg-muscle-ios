@@ -23,6 +23,7 @@ struct HistoryFormView: View {
     let dependency: HistoryFormDependency
     @StateObject var notificationCenter = HistoryFormNotificationCenter.shared
     let id: String?
+    let dateString: String?
     @State var records: [Record]
     @State var saveButtonDisabled: Bool
     
@@ -72,7 +73,7 @@ struct HistoryFormView: View {
                     // TODO: add date selector, add memo input form
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyyMMdd"
-                    let data = ExerciseHistory(id: id ?? UUID().uuidString, date: dateFormatter.string(from: Date()), memo: nil, records: records, createdAt: nil)
+                    let data = ExerciseHistory(id: id ?? UUID().uuidString, date: dateString ?? dateFormatter.string(from: Date()), memo: nil, records: records, createdAt: nil)
                     dependency.tapSave(data: data)
                 } label: {
                     Text("Save")
