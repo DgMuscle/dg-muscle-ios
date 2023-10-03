@@ -62,6 +62,9 @@ struct HistoryFormView: View {
                         }
                     }
                 }
+                .onDelete { indexSet in
+                    indexSet.forEach({ records.remove(at: $0) })
+                }
                 
                 Button("Add", systemImage: "plus.circle") {
                     dependency.tapAdd()
