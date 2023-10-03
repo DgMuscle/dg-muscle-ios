@@ -18,7 +18,7 @@ struct Exercise: Codable, Identifiable, Hashable, Equatable {
     let name: String
     let parts: [Part]
     let favorite: Bool
-    let order: Int
+    var order: Int
     let createdAt: CreatedAt?
 }
 

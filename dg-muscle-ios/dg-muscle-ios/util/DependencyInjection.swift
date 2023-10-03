@@ -52,6 +52,34 @@ final class DependencyInjection {
     func setForm(paths: Binding<[ContentView.NavigationPath]>) -> SetFormViewDependency {
         SetFormViewDependencyImpl(paths: paths)
     }
+    
+    func exerciseList(paths: Binding<[ContentView.NavigationPath]>) -> ExerciseListViewDependency {
+        ExerciseListViewDependencyImpl(paths: paths)
+    }
+}
+
+struct ExerciseListViewDependencyImpl: ExerciseListViewDependency {
+    
+    @Binding var paths: [ContentView.NavigationPath]
+    
+    func tapAdd() {
+        paths.append(.exerciseForm)
+    }
+    
+    func tapSave(exercises: [Exercise]) {
+        Task {
+            let _ = paths.popLast()
+            // delete previous exercises, and post new exercises
+            let previousExercises = store.exercise.exercises
+            try await previousExercises.asyncForEach({
+                let _ = try await ExerciseRepository.shared.delete(id: $0.id)
+            })
+            try await exercises.asyncForEach({
+                let _ = try await ExerciseRepository.shared.post(data: $0)
+            })
+            store.exercise.updateExercises()
+        }
+    }
 }
 
 struct SetFormViewDependencyImpl: SetFormViewDependency {
@@ -70,9 +98,11 @@ struct ExerciseFormDependencyImpl: ExerciseFormDependency {
     
     func tapSave(data: Exercise) {
         let _ = paths.popLast()
+        ExerciseListViewNotificationCenter.shared.exercise = data
         Task {
             let _ = try await ExerciseRepository.shared.post(data: data)
             store.exercise.updateExercises()
+            
         }
     }
 }
@@ -235,5 +265,9 @@ struct SettingViewDependencyImpl: SettingViewDependency {
     
     func tapProfileSection() {
         paths.append(.bodyProfile)
+    }
+    
+    func tapExercise() {
+        paths.append(.exerciseList)
     }
 }
