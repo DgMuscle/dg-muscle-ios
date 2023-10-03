@@ -42,7 +42,6 @@
 		70C144DA2AC82866007F0540 /* ExerciseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D92AC82866007F0540 /* ExerciseRepository.swift */; };
 		70D17E0D2AC5D70B00B86E37 /* WithdrawalConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D17E0C2AC5D70B00B86E37 /* WithdrawalConfirmView.swift */; };
 		70D9033D2AC5A70A001DDC0B /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D9033C2AC5A70A001DDC0B /* Vibration.swift */; };
-		70D9033F2AC5A73E001DDC0B /* ProfileBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D9033E2AC5A73E001DDC0B /* ProfileBoxView.swift */; };
 		70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E555FF2ABF010C006D4DA0 /* dg_muscle_iosApp.swift */; };
 		70E556022ABF010C006D4DA0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E556012ABF010C006D4DA0 /* ContentView.swift */; };
 		70E556042ABF010D006D4DA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70E556032ABF010D006D4DA0 /* Assets.xcassets */; };
@@ -85,7 +84,6 @@
 		70C144D92AC82866007F0540 /* ExerciseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepository.swift; sourceTree = "<group>"; };
 		70D17E0C2AC5D70B00B86E37 /* WithdrawalConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalConfirmView.swift; sourceTree = "<group>"; };
 		70D9033C2AC5A70A001DDC0B /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
-		70D9033E2AC5A73E001DDC0B /* ProfileBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBoxView.swift; sourceTree = "<group>"; };
 		70E555FC2ABF010C006D4DA0 /* dg-muscle-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dg-muscle-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70E555FF2ABF010C006D4DA0 /* dg_muscle_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dg_muscle_iosApp.swift; sourceTree = "<group>"; };
 		70E556012ABF010C006D4DA0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -188,9 +186,8 @@
 		70AC465D2ABFF81800BFE46D /* setting */ = {
 			isa = PBXGroup;
 			children = (
-				70D9033E2AC5A73E001DDC0B /* ProfileBoxView.swift */,
-				70AC465E2ABFF82D00BFE46D /* SettingView.swift */,
 				70A9B7402ACBCFC70061DAA3 /* BodyProfileView.swift */,
+				70AC465E2ABFF82D00BFE46D /* SettingView.swift */,
 			);
 			path = setting;
 			sourceTree = "<group>";
@@ -392,7 +389,6 @@
 				70C144D62AC825DE007F0540 /* HistoryRepository.swift in Sources */,
 				7083E6C62ABF0EC9007D43CE /* AppleAuthCoordinator.swift in Sources */,
 				7084B1862AC5B8F50011A91B /* SimpleTextInputView.swift in Sources */,
-				70D9033F2AC5A73E001DDC0B /* ProfileBoxView.swift in Sources */,
 				70A9B7412ACBCFC70061DAA3 /* BodyProfileView.swift in Sources */,
 				707B8FC92ABF1D37008ADECE /* Store.swift in Sources */,
 				703CD5F02AC015C900BC76D4 /* CustomError.swift in Sources */,

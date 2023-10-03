@@ -10,6 +10,7 @@ import Kingfisher
 
 protocol BodyProfileViewDependency {
     func tapProfileImage()
+    func tapSave(displayName: String)
 }
 
 struct BodyProfileView: View {
@@ -58,7 +59,7 @@ struct BodyProfileView: View {
             }
             
             Button {
-                print("tap save")
+                dependency.tapSave(displayName: displayName)
             } label: {
                 Text("Save")
             }

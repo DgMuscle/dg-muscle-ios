@@ -9,23 +9,18 @@ import SwiftUI
 import Kingfisher
 
 protocol SettingViewDependency {
-    func tapDisplayName()
-    func tapProfileImage()
-    func tapWithdrawal()
-    func error(error: Error)
-    func signOut() throws
+    func tapProfileSection()
 }
 
 struct SettingView: View {
     let dependency: SettingViewDependency
-    
-    @State var isShowingProfileBoxView = false
     @StateObject private var userStore: UserStore = store.user
     private let profileImageSize: CGFloat = 30
     
     var body: some View {
-        ZStack {
-            VStack(alignment: .leading) {
+        Form {
+            
+            Section("profile") {
                 HStack {
                     KFImage(userStore.photoURL)
                         .placeholder {
@@ -36,40 +31,17 @@ struct SettingView: View {
                         .scaledToFit()
                         .clipShape(.circle)
                     
-                    Text(userStore.displayName ?? "display name")
-                        .foregroundStyle(userStore.displayName == nil ? Color(uiColor: .secondaryLabel) : Color(uiColor: .label))
-                    
-                    Spacer()
-                }
-                .frame(maxWidth: .infinity)
-                .padding(8)
-                .background {
-                    RoundedRectangle(cornerRadius: 8).fill(Color(uiColor: .systemBackground).gradient)
-                        .shadow(radius: 0.1)
-                }
-                .onTapGesture {
-                    Vibration.soft.vibrate()
-                    withAnimation {
-                        isShowingProfileBoxView.toggle()
+                    if let displayName = userStore.displayName {
+                        Text(displayName)
+                    } else {
+                        Text("display name")
+                            .italic()
+                            .foregroundStyle(Color(uiColor: .secondaryLabel))
                     }
                 }
-
-                Button("sign out") {
-                    do {
-                        try dependency.signOut()
-                    } catch {
-                        dependency.error(error: error)
-                    }
-                }
-                .padding(.top, 20)
-                .foregroundStyle(.red)
-                
-                Spacer().frame(maxWidth: .infinity)
             }
-            .padding()
-            
-            if isShowingProfileBoxView {
-                ProfileBoxView(dependency: dependency, isShowing: $isShowingProfileBoxView)
+            .onTapGesture {
+                dependency.tapProfileSection()
             }
         }
     }

@@ -58,7 +58,9 @@ final class UserStore: ObservableObject {
                         }
                     }
                 } else {
-                    self.photoUiImage = nil 
+                    DispatchQueue.main.async {
+                        self.photoUiImage = nil
+                    }
                 }
             }
             .store(in: &cancellables)
