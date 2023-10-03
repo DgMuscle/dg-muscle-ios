@@ -77,7 +77,7 @@ struct RecordFormView: View {
                     ForEach($sets, id: \.self) { $set in
                         HStack {
                             
-                            Text("\(set.weight)\(set.unit.rawValue) x \(set.reps)")
+                            Text("\(Int(set.weight))\(set.unit.rawValue) x \(set.reps)")
                             Spacer()
                             
                             Image(systemName: "plus")
@@ -113,7 +113,7 @@ struct RecordFormView: View {
                                 sets.append(.init(unit: lastSet.unit, reps: lastSet.reps, weight: lastSet.weight))
                             }
                         } label: {
-                            Text("\(lastSet.weight)\(lastSet.unit.rawValue) x \(lastSet.reps)")
+                            Text("\(Int(lastSet.weight))\(lastSet.unit.rawValue) x \(lastSet.reps)")
                                 .italic()
                         }
                         .foregroundStyle(Color(uiColor: .secondaryLabel))

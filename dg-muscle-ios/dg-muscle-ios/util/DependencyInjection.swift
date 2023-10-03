@@ -13,16 +13,12 @@ final class DependencyInjection {
     
     private init () { }
     
-    func setting(
-        isShowingProfilePhotoPicker: Binding<Bool>,
-        isShowingDisplayName: Binding<Bool>,
-        isPresentedWithDrawalConfirm: Binding<Bool>
-    ) -> SettingViewDependency {
-        SettingViewDependencyImpl(
-            isShowingProfilePhotoPicker: isShowingProfilePhotoPicker,
-            isShowingDisplayName: isShowingDisplayName,
-            isPresentedWithDrawalConfirm: isPresentedWithDrawalConfirm
-        )
+    func setting(paths: Binding<[ContentView.NavigationPath]>) -> SettingViewDependency {
+        SettingViewDependencyImpl(paths: paths)
+    }
+    
+    func bodyProfile(paths: Binding<[ContentView.NavigationPath]>, isShowingProfilePhotoPicker: Binding<Bool>) -> BodyProfileViewDependency {
+        return BodyProfileViewDependencyImpl(paths: paths, isShowingProfilePhotoPicker: isShowingProfilePhotoPicker)
     }
     
     func profilePhotoPicker() -> PhotoPickerViewDependency {
@@ -214,45 +210,30 @@ struct ProfilePhotoPickerDependencyImpl: PhotoPickerViewDependency {
     }
 }
 
-struct SettingViewDependencyImpl: SettingViewDependency {
+struct BodyProfileViewDependencyImpl: BodyProfileViewDependency {
     
+    @Binding var paths: [ContentView.NavigationPath]
     @Binding var isShowingProfilePhotoPicker: Bool
-    @Binding var isShowingDisplayName: Bool
-    @Binding var isPresentedWithDrawalConfirm: Bool
     
-    func tapDisplayName() {
-        withAnimation {
-            isShowingDisplayName.toggle()
+    func tapSave(displayName: String) {
+        Task {
+            let _ = paths.popLast()
+            try await Authenticator().updateUser(displayName: displayName.isEmpty ? nil : displayName, photoURL: store.user.photoURL)
+            store.user.updateUser()
         }
     }
     
     func tapProfileImage() {
         withAnimation {
-            isShowingProfilePhotoPicker.toggle()
+            isShowingProfilePhotoPicker = true
         }
     }
+}
+
+struct SettingViewDependencyImpl: SettingViewDependency {
+    @Binding var paths: [ContentView.NavigationPath]
     
-    func tapWithdrawal() {
-        withAnimation {
-            isPresentedWithDrawalConfirm.toggle()
-        }
-    }
-    
-    func error(error: Error) {
-        print(error)
-    }
-    
-    func signOut() throws {
-        try Authenticator().signOut()
-    }
-    
-    init(
-        isShowingProfilePhotoPicker: Binding<Bool>,
-        isShowingDisplayName: Binding<Bool>,
-        isPresentedWithDrawalConfirm: Binding<Bool>
-    ) {
-        _isShowingProfilePhotoPicker = isShowingProfilePhotoPicker
-        _isShowingDisplayName = isShowingDisplayName
-        _isPresentedWithDrawalConfirm = isPresentedWithDrawalConfirm
+    func tapProfileSection() {
+        paths.append(.bodyProfile)
     }
 }

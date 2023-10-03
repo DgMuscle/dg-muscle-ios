@@ -12,7 +12,6 @@ struct ContentView: View {
     @State var paths: [NavigationPath] = []
     
     @State var isShowingProfilePhotoPicker = false
-    @State var isShowingDisplayName = false
     @State var isPresentedWithDrawalConfirm = false
     @State var isShowingErrorView = false
 
@@ -25,10 +24,7 @@ struct ContentView: View {
             if userStore.login {
                 NavigationStack(path: $paths) {
                     TabView(
-                        settingViewDependency: DependencyInjection.shared.setting(
-                            isShowingProfilePhotoPicker: $isShowingProfilePhotoPicker,
-                            isShowingDisplayName: $isShowingDisplayName,
-                            isPresentedWithDrawalConfirm: $isPresentedWithDrawalConfirm),
+                        settingViewDependency: DependencyInjection.shared.setting(paths: $paths),
                         exerciseDiaryDependency: DependencyInjection.shared.exerciseDiary(paths: $paths)
                     )
                     .navigationDestination(for: NavigationPath.self) { path in
@@ -63,6 +59,8 @@ struct ContentView: View {
                                 reps: 0,
                                 weight: 0
                             )
+                        case .bodyProfile:
+                            BodyProfileView(dependency: DependencyInjection.shared.bodyProfile(paths: $paths, isShowingProfilePhotoPicker: $isShowingProfilePhotoPicker))
                         }
                     }
                 }
@@ -74,10 +72,6 @@ struct ContentView: View {
                 
                 if isShowingProfilePhotoPicker {
                     PhotoPickerView(uiImage: userStore.photoUiImage, isShowing: $isShowingProfilePhotoPicker, dependency: DependencyInjection.shared.profilePhotoPicker())
-                }
-                
-                if isShowingDisplayName {
-                    SimpleTextInputView(text: store.user.displayName ?? "", isShowing: $isShowingDisplayName, placeholder: "display name", dependency: DependencyInjection.shared.displayNameTextInput())
                 }
                 
             } else {
@@ -97,6 +91,7 @@ extension ContentView {
         case recordForm(Exercise?, [ExerciseSet])
         case exerciseForm
         case setForm
+        case bodyProfile
         
         func hash(into hasher: inout Hasher) {
             switch self {
@@ -104,7 +99,7 @@ extension ContentView {
                 hasher.combine(value)
             case .recordForm(let value, _):
                 hasher.combine(value)
-            case .exerciseForm, .setForm: break
+            case .exerciseForm, .setForm, .bodyProfile: break
             }
         }
     }
