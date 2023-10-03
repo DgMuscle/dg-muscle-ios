@@ -23,7 +23,7 @@ final class ExerciseRepository {
         
         let parameter = Parameter(id: id)
         
-        return try await APIClient.shared.request(method: .delete, url: "https://exercise-postexercise-kpjvgnqz6a-uc.a.run.app", body: parameter)
+        return try await APIClient.shared.request(method: .delete, url: "https://exercise-deleteexercise-kpjvgnqz6a-uc.a.run.app", body: parameter)
     }
     
     func post(data: Exercise) async throws -> DefaultResponse {
