@@ -13,6 +13,7 @@ final class ExerciseListViewNotificationCenter: ObservableObject {
     private init() { }
     
     @Published var exercises: [Exercise] = []
+    @Published var exercise: Exercise?
 }
 
 protocol ExerciseListViewDependency {
@@ -53,6 +54,12 @@ struct ExerciseListView: View {
         .onChange(of: notificationCenter.exercises) { _, newValue in
             withAnimation {
                 self.exercises = newValue
+            }
+        }
+        .onChange(of: notificationCenter.exercise) { _, newValue in
+            guard let newValue else { return }
+            withAnimation {
+                exercises.append(newValue)
             }
         }
     }

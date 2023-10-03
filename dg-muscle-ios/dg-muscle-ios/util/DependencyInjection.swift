@@ -98,9 +98,11 @@ struct ExerciseFormDependencyImpl: ExerciseFormDependency {
     
     func tapSave(data: Exercise) {
         let _ = paths.popLast()
+        ExerciseListViewNotificationCenter.shared.exercise = data
         Task {
             let _ = try await ExerciseRepository.shared.post(data: data)
             store.exercise.updateExercises()
+            
         }
     }
 }
