@@ -25,15 +25,19 @@ struct ExerciseListView: View {
     let dependency: ExerciseListViewDependency
     @StateObject var notificationCenter = ExerciseListViewNotificationCenter.shared
     @State var exercises: [Exercise]
+    @State var removalWarningTextVisible = false
     
     var body: some View {
         Form {
-            Section("exercises") {
+            Section {
                 ForEach(exercises) { exercise in
                     Text(exercise.name)
                 }
                 .onDelete { indexSet in
                     exercises.remove(atOffsets: indexSet)
+                    withAnimation {
+                        removalWarningTextVisible = true
+                    }
                 }
                 .onMove { from, to in
                     exercises.move(fromOffsets: from, toOffset: to)
@@ -41,7 +45,16 @@ struct ExerciseListView: View {
                 Button("Add", systemImage: "plus.app") {
                     dependency.tapAdd()
                 }
+            } header: {
+                Text("exercises")
+            } footer: {
+                if removalWarningTextVisible {
+                    Text("Be careful, removal exercises can affect your previous records")
+                        .foregroundStyle(.red)
+                        .italic()
+                }
             }
+            
             Button("Save") {
                 let exercises = exercises.enumerated().map({ index, exercise in
                     var exercise = exercise
