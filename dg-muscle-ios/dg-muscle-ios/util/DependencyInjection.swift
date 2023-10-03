@@ -236,4 +236,8 @@ struct SettingViewDependencyImpl: SettingViewDependency {
     func tapProfileSection() {
         paths.append(.bodyProfile)
     }
+    
+    func tapExercise() {
+        print("navigate to exercise list")
+    }
 }

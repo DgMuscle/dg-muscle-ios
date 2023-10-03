@@ -10,6 +10,7 @@ import Kingfisher
 
 protocol SettingViewDependency {
     func tapProfileSection()
+    func tapExercise()
 }
 
 struct SettingView: View {
@@ -19,7 +20,6 @@ struct SettingView: View {
     
     var body: some View {
         Form {
-            
             Section("profile") {
                 HStack {
                     KFImage(userStore.photoURL)
@@ -42,6 +42,13 @@ struct SettingView: View {
             }
             .onTapGesture {
                 dependency.tapProfileSection()
+            }
+            
+            Section("health") {
+                Label("exercise", systemImage: "heart")
+                    .onTapGesture {
+                        dependency.tapExercise()
+                    }
             }
         }
     }
