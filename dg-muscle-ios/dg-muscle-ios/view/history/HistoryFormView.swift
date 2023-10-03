@@ -97,9 +97,12 @@ struct HistoryFormView: View {
         }
         .onChange(of: notificationCenter.record) { _, value in
             if let value {
-                guard !records.contains(where: { $0.exerciseId == value.exerciseId }) else { return }
                 withAnimation {
-                    records.append(value)
+                    if let index = records.firstIndex(where: { $0.exerciseId == value.exerciseId }) {
+                        records[index] = value
+                    } else {
+                        records.append(value)
+                    }
                 }
             }
         }
