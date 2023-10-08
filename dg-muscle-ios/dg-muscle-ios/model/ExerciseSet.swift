@@ -12,6 +12,9 @@ struct ExerciseSet: Codable, Equatable, Hashable, Identifiable {
     var reps: Int
     let weight: Double
     var id: String? = UUID().uuidString
+    var volume: Double {
+        Double(reps) * weight
+    }
 }
 
 extension ExerciseSet {

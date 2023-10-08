@@ -14,8 +14,8 @@ final class HistoryFormNotificationCenter: ObservableObject {
 }
 
 protocol HistoryFormDependency {
-    func tap(record: Record)
-    func tapAdd()
+    func tap(record: Record, dateString: String)
+    func tapAdd(dateString: String)
     func tapSave(data: ExerciseHistory)
 }
 
@@ -24,6 +24,14 @@ struct HistoryFormView: View {
     @StateObject var notificationCenter = HistoryFormNotificationCenter.shared
     let id: String?
     let dateString: String?
+    var dateStringValue: String {
+        if let dateString {
+            return dateString
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        return dateFormatter.string(from: Date())
+    }
     @State var records: [Record]
     @State var saveButtonDisabled: Bool
     
@@ -39,7 +47,7 @@ struct HistoryFormView: View {
                     if let exercise = store.exercise.exercises.first(where: { $0.id ==  record.exerciseId}) {
                         
                         Button {
-                            dependency.tap(record: record)
+                            dependency.tap(record: record, dateString: dateStringValue)
                         } label: {
                             HStack {
                                 Text("\(exercise.name) record")
@@ -67,16 +75,14 @@ struct HistoryFormView: View {
                 }
                 
                 Button("Add", systemImage: "plus.circle") {
-                    dependency.tapAdd()
+                    dependency.tapAdd(dateString: dateStringValue)
                 }
             }
             
             if saveButtonDisabled == false {
                 Button {
                     // TODO: add date selector, add memo input form
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyyMMdd"
-                    let data = ExerciseHistory(id: id ?? UUID().uuidString, date: dateString ?? dateFormatter.string(from: Date()), memo: nil, records: records, createdAt: nil)
+                    let data = ExerciseHistory(id: id ?? UUID().uuidString, date: dateStringValue, memo: nil, records: records, createdAt: nil)
                     dependency.tapSave(data: data)
                 } label: {
                     Text("Save")

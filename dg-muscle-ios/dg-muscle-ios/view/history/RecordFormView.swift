@@ -20,6 +20,7 @@ protocol RecordFormDependency {
     func addExercise()
     func addSet()
     func save(record: Record)
+    func tapPreviusRecordButton(record: Record)
 }
 
 struct RecordFormView: View {
@@ -29,6 +30,11 @@ struct RecordFormView: View {
     @State var selectedExercise: Exercise?
     @State var sets: [ExerciseSet]
     let dependency: RecordFormDependency
+    let dateString: String
+    
+    var currentVolume: Double {
+        sets.reduce(0, { $0 + $1.volume })
+    }
     
     private let buttonHeight: CGFloat = 20
     
@@ -73,7 +79,17 @@ struct RecordFormView: View {
                     Text("(\(selectedExercise.name))").italic()
                     Spacer()
                 }
-                .padding()
+                .padding(.horizontal)
+                
+                if currentVolume > 0 {
+                    HStack {
+                        Text("current exercise volume: \(Int(currentVolume))")
+                            .italic()
+                            .foregroundStyle(Color(uiColor: .secondaryLabel))
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                }
                 
                 List {
                     ForEach($sets, id: \.self) { $set in
@@ -125,6 +141,37 @@ struct RecordFormView: View {
                         dependency.addSet()
                     }
                 }
+                .scrollIndicators(.hidden)
+                
+                if let record = recentRecord() {
+                    HStack(spacing: 0) {
+                        if currentVolume > record.volume {
+                            Text("you exercised")
+                            Text(" \(Int(currentVolume - record.volume))").foregroundStyle(Color.green)
+                            Text(" volumes more than before")
+                        } else {
+                            Text("you exercised")
+                            Text(" \(Int(record.volume - currentVolume))").foregroundStyle(Color.red)
+                            Text(" volumes less than before")
+                        }
+                        Spacer()
+                    }
+                    .italic()
+                    .padding(.horizontal)
+                    
+                    Button {
+                        dependency.tapPreviusRecordButton(record: record)
+                    } label: {
+                        HStack {
+                            Text("Go to see previus record")
+                                .italic()
+                            Image(systemName: "arrowshape.turn.up.right")
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+                        .foregroundStyle(Color.gray)
+                    }
+                }
                 
                 if sets.isEmpty == false {
                     Button {
@@ -151,5 +198,15 @@ struct RecordFormView: View {
                 }
             }
         }
+    }
+    
+    // Get the recent previous record which has same exercise
+    func recentRecord() -> Record? {
+        var histories = store.history.histories
+        histories = histories.filter({ $0.date < self.dateString })
+        guard let recentHistory = histories.first(where: { history in
+            history.records.contains(where: { $0.exerciseId == selectedExercise?.id ?? "" })
+        }) else { return nil }
+        return recentHistory.records.first(where: { $0.exerciseId == selectedExercise?.id ?? "" })
     }
 }
