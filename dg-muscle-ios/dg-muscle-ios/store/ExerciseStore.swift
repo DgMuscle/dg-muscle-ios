@@ -11,7 +11,7 @@ import Foundation
 final class ExerciseStore: ObservableObject {
     static let shared = ExerciseStore()
     
-    @Published private(set) var exercises: [Exercise] = []
+    @Published private(set) var exercises: [Exercise] = ExerciseRepository.shared.getCache()
     
     private init() { }
     
@@ -26,6 +26,8 @@ final class ExerciseStore: ObservableObject {
             DispatchQueue.main.async {
                 self.exercises = exercises.sorted(by: { $0.order < $1.order })
             }
+            
+            try ExerciseRepository.shared.saveCache(exercises: exercises)
         }
     }
 }
