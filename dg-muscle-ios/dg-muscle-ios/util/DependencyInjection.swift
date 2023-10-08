@@ -116,6 +116,7 @@ struct ExerciseFormDependencyImpl: ExerciseFormDependency {
         let _ = paths.popLast()
         ExerciseListViewNotificationCenter.shared.exercise = data
         Task {
+            store.exercise.append(exercise: data)
             let _ = try await ExerciseRepository.shared.post(data: data)
             store.exercise.updateExercises()
             
