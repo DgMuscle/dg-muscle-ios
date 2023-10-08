@@ -140,6 +140,10 @@ struct RecordFormDependencyImpl: RecordFormDependency {
         let _ = paths.popLast()
         HistoryFormNotificationCenter.shared.record = record
     }
+    
+    func tapPreviusRecordButton(record: Record) {
+        print("tapPreviusRecordButton \(record)")
+    }
 }
 
 struct HistoryFormDependencyImpl: HistoryFormDependency {
@@ -148,13 +152,13 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
     @Binding var errorMessage: String?
     @Binding var paths: [ContentView.NavigationPath]
     
-    func tap(record: Record) {
+    func tap(record: Record, dateString: String) {
         let exercise = store.exercise.exercises.first(where: { $0.id == record.exerciseId })
-        paths.append(.recordForm(exercise, record.sets))
+        paths.append(.recordForm(exercise, record.sets, dateString))
     }
     
-    func tapAdd() {
-        paths.append(.recordForm(nil, []))
+    func tapAdd(dateString: String) {
+        paths.append(.recordForm(nil, [], dateString))
     }
     
     func tapSave(data: ExerciseHistory) {

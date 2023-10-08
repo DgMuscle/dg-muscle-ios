@@ -43,8 +43,13 @@ struct ContentView: View {
                                 records: records,
                                 saveButtonDisabled: validRecords.isEmpty
                             )
-                        case .recordForm(let selectedExercise, let sets):
-                            RecordFormView(selectedExercise: selectedExercise, sets: sets, dependency: DependencyInjection.shared.recordForm(paths: $paths))
+                        case .recordForm(let selectedExercise, let sets, let dateString):
+                            RecordFormView(
+                                selectedExercise: selectedExercise,
+                                sets: sets,
+                                dependency: DependencyInjection.shared.recordForm(paths: $paths),
+                                dateString: dateString
+                            )
                         case .exerciseForm:
                             ExerciseFormView(
                                 dependency: DependencyInjection.shared.exerciseForm(paths: $paths),
@@ -104,7 +109,7 @@ struct ContentView: View {
 extension ContentView {
     enum NavigationPath: Hashable {
         case historyForm(String?, String?, [Record])
-        case recordForm(Exercise?, [ExerciseSet])
+        case recordForm(Exercise?, [ExerciseSet], String)
         case exerciseForm
         case setForm
         case bodyProfile
@@ -114,7 +119,7 @@ extension ContentView {
             switch self {
             case .historyForm(let value, _, _):
                 hasher.combine(value)
-            case .recordForm(let value, _):
+            case .recordForm(let value, _, _):
                 hasher.combine(value)
             case .exerciseForm, .setForm, .bodyProfile, .exerciseList: break
             }
