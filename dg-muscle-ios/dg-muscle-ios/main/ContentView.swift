@@ -69,7 +69,14 @@ struct ContentView: View {
                                 )
                             )
                         case .exerciseList:
-                            ExerciseListView(dependency: DependencyInjection.shared.exerciseList(paths: $paths), exercises: store.exercise.exercises)
+                            ExerciseListView(
+                                dependency: DependencyInjection.shared.exerciseList(
+                                    paths: $paths,
+                                    errorMessage: $errorMessage,
+                                    isShowingErrorView: $isShowingErrorView
+                                ),
+                                exercises: store.exercise.exercises
+                            )
                         }
                     }
                 }

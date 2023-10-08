@@ -11,7 +11,7 @@ import Foundation
 final class HistoryStore: ObservableObject {
     static let shared = HistoryStore()
     
-    @Published private(set) var histories: [ExerciseHistory] = []
+    @Published var histories: [ExerciseHistory] = []
     @Published private(set) var historySections: [ExerciseHistorySection] = []
     
     private var canLoadMoreHistoryFromServer = false

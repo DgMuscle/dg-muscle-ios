@@ -62,14 +62,20 @@ final class DependencyInjection {
         SetFormViewDependencyImpl(paths: paths)
     }
     
-    func exerciseList(paths: Binding<[ContentView.NavigationPath]>) -> ExerciseListViewDependency {
-        ExerciseListViewDependencyImpl(paths: paths)
+    func exerciseList(
+        paths: Binding<[ContentView.NavigationPath]>,
+        errorMessage: Binding<String?>,
+        isShowingErrorView: Binding<Bool>
+    ) -> ExerciseListViewDependency {
+        ExerciseListViewDependencyImpl(paths: paths, errorMessage: errorMessage, isShowingErrorView: isShowingErrorView)
     }
 }
 
 struct ExerciseListViewDependencyImpl: ExerciseListViewDependency {
     
     @Binding var paths: [ContentView.NavigationPath]
+    @Binding var errorMessage: String?
+    @Binding var isShowingErrorView: Bool
     
     func tapAdd() {
         paths.append(.exerciseForm)
@@ -81,6 +87,13 @@ struct ExerciseListViewDependencyImpl: ExerciseListViewDependency {
             store.exercise.set(exercises: exercises)
             let response = try await ExerciseRepository.shared.set(exercises: exercises)
             store.exercise.updateExercises()
+            
+            if let errorMessage = response.message {
+                withAnimation {
+                    self.errorMessage = errorMessage
+                    self.isShowingErrorView = true
+                }
+            }
         }
     }
 }
@@ -147,6 +160,13 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
         Task {
             do {
                 let _ = paths.popLast()
+                withAnimation {
+                    if let index = store.history.histories.firstIndex(of: data) {
+                        store.history.histories[index] = data
+                    } else {
+                        store.history.histories.insert(data, at: 0)
+                    }
+                }
                 let _ = try await HistoryRepository.shared.post(data: data)
                 store.history.updateHistories()
             } catch {
@@ -272,8 +292,10 @@ struct BodyProfileViewDependencyImpl: BodyProfileViewDependency {
             store.user.updateUser()
             
             if let errorMessage = response.message {
-                self.errorMessage = errorMessage
-                self.isShowingErrorView = true
+                withAnimation {
+                    self.errorMessage = errorMessage
+                    self.isShowingErrorView = true
+                }
             }
         }
     }
