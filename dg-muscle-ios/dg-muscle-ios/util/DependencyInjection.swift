@@ -78,14 +78,8 @@ struct ExerciseListViewDependencyImpl: ExerciseListViewDependency {
     func tapSave(exercises: [Exercise]) {
         Task {
             let _ = paths.popLast()
-            // delete previous exercises, and post new exercises
-            let previousExercises = store.exercise.exercises
-            try await previousExercises.asyncForEach({
-                let _ = try await ExerciseRepository.shared.delete(id: $0.id)
-            })
-            try await exercises.asyncForEach({
-                let _ = try await ExerciseRepository.shared.post(data: $0)
-            })
+            store.exercise.set(exercises: exercises)
+            let response = try await ExerciseRepository.shared.set(exercises: exercises)
             store.exercise.updateExercises()
         }
     }
@@ -260,15 +254,21 @@ struct BodyProfileViewDependencyImpl: BodyProfileViewDependency {
         Task {
             let _ = paths.popLast()
             guard let id = store.user.uid else { return }
+            
             var profile = Profile(id: id, photoURL: store.user.photoURL?.absoluteString, displayName: displayName, specs: store.user.profile?.specs ?? [], updatedAt: nil)
+            
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyyMMdd"
             let createdAt = dateFormatter.string(from: Date())
+            
             profile.specs = profile.specs.filter({ $0.createdAt != createdAt })
             profile.specs.append(.init(height: height, weight: weight, createdAt: createdAt))
+            
+            store.user.set(displayName: displayName, profile: profile)
+            
             try await Authenticator().updateUser(displayName: displayName.isEmpty ? nil : displayName, photoURL: store.user.photoURL)
             let response = try await UserRepository.shared.postProfile(profile: profile)
-            store.user.set(displayName: displayName, profile: profile)
+            
             store.user.updateUser()
             
             if let errorMessage = response.message {

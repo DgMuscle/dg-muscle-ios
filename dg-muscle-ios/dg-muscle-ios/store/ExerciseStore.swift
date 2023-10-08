@@ -15,6 +15,10 @@ final class ExerciseStore: ObservableObject {
     
     private init() { }
     
+    func set(exercises: [Exercise]) {
+        self.exercises = exercises
+    }
+    
     func updateExercises() {
         Task {
             let exercises = try await ExerciseRepository.shared.get()
