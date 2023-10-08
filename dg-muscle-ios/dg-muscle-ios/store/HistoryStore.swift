@@ -24,11 +24,11 @@ final class HistoryStore: ObservableObject {
     func updateHistories() {
         Task {
             let histories = try await HistoryRepository.shared.get(lastId: nil)
-            HistoryRepository.shared.saveCache(histories: histories)
             canLoadMoreHistoryFromServer = histories.count >= 100
             DispatchQueue.main.async {
                 self.histories = histories
             }
+            try HistoryRepository.shared.saveCache(histories: histories)
         }
     }
     

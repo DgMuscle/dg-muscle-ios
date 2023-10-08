@@ -13,13 +13,11 @@ final class HistoryRepository {
     private init () { }
     
     func getCache() -> [ExerciseHistory] {
-        let cache = NSCache<NSString, NSArray>()
-        return cache.object(forKey: "histories") as? [ExerciseHistory] ?? []
+        (try? FileManagerHelper.load([ExerciseHistory].self, fromFile: "histories")) ?? []
     }
     
-    func saveCache(histories: [ExerciseHistory]) {
-        let cache = NSCache<NSString, NSArray>()
-        cache.setObject(histories as NSArray, forKey: "histories")
+    func saveCache(histories: [ExerciseHistory]) throws {
+        try FileManagerHelper.save(histories, toFile: "histories")
     }
     
     func get(lastId: String?) async throws -> [ExerciseHistory] {
