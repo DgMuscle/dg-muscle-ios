@@ -29,16 +29,16 @@ final class DependencyInjection {
         DisplayNameTextInputDependencyImpl()
     }
     
-    func withdrawalConfirm(error: Binding<Error?>, isShowingErrorView: Binding<Bool>) -> WithdrawalConfirmDependency {
-        WithdrawalConfirmDependencyImpl(error: error, isShowingErrorView: isShowingErrorView)
+    func withdrawalConfirm(errorMessage: Binding<String?>, isShowingErrorView: Binding<Bool>) -> WithdrawalConfirmDependency {
+        WithdrawalConfirmDependencyImpl(errorMessage: errorMessage, isShowingErrorView: isShowingErrorView)
     }
     
     func exerciseDiary(paths: Binding<[ContentView.NavigationPath]>) -> ExerciseDiaryDependency {
         ExerciseDiaryDependencyImpl(paths: paths)
     }
     
-    func historyForm(isShowingErrorView: Binding<Bool>, error: Binding<Error?>, paths: Binding<[ContentView.NavigationPath]>) -> HistoryFormDependency {
-        return HistoryFormDependencyImpl(isShowingErrorView: isShowingErrorView, error: error, paths: paths)
+    func historyForm(isShowingErrorView: Binding<Bool>, errorMessage: Binding<String?>, paths: Binding<[ContentView.NavigationPath]>) -> HistoryFormDependency {
+        return HistoryFormDependencyImpl(isShowingErrorView: isShowingErrorView, errorMessage: errorMessage, paths: paths)
     }
     
     func recordForm(paths: Binding<[ContentView.NavigationPath]>) -> RecordFormDependency {
@@ -128,7 +128,7 @@ struct RecordFormDependencyImpl: RecordFormDependency {
 struct HistoryFormDependencyImpl: HistoryFormDependency {
     
     @Binding var isShowingErrorView: Bool
-    @Binding var error: Error?
+    @Binding var errorMessage: String?
     @Binding var paths: [ContentView.NavigationPath]
     
     func tap(record: Record) {
@@ -149,7 +149,7 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
             } catch {
                 DispatchQueue.main.async {
                     withAnimation {
-                        self.error = error
+                        self.errorMessage = error.localizedDescription
                         self.isShowingErrorView = true
                     }
                 }
@@ -193,7 +193,7 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
 
 struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
     
-    @Binding var error: Error?
+    @Binding var errorMessage: String?
     @Binding var isShowingErrorView: Bool
     
     func delete() {
@@ -201,7 +201,7 @@ struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
             if let error = await Authenticator().withDrawal() {
                 DispatchQueue.main.async {
                     withAnimation {
-                        self.error = error
+                        self.errorMessage = error.localizedDescription
                         self.isShowingErrorView = true
                     }
                 }
