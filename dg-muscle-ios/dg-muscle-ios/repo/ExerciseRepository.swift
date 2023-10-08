@@ -11,6 +11,18 @@ final class ExerciseRepository {
     static let shared = ExerciseRepository()
     private init() { }
     
+    func saveCache(exercises: [Exercise]) throws {
+        try FileManagerHelper.save(exercises, toFile: "exercises")
+    }
+    
+    func getCache() -> [Exercise] {
+        (try? FileManagerHelper.load([Exercise].self, fromFile: "exercises")) ?? []
+    }
+    
+    func set(exercises: [Exercise]) async throws -> DefaultResponse {
+        try await APIClient.shared.request(method: .post, url: "https://exercise-setexercises-kpjvgnqz6a-uc.a.run.app", body: exercises)
+    }
+    
     func get() async throws -> [Exercise] {
         try await APIClient.shared.request(url: "https://exercise-getexercises-kpjvgnqz6a-uc.a.run.app")
     }

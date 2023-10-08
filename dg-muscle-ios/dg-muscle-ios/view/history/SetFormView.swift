@@ -19,6 +19,8 @@ struct SetFormView: View {
     @State var reps: Int
     @State var weight: Double
     
+    private let buttonHeight: CGFloat = 20
+    
     var body: some View {
         VStack {
             HStack {
@@ -43,44 +45,48 @@ struct SetFormView: View {
                                 }
                             }
                         }
-                    Image(systemName: "plus").font(.caption2).foregroundStyle(.tint)
-                        .padding(6)
-                        .onTapGesture {
-                            withAnimation {
-                                weight = weight + 5
-                            }
+                    
+                    Button {
+                        weight = weight + 5
+                    } label: {
+                        Image(systemName: "plus").font(.caption2).foregroundStyle(.tint)
+                            .frame(height: buttonHeight)
+                    }
+                    .buttonStyle(.bordered)
+                    
+                    Button {
+                        if weight >= 5 {
+                            weight = weight - 5
                         }
-                    Image(systemName: "minus").font(.caption2).foregroundStyle(.tint)
-                        .padding(6)
-                        .onTapGesture {
-                            if weight > 5 {
-                                withAnimation {
-                                    weight = weight - 5
-                                }
-                            }
-                        }
+                    } label: {
+                        Image(systemName: "minus").font(.caption2).foregroundStyle(.tint)
+                            .frame(height: buttonHeight)
+                    }
+                    .buttonStyle(.bordered)
                 }
                 
                 HStack {
                     TextField("reps", value: $reps, format: .number)
                         .keyboardType(.numberPad)
                     Text("reps").foregroundStyle(Color(uiColor: .secondaryLabel)).italic()
-                    Image(systemName: "plus").font(.caption2).foregroundStyle(.tint)
-                        .padding(6)
-                        .onTapGesture {
-                            withAnimation {
-                                reps = reps + 1
-                            }
+                    
+                    Button {
+                        reps = reps + 1
+                    } label: {
+                        Image(systemName: "plus").font(.caption2).foregroundStyle(.tint)
+                            .frame(height: buttonHeight)
+                    }
+                    .buttonStyle(.bordered)
+
+                    Button {
+                        if reps >= 1 {
+                            reps = reps - 1
                         }
-                    Image(systemName: "minus").font(.caption2).foregroundStyle(.tint)
-                        .padding(6)
-                        .onTapGesture {
-                            if reps > 1 {
-                                withAnimation {
-                                    reps = reps - 1
-                                }
-                            }
-                        }
+                    } label: {
+                        Image(systemName: "minus").font(.caption2).foregroundStyle(.tint)
+                            .frame(height: buttonHeight)
+                    }
+                    .buttonStyle(.bordered)
                 }
             }
             

@@ -15,7 +15,7 @@ struct ContentView: View {
     @State var isPresentedWithDrawalConfirm = false
     @State var isShowingErrorView = false
 
-    @State var error: Error?
+    @State var errorMessage: String?
     
     @StateObject var userStore = store.user
     
@@ -37,7 +37,7 @@ struct ContentView: View {
                             
                             HistoryFormView(
                                 dependency:
-                                    DependencyInjection.shared.historyForm(isShowingErrorView: $isShowingErrorView, error: $error, paths: $paths),
+                                    DependencyInjection.shared.historyForm(isShowingErrorView: $isShowingErrorView, errorMessage: $errorMessage, paths: $paths),
                                 id: id,
                                 dateString: dateString,
                                 records: records,
@@ -60,16 +60,30 @@ struct ContentView: View {
                                 weight: 0
                             )
                         case .bodyProfile:
-                            BodyProfileView(dependency: DependencyInjection.shared.bodyProfile(paths: $paths, isShowingProfilePhotoPicker: $isShowingProfilePhotoPicker))
+                            BodyProfileView(
+                                dependency: DependencyInjection.shared.bodyProfile(
+                                    paths: $paths,
+                                    isShowingProfilePhotoPicker: $isShowingProfilePhotoPicker,
+                                    errorMessage: $errorMessage,
+                                    isShowingErrorView: $isShowingErrorView
+                                )
+                            )
                         case .exerciseList:
-                            ExerciseListView(dependency: DependencyInjection.shared.exerciseList(paths: $paths), exercises: store.exercise.exercises)
+                            ExerciseListView(
+                                dependency: DependencyInjection.shared.exerciseList(
+                                    paths: $paths,
+                                    errorMessage: $errorMessage,
+                                    isShowingErrorView: $isShowingErrorView
+                                ),
+                                exercises: store.exercise.exercises
+                            )
                         }
                     }
                 }
                 .sheet(isPresented: $isPresentedWithDrawalConfirm, content: {
                     WithdrawalConfirmView(
                         isPresented: $isPresentedWithDrawalConfirm,
-                        dependency: DependencyInjection.shared.withdrawalConfirm(error: $error, isShowingErrorView: $isShowingErrorView))
+                        dependency: DependencyInjection.shared.withdrawalConfirm(errorMessage: $errorMessage, isShowingErrorView: $isShowingErrorView))
                 })
                 
                 if isShowingProfilePhotoPicker {
@@ -81,7 +95,7 @@ struct ContentView: View {
             }
             
             if isShowingErrorView {
-                ErrorView(message: error?.localizedDescription ?? "unknown error", isShowing: $isShowingErrorView)
+                ErrorView(message: errorMessage ?? "unknown error", isShowing: $isShowingErrorView)
             }
         }
     }

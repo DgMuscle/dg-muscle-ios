@@ -11,7 +11,7 @@ import Foundation
 final class HistoryStore: ObservableObject {
     static let shared = HistoryStore()
     
-    @Published private(set) var histories: [ExerciseHistory] = []
+    @Published var histories: [ExerciseHistory] = HistoryRepository.shared.getCache()
     @Published private(set) var historySections: [ExerciseHistorySection] = []
     
     private var canLoadMoreHistoryFromServer = false
@@ -28,6 +28,7 @@ final class HistoryStore: ObservableObject {
             DispatchQueue.main.async {
                 self.histories = histories
             }
+            try HistoryRepository.shared.saveCache(histories: histories)
         }
     }
     

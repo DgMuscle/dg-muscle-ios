@@ -17,8 +17,17 @@ final class DependencyInjection {
         SettingViewDependencyImpl(paths: paths)
     }
     
-    func bodyProfile(paths: Binding<[ContentView.NavigationPath]>, isShowingProfilePhotoPicker: Binding<Bool>) -> BodyProfileViewDependency {
-        return BodyProfileViewDependencyImpl(paths: paths, isShowingProfilePhotoPicker: isShowingProfilePhotoPicker)
+    func bodyProfile(paths: Binding<[ContentView.NavigationPath]>,
+                     isShowingProfilePhotoPicker: Binding<Bool>,
+                     errorMessage: Binding<String?>,
+                     isShowingErrorView: Binding<Bool>
+    ) -> BodyProfileViewDependency {
+        return BodyProfileViewDependencyImpl(
+            paths: paths,
+            isShowingProfilePhotoPicker: isShowingProfilePhotoPicker,
+            errorMessage: errorMessage,
+            isShowingErrorView: isShowingErrorView
+        )
     }
     
     func profilePhotoPicker() -> PhotoPickerViewDependency {
@@ -29,16 +38,16 @@ final class DependencyInjection {
         DisplayNameTextInputDependencyImpl()
     }
     
-    func withdrawalConfirm(error: Binding<Error?>, isShowingErrorView: Binding<Bool>) -> WithdrawalConfirmDependency {
-        WithdrawalConfirmDependencyImpl(error: error, isShowingErrorView: isShowingErrorView)
+    func withdrawalConfirm(errorMessage: Binding<String?>, isShowingErrorView: Binding<Bool>) -> WithdrawalConfirmDependency {
+        WithdrawalConfirmDependencyImpl(errorMessage: errorMessage, isShowingErrorView: isShowingErrorView)
     }
     
     func exerciseDiary(paths: Binding<[ContentView.NavigationPath]>) -> ExerciseDiaryDependency {
         ExerciseDiaryDependencyImpl(paths: paths)
     }
     
-    func historyForm(isShowingErrorView: Binding<Bool>, error: Binding<Error?>, paths: Binding<[ContentView.NavigationPath]>) -> HistoryFormDependency {
-        return HistoryFormDependencyImpl(isShowingErrorView: isShowingErrorView, error: error, paths: paths)
+    func historyForm(isShowingErrorView: Binding<Bool>, errorMessage: Binding<String?>, paths: Binding<[ContentView.NavigationPath]>) -> HistoryFormDependency {
+        return HistoryFormDependencyImpl(isShowingErrorView: isShowingErrorView, errorMessage: errorMessage, paths: paths)
     }
     
     func recordForm(paths: Binding<[ContentView.NavigationPath]>) -> RecordFormDependency {
@@ -53,14 +62,20 @@ final class DependencyInjection {
         SetFormViewDependencyImpl(paths: paths)
     }
     
-    func exerciseList(paths: Binding<[ContentView.NavigationPath]>) -> ExerciseListViewDependency {
-        ExerciseListViewDependencyImpl(paths: paths)
+    func exerciseList(
+        paths: Binding<[ContentView.NavigationPath]>,
+        errorMessage: Binding<String?>,
+        isShowingErrorView: Binding<Bool>
+    ) -> ExerciseListViewDependency {
+        ExerciseListViewDependencyImpl(paths: paths, errorMessage: errorMessage, isShowingErrorView: isShowingErrorView)
     }
 }
 
 struct ExerciseListViewDependencyImpl: ExerciseListViewDependency {
     
     @Binding var paths: [ContentView.NavigationPath]
+    @Binding var errorMessage: String?
+    @Binding var isShowingErrorView: Bool
     
     func tapAdd() {
         paths.append(.exerciseForm)
@@ -69,15 +84,16 @@ struct ExerciseListViewDependencyImpl: ExerciseListViewDependency {
     func tapSave(exercises: [Exercise]) {
         Task {
             let _ = paths.popLast()
-            // delete previous exercises, and post new exercises
-            let previousExercises = store.exercise.exercises
-            try await previousExercises.asyncForEach({
-                let _ = try await ExerciseRepository.shared.delete(id: $0.id)
-            })
-            try await exercises.asyncForEach({
-                let _ = try await ExerciseRepository.shared.post(data: $0)
-            })
+            store.exercise.set(exercises: exercises)
+            let response = try await ExerciseRepository.shared.set(exercises: exercises)
             store.exercise.updateExercises()
+            
+            if let errorMessage = response.message {
+                withAnimation {
+                    self.errorMessage = errorMessage
+                    self.isShowingErrorView = true
+                }
+            }
         }
     }
 }
@@ -100,6 +116,7 @@ struct ExerciseFormDependencyImpl: ExerciseFormDependency {
         let _ = paths.popLast()
         ExerciseListViewNotificationCenter.shared.exercise = data
         Task {
+            store.exercise.append(exercise: data)
             let _ = try await ExerciseRepository.shared.post(data: data)
             store.exercise.updateExercises()
             
@@ -128,7 +145,7 @@ struct RecordFormDependencyImpl: RecordFormDependency {
 struct HistoryFormDependencyImpl: HistoryFormDependency {
     
     @Binding var isShowingErrorView: Bool
-    @Binding var error: Error?
+    @Binding var errorMessage: String?
     @Binding var paths: [ContentView.NavigationPath]
     
     func tap(record: Record) {
@@ -144,12 +161,19 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
         Task {
             do {
                 let _ = paths.popLast()
+                withAnimation {
+                    if let index = store.history.histories.firstIndex(of: data) {
+                        store.history.histories[index] = data
+                    } else {
+                        store.history.histories.insert(data, at: 0)
+                    }
+                }
                 let _ = try await HistoryRepository.shared.post(data: data)
                 store.history.updateHistories()
             } catch {
                 DispatchQueue.main.async {
                     withAnimation {
-                        self.error = error
+                        self.errorMessage = error.localizedDescription
                         self.isShowingErrorView = true
                     }
                 }
@@ -193,7 +217,7 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
 
 struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
     
-    @Binding var error: Error?
+    @Binding var errorMessage: String?
     @Binding var isShowingErrorView: Bool
     
     func delete() {
@@ -201,7 +225,7 @@ struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
             if let error = await Authenticator().withDrawal() {
                 DispatchQueue.main.async {
                     withAnimation {
-                        self.error = error
+                        self.errorMessage = error.localizedDescription
                         self.isShowingErrorView = true
                     }
                 }
@@ -244,12 +268,36 @@ struct BodyProfileViewDependencyImpl: BodyProfileViewDependency {
     
     @Binding var paths: [ContentView.NavigationPath]
     @Binding var isShowingProfilePhotoPicker: Bool
+    @Binding var errorMessage: String?
+    @Binding var isShowingErrorView: Bool
     
-    func tapSave(displayName: String) {
+    func tapSave(displayName: String, height: Double, weight: Double) {
         Task {
             let _ = paths.popLast()
+            guard let id = store.user.uid else { return }
+            
+            var profile = Profile(id: id, photoURL: store.user.photoURL?.absoluteString, displayName: displayName, specs: store.user.profile?.specs ?? [], updatedAt: nil)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyyMMdd"
+            let createdAt = dateFormatter.string(from: Date())
+            
+            profile.specs = profile.specs.filter({ $0.createdAt != createdAt })
+            profile.specs.append(.init(height: height, weight: weight, createdAt: createdAt))
+            
+            store.user.set(displayName: displayName, profile: profile)
+            
             try await Authenticator().updateUser(displayName: displayName.isEmpty ? nil : displayName, photoURL: store.user.photoURL)
+            let response = try await UserRepository.shared.postProfile(profile: profile)
+            
             store.user.updateUser()
+            
+            if let errorMessage = response.message {
+                withAnimation {
+                    self.errorMessage = errorMessage
+                    self.isShowingErrorView = true
+                }
+            }
         }
     }
     

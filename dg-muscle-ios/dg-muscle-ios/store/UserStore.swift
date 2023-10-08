@@ -17,6 +17,11 @@ final class UserStore: ObservableObject {
     @Published private(set) var displayName: String?
     @Published private(set) var photoURL: URL?
     @Published private(set) var photoUiImage: UIImage?
+    @Published private(set) var profile: Profile?
+    
+    var recentProfileSpec: Profile.Spec? {
+        profile?.specs.sorted(by: { $0.createdAt > $1.createdAt }).first
+    }
     
     private var cancellables: Set<AnyCancellable> = []
     private init() {
@@ -33,6 +38,11 @@ final class UserStore: ObservableObject {
         set(user: Auth.auth().currentUser)
     }
     
+    func set(displayName: String?, profile: Profile?) {
+        self.displayName = displayName
+        self.profile = profile
+    }
+    
     private func set(user: User?) {
         DispatchQueue.main.async {
             self.login = user != nil
@@ -43,6 +53,9 @@ final class UserStore: ObservableObject {
             if self.uid != nil {
                 store.history.updateHistories()
                 store.exercise.updateExercises()
+                Task {
+                    self.profile = try await UserRepository.shared.getProfile()
+                }
             }
         }
     }

@@ -12,6 +12,14 @@ final class HistoryRepository {
     
     private init () { }
     
+    func getCache() -> [ExerciseHistory] {
+        (try? FileManagerHelper.load([ExerciseHistory].self, fromFile: "histories")) ?? []
+    }
+    
+    func saveCache(histories: [ExerciseHistory]) throws {
+        try FileManagerHelper.save(histories, toFile: "histories")
+    }
+    
     func get(lastId: String?) async throws -> [ExerciseHistory] {
         var url = "https://exercisehistory-gethistories-kpjvgnqz6a-uc.a.run.app"
         
