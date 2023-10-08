@@ -10,7 +10,7 @@ import Kingfisher
 
 protocol BodyProfileViewDependency {
     func tapProfileImage()
-    func tapSave(displayName: String)
+    func tapSave(displayName: String, height: Double, weight: Double)
 }
 
 struct BodyProfileView: View {
@@ -22,12 +22,11 @@ struct BodyProfileView: View {
     
     @State var displayName = store.user.displayName ?? ""
     
-    @State var height: Double = 0.0
-    @State var weight: Double = 0.0
+    @State var height: Double = store.user.recentProfileSpec?.height ?? 0
+    @State var weight: Double = store.user.recentProfileSpec?.weight ?? 0 
     
     var body: some View {
         Form {
-            
             Section("basic profile") {
                 KFImage(userStore.photoURL)
                     .placeholder {
@@ -59,7 +58,7 @@ struct BodyProfileView: View {
             }
             
             Button {
-                dependency.tapSave(displayName: displayName)
+                dependency.tapSave(displayName: displayName, height: height, weight: weight)
             } label: {
                 Text("Save")
             }

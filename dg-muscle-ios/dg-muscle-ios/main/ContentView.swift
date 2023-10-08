@@ -60,7 +60,14 @@ struct ContentView: View {
                                 weight: 0
                             )
                         case .bodyProfile:
-                            BodyProfileView(dependency: DependencyInjection.shared.bodyProfile(paths: $paths, isShowingProfilePhotoPicker: $isShowingProfilePhotoPicker))
+                            BodyProfileView(
+                                dependency: DependencyInjection.shared.bodyProfile(
+                                    paths: $paths,
+                                    isShowingProfilePhotoPicker: $isShowingProfilePhotoPicker,
+                                    errorMessage: $errorMessage,
+                                    isShowingErrorView: $isShowingErrorView
+                                )
+                            )
                         case .exerciseList:
                             ExerciseListView(dependency: DependencyInjection.shared.exerciseList(paths: $paths), exercises: store.exercise.exercises)
                         }
