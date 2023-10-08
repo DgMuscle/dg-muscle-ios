@@ -30,6 +30,8 @@ struct RecordFormView: View {
     @State var sets: [ExerciseSet]
     let dependency: RecordFormDependency
     
+    private let buttonHeight: CGFloat = 20
+    
     var body: some View {
         VStack {
             if selectedExercise == nil {
@@ -80,25 +82,25 @@ struct RecordFormView: View {
                             Text("\(Int(set.weight))\(set.unit.rawValue) x \(set.reps)")
                             Spacer()
                             
-                            Image(systemName: "plus")
-                                .padding(6)
-                                .onTapGesture {
-                                    withAnimation {
-                                        set.reps = set.reps + 1
-                                    }
+                            Button {
+                                withAnimation {
+                                    set.reps = set.reps + 1
                                 }
-                                .foregroundStyle(.tint)
+                            } label: {
+                                Image(systemName: "plus").frame(height: buttonHeight)
+                            }
+                            .buttonStyle(.bordered)
                             
-                            Image(systemName: "minus")
-                                .padding(6)
-                                .onTapGesture {
-                                    withAnimation {
-                                        if set.reps > 1 {
-                                            set.reps = set.reps - 1
-                                        }
+                            Button {
+                                withAnimation {
+                                    if set.reps > 1 {
+                                        set.reps = set.reps - 1
                                     }
                                 }
-                                .foregroundStyle(.tint)
+                            } label: {
+                                Image(systemName: "minus").frame(height: buttonHeight)
+                            }
+                            .buttonStyle(.bordered)
                         }
                     }
                     .onDelete { indexSet in
