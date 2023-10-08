@@ -82,6 +82,8 @@ struct ContentView: View {
                                 ),
                                 exercises: store.exercise.exercises
                             )
+                        case .recordSets(let record, let dateString):
+                            RecordSetsView(record: record, dateString: dateString)
                         }
                     }
                 }
@@ -114,12 +116,15 @@ extension ContentView {
         case setForm
         case bodyProfile
         case exerciseList
+        case recordSets(Record, String)
         
         func hash(into hasher: inout Hasher) {
             switch self {
             case .historyForm(let value, _, _):
                 hasher.combine(value)
             case .recordForm(let value, _, _):
+                hasher.combine(value)
+            case .recordSets(let value, _):
                 hasher.combine(value)
             case .exerciseForm, .setForm, .bodyProfile, .exerciseList: break
             }

@@ -20,7 +20,7 @@ protocol RecordFormDependency {
     func addExercise()
     func addSet()
     func save(record: Record)
-    func tapPreviusRecordButton(record: Record)
+    func tapPreviusRecordButton(record: Record, dateString: String)
 }
 
 struct RecordFormView: View {
@@ -160,7 +160,7 @@ struct RecordFormView: View {
                     .padding(.horizontal)
                     
                     Button {
-                        dependency.tapPreviusRecordButton(record: record)
+                        dependency.tapPreviusRecordButton(record: record, dateString: dateString)
                     } label: {
                         HStack {
                             Text("Go to see previus record")

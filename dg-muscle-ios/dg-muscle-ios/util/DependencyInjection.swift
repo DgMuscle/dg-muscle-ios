@@ -141,8 +141,8 @@ struct RecordFormDependencyImpl: RecordFormDependency {
         HistoryFormNotificationCenter.shared.record = record
     }
     
-    func tapPreviusRecordButton(record: Record) {
-        print("tapPreviusRecordButton \(record)")
+    func tapPreviusRecordButton(record: Record, dateString: String) {
+        paths.append(.recordSets(record, dateString))
     }
 }
 

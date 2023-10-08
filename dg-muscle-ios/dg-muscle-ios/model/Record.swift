@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Record: Codable, Equatable, Identifiable {
+struct Record: Codable, Equatable, Identifiable, Hashable {
     var id: String? = UUID().uuidString
     let exerciseId: String
     let sets: [ExerciseSet]
