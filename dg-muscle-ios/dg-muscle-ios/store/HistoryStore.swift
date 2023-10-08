@@ -11,7 +11,7 @@ import Foundation
 final class HistoryStore: ObservableObject {
     static let shared = HistoryStore()
     
-    @Published var histories: [ExerciseHistory] = []
+    @Published var histories: [ExerciseHistory] = HistoryRepository.shared.getCache()
     @Published private(set) var historySections: [ExerciseHistorySection] = []
     
     private var canLoadMoreHistoryFromServer = false
@@ -24,6 +24,7 @@ final class HistoryStore: ObservableObject {
     func updateHistories() {
         Task {
             let histories = try await HistoryRepository.shared.get(lastId: nil)
+            HistoryRepository.shared.saveCache(histories: histories)
             canLoadMoreHistoryFromServer = histories.count >= 100
             DispatchQueue.main.async {
                 self.histories = histories

@@ -12,6 +12,16 @@ final class HistoryRepository {
     
     private init () { }
     
+    func getCache() -> [ExerciseHistory] {
+        let cache = NSCache<NSString, NSArray>()
+        return cache.object(forKey: "histories") as? [ExerciseHistory] ?? []
+    }
+    
+    func saveCache(histories: [ExerciseHistory]) {
+        let cache = NSCache<NSString, NSArray>()
+        cache.setObject(histories as NSArray, forKey: "histories")
+    }
+    
     func get(lastId: String?) async throws -> [ExerciseHistory] {
         var url = "https://exercisehistory-gethistories-kpjvgnqz6a-uc.a.run.app"
         
