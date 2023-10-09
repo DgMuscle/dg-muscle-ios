@@ -210,6 +210,7 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
     
     func delete(data: ExerciseHistory) {
         Task {
+            store.history.delete(history: data)
             let _ = try await HistoryRepository.shared.delete(data: data)
             store.history.updateHistories()
         }
