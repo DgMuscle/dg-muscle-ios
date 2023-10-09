@@ -16,7 +16,7 @@ final class ExerciseStore: ObservableObject {
     
     private init() { }
     
-    func append(exercise: Exercise) {
+    func update(exercise: Exercise) {
         var exercises = exercises
         
         if let index = exercises.firstIndex(where: { $0.id == exercise.id }) {
@@ -34,7 +34,12 @@ final class ExerciseStore: ObservableObject {
     }
     
     func set(exercises: [Exercise]) {
-        self.exercises = exercises
+        let exercises = exercises.sorted(by: { $0.order < $1.order })
+        DispatchQueue.main.async {
+            withAnimation {
+                self.exercises = exercises
+            }
+        }
     }
     
     func updateExercises() {

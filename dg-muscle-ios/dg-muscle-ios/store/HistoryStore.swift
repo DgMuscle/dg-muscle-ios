@@ -22,7 +22,7 @@ final class HistoryStore: ObservableObject {
         bind()
     }
     
-    func updateHistory(history: ExerciseHistory) {
+    func update(history: ExerciseHistory) {
         DispatchQueue.main.async {
             withAnimation {
                 if let index = self.histories.firstIndex(of: history) {

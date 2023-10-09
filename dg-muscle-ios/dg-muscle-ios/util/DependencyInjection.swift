@@ -120,7 +120,7 @@ struct ExerciseFormDependencyImpl: ExerciseFormDependency {
         let _ = paths.popLast()
         ExerciseListViewNotificationCenter.shared.exercise = data
         Task {
-            store.exercise.append(exercise: data)
+            store.exercise.update(exercise: data)
             let _ = try await ExerciseRepository.shared.post(data: data)
             store.exercise.updateExercises()
         }
@@ -168,7 +168,7 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
         Task {
             do {
                 let _ = paths.popLast()
-                store.history.updateHistory(history: data)
+                store.history.update(history: data)
                 let _ = try await HistoryRepository.shared.post(data: data)
                 store.history.updateHistories()
             } catch {
