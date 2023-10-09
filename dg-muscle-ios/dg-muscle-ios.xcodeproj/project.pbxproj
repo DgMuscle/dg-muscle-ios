@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7003E7C42AC86C2D00AFE1C2 /* RecordFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003E7C32AC86C2D00AFE1C2 /* RecordFormView.swift */; };
+		7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */; };
 		701CC4AC2AD271CF00852E2E /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4AB2AD271CF00852E2E /* UserRepository.swift */; };
 		701CC4AE2AD2720200852E2E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4AD2AD2720200852E2E /* Profile.swift */; };
 		701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4C52AD2875700852E2E /* FileManagerHelper.swift */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		7003E7C32AC86C2D00AFE1C2 /* RecordFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFormView.swift; sourceTree = "<group>"; };
+		7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSection.swift; sourceTree = "<group>"; };
 		701CC4AB2AD271CF00852E2E /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		701CC4AD2AD2720200852E2E /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		701CC4C52AD2875700852E2E /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				70F8389F2AC7FE4D009725EF /* Exercise.swift */,
 				70F838A12AC7FE84009725EF /* ExerciseHistory.swift */,
 				70F838A32AC7FE96009725EF /* ExerciseHistorySection.swift */,
+				7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */,
 				70F838A52AC7FEA8009725EF /* ExerciseSet.swift */,
 				701CC4AD2AD2720200852E2E /* Profile.swift */,
 				70F838A72AC7FEB6009725EF /* Record.swift */,
@@ -421,6 +424,7 @@
 				70E156942AD2D6C50019329C /* RecordSetsView.swift in Sources */,
 				703CD5F02AC015C900BC76D4 /* CustomError.swift in Sources */,
 				70AC465F2ABFF82D00BFE46D /* SettingView.swift in Sources */,
+				7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */,
 				70C144D32AC82558007F0540 /* APIClient.swift in Sources */,
 				70A74E8A2AC8433F00EA7A35 /* ExerciseStore.swift in Sources */,
 				70F8389E2AC7FE36009725EF /* CreatedAt.swift in Sources */,
