@@ -66,7 +66,11 @@ struct ExerciseListView: View {
         .onChange(of: notificationCenter.exercise) { _, newValue in
             guard let newValue else { return }
             withAnimation {
-                exercises.append(newValue)
+                if let index = exercises.firstIndex(where: { $0.id == newValue.id }) {
+                    exercises[index] = newValue
+                } else {
+                    exercises.append(newValue)
+                }
             }
         }
     }
