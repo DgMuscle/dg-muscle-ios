@@ -133,7 +133,7 @@ struct RecordFormDependencyImpl: RecordFormDependency {
     @Binding var paths: [ContentView.NavigationPath]
     
     func addExercise() {
-        paths.append(.exerciseForm(nil, "", [], false))
+        paths.append(.exerciseForm(nil, "", [], true))
     }
     
     func addSet() {
