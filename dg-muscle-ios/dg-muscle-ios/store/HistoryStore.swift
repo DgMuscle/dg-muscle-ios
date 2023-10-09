@@ -7,11 +7,12 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 final class HistoryStore: ObservableObject {
     static let shared = HistoryStore()
     
-    @Published var histories: [ExerciseHistory] = HistoryRepository.shared.getCache()
+    @Published private(set) var histories: [ExerciseHistory] = HistoryRepository.shared.getCache()
     @Published private(set) var historySections: [ExerciseHistorySection] = []
     
     private var canLoadMoreHistoryFromServer = false
@@ -19,6 +20,18 @@ final class HistoryStore: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     private init() {
         bind()
+    }
+    
+    func updateHistory(history: ExerciseHistory) {
+        DispatchQueue.main.async {
+            withAnimation {
+                if let index = self.histories.firstIndex(of: history) {
+                    self.histories[index] = history
+                } else {
+                    self.histories.insert(history, at: 0)
+                }
+            }
+        }
     }
     
     func updateHistories() {

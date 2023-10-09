@@ -168,13 +168,7 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
         Task {
             do {
                 let _ = paths.popLast()
-                withAnimation {
-                    if let index = store.history.histories.firstIndex(of: data) {
-                        store.history.histories[index] = data
-                    } else {
-                        store.history.histories.insert(data, at: 0)
-                    }
-                }
+                store.history.updateHistory(history: data)
                 let _ = try await HistoryRepository.shared.post(data: data)
                 store.history.updateHistories()
             } catch {

@@ -25,7 +25,9 @@ final class ExerciseStore: ObservableObject {
         }
         
         exercises = exercises.sorted(by: { $0.order < $1.order })
-        self.exercises = exercises
+        DispatchQueue.main.async {
+            self.exercises = exercises
+        }
     }
     
     func set(exercises: [Exercise]) {
