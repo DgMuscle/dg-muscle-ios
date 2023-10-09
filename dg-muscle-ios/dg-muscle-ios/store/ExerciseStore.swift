@@ -13,8 +13,19 @@ final class ExerciseStore: ObservableObject {
     static let shared = ExerciseStore()
     
     @Published private(set) var exercises: [Exercise] = ExerciseRepository.shared.getCache()
+    @Published private(set) var exerciseSections: [ExerciseSection] = []
     
-    private init() { }
+    private var cancellables: Set<AnyCancellable> = []
+    private init() {
+        
+        setSections(exercises: self.exercises)
+        
+        $exercises
+            .sink { exercises in
+                self.setSections(exercises: exercises)
+            }
+            .store(in: &cancellables)
+    }
     
     func update(exercise: Exercise) {
         var exercises = exercises
@@ -51,6 +62,25 @@ final class ExerciseStore: ObservableObject {
             }
             
             try ExerciseRepository.shared.saveCache(exercises: exercises)
+        }
+    }
+    
+    private func setSections(exercises: [Exercise]) {
+        var dictionary: [Exercise.Part: [Exercise]] = [:]
+        exercises.forEach { exercise in
+            exercise.parts.forEach { part in
+                if dictionary[part] == nil {
+                    dictionary[part] = [exercise]
+                } else {
+                    dictionary[part]?.append(exercise)
+                }
+            }
+        }
+        
+        let section = dictionary.map { ExerciseSection(part: $0, exercises: $1) }.sorted(by: { $0.part < $1.part })
+        
+        DispatchQueue.main.async {
+            self.exerciseSections = section
         }
     }
 }
