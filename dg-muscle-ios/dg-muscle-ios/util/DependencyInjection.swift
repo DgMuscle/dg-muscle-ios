@@ -123,7 +123,6 @@ struct ExerciseFormDependencyImpl: ExerciseFormDependency {
             store.exercise.append(exercise: data)
             let _ = try await ExerciseRepository.shared.post(data: data)
             store.exercise.updateExercises()
-            
         }
     }
 }

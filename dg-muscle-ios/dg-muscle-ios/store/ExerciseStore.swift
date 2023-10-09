@@ -17,7 +17,13 @@ final class ExerciseStore: ObservableObject {
     
     func append(exercise: Exercise) {
         var exercises = exercises
-        exercises.append(exercise)
+        
+        if let index = exercises.firstIndex(where: { $0.id == exercise.id }) {
+            exercises[index] = exercise
+        } else {
+            exercises.append(exercise)
+        }
+        
         exercises = exercises.sorted(by: { $0.order < $1.order })
         self.exercises = exercises
     }
