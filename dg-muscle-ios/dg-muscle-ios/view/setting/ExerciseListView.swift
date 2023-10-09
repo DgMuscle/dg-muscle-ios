@@ -18,6 +18,7 @@ final class ExerciseListViewNotificationCenter: ObservableObject {
 protocol ExerciseListViewDependency {
     func tapAdd()
     func tapSave(exercises: [Exercise])
+    func tap(exercise: Exercise)
 }
 
 struct ExerciseListView: View {
@@ -31,6 +32,9 @@ struct ExerciseListView: View {
             Section {
                 ForEach(exercises) { exercise in
                     Text(exercise.name)
+                        .onTapGesture {
+                            dependency.tap(exercise: exercise)
+                        }
                 }
                 .onDelete { indexSet in
                     exercises.remove(atOffsets: indexSet)

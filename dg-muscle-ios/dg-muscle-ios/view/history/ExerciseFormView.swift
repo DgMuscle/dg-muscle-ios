@@ -13,6 +13,7 @@ protocol ExerciseFormDependency {
 
 struct ExerciseFormView: View {
     let dependency: ExerciseFormDependency
+    let id: String?
     @State var name: String
     @State var selectedParts: [Exercise.Part]
     @State var favorite: Bool
@@ -59,7 +60,7 @@ struct ExerciseFormView: View {
                 Button {
                     let largestOrder = store.exercise.exercises.sorted(by: { $0.order < $1.order }).last?.order ?? 0
                     
-                    let data = Exercise(id: UUID().uuidString, name: name, parts: selectedParts, favorite: favorite, order: largestOrder + 1, createdAt: nil)
+                    let data = Exercise(id: self.id ?? UUID().uuidString, name: name, parts: selectedParts, favorite: favorite, order: largestOrder + 1, createdAt: nil)
                     dependency.tapSave(data: data)
                 } label: {
                     Text("Save")
