@@ -23,7 +23,11 @@ struct Exercise: Codable, Identifiable, Hashable, Equatable {
 }
 
 extension Exercise {
-    enum Part: String, Codable, CaseIterable {
+    enum Part: String, Codable, CaseIterable, Comparable {
+        static func < (lhs: Exercise.Part, rhs: Exercise.Part) -> Bool {
+            lhs.rawValue < rhs.rawValue
+        }
+        
         case arm
         case back
         case chest
