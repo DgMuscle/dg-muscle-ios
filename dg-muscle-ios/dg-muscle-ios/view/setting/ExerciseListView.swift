@@ -12,7 +12,6 @@ final class ExerciseListViewNotificationCenter: ObservableObject {
     static let shared = ExerciseListViewNotificationCenter()
     private init() { }
     
-    @Published var exercises: [Exercise] = []
     @Published var exercise: Exercise?
 }
 
@@ -62,11 +61,6 @@ struct ExerciseListView: View {
                     return exercise
                 })
                 dependency.tapSave(exercises: exercises)
-            }
-        }
-        .onChange(of: notificationCenter.exercises) { _, newValue in
-            withAnimation {
-                self.exercises = newValue
             }
         }
         .onChange(of: notificationCenter.exercise) { _, newValue in
