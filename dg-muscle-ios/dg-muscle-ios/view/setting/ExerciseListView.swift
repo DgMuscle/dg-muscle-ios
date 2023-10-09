@@ -67,15 +67,18 @@ struct ExerciseListView: View {
                 dependency.tapSave(exercises: exercises)
             }
         }
-        .onChange(of: notificationCenter.exercise) { _, newValue in
-            guard let newValue else { return }
-            withAnimation {
-                if let index = exercises.firstIndex(where: { $0.id == newValue.id }) {
-                    exercises[index] = newValue
-                } else {
-                    exercises.append(newValue)
-                }
+        .onReceive(notificationCenter.$exercise) { value in
+            guard let value else { return }
+            var exercises = self.exercises
+            
+            if let index = exercises.firstIndex(of: value) {
+                exercises[index] = value
+            } else {
+                exercises.append(value)
             }
+            exercises = exercises.sorted(by: { $0.order < $1.order })
+            self.exercises = []
+            self.exercises = exercises
         }
     }
 }
