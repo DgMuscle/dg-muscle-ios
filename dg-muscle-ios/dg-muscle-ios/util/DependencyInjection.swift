@@ -78,7 +78,7 @@ struct ExerciseListViewDependencyImpl: ExerciseListViewDependency {
     @Binding var isShowingErrorView: Bool
     
     func tapAdd() {
-        paths.append(.exerciseForm)
+        paths.append(.exerciseForm("", [], false))
     }
     
     func tapSave(exercises: [Exercise]) {
@@ -129,7 +129,7 @@ struct RecordFormDependencyImpl: RecordFormDependency {
     @Binding var paths: [ContentView.NavigationPath]
     
     func addExercise() {
-        paths.append(.exerciseForm)
+        paths.append(.exerciseForm("", [], false))
     }
     
     func addSet() {
