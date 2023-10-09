@@ -44,9 +44,15 @@ struct ExerciseDiaryView: View {
                             Button {
                                 dependency.tapHistory(history: history)
                             } label: {
-                                HStack {
-                                    Text(history.date).frame(maxWidth: .infinity, alignment: .leading)
-                                    Text("\(Int(history.volume))").frame(maxWidth: .infinity, alignment: .leading)
+                                VStack {
+                                    HStack {
+                                        Text(history.date).frame(maxWidth: .infinity, alignment: .leading)
+                                        Text("\(Int(history.volume))").frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                    
+                                    Text(getParts(from: history.records)).frame(maxWidth: .infinity, alignment: .leading)
+                                        .foregroundStyle(Color(uiColor: .secondaryLabel)).italic()
+                                        .font(.caption2)
                                 }
                                 .foregroundStyle(Color(uiColor: .label))
                             }
@@ -83,5 +89,15 @@ struct ExerciseDiaryView: View {
                 }
             }
         }
+    }
+    
+    func getParts(from records: [Record]) -> String {
+        let exercisesIds = records.compactMap { $0.exerciseId }
+        let exercises = store.exercise.exercises.filter({ exercise in
+            exercisesIds.contains(exercise.id)
+        })
+        let allParts = exercises.map({ $0.parts }).flatMap({ $0 })
+        let parts = Array(Set(allParts)).sorted()
+        return parts.map({ $0.rawValue }).joined(separator: ", ")
     }
 }
