@@ -12,6 +12,7 @@ final class RecordFormNotificationCenter: ObservableObject {
     static let shared = RecordFormNotificationCenter()
     
     @Published var set: ExerciseSet?
+    @Published var exercise: Exercise?
     
     private init() { }
 }
@@ -21,6 +22,7 @@ protocol RecordFormDependency {
     func addSet()
     func save(record: Record)
     func tapPreviusRecordButton(record: Record, dateString: String)
+    func tapListButton()
 }
 
 struct RecordFormView: View {
@@ -49,7 +51,10 @@ struct RecordFormView: View {
             ScrollView(.horizontal) {
                 HStack(spacing: 12) {
                     Spacer(minLength: 12)
-                    ForEach(exerciseStore.exercises) { exercise in
+                    Button("list", systemImage: "list.dash") {
+                        dependency.tapListButton()
+                    }
+                    ForEach(exerciseStore.exercises.filter({ $0.favorite })) { exercise in
                         Text(exercise.name)
                             .foregroundStyle(selectedExercise == exercise ? .white : Color(uiColor: .label))
                             .padding(8)
@@ -196,6 +201,12 @@ struct RecordFormView: View {
                 withAnimation {
                     sets.append(value)
                 }
+            }
+        }
+        .onReceive(notificationCenter.$exercise) { value in
+            guard let value else { return }
+            withAnimation {
+                selectedExercise = value
             }
         }
     }

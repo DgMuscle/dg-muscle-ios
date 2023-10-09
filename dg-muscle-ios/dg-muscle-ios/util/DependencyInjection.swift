@@ -147,6 +147,10 @@ struct RecordFormDependencyImpl: RecordFormDependency {
     func tapPreviusRecordButton(record: Record, dateString: String) {
         paths.append(.recordSets(record, dateString))
     }
+    
+    func tapListButton() {
+        print("tap list button")
+    }
 }
 
 struct HistoryFormDependencyImpl: HistoryFormDependency {
