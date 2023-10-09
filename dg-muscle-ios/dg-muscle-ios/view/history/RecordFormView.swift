@@ -208,6 +208,7 @@ struct RecordFormView: View {
             withAnimation {
                 selectedExercise = value
             }
+            notificationCenter.exercise = nil
         }
     }
     

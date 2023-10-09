@@ -80,6 +80,7 @@ struct ExerciseListView: View {
             }
             self.exercises = []
             self.exercises = exercises
+            notificationCenter.exercise = nil
         }
     }
 }

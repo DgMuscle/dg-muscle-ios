@@ -69,6 +69,20 @@ final class DependencyInjection {
     ) -> ExerciseListViewDependency {
         ExerciseListViewDependencyImpl(paths: paths, errorMessage: errorMessage, isShowingErrorView: isShowingErrorView)
     }
+    
+    func selectExercise(paths: Binding<[ContentView.NavigationPath]>) -> SelectExerciseDependency {
+        SelectExerciseDependencyImpl(paths: paths)
+    }
+}
+
+struct SelectExerciseDependencyImpl: SelectExerciseDependency {
+    
+    @Binding var paths: [ContentView.NavigationPath]
+    
+    func select(exercise: Exercise) {
+        let _ = paths.popLast()
+        RecordFormNotificationCenter.shared.exercise = exercise
+    }
 }
 
 struct ExerciseListViewDependencyImpl: ExerciseListViewDependency {
@@ -149,7 +163,7 @@ struct RecordFormDependencyImpl: RecordFormDependency {
     }
     
     func tapListButton() {
-        print("tap list button")
+        paths.append(.selectExercise)
     }
 }
 
