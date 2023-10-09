@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 final class ExerciseStore: ObservableObject {
     static let shared = ExerciseStore()
@@ -26,7 +27,9 @@ final class ExerciseStore: ObservableObject {
         
         exercises = exercises.sorted(by: { $0.order < $1.order })
         DispatchQueue.main.async {
-            self.exercises = exercises
+            withAnimation {
+                self.exercises = exercises
+            }
         }
     }
     
