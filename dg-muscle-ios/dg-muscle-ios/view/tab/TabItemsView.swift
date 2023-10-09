@@ -16,17 +16,17 @@ struct TabItemsView: View {
                 selectedTab = .diary
             } label: {
                 Image(systemName: selectedTab == .diary ? "doc.fill" : "doc")
+                    .frame(maxWidth: .infinity)
             }
-            .frame(maxWidth: .infinity)
             .foregroundStyle(Color(uiColor: .label))
             
             Button {
                 selectedTab = .setting
             } label: {
                 Image(systemName: "ellipsis")
+                    .frame(maxWidth: .infinity)
             }
             .foregroundStyle(selectedTab == .setting ? Color(uiColor: .label) : Color(uiColor: .secondaryLabel))
-            .frame(maxWidth: .infinity)
         }
         .padding(.top, 4)
         .padding(.bottom, 4)
