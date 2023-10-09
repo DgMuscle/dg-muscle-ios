@@ -45,6 +45,7 @@ struct ExerciseListView: View {
                 .onMove { from, to in
                     exercises.move(fromOffsets: from, toOffset: to)
                 }
+                
                 Button("Add", systemImage: "plus.app") {
                     dependency.tapAdd()
                 }
@@ -67,15 +68,18 @@ struct ExerciseListView: View {
                 dependency.tapSave(exercises: exercises)
             }
         }
-        .onChange(of: notificationCenter.exercise) { _, newValue in
-            guard let newValue else { return }
-            withAnimation {
-                if let index = exercises.firstIndex(where: { $0.id == newValue.id }) {
-                    exercises[index] = newValue
-                } else {
-                    exercises.append(newValue)
-                }
+        .toolbar { EditButton() }
+        .onReceive(notificationCenter.$exercise) { value in
+            guard let value else { return }
+            var exercises = self.exercises
+            
+            if let index = exercises.firstIndex(of: value) {
+                exercises[index] = value
+            } else {
+                exercises.append(value)
             }
+            self.exercises = []
+            self.exercises = exercises
         }
     }
 }

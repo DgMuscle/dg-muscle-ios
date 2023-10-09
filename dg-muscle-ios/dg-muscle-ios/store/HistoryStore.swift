@@ -34,6 +34,14 @@ final class HistoryStore: ObservableObject {
         }
     }
     
+    func delete(history: ExerciseHistory) {
+        if let index = self.histories.firstIndex(of: history) {
+            DispatchQueue.main.async {
+                self.histories.remove(at: index)
+            }
+        }
+    }
+    
     func updateHistories() {
         Task {
             let histories = try await HistoryRepository.shared.get(lastId: nil)

@@ -50,10 +50,11 @@ struct ContentView: View {
                                 dependency: DependencyInjection.shared.recordForm(paths: $paths),
                                 dateString: dateString
                             )
-                        case .exerciseForm(let id, let name, let parts, let favorite):
+                        case .exerciseForm(let id, let order, let name, let parts, let favorite):
                             ExerciseFormView(
                                 dependency: DependencyInjection.shared.exerciseForm(paths: $paths),
-                                id: id,
+                                id: id, 
+                                order: order,
                                 name: name,
                                 selectedParts: parts,
                                 favorite: favorite,
@@ -113,7 +114,7 @@ extension ContentView {
     enum NavigationPath: Hashable {
         case historyForm(String?, String?, [Record])
         case recordForm(Exercise?, [ExerciseSet], String)
-        case exerciseForm(String?, String, [Exercise.Part], Bool)
+        case exerciseForm(String?, Int?, String, [Exercise.Part], Bool)
         case setForm
         case bodyProfile
         case exerciseList
