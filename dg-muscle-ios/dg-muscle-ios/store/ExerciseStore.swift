@@ -55,10 +55,10 @@ final class ExerciseStore: ObservableObject {
     
     func updateExercises() {
         Task {
-            let exercises = try await ExerciseRepository.shared.get()
+            let exercises = (try await ExerciseRepository.shared.get()).sorted(by: { $0.order < $1.order })
             
             DispatchQueue.main.async {
-                self.exercises = exercises.sorted(by: { $0.order < $1.order })
+                self.exercises = exercises
             }
             
             try ExerciseRepository.shared.saveCache(exercises: exercises)
