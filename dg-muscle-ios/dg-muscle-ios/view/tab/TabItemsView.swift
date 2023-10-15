@@ -28,7 +28,7 @@ struct TabItemsView: View {
             }
             .foregroundStyle(selectedTab == .setting ? Color(uiColor: .label) : Color(uiColor: .secondaryLabel))
         }
-        .padding(.top, 4)
+        .padding(.top, 10)
         .padding(.bottom, 4)
     }
 }
