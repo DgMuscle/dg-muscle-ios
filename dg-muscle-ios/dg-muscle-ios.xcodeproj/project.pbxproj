@@ -32,6 +32,7 @@
 		7083E6C62ABF0EC9007D43CE /* AppleAuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */; };
 		7083E6C92ABF0F45007D43CE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6C82ABF0F45007D43CE /* FirebaseAuth */; };
 		7084B1862AC5B8F50011A91B /* SimpleTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7084B1852AC5B8F50011A91B /* SimpleTextInputView.swift */; };
+		70884B912ADBB9AA001FA252 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884B902ADBB9AA001FA252 /* PieChartView.swift */; };
 		709B540D2AC999D000C282E9 /* ExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709B540C2AC999D000C282E9 /* ExerciseFormView.swift */; };
 		70A74E8A2AC8433F00EA7A35 /* ExerciseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */; };
 		70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */; };
@@ -82,6 +83,7 @@
 		7083E6C22ABF0C62007D43CE /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthCoordinator.swift; sourceTree = "<group>"; };
 		7084B1852AC5B8F50011A91B /* SimpleTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTextInputView.swift; sourceTree = "<group>"; };
+		70884B902ADBB9AA001FA252 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		709B540C2AC999D000C282E9 /* ExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormView.swift; sourceTree = "<group>"; };
 		70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStore.swift; sourceTree = "<group>"; };
 		70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormView.swift; sourceTree = "<group>"; };
@@ -200,6 +202,15 @@
 			path = signin;
 			sourceTree = "<group>";
 		};
+		70884B8F2ADBB99B001FA252 /* diary */ = {
+			isa = PBXGroup;
+			children = (
+				70F838AC2AC7FFB5009725EF /* ExerciseDiaryView.swift */,
+				70884B902ADBB9AA001FA252 /* PieChartView.swift */,
+			);
+			path = diary;
+			sourceTree = "<group>";
+		};
 		70AC465D2ABFF81800BFE46D /* setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,7 +320,7 @@
 		70F838AB2AC7FFA6009725EF /* history */ = {
 			isa = PBXGroup;
 			children = (
-				70F838AC2AC7FFB5009725EF /* ExerciseDiaryView.swift */,
+				70884B8F2ADBB99B001FA252 /* diary */,
 				709B540C2AC999D000C282E9 /* ExerciseFormView.swift */,
 				70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */,
 				7003E7C32AC86C2D00AFE1C2 /* RecordFormView.swift */,
@@ -442,6 +453,7 @@
 				70F838A42AC7FE96009725EF /* ExerciseHistorySection.swift in Sources */,
 				70D3418F2ACC081E0010EAF9 /* Extension+Sequence.swift in Sources */,
 				7003E7C42AC86C2D00AFE1C2 /* RecordFormView.swift in Sources */,
+				70884B912ADBB9AA001FA252 /* PieChartView.swift in Sources */,
 				70F838AA2AC7FEE1009725EF /* HistoryStore.swift in Sources */,
 				70AC46692AC00A8000BFE46D /* TabItemsView.swift in Sources */,
 				70FB87B52ACAAE9F00B6B432 /* SetFormView.swift in Sources */,
