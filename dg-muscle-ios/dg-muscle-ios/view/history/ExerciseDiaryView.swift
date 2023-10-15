@@ -71,11 +71,17 @@ struct ExerciseDiaryView: View {
                     } header: {
                         Text(section.header)
                     } footer: {
-                        let volumeByPart = section.volumeByPart
-                        if volumeByPart.isEmpty == false {
-                            let datas: [PieChartView.Data] = volumeByPart.map({ .init(name: $0.key, value: $0.value) })
-                            PieChartView(datas: datas)
-                                .onTapGesture(perform: dependency.tapChart)
+                        VStack {
+                            let volumeByPart = section.volumeByPart
+                            if volumeByPart.isEmpty == false {
+                                let datas: [PieChartView.Data] = volumeByPart.map({ .init(name: $0.key, value: $0.value) })
+                                PieChartView(datas: datas)
+                                    .onTapGesture(perform: dependency.tapChart)
+                            }
+                            HStack {
+                                Text("total volume: \(Int(section.volume))").italic()
+                                Spacer()
+                            }
                         }
                     }
                 }

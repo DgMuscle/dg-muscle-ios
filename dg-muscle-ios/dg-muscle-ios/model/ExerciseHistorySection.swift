@@ -23,7 +23,7 @@ struct ExerciseHistorySection: Identifiable {
         return dateFormatter.string(from: date)
     }
     
-    var footer: Double {
+    var volume: Double {
         histories.map({ $0.volume }).reduce(0.0, { $0 + $1 })
     }
     
