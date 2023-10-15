@@ -12,6 +12,7 @@ protocol ExerciseDiaryDependency {
     func tapHistory(history: ExerciseHistory)
     func scrollBottom()
     func delete(data: ExerciseHistory)
+    func tapChart()
 }
 
 struct ExerciseDiaryView: View {
@@ -70,7 +71,18 @@ struct ExerciseDiaryView: View {
                     } header: {
                         Text(section.header)
                     } footer: {
-                        Text("total volume: \(Int(section.footer))")
+                        VStack {
+                            let volumeByPart = section.volumeByPart
+                            if volumeByPart.isEmpty == false {
+                                let datas: [PieChartView.Data] = volumeByPart.map({ .init(name: $0.key, value: $0.value) })
+                                PieChartView(datas: datas)
+                                    .onTapGesture(perform: dependency.tapChart)
+                            }
+                            HStack {
+                                Text("total volume: \(Int(section.volume))").italic()
+                                Spacer()
+                            }
+                        }
                     }
                 }
             }
@@ -98,6 +110,11 @@ struct ExerciseDiaryView: View {
         })
         let allParts = exercises.map({ $0.parts }).flatMap({ $0 })
         let parts = Array(Set(allParts)).sorted()
-        return parts.map({ $0.rawValue }).joined(separator: ", ")
+        
+        if parts.count == Exercise.Part.allCases.count {
+            return "all"
+        } else {
+            return parts.map({ $0.rawValue }).joined(separator: ", ")
+        }
     }
 }
