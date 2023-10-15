@@ -11,7 +11,7 @@ struct HistoryGrassView: View {
     
     @State var datas: [Data]
     
-    var columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 3), count: 15)
+    var columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 3), count: 16)
     
     private let averageValue: Double
     
@@ -33,7 +33,7 @@ struct HistoryGrassView: View {
     
     func grassColor(data: Data) -> Color {
         if data.value == 0 {
-            return Color(uiColor: .systemBackground).opacity(0.2)
+            return Color.gray.opacity(0.2)
         }
         
         if data.value >= self.averageValue {
