@@ -11,7 +11,7 @@ struct HistoryGrassView: View {
     
     @State var datas: [Data]
     
-    var columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 4), count: 15)
+    var columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 3), count: 15)
     
     private let averageValue: Double
     
@@ -23,7 +23,7 @@ struct HistoryGrassView: View {
     }
 
     var body: some View {
-        LazyVGrid(columns: columns, alignment: .center, spacing: 4) {
+        LazyVGrid(columns: columns, alignment: .center, spacing: 3) {
             ForEach(datas) { data in
                 RoundedRectangle(cornerRadius: 4).fill(grassColor(data: data))
                     .aspectRatio(1, contentMode: .fit)
@@ -33,7 +33,7 @@ struct HistoryGrassView: View {
     
     func grassColor(data: Data) -> Color {
         if data.value == 0 {
-            return .secondary.opacity(0.4)
+            return Color(uiColor: .systemBackground).opacity(0.2)
         }
         
         if data.value >= self.averageValue {
