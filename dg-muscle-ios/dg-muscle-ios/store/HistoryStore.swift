@@ -70,8 +70,10 @@ final class HistoryStore: ObservableObject {
         $histories
             .receive(on: DispatchQueue.main)
             .sink { histories in
-                self.historySections = self.getHistorySections(histories: histories)
-                self.historyGrassData = self.getHistoryGrassData(from: histories)
+                withAnimation {
+                    self.historySections = self.getHistorySections(histories: histories)
+                    self.historyGrassData = self.getHistoryGrassData(from: histories)
+                }
             }
             .store(in: &cancellables)
     }

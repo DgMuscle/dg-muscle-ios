@@ -29,10 +29,6 @@ struct HistoryGrassView: View {
                     .aspectRatio(1, contentMode: .fit)
             }
         }
-        .padding()
-        .background {
-            RoundedRectangle(cornerRadius: 8).fill(Color(uiColor: .systemBackground))
-        }
     }
     
     func grassColor(data: Data) -> Color {
