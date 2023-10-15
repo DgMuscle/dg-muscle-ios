@@ -43,7 +43,7 @@ struct BodyProfileView: View {
                 TextField("display name", text: $displayName)
             }
             
-            Section("body profile(preparing)") {
+            Section("body profile") {
                 HStack {
                     TextField("height", value: $height, format: .number)
                         .keyboardType(.decimalPad)
