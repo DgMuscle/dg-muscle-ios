@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HistoryGrassView: View {
+struct GrassView: View {
     
     @State var datas: [Data]
     
@@ -43,7 +43,7 @@ struct HistoryGrassView: View {
     }
 }
 
-extension HistoryGrassView {
+extension GrassView {
     struct Data: Identifiable {
         let id = UUID().uuidString
         let date: String

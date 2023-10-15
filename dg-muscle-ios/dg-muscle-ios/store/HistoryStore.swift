@@ -14,7 +14,7 @@ final class HistoryStore: ObservableObject {
     
     @Published private(set) var histories: [ExerciseHistory] = HistoryRepository.shared.getCache()
     @Published private(set) var historySections: [ExerciseHistorySection] = []
-    @Published private(set) var historyGrassData: [HistoryGrassView.Data] = []
+    @Published private(set) var historyGrassData: [GrassView.Data] = []
     
     private let historyLimit = 365
     private var canLoadMoreHistoryFromServer = false
@@ -105,7 +105,7 @@ final class HistoryStore: ObservableObject {
         return twoDimensionalArray.map({ .init(histories: $0) })
     }
     
-    private func getHistoryGrassData(from histories: [ExerciseHistory]) -> [HistoryGrassView.Data] {
+    private func getHistoryGrassData(from histories: [ExerciseHistory]) -> [GrassView.Data] {
         let row = 5
         let item = 17
         let itemCount = row * item
