@@ -15,6 +15,7 @@ final class HistoryStore: ObservableObject {
     @Published private(set) var histories: [ExerciseHistory] = HistoryRepository.shared.getCache()
     @Published private(set) var historySections: [ExerciseHistorySection] = []
     
+    private let historyLimit = 365
     private var canLoadMoreHistoryFromServer = false
     
     private var cancellables: Set<AnyCancellable> = []
@@ -44,8 +45,8 @@ final class HistoryStore: ObservableObject {
     
     func updateHistories() {
         Task {
-            let histories = try await HistoryRepository.shared.get(lastId: nil)
-            canLoadMoreHistoryFromServer = histories.count >= 100
+            let histories = try await HistoryRepository.shared.get(lastId: nil, limit: historyLimit)
+            canLoadMoreHistoryFromServer = histories.count >= historyLimit
             DispatchQueue.main.async {
                 self.histories = histories
             }
@@ -56,8 +57,8 @@ final class HistoryStore: ObservableObject {
     func appendHistories() {
         guard canLoadMoreHistoryFromServer else { return }
         Task {
-            let histories = try await HistoryRepository.shared.get(lastId: self.histories.last?.id)
-            canLoadMoreHistoryFromServer = histories.count >= 100
+            let histories = try await HistoryRepository.shared.get(lastId: self.histories.last?.id, limit: historyLimit)
+            canLoadMoreHistoryFromServer = histories.count >= historyLimit
             DispatchQueue.main.async {
                 self.histories.append(contentsOf: histories)
             }

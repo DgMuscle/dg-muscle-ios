@@ -20,11 +20,11 @@ final class HistoryRepository {
         try FileManagerHelper.save(histories, toFile: "histories")
     }
     
-    func get(lastId: String?) async throws -> [ExerciseHistory] {
-        var url = "https://exercisehistory-gethistories-kpjvgnqz6a-uc.a.run.app"
+    func get(lastId: String?, limit: Int) async throws -> [ExerciseHistory] {
+        var url = "https://exercisehistory-gethistories-kpjvgnqz6a-uc.a.run.app?limit=\(limit)"
         
         if let lastId {
-            url = url + "?lastId=\(lastId)"
+            url = url + "&lastId=\(lastId)"
         }
         
         return try await APIClient.shared.request(url: url)
