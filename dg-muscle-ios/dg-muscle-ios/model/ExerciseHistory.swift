@@ -20,7 +20,7 @@ struct ExerciseHistory: Codable, Identifiable, Equatable {
     
     var volume: Double {
         let allSets: [ExerciseSet] = records.map({ $0.sets }).flatMap({ $0 })
-        return allSets.reduce(0, { $0 + (Double($1.reps) * $1.weight) })
+        return allSets.reduce(0, { $0 + $1.volume })
     }
     
     var dateValue: Date? {
