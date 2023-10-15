@@ -27,7 +27,7 @@ struct ExerciseDiaryView: View {
             List {
                 
                 if historyStore.historyGrassData.isEmpty == false {
-                    HistoryGrassView(datas: historyStore.historyGrassData)
+                    HistoryGrassView(datas: historyStore.historyGrassData, count: 17)
                 }
                 
                 Section {

@@ -106,11 +106,14 @@ final class HistoryStore: ObservableObject {
     }
     
     private func getHistoryGrassData(from histories: [ExerciseHistory]) -> [HistoryGrassView.Data] {
-        guard let startDate = subtractDays(from: Date(), numberOfDays: 79) else { return [] }
+        let row = 5
+        let item = 17
+        let itemCount = row * item
+        guard let startDate = subtractDays(from: Date(), numberOfDays: itemCount - 1) else { return [] }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
-        let dates = generateDates(startingFrom: startDate, numberOfDays: 80).compactMap({ dateFormatter.string(from: $0)})
+        let dates = generateDates(startingFrom: startDate, numberOfDays: itemCount).compactMap({ dateFormatter.string(from: $0)})
         
         return dates.map({ date in
             guard let history = histories.first(where: { $0.date == date }) else { return .init(date: date, value: 0) }

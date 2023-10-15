@@ -11,12 +11,13 @@ struct HistoryGrassView: View {
     
     @State var datas: [Data]
     
-    var columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 3), count: 16)
+    var columns: [GridItem]
     
     private let averageValue: Double
     
-    init(datas: [Data]) {
+    init(datas: [Data], count: Int) {
         _datas = .init(initialValue: datas)
+        self.columns = Array(repeating: .init(.flexible(), spacing: 3), count: count)
         let filteredData = datas.filter({ $0.value > 0 })
         let sum = filteredData.reduce(0, { $0 + $1.value })
         averageValue = sum / Double(filteredData.count)
