@@ -233,6 +233,10 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
             store.history.updateHistories()
         }
     }
+    
+    func tapChart() {
+        print("tap pie chart")
+    }
 }
 
 struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
