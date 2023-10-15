@@ -8,7 +8,7 @@
 import Foundation
 
 class FileManagerHelper {
-    static let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let documentsDirectory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.donggyu.dg-muscle-ios")!
     
     static func save<T: Codable>(_ object: T, toFile fileName: String) throws {
         let filePath = documentsDirectory.appendingPathComponent(fileName)
