@@ -25,20 +25,27 @@ struct ExerciseDiaryView: View {
     var body: some View {
         ZStack {
             List {
-                Button("Add record", systemImage: "plus.app") {
-                    dependency.tapAddHistory()
-                }
-                .onAppear {
-                    withAnimation {
-                        addFloatingButtonVisible = false
-                    }
-                }
-                .onDisappear {
-                    withAnimation {
-                        addFloatingButtonVisible = true
-                    }
+                
+                if historyStore.historyGrassData.isEmpty == false {
+                    GrassView(datas: historyStore.historyGrassData, count: 17)
                 }
                 
+                Section {
+                    Button("Add record", systemImage: "plus.app") {
+                        dependency.tapAddHistory()
+                    }
+                    .onAppear {
+                        withAnimation {
+                            addFloatingButtonVisible = false
+                        }
+                    }
+                    .onDisappear {
+                        withAnimation {
+                            addFloatingButtonVisible = true
+                        }
+                    }
+                }
+
                 ForEach(historyStore.historySections) { section in
                     Section {
                         ForEach(section.histories) { history in
