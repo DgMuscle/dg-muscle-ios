@@ -101,5 +101,4 @@ final class HistoryStore: ObservableObject {
         
         return twoDimensionalArray.map({ .init(histories: $0) })
     }
-    
 }
