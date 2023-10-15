@@ -34,7 +34,7 @@ struct HistoryGrassView: View {
     
     func grassColor(data: Data) -> Color {
         if data.value == 0 {
-            return Color.gray.opacity(0.2)
+            return Color.black.opacity(0.2)
         }
         
         if data.value >= self.averageValue {
