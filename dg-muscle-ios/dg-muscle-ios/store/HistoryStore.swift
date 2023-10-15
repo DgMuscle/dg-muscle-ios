@@ -106,7 +106,8 @@ final class HistoryStore: ObservableObject {
     }
     
     private func getHistoryGrassData(from histories: [ExerciseHistory]) -> [HistoryGrassView.Data] {
-        guard let startDate = subtractDays(from: Date(), numberOfDays: 75) else { return [] }
+        guard let startDate = subtractDays(from: Date(), numberOfDays: 74) else { return [] }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
         let dates = generateDates(startingFrom: startDate, numberOfDays: 75).compactMap({ dateFormatter.string(from: $0)})

@@ -39,7 +39,7 @@ struct HistoryGrassView: View {
         if data.value >= self.averageValue {
             return .green.opacity(0.8)
         } else {
-            return .green.opacity(0.5)
+            return .green.opacity(0.4)
         }
     }
 }
