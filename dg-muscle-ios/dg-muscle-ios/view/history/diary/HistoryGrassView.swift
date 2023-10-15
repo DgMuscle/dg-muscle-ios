@@ -14,6 +14,7 @@ struct HistoryGrassView: View {
     var columns: [GridItem]
     
     private let averageValue: Double
+    private let highestValue: Double
     
     init(datas: [Data], count: Int) {
         _datas = .init(initialValue: datas)
@@ -21,6 +22,7 @@ struct HistoryGrassView: View {
         let filteredData = datas.filter({ $0.value > 0 })
         let sum = filteredData.reduce(0, { $0 + $1.value })
         averageValue = sum / Double(filteredData.count)
+        self.highestValue = filteredData.map({ $0.value }).sorted().last ?? 0
     }
 
     var body: some View {
@@ -37,11 +39,7 @@ struct HistoryGrassView: View {
             return Color.black.opacity(0.2)
         }
         
-        if data.value >= self.averageValue {
-            return .green.opacity(0.8)
-        } else {
-            return .green.opacity(0.4)
-        }
+        return .green.opacity(data.value / self.highestValue)
     }
 }
 
