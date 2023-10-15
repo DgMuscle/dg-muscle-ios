@@ -141,15 +141,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		703E54792ADBD5C400E7D911 /* diary */ = {
-			isa = PBXGroup;
-			children = (
-				70F838AC2AC7FFB5009725EF /* ExerciseDiaryView.swift */,
-				703E547A2ADBD5D900E7D911 /* HistoryGrassView.swift */,
-			);
-			path = diary;
-			sourceTree = "<group>";
-		};
 		707B8FC52ABF1C92008ADECE /* store */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				7060FDAF2AC5E1C3001A2198 /* ErrorView.swift */,
+				703E547A2ADBD5D900E7D911 /* HistoryGrassView.swift */,
 				70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */,
 				70884B902ADBB9AA001FA252 /* PieChartView.swift */,
 				7084B1852AC5B8F50011A91B /* SimpleTextInputView.swift */,
@@ -323,7 +315,7 @@
 		70F838AB2AC7FFA6009725EF /* history */ = {
 			isa = PBXGroup;
 			children = (
-				703E54792ADBD5C400E7D911 /* diary */,
+				70F838AC2AC7FFB5009725EF /* ExerciseDiaryView.swift */,
 				709B540C2AC999D000C282E9 /* ExerciseFormView.swift */,
 				70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */,
 				7003E7C32AC86C2D00AFE1C2 /* RecordFormView.swift */,
