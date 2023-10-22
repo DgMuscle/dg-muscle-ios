@@ -11,7 +11,7 @@ import Charts
 struct ChartView: View {
     @State var datas: [Data]
     @State var selectedData: Data?
-    @State var markType: MarkType = .bar
+    @Binding var markType: MarkType
     
     var body: some View {
         let max = datas.max(by: { $0.volume < $1.volume })?.volume ?? 0
@@ -94,16 +94,6 @@ struct ChartView: View {
             }
             .onChange(of: markType) { _, _ in
                 animateGraph()
-            }
-            
-            HStack {
-                Spacer()
-                Picker("Mark Type", selection: $markType) {
-                    Text("bar").tag(MarkType.bar)
-                    Text("line").tag(MarkType.line)
-                }
-                .pickerStyle(.segmented)
-                .frame(width: 200)
             }
         }
     }
