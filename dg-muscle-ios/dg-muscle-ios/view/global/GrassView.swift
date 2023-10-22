@@ -90,7 +90,7 @@ struct GrassView: View {
 }
 
 extension GrassView {
-    struct Data: Identifiable {
+    struct Data: Identifiable, Equatable {
         let id = UUID().uuidString
         let date: String
         let value: Double
