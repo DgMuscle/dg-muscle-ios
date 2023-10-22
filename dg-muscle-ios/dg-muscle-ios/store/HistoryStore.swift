@@ -72,7 +72,7 @@ final class HistoryStore: ObservableObject {
             .sink { histories in
                 withAnimation {
                     self.historySections = self.getHistorySections(histories: histories)
-                    self.historyGrassData = self.getHistoryGrassData(from: histories)
+                    self.historyGrassData = GrassView.getHistoryGrassData(from: histories)
                 }
             }
             .store(in: &cancellables)
@@ -103,51 +103,5 @@ final class HistoryStore: ObservableObject {
         }
         
         return twoDimensionalArray.map({ .init(histories: $0) })
-    }
-    
-    private func getHistoryGrassData(from histories: [ExerciseHistory]) -> [GrassView.Data] {
-        let row = 5
-        let item = 17
-        let itemCount = row * item
-        guard let startDate = subtractDays(from: Date(), numberOfDays: itemCount - 1) else { return [] }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd"
-        let dates = generateDates(startingFrom: startDate, numberOfDays: itemCount).compactMap({ dateFormatter.string(from: $0)})
-        
-        return dates.map({ date in
-            guard let history = histories.first(where: { $0.date == date }) else { return .init(date: date, value: 0) }
-            return .init(date: date, value: history.volume)
-        })
-    }
-    
-    private func generateDates(startingFrom startDate: Date, numberOfDays: Int) -> [Date] {
-        var dates: [Date] = []
-        var currentDate = startDate
-        let calendar = Calendar.current
-        
-        // Generate dates for the specified number of days
-        for _ in 1...numberOfDays {
-            dates.append(currentDate)
-            if let nextDate = calendar.date(byAdding: .day, value: 1, to: currentDate) {
-                currentDate = nextDate
-            } else {
-                // If adding a day results in nil, break the loop
-                break
-            }
-        }
-        
-        return dates
-    }
-    
-    private func subtractDays(from date: Date, numberOfDays: Int) -> Date? {
-        var dateComponents = DateComponents()
-        dateComponents.day = -numberOfDays
-        
-        if let subtractedDate = Calendar.current.date(byAdding: dateComponents, to: date) {
-            return subtractedDate
-        } else {
-            return nil
-        }
     }
 }
