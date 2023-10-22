@@ -23,10 +23,7 @@ struct ContentView: View {
         ZStack {
             if userStore.login {
                 NavigationStack(path: $paths) {
-                    TabView(
-                        settingViewDependency: DependencyInjection.shared.setting(paths: $paths),
-                        exerciseDiaryDependency: DependencyInjection.shared.exerciseDiary(paths: $paths)
-                    )
+                    ExerciseDiaryView(dependency: DependencyInjection.shared.exerciseDiary(paths: $paths))
                     .navigationDestination(for: NavigationPath.self) { path in
                         switch path {
                         case .historyForm(let id, let dateString, let records):
@@ -88,6 +85,8 @@ struct ContentView: View {
                             RecordSetsView(record: record, dateString: dateString)
                         case .selectExercise:
                             SelectExerciseView(dependency: DependencyInjection.shared.selectExercise(paths: $paths))
+                        case .setting:
+                            SettingView(dependency: DependencyInjection.shared.setting(paths: $paths))
                         }
                     }
                 }
@@ -122,6 +121,7 @@ extension ContentView {
         case exerciseList
         case recordSets(Record, String)
         case selectExercise
+        case setting
         
         func hash(into hasher: inout Hasher) {
             switch self {
@@ -131,7 +131,7 @@ extension ContentView {
                 hasher.combine(value)
             case .recordSets(let value, _):
                 hasher.combine(value)
-            case .exerciseForm, .setForm, .bodyProfile, .exerciseList, .selectExercise: break
+            case .exerciseForm, .setForm, .bodyProfile, .exerciseList, .selectExercise, .setting: break
             }
         }
     }

@@ -47,8 +47,6 @@
 		70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */; };
 		70A9B7412ACBCFC70061DAA3 /* BodyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A9B7402ACBCFC70061DAA3 /* BodyProfileView.swift */; };
 		70AC465F2ABFF82D00BFE46D /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AC465E2ABFF82D00BFE46D /* SettingView.swift */; };
-		70AC46622ABFF8D700BFE46D /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AC46612ABFF8D700BFE46D /* TabView.swift */; };
-		70AC46692AC00A8000BFE46D /* TabItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AC46682AC00A8000BFE46D /* TabItemsView.swift */; };
 		70B5080C2AC51D4300FC0540 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */; };
 		70B5080F2AC51FD900FC0540 /* DependencyInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */; };
 		70C144D32AC82558007F0540 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
@@ -134,8 +132,6 @@
 		70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormView.swift; sourceTree = "<group>"; };
 		70A9B7402ACBCFC70061DAA3 /* BodyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyProfileView.swift; sourceTree = "<group>"; };
 		70AC465E2ABFF82D00BFE46D /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		70AC46612ABFF8D700BFE46D /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
-		70AC46682AC00A8000BFE46D /* TabItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemsView.swift; sourceTree = "<group>"; };
 		70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjection.swift; sourceTree = "<group>"; };
 		70C144D22AC82558007F0540 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -250,7 +246,6 @@
 				70F838AB2AC7FFA6009725EF /* history */,
 				70AC465D2ABFF81800BFE46D /* setting */,
 				7083E6CA2ABF1614007D43CE /* signin */,
-				70AC46602ABFF8C700BFE46D /* tab */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -280,15 +275,6 @@
 				70AC465E2ABFF82D00BFE46D /* SettingView.swift */,
 			);
 			path = setting;
-			sourceTree = "<group>";
-		};
-		70AC46602ABFF8C700BFE46D /* tab */ = {
-			isa = PBXGroup;
-			children = (
-				70AC46612ABFF8D700BFE46D /* TabView.swift */,
-				70AC46682AC00A8000BFE46D /* TabItemsView.swift */,
-			);
-			path = tab;
 			sourceTree = "<group>";
 		};
 		70B5080A2AC51D3400FC0540 /* global */ = {
@@ -556,7 +542,6 @@
 				70F8389E2AC7FE36009725EF /* CreatedAt.swift in Sources */,
 				701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */,
 				70E556022ABF010C006D4DA0 /* ContentView.swift in Sources */,
-				70AC46622ABFF8D700BFE46D /* TabView.swift in Sources */,
 				70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */,
 				70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */,
 				701CC4AC2AD271CF00852E2E /* UserRepository.swift in Sources */,
@@ -566,7 +551,6 @@
 				7003E7C42AC86C2D00AFE1C2 /* RecordFormView.swift in Sources */,
 				70884B912ADBB9AA001FA252 /* PieChartView.swift in Sources */,
 				70F838AA2AC7FEE1009725EF /* HistoryStore.swift in Sources */,
-				70AC46692AC00A8000BFE46D /* TabItemsView.swift in Sources */,
 				70FB87B52ACAAE9F00B6B432 /* SetFormView.swift in Sources */,
 				70D3418A2ACC03350010EAF9 /* ExerciseListView.swift in Sources */,
 				70B5080C2AC51D4300FC0540 /* PhotoPickerView.swift in Sources */,
