@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7003E7C42AC86C2D00AFE1C2 /* RecordFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003E7C32AC86C2D00AFE1C2 /* RecordFormView.swift */; };
+		700BB60B2AE513AF008B8132 /* MonthlyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700BB60A2AE513AF008B8132 /* MonthlyChartView.swift */; };
 		7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */; };
 		701964312AD41CE400ED39BF /* SelectExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701964302AD41CE400ED39BF /* SelectExerciseView.swift */; };
 		701CC4AC2AD271CF00852E2E /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4AB2AD271CF00852E2E /* UserRepository.swift */; };
@@ -100,6 +101,7 @@
 
 /* Begin PBXFileReference section */
 		7003E7C32AC86C2D00AFE1C2 /* RecordFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFormView.swift; sourceTree = "<group>"; };
+		700BB60A2AE513AF008B8132 /* MonthlyChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyChartView.swift; sourceTree = "<group>"; };
 		7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSection.swift; sourceTree = "<group>"; };
 		701964302AD41CE400ED39BF /* SelectExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExerciseView.swift; sourceTree = "<group>"; };
 		701CC4AB2AD271CF00852E2E /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				70F838AC2AC7FFB5009725EF /* ExerciseDiaryView.swift */,
 				709B540C2AC999D000C282E9 /* ExerciseFormView.swift */,
 				70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */,
+				700BB60A2AE513AF008B8132 /* MonthlyChartView.swift */,
 				7003E7C32AC86C2D00AFE1C2 /* RecordFormView.swift */,
 				70E156932AD2D6C50019329C /* RecordSetsView.swift */,
 				701964302AD41CE400ED39BF /* SelectExerciseView.swift */,
@@ -515,6 +518,7 @@
 				70C144DA2AC82866007F0540 /* ExerciseRepository.swift in Sources */,
 				701CC4AE2AD2720200852E2E /* Profile.swift in Sources */,
 				70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */,
+				700BB60B2AE513AF008B8132 /* MonthlyChartView.swift in Sources */,
 				70D17E0D2AC5D70B00B86E37 /* WithdrawalConfirmView.swift in Sources */,
 				70F838AD2AC7FFB5009725EF /* ExerciseDiaryView.swift in Sources */,
 				70F838A82AC7FEB6009725EF /* Record.swift in Sources */,
