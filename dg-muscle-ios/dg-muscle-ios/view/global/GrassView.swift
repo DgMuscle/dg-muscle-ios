@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GrassView: View {
     
-    @State var datas: [Data]
+    var datas: [Data]
     
     var columns: [GridItem]
     
@@ -17,7 +17,7 @@ struct GrassView: View {
     private let highestValue: Double
     
     init(datas: [Data], count: Int) {
-        _datas = .init(initialValue: datas)
+        self.datas = datas
         self.columns = Array(repeating: .init(.flexible(), spacing: 3), count: count)
         let filteredData = datas.filter({ $0.value > 0 })
         let sum = filteredData.reduce(0, { $0 + $1.value })
