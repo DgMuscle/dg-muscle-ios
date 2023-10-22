@@ -55,9 +55,9 @@ struct MonthlyChartView: View {
                     .frame(height: 250)
                 
             }
+            .padding()
         }
         .scrollIndicators(.hidden)
-        .padding()
         .onChange(of: markTypeToggle) { oldValue, newValue in
             self.markType = newValue ? .line : .bar
         }

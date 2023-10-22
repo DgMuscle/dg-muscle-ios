@@ -12,7 +12,7 @@ protocol ExerciseDiaryDependency {
     func tapHistory(history: ExerciseHistory)
     func scrollBottom()
     func delete(data: ExerciseHistory)
-    func tapChart()
+    func tapChart(histories: [ExerciseHistory], volumeByPart: [String: Double])
     func tapGrass()
 }
 
@@ -87,7 +87,9 @@ struct ExerciseDiaryView: View {
                             if volumeByPart.isEmpty == false {
                                 let datas: [PieChartView.Data] = volumeByPart.map({ .init(name: $0.key, value: $0.value) })
                                 PieChartView(datas: datas)
-                                    .onTapGesture(perform: dependency.tapChart)
+                                    .onTapGesture {
+                                        dependency.tapChart(histories: section.histories, volumeByPart: volumeByPart)
+                                    }
                             }
                             HStack {
                                 Text("total volume: \(Int(section.volume))").italic()

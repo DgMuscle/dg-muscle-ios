@@ -234,8 +234,8 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
         }
     }
     
-    func tapChart() {
-        print("tap pie chart")
+    func tapChart(histories: [ExerciseHistory], volumeByPart: [String: Double]) {
+        paths.append(.monthlyChart(histories, volumeByPart))
     }
     
     func tapGrass() {
