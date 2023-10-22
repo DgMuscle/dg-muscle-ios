@@ -237,6 +237,10 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
     func tapChart() {
         print("tap pie chart")
     }
+    
+    func tapGrass() {
+        paths.append(.setting)
+    }
 }
 
 struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {

@@ -13,6 +13,7 @@ protocol ExerciseDiaryDependency {
     func scrollBottom()
     func delete(data: ExerciseHistory)
     func tapChart()
+    func tapGrass()
 }
 
 struct ExerciseDiaryView: View {
@@ -28,6 +29,9 @@ struct ExerciseDiaryView: View {
                 
                 if historyStore.historyGrassData.isEmpty == false {
                     GrassView(datas: historyStore.historyGrassData, count: 17)
+                        .onTapGesture {
+                            dependency.tapGrass()
+                        }
                 }
                 
                 Section {
