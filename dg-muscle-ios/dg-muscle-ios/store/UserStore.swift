@@ -32,10 +32,7 @@ final class UserStore: ObservableObject {
         }
         
         bind()
-        
-        Task {
-            await setUserCache()
-        }
+        setUserCache()
     }
     
     func updateUser() {
@@ -104,12 +101,14 @@ final class UserStore: ObservableObject {
         }
     }
     
-    @MainActor
     private func setUserCache() {
-        Task {
-            let userCache: UserCache = try FileManagerHelper.load(UserCache.self, fromFile: .user)
-            self.displayName = userCache.displayName
-            self.photoURL = URL(string: userCache.photoUrl ?? "")
+        do {
+            if let userCache: UserCache = try? FileManagerHelper.load(UserCache.self, fromFile: .user) {
+                DispatchQueue.main.async {
+                    self.displayName = userCache.displayName
+                    self.photoURL = URL(string: userCache.photoUrl ?? "")
+                }
+            }
         }
     }
 }
