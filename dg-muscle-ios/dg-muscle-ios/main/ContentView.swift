@@ -14,8 +14,10 @@ struct ContentView: View {
     @State var isShowingProfilePhotoPicker = false
     @State var isPresentedWithDrawalConfirm = false
     @State var isShowingErrorView = false
-
+    
     @State var errorMessage: String?
+    
+    @State var monthlyChartViewIngredient: MonthlyChartViewIngredient = .init()
     
     @StateObject var userStore = store.user
     
@@ -23,7 +25,7 @@ struct ContentView: View {
         ZStack {
             if userStore.login {
                 NavigationStack(path: $paths) {
-                    ExerciseDiaryView(dependency: DependencyInjection.shared.exerciseDiary(paths: $paths))
+                    ExerciseDiaryView(dependency: DependencyInjection.shared.exerciseDiary(paths: $paths, monthlyChartViewIngredient: $monthlyChartViewIngredient))
                     .navigationDestination(for: NavigationPath.self) { path in
                         switch path {
                         case .historyForm(let id, let dateString, let records):
@@ -87,8 +89,6 @@ struct ContentView: View {
                             SelectExerciseView(dependency: DependencyInjection.shared.selectExercise(paths: $paths))
                         case .setting:
                             SettingView(dependency: DependencyInjection.shared.setting(paths: $paths))
-                        case .monthlyChart(let histories, let dictionary):
-                            MonthlyChartView(histories: histories, volumeByPart: dictionary)
                         }
                     }
                 }
@@ -100,6 +100,13 @@ struct ContentView: View {
                 
                 if isShowingProfilePhotoPicker {
                     PhotoPickerView(uiImage: userStore.photoUiImage, isShowing: $isShowingProfilePhotoPicker, dependency: DependencyInjection.shared.profilePhotoPicker())
+                }
+                
+                if monthlyChartViewIngredient.showing {
+                    MonthlyChartView(
+                        histories: monthlyChartViewIngredient.exerciseHistories,
+                        volumeByPart: monthlyChartViewIngredient.volumeBasedOnExercise,
+                        showing: $monthlyChartViewIngredient.showing)
                 }
                 
             } else {
@@ -124,7 +131,6 @@ extension ContentView {
         case recordSets(Record, String)
         case selectExercise
         case setting
-        case monthlyChart([ExerciseHistory], [String: Double])
         
         func hash(into hasher: inout Hasher) {
             switch self {
@@ -134,8 +140,16 @@ extension ContentView {
                 hasher.combine(value)
             case .recordSets(let value, _):
                 hasher.combine(value)
-            case .exerciseForm, .setForm, .bodyProfile, .exerciseList, .selectExercise, .setting, .monthlyChart: break
+            case .exerciseForm, .setForm, .bodyProfile, .exerciseList, .selectExercise, .setting: break
             }
         }
+    }
+}
+
+extension ContentView {
+    struct MonthlyChartViewIngredient {
+        var showing: Bool = false
+        var exerciseHistories: [ExerciseHistory] = []
+        var volumeBasedOnExercise: [String: Double] = [:]
     }
 }

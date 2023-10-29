@@ -12,13 +12,14 @@ struct MonthlyChartView: View {
     let histories: [ExerciseHistory]
     let volumeByPart: [String: Double]
     @State var markType: ChartView.MarkType = .bar
-    @State var markTypeToggle = false
+    @Binding var showing: Bool
     
     private let allExercises: [Exercise]
     
-    init(histories: [ExerciseHistory], volumeByPart: [String: Double]) {
+    init(histories: [ExerciseHistory], volumeByPart: [String: Double], showing: Binding<Bool>) {
         self.histories = histories
         self.volumeByPart = volumeByPart
+        self._showing = showing
         let allRecords = histories.flatMap({ $0.records })
         var allExerciseIds: Set<String> = []
         
@@ -30,37 +31,59 @@ struct MonthlyChartView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack {
-                Toggle(isOn: $markTypeToggle) {
-                    Text("Line").italic()
-                }
-                ForEach(allExercises, id: \.self) { exercise in
-                    
-                    HStack {
-                        Text(exercise.name).font(.title2.bold())
-                        Spacer()
+        VStack {
+            HStack {
+                Picker("mark type", selection: $markType) {
+                    ForEach(ChartView.MarkType.allCases, id: \.self) {
+                        Text($0.rawValue)
                     }
-                    
-                    ChartView(
-                        datas: ChartView.generateDataBasedOnExercise(from: histories, exerciseId: exercise.id, length: 7),
-                        markType: $markType
-                    )
-                        .frame(height: 250)
-                    
-                    Spacer(minLength: 50)
                 }
-                Spacer(minLength: 50)
-                PieChartView(datas: volumeByPart.map({ .init(name: $0.key, value: $0.value) }))
-                    .frame(height: 250)
+                .pickerStyle(.segmented)
                 
+                Button {
+                    withAnimation {
+                        showing = false
+                    }
+                } label: {
+                    Image(systemName: "xmark")
+                        .foregroundStyle(.white)
+                        .padding(6)
+                        .background {
+                            Circle().fill(Color.gray.opacity(0.6))
+                        }
+                }
             }
             .padding()
+            
+            ScrollView {
+                VStack {
+                    ForEach(allExercises, id: \.self) { exercise in
+                        
+                        HStack {
+                            Text(exercise.name).font(.title2.bold())
+                            Spacer()
+                        }
+                        
+                        ChartView(
+                            datas: ChartView.generateDataBasedOnExercise(from: histories, exerciseId: exercise.id, length: 7),
+                            markType: $markType
+                        )
+                        .frame(height: 250)
+                        
+                        Spacer(minLength: 50)
+                    }
+                    Spacer(minLength: 50)
+                    PieChartView(datas: volumeByPart.map({ .init(name: $0.key, value: $0.value) }))
+                        .frame(height: 250)
+                    
+                }
+                .padding()
+            }
+            .scrollIndicators(.hidden)
         }
-        .scrollIndicators(.hidden)
-        .onChange(of: markTypeToggle) { oldValue, newValue in
-            self.markType = newValue ? .line : .bar
+        .background {
+            Rectangle().fill(Color(uiColor: .systemBackground))
+                .ignoresSafeArea()
         }
     }
 }
-

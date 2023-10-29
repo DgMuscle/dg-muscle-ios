@@ -167,7 +167,7 @@ extension ChartView {
         }
     }
     
-    enum MarkType {
+    enum MarkType: String, CaseIterable {
         case bar
         case line
     }
