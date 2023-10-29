@@ -27,7 +27,7 @@ struct MonthlyChartView: View {
         
         self.allExercises = Array(allExerciseIds).compactMap({ id in
             store.exercise.exercises.first(where: { $0.id == id })
-        }).sorted(by: { $0.name < $1.name })
+        }).sorted(by: { $0.order < $1.order })
     }
     
     var body: some View {
@@ -72,9 +72,6 @@ struct MonthlyChartView: View {
                         
                         Spacer(minLength: 50)
                     }
-                    Spacer(minLength: 50)
-                    PieChartView(datas: volumeByPart.map({ .init(name: $0.key, value: $0.value) }))
-                        .frame(height: 250)
                     
                 }
                 .padding()
