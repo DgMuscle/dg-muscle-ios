@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7003E7C42AC86C2D00AFE1C2 /* RecordFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003E7C32AC86C2D00AFE1C2 /* RecordFormView.swift */; };
 		700BB60B2AE513AF008B8132 /* MonthlyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700BB60A2AE513AF008B8132 /* MonthlyChartView.swift */; };
+		701042122AEE483400FAD52C /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701042112AEE483400FAD52C /* UserCache.swift */; };
 		7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */; };
 		701964312AD41CE400ED39BF /* SelectExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701964302AD41CE400ED39BF /* SelectExerciseView.swift */; };
 		701CC4AC2AD271CF00852E2E /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4AB2AD271CF00852E2E /* UserRepository.swift */; };
@@ -102,6 +103,7 @@
 /* Begin PBXFileReference section */
 		7003E7C32AC86C2D00AFE1C2 /* RecordFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFormView.swift; sourceTree = "<group>"; };
 		700BB60A2AE513AF008B8132 /* MonthlyChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyChartView.swift; sourceTree = "<group>"; };
+		701042112AEE483400FAD52C /* UserCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCache.swift; sourceTree = "<group>"; };
 		7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSection.swift; sourceTree = "<group>"; };
 		701964302AD41CE400ED39BF /* SelectExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExerciseView.swift; sourceTree = "<group>"; };
 		701CC4AB2AD271CF00852E2E /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				70F838A52AC7FEA8009725EF /* ExerciseSet.swift */,
 				701CC4AD2AD2720200852E2E /* Profile.swift */,
 				70F838A72AC7FEB6009725EF /* Record.swift */,
+				701042112AEE483400FAD52C /* UserCache.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				70D9033D2AC5A70A001DDC0B /* Vibration.swift in Sources */,
 				70B5080F2AC51FD900FC0540 /* DependencyInjection.swift in Sources */,
 				703CD5EA2AC0139600BC76D4 /* FileUploader.swift in Sources */,
+				701042122AEE483400FAD52C /* UserCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

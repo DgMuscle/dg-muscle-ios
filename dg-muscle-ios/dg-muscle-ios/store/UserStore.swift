@@ -32,6 +32,7 @@ final class UserStore: ObservableObject {
         }
         
         bind()
+        setUserCache()
     }
     
     func updateUser() {
@@ -44,6 +45,18 @@ final class UserStore: ObservableObject {
     }
     
     private func set(user: User?) {
+        
+        Task {
+            if let user {
+                let userCache = UserCache(displayName: user.displayName, photoUrl: user.photoURL?.absoluteString)
+                try FileManagerHelper.save(userCache, toFile: .user)
+            } else {
+                try FileManagerHelper.File.allCases.forEach({
+                    try FileManagerHelper.delete(withName: $0)
+                })
+            }
+        }
+        
         DispatchQueue.main.async {
             self.login = user != nil
             self.displayName = user?.displayName
@@ -85,6 +98,14 @@ final class UserStore: ObservableObject {
                 guard let data = try? Data(contentsOf: url) else { return continuation.resume(returning: nil) }
                 continuation.resume(returning: UIImage(data: data))
             }
+        }
+    }
+    
+    private func setUserCache() {
+        Task {
+            let userCache: UserCache = try FileManagerHelper.load(UserCache.self, fromFile: .user)
+            self.displayName = userCache.displayName
+            self.photoURL = URL(string: userCache.photoUrl ?? "")
         }
     }
 }

@@ -13,11 +13,11 @@ final class HistoryRepository {
     private init () { }
     
     func getCache() -> [ExerciseHistory] {
-        (try? FileManagerHelper.load([ExerciseHistory].self, fromFile: "histories")) ?? []
+        (try? FileManagerHelper.load([ExerciseHistory].self, fromFile: .history)) ?? []
     }
     
     func saveCache(histories: [ExerciseHistory]) throws {
-        try FileManagerHelper.save(histories, toFile: "histories")
+        try FileManagerHelper.save(histories, toFile: .history)
     }
     
     func get(lastId: String?, limit: Int) async throws -> [ExerciseHistory] {
