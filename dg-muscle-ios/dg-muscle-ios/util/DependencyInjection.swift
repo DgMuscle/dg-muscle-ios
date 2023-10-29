@@ -42,8 +42,8 @@ final class DependencyInjection {
         WithdrawalConfirmDependencyImpl(errorMessage: errorMessage, isShowingErrorView: isShowingErrorView)
     }
     
-    func exerciseDiary(paths: Binding<[ContentView.NavigationPath]>) -> ExerciseDiaryDependency {
-        ExerciseDiaryDependencyImpl(paths: paths)
+    func exerciseDiary(paths: Binding<[ContentView.NavigationPath]>, monthlyChartViewIngredient: Binding<ContentView.MonthlyChartViewIngredient>) -> ExerciseDiaryDependency {
+        ExerciseDiaryDependencyImpl(paths: paths, monthlyChartViewIngredient: monthlyChartViewIngredient)
     }
     
     func historyForm(isShowingErrorView: Binding<Bool>, errorMessage: Binding<String?>, paths: Binding<[ContentView.NavigationPath]>) -> HistoryFormDependency {
@@ -204,6 +204,7 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
 struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
     
     @Binding var paths: [ContentView.NavigationPath]
+    @Binding var monthlyChartViewIngredient: ContentView.MonthlyChartViewIngredient
     
     func tapAddHistory() {
         
@@ -235,10 +236,14 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
     }
     
     func tapChart(histories: [ExerciseHistory], volumeByPart: [String: Double]) {
-        paths.append(.monthlyChart(histories, volumeByPart))
+        monthlyChartViewIngredient.exerciseHistories = histories
+        monthlyChartViewIngredient.volumeBasedOnExercise = volumeByPart
+        withAnimation {
+            monthlyChartViewIngredient.showing = true
+        }
     }
     
-    func tapGrass() {
+    func tapProfile() {
         paths.append(.setting)
     }
 }

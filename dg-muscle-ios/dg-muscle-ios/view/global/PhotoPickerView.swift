@@ -19,9 +19,14 @@ struct PhotoPickerView: View {
     @Binding var isShowing: Bool
     
     let dependency: PhotoPickerViewDependency
+    private let buttonSize: CGFloat = 35
     
     var body: some View {
         ZStack {
+            
+            Rectangle()
+                .fill(Color(uiColor: .systemBackground)).ignoresSafeArea()
+            
             PhotosPicker(
                 selection: $selectedItem,
                 matching: .images,
@@ -32,26 +37,44 @@ struct PhotoPickerView: View {
                         .resizable()
                         .scaledToFit()
                 } else {
-                    VStack(spacing: 8) {
-                        Image(systemName: "plus.rectangle")
-                            .font(.largeTitle)
-                        Text("Select a photo")
-                    }
+                    Text("Select a photo")
                 }
             }
             
             VStack {
-                Spacer()
-                Button("Save") {
-                    dependency.saveProfileImage(image: uiImage)
-                    withAnimation {
-                        isShowing.toggle()
+                HStack(spacing: 30) {
+                    Spacer()
+                    Button {
+                        withAnimation {
+                            isShowing = false
+                        }
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundStyle(.white)
+                            .background {
+                                Circle().fill(.gray.opacity(0.6))
+                                    .frame(width: buttonSize, height: buttonSize)
+                            }
+                    }
+                    
+                    Button {
+                        dependency.saveProfileImage(image: uiImage)
+                        withAnimation {
+                            isShowing = false
+                        }
+                    } label: {
+                        Image(systemName: "square.and.arrow.down")
+                            .foregroundStyle(.white)
+                            .background {
+                                Circle().fill(.gray.opacity(0.6))
+                                    .frame(width: buttonSize, height: buttonSize)
+                            }
                     }
                 }
+                .padding()
+                Spacer()
             }
         }
-        .frame(maxWidth: .infinity)
-        .background(Color(uiColor: .systemBackground))
         .onChange(of: selectedItem) { _, newValue in
             Task {
                 guard let data = try? await newValue?.loadTransferable(type: Data.self) else { return }

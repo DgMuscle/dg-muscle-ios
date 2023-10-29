@@ -12,11 +12,11 @@ final class ExerciseRepository {
     private init() { }
     
     func saveCache(exercises: [Exercise]) throws {
-        try FileManagerHelper.save(exercises, toFile: "exercises")
+        try FileManagerHelper.save(exercises, toFile: .exercise)
     }
     
     func getCache() -> [Exercise] {
-        (try? FileManagerHelper.load([Exercise].self, fromFile: "exercises")) ?? []
+        (try? FileManagerHelper.load([Exercise].self, fromFile: .exercise)) ?? []
     }
     
     func set(exercises: [Exercise]) async throws -> DefaultResponse {

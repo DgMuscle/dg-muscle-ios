@@ -89,12 +89,21 @@ struct ChartView: View {
                         )
                 }
             })
-            .onAppear {
-                animateGraph()
+            
+            HStack {
+                let recentVolume = Int(datas.reduce(0, { $0 + $1.volume }))
+                Text("recent volume: \(recentVolume)")
+                    .foregroundStyle(Color(uiColor: .secondaryLabel))
+                    .font(.caption2)
+                    .italic()
+                Spacer()
             }
-            .onChange(of: markType) { _, _ in
-                animateGraph()
-            }
+        }
+        .onAppear {
+            animateGraph()
+        }
+        .onChange(of: markType) { _, _ in
+            animateGraph()
         }
     }
     
@@ -167,7 +176,7 @@ extension ChartView {
         }
     }
     
-    enum MarkType {
+    enum MarkType: String, CaseIterable {
         case bar
         case line
     }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 protocol ExerciseDiaryDependency {
     func tapAddHistory()
@@ -13,12 +14,13 @@ protocol ExerciseDiaryDependency {
     func scrollBottom()
     func delete(data: ExerciseHistory)
     func tapChart(histories: [ExerciseHistory], volumeByPart: [String: Double])
-    func tapGrass()
+    func tapProfile()
 }
 
 struct ExerciseDiaryView: View {
     
     let dependency: ExerciseDiaryDependency
+    private let profileImageSize: CGFloat = 30
     
     @StateObject var historyStore = store.history
     @State var addFloatingButtonVisible = false
@@ -26,12 +28,35 @@ struct ExerciseDiaryView: View {
     var body: some View {
         ZStack {
             List {
-                
+                Button {
+                    dependency.tapProfile()
+                } label: {
+                    HStack {
+                        KFImage(store.user.photoURL)
+                            .placeholder {
+                                Circle().fill(Color(uiColor: .secondarySystemBackground).gradient)
+                            }
+                            .resizable()
+                            .frame(width: profileImageSize, height: profileImageSize)
+                            .scaledToFit()
+                            .clipShape(.circle)
+                        
+                        if let displayName = store.user.displayName {
+                            Text(displayName)
+                                .foregroundStyle(Color(uiColor: .label))
+                                .font(.caption)
+                                .italic()
+                        } else {
+                            Text("fill your profile")
+                                .foregroundStyle(Color(uiColor: .secondaryLabel))
+                                .font(.caption)
+                                .italic()
+                        }
+                    }
+                }
+
                 if historyStore.historyGrassData.isEmpty == false {
                     GrassView(datas: historyStore.historyGrassData, count: 17)
-                        .onTapGesture {
-                            dependency.tapGrass()
-                        }
                 }
                 
                 Section {
