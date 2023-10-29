@@ -243,7 +243,7 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
         }
     }
     
-    func tapGrass() {
+    func tapProfile() {
         paths.append(.setting)
     }
 }
