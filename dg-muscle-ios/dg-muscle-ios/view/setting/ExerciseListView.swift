@@ -31,10 +31,31 @@ struct ExerciseListView: View {
         Form {
             Section {
                 ForEach(exercises) { exercise in
-                    Text(exercise.name)
-                        .onTapGesture {
-                            dependency.tap(exercise: exercise)
+                    
+                    Button {
+                        dependency.tap(exercise: exercise)
+                    } label: {
+                        HStack {
+                            Text(exercise.name)
+                                .foregroundStyle(Color(uiColor: .label))
+                            Spacer()
+                            
+                            if exercise.favorite {
+                                Image(systemName: "star.fill")
+                                    .foregroundStyle(Color(uiColor: .systemBackground))
+                                    .font(.caption2)
+                                    .padding(4)
+                                    .background {
+                                        Circle().fill(.pink.opacity(0.5))
+                                    }
+                            } else {
+                                Image(systemName: "star")
+                                    .foregroundStyle(.pink)
+                                    .font(.caption2)
+                                    .padding(4)
+                            }
                         }
+                    }
                 }
                 .onDelete { indexSet in
                     exercises.remove(atOffsets: indexSet)
