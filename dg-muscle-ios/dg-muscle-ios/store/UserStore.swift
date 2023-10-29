@@ -32,7 +32,10 @@ final class UserStore: ObservableObject {
         }
         
         bind()
-        setUserCache()
+        
+        Task {
+            await setUserCache()
+        }
     }
     
     func updateUser() {
@@ -101,6 +104,7 @@ final class UserStore: ObservableObject {
         }
     }
     
+    @MainActor
     private func setUserCache() {
         Task {
             let userCache: UserCache = try FileManagerHelper.load(UserCache.self, fromFile: .user)
