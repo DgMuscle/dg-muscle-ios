@@ -14,6 +14,7 @@ struct ChartView: View {
     @Binding var markType: MarkType
     
     let valueName: String
+    let additionalMax: Double
     
     var body: some View {
         let max = datas.max(by: { $0.value < $1.value })?.value ?? 0
@@ -65,7 +66,7 @@ struct ChartView: View {
                     
                 }
             }
-            .chartYScale(domain: 0...(max + 100))
+            .chartYScale(domain: 0...(max + additionalMax))
             .chartOverlay(content: { proxy in
                 GeometryReader { innerProxy in
                     Rectangle()
