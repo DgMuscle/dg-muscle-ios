@@ -20,35 +20,44 @@ struct SettingView: View {
     
     var body: some View {
         Form {
+            
             Section("profile") {
-                HStack {
-                    KFImage(userStore.photoURL)
-                        .placeholder {
-                            Circle().fill(Color(uiColor: .secondarySystemBackground).gradient)
-                        }
-                        .resizable()
-                        .frame(width: profileImageSize, height: profileImageSize)
-                        .scaledToFit()
-                        .clipShape(.circle)
+                Button {
+                    dependency.tapProfileSection()
+                } label: {
                     
-                    if let displayName = userStore.displayName {
-                        Text(displayName)
-                    } else {
-                        Text("display name")
-                            .italic()
-                            .foregroundStyle(Color(uiColor: .secondaryLabel))
+                    HStack {
+                        KFImage(userStore.photoURL)
+                            .placeholder {
+                                Circle().fill(Color(uiColor: .secondarySystemBackground).gradient)
+                            }
+                            .resizable()
+                            .frame(width: profileImageSize, height: profileImageSize)
+                            .scaledToFit()
+                            .clipShape(.circle)
+                        
+                        if let displayName = userStore.displayName {
+                            Text(displayName)
+                                .foregroundStyle(Color(uiColor: .label))
+                        } else {
+                            Text("display name")
+                                .italic()
+                                .foregroundStyle(Color(uiColor: .secondaryLabel))
+                        }
                     }
                 }
             }
-            .onTapGesture {
-                dependency.tapProfileSection()
-            }
             
             Section("health") {
-                Label("exercise", systemImage: "heart")
-                    .onTapGesture {
-                        dependency.tapExercise()
+                Button {
+                    dependency.tapExercise()
+                } label: {
+                    
+                    HStack {
+                        Image(systemName: "heart").foregroundStyle(.pink)
+                        Text("exercise").foregroundStyle(Color(uiColor: .label))
                     }
+                }
             }
         }
     }
