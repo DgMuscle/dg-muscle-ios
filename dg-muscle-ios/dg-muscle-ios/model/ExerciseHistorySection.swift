@@ -26,25 +26,4 @@ struct ExerciseHistorySection: Identifiable {
     var volume: Double {
         histories.map({ $0.volume }).reduce(0.0, { $0 + $1 })
     }
-    
-    var volumeByPart: [String: Double] {
-        
-        var volumeByPart: [String: Double] = [:]
-        
-        histories.forEach { history in
-            history.records.forEach { record in
-                if let exercise = store.exercise.exercises.first(where: { $0.id == record.exerciseId }) {
-                    exercise.parts.forEach { part in
-                        if volumeByPart[part.rawValue] != nil {
-                            volumeByPart[part.rawValue]? += record.volume
-                        } else {
-                            volumeByPart[part.rawValue] = record.volume
-                        }
-                    }
-                }
-            }
-        }
-        
-        return volumeByPart
-    }
 }

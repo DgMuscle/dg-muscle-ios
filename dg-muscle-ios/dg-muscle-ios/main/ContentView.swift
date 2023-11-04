@@ -89,6 +89,10 @@ struct ContentView: View {
                             SelectExerciseView(dependency: DependencyInjection.shared.selectExercise(paths: $paths))
                         case .setting:
                             SettingView(dependency: DependencyInjection.shared.setting(paths: $paths))
+                        case .bodyProfileHistory:
+                            if let profile = userStore.profile {
+                                BodyProfileHistoryView(profile: profile)
+                            }
                         }
                     }
                 }
@@ -131,6 +135,7 @@ extension ContentView {
         case recordSets(Record, String)
         case selectExercise
         case setting
+        case bodyProfileHistory
         
         func hash(into hasher: inout Hasher) {
             switch self {
@@ -140,7 +145,7 @@ extension ContentView {
                 hasher.combine(value)
             case .recordSets(let value, _):
                 hasher.combine(value)
-            case .exerciseForm, .setForm, .bodyProfile, .exerciseList, .selectExercise, .setting: break
+            case .exerciseForm, .setForm, .bodyProfile, .exerciseList, .selectExercise, .setting, .bodyProfileHistory: break
             }
         }
     }

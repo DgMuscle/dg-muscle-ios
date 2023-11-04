@@ -64,11 +64,26 @@ struct MonthlyChartView: View {
                             Spacer()
                         }
                         
-                        ChartView(
-                            datas: ChartView.generateDataBasedOnExercise(from: histories, exerciseId: exercise.id, length: 7),
-                            markType: $markType
+                        HStack {
+                            ForEach(exercise.parts, id: \.self) { part in
+                                Text(part.rawValue)
+                                    .foregroundStyle(.white)
+                                    .font(.caption2)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 8)
+                                    .background {
+                                        Capsule().fill(Color.blue).opacity(0.5)
+                                    }
+                            }
+                            Spacer()
+                        }
+                        
+                        ChartView(datas: ChartView.generateDataBasedOnExercise(from: histories, exerciseId: exercise.id, length: 7),
+                                  markType: $markType,
+                                  valueName: "volume",
+                                  additionalMax: 1500
                         )
-                        .frame(height: 250)
+                        .frame(height: 235)
                         
                         Spacer(minLength: 50)
                     }

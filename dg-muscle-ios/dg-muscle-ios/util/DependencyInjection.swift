@@ -246,6 +246,14 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
     func tapProfile() {
         paths.append(.setting)
     }
+    
+    func tapGrass(histories: [ExerciseHistory], volumeByPart: [String : Double]) {
+        monthlyChartViewIngredient.exerciseHistories = histories
+        monthlyChartViewIngredient.volumeBasedOnExercise = volumeByPart
+        withAnimation {
+            monthlyChartViewIngredient.showing = true
+        }
+    }
 }
 
 struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
@@ -338,6 +346,10 @@ struct BodyProfileViewDependencyImpl: BodyProfileViewDependency {
         withAnimation {
             isShowingProfilePhotoPicker = true
         }
+    }
+    
+    func tapProfileHistory() {
+        paths.append(.bodyProfileHistory)
     }
 }
 

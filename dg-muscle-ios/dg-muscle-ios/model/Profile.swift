@@ -20,5 +20,11 @@ extension Profile {
         let height: Double
         let weight: Double
         let createdAt: String
+        
+        var date: Date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyyMMdd"
+            return dateFormatter.date(from: createdAt) ?? Date()
+        }
     }
 }

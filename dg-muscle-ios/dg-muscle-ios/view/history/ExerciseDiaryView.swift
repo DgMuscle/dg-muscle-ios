@@ -15,6 +15,7 @@ protocol ExerciseDiaryDependency {
     func delete(data: ExerciseHistory)
     func tapChart(histories: [ExerciseHistory], volumeByPart: [String: Double])
     func tapProfile()
+    func tapGrass(histories: [ExerciseHistory], volumeByPart: [String: Double])
 }
 
 struct ExerciseDiaryView: View {
@@ -22,8 +23,9 @@ struct ExerciseDiaryView: View {
     let dependency: ExerciseDiaryDependency
     private let profileImageSize: CGFloat = 30
     
-    @StateObject var historyStore = store.history
     @State var addFloatingButtonVisible = false
+    @StateObject var historyStore = store.history
+    @StateObject var userStore = store.user
     
     var body: some View {
         ZStack {
@@ -32,7 +34,7 @@ struct ExerciseDiaryView: View {
                     dependency.tapProfile()
                 } label: {
                     HStack {
-                        KFImage(store.user.photoURL)
+                        KFImage(userStore.photoURL)
                             .placeholder {
                                 Circle().fill(Color(uiColor: .secondarySystemBackground).gradient)
                             }
@@ -41,7 +43,7 @@ struct ExerciseDiaryView: View {
                             .scaledToFit()
                             .clipShape(.circle)
                         
-                        if let displayName = store.user.displayName {
+                        if let displayName = userStore.displayName {
                             Text(displayName)
                                 .foregroundStyle(Color(uiColor: .label))
                                 .font(.caption)
@@ -57,6 +59,9 @@ struct ExerciseDiaryView: View {
 
                 if historyStore.historyGrassData.isEmpty == false {
                     GrassView(datas: historyStore.historyGrassData, count: 17)
+                        .onTapGesture {
+                            dependency.tapGrass(histories: historyStore.histories, volumeByPart: historyStore.histories.volumeByPart())
+                        }
                 }
                 
                 Section {
@@ -94,7 +99,7 @@ struct ExerciseDiaryView: View {
                                 .foregroundStyle(Color(uiColor: .label))
                             }
                             .onAppear {
-                                if history == store.history.histories.last {
+                                if history == historyStore.histories.last {
                                     dependency.scrollBottom()
                                 }
                             }
@@ -108,7 +113,7 @@ struct ExerciseDiaryView: View {
                         Text(section.header)
                     } footer: {
                         VStack {
-                            let volumeByPart = section.volumeByPart
+                            let volumeByPart = section.histories.volumeByPart()
                             if volumeByPart.isEmpty == false {
                                 let datas: [PieChartView.Data] = volumeByPart.map({ .init(name: $0.key, value: $0.value) })
                                 PieChartView(datas: datas)
