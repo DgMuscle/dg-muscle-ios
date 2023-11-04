@@ -13,8 +13,10 @@ struct ChartView: View {
     @State var selectedData: Data?
     @Binding var markType: MarkType
     
+    let valueName: String
+    
     var body: some View {
-        let max = datas.max(by: { $0.volume < $1.volume })?.volume ?? 0
+        let max = datas.max(by: { $0.value < $1.value })?.value ?? 0
         
         VStack {
             Chart(datas) { data in
@@ -22,7 +24,7 @@ struct ChartView: View {
                 case .bar:
                     BarMark(
                         x: .value("day", data.day),
-                        y: .value("volume", data.animate ? data.volume : 0)
+                        y: .value(valueName, data.animate ? data.value : 0)
                     )
                     .foregroundStyle(Color(.tintColor).gradient)
                     
@@ -31,11 +33,11 @@ struct ChartView: View {
                             .lineStyle(.init(lineWidth: 2, miterLimit: 2, dash: [2], dashPhase: 5))
                             .annotation {
                                 VStack(alignment: .leading) {
-                                    Text("volume")
+                                    Text(valueName)
                                         .font(.caption2)
                                         .foregroundStyle(Color(uiColor: .secondaryLabel))
                                     
-                                    Text("\(Int(selectedData.volume))").font(.caption.bold())
+                                    Text("\(Int(selectedData.value))").font(.caption.bold())
                                 }
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 4)
@@ -49,21 +51,21 @@ struct ChartView: View {
                 case .line:
                     LineMark(
                         x: .value("day", data.day),
-                        y: .value("volume", data.animate ? data.volume : 0)
+                        y: .value(valueName, data.animate ? data.value : 0)
                     )
                     .foregroundStyle(Color(.tintColor).gradient)
                     .interpolationMethod(.catmullRom)
                     
                     AreaMark(
                         x: .value("day", data.day),
-                        y: .value("volume", data.animate ? data.volume : 0)
+                        y: .value(valueName, data.animate ? data.value : 0)
                     )
                     .foregroundStyle(Color(.tintColor).opacity(0.1).gradient)
                     .interpolationMethod(.catmullRom)
                     
                 }
             }
-            .chartYScale(domain: 0...(max + 1500))
+            .chartYScale(domain: 0...(max + 100))
             .chartOverlay(content: { proxy in
                 GeometryReader { innerProxy in
                     Rectangle()
@@ -89,15 +91,6 @@ struct ChartView: View {
                         )
                 }
             })
-            
-            HStack {
-                let recentVolume = Int(datas.reduce(0, { $0 + $1.volume }))
-                Text("recent volume: \(recentVolume)")
-                    .foregroundStyle(Color(uiColor: .secondaryLabel))
-                    .font(.caption2)
-                    .italic()
-                Spacer()
-            }
         }
         .onAppear {
             animateGraph()
@@ -126,7 +119,7 @@ struct ChartView: View {
             }
         }
         
-        return dateVolumeDictionary.map({ .init(date: $0.key, volume: $0.value) }).sorted(by: { $0.date < $1.date }).suffix(length).map({ $0 })
+        return dateVolumeDictionary.map({ .init(date: $0.key, value: $0.value, valueName: "volume") }).sorted(by: { $0.date < $1.date }).suffix(length).map({ $0 })
     }
     
     static func generateDataBasedOnPart(from histories: [ExerciseHistory], part: Exercise.Part, length: Int) -> [Data] {
@@ -148,7 +141,7 @@ struct ChartView: View {
             }
         }
         
-        return dateVolumeDictionary.map({ .init(date: $0.key, volume: $0.value) }).sorted(by: { $0.date < $1.date }).suffix(length).map({ $0 })
+        return dateVolumeDictionary.map({ .init(date: $0.key, value: $0.value, valueName: "volume") }).sorted(by: { $0.date < $1.date }).suffix(length).map({ $0 })
     }
     
     private func animateGraph() {
@@ -167,7 +160,8 @@ extension ChartView {
     struct Data: Identifiable, Equatable {
         let id = UUID().uuidString
         let date: Date
-        let volume: Double
+        let value: Double
+        let valueName: String
         var animate = false
         var day: String {
             let dateFormatter = DateFormatter()

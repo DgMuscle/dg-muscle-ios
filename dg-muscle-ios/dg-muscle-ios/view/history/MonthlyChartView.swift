@@ -66,7 +66,8 @@ struct MonthlyChartView: View {
                         
                         ChartView(
                             datas: ChartView.generateDataBasedOnExercise(from: histories, exerciseId: exercise.id, length: 7),
-                            markType: $markType
+                            markType: $markType,
+                            valueName: "volume"
                         )
                         .frame(height: 250)
                         
