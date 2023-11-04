@@ -347,6 +347,10 @@ struct BodyProfileViewDependencyImpl: BodyProfileViewDependency {
             isShowingProfilePhotoPicker = true
         }
     }
+    
+    func tapProfileHistory() {
+        print("body profile history")
+    }
 }
 
 struct SettingViewDependencyImpl: SettingViewDependency {
