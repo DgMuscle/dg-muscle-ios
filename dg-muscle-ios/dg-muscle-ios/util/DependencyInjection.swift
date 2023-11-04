@@ -349,7 +349,7 @@ struct BodyProfileViewDependencyImpl: BodyProfileViewDependency {
     }
     
     func tapProfileHistory() {
-        print("body profile history")
+        paths.append(.bodyProfileHistory)
     }
 }
 

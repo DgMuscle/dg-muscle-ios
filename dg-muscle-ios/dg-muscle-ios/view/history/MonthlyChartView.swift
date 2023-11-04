@@ -78,11 +78,10 @@ struct MonthlyChartView: View {
                             Spacer()
                         }
                         
-                        ChartView(
-                            datas: ChartView.generateDataBasedOnExercise(from: histories, exerciseId: exercise.id, length: 7),
-                            markType: $markType,
-                            valueName: "volume",
-                            additionalMax: 1500
+                        ChartView(datas: ChartView.generateDataBasedOnExercise(from: histories, exerciseId: exercise.id, length: 7),
+                                  markType: $markType,
+                                  valueName: "volume",
+                                  additionalMax: 1500
                         )
                         .frame(height: 235)
                         
