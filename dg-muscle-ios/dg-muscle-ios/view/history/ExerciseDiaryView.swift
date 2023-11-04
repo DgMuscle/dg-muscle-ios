@@ -25,6 +25,7 @@ struct ExerciseDiaryView: View {
     
     @State var addFloatingButtonVisible = false
     @StateObject var historyStore = store.history
+    @StateObject var userStore = store.user
     
     var body: some View {
         ZStack {
@@ -33,7 +34,7 @@ struct ExerciseDiaryView: View {
                     dependency.tapProfile()
                 } label: {
                     HStack {
-                        KFImage(store.user.photoURL)
+                        KFImage(userStore.photoURL)
                             .placeholder {
                                 Circle().fill(Color(uiColor: .secondarySystemBackground).gradient)
                             }
@@ -42,7 +43,7 @@ struct ExerciseDiaryView: View {
                             .scaledToFit()
                             .clipShape(.circle)
                         
-                        if let displayName = store.user.displayName {
+                        if let displayName = userStore.displayName {
                             Text(displayName)
                                 .foregroundStyle(Color(uiColor: .label))
                                 .font(.caption)

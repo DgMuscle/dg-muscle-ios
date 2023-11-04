@@ -20,6 +20,8 @@ struct WithdrawalConfirmView: View {
     
     @Binding var isPresented: Bool
     
+    @StateObject var userStore = store.user
+    
     let dependency: WithdrawalConfirmDependency
     
     var body: some View {
@@ -79,7 +81,7 @@ struct WithdrawalConfirmView: View {
     }
     
     private func checkDisplayName() {
-        let displayName = store.user.displayName ?? ""
+        let displayName = userStore.displayName ?? ""
         
         if text != displayName {
             withAnimation {
