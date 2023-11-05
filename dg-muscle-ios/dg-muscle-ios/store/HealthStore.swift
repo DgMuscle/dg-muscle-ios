@@ -13,16 +13,20 @@ final class HealthStore: ObservableObject {
     static let shared = HealthStore()
     
     private let store = HKHealthStore()
-    private let read: HKWorkoutType = HKObjectType.workoutType()
-    private let sex = HKCharacteristicType(.biologicalSex)
-    private let birth = HKCharacteristicType(.dateOfBirth)
-    private let fat = HKQuantityType(.bodyFatPercentage)
-    private let height = HKQuantityType(.height)
-    private let bodyMass = HKQuantityType(.bodyMass)
+    private let workoutType = HKObjectType.workoutType()
+    private let sexType = HKCharacteristicType(.biologicalSex)
+    private let birthType = HKCharacteristicType(.dateOfBirth)
+    private let bloodTypeType = HKCharacteristicType(.bloodType)
+    
+    private let heightType = HKQuantityType(.height)
+    private let bodyMassType = HKQuantityType(.bodyMass)
     
     @Published private(set) var workoutMetaDatas: [WorkoutMetaData] = []
     @Published private(set) var heights: [Height] = []
     @Published private(set) var bodyMasses: [BodyMass] = []
+    @Published private(set) var sex: HKBiologicalSex?
+    @Published private(set) var birthDateComponents: DateComponents?
+    @Published private(set) var bloodType: HKBloodType?
     
     private init() { }
     
@@ -30,12 +34,12 @@ final class HealthStore: ObservableObject {
         
         return try await withCheckedThrowingContinuation { continuation in
             store.requestAuthorization(toShare: nil, read: [
-                read,
-                sex,
-                birth,
-                fat,
-                height,
-                bodyMass
+                workoutType,
+                sexType,
+                birthType,
+                bloodTypeType,
+                heightType,
+                bodyMassType
             ]) { success, error in
                 if success {
                     continuation.resume()
@@ -53,17 +57,24 @@ final class HealthStore: ObservableObject {
             let heights = try await fetchHeight()
             let bodyMasses = try await fetchMass()
             
+            let sex = try store.biologicalSex()
+            let date = try store.dateOfBirthComponents()
+            let bloodType = try store.bloodType()
+            
             DispatchQueue.main.async {
                 self.workoutMetaDatas = metadatas
                 self.heights = heights
                 self.bodyMasses = bodyMasses
+                self.sex = sex.biologicalSex
+                self.birthDateComponents = date
+                self.bloodType = bloodType.bloodType
             }
         }
     }
     
     private func fetchHKWorks() async throws -> [HKWorkout] {
         return try await withCheckedThrowingContinuation { continuation in
-            let query = HKSampleQuery(sampleType: read,
+            let query = HKSampleQuery(sampleType: workoutType,
                                       predicate: nil,
                                       limit: 0,
                                       sortDescriptors: []) { (_, results, error) -> Void in
@@ -94,7 +105,7 @@ final class HealthStore: ObservableObject {
     }
     
     private func fetchMass() async throws -> [BodyMass] {
-        let samples = try await fetchSamples(type: bodyMass)
+        let samples = try await fetchSamples(type: bodyMassType)
         let quantitySamples = samples.compactMap({ $0 as? HKQuantitySample })
         
         return quantitySamples.map({
@@ -105,7 +116,7 @@ final class HealthStore: ObservableObject {
     }
     
     private func fetchHeight() async throws -> [Height] {
-        let samples = try await fetchSamples(type: height)
+        let samples = try await fetchSamples(type: heightType)
         let quantitySamples = samples.compactMap({ $0 as? HKQuantitySample })
         
         return quantitySamples.map({
