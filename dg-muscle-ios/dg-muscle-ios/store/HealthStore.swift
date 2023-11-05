@@ -14,6 +14,11 @@ final class HealthStore: ObservableObject {
     
     private let store = HKHealthStore()
     private let read: HKWorkoutType = HKObjectType.workoutType()
+    private let sex = HKCharacteristicType(.biologicalSex)
+    private let birth = HKCharacteristicType(.dateOfBirth)
+    private let fat = HKQuantityType(.bodyFatPercentage)
+    private let height = HKQuantityType(.height)
+    private let bodyMass = HKQuantityType(.bodyMass)
     
     @Published private(set) var workoutMetaDatas: [WorkoutMetaData] = []
     
@@ -22,7 +27,14 @@ final class HealthStore: ObservableObject {
     func requestAuthorization() async throws {
         
         return try await withCheckedThrowingContinuation { continuation in
-            store.requestAuthorization(toShare: nil, read: [read]) { success, error in
+            store.requestAuthorization(toShare: nil, read: [
+                read,
+                sex,
+                birth,
+                fat,
+                height,
+                bodyMass
+            ]) { success, error in
                 if success {
                     continuation.resume()
                 } else if let error {
@@ -41,6 +53,9 @@ final class HealthStore: ObservableObject {
                 self.workoutMetaDatas = metadatas
             }
         }
+        
+        fetchHeight()
+        fetchMass()
     }
     
     private func fetchHKWorks() async throws -> [HKWorkout] {
@@ -73,5 +88,30 @@ final class HealthStore: ObservableObject {
             
             return .init(duration: duration, kcalPerHourKg: kcalPerHourKg, startDate: startDate, endDate: endDate)
         })
+    }
+    
+    private func fetchMass() {
+        let query = HKSampleQuery(sampleType: bodyMass, predicate: nil, limit: 10, sortDescriptors: nil, resultsHandler: {(query, result, error)in
+            if let samples = result {
+                for sample in samples {
+                    let quantitySample = sample as! HKQuantitySample
+                    let mass = quantitySample.quantity.doubleValue(for: .init(from: "kg"))
+                    debugPrint("\(mass)")
+                }
+            }
+        })
+        store.execute(query)
+    }
+    
+    private func fetchHeight() {
+        let query = HKSampleQuery(sampleType: height, predicate: nil, limit: 10, sortDescriptors: nil, resultsHandler: {(query, result, error)in
+            if let samples = result {
+                for sample in samples {
+                    let quantitySample = sample as! HKQuantitySample
+                    let height = quantitySample.quantity.doubleValue(for: .meterUnit(with:.centi))
+                }
+            }
+        })
+        store.execute(query)
     }
 }
