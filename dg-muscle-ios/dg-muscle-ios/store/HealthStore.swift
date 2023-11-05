@@ -21,6 +21,8 @@ final class HealthStore: ObservableObject {
     private let bodyMass = HKQuantityType(.bodyMass)
     
     @Published private(set) var workoutMetaDatas: [WorkoutMetaData] = []
+    @Published private(set) var heights: [Height] = []
+    @Published private(set) var bodyMasses: [BodyMass] = []
     
     private init() { }
     
@@ -48,14 +50,15 @@ final class HealthStore: ObservableObject {
         Task {
             let workouts = try await fetchHKWorks()
             let metadatas = generateWorkoutMetaDatas(workouts: workouts)
+            let heights = try await fetchHeight()
+            let bodyMasses = try await fetchMass()
             
             DispatchQueue.main.async {
                 self.workoutMetaDatas = metadatas
+                self.heights = heights
+                self.bodyMasses = bodyMasses
             }
         }
-        
-        fetchHeight()
-        fetchMass()
     }
     
     private func fetchHKWorks() async throws -> [HKWorkout] {
@@ -90,28 +93,38 @@ final class HealthStore: ObservableObject {
         })
     }
     
-    private func fetchMass() {
-        let query = HKSampleQuery(sampleType: bodyMass, predicate: nil, limit: 10, sortDescriptors: nil, resultsHandler: {(query, result, error)in
-            if let samples = result {
-                for sample in samples {
-                    let quantitySample = sample as! HKQuantitySample
-                    let mass = quantitySample.quantity.doubleValue(for: .init(from: "kg"))
-                    debugPrint("\(mass)")
-                }
-            }
+    private func fetchMass() async throws -> [BodyMass] {
+        let samples = try await fetchSamples(type: bodyMass)
+        let quantitySamples = samples.compactMap({ $0 as? HKQuantitySample })
+        
+        return quantitySamples.map({
+            BodyMass(unit: .kg,
+                     value: $0.quantity.doubleValue(for: .init(from: "kg")),
+                     startDate: $0.startDate)
         })
-        store.execute(query)
     }
     
-    private func fetchHeight() {
-        let query = HKSampleQuery(sampleType: height, predicate: nil, limit: 10, sortDescriptors: nil, resultsHandler: {(query, result, error)in
-            if let samples = result {
-                for sample in samples {
-                    let quantitySample = sample as! HKQuantitySample
-                    let height = quantitySample.quantity.doubleValue(for: .meterUnit(with:.centi))
-                }
-            }
+    private func fetchHeight() async throws -> [Height] {
+        let samples = try await fetchSamples(type: height)
+        let quantitySamples = samples.compactMap({ $0 as? HKQuantitySample })
+        
+        return quantitySamples.map({
+            Height(unit: .centi,
+                   value: $0.quantity.doubleValue(for: .meterUnit(with: .centi)),
+                   startDate: $0.startDate)
         })
-        store.execute(query)
+    }
+    
+    private func fetchSamples(type: HKSampleType) async throws -> [HKSample] {
+        return try await withCheckedThrowingContinuation { continuation in
+            let query = HKSampleQuery(sampleType: type, predicate: nil, limit: 10, sortDescriptors: nil, resultsHandler: {(query, result, error)in
+                if let error {
+                    continuation.resume(throwing: error)
+                } else if let result {
+                    continuation.resume(returning: result)
+                }
+            })
+            store.execute(query)
+        }
     }
 }

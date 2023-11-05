@@ -34,6 +34,8 @@
 		707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC62ABF1CAC008ADECE /* UserStore.swift */; };
 		707B8FC92ABF1D37008ADECE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC82ABF1D37008ADECE /* Store.swift */; };
 		707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
+		707BBF182AF7D1D800A8ABD2 /* Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707BBF172AF7D1D800A8ABD2 /* Height.swift */; };
+		707BBF1A2AF7D39700A8ABD2 /* BodyMass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707BBF192AF7D39700A8ABD2 /* BodyMass.swift */; };
 		7083E6B42ABF065F007D43CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */; };
 		7083E6B72ABF06B7007D43CE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6B62ABF06B7007D43CE /* FirebaseAnalytics */; };
 		7083E6B92ABF06B7007D43CE /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6B82ABF06B7007D43CE /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -130,6 +132,8 @@
 		707B8FC62ABF1CAC008ADECE /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		707B8FC82ABF1D37008ADECE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		707B8FD22ABF207F008ADECE /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
+		707BBF172AF7D1D800A8ABD2 /* Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Height.swift; sourceTree = "<group>"; };
+		707BBF192AF7D39700A8ABD2 /* BodyMass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMass.swift; sourceTree = "<group>"; };
 		7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7083E6C22ABF0C62007D43CE /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthCoordinator.swift; sourceTree = "<group>"; };
@@ -378,10 +382,12 @@
 				70F838A32AC7FE96009725EF /* ExerciseHistorySection.swift */,
 				7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */,
 				70F838A52AC7FEA8009725EF /* ExerciseSet.swift */,
+				707BBF172AF7D1D800A8ABD2 /* Height.swift */,
 				701CC4AD2AD2720200852E2E /* Profile.swift */,
 				70F838A72AC7FEB6009725EF /* Record.swift */,
 				701042112AEE483400FAD52C /* UserCache.swift */,
 				70226B872AF7765400379ED3 /* WorkoutMetaData.swift */,
+				707BBF192AF7D39700A8ABD2 /* BodyMass.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -532,6 +538,7 @@
 				70C144DA2AC82866007F0540 /* ExerciseRepository.swift in Sources */,
 				701CC4AE2AD2720200852E2E /* Profile.swift in Sources */,
 				70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */,
+				707BBF1A2AF7D39700A8ABD2 /* BodyMass.swift in Sources */,
 				700BB60B2AE513AF008B8132 /* MonthlyChartView.swift in Sources */,
 				70D17E0D2AC5D70B00B86E37 /* WithdrawalConfirmView.swift in Sources */,
 				70F838AD2AC7FFB5009725EF /* ExerciseDiaryView.swift in Sources */,
@@ -561,6 +568,7 @@
 				701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */,
 				70E556022ABF010C006D4DA0 /* ContentView.swift in Sources */,
 				70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */,
+				707BBF182AF7D1D800A8ABD2 /* Height.swift in Sources */,
 				70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */,
 				701CC4AC2AD271CF00852E2E /* UserRepository.swift in Sources */,
 				70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */,
