@@ -11,6 +11,7 @@ final class Store {
     let exercise = ExerciseStore.shared
     let history = HistoryStore.shared
     let user = UserStore.shared
+    let health = HealthStore.shared
     
     fileprivate init() { }
 }
