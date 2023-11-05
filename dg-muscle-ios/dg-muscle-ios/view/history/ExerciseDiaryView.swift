@@ -26,6 +26,7 @@ struct ExerciseDiaryView: View {
     @State var addFloatingButtonVisible = false
     @StateObject var historyStore = store.history
     @StateObject var userStore = store.user
+    @StateObject var healthStore = store.health
     
     var body: some View {
         ZStack {
@@ -95,6 +96,25 @@ struct ExerciseDiaryView: View {
                                     Text(getParts(from: history.records)).frame(maxWidth: .infinity, alignment: .leading)
                                         .foregroundStyle(Color(uiColor: .secondaryLabel)).italic()
                                         .font(.caption2)
+                                    
+                                    if let metaData = healthStore.workoutMetaDatas.first(where: { history.date == $0.startDateString }) {
+                                        
+                                        HStack {
+                                            Text("duration: \(timeStringFor(seconds: Int(metaData.duration)))")
+                                                .foregroundStyle(Color(uiColor: .secondaryLabel)).italic()
+                                                .font(.caption2)
+                                            Spacer()
+                                        }
+                                        
+                                        if let kcalPerHourKg = metaData.kcalPerHourKg {
+                                            HStack {
+                                                Text("intensity: \(Int(kcalPerHourKg))")
+                                                    .foregroundStyle(Color(uiColor: .secondaryLabel)).italic()
+                                                    .font(.caption2)
+                                                Spacer()
+                                            }
+                                        }
+                                    }
                                 }
                                 .foregroundStyle(Color(uiColor: .label))
                             }
@@ -160,4 +180,23 @@ struct ExerciseDiaryView: View {
             return parts.map({ $0.rawValue }).joined(separator: ", ")
         }
     }
+    
+    func timeStringFor(seconds: Int) -> String {
+        let hours = seconds / 3600
+        let minutes = (seconds % 3600) / 60
+        let remainingSeconds = (seconds % 3600) % 60
+        
+        var timeString = ""
+        if hours > 0 {
+            timeString += "\(hours)h "
+        }
+        if minutes > 0 {
+            timeString += "\(minutes)m "
+        }
+        if remainingSeconds > 0 || (hours == 0 && minutes == 0) {
+            timeString += "\(remainingSeconds)s"
+        }
+        return timeString.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
 }
