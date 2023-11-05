@@ -15,6 +15,7 @@
 		701CC4AC2AD271CF00852E2E /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4AB2AD271CF00852E2E /* UserRepository.swift */; };
 		701CC4AE2AD2720200852E2E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4AD2AD2720200852E2E /* Profile.swift */; };
 		701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4C52AD2875700852E2E /* FileManagerHelper.swift */; };
+		70226B882AF7765400379ED3 /* WorkoutMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70226B872AF7765400379ED3 /* WorkoutMetaData.swift */; };
 		70240BE72ADC1FF800B87A79 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70240BE62ADC1FF800B87A79 /* WidgetKit.framework */; };
 		70240BE92ADC1FF800B87A79 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70240BE82ADC1FF800B87A79 /* SwiftUI.framework */; };
 		70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70240BEB2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift */; };
@@ -33,6 +34,8 @@
 		707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC62ABF1CAC008ADECE /* UserStore.swift */; };
 		707B8FC92ABF1D37008ADECE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC82ABF1D37008ADECE /* Store.swift */; };
 		707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
+		707BBF182AF7D1D800A8ABD2 /* Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707BBF172AF7D1D800A8ABD2 /* Height.swift */; };
+		707BBF1A2AF7D39700A8ABD2 /* BodyMass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707BBF192AF7D39700A8ABD2 /* BodyMass.swift */; };
 		7083E6B42ABF065F007D43CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */; };
 		7083E6B72ABF06B7007D43CE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6B62ABF06B7007D43CE /* FirebaseAnalytics */; };
 		7083E6B92ABF06B7007D43CE /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6B82ABF06B7007D43CE /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -43,6 +46,7 @@
 		7083E6C62ABF0EC9007D43CE /* AppleAuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */; };
 		7083E6C92ABF0F45007D43CE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6C82ABF0F45007D43CE /* FirebaseAuth */; };
 		7084B1862AC5B8F50011A91B /* SimpleTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7084B1852AC5B8F50011A91B /* SimpleTextInputView.swift */; };
+		708508C42AF626990035BB9D /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708508C32AF626990035BB9D /* HealthStore.swift */; };
 		70884B912ADBB9AA001FA252 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884B902ADBB9AA001FA252 /* PieChartView.swift */; };
 		709B540D2AC999D000C282E9 /* ExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709B540C2AC999D000C282E9 /* ExerciseFormView.swift */; };
 		70A74E8A2AC8433F00EA7A35 /* ExerciseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */; };
@@ -110,6 +114,7 @@
 		701CC4AB2AD271CF00852E2E /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		701CC4AD2AD2720200852E2E /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		701CC4C52AD2875700852E2E /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
+		70226B872AF7765400379ED3 /* WorkoutMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMetaData.swift; sourceTree = "<group>"; };
 		70240BE52ADC1FF800B87A79 /* dg-muscle-ios-widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "dg-muscle-ios-widgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70240BE62ADC1FF800B87A79 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		70240BE82ADC1FF800B87A79 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -127,10 +132,14 @@
 		707B8FC62ABF1CAC008ADECE /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		707B8FC82ABF1D37008ADECE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		707B8FD22ABF207F008ADECE /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
+		707BBF172AF7D1D800A8ABD2 /* Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Height.swift; sourceTree = "<group>"; };
+		707BBF192AF7D39700A8ABD2 /* BodyMass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMass.swift; sourceTree = "<group>"; };
 		7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7083E6C22ABF0C62007D43CE /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthCoordinator.swift; sourceTree = "<group>"; };
 		7084B1852AC5B8F50011A91B /* SimpleTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTextInputView.swift; sourceTree = "<group>"; };
+		708508C22AF625EE0035BB9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		708508C32AF626990035BB9D /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		70884B902ADBB9AA001FA252 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		709B540C2AC999D000C282E9 /* ExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormView.swift; sourceTree = "<group>"; };
 		70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStore.swift; sourceTree = "<group>"; };
@@ -212,9 +221,10 @@
 		707B8FC52ABF1C92008ADECE /* store */ = {
 			isa = PBXGroup;
 			children = (
-				707B8FC82ABF1D37008ADECE /* Store.swift */,
 				70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */,
+				708508C32AF626990035BB9D /* HealthStore.swift */,
 				70F838A92AC7FEE1009725EF /* HistoryStore.swift */,
+				707B8FC82ABF1D37008ADECE /* Store.swift */,
 				707B8FC62ABF1CAC008ADECE /* UserStore.swift */,
 			);
 			path = store;
@@ -340,6 +350,7 @@
 		70E555FE2ABF010C006D4DA0 /* dg-muscle-ios */ = {
 			isa = PBXGroup;
 			children = (
+				708508C22AF625EE0035BB9D /* Info.plist */,
 				70E556082ABF010D006D4DA0 /* dg_muscle_ios.entitlements */,
 				70D3418D2ACC07FD0010EAF9 /* extension */,
 				707B8FD02ABF1FD5008ADECE /* main */,
@@ -371,9 +382,12 @@
 				70F838A32AC7FE96009725EF /* ExerciseHistorySection.swift */,
 				7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */,
 				70F838A52AC7FEA8009725EF /* ExerciseSet.swift */,
+				707BBF172AF7D1D800A8ABD2 /* Height.swift */,
 				701CC4AD2AD2720200852E2E /* Profile.swift */,
 				70F838A72AC7FEB6009725EF /* Record.swift */,
 				701042112AEE483400FAD52C /* UserCache.swift */,
+				70226B872AF7765400379ED3 /* WorkoutMetaData.swift */,
+				707BBF192AF7D39700A8ABD2 /* BodyMass.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -524,6 +538,7 @@
 				70C144DA2AC82866007F0540 /* ExerciseRepository.swift in Sources */,
 				701CC4AE2AD2720200852E2E /* Profile.swift in Sources */,
 				70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */,
+				707BBF1A2AF7D39700A8ABD2 /* BodyMass.swift in Sources */,
 				700BB60B2AE513AF008B8132 /* MonthlyChartView.swift in Sources */,
 				70D17E0D2AC5D70B00B86E37 /* WithdrawalConfirmView.swift in Sources */,
 				70F838AD2AC7FFB5009725EF /* ExerciseDiaryView.swift in Sources */,
@@ -553,6 +568,7 @@
 				701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */,
 				70E556022ABF010C006D4DA0 /* ContentView.swift in Sources */,
 				70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */,
+				707BBF182AF7D1D800A8ABD2 /* Height.swift in Sources */,
 				70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */,
 				701CC4AC2AD271CF00852E2E /* UserRepository.swift in Sources */,
 				70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */,
@@ -562,6 +578,8 @@
 				7003E7C42AC86C2D00AFE1C2 /* RecordFormView.swift in Sources */,
 				70884B912ADBB9AA001FA252 /* PieChartView.swift in Sources */,
 				70F838AA2AC7FEE1009725EF /* HistoryStore.swift in Sources */,
+				708508C42AF626990035BB9D /* HealthStore.swift in Sources */,
+				70226B882AF7765400379ED3 /* WorkoutMetaData.swift in Sources */,
 				70FB87B52ACAAE9F00B6B432 /* SetFormView.swift in Sources */,
 				70D3418A2ACC03350010EAF9 /* ExerciseListView.swift in Sources */,
 				70B5080C2AC51D4300FC0540 /* PhotoPickerView.swift in Sources */,
@@ -777,8 +795,11 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "dg-muscle-ios/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = dgmuscle;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Need to use health data";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Need to fetch health data";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UILaunchStoryboardName = launchfile;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -811,8 +832,11 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "dg-muscle-ios/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = dgmuscle;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Need to use health data";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Need to fetch health data";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UILaunchStoryboardName = launchfile;
 				LD_RUNPATH_SEARCH_PATHS = (

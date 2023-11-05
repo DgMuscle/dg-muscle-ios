@@ -121,6 +121,18 @@ struct ContentView: View {
                 ErrorView(message: errorMessage ?? "unknown error", isShowing: $isShowingErrorView)
             }
         }
+        .onAppear {
+            Task {
+                do {
+                    try await store.health.requestAuthorization()
+                    store.health.fetch()
+                } catch {
+                    withAnimation {
+                        self.errorMessage = error.localizedDescription
+                    }
+                }
+            }
+        }
     }
 }
 
