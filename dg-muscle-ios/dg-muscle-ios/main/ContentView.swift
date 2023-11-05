@@ -123,12 +123,13 @@ struct ContentView: View {
         }
         .onAppear {
             Task {
-                if let error = await store.health.requestAuthorization() {
+                do {
+                    try await store.health.requestAuthorization()
+                    store.health.fetch()
+                } catch {
                     withAnimation {
                         self.errorMessage = error.localizedDescription
                     }
-                } else {
-                    store.health.fetch()
                 }
             }
         }

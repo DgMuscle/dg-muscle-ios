@@ -19,11 +19,15 @@ final class HealthStore: ObservableObject {
     
     private init() { }
     
-    func requestAuthorization() async -> Error? {
+    func requestAuthorization() async throws {
         
-        return await withCheckedContinuation { continuation in
+        return try await withCheckedThrowingContinuation { continuation in
             store.requestAuthorization(toShare: nil, read: [read]) { success, error in
-                continuation.resume(returning: error)
+                if success {
+                    continuation.resume()
+                } else if let error {
+                    continuation.resume(throwing: error)
+                }
             }
         }
     }
