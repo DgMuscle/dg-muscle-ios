@@ -52,11 +52,13 @@ final class HealthStore: ObservableObject {
     
     func fetch() {
         Task {
-            let workouts = try await fetchHKWorks()
-            let metadatas = generateWorkoutMetaDatas(workouts: workouts)
-            let heights = try await fetchHeight()
-            let bodyMasses = try await fetchMass()
+            async let workoutsAsync = fetchHKWorks()
+            async let heightsAsync = fetchHeight()
+            async let bodyMassesAsync = fetchMass()
             
+            let (workouts, heights, bodyMasses) = try await (workoutsAsync, heightsAsync, bodyMassesAsync)
+            
+            let metadatas = generateWorkoutMetaDatas(workouts: workouts)
             let sex = try store.biologicalSex()
             let date = try store.dateOfBirthComponents()
             let bloodType = try store.bloodType()
