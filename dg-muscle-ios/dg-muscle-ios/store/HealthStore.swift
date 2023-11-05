@@ -133,8 +133,8 @@ final class HealthStore: ObservableObject {
             let query = HKSampleQuery(sampleType: type, predicate: nil, limit: 10, sortDescriptors: nil, resultsHandler: {(query, result, error)in
                 if let error {
                     continuation.resume(throwing: error)
-                } else if let result {
-                    continuation.resume(returning: result)
+                } else {
+                    continuation.resume(returning: result ?? [])
                 }
             })
             store.execute(query)
