@@ -12,4 +12,10 @@ struct WorkoutMetaData {
     let kcalPerHourKg: Double?
     let startDate: Date
     let endDate: Date?
+    
+    var startDateString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        return dateFormatter.string(from: startDate)
+    }
 }

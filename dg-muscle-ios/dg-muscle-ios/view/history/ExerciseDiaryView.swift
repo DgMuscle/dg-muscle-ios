@@ -198,5 +198,4 @@ struct ExerciseDiaryView: View {
         }
         return timeString.trimmingCharacters(in: .whitespacesAndNewlines)
     }
-
 }
