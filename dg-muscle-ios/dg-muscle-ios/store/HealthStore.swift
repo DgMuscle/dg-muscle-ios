@@ -33,32 +33,45 @@ final class HealthStore: ObservableObject {
     }
     
     func fetch() {
-        let query = HKSampleQuery(sampleType: read,
-                                  predicate: nil,
-                                  limit: 0,
-                                  sortDescriptors: []) { (sampleQuery, results, error) -> Void in
-            
-            guard let results = results as? [HKWorkout] else { return }
-            
-            let workoutMetaDatas: [WorkoutMetaData] = results.filter({ $0.workoutActivityType.rawValue == 50 }).map({ workout in
-                let duration = workout.duration
-                let startDate = workout.startDate
-                let endDate = workout.endDate
-                var kcalPerHourKg: Double?
-                
-                if let averageMet = workout.metadata?[HKMetadataKeyAverageMETs] as? HKQuantity {
-                    kcalPerHourKg = averageMet.doubleValue(for: .init(from: "kcal/hr·kg"))
-                }
-                
-                return .init(duration: duration, kcalPerHourKg: kcalPerHourKg, startDate: startDate, endDate: endDate)
-            })
+        Task {
+            let workouts = try await fetchHKWorks()
+            let metadatas = generateWorkoutMetaDatas(workouts: workouts)
             
             DispatchQueue.main.async {
-                self.workoutMetaDatas = workoutMetaDatas
+                self.workoutMetaDatas = metadatas
             }
         }
-        store.execute(query)
     }
-
+    
+    private func fetchHKWorks() async throws -> [HKWorkout] {
+        return try await withCheckedThrowingContinuation { continuation in
+            let query = HKSampleQuery(sampleType: read,
+                                      predicate: nil,
+                                      limit: 0,
+                                      sortDescriptors: []) { (_, results, error) -> Void in
+                
+                if let error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume(returning: results as? [HKWorkout] ?? [])
+                }
+            }
+            store.execute(query)
+        }
+    }
+    
+    private func generateWorkoutMetaDatas(workouts: [HKWorkout]) -> [WorkoutMetaData] {
+        workouts.filter({ $0.workoutActivityType.rawValue == 50 }).map({ workout in
+            let duration = workout.duration
+            let startDate = workout.startDate
+            let endDate = workout.endDate
+            var kcalPerHourKg: Double?
+            
+            if let averageMet = workout.metadata?[HKMetadataKeyAverageMETs] as? HKQuantity {
+                kcalPerHourKg = averageMet.doubleValue(for: .init(from: "kcal/hr·kg"))
+            }
+            
+            return .init(duration: duration, kcalPerHourKg: kcalPerHourKg, startDate: startDate, endDate: endDate)
+        })
+    }
 }
-
