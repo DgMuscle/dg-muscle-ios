@@ -312,19 +312,16 @@ struct BodyProfileViewDependencyImpl: BodyProfileViewDependency {
     @Binding var errorMessage: String?
     @Binding var isShowingErrorView: Bool
     
-    func tapSave(displayName: String, height: Double, weight: Double) {
+    func tapSave(displayName: String) {
         Task {
             let _ = paths.popLast()
             guard let id = store.user.uid else { return }
             
-            var profile = Profile(id: id, photoURL: store.user.photoURL?.absoluteString, displayName: displayName, specs: store.user.profile?.specs ?? [], updatedAt: nil)
+            var profile = Profile(id: id, photoURL: store.user.photoURL?.absoluteString, displayName: displayName, updatedAt: nil)
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyyMMdd"
             let createdAt = dateFormatter.string(from: Date())
-            
-            profile.specs = profile.specs.filter({ $0.createdAt != createdAt })
-            profile.specs.append(.init(height: height, weight: weight, createdAt: createdAt))
             
             store.user.set(displayName: displayName, profile: profile)
             
@@ -348,8 +345,9 @@ struct BodyProfileViewDependencyImpl: BodyProfileViewDependency {
         }
     }
     
-    func tapProfileHistory() {
-        paths.append(.bodyProfileHistory)
+    func openHealthApp() {
+        guard let url = URL(string: "x-apple-health://") else { return }
+        UIApplication.shared.open(url)
     }
 }
 

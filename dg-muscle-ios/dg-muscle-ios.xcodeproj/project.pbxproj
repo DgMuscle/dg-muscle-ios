@@ -53,7 +53,6 @@
 		70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */; };
 		70A9B7412ACBCFC70061DAA3 /* BodyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A9B7402ACBCFC70061DAA3 /* BodyProfileView.swift */; };
 		70AC465F2ABFF82D00BFE46D /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AC465E2ABFF82D00BFE46D /* SettingView.swift */; };
-		70B4695D2AF5F31000C8D283 /* BodyProfileHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B4695C2AF5F31000C8D283 /* BodyProfileHistoryView.swift */; };
 		70B5080C2AC51D4300FC0540 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */; };
 		70B5080F2AC51FD900FC0540 /* DependencyInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */; };
 		70C144D32AC82558007F0540 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
@@ -146,7 +145,6 @@
 		70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormView.swift; sourceTree = "<group>"; };
 		70A9B7402ACBCFC70061DAA3 /* BodyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyProfileView.swift; sourceTree = "<group>"; };
 		70AC465E2ABFF82D00BFE46D /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		70B4695C2AF5F31000C8D283 /* BodyProfileHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyProfileHistoryView.swift; sourceTree = "<group>"; };
 		70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjection.swift; sourceTree = "<group>"; };
 		70C144D22AC82558007F0540 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 		70AC465D2ABFF81800BFE46D /* setting */ = {
 			isa = PBXGroup;
 			children = (
-				70B4695C2AF5F31000C8D283 /* BodyProfileHistoryView.swift */,
 				70A9B7402ACBCFC70061DAA3 /* BodyProfileView.swift */,
 				70D341892ACC03350010EAF9 /* ExerciseListView.swift */,
 				70AC465E2ABFF82D00BFE46D /* SettingView.swift */,
@@ -572,7 +569,6 @@
 				70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */,
 				701CC4AC2AD271CF00852E2E /* UserRepository.swift in Sources */,
 				70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */,
-				70B4695D2AF5F31000C8D283 /* BodyProfileHistoryView.swift in Sources */,
 				70F838A42AC7FE96009725EF /* ExerciseHistorySection.swift in Sources */,
 				70D3418F2ACC081E0010EAF9 /* Extension+Sequence.swift in Sources */,
 				7003E7C42AC86C2D00AFE1C2 /* RecordFormView.swift in Sources */,
