@@ -19,10 +19,6 @@ final class UserStore: ObservableObject {
     @Published private(set) var photoUiImage: UIImage?
     @Published private(set) var profile: Profile?
     
-    var recentProfileSpec: Profile.Spec? {
-        profile?.specs.sorted(by: { $0.createdAt > $1.createdAt }).first
-    }
-    
     private var cancellables: Set<AnyCancellable> = []
     private init() {
         Auth.auth().addStateDidChangeListener { _, user in
