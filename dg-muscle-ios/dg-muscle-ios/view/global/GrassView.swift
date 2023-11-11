@@ -9,14 +9,14 @@ import SwiftUI
 
 struct GrassView: View {
     
-    var datas: [Data]
+    var datas: [GrassData]
     
     var columns: [GridItem]
     
     private let averageValue: Double
     private let highestValue: Double
     
-    init(datas: [Data], count: Int) {
+    init(datas: [GrassData], count: Int) {
         self.datas = datas
         self.columns = Array(repeating: .init(.flexible(), spacing: 3), count: count)
         let filteredData = datas.filter({ $0.value > 0 })
@@ -34,7 +34,7 @@ struct GrassView: View {
         }
     }
     
-    func grassColor(data: Data) -> Color {
+    func grassColor(data: GrassData) -> Color {
         if data.value == 0 {
             return Color.black.opacity(0.2)
         }
@@ -42,7 +42,7 @@ struct GrassView: View {
         return .green.opacity(data.value / self.highestValue)
     }
     
-    static func getHistoryGrassData(from histories: [ExerciseHistory]) -> [GrassView.Data] {
+    static func getHistoryGrassData(from histories: [ExerciseHistory]) -> [GrassData] {
         let row = 5
         let item = 17
         let itemCount = row * item
@@ -86,13 +86,5 @@ struct GrassView: View {
         } else {
             return nil
         }
-    }
-}
-
-extension GrassView {
-    struct Data: Identifiable, Equatable {
-        let id = UUID().uuidString
-        let date: String
-        let value: Double
     }
 }
