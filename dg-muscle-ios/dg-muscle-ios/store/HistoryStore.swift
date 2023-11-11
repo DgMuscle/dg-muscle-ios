@@ -14,7 +14,7 @@ final class HistoryStore: ObservableObject {
     
     @Published private(set) var histories: [ExerciseHistory] = HistoryRepository.shared.getCache()
     @Published private(set) var historySections: [ExerciseHistorySection] = []
-    @Published private(set) var historyGrassData: [GrassView.Data] = []
+    @Published private(set) var historyGrassData: [GrassData] = []
     
     private let historyLimit = 365
     private var canLoadMoreHistoryFromServer = false
