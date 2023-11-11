@@ -375,6 +375,7 @@
 		70F8389C2AC7FE20009725EF /* model */ = {
 			isa = PBXGroup;
 			children = (
+				707BBF192AF7D39700A8ABD2 /* BodyMass.swift */,
 				70F8389D2AC7FE36009725EF /* CreatedAt.swift */,
 				70C144D72AC82807007F0540 /* DefaultResponse.swift */,
 				70F8389F2AC7FE4D009725EF /* Exercise.swift */,
@@ -387,7 +388,6 @@
 				70F838A72AC7FEB6009725EF /* Record.swift */,
 				701042112AEE483400FAD52C /* UserCache.swift */,
 				70226B872AF7765400379ED3 /* WorkoutMetaData.swift */,
-				707BBF192AF7D39700A8ABD2 /* BodyMass.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";

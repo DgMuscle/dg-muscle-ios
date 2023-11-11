@@ -28,6 +28,14 @@ final class HealthStore: ObservableObject {
     @Published private(set) var birthDateComponents: DateComponents?
     @Published private(set) var bloodType: HKBloodType?
     
+    var recentHeight: Height? {
+        heights.sorted(by: { $0.startDate > $1.startDate }).first
+    }
+    
+    var recentBodyMass: BodyMass? {
+        bodyMasses.sorted(by: { $0.startDate > $1.startDate }).first
+    }
+    
     private init() { }
     
     func requestAuthorization() async throws {
