@@ -287,19 +287,22 @@ struct DisplayNameTextInputDependencyImpl: SimpleTextInputDependency {
 
 struct ProfilePhotoPickerDependencyImpl: PhotoPickerViewDependency {
     func saveProfileImage(image: UIImage?) {
+        guard let uid = store.user.uid else { return }
+        
         Task {
-            guard let uid = store.user.uid else { throw CustomError.authentication }
-            
             if let previousPhotoURLString = store.user.photoURL?.absoluteString, let path = URL(string: previousPhotoURLString)?.lastPathComponent {
                 try await FileUploader.shared.deleteImage(path: "profilePhoto/\(uid)/\(path)")
-                try await Authenticator().updateUser(displayName: store.user.displayName, photoURL: nil)
             }
-            
+            store.user.updateUser()
+        }
+        
+        Task {
             if let image {
                 let url = try await FileUploader.shared.uploadImage(path: "profilePhoto/\(uid)/\(UUID().uuidString).png", image: image)
                 try await Authenticator().updateUser(displayName: store.user.displayName, photoURL: url)
+            } else {
+                try await Authenticator().updateUser(displayName: store.user.displayName, photoURL: nil)
             }
-            
             store.user.updateUser()
         }
     }
@@ -317,12 +320,7 @@ struct BodyProfileViewDependencyImpl: BodyProfileViewDependency {
             let _ = paths.popLast()
             guard let id = store.user.uid else { return }
             
-            var profile = Profile(id: id, photoURL: store.user.photoURL?.absoluteString, displayName: displayName, updatedAt: nil)
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyyMMdd"
-            let createdAt = dateFormatter.string(from: Date())
-            
+            let profile = Profile(id: id, photoURL: store.user.photoURL?.absoluteString, displayName: displayName, updatedAt: nil)
             store.user.set(displayName: displayName, profile: profile)
             
             try await Authenticator().updateUser(displayName: displayName.isEmpty ? nil : displayName, photoURL: store.user.photoURL)
