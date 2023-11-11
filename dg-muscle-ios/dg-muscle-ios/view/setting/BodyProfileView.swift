@@ -10,8 +10,8 @@ import Kingfisher
 
 protocol BodyProfileViewDependency {
     func tapProfileImage()
-    func tapSave(displayName: String, height: Double, weight: Double)
-    func tapProfileHistory()
+    func tapSave(displayName: String)
+    func openHealthApp()
 }
 
 struct BodyProfileView: View {
@@ -19,61 +19,160 @@ struct BodyProfileView: View {
     private let profileImageSize: CGFloat = 40
     
     
-    @StateObject private var userStore: UserStore = store.user
+    @StateObject private var userStore = store.user
+    @StateObject private var healthStore = store.health
     
     @State var displayName = store.user.displayName ?? ""
-    @State var height: Double = store.user.recentProfileSpec?.height ?? 0
-    @State var weight: Double = store.user.recentProfileSpec?.weight ?? 0
     
     var body: some View {
         Form {
-            Section("basic profile") {
-                KFImage(userStore.photoURL)
-                    .placeholder {
-                        Circle().fill(Color(uiColor: .secondarySystemBackground).gradient)
-                    }
-                    .resizable()
-                    .frame(width: profileImageSize, height: profileImageSize)
-                    .scaledToFit()
-                    .clipShape(.circle)
-                    .onTapGesture {
-                        dependency.tapProfileImage()
-                    }
-                
-                TextField("display name", text: $displayName)
+            Section("dg-msucle profile") {
+                HStack {
+                    KFImage(userStore.photoURL)
+                        .placeholder {
+                            Circle().fill(Color(uiColor: .secondarySystemBackground).gradient)
+                        }
+                        .resizable()
+                        .frame(width: profileImageSize, height: profileImageSize)
+                        .scaledToFit()
+                        .clipShape(.circle)
+                        .onTapGesture {
+                            dependency.tapProfileImage()
+                        }
+                    
+                    TextField("display name", text: $displayName).font(.footnote).italic()
+                }
             }
             
             Section {
                 HStack {
-                    TextField("height", value: $height, format: .number)
-                        .keyboardType(.decimalPad)
-                    Text("cm")
+                    Image(systemName: "figure.stand").foregroundStyle(.purple)
+                    Text("heights").foregroundStyle(.purple).font(.caption).bold()
+                    Spacer()
+                    if let height = healthStore.recentHeight {
+                        Text(String(format: "%.1f", height.value)).bold()
+                        switch height.unit {
+                        case .centi:
+                            Text("cm").foregroundStyle(Color(uiColor: .secondaryLabel)).font(.caption)
+                        }
+                    } else {
+                        openHealthAppLabel
+                    }
                 }
                 
                 HStack {
-                    TextField("weight", value: $weight, format: .number)
-                        .keyboardType(.decimalPad)
-                    Text("kg")
+                    Image(systemName: "figure.stand").foregroundStyle(.purple)
+                    Text("weights").foregroundStyle(.purple).font(.caption).bold()
+                    Spacer()
+                    
+                    if let weight = healthStore.recentBodyMass {
+                        Text(String(format: "%.1f", weight.value)).bold()
+                        
+                        switch weight.unit {
+                        case .kg:
+                            Text("kg").foregroundStyle(Color(uiColor: .secondaryLabel)).font(.caption)
+                        case .lbs:
+                            Text("lbs").foregroundStyle(Color(uiColor: .secondaryLabel)).font(.caption)
+                        }
+                    } else {
+                        openHealthAppLabel
+                    }
                 }
+                
+                HStack {
+                    Image(systemName: "person").foregroundStyle(.purple)
+                    Text("birth").foregroundStyle(.purple).font(.caption).bold()
+                    Spacer()
+                    
+                    if let dateString = getDateString(components: healthStore.birthDateComponents) {
+                        Text(dateString).foregroundStyle(Color(uiColor: .secondaryLabel)).font(.caption)
+                    } else {
+                        openHealthAppLabel
+                    }
+                }
+                
+                HStack {
+                    Image(systemName: "person").foregroundStyle(.purple)
+                    Text("sex").foregroundStyle(.purple).font(.caption).bold()
+                    Spacer()
+                    
+                    if let sex = healthStore.sex {
+                        switch sex {
+                        case .female:
+                            Text("female").foregroundStyle(Color(uiColor: .secondaryLabel)).font(.caption)
+                        case .male:
+                            Text("male").foregroundStyle(Color(uiColor: .secondaryLabel)).font(.caption)
+                        default:
+                            openHealthAppLabel
+                        }
+                    } else {
+                        openHealthAppLabel
+                    }
+                }
+                
+                HStack {
+                    Image(systemName: "person").foregroundStyle(.purple)
+                    Text("blood type").foregroundStyle(.purple).font(.caption).bold()
+                    Spacer()
+                    
+                    if let bloodType = healthStore.bloodType {
+                        
+                        switch bloodType {
+                        case .notSet:
+                            openHealthAppLabel
+                        case .aPositive:
+                            Text("A+").foregroundStyle(Color(uiColor: .secondaryLabel)).font(.caption)
+                        case .aNegative:
+                            Text("A-").foregroundStyle(Color(uiColor: .secondaryLabel)).font(.caption)
+                        case .bPositive:
+                            Text("B+").foregroundStyle(Color(uiColor: .secondaryLabel)).font(.caption)
+                        case .bNegative:
+                            Text("B-").foregroundStyle(Color(uiColor: .secondaryLabel)).font(.caption)
+                        case .abPositive:
+                            Text("AB+").foregroundStyle(Color(uiColor: .secondaryLabel)).font(.caption)
+                        case .abNegative:
+                            Text("AB-").foregroundStyle(Color(uiColor: .secondaryLabel)).font(.caption)
+                        case .oPositive:
+                            Text("O+").foregroundStyle(Color(uiColor: .secondaryLabel)).font(.caption)
+                        case .oNegative:
+                            Text("O-").foregroundStyle(Color(uiColor: .secondaryLabel)).font(.caption)
+                        default:
+                            openHealthAppLabel
+                        }
+                    } else {
+                        openHealthAppLabel
+                    }
+                }
+                
             } header: {
-                Text("body profile")
-            } footer: {
-                if userStore.profile?.specs.isEmpty == false {
-                    HStack {
-                        Text("profile histories")
-                        Image(systemName: "arrowshape.turn.up.right")
-                    }
-                    .onTapGesture {
-                        dependency.tapProfileHistory()
-                    }
-                }
+                Text("health profile")
             }
             
             Button {
-                dependency.tapSave(displayName: displayName, height: height, weight: weight)
+                dependency.tapSave(displayName: displayName)
             } label: {
                 Text("Save")
             }
+        }
+    }
+    
+    private func getDateString(components: DateComponents?) -> String? {
+        guard let components else { return nil }
+        guard let date = Calendar.current.date(from: components) else { return nil }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        return dateFormatter.string(from: date)
+    }
+    
+    var openHealthAppLabel: some View {
+        Button {
+            dependency.openHealthApp()
+        } label: {
+            HStack {
+                Text("Enter profile in the Health app").font(.caption2)
+                Image(systemName: "arrowshape.turn.up.right").font(.caption2)
+            }
+            .foregroundStyle(Color(uiColor: .secondaryLabel))
         }
     }
 }
