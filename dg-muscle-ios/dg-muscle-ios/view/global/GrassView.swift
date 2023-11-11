@@ -47,15 +47,19 @@ struct GrassView: View {
         let item = 17
         let itemCount = row * item
         guard let startDate = subtractDays(from: Date(), numberOfDays: itemCount - 1) else { return [] }
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
         let dates = generateDates(startingFrom: startDate, numberOfDays: itemCount).compactMap({ dateFormatter.string(from: $0)})
-        
-        return dates.map({ date in
+        var datas: [GrassData] = dates.map({ date in
             guard let history = histories.first(where: { $0.date == date }) else { return .init(date: date, value: 0) }
             return .init(date: date, value: history.volume)
         })
+        
+        while datas.first?.value == 0 {
+            datas.removeFirst()
+        }
+        
+        return datas
     }
     
     static private func generateDates(startingFrom startDate: Date, numberOfDays: Int) -> [Date] {
