@@ -89,31 +89,21 @@ struct ExerciseDiaryView: View {
                             } label: {
                                 VStack {
                                     HStack {
-                                        Text(history.date).frame(maxWidth: .infinity, alignment: .leading)
-                                        Text("\(Int(history.volume))").frame(maxWidth: .infinity, alignment: .leading)
+                                        Text(onlyDay(from: history.date))
+                                            .font(.caption2)
+                                            .foregroundStyle(Color(uiColor: .secondaryLabel))
+                                        
+                                        Text(getParts(from: history.records))
+                                            .italic()
+                                            .font(.footnote)
+                                        
+                                        Spacer()
+                                        Text("\(Int(history.volume))")
+                                            .font(.footnote)
                                     }
                                     
-                                    Text(getParts(from: history.records)).frame(maxWidth: .infinity, alignment: .leading)
-                                        .foregroundStyle(Color(uiColor: .secondaryLabel)).italic()
-                                        .font(.caption2)
-                                    
                                     if let metaData = healthStore.workoutMetaDatas.first(where: { history.date == $0.startDateString }) {
-                                        
-                                        HStack {
-                                            Text("duration: \(timeStringFor(seconds: Int(metaData.duration)))")
-                                                .foregroundStyle(Color(uiColor: .secondaryLabel)).italic()
-                                                .font(.caption2)
-                                            Spacer()
-                                        }
-                                        
-                                        if let kcalPerHourKg = metaData.kcalPerHourKg {
-                                            HStack {
-                                                Text("intensity: \(Int(kcalPerHourKg))")
-                                                    .foregroundStyle(Color(uiColor: .secondaryLabel)).italic()
-                                                    .font(.caption2)
-                                                Spacer()
-                                            }
-                                        }
+                                        metaDataView(metaData: metaData)
                                     }
                                 }
                                 .foregroundStyle(Color(uiColor: .label))
@@ -166,6 +156,44 @@ struct ExerciseDiaryView: View {
         }
     }
     
+    func metaDataView(metaData: WorkoutMetaData) -> some View {
+        HStack {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("duration: \(timeStringFor(seconds: Int(metaData.duration)))")
+                        .foregroundStyle(Color(uiColor: .secondaryLabel)).italic()
+                        .font(.caption2)
+                }
+                
+                if let kcalPerHourKg = metaData.kcalPerHourKg, let bodyMass = healthStore.recentBodyMass {
+                    if bodyMass.unit == .kg {
+                        HStack {
+                            Text("consume \(Int(getKcal(duration: metaData.duration, weight: bodyMass.value, kcalPerHourKg: kcalPerHourKg))) kcal")
+                            Text("(\(Int(kcalPerHourKg)))")
+                        }
+                        .foregroundStyle(Color(uiColor: .secondaryLabel)).italic()
+                        .font(.caption2)
+                    }
+                }
+            }
+            .padding(4)
+            .background {
+                RoundedRectangle(cornerRadius: 8).fill(Color(uiColor: .secondarySystemBackground))
+            }
+            Spacer()
+        }
+        .padding(.top, 6)
+        .padding(.leading, 18)
+    }
+    
+    func onlyDay(from dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        guard let date = dateFormatter.date(from: dateString) else { return dateString }
+        dateFormatter.dateFormat = "dd"
+        return dateFormatter.string(from: date)
+    }
+    
     func getParts(from records: [Record]) -> String {
         let exercisesIds = records.compactMap { $0.exerciseId }
         let exercises = store.exercise.exercises.filter({ exercise in
@@ -197,5 +225,12 @@ struct ExerciseDiaryView: View {
             timeString += "\(remainingSeconds)s"
         }
         return timeString.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
+    func getKcal(duration: TimeInterval, weight: Double, kcalPerHourKg: Double) -> Double {
+        let hours = duration / 3600
+        let kg = weight
+        let kcal = kcalPerHourKg * hours * kg
+        return kcal
     }
 }
