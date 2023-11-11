@@ -60,6 +60,7 @@ struct ExerciseDiaryView: View {
 
                 if historyStore.historyGrassData.isEmpty == false {
                     GrassView(datas: historyStore.historyGrassData, count: 17)
+                        .padding(.vertical, 8)
                         .onTapGesture {
                             dependency.tapGrass(histories: historyStore.histories, volumeByPart: historyStore.histories.volumeByPart())
                         }
