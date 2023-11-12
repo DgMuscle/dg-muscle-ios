@@ -48,7 +48,6 @@
 		7083E6C32ABF0C62007D43CE /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7083E6C22ABF0C62007D43CE /* SignInView.swift */; };
 		7083E6C62ABF0EC9007D43CE /* AppleAuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */; };
 		7083E6C92ABF0F45007D43CE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6C82ABF0F45007D43CE /* FirebaseAuth */; };
-		7084B1862AC5B8F50011A91B /* SimpleTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7084B1852AC5B8F50011A91B /* SimpleTextInputView.swift */; };
 		708508C42AF626990035BB9D /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708508C32AF626990035BB9D /* HealthStore.swift */; };
 		70884B912ADBB9AA001FA252 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884B902ADBB9AA001FA252 /* PieChartView.swift */; };
 		709B540D2AC999D000C282E9 /* ExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709B540C2AC999D000C282E9 /* ExerciseFormView.swift */; };
@@ -142,7 +141,6 @@
 		7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7083E6C22ABF0C62007D43CE /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthCoordinator.swift; sourceTree = "<group>"; };
-		7084B1852AC5B8F50011A91B /* SimpleTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTextInputView.swift; sourceTree = "<group>"; };
 		708508C22AF625EE0035BB9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		708508C32AF626990035BB9D /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		70884B902ADBB9AA001FA252 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
@@ -306,7 +304,6 @@
 				705AB79F2B009F7500418B46 /* LoadingView.swift */,
 				70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */,
 				70884B902ADBB9AA001FA252 /* PieChartView.swift */,
-				7084B1852AC5B8F50011A91B /* SimpleTextInputView.swift */,
 				705AB7A12B009F8A00418B46 /* SuccessView.swift */,
 				70D17E0C2AC5D70B00B86E37 /* WithdrawalConfirmView.swift */,
 			);
@@ -562,7 +559,6 @@
 				70C144D62AC825DE007F0540 /* HistoryRepository.swift in Sources */,
 				701964312AD41CE400ED39BF /* SelectExerciseView.swift in Sources */,
 				7083E6C62ABF0EC9007D43CE /* AppleAuthCoordinator.swift in Sources */,
-				7084B1862AC5B8F50011A91B /* SimpleTextInputView.swift in Sources */,
 				70A9B7412ACBCFC70061DAA3 /* BodyProfileView.swift in Sources */,
 				703E547B2ADBD5D900E7D911 /* GrassView.swift in Sources */,
 				707B8FC92ABF1D37008ADECE /* Store.swift in Sources */,

@@ -37,10 +37,6 @@ final class DependencyInjection {
         ProfilePhotoPickerDependencyImpl(isLoading: isLoading, isShowingSuccessView: isShowingSuccessView, isShowingErrorView: isShowingErrorView, errorMessage: errorMessage, successMessage: successMessage)
     }
     
-    func displayNameTextInput() -> SimpleTextInputDependency {
-        DisplayNameTextInputDependencyImpl()
-    }
-    
     func withdrawalConfirm(errorMessage: Binding<String?>, isShowingErrorView: Binding<Bool>) -> WithdrawalConfirmDependency {
         WithdrawalConfirmDependencyImpl(errorMessage: errorMessage, isShowingErrorView: isShowingErrorView)
     }
@@ -274,15 +270,6 @@ struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
                     }
                 }
             }
-            store.user.updateUser()
-        }
-    }
-}
-
-struct DisplayNameTextInputDependencyImpl: SimpleTextInputDependency {
-    func save(text: String) {
-        Task {
-            try await Authenticator().updateUser(displayName: text.isEmpty ? nil : text, photoURL: store.user.photoURL)
             store.user.updateUser()
         }
     }
