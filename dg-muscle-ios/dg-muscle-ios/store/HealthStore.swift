@@ -21,7 +21,7 @@ final class HealthStore: ObservableObject {
     private let heightType = HKQuantityType(.height)
     private let bodyMassType = HKQuantityType(.bodyMass)
     
-    @Published private(set) var workoutMetaDatas: [WorkoutMetaData] = []
+    @Published private(set) var workoutMetaDatas: [WorkoutMetaData] = (try? FileManagerHelper.load([WorkoutMetaData].self, fromFile: .workoutMetaData)) ?? []
     @Published private(set) var heights: [Height] = []
     @Published private(set) var bodyMasses: [BodyMass] = []
     @Published private(set) var sex: HKBiologicalSex?
@@ -70,6 +70,8 @@ final class HealthStore: ObservableObject {
             let sex = try store.biologicalSex()
             let date = try store.dateOfBirthComponents()
             let bloodType = try store.bloodType()
+            
+            try FileManagerHelper.save(metadatas, toFile: .workoutMetaData)
             
             DispatchQueue.main.async {
                 self.workoutMetaDatas = metadatas

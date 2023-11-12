@@ -36,5 +36,6 @@ extension FileManagerHelper {
         case user
         case history
         case exercise
+        case workoutMetaData
     }
 }
