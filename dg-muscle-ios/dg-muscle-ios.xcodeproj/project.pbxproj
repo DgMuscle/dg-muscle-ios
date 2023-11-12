@@ -30,6 +30,8 @@
 		703CD5EE2AC0148800BC76D4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 703CD5ED2AC0148800BC76D4 /* FirebaseStorage */; };
 		703CD5F02AC015C900BC76D4 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5EF2AC015C900BC76D4 /* CustomError.swift */; };
 		703E547B2ADBD5D900E7D911 /* GrassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703E547A2ADBD5D900E7D911 /* GrassView.swift */; };
+		705AB7A02B009F7500418B46 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705AB79F2B009F7500418B46 /* LoadingView.swift */; };
+		705AB7A22B009F8A00418B46 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705AB7A12B009F8A00418B46 /* SuccessView.swift */; };
 		705EC0A92AFF7C530085801A /* GrassData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EC0A82AFF7C530085801A /* GrassData.swift */; };
 		7060FDB02AC5E1C3001A2198 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060FDAF2AC5E1C3001A2198 /* ErrorView.swift */; };
 		707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC62ABF1CAC008ADECE /* UserStore.swift */; };
@@ -128,6 +130,8 @@
 		703CD5E92AC0139600BC76D4 /* FileUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
 		703CD5EF2AC015C900BC76D4 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		703E547A2ADBD5D900E7D911 /* GrassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassView.swift; sourceTree = "<group>"; };
+		705AB79F2B009F7500418B46 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		705AB7A12B009F8A00418B46 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		705EC0A82AFF7C530085801A /* GrassData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassData.swift; sourceTree = "<group>"; };
 		7060FDAF2AC5E1C3001A2198 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		707B8FC62ABF1CAC008ADECE /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 				70E556032ABF010D006D4DA0 /* Assets.xcassets */,
 				70E556012ABF010C006D4DA0 /* ContentView.swift */,
 				703CD5EF2AC015C900BC76D4 /* CustomError.swift */,
+				70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */,
 				70E555FF2ABF010C006D4DA0 /* dg_muscle_iosApp.swift */,
 			);
 			path = main;
@@ -247,7 +252,6 @@
 				70C144D22AC82558007F0540 /* APIClient.swift */,
 				7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */,
 				707B8FD22ABF207F008ADECE /* Authenticator.swift */,
-				70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */,
 				701CC4C52AD2875700852E2E /* FileManagerHelper.swift */,
 				703CD5E92AC0139600BC76D4 /* FileUploader.swift */,
 				70D9033C2AC5A70A001DDC0B /* Vibration.swift */,
@@ -299,9 +303,11 @@
 				70F0E4002AE3BD5800AFFCF7 /* ChartView.swift */,
 				7060FDAF2AC5E1C3001A2198 /* ErrorView.swift */,
 				703E547A2ADBD5D900E7D911 /* GrassView.swift */,
+				705AB79F2B009F7500418B46 /* LoadingView.swift */,
 				70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */,
 				70884B902ADBB9AA001FA252 /* PieChartView.swift */,
 				7084B1852AC5B8F50011A91B /* SimpleTextInputView.swift */,
+				705AB7A12B009F8A00418B46 /* SuccessView.swift */,
 				70D17E0C2AC5D70B00B86E37 /* WithdrawalConfirmView.swift */,
 			);
 			path = global;
@@ -539,6 +545,7 @@
 				701CC4AE2AD2720200852E2E /* Profile.swift in Sources */,
 				70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */,
 				707BBF1A2AF7D39700A8ABD2 /* BodyMass.swift in Sources */,
+				705AB7A22B009F8A00418B46 /* SuccessView.swift in Sources */,
 				700BB60B2AE513AF008B8132 /* MonthlyChartView.swift in Sources */,
 				70D17E0D2AC5D70B00B86E37 /* WithdrawalConfirmView.swift in Sources */,
 				70F838AD2AC7FFB5009725EF /* ExerciseDiaryView.swift in Sources */,
@@ -550,6 +557,7 @@
 				7060FDB02AC5E1C3001A2198 /* ErrorView.swift in Sources */,
 				707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */,
 				707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */,
+				705AB7A02B009F7500418B46 /* LoadingView.swift in Sources */,
 				70F838A02AC7FE4D009725EF /* Exercise.swift in Sources */,
 				70C144D62AC825DE007F0540 /* HistoryRepository.swift in Sources */,
 				701964312AD41CE400ED39BF /* SelectExerciseView.swift in Sources */,

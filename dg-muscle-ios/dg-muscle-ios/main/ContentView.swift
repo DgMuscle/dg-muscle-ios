@@ -14,8 +14,11 @@ struct ContentView: View {
     @State var isShowingProfilePhotoPicker = false
     @State var isPresentedWithDrawalConfirm = false
     @State var isShowingErrorView = false
+    @State var isShowingSuccessView = false
+    @State var isLoading = false
     
     @State var errorMessage: String?
+    @State var successMessage: String?
     
     @State var monthlyChartViewIngredient: MonthlyChartViewIngredient = .init()
     
@@ -104,7 +107,7 @@ struct ContentView: View {
                 })
                 
                 if isShowingProfilePhotoPicker {
-                    PhotoPickerView(uiImage: userStore.photoUiImage, isShowing: $isShowingProfilePhotoPicker, dependency: DependencyInjection.shared.profilePhotoPicker())
+                    PhotoPickerView(uiImage: userStore.photoUiImage, isShowing: $isShowingProfilePhotoPicker, dependency: DependencyInjection.shared.profilePhotoPicker(isLoading: $isLoading, isShowingSuccessView: $isShowingSuccessView, isShowingErrorView: $isShowingErrorView, errorMessage: $errorMessage, successMessage: $successMessage))
                 }
                 
                 if monthlyChartViewIngredient.showing {
@@ -120,6 +123,14 @@ struct ContentView: View {
             
             if isShowingErrorView {
                 ErrorView(message: errorMessage ?? "unknown error", isShowing: $isShowingErrorView)
+            }
+            
+            if isShowingSuccessView {
+                SuccessView(isShowing: $isShowingSuccessView, message: successMessage)
+            }
+            
+            if isLoading {
+                LoadingView()
             }
         }
         .onAppear {
