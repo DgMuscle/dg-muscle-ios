@@ -26,7 +26,7 @@ struct BodyProfileView: View {
     
     var body: some View {
         Form {
-            Section("dg-msucle profile") {
+            Section("dg-muscle profile") {
                 HStack {
                     KFImage(userStore.photoURL)
                         .placeholder {
