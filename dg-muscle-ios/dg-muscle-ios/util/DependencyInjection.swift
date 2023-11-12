@@ -13,8 +13,11 @@ final class DependencyInjection {
     
     private init () { }
     
-    func setting(paths: Binding<[ContentView.NavigationPath]>) -> SettingViewDependency {
-        SettingViewDependencyImpl(paths: paths)
+    func setting(
+        paths: Binding<[ContentView.NavigationPath]>,
+        isPresentedWithDrawalConfirm: Binding<Bool>
+    ) -> SettingViewDependency {
+        SettingViewDependencyImpl(paths: paths, isPresentedWithDrawalConfirm: isPresentedWithDrawalConfirm)
     }
     
     func bodyProfile(paths: Binding<[ContentView.NavigationPath]>,
@@ -351,6 +354,7 @@ struct BodyProfileViewDependencyImpl: BodyProfileViewDependency {
 
 struct SettingViewDependencyImpl: SettingViewDependency {
     @Binding var paths: [ContentView.NavigationPath]
+    @Binding var isPresentedWithDrawalConfirm: Bool
     
     func tapProfileSection() {
         paths.append(.bodyProfile)
@@ -358,5 +362,20 @@ struct SettingViewDependencyImpl: SettingViewDependency {
     
     func tapExercise() {
         paths.append(.exerciseList)
+    }
+    
+    func tapLogout() {
+        do {
+            try Authenticator().signOut()
+            store.user.updateUser()
+        } catch {
+            print("fail to logout")
+        }
+    }
+    
+    func tapWithdrawal() {
+        withAnimation {
+            isPresentedWithDrawalConfirm = true
+        }
     }
 }

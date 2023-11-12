@@ -88,7 +88,12 @@ struct ContentView: View {
                         case .selectExercise:
                             SelectExerciseView(dependency: DependencyInjection.shared.selectExercise(paths: $paths))
                         case .setting:
-                            SettingView(dependency: DependencyInjection.shared.setting(paths: $paths))
+                            SettingView(
+                                dependency:
+                                    DependencyInjection.shared.setting(
+                                        paths: $paths,
+                                        isPresentedWithDrawalConfirm: $isPresentedWithDrawalConfirm)
+                            )
                         }
                     }
                 }

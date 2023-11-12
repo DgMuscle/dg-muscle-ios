@@ -11,6 +11,8 @@ import Kingfisher
 protocol SettingViewDependency {
     func tapProfileSection()
     func tapExercise()
+    func tapLogout()
+    func tapWithdrawal()
 }
 
 struct SettingView: View {
@@ -20,7 +22,6 @@ struct SettingView: View {
     
     var body: some View {
         Form {
-            
             Section("profile") {
                 Button {
                     dependency.tapProfileSection()
@@ -58,6 +59,28 @@ struct SettingView: View {
                         Text("exercise").foregroundStyle(Color(uiColor: .label))
                     }
                 }
+            }
+            
+            Section {
+                Button {
+                    dependency.tapLogout()
+                } label: {
+                    Text("logout")
+                        .foregroundStyle(Color(uiColor: .label))
+                        .font(.footnote)
+                        .italic()
+                }
+                
+                Button {
+                    dependency.tapWithdrawal()
+                } label: {
+                    Text("remove account")
+                        .foregroundStyle(.red)
+                        .font(.footnote)
+                        .italic()
+                }
+            } footer: {
+                Text("account")
             }
         }
     }
