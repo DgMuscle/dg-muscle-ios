@@ -97,6 +97,8 @@ struct ContentView: View {
                                         paths: $paths,
                                         isPresentedWithDrawalConfirm: $isPresentedWithDrawalConfirm)
                             )
+                        case .watchWorkoutAppInfoView:
+                            WatchWorkoutAppInfoView()
                         }
                     }
                 }
@@ -159,6 +161,7 @@ extension ContentView {
         case recordSets(Record, String)
         case selectExercise
         case setting
+        case watchWorkoutAppInfoView
         
         func hash(into hasher: inout Hasher) {
             switch self {
@@ -168,7 +171,7 @@ extension ContentView {
                 hasher.combine(value)
             case .recordSets(let value, _):
                 hasher.combine(value)
-            case .exerciseForm, .setForm, .bodyProfile, .exerciseList, .selectExercise, .setting: break
+            case .exerciseForm, .setForm, .bodyProfile, .exerciseList, .selectExercise, .setting, .watchWorkoutAppInfoView: break
             }
         }
     }

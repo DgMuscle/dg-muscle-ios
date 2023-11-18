@@ -397,6 +397,6 @@ struct SettingViewDependencyImpl: SettingViewDependency {
     }
     
     func tapWatchApp() {
-        print("tap watch")
+        paths.append(.watchWorkoutAppInfoView)
     }
 }
