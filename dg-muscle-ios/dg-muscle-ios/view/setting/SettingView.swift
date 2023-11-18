@@ -11,8 +11,10 @@ import Kingfisher
 protocol SettingViewDependency {
     func tapProfileSection()
     func tapExercise()
+    func tapExerciseList()
     func tapLogout()
     func tapWithdrawal()
+    func tapWatchApp()
 }
 
 struct SettingView: View {
@@ -57,6 +59,26 @@ struct SettingView: View {
                     HStack {
                         Image(systemName: "heart").foregroundStyle(.pink)
                         Text("exercise").foregroundStyle(Color(uiColor: .label))
+                    }
+                }
+                
+                Button {
+                    dependency.tapExerciseList()
+                } label: {
+                    
+                    HStack {
+                        Image(systemName: "list.bullet.rectangle.portrait").foregroundStyle(.pink)
+                        Text("exercise").foregroundStyle(Color(uiColor: .label))
+                    }
+                }
+                
+                Button {
+                    dependency.tapWatchApp()
+                } label: {
+                    
+                    HStack {
+                        Image(systemName: "applewatch").foregroundStyle(.pink)
+                        Text("watch workout app").foregroundStyle(Color(uiColor: .label))
                     }
                 }
             }
