@@ -391,4 +391,12 @@ struct SettingViewDependencyImpl: SettingViewDependency {
             isPresentedWithDrawalConfirm = true
         }
     }
+    
+    func tapExerciseList() {
+        print("tap list")
+    }
+    
+    func tapWatchApp() {
+        print("tap watch")
+    }
 }
