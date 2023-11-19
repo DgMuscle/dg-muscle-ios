@@ -68,7 +68,7 @@ struct SettingView: View {
                     
                     HStack {
                         Image(systemName: "list.bullet.rectangle.portrait").foregroundStyle(.pink)
-                        Text("exercise").foregroundStyle(Color(uiColor: .label))
+                        Text("exercise guide").foregroundStyle(Color(uiColor: .label))
                     }
                 }
                 
