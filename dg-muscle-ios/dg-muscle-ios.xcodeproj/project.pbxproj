@@ -231,7 +231,6 @@
 		7054F7E22B08BC1A00C5678E /* health section */ = {
 			isa = PBXGroup;
 			children = (
-				704004CC2B09EA4500247E3A /* ExerciseGuideListView.swift */,
 				70D341892ACC03350010EAF9 /* ExerciseListView.swift */,
 				7054F7E32B08BC3300C5678E /* WatchWorkoutAppInfoView.swift */,
 			);
@@ -342,6 +341,7 @@
 		70CB69412B09E590001588E2 /* exercise info */ = {
 			isa = PBXGroup;
 			children = (
+				704004CC2B09EA4500247E3A /* ExerciseGuideListView.swift */,
 				70CB69442B09E5CD001588E2 /* ExerciseInfoContainerView.swift */,
 				70CB69422B09E5B6001588E2 /* SquatInfoView.swift */,
 			);
