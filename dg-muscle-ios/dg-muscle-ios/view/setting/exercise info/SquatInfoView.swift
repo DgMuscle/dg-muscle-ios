@@ -38,6 +38,8 @@ struct SquatInfoView: View {
                 Spacer(minLength: 20)
                 
                 Text("4. Repeat 1 to 3.")
+                
+                Spacer(minLength: 100)
             }
             .padding()
         }
