@@ -30,6 +30,8 @@
 		703CD5EE2AC0148800BC76D4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 703CD5ED2AC0148800BC76D4 /* FirebaseStorage */; };
 		703CD5F02AC015C900BC76D4 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5EF2AC015C900BC76D4 /* CustomError.swift */; };
 		703E547B2ADBD5D900E7D911 /* GrassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703E547A2ADBD5D900E7D911 /* GrassView.swift */; };
+		704004CD2B09EA4500247E3A /* ExerciseGuideListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704004CC2B09EA4500247E3A /* ExerciseGuideListView.swift */; };
+		7054F7E42B08BC3300C5678E /* WatchWorkoutAppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7054F7E32B08BC3300C5678E /* WatchWorkoutAppInfoView.swift */; };
 		705AB7A02B009F7500418B46 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705AB79F2B009F7500418B46 /* LoadingView.swift */; };
 		705AB7A22B009F8A00418B46 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705AB7A12B009F8A00418B46 /* SuccessView.swift */; };
 		705EC0A92AFF7C530085801A /* GrassData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EC0A82AFF7C530085801A /* GrassData.swift */; };
@@ -61,6 +63,8 @@
 		70C144D62AC825DE007F0540 /* HistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D52AC825DE007F0540 /* HistoryRepository.swift */; };
 		70C144D82AC82807007F0540 /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D72AC82807007F0540 /* DefaultResponse.swift */; };
 		70C144DA2AC82866007F0540 /* ExerciseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D92AC82866007F0540 /* ExerciseRepository.swift */; };
+		70CB69432B09E5B6001588E2 /* SquatInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB69422B09E5B6001588E2 /* SquatInfoView.swift */; };
+		70CB69452B09E5CD001588E2 /* ExerciseInfoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB69442B09E5CD001588E2 /* ExerciseInfoContainerView.swift */; };
 		70D17E0D2AC5D70B00B86E37 /* WithdrawalConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D17E0C2AC5D70B00B86E37 /* WithdrawalConfirmView.swift */; };
 		70D3418A2ACC03350010EAF9 /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D341892ACC03350010EAF9 /* ExerciseListView.swift */; };
 		70D3418F2ACC081E0010EAF9 /* Extension+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D3418E2ACC081E0010EAF9 /* Extension+Sequence.swift */; };
@@ -129,6 +133,8 @@
 		703CD5E92AC0139600BC76D4 /* FileUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
 		703CD5EF2AC015C900BC76D4 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		703E547A2ADBD5D900E7D911 /* GrassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassView.swift; sourceTree = "<group>"; };
+		704004CC2B09EA4500247E3A /* ExerciseGuideListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGuideListView.swift; sourceTree = "<group>"; };
+		7054F7E32B08BC3300C5678E /* WatchWorkoutAppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWorkoutAppInfoView.swift; sourceTree = "<group>"; };
 		705AB79F2B009F7500418B46 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		705AB7A12B009F8A00418B46 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		705EC0A82AFF7C530085801A /* GrassData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassData.swift; sourceTree = "<group>"; };
@@ -155,6 +161,8 @@
 		70C144D52AC825DE007F0540 /* HistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRepository.swift; sourceTree = "<group>"; };
 		70C144D72AC82807007F0540 /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
 		70C144D92AC82866007F0540 /* ExerciseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepository.swift; sourceTree = "<group>"; };
+		70CB69422B09E5B6001588E2 /* SquatInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquatInfoView.swift; sourceTree = "<group>"; };
+		70CB69442B09E5CD001588E2 /* ExerciseInfoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInfoContainerView.swift; sourceTree = "<group>"; };
 		70D17E0C2AC5D70B00B86E37 /* WithdrawalConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalConfirmView.swift; sourceTree = "<group>"; };
 		70D341892ACC03350010EAF9 /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
 		70D3418E2ACC081E0010EAF9 /* Extension+Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Sequence.swift"; sourceTree = "<group>"; };
@@ -218,6 +226,16 @@
 				70240BF52ADC1FF900B87A79 /* Info.plist */,
 			);
 			path = "dg-muscle-ios-widget";
+			sourceTree = "<group>";
+		};
+		7054F7E22B08BC1A00C5678E /* health section */ = {
+			isa = PBXGroup;
+			children = (
+				704004CC2B09EA4500247E3A /* ExerciseGuideListView.swift */,
+				70D341892ACC03350010EAF9 /* ExerciseListView.swift */,
+				7054F7E32B08BC3300C5678E /* WatchWorkoutAppInfoView.swift */,
+			);
+			path = "health section";
 			sourceTree = "<group>";
 		};
 		707B8FC52ABF1C92008ADECE /* store */ = {
@@ -288,8 +306,9 @@
 		70AC465D2ABFF81800BFE46D /* setting */ = {
 			isa = PBXGroup;
 			children = (
+				70CB69412B09E590001588E2 /* exercise info */,
+				7054F7E22B08BC1A00C5678E /* health section */,
 				70A9B7402ACBCFC70061DAA3 /* BodyProfileView.swift */,
-				70D341892ACC03350010EAF9 /* ExerciseListView.swift */,
 				70AC465E2ABFF82D00BFE46D /* SettingView.swift */,
 			);
 			path = setting;
@@ -318,6 +337,15 @@
 				701CC4AB2AD271CF00852E2E /* UserRepository.swift */,
 			);
 			path = repo;
+			sourceTree = "<group>";
+		};
+		70CB69412B09E590001588E2 /* exercise info */ = {
+			isa = PBXGroup;
+			children = (
+				70CB69442B09E5CD001588E2 /* ExerciseInfoContainerView.swift */,
+				70CB69422B09E5B6001588E2 /* SquatInfoView.swift */,
+			);
+			path = "exercise info";
 			sourceTree = "<group>";
 		};
 		70D3418D2ACC07FD0010EAF9 /* extension */ = {
@@ -554,6 +582,7 @@
 				7060FDB02AC5E1C3001A2198 /* ErrorView.swift in Sources */,
 				707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */,
 				707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */,
+				70CB69432B09E5B6001588E2 /* SquatInfoView.swift in Sources */,
 				705AB7A02B009F7500418B46 /* LoadingView.swift in Sources */,
 				70F838A02AC7FE4D009725EF /* Exercise.swift in Sources */,
 				70C144D62AC825DE007F0540 /* HistoryRepository.swift in Sources */,
@@ -573,13 +602,16 @@
 				701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */,
 				70E556022ABF010C006D4DA0 /* ContentView.swift in Sources */,
 				70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */,
+				70CB69452B09E5CD001588E2 /* ExerciseInfoContainerView.swift in Sources */,
 				707BBF182AF7D1D800A8ABD2 /* Height.swift in Sources */,
 				70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */,
+				704004CD2B09EA4500247E3A /* ExerciseGuideListView.swift in Sources */,
 				701CC4AC2AD271CF00852E2E /* UserRepository.swift in Sources */,
 				70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */,
 				70F838A42AC7FE96009725EF /* ExerciseHistorySection.swift in Sources */,
 				70D3418F2ACC081E0010EAF9 /* Extension+Sequence.swift in Sources */,
 				7003E7C42AC86C2D00AFE1C2 /* RecordFormView.swift in Sources */,
+				7054F7E42B08BC3300C5678E /* WatchWorkoutAppInfoView.swift in Sources */,
 				70884B912ADBB9AA001FA252 /* PieChartView.swift in Sources */,
 				70F838AA2AC7FEE1009725EF /* HistoryStore.swift in Sources */,
 				708508C42AF626990035BB9D /* HealthStore.swift in Sources */,
