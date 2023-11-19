@@ -99,6 +99,13 @@ struct ContentView: View {
                             )
                         case .watchWorkoutAppInfoView:
                             WatchWorkoutAppInfoView()
+                        case .exerciseGuideList:
+                            ExerciseGuideListView(dependency:
+                                                    DependencyInjection.shared.exerciseInfoContainer(isShowingErrorView: $isShowingErrorView,
+                                                                                                     isShowingSuccessView: $isShowingSuccessView,
+                                                                                                     isLoading: $isLoading,
+                                                                                                     errorMessage: $errorMessage,
+                                                                                                     successMessage: $successMessage))
                         }
                     }
                 }
@@ -162,6 +169,7 @@ extension ContentView {
         case selectExercise
         case setting
         case watchWorkoutAppInfoView
+        case exerciseGuideList
         
         func hash(into hasher: inout Hasher) {
             switch self {
@@ -171,7 +179,7 @@ extension ContentView {
                 hasher.combine(value)
             case .recordSets(let value, _):
                 hasher.combine(value)
-            case .exerciseForm, .setForm, .bodyProfile, .exerciseList, .selectExercise, .setting, .watchWorkoutAppInfoView: break
+            case .exerciseForm, .setForm, .bodyProfile, .exerciseList, .selectExercise, .setting, .watchWorkoutAppInfoView, .exerciseGuideList: break
             }
         }
     }

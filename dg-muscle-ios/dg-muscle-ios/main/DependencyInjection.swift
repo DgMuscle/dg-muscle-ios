@@ -72,6 +72,11 @@ final class DependencyInjection {
     func selectExercise(paths: Binding<[ContentView.NavigationPath]>) -> SelectExerciseDependency {
         SelectExerciseDependencyImpl(paths: paths)
     }
+    
+    func exerciseInfoContainer(isShowingErrorView: Binding<Bool>, isShowingSuccessView: Binding<Bool>, isLoading: Binding<Bool>, errorMessage: Binding<String?>, successMessage: Binding<String?>) -> ExerciseInfoContainerDependency {
+        
+        return ExerciseInfoContainerDependencyImpl(isShowingErrorView: isShowingErrorView, isShowingSuccessView: isShowingSuccessView, isLoading: isLoading, errorMessage: errorMessage, successMessage: successMessage)
+    }
 }
 
 struct SelectExerciseDependencyImpl: SelectExerciseDependency {
@@ -393,10 +398,49 @@ struct SettingViewDependencyImpl: SettingViewDependency {
     }
     
     func tapExerciseList() {
-        print("tap list")
+        paths.append(.exerciseGuideList)
     }
     
     func tapWatchApp() {
         paths.append(.watchWorkoutAppInfoView)
+    }
+}
+
+struct ExerciseInfoContainerDependencyImpl: ExerciseInfoContainerDependency {
+    
+    @Binding var isShowingErrorView: Bool
+    @Binding var isShowingSuccessView: Bool
+    @Binding var isLoading: Bool
+    
+    @Binding var errorMessage: String?
+    @Binding var successMessage: String?
+    
+    func addExercise(exercise: Exercise) {
+        Task {
+            var exercises = store.exercise.exercises
+            exercises.append(exercise)
+            store.exercise.set(exercises: exercises)
+            withAnimation {
+                isLoading = true
+            }
+            let response = try await ExerciseRepository.shared.set(exercises: exercises)
+            withAnimation {
+                isLoading = false
+            }
+            
+            store.exercise.updateExercises()
+            
+            if let errorMessage = response.message {
+                withAnimation {
+                    self.errorMessage = errorMessage
+                    self.isShowingErrorView = true
+                }
+            } else {
+                withAnimation {
+                    self.successMessage = "successfully added"
+                    self.isShowingSuccessView = true
+                }
+            }
+        }
     }
 }

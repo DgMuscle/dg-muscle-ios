@@ -30,6 +30,7 @@
 		703CD5EE2AC0148800BC76D4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 703CD5ED2AC0148800BC76D4 /* FirebaseStorage */; };
 		703CD5F02AC015C900BC76D4 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5EF2AC015C900BC76D4 /* CustomError.swift */; };
 		703E547B2ADBD5D900E7D911 /* GrassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703E547A2ADBD5D900E7D911 /* GrassView.swift */; };
+		704004CD2B09EA4500247E3A /* ExerciseGuideListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704004CC2B09EA4500247E3A /* ExerciseGuideListView.swift */; };
 		7054F7E42B08BC3300C5678E /* WatchWorkoutAppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7054F7E32B08BC3300C5678E /* WatchWorkoutAppInfoView.swift */; };
 		705AB7A02B009F7500418B46 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705AB79F2B009F7500418B46 /* LoadingView.swift */; };
 		705AB7A22B009F8A00418B46 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705AB7A12B009F8A00418B46 /* SuccessView.swift */; };
@@ -132,6 +133,7 @@
 		703CD5E92AC0139600BC76D4 /* FileUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
 		703CD5EF2AC015C900BC76D4 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		703E547A2ADBD5D900E7D911 /* GrassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassView.swift; sourceTree = "<group>"; };
+		704004CC2B09EA4500247E3A /* ExerciseGuideListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGuideListView.swift; sourceTree = "<group>"; };
 		7054F7E32B08BC3300C5678E /* WatchWorkoutAppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWorkoutAppInfoView.swift; sourceTree = "<group>"; };
 		705AB79F2B009F7500418B46 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		705AB7A12B009F8A00418B46 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		7054F7E22B08BC1A00C5678E /* health section */ = {
 			isa = PBXGroup;
 			children = (
+				704004CC2B09EA4500247E3A /* ExerciseGuideListView.swift */,
 				70D341892ACC03350010EAF9 /* ExerciseListView.swift */,
 				7054F7E32B08BC3300C5678E /* WatchWorkoutAppInfoView.swift */,
 			);
@@ -602,6 +605,7 @@
 				70CB69452B09E5CD001588E2 /* ExerciseInfoContainerView.swift in Sources */,
 				707BBF182AF7D1D800A8ABD2 /* Height.swift in Sources */,
 				70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */,
+				704004CD2B09EA4500247E3A /* ExerciseGuideListView.swift in Sources */,
 				701CC4AC2AD271CF00852E2E /* UserRepository.swift in Sources */,
 				70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */,
 				70F838A42AC7FE96009725EF /* ExerciseHistorySection.swift in Sources */,
