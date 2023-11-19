@@ -26,6 +26,8 @@ struct ExerciseInfoContainerView: View {
     
     var body: some View {
         ZStack {
+            Rectangle().fill(.black).ignoresSafeArea()
+            
             contentView
             
             VStack(alignment: .trailing) {
@@ -125,4 +127,3 @@ struct ExerciseInfoContainerView: View {
     }
     return ExerciseInfoContainerView(contentView: AnyView(SquatInfoView()), exerciseName: "squat", exerciseParts: [.leg], dependency: DP(), exerciseStore: store.exercise, isShowing: .constant(true))
 }
-
