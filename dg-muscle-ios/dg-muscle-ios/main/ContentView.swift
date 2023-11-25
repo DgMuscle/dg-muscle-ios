@@ -73,10 +73,10 @@ struct ContentView: View {
                             )
                         case .exerciseList:
                             ExerciseListView(
-                                dependency: DependencyInjection.shared.exerciseList(
-                                    paths: $paths,
-                                    showingErrorState: $showingErrorState
-                                ),
+                                dependency: DependencyInjection.shared.exerciseList(paths: $paths,
+                                                                                    showingErrorState: $showingErrorState,
+                                                                                    showingSuccessState: $showingSuccessState,
+                                                                                    loadingState: $loadingState),
                                 exercises: store.exercise.exercises
                             )
                         case .recordSets(let record, let dateString):

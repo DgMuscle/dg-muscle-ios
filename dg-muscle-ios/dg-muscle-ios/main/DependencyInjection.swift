@@ -61,12 +61,14 @@ final class DependencyInjection {
         SetFormViewDependencyImpl(paths: paths)
     }
     
-    func exerciseList(
-        paths: Binding<[ContentView.NavigationPath]>,
-        showingErrorState: Binding<ContentView.ShowingErrorState>
-    ) -> ExerciseListViewDependency {
+    func exerciseList(paths: Binding<[ContentView.NavigationPath]>,
+                      showingErrorState: Binding<ContentView.ShowingErrorState>,
+                      showingSuccessState: Binding<ContentView.ShowingSuccessState>,
+                      loadingState: Binding<ContentView.LoadingState>) -> ExerciseListViewDependency {
         ExerciseListViewDependencyImpl(paths: paths,
-                                       showingErrorState: showingErrorState)
+                                       showingErrorState: showingErrorState,
+                                       showingSuccessState: showingSuccessState,
+                                       loadingState: loadingState)
     }
     
     func selectExercise(paths: Binding<[ContentView.NavigationPath]>) -> SelectExerciseDependency {
@@ -97,6 +99,8 @@ struct ExerciseListViewDependencyImpl: ExerciseListViewDependency {
     
     @Binding var paths: [ContentView.NavigationPath]
     @Binding var showingErrorState: ContentView.ShowingErrorState
+    @Binding var showingSuccessState: ContentView.ShowingSuccessState
+    @Binding var loadingState: ContentView.LoadingState
     
     func tapAdd() {
         paths.append(.exerciseForm(nil, nil, "", [], false))
@@ -104,14 +108,34 @@ struct ExerciseListViewDependencyImpl: ExerciseListViewDependency {
     
     func tapSave(exercises: [Exercise]) {
         Task {
-            let _ = paths.popLast()
-            store.exercise.set(exercises: exercises)
-            let response = try await ExerciseRepository.shared.set(exercises: exercises)
-            store.exercise.updateExercises()
-            
-            if let errorMessage = response.message {
+            do {
+                let _ = paths.popLast()
+                store.exercise.set(exercises: exercises)
                 withAnimation {
-                    showingErrorState = .init(showing: true, message: errorMessage)
+                    loadingState = .init(showing: true, message: "please don't quit the app")
+                }
+                let response = try await ExerciseRepository.shared.set(exercises: exercises)
+                withAnimation {
+                    loadingState = .init(showing: false)
+                }
+                store.exercise.updateExercises()
+                
+                if let errorMessage = response.message {
+                    withAnimation {
+                        showingErrorState = .init(showing: true, message: errorMessage)
+                    }
+                } else {
+                    withAnimation {
+                        showingSuccessState = .init(showing: true, message: "done!")
+                    }
+                }
+            } catch {
+                withAnimation {
+                    loadingState = .init(showing: false)
+                }
+                
+                withAnimation {
+                    showingErrorState = .init(showing: true, message: error.localizedDescription)
                 }
             }
         }
