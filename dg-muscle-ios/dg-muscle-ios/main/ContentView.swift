@@ -134,7 +134,7 @@ struct ContentView: View {
             }
             
             if isLoading {
-                LoadingView()
+                LoadingView(message: nil)
             }
         }
         .onAppear {
