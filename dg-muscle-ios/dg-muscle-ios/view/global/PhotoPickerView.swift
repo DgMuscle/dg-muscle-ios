@@ -81,7 +81,7 @@ struct PhotoPickerView: View {
             }
         }
         .onChange(of: localShowing, { oldValue, newValue in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 isShowing = false
             }
         })
