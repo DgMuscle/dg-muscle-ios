@@ -13,7 +13,7 @@ struct ContentView: View {
     
     @State var isShowingProfilePhotoPicker = false
     @State var isPresentedWithDrawalConfirm = false
-    @State var isLoading = false
+    @State var loadingState = LoadingState(showing: false)
     @State var showingErrorState = ShowingErrorState(showing: false, message: "")
     @State var showingSuccessState = ShowingSuccessState(showing: false, message: "")
     
@@ -93,7 +93,7 @@ struct ContentView: View {
                             WatchWorkoutAppInfoView()
                         case .exerciseGuideList:
                             ExerciseGuideListView(dependency:
-                                                    DependencyInjection.shared.exerciseInfoContainer(isLoading: $isLoading,
+                                                    DependencyInjection.shared.exerciseInfoContainer(loadingState: $loadingState,
                                                                                                      showingErrorState: $showingErrorState,
                                                                                                      showingSuccessState: $showingSuccessState)
                             )
@@ -109,7 +109,7 @@ struct ContentView: View {
                 if isShowingProfilePhotoPicker {
                     PhotoPickerView(uiImage: userStore.photoUiImage, 
                                     isShowing: $isShowingProfilePhotoPicker,
-                                    dependency: DependencyInjection.shared.profilePhotoPicker(isLoading: $isLoading,
+                                    dependency: DependencyInjection.shared.profilePhotoPicker(loadingState: $loadingState,
                                                                                               showingSuccessState: $showingSuccessState,
                                                                                               showingErrorState: $showingErrorState))
                 }
@@ -133,8 +133,8 @@ struct ContentView: View {
                 SuccessView(isShowing: $showingSuccessState.showing, message: showingSuccessState.message)
             }
             
-            if isLoading {
-                LoadingView(message: nil)
+            if loadingState.showing {
+                LoadingView(message: loadingState.message)
             }
         }
         .onAppear {
@@ -193,11 +193,14 @@ extension ContentView {
         var showing: Bool
         var message: String
     }
-}
-
-extension ContentView {
+    
     struct ShowingSuccessState {
         var showing: Bool
         var message: String
+    }
+    
+    struct LoadingState {
+        var showing: Bool
+        var message: String?
     }
 }

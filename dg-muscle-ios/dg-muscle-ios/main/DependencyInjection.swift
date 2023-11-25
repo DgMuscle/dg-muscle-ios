@@ -29,10 +29,10 @@ final class DependencyInjection {
                                              showingErrorState: showingErrorState)
     }
     
-    func profilePhotoPicker(isLoading: Binding<Bool>,
+    func profilePhotoPicker(loadingState: Binding<ContentView.LoadingState>,
                             showingSuccessState: Binding<ContentView.ShowingSuccessState>,
                             showingErrorState: Binding<ContentView.ShowingErrorState>) -> PhotoPickerViewDependency {
-        ProfilePhotoPickerDependencyImpl(isLoading: isLoading,
+        ProfilePhotoPickerDependencyImpl(loadingState: loadingState,
                                          showingErrorState: showingErrorState,
                                          showingSuccessState: showingSuccessState)
     }
@@ -73,11 +73,11 @@ final class DependencyInjection {
         SelectExerciseDependencyImpl(paths: paths)
     }
     
-    func exerciseInfoContainer(isLoading: Binding<Bool>,
+    func exerciseInfoContainer(loadingState: Binding<ContentView.LoadingState>,
                                showingErrorState: Binding<ContentView.ShowingErrorState>,
                                showingSuccessState: Binding<ContentView.ShowingSuccessState>
     ) -> ExerciseInfoContainerDependency {
-        ExerciseInfoContainerDependencyImpl(isLoading: isLoading,
+        ExerciseInfoContainerDependencyImpl(loadingState: loadingState,
                                             showingErrorState: showingErrorState,
                                             showingSuccessState: showingSuccessState)
     }
@@ -280,7 +280,7 @@ struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
 
 struct ProfilePhotoPickerDependencyImpl: PhotoPickerViewDependency {
     
-    @Binding var isLoading: Bool
+    @Binding var loadingState: ContentView.LoadingState
     @Binding var showingErrorState: ContentView.ShowingErrorState
     @Binding var showingSuccessState: ContentView.ShowingSuccessState
     
@@ -288,7 +288,7 @@ struct ProfilePhotoPickerDependencyImpl: PhotoPickerViewDependency {
         guard let uid = store.user.uid else { return }
         
         withAnimation {
-            isLoading = true
+            loadingState = .init(showing: true)
         }
         
         Task {
@@ -310,12 +310,12 @@ struct ProfilePhotoPickerDependencyImpl: PhotoPickerViewDependency {
                 
                 withAnimation {
                     showingSuccessState = .init(showing: true, message: "profile photo successfully uploaded")
-                    isLoading = false
+                    loadingState = .init(showing: false)
                 }
             } catch {
                 withAnimation {
                     showingErrorState = .init(showing: true, message: error.localizedDescription)
-                    isLoading = false
+                    loadingState = .init(showing: false)
                 }
             }
         }
@@ -399,7 +399,7 @@ struct SettingViewDependencyImpl: SettingViewDependency {
 
 struct ExerciseInfoContainerDependencyImpl: ExerciseInfoContainerDependency {
     
-    @Binding var isLoading: Bool
+    @Binding var loadingState: ContentView.LoadingState
     @Binding var showingErrorState: ContentView.ShowingErrorState
     @Binding var showingSuccessState: ContentView.ShowingSuccessState
     
@@ -409,11 +409,11 @@ struct ExerciseInfoContainerDependencyImpl: ExerciseInfoContainerDependency {
             exercises.append(exercise)
             store.exercise.set(exercises: exercises)
             withAnimation {
-                isLoading = true
+                loadingState = .init(showing: true, message: "please don't quit the app")
             }
             let response = try await ExerciseRepository.shared.set(exercises: exercises)
             withAnimation {
-                isLoading = false
+                loadingState = .init(showing: false)
             }
             
             store.exercise.updateExercises()
