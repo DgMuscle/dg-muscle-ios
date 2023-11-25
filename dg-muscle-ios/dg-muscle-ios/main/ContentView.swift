@@ -13,11 +13,9 @@ struct ContentView: View {
     
     @State var isShowingProfilePhotoPicker = false
     @State var isPresentedWithDrawalConfirm = false
-    @State var isShowingSuccessView = false
     @State var isLoading = false
     @State var showingErrorState = ShowingErrorState(showing: false, message: "")
-
-    @State var successMessage: String?
+    @State var showingSuccessState = ShowingSuccessState(showing: false, message: "")
     
     @State var monthlyChartViewIngredient: MonthlyChartViewIngredient = .init()
     
@@ -95,10 +93,9 @@ struct ContentView: View {
                             WatchWorkoutAppInfoView()
                         case .exerciseGuideList:
                             ExerciseGuideListView(dependency:
-                                                    DependencyInjection.shared.exerciseInfoContainer(isShowingSuccessView: $isShowingSuccessView,
-                                                                                                     isLoading: $isLoading,
-                                                                                                     successMessage: $successMessage,
-                                                                                                     showingErrorState: $showingErrorState)
+                                                    DependencyInjection.shared.exerciseInfoContainer(isLoading: $isLoading,
+                                                                                                     showingErrorState: $showingErrorState,
+                                                                                                     showingSuccessState: $showingSuccessState)
                             )
                         }
                     }
@@ -113,8 +110,7 @@ struct ContentView: View {
                     PhotoPickerView(uiImage: userStore.photoUiImage, 
                                     isShowing: $isShowingProfilePhotoPicker,
                                     dependency: DependencyInjection.shared.profilePhotoPicker(isLoading: $isLoading,
-                                                                                              isShowingSuccessView: $isShowingSuccessView,
-                                                                                              successMessage: $successMessage,
+                                                                                              showingSuccessState: $showingSuccessState,
                                                                                               showingErrorState: $showingErrorState))
                 }
                 
@@ -133,8 +129,8 @@ struct ContentView: View {
                 ErrorView(message: showingErrorState.message, isShowing: $showingErrorState.showing)
             }
             
-            if isShowingSuccessView {
-                SuccessView(isShowing: $isShowingSuccessView, message: successMessage)
+            if showingSuccessState.showing {
+                SuccessView(isShowing: $showingSuccessState.showing, message: showingSuccessState.message)
             }
             
             if isLoading {
@@ -194,6 +190,13 @@ extension ContentView {
 
 extension ContentView {
     struct ShowingErrorState {
+        var showing: Bool
+        var message: String
+    }
+}
+
+extension ContentView {
+    struct ShowingSuccessState {
         var showing: Bool
         var message: String
     }

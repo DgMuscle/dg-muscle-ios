@@ -30,13 +30,11 @@ final class DependencyInjection {
     }
     
     func profilePhotoPicker(isLoading: Binding<Bool>,
-                            isShowingSuccessView: Binding<Bool>,
-                            successMessage: Binding<String?>,
+                            showingSuccessState: Binding<ContentView.ShowingSuccessState>,
                             showingErrorState: Binding<ContentView.ShowingErrorState>) -> PhotoPickerViewDependency {
         ProfilePhotoPickerDependencyImpl(isLoading: isLoading,
-                                         isShowingSuccessView: isShowingSuccessView,
-                                         successMessage: successMessage,
-                                         showingErrorState: showingErrorState)
+                                         showingErrorState: showingErrorState,
+                                         showingSuccessState: showingSuccessState)
     }
     
     func withdrawalConfirm(showingErrorState: Binding<ContentView.ShowingErrorState>) -> WithdrawalConfirmDependency {
@@ -75,11 +73,13 @@ final class DependencyInjection {
         SelectExerciseDependencyImpl(paths: paths)
     }
     
-    func exerciseInfoContainer(isShowingSuccessView: Binding<Bool>, isLoading: Binding<Bool>, successMessage: Binding<String?>, showingErrorState: Binding<ContentView.ShowingErrorState>) -> ExerciseInfoContainerDependency {
-        return ExerciseInfoContainerDependencyImpl(isShowingSuccessView: isShowingSuccessView,
-                                                   isLoading: isLoading,
-                                                   successMessage: successMessage,
-                                                   showingErrorState: showingErrorState)
+    func exerciseInfoContainer(isLoading: Binding<Bool>,
+                               showingErrorState: Binding<ContentView.ShowingErrorState>,
+                               showingSuccessState: Binding<ContentView.ShowingSuccessState>
+    ) -> ExerciseInfoContainerDependency {
+        ExerciseInfoContainerDependencyImpl(isLoading: isLoading,
+                                            showingErrorState: showingErrorState,
+                                            showingSuccessState: showingSuccessState)
     }
 }
 
@@ -281,9 +281,8 @@ struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
 struct ProfilePhotoPickerDependencyImpl: PhotoPickerViewDependency {
     
     @Binding var isLoading: Bool
-    @Binding var isShowingSuccessView: Bool
-    @Binding var successMessage: String?
     @Binding var showingErrorState: ContentView.ShowingErrorState
+    @Binding var showingSuccessState: ContentView.ShowingSuccessState
     
     func saveProfileImage(image: UIImage?) {
         guard let uid = store.user.uid else { return }
@@ -309,9 +308,8 @@ struct ProfilePhotoPickerDependencyImpl: PhotoPickerViewDependency {
                 }
                 store.user.updateUser()
                 
-                successMessage = "profile photo successfully uploaded"
                 withAnimation {
-                    isShowingSuccessView = true
+                    showingSuccessState = .init(showing: true, message: "profile photo successfully uploaded")
                     isLoading = false
                 }
             } catch {
@@ -401,11 +399,9 @@ struct SettingViewDependencyImpl: SettingViewDependency {
 
 struct ExerciseInfoContainerDependencyImpl: ExerciseInfoContainerDependency {
     
-    @Binding var isShowingSuccessView: Bool
     @Binding var isLoading: Bool
-    @Binding var successMessage: String?
-    
     @Binding var showingErrorState: ContentView.ShowingErrorState
+    @Binding var showingSuccessState: ContentView.ShowingSuccessState
     
     func addExercise(exercise: Exercise) {
         Task {
@@ -428,8 +424,7 @@ struct ExerciseInfoContainerDependencyImpl: ExerciseInfoContainerDependency {
                 }
             } else {
                 withAnimation {
-                    self.successMessage = "successfully added"
-                    self.isShowingSuccessView = true
+                    showingSuccessState = .init(showing: true, message: "successfully added")
                 }
             }
         }
