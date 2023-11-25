@@ -22,31 +22,31 @@ final class DependencyInjection {
     
     func bodyProfile(paths: Binding<[ContentView.NavigationPath]>,
                      isShowingProfilePhotoPicker: Binding<Bool>,
-                     errorMessage: Binding<String?>,
-                     isShowingErrorView: Binding<Bool>
+                     showingErrorState: Binding<ContentView.ShowingErrorState>
     ) -> BodyProfileViewDependency {
-        return BodyProfileViewDependencyImpl(
-            paths: paths,
-            isShowingProfilePhotoPicker: isShowingProfilePhotoPicker,
-            errorMessage: errorMessage,
-            isShowingErrorView: isShowingErrorView
-        )
+        return BodyProfileViewDependencyImpl(paths: paths,
+                                             isShowingProfilePhotoPicker: isShowingProfilePhotoPicker,
+                                             showingErrorState: showingErrorState)
     }
     
-    func profilePhotoPicker(isLoading: Binding<Bool>, isShowingSuccessView: Binding<Bool>, isShowingErrorView: Binding<Bool>, errorMessage: Binding<String?>, successMessage: Binding<String?>) -> PhotoPickerViewDependency {
-        ProfilePhotoPickerDependencyImpl(isLoading: isLoading, isShowingSuccessView: isShowingSuccessView, isShowingErrorView: isShowingErrorView, errorMessage: errorMessage, successMessage: successMessage)
+    func profilePhotoPicker(loadingState: Binding<ContentView.LoadingState>,
+                            showingSuccessState: Binding<ContentView.ShowingSuccessState>,
+                            showingErrorState: Binding<ContentView.ShowingErrorState>) -> PhotoPickerViewDependency {
+        ProfilePhotoPickerDependencyImpl(loadingState: loadingState,
+                                         showingErrorState: showingErrorState,
+                                         showingSuccessState: showingSuccessState)
     }
     
-    func withdrawalConfirm(errorMessage: Binding<String?>, isShowingErrorView: Binding<Bool>) -> WithdrawalConfirmDependency {
-        WithdrawalConfirmDependencyImpl(errorMessage: errorMessage, isShowingErrorView: isShowingErrorView)
+    func withdrawalConfirm(showingErrorState: Binding<ContentView.ShowingErrorState>) -> WithdrawalConfirmDependency {
+        WithdrawalConfirmDependencyImpl(showingErrorState: showingErrorState)
     }
     
     func exerciseDiary(paths: Binding<[ContentView.NavigationPath]>, monthlyChartViewIngredient: Binding<ContentView.MonthlyChartViewIngredient>) -> ExerciseDiaryDependency {
         ExerciseDiaryDependencyImpl(paths: paths, monthlyChartViewIngredient: monthlyChartViewIngredient)
     }
     
-    func historyForm(isShowingErrorView: Binding<Bool>, errorMessage: Binding<String?>, paths: Binding<[ContentView.NavigationPath]>) -> HistoryFormDependency {
-        return HistoryFormDependencyImpl(isShowingErrorView: isShowingErrorView, errorMessage: errorMessage, paths: paths)
+    func historyForm(showingErrorState: Binding<ContentView.ShowingErrorState>, paths: Binding<[ContentView.NavigationPath]>) -> HistoryFormDependency {
+        return HistoryFormDependencyImpl(showingErrorState: showingErrorState, paths: paths)
     }
     
     func recordForm(paths: Binding<[ContentView.NavigationPath]>) -> RecordFormDependency {
@@ -61,21 +61,27 @@ final class DependencyInjection {
         SetFormViewDependencyImpl(paths: paths)
     }
     
-    func exerciseList(
-        paths: Binding<[ContentView.NavigationPath]>,
-        errorMessage: Binding<String?>,
-        isShowingErrorView: Binding<Bool>
-    ) -> ExerciseListViewDependency {
-        ExerciseListViewDependencyImpl(paths: paths, errorMessage: errorMessage, isShowingErrorView: isShowingErrorView)
+    func exerciseList(paths: Binding<[ContentView.NavigationPath]>,
+                      showingErrorState: Binding<ContentView.ShowingErrorState>,
+                      showingSuccessState: Binding<ContentView.ShowingSuccessState>,
+                      loadingState: Binding<ContentView.LoadingState>) -> ExerciseListViewDependency {
+        ExerciseListViewDependencyImpl(paths: paths,
+                                       showingErrorState: showingErrorState,
+                                       showingSuccessState: showingSuccessState,
+                                       loadingState: loadingState)
     }
     
     func selectExercise(paths: Binding<[ContentView.NavigationPath]>) -> SelectExerciseDependency {
         SelectExerciseDependencyImpl(paths: paths)
     }
     
-    func exerciseInfoContainer(isShowingErrorView: Binding<Bool>, isShowingSuccessView: Binding<Bool>, isLoading: Binding<Bool>, errorMessage: Binding<String?>, successMessage: Binding<String?>) -> ExerciseInfoContainerDependency {
-        
-        return ExerciseInfoContainerDependencyImpl(isShowingErrorView: isShowingErrorView, isShowingSuccessView: isShowingSuccessView, isLoading: isLoading, errorMessage: errorMessage, successMessage: successMessage)
+    func exerciseInfoContainer(loadingState: Binding<ContentView.LoadingState>,
+                               showingErrorState: Binding<ContentView.ShowingErrorState>,
+                               showingSuccessState: Binding<ContentView.ShowingSuccessState>
+    ) -> ExerciseInfoContainerDependency {
+        ExerciseInfoContainerDependencyImpl(loadingState: loadingState,
+                                            showingErrorState: showingErrorState,
+                                            showingSuccessState: showingSuccessState)
     }
 }
 
@@ -92,8 +98,9 @@ struct SelectExerciseDependencyImpl: SelectExerciseDependency {
 struct ExerciseListViewDependencyImpl: ExerciseListViewDependency {
     
     @Binding var paths: [ContentView.NavigationPath]
-    @Binding var errorMessage: String?
-    @Binding var isShowingErrorView: Bool
+    @Binding var showingErrorState: ContentView.ShowingErrorState
+    @Binding var showingSuccessState: ContentView.ShowingSuccessState
+    @Binding var loadingState: ContentView.LoadingState
     
     func tapAdd() {
         paths.append(.exerciseForm(nil, nil, "", [], false))
@@ -101,15 +108,34 @@ struct ExerciseListViewDependencyImpl: ExerciseListViewDependency {
     
     func tapSave(exercises: [Exercise]) {
         Task {
-            let _ = paths.popLast()
-            store.exercise.set(exercises: exercises)
-            let response = try await ExerciseRepository.shared.set(exercises: exercises)
-            store.exercise.updateExercises()
-            
-            if let errorMessage = response.message {
+            do {
+                let _ = paths.popLast()
+                store.exercise.set(exercises: exercises)
                 withAnimation {
-                    self.errorMessage = errorMessage
-                    self.isShowingErrorView = true
+                    loadingState = .init(showing: true, message: "please don't quit the app")
+                }
+                let response = try await ExerciseRepository.shared.set(exercises: exercises)
+                withAnimation {
+                    loadingState = .init(showing: false)
+                }
+                store.exercise.updateExercises()
+                
+                if let errorMessage = response.message {
+                    withAnimation {
+                        showingErrorState = .init(showing: true, message: errorMessage)
+                    }
+                } else {
+                    withAnimation {
+                        showingSuccessState = .init(showing: true, message: "done!")
+                    }
+                }
+            } catch {
+                withAnimation {
+                    loadingState = .init(showing: false)
+                }
+                
+                withAnimation {
+                    showingErrorState = .init(showing: true, message: error.localizedDescription)
                 }
             }
         }
@@ -173,8 +199,7 @@ struct RecordFormDependencyImpl: RecordFormDependency {
 
 struct HistoryFormDependencyImpl: HistoryFormDependency {
     
-    @Binding var isShowingErrorView: Bool
-    @Binding var errorMessage: String?
+    @Binding var showingErrorState: ContentView.ShowingErrorState
     @Binding var paths: [ContentView.NavigationPath]
     
     func tap(record: Record, dateString: String) {
@@ -196,8 +221,7 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
             } catch {
                 DispatchQueue.main.async {
                     withAnimation {
-                        self.errorMessage = error.localizedDescription
-                        self.isShowingErrorView = true
+                        showingErrorState = .init(showing: true, message: error.localizedDescription)
                     }
                 }
             }
@@ -262,16 +286,14 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
 
 struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
     
-    @Binding var errorMessage: String?
-    @Binding var isShowingErrorView: Bool
+    @Binding var showingErrorState: ContentView.ShowingErrorState
     
     func delete() {
         Task {
             if let error = await Authenticator().withDrawal() {
                 DispatchQueue.main.async {
                     withAnimation {
-                        self.errorMessage = error.localizedDescription
-                        self.isShowingErrorView = true
+                        showingErrorState = .init(showing: true, message: error.localizedDescription)
                     }
                 }
             }
@@ -282,18 +304,15 @@ struct WithdrawalConfirmDependencyImpl: WithdrawalConfirmDependency {
 
 struct ProfilePhotoPickerDependencyImpl: PhotoPickerViewDependency {
     
-    @Binding var isLoading: Bool
-    @Binding var isShowingSuccessView: Bool
-    @Binding var isShowingErrorView: Bool
-    
-    @Binding var errorMessage: String?
-    @Binding var successMessage: String?
+    @Binding var loadingState: ContentView.LoadingState
+    @Binding var showingErrorState: ContentView.ShowingErrorState
+    @Binding var showingSuccessState: ContentView.ShowingSuccessState
     
     func saveProfileImage(image: UIImage?) {
         guard let uid = store.user.uid else { return }
         
         withAnimation {
-            isLoading = true
+            loadingState = .init(showing: true)
         }
         
         Task {
@@ -313,16 +332,14 @@ struct ProfilePhotoPickerDependencyImpl: PhotoPickerViewDependency {
                 }
                 store.user.updateUser()
                 
-                successMessage = "profile photo successfully uploaded"
                 withAnimation {
-                    isShowingSuccessView = true
-                    isLoading = false
+                    showingSuccessState = .init(showing: true, message: "profile photo successfully uploaded")
+                    loadingState = .init(showing: false)
                 }
             } catch {
-                errorMessage = error.localizedDescription
                 withAnimation {
-                    isShowingErrorView = true
-                    isLoading = false
+                    showingErrorState = .init(showing: true, message: error.localizedDescription)
+                    loadingState = .init(showing: false)
                 }
             }
         }
@@ -333,8 +350,7 @@ struct BodyProfileViewDependencyImpl: BodyProfileViewDependency {
     
     @Binding var paths: [ContentView.NavigationPath]
     @Binding var isShowingProfilePhotoPicker: Bool
-    @Binding var errorMessage: String?
-    @Binding var isShowingErrorView: Bool
+    @Binding var showingErrorState: ContentView.ShowingErrorState
     
     func tapSave(displayName: String) {
         Task {
@@ -351,8 +367,7 @@ struct BodyProfileViewDependencyImpl: BodyProfileViewDependency {
             
             if let errorMessage = response.message {
                 withAnimation {
-                    self.errorMessage = errorMessage
-                    self.isShowingErrorView = true
+                    showingErrorState = .init(showing: true, message: errorMessage)
                 }
             }
         }
@@ -408,12 +423,9 @@ struct SettingViewDependencyImpl: SettingViewDependency {
 
 struct ExerciseInfoContainerDependencyImpl: ExerciseInfoContainerDependency {
     
-    @Binding var isShowingErrorView: Bool
-    @Binding var isShowingSuccessView: Bool
-    @Binding var isLoading: Bool
-    
-    @Binding var errorMessage: String?
-    @Binding var successMessage: String?
+    @Binding var loadingState: ContentView.LoadingState
+    @Binding var showingErrorState: ContentView.ShowingErrorState
+    @Binding var showingSuccessState: ContentView.ShowingSuccessState
     
     func addExercise(exercise: Exercise) {
         Task {
@@ -421,24 +433,22 @@ struct ExerciseInfoContainerDependencyImpl: ExerciseInfoContainerDependency {
             exercises.append(exercise)
             store.exercise.set(exercises: exercises)
             withAnimation {
-                isLoading = true
+                loadingState = .init(showing: true, message: "please don't quit the app")
             }
             let response = try await ExerciseRepository.shared.set(exercises: exercises)
             withAnimation {
-                isLoading = false
+                loadingState = .init(showing: false)
             }
             
             store.exercise.updateExercises()
             
             if let errorMessage = response.message {
                 withAnimation {
-                    self.errorMessage = errorMessage
-                    self.isShowingErrorView = true
+                    showingErrorState = .init(showing: true, message: errorMessage)
                 }
             } else {
                 withAnimation {
-                    self.successMessage = "successfully added"
-                    self.isShowingSuccessView = true
+                    showingSuccessState = .init(showing: true, message: "successfully added")
                 }
             }
         }

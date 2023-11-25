@@ -13,12 +13,9 @@ struct ContentView: View {
     
     @State var isShowingProfilePhotoPicker = false
     @State var isPresentedWithDrawalConfirm = false
-    @State var isShowingErrorView = false
-    @State var isShowingSuccessView = false
-    @State var isLoading = false
-    
-    @State var errorMessage: String?
-    @State var successMessage: String?
+    @State var loadingState = LoadingState(showing: false)
+    @State var showingErrorState = ShowingErrorState(showing: false, message: "")
+    @State var showingSuccessState = ShowingSuccessState(showing: false, message: "")
     
     @State var monthlyChartViewIngredient: MonthlyChartViewIngredient = .init()
     
@@ -39,7 +36,7 @@ struct ContentView: View {
                             
                             HistoryFormView(
                                 dependency:
-                                    DependencyInjection.shared.historyForm(isShowingErrorView: $isShowingErrorView, errorMessage: $errorMessage, paths: $paths),
+                                    DependencyInjection.shared.historyForm(showingErrorState: $showingErrorState, paths: $paths),
                                 id: id,
                                 dateString: dateString,
                                 records: records,
@@ -70,20 +67,16 @@ struct ContentView: View {
                             )
                         case .bodyProfile:
                             BodyProfileView(
-                                dependency: DependencyInjection.shared.bodyProfile(
-                                    paths: $paths,
-                                    isShowingProfilePhotoPicker: $isShowingProfilePhotoPicker,
-                                    errorMessage: $errorMessage,
-                                    isShowingErrorView: $isShowingErrorView
-                                )
+                                dependency: DependencyInjection.shared.bodyProfile(paths: $paths,
+                                                                                   isShowingProfilePhotoPicker: $isShowingProfilePhotoPicker,
+                                                                                   showingErrorState: $showingErrorState)
                             )
                         case .exerciseList:
                             ExerciseListView(
-                                dependency: DependencyInjection.shared.exerciseList(
-                                    paths: $paths,
-                                    errorMessage: $errorMessage,
-                                    isShowingErrorView: $isShowingErrorView
-                                ),
+                                dependency: DependencyInjection.shared.exerciseList(paths: $paths,
+                                                                                    showingErrorState: $showingErrorState,
+                                                                                    showingSuccessState: $showingSuccessState,
+                                                                                    loadingState: $loadingState),
                                 exercises: store.exercise.exercises
                             )
                         case .recordSets(let record, let dateString):
@@ -93,30 +86,32 @@ struct ContentView: View {
                         case .setting:
                             SettingView(
                                 dependency:
-                                    DependencyInjection.shared.setting(
-                                        paths: $paths,
-                                        isPresentedWithDrawalConfirm: $isPresentedWithDrawalConfirm)
+                                    DependencyInjection.shared.setting(paths: $paths,
+                                                                       isPresentedWithDrawalConfirm: $isPresentedWithDrawalConfirm)
                             )
                         case .watchWorkoutAppInfoView:
                             WatchWorkoutAppInfoView()
                         case .exerciseGuideList:
                             ExerciseGuideListView(dependency:
-                                                    DependencyInjection.shared.exerciseInfoContainer(isShowingErrorView: $isShowingErrorView,
-                                                                                                     isShowingSuccessView: $isShowingSuccessView,
-                                                                                                     isLoading: $isLoading,
-                                                                                                     errorMessage: $errorMessage,
-                                                                                                     successMessage: $successMessage))
+                                                    DependencyInjection.shared.exerciseInfoContainer(loadingState: $loadingState,
+                                                                                                     showingErrorState: $showingErrorState,
+                                                                                                     showingSuccessState: $showingSuccessState)
+                            )
                         }
                     }
                 }
                 .sheet(isPresented: $isPresentedWithDrawalConfirm, content: {
                     WithdrawalConfirmView(
                         isPresented: $isPresentedWithDrawalConfirm,
-                        dependency: DependencyInjection.shared.withdrawalConfirm(errorMessage: $errorMessage, isShowingErrorView: $isShowingErrorView))
+                        dependency: DependencyInjection.shared.withdrawalConfirm(showingErrorState: $showingErrorState))
                 })
                 
                 if isShowingProfilePhotoPicker {
-                    PhotoPickerView(uiImage: userStore.photoUiImage, isShowing: $isShowingProfilePhotoPicker, dependency: DependencyInjection.shared.profilePhotoPicker(isLoading: $isLoading, isShowingSuccessView: $isShowingSuccessView, isShowingErrorView: $isShowingErrorView, errorMessage: $errorMessage, successMessage: $successMessage))
+                    PhotoPickerView(uiImage: userStore.photoUiImage, 
+                                    isShowing: $isShowingProfilePhotoPicker,
+                                    dependency: DependencyInjection.shared.profilePhotoPicker(loadingState: $loadingState,
+                                                                                              showingSuccessState: $showingSuccessState,
+                                                                                              showingErrorState: $showingErrorState))
                 }
                 
                 if monthlyChartViewIngredient.showing {
@@ -130,16 +125,16 @@ struct ContentView: View {
                 SignInView()
             }
             
-            if isShowingErrorView {
-                ErrorView(message: errorMessage ?? "unknown error", isShowing: $isShowingErrorView)
+            if showingErrorState.showing {
+                ErrorView(message: showingErrorState.message, isShowing: $showingErrorState.showing)
             }
             
-            if isShowingSuccessView {
-                SuccessView(isShowing: $isShowingSuccessView, message: successMessage)
+            if showingSuccessState.showing {
+                SuccessView(isShowing: $showingSuccessState.showing, message: showingSuccessState.message)
             }
             
-            if isLoading {
-                LoadingView()
+            if loadingState.showing {
+                LoadingView(message: loadingState.message)
             }
         }
         .onAppear {
@@ -149,7 +144,7 @@ struct ContentView: View {
                     store.health.fetch()
                 } catch {
                     withAnimation {
-                        self.errorMessage = error.localizedDescription
+                        showingErrorState = .init(showing: true, message: error.localizedDescription)
                     }
                 }
             }
@@ -190,5 +185,22 @@ extension ContentView {
         var showing: Bool = false
         var exerciseHistories: [ExerciseHistory] = []
         var volumeBasedOnExercise: [String: Double] = [:]
+    }
+}
+
+extension ContentView {
+    struct ShowingErrorState {
+        var showing: Bool
+        var message: String
+    }
+    
+    struct ShowingSuccessState {
+        var showing: Bool
+        var message: String
+    }
+    
+    struct LoadingState {
+        var showing: Bool
+        var message: String?
     }
 }
