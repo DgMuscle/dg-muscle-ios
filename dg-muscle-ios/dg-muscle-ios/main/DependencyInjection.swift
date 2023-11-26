@@ -87,6 +87,10 @@ final class DependencyInjection {
     func memoFromHistoryForm(paths: Binding<[ContentView.NavigationPath]>) -> MemoViewDependency {
         MemoViewDependencyFromHistoryFormImpl(paths: paths)
     }
+    
+    func exerciseGuideInfo(paths: Binding<[ContentView.NavigationPath]>) -> ExerciseGuideListDependency {
+        ExerciseGuideListDependencyImpl(paths: paths)
+    }
 }
 
 struct SelectExerciseDependencyImpl: SelectExerciseDependency {
@@ -445,6 +449,14 @@ struct ExerciseInfoContainerDependencyImpl: ExerciseInfoContainerDependency {
     func addExercise(exercise: Exercise) {
         Task {
             var exercises = store.exercise.exercises
+            
+            guard exercises.contains(where: { $0.name.lowercased() == exercise.name.lowercased() }) == false else {
+                withAnimation {
+                    showingErrorState = .init(showing: true, message: "You've already registered \(exercise.name)")
+                }
+                return
+            }
+            
             exercises.append(exercise)
             store.exercise.set(exercises: exercises)
             withAnimation {
@@ -467,5 +479,14 @@ struct ExerciseInfoContainerDependencyImpl: ExerciseInfoContainerDependency {
                 }
             }
         }
+    }
+}
+
+struct ExerciseGuideListDependencyImpl: ExerciseGuideListDependency {
+    
+    @Binding var paths: [ContentView.NavigationPath]
+    
+    func tapSquat() {
+        paths.append(.exerciseInfo(.squat))
     }
 }

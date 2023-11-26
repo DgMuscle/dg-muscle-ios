@@ -7,50 +7,32 @@
 
 import SwiftUI
 
+protocol ExerciseGuideListDependency {
+    func tapSquat()
+}
+
 struct ExerciseGuideListView: View {
     
-    enum ShowType {
-        case squat
-    }
-    
-    let dependency: ExerciseInfoContainerDependency
-    @State var showType: ShowType = .squat
-    @State var showing = false
+    let dependency: ExerciseGuideListDependency
     
     var body: some View {
         ZStack {
             Form {
                 Button {
-                    showType = .squat
-                    withAnimation {
-                        showing.toggle()
-                    }
+                    dependency.tapSquat()
                 } label: {
                     Label("squat", systemImage: "chevron.right").foregroundStyle(Color(uiColor: .label))
                 }
             }
             .scrollIndicators(.hidden)
-            
-            if showing {
-                switch showType {
-                case .squat:
-                    ExerciseInfoContainerView(contentView: AnyView(SquatInfoView()),
-                                              exerciseName: "squat",
-                                              exerciseParts: [.leg],
-                                              dependency: dependency,
-                                              exerciseStore: store.exercise,
-                                              isShowing: $showing)
-                }
-            }
         }
     }
 }
 
 #Preview {
-    struct DP: ExerciseInfoContainerDependency {
-        func addExercise(exercise: Exercise) { }
+    struct DP: ExerciseGuideListDependency {
+        func tapSquat() { }
     }
     
     return ExerciseGuideListView(dependency: DP())
 }
-
