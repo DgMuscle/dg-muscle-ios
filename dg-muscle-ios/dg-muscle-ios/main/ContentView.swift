@@ -87,13 +87,14 @@ struct ContentView: View {
                         case .watchWorkoutAppInfoView:
                             WatchWorkoutAppInfoView()
                         case .exerciseGuideList:
-                            ExerciseGuideListView(dependency:
-                                                    DependencyInjection.shared.exerciseInfoContainer(loadingState: $loadingState,
-                                                                                                     showingErrorState: $showingErrorState,
-                                                                                                     showingSuccessState: $showingSuccessState)
-                            )
+                            ExerciseGuideListView(dependency: DependencyInjection.shared.exerciseGuideInfo(paths: $paths))
                         case .memo(text: let memo):
                             MemoView(dependency: DependencyInjection.shared.memoFromHistoryForm(paths: $paths), memo: memo)
+                        case .exerciseInfo(let type):
+                            let dp = DependencyInjection.shared.exerciseInfoContainer(loadingState: $loadingState,
+                                                                             showingErrorState: $showingErrorState,
+                                                                             showingSuccessState: $showingSuccessState)
+                            ExerciseInfoContainerView(type: type, dependency: dp)
                         }
                     }
                 }
@@ -163,6 +164,7 @@ extension ContentView {
         case watchWorkoutAppInfoView
         case exerciseGuideList
         case memo(text: String)
+        case exerciseInfo(ExerciseInfoContainerView.ExerciseType)
         
         func hash(into hasher: inout Hasher) {
             switch self {
@@ -174,6 +176,8 @@ extension ContentView {
                 hasher.combine(value)
             case .memo(text: let value):
                 hasher.combine(value)
+            case .exerciseInfo:
+                break
             case .exerciseForm, .setForm, .bodyProfile, .exerciseList, .selectExercise, .setting, .watchWorkoutAppInfoView, .exerciseGuideList: break
             }
         }

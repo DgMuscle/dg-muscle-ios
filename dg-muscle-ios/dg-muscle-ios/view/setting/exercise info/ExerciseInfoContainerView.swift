@@ -17,12 +17,19 @@ struct ExerciseInfoContainerView: View {
     let exerciseParts: [Exercise.Part]
     let dependency: ExerciseInfoContainerDependency
     
-    @State var isShowingMenuItems = false
     @State var isShowingAddExerciseBottomSheet = false
     @State var exerciseFavorite = true
-    @StateObject var exerciseStore: ExerciseStore
+    @StateObject var exerciseStore: ExerciseStore = store.exercise
     
-    @Binding var isShowing: Bool
+    init(type: ExerciseType, dependency: ExerciseInfoContainerDependency) {
+        self.dependency = dependency
+        switch type {
+        case .squat:
+            contentView = AnyView(SquatInfoView())
+            exerciseName = "squat"
+            exerciseParts = [.leg]
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -33,47 +40,16 @@ struct ExerciseInfoContainerView: View {
             VStack(alignment: .trailing) {
                 Spacer()
                 
-                if isShowingMenuItems {
-                    VStack {
-                        Button {
-                            withAnimation {
-                                isShowing.toggle()
-                            }
-                        } label: {
-                            Image(systemName: "pip.exit")
-                                .foregroundStyle(.white)
-                                .bold()
-                                .padding(10)
-                        }
-                        
-                        Button {
-                            isShowingAddExerciseBottomSheet.toggle()
-                        } label: {
-                            Image(systemName: "pencil.tip.crop.circle.badge.plus")
-                                .foregroundStyle(.white)
-                                .bold()
-                                .padding(10)
-                        }
-                    }
-                    .background {
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(.gray).opacity(0.7)
-                    }
-                    .transition(.scale)
-                }
-                
                 HStack {
                     Spacer()
                     Button {
-                        withAnimation {
-                            isShowingMenuItems.toggle()
-                        }
+                        isShowingAddExerciseBottomSheet.toggle()
                     } label: {
-                        Image(systemName: "menucard")
+                        Image(systemName: "plus")
                             .foregroundStyle(.white)
                             .bold()
                             .padding(10)
-                            .background { Circle().fill(.red).opacity(0.7) }
+                            .background { Circle().fill(.blue).opacity(0.7) }
                     }
                 }
             }
@@ -89,13 +65,11 @@ struct ExerciseInfoContainerView: View {
                     Button {
                         let exercise = Exercise(id: UUID().uuidString, name: exerciseName, parts: exerciseParts, favorite: exerciseFavorite, order: exerciseStore.exercises.count + 1, createdAt: nil)
                         dependency.addExercise(exercise: exercise)
-                        withAnimation {
-                            isShowing.toggle()
-                        }
+                        isShowingAddExerciseBottomSheet.toggle()
                     } label: {
                         Text("yes").foregroundStyle(.white)
                             .padding(8)
-                            .background { RoundedRectangle(cornerRadius: 4).fill(.red).opacity(0.6) }
+                            .background { RoundedRectangle(cornerRadius: 4).fill(.blue).opacity(0.6) }
                     }
                 }
                 
@@ -119,11 +93,17 @@ struct ExerciseInfoContainerView: View {
     }
 }
 
+extension ExerciseInfoContainerView {
+    enum ExerciseType {
+        case squat
+    }
+}
+
 #Preview {
     struct DP: ExerciseInfoContainerDependency {
         func addExercise(exercise: Exercise) {
             print(exercise)
         }
     }
-    return ExerciseInfoContainerView(contentView: AnyView(SquatInfoView()), exerciseName: "squat", exerciseParts: [.leg], dependency: DP(), exerciseStore: store.exercise, isShowing: .constant(true))
+    return ExerciseInfoContainerView(type: .squat, dependency: DP())
 }

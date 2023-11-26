@@ -87,6 +87,10 @@ final class DependencyInjection {
     func memoFromHistoryForm(paths: Binding<[ContentView.NavigationPath]>) -> MemoViewDependency {
         MemoViewDependencyFromHistoryFormImpl(paths: paths)
     }
+    
+    func exerciseGuideInfo(paths: Binding<[ContentView.NavigationPath]>) -> ExerciseGuideListDependency {
+        ExerciseGuideListDependencyImpl(paths: paths)
+    }
 }
 
 struct SelectExerciseDependencyImpl: SelectExerciseDependency {
@@ -467,5 +471,14 @@ struct ExerciseInfoContainerDependencyImpl: ExerciseInfoContainerDependency {
                 }
             }
         }
+    }
+}
+
+struct ExerciseGuideListDependencyImpl: ExerciseGuideListDependency {
+    
+    @Binding var paths: [ContentView.NavigationPath]
+    
+    func tapSquat() {
+        paths.append(.exerciseInfo(.squat))
     }
 }
