@@ -227,6 +227,10 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
             }
         }
     }
+    
+    func tapMemo(data: ExerciseHistory) {
+        print("tap memo")
+    }
 }
 
 struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
@@ -240,15 +244,13 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
         dateFormatter.dateFormat = "yyyyMMdd"
         let dateString = dateFormatter.string(from: Date())
         
-        if let history = store.history.histories.first(where: { $0.date == dateString }) {
-            paths.append(.historyForm(history.id, history.date, history.records))
-        } else {
-            paths.append(.historyForm(nil, nil, []))
-        }
+        let history = store.history.histories.first(where: { $0.date == dateString }) ?? .init(id: UUID().uuidString, date: dateString, memo: nil, records: [], createdAt: nil)
+        
+        paths.append(.historyForm(history))
     }
     
     func tapHistory(history: ExerciseHistory) {
-        paths.append(.historyForm(history.id, history.date, history.records))
+        paths.append(.historyForm(history))
     }
     
     func scrollBottom() {
