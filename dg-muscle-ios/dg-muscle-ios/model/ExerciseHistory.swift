@@ -14,7 +14,7 @@ struct ExerciseHistory: Codable, Identifiable, Equatable {
     
     let id: String
     let date: String
-    let memo: String?
+    var memo: String?
     var records: [Record]
     let createdAt: CreatedAt?
     
