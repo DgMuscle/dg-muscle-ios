@@ -10,6 +10,7 @@ import SwiftUI
 final class HistoryFormNotificationCenter: ObservableObject {
     static let shared = HistoryFormNotificationCenter()
     @Published var record: Record?
+    @Published var memo: String?
     private init() { }
 }
 
@@ -73,14 +74,18 @@ struct HistoryFormView: View {
             }
         }
         .onChange(of: notificationCenter.record) { _, value in
-            if let value {
-                withAnimation {
-                    if let index = history.records.firstIndex(where: { $0.exerciseId == value.exerciseId }) {
-                        history.records[index] = value
-                    } else {
-                        history.records.append(value)
-                    }
+            guard let value else { return }
+            withAnimation {
+                if let index = history.records.firstIndex(where: { $0.exerciseId == value.exerciseId }) {
+                    history.records[index] = value
+                } else {
+                    history.records.append(value)
                 }
+            }
+        }
+        .onChange(of: notificationCenter.memo) { _, value in
+            withAnimation {
+                history.memo = value
             }
         }
     }
