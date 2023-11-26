@@ -83,6 +83,10 @@ final class DependencyInjection {
                                             showingErrorState: showingErrorState,
                                             showingSuccessState: showingSuccessState)
     }
+    
+    func memoFromHistoryForm(paths: Binding<[ContentView.NavigationPath]>) -> MemoViewDependency {
+        MemoViewDependencyFromHistoryFormImpl(paths: paths)
+    }
 }
 
 struct SelectExerciseDependencyImpl: SelectExerciseDependency {
@@ -227,6 +231,10 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
             }
         }
     }
+    
+    func tapMemo(data: ExerciseHistory) {
+        paths.append(.memo(text: data.memo ?? ""))
+    }
 }
 
 struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
@@ -240,15 +248,13 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
         dateFormatter.dateFormat = "yyyyMMdd"
         let dateString = dateFormatter.string(from: Date())
         
-        if let history = store.history.histories.first(where: { $0.date == dateString }) {
-            paths.append(.historyForm(history.id, history.date, history.records))
-        } else {
-            paths.append(.historyForm(nil, nil, []))
-        }
+        let history = store.history.histories.first(where: { $0.date == dateString }) ?? .init(id: UUID().uuidString, date: dateString, memo: nil, records: [], createdAt: nil)
+        
+        paths.append(.historyForm(history))
     }
     
     func tapHistory(history: ExerciseHistory) {
-        paths.append(.historyForm(history.id, history.date, history.records))
+        paths.append(.historyForm(history))
     }
     
     func scrollBottom() {
@@ -281,6 +287,15 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
         withAnimation {
             monthlyChartViewIngredient.showing = true
         }
+    }
+}
+
+struct MemoViewDependencyFromHistoryFormImpl: MemoViewDependency {
+    @Binding var paths: [ContentView.NavigationPath]
+    
+    func save(memo: String) {
+        HistoryFormNotificationCenter.shared.memo = memo
+        let _ = paths.popLast()
     }
 }
 

@@ -28,20 +28,15 @@ struct ContentView: View {
                     ExerciseDiaryView(dependency: DependencyInjection.shared.exerciseDiary(paths: $paths, monthlyChartViewIngredient: $monthlyChartViewIngredient))
                     .navigationDestination(for: NavigationPath.self) { path in
                         switch path {
-                        case .historyForm(let id, let dateString, let records):
+                        case .historyForm(let history):
                             
-                            let validRecords = records.filter({ record in
+                            let validRecords = history.records.filter({ record in
                                 store.exercise.exercises.contains(where: { $0.id == record.exerciseId })
                             })
                             
-                            HistoryFormView(
-                                dependency:
-                                    DependencyInjection.shared.historyForm(showingErrorState: $showingErrorState, paths: $paths),
-                                id: id,
-                                dateString: dateString,
-                                records: records,
-                                saveButtonDisabled: validRecords.isEmpty
-                            )
+                            HistoryFormView(dependency: DependencyInjection.shared.historyForm(showingErrorState: $showingErrorState, paths: $paths),
+                                            history: history,
+                                            saveButtonDisabled: validRecords.isEmpty)
                         case .recordForm(let selectedExercise, let sets, let dateString):
                             RecordFormView(
                                 selectedExercise: selectedExercise,
@@ -97,6 +92,8 @@ struct ContentView: View {
                                                                                                      showingErrorState: $showingErrorState,
                                                                                                      showingSuccessState: $showingSuccessState)
                             )
+                        case .memo(text: let memo):
+                            MemoView(dependency: DependencyInjection.shared.memoFromHistoryForm(paths: $paths), memo: memo)
                         }
                     }
                 }
@@ -154,7 +151,7 @@ struct ContentView: View {
 
 extension ContentView {
     enum NavigationPath: Hashable {
-        case historyForm(String?, String?, [Record])
+        case historyForm(ExerciseHistory)
         case recordForm(Exercise?, [ExerciseSet], String)
         case exerciseForm(String?, Int?, String, [Exercise.Part], Bool)
         case setForm
@@ -165,14 +162,17 @@ extension ContentView {
         case setting
         case watchWorkoutAppInfoView
         case exerciseGuideList
+        case memo(text: String)
         
         func hash(into hasher: inout Hasher) {
             switch self {
-            case .historyForm(let value, _, _):
-                hasher.combine(value)
+            case .historyForm(_):
+                break
             case .recordForm(let value, _, _):
                 hasher.combine(value)
             case .recordSets(let value, _):
+                hasher.combine(value)
+            case .memo(text: let value):
                 hasher.combine(value)
             case .exerciseForm, .setForm, .bodyProfile, .exerciseList, .selectExercise, .setting, .watchWorkoutAppInfoView, .exerciseGuideList: break
             }
