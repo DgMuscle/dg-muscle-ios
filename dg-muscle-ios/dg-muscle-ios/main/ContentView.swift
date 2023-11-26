@@ -92,6 +92,8 @@ struct ContentView: View {
                                                                                                      showingErrorState: $showingErrorState,
                                                                                                      showingSuccessState: $showingSuccessState)
                             )
+                        case .memo(text: let memo):
+                            MemoView(dependency: DependencyInjection.shared.memoFromHistoryForm(paths: $paths), memo: memo)
                         }
                     }
                 }
@@ -160,6 +162,7 @@ extension ContentView {
         case setting
         case watchWorkoutAppInfoView
         case exerciseGuideList
+        case memo(text: String)
         
         func hash(into hasher: inout Hasher) {
             switch self {
@@ -168,6 +171,8 @@ extension ContentView {
             case .recordForm(let value, _, _):
                 hasher.combine(value)
             case .recordSets(let value, _):
+                hasher.combine(value)
+            case .memo(text: let value):
                 hasher.combine(value)
             case .exerciseForm, .setForm, .bodyProfile, .exerciseList, .selectExercise, .setting, .watchWorkoutAppInfoView, .exerciseGuideList: break
             }

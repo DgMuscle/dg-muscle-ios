@@ -16,28 +16,16 @@ struct MemoView: View {
     let dependency: MemoViewDependency
     
     @State var memo: String
-    @State var edit = false
     
     var body: some View {
         GeometryReader { proxy in
             let minHeight = proxy.size.height / 3
             Form {
-                if edit {
-                    TextEditor(text: $memo).frame(minHeight: minHeight)
-                } else {
-                    Text(memo).frame(minHeight: minHeight)
-                }
+                TextEditor(text: $memo).frame(minHeight: minHeight)
                 
                 Section {
                     Button("save") {
                         dependency.save(memo: memo)
-                    }
-                }
-            }
-            .toolbar {
-                Button("Edit") {
-                    withAnimation {
-                        edit.toggle()
                     }
                 }
             }

@@ -93,7 +93,7 @@ struct HistoryFormView: View {
     var memoSection: some View {
         Section {
             Button("Memo", systemImage: "pencil.and.outline") {
-                print("tap memo")
+                dependency.tapMemo(data: history)
             }
             .font(.footnote)
             .foregroundStyle(Color(uiColor: .label))

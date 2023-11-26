@@ -83,6 +83,10 @@ final class DependencyInjection {
                                             showingErrorState: showingErrorState,
                                             showingSuccessState: showingSuccessState)
     }
+    
+    func memoFromHistoryForm(paths: Binding<[ContentView.NavigationPath]>) -> MemoViewDependency {
+        MemoViewDependencyFromHistoryFormImpl(paths: paths)
+    }
 }
 
 struct SelectExerciseDependencyImpl: SelectExerciseDependency {
@@ -229,7 +233,7 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
     }
     
     func tapMemo(data: ExerciseHistory) {
-        print("tap memo")
+        paths.append(.memo(text: data.memo ?? ""))
     }
 }
 
@@ -283,6 +287,15 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
         withAnimation {
             monthlyChartViewIngredient.showing = true
         }
+    }
+}
+
+struct MemoViewDependencyFromHistoryFormImpl: MemoViewDependency {
+    @Binding var paths: [ContentView.NavigationPath]
+    
+    func save(memo: String) {
+        HistoryFormNotificationCenter.shared.memo = memo
+        let _ = paths.popLast()
     }
 }
 
