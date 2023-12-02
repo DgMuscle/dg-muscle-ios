@@ -80,7 +80,7 @@ struct RecordFormView: View {
             if let selectedExercise {
                 
                 HStack {
-                    Text("Record sets").font(.largeTitle)
+                    Text("Record Form").font(.largeTitle)
                     Text("(\(selectedExercise.name))").italic()
                     Spacer()
                 }

@@ -37,7 +37,7 @@ struct HistoryFormView: View {
     
     var body: some View {
         VStack {
-            Text("Record Form")
+            Text("History Form")
                 .font(.largeTitle)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
