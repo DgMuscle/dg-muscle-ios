@@ -25,17 +25,25 @@ struct HistoryFormView: View {
     let dependency: HistoryFormDependency
     @StateObject var notificationCenter = HistoryFormNotificationCenter.shared
     @State var history: ExerciseHistory
+    @State var records: [Record]
     @State var saveButtonDisabled: Bool
+    
+    init(dependency: HistoryFormDependency,  history: ExerciseHistory, saveButtonDisabled: Bool) {
+        self.dependency = dependency
+        self._history = .init(initialValue: history)
+        self._records = .init(initialValue: history.records)
+        self._saveButtonDisabled = .init(initialValue: saveButtonDisabled)
+    }
     
     var body: some View {
         VStack {
-            Text("Record Form")
+            Text("History Form")
                 .font(.largeTitle)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
             
             List {
-                ForEach(history.records) { record in
+                ForEach(records) { record in
                     if let exercise = store.exercise.exercises.first(where: { $0.id ==  record.exerciseId}) {
                         recordItem(record: record, exercise: exercise)
                     } else {
@@ -43,7 +51,7 @@ struct HistoryFormView: View {
                     }
                 }
                 .onDelete { indexSet in
-                    indexSet.forEach({ history.records.remove(at: $0) })
+                    indexSet.forEach({ records.remove(at: $0) })
                 }
                 
                 Button("Add", systemImage: "plus.circle") {
@@ -68,18 +76,20 @@ struct HistoryFormView: View {
                 }
             }
         }
-        .onChange(of: history.records) { oldValue, newValue in
+        .onChange(of: records) { oldValue, newValue in
             withAnimation {
                 saveButtonDisabled = newValue.filter { record in store.exercise.exercises.contains(where: { $0.id == record.exerciseId }) }.isEmpty
+                
+                history.records = records
             }
         }
         .onChange(of: notificationCenter.record) { _, value in
             guard let value else { return }
             withAnimation {
-                if let index = history.records.firstIndex(where: { $0.exerciseId == value.exerciseId }) {
-                    history.records[index] = value
+                if let index = records.firstIndex(where: { $0.exerciseId == value.exerciseId }) {
+                    records[index] = value
                 } else {
-                    history.records.append(value)
+                    records.append(value)
                 }
             }
         }
@@ -134,18 +144,36 @@ struct HistoryFormView: View {
     }
 }
 
-struct DP: HistoryFormDependency {
-    func tap(record: Record, dateString: String) { }
-    func tapAdd(dateString: String) { }
-    func tapSave(data: ExerciseHistory) { }
-    func tapMemo(data: ExerciseHistory) { }
-}
-
 #Preview {
+    
+    struct DP: HistoryFormDependency {
+        func tap(record: Record, dateString: String) { }
+        func tapAdd(dateString: String) { }
+        func tapSave(data: ExerciseHistory) { }
+        func tapMemo(data: ExerciseHistory) { }
+    }
+    
     store.history.updateHistories()
     store.exercise.updateExercises()
     let histories = store.history.histories
     let history = histories.first!
     
-    return HistoryFormView(dependency: DP(), history: history, saveButtonDisabled: false).preferredColorScheme(.dark)
+    return VStack {
+        Button("record add button") {
+            let record: Record = .init(id: "1", exerciseId: "shoulder press", sets: [.init(unit: .kg, reps: 12, weight: 50)])
+            let record2: Record = .init(id: "2", exerciseId: "squat", sets: [.init(unit: .kg, reps: 12, weight: 50)])
+            let record3: Record = .init(id: "3", exerciseId: "babel row", sets: [.init(unit: .kg, reps: 12, weight: 50)])
+            if Bool.random() {
+                HistoryFormNotificationCenter.shared.record = record
+            } else {
+                if Bool.random() {
+                    HistoryFormNotificationCenter.shared.record = record2
+                } else {
+                    HistoryFormNotificationCenter.shared.record = record3
+                }
+            }
+            
+        }
+        HistoryFormView(dependency: DP(), history: history, saveButtonDisabled: false).preferredColorScheme(.dark)
+    }
 }
