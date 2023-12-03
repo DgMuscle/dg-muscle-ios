@@ -103,9 +103,8 @@ struct ContentView: View {
                         isPresented: $isPresentedWithDrawalConfirm,
                         dependency: DependencyInjection.shared.withdrawalConfirm(showingErrorState: $showingErrorState))
                 })
-                
-                if isShowingProfilePhotoPicker {
-                    PhotoPickerView(uiImage: userStore.photoUiImage, 
+                .sheet(isPresented: $isShowingProfilePhotoPicker) {
+                    PhotoPickerView(uiImage: userStore.photoUiImage,
                                     isShowing: $isShowingProfilePhotoPicker,
                                     dependency: DependencyInjection.shared.profilePhotoPicker(loadingState: $loadingState,
                                                                                               showingSuccessState: $showingSuccessState,
