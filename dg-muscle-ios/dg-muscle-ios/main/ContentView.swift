@@ -109,6 +109,7 @@ struct ContentView: View {
                                     dependency: DependencyInjection.shared.profilePhotoPicker(loadingState: $loadingState,
                                                                                               showingSuccessState: $showingSuccessState,
                                                                                               showingErrorState: $showingErrorState))
+                    .presentationDetents([.large, .medium])
                 }
                 
                 if monthlyChartViewIngredient.showing {
