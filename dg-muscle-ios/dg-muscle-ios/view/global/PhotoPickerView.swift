@@ -15,7 +15,6 @@ protocol PhotoPickerViewDependency {
 struct PhotoPickerView: View {
     
     @State private var selectedItem: PhotosPickerItem?
-    @State private var localShowing = true
     
     @State var uiImage: UIImage?
     
@@ -25,66 +24,60 @@ struct PhotoPickerView: View {
     
     var body: some View {
         ZStack {
-            if localShowing {
-                Rectangle()
-                    .fill(Color(uiColor: .systemBackground)).ignoresSafeArea()
-                
-                PhotosPicker(
-                    selection: $selectedItem,
-                    matching: .images,
-                    photoLibrary: .shared()
-                ) {
-                    if let uiImage {
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .scaledToFit()
-                    } else {
-                        Text("Select a photo")
-                    }
+            PhotosPicker(
+                selection: $selectedItem,
+                matching: .images,
+                photoLibrary: .shared()
+            ) {
+                if let uiImage {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                } else {
+                    Text("Select a photo")
                 }
-                
-                VStack {
-                    HStack(spacing: 15) {
-                        Spacer()
-                        
-                        if uiImage != nil {
-                            Button("delete photo") {
-                                withAnimation {
-                                    uiImage = nil
-                                }
-                            }
-                            .foregroundStyle(.red)
-                            .buttonBorderShape(.buttonBorder)
-                        }
-                        
+            }
+            
+            VStack {
+                Spacer()
+                HStack(spacing: 12) {
+                    if uiImage != nil {
                         Button {
                             withAnimation {
-                                localShowing = false
+                                uiImage = nil
+                                selectedItem = nil
                             }
                         } label: {
-                            Image(systemName: "xmark")
-                                .foregroundStyle(.white)
+                            Text("delete")
+                                .frame(maxWidth: .infinity)
+                                .foregroundStyle(.red)
+                                .padding()
+                                .background {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(.gray)
+                                        .opacity(0.6)
+                                }
                         }
-                        .buttonStyle(.bordered)
                     }
-                    .padding()
-                    Spacer()
                     
-                    Button("save photo") {
+                    Button {
                         dependency.saveProfileImage(image: uiImage)
-                        withAnimation {
-                            localShowing = false
-                        }
+                        isShowing = false
+                    } label: {
+                        Text("save")
+                            .frame(maxWidth: .infinity)
+                            .foregroundStyle(.white)
+                            .padding()
+                            .background {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(.blue)
+                                    .opacity(0.6)
+                            }
                     }
-                    .buttonStyle(.borderedProminent)
                 }
+                .padding()
             }
         }
-        .onChange(of: localShowing, { oldValue, newValue in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                isShowing = newValue
-            }
-        })
         .onChange(of: selectedItem) { _, newValue in
             Task {
                 guard let data = try? await newValue?.loadTransferable(type: Data.self) else { return }
@@ -94,4 +87,27 @@ struct PhotoPickerView: View {
             }
         }
     }
+}
+
+#Preview {
+    struct DP: PhotoPickerViewDependency {
+        func saveProfileImage(image: UIImage?) { }
+    }
+    
+    @State var showing = true
+    
+    return ZStack {
+        VStack {
+            Text("Hello world")
+            Button("toggle") {
+                withAnimation {
+                    showing.toggle()
+                }
+            }
+        }
+    }
+    .sheet(isPresented: $showing, content: {
+        PhotoPickerView(isShowing: $showing, dependency: DP())
+    })
+    .preferredColorScheme(.dark)
 }
