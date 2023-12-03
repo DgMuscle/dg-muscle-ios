@@ -115,7 +115,7 @@ struct HistoryFormView: View {
             .font(.footnote)
             .foregroundStyle(Color(uiColor: .label))
             
-            if let memo = history.memo, memo.isEmpty == false {
+            if let memo, memo.isEmpty == false {
                 Text(memo)
                     .font(.footnote)
                     .lineLimit(3)
