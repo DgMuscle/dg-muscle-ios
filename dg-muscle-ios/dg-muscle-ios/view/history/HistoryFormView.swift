@@ -18,21 +18,24 @@ protocol HistoryFormDependency {
     func tap(record: Record, dateString: String)
     func tapAdd(dateString: String)
     func tapSave(data: ExerciseHistory)
-    func tapMemo(data: ExerciseHistory)
+    func tapMemo(memo: String?)
 }
 
 struct HistoryFormView: View {
-    let dependency: HistoryFormDependency
     @StateObject var notificationCenter = HistoryFormNotificationCenter.shared
-    @State var history: ExerciseHistory
     @State var records: [Record]
+    @State var memo: String?
     @State var saveButtonDisabled: Bool
+    
+    let dependency: HistoryFormDependency
+    private let history: ExerciseHistory
     
     init(dependency: HistoryFormDependency,  history: ExerciseHistory, saveButtonDisabled: Bool) {
         self.dependency = dependency
-        self._history = .init(initialValue: history)
+        self.history = history
         self._records = .init(initialValue: history.records)
         self._saveButtonDisabled = .init(initialValue: saveButtonDisabled)
+        self._memo = .init(initialValue: history.memo)
     }
     
     var body: some View {
@@ -63,7 +66,11 @@ struct HistoryFormView: View {
             
             if saveButtonDisabled == false {
                 Button {
-                    dependency.tapSave(data: history)
+                    dependency.tapSave(data: .init(id: history.id,
+                                                   date: history.date,
+                                                   memo: memo,
+                                                   records: records,
+                                                   createdAt: history.createdAt))
                 } label: {
                     Text("Save")
                         .foregroundStyle(.white)
@@ -78,9 +85,9 @@ struct HistoryFormView: View {
         }
         .onChange(of: records) { oldValue, newValue in
             withAnimation {
-                saveButtonDisabled = newValue.filter { record in store.exercise.exercises.contains(where: { $0.id == record.exerciseId }) }.isEmpty
-                
-                history.records = records
+                saveButtonDisabled = newValue.filter{ record in
+                    store.exercise.exercises.contains(where: { $0.id == record.exerciseId })
+                }.isEmpty
             }
         }
         .onChange(of: notificationCenter.record) { _, value in
@@ -95,7 +102,7 @@ struct HistoryFormView: View {
         }
         .onChange(of: notificationCenter.memo) { _, value in
             withAnimation {
-                history.memo = value
+                memo = value
             }
         }
     }
@@ -103,7 +110,7 @@ struct HistoryFormView: View {
     var memoSection: some View {
         Section {
             Button("Memo", systemImage: "pencil.and.outline") {
-                dependency.tapMemo(data: history)
+                dependency.tapMemo(memo: memo)
             }
             .font(.footnote)
             .foregroundStyle(Color(uiColor: .label))
@@ -145,12 +152,11 @@ struct HistoryFormView: View {
 }
 
 #Preview {
-    
     struct DP: HistoryFormDependency {
+        func tapMemo(memo: String?) { }
         func tap(record: Record, dateString: String) { }
         func tapAdd(dateString: String) { }
         func tapSave(data: ExerciseHistory) { }
-        func tapMemo(data: ExerciseHistory) { }
     }
     
     store.history.updateHistories()

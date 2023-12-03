@@ -236,8 +236,8 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
         }
     }
     
-    func tapMemo(data: ExerciseHistory) {
-        paths.append(.memo(text: data.memo ?? ""))
+    func tapMemo(memo: String?) {
+        paths.append(.memo(text: memo ?? ""))
     }
 }
 
