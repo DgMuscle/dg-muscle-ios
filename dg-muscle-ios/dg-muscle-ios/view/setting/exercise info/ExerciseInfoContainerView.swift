@@ -28,6 +28,15 @@ struct ExerciseInfoContainerView: View {
             contentView = AnyView(SquatInfoView())
             exerciseName = "squat"
             exerciseParts = [.leg]
+        case .deadlift:
+            contentView = AnyView(DeadliftInfoView())
+            exerciseName = "deadlift"
+            exerciseParts = [.back, .leg]
+        case .benchpress:
+            contentView = AnyView(BenchPressInfoView())
+            exerciseName = "benchpress"
+            exerciseParts = [.chest]
+            
         }
     }
     
@@ -96,6 +105,8 @@ struct ExerciseInfoContainerView: View {
 extension ExerciseInfoContainerView {
     enum ExerciseType {
         case squat
+        case deadlift
+        case benchpress
     }
 }
 
@@ -105,5 +116,5 @@ extension ExerciseInfoContainerView {
             print(exercise)
         }
     }
-    return ExerciseInfoContainerView(type: .squat, dependency: DP())
+    return ExerciseInfoContainerView(type: .deadlift, dependency: DP())
 }

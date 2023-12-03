@@ -69,6 +69,8 @@
 		70D17E0D2AC5D70B00B86E37 /* WithdrawalConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D17E0C2AC5D70B00B86E37 /* WithdrawalConfirmView.swift */; };
 		70D3418A2ACC03350010EAF9 /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D341892ACC03350010EAF9 /* ExerciseListView.swift */; };
 		70D3418F2ACC081E0010EAF9 /* Extension+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D3418E2ACC081E0010EAF9 /* Extension+Sequence.swift */; };
+		70D7F0502B1C64CF0019E9CB /* DeadliftInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D7F04F2B1C64CF0019E9CB /* DeadliftInfoView.swift */; };
+		70D7F0522B1C64E80019E9CB /* BenchpressInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D7F0512B1C64E80019E9CB /* BenchpressInfoView.swift */; };
 		70D9033D2AC5A70A001DDC0B /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D9033C2AC5A70A001DDC0B /* Vibration.swift */; };
 		70E156942AD2D6C50019329C /* RecordSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E156932AD2D6C50019329C /* RecordSetsView.swift */; };
 		70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E555FF2ABF010C006D4DA0 /* dg_muscle_iosApp.swift */; };
@@ -168,6 +170,8 @@
 		70D17E0C2AC5D70B00B86E37 /* WithdrawalConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalConfirmView.swift; sourceTree = "<group>"; };
 		70D341892ACC03350010EAF9 /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
 		70D3418E2ACC081E0010EAF9 /* Extension+Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Sequence.swift"; sourceTree = "<group>"; };
+		70D7F04F2B1C64CF0019E9CB /* DeadliftInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadliftInfoView.swift; sourceTree = "<group>"; };
+		70D7F0512B1C64E80019E9CB /* BenchpressInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchpressInfoView.swift; sourceTree = "<group>"; };
 		70D9033C2AC5A70A001DDC0B /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
 		70E156932AD2D6C50019329C /* RecordSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSetsView.swift; sourceTree = "<group>"; };
 		70E555FC2ABF010C006D4DA0 /* dg-muscle-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dg-muscle-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -344,6 +348,8 @@
 		70CB69412B09E590001588E2 /* exercise info */ = {
 			isa = PBXGroup;
 			children = (
+				70D7F0512B1C64E80019E9CB /* BenchpressInfoView.swift */,
+				70D7F04F2B1C64CF0019E9CB /* DeadliftInfoView.swift */,
 				704004CC2B09EA4500247E3A /* ExerciseGuideListView.swift */,
 				70CB69442B09E5CD001588E2 /* ExerciseInfoContainerView.swift */,
 				70CB69422B09E5B6001588E2 /* SquatInfoView.swift */,
@@ -583,6 +589,7 @@
 				7083E6C32ABF0C62007D43CE /* SignInView.swift in Sources */,
 				709B540D2AC999D000C282E9 /* ExerciseFormView.swift in Sources */,
 				7060FDB02AC5E1C3001A2198 /* ErrorView.swift in Sources */,
+				70D7F0502B1C64CF0019E9CB /* DeadliftInfoView.swift in Sources */,
 				707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */,
 				707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */,
 				70A708D92B13315A0013A237 /* MemoView.swift in Sources */,
@@ -599,6 +606,7 @@
 				705EC0A92AFF7C530085801A /* GrassData.swift in Sources */,
 				703CD5F02AC015C900BC76D4 /* CustomError.swift in Sources */,
 				70AC465F2ABFF82D00BFE46D /* SettingView.swift in Sources */,
+				70D7F0522B1C64E80019E9CB /* BenchpressInfoView.swift in Sources */,
 				7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */,
 				70C144D32AC82558007F0540 /* APIClient.swift in Sources */,
 				70A74E8A2AC8433F00EA7A35 /* ExerciseStore.swift in Sources */,
