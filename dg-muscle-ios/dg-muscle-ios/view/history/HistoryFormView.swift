@@ -30,7 +30,9 @@ struct HistoryFormView: View {
     let dependency: HistoryFormDependency
     private let history: ExerciseHistory
     
-    init(dependency: HistoryFormDependency,  history: ExerciseHistory, saveButtonDisabled: Bool) {
+    init(dependency: HistoryFormDependency,
+         history: ExerciseHistory,
+         saveButtonDisabled: Bool) {
         self.dependency = dependency
         self.history = history
         self._records = .init(initialValue: history.records)
