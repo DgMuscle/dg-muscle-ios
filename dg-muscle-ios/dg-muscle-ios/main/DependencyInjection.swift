@@ -265,14 +265,6 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
         store.history.appendHistories()
     }
     
-    func delete(data: ExerciseHistory) {
-        Task {
-            store.history.delete(history: data)
-            let _ = try await HistoryRepository.shared.delete(data: data)
-            store.history.updateHistories()
-        }
-    }
-    
     func tapProfile() {
         paths.append(.setting)
     }

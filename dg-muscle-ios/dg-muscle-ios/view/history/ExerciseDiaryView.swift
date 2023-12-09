@@ -12,7 +12,6 @@ protocol ExerciseDiaryDependency {
     func tapAddHistory()
     func tapHistory(history: ExerciseHistory)
     func scrollBottom()
-    func delete(data: ExerciseHistory)
     func tapProfile()
     func tapGrass(histories: [ExerciseHistory], volumeByPart: [String: Double])
 }
@@ -29,31 +28,57 @@ struct ExerciseDiaryView: View {
     
     var body: some View {
         ZStack {
-            List {
+            ScrollView {
                 if historyStore.historyGrassData.isEmpty == false {
                     grass
+                        .scrollTransition { effect, phase in
+                            effect
+                                .opacity(phase.isIdentity ? 1 : 0)
+                                .scaleEffect(phase.isIdentity ? 1 : 0.75)
+                                .blur(radius: phase.isIdentity ? 0 : 10)
+                        }
                 }
                 
-                profileButton
-                addButton
+                VStack {
+                    profileButton
+                    addButton
+                }
+                .padding(.vertical)
+                .scrollTransition { effect, phase in
+                    effect
+                        .opacity(phase.isIdentity ? 1 : 0)
+                        .scaleEffect(phase.isIdentity ? 1 : 0.75)
+                        .blur(radius: phase.isIdentity ? 0 : 10)
+                }
 
                 ForEach(historyStore.historySections) { section in
                     Section {
                         ForEach(section.histories) { history in
                             historyItem(history: history)
+                                .scrollTransition { effect, phase in
+                                    effect
+                                        .opacity(phase.isIdentity ? 1 : 0)
+                                        .scaleEffect(phase.isIdentity ? 1 : 0.75)
+                                        .blur(radius: phase.isIdentity ? 0 : 10)
+                                }
                             .onAppear {
                                 if history == historyStore.histories.last {
                                     dependency.scrollBottom()
                                 }
                             }
                         }
-                        .onDelete { indexSet in
-                            indexSet.forEach({
-                                dependency.delete(data: section.histories[$0])
-                            })
-                        }
                     } header: {
-                        Text(section.header)
+                        HStack {
+                            Text(section.header)
+                            Spacer()
+                        }
+                        .padding(.bottom)
+                        .scrollTransition { effect, phase in
+                            effect
+                                .opacity(phase.isIdentity ? 1 : 0)
+                                .scaleEffect(phase.isIdentity ? 1 : 0.75)
+                                .blur(radius: phase.isIdentity ? 0 : 10)
+                        }
                     } footer: {
                         VStack {
                             let volumeByPart = section.histories.volumeByPart()
@@ -62,13 +87,23 @@ struct ExerciseDiaryView: View {
                                 PieChartView(datas: datas)
                             }
                             HStack {
-                                Text("total volume: \(Int(section.volume))").italic()
+                                Text("total volume: \(Int(section.volume))")
+                                    .italic()
+                                    .foregroundStyle(Color(uiColor: .secondaryLabel))
                                 Spacer()
                             }
+                            .padding(.bottom)
+                        }
+                        .scrollTransition { effect, phase in
+                            effect
+                                .opacity(phase.isIdentity ? 1 : 0)
+                                .scaleEffect(phase.isIdentity ? 1 : 0.75)
+                                .blur(radius: phase.isIdentity ? 0 : 10)
                         }
                     }
                 }
             }
+            .padding(.horizontal)
             .scrollIndicators(.hidden)
             
             VStack {
@@ -98,47 +133,54 @@ struct ExerciseDiaryView: View {
     }
     
     var profileButton: some View {
-        Button {
-            dependency.tapProfile()
-        } label: {
-            HStack {
-                KFImage(userStore.photoURL)
-                    .placeholder {
-                        Circle().fill(Color(uiColor: .secondarySystemBackground).gradient)
+        HStack {
+            Button {
+                dependency.tapProfile()
+            } label: {
+                HStack {
+                    KFImage(userStore.photoURL)
+                        .placeholder {
+                            Circle().fill(Color(uiColor: .secondarySystemBackground).gradient)
+                        }
+                        .resizable()
+                        .frame(width: profileImageSize, height: profileImageSize)
+                        .scaledToFit()
+                        .clipShape(.circle)
+                    
+                    if let displayName = userStore.displayName {
+                        Text(displayName)
+                            .foregroundStyle(Color(uiColor: .label))
+                            .font(.caption)
+                            .italic()
+                    } else {
+                        Text("fill your profile")
+                            .foregroundStyle(Color(uiColor: .secondaryLabel))
+                            .font(.caption)
+                            .italic()
                     }
-                    .resizable()
-                    .frame(width: profileImageSize, height: profileImageSize)
-                    .scaledToFit()
-                    .clipShape(.circle)
-                
-                if let displayName = userStore.displayName {
-                    Text(displayName)
-                        .foregroundStyle(Color(uiColor: .label))
-                        .font(.caption)
-                        .italic()
-                } else {
-                    Text("fill your profile")
-                        .foregroundStyle(Color(uiColor: .secondaryLabel))
-                        .font(.caption)
-                        .italic()
                 }
             }
+            
+            Spacer()
         }
     }
     
     var addButton: some View {
-        Button("add history", systemImage: "plus.app") {
-            dependency.tapAddHistory()
-        }
-        .onAppear {
-            withAnimation {
-                addFloatingButtonVisible = false
+        HStack {
+            Button("add history", systemImage: "plus.app") {
+                dependency.tapAddHistory()
             }
-        }
-        .onDisappear {
-            withAnimation {
-                addFloatingButtonVisible = true
+            .onAppear {
+                withAnimation {
+                    addFloatingButtonVisible = false
+                }
             }
+            .onDisappear {
+                withAnimation {
+                    addFloatingButtonVisible = true
+                }
+            }
+            Spacer()
         }
     }
     
@@ -172,14 +214,14 @@ struct ExerciseDiaryView: View {
                 }
                 
                 if let metaData = healthStore.workoutMetaDatas.first(where: { history.date == $0.startDateString }) {
-                    metaDataView(metaData: metaData)
+                    metadata(metaData: metaData)
                 }
             }
             .foregroundStyle(Color(uiColor: .label))
         }
     }
     
-    func metaDataView(metaData: WorkoutMetaData) -> some View {
+    func metadata(metaData: WorkoutMetaData) -> some View {
         HStack {
             VStack(alignment: .leading) {
                 HStack {
@@ -264,7 +306,6 @@ struct ExerciseDiaryView: View {
         func tapAddHistory() { }
         func tapHistory(history: ExerciseHistory) { }
         func scrollBottom() { }
-        func delete(data: ExerciseHistory) { }
         func tapProfile() { }
         func tapGrass(histories: [ExerciseHistory], volumeByPart: [String: Double]) { }
     }
@@ -273,5 +314,5 @@ struct ExerciseDiaryView: View {
     store.exercise.updateExercises()
     store.health
     
-    return ExerciseDiaryView(dependency: DP(), addFloatingButtonVisible: false)
+    return ExerciseDiaryView(dependency: DP(), addFloatingButtonVisible: false).preferredColorScheme(.dark)
 }
