@@ -37,6 +37,7 @@ struct ExerciseDiaryView: View {
                                 .scaleEffect(phase.isIdentity ? 1 : 0.75)
                                 .blur(radius: phase.isIdentity ? 0 : 10)
                         }
+                    
                 }
                 
                 VStack {
@@ -103,7 +104,7 @@ struct ExerciseDiaryView: View {
                     }
                 }
             }
-            .padding(.horizontal)
+            .padding()
             .scrollIndicators(.hidden)
             
             VStack {
