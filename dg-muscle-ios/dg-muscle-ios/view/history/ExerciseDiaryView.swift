@@ -13,7 +13,6 @@ protocol ExerciseDiaryDependency {
     func tapHistory(history: ExerciseHistory)
     func scrollBottom()
     func delete(data: ExerciseHistory)
-    func tapChart(histories: [ExerciseHistory], volumeByPart: [String: Double])
     func tapProfile()
     func tapGrass(histories: [ExerciseHistory], volumeByPart: [String: Double])
 }
@@ -128,9 +127,6 @@ struct ExerciseDiaryView: View {
                             if volumeByPart.isEmpty == false {
                                 let datas: [PieChartView.Data] = volumeByPart.map({ .init(name: $0.key, value: $0.value) })
                                 PieChartView(datas: datas)
-                                    .onTapGesture {
-                                        dependency.tapChart(histories: section.histories, volumeByPart: volumeByPart)
-                                    }
                             }
                             HStack {
                                 Text("total volume: \(Int(section.volume))").italic()
@@ -234,4 +230,22 @@ struct ExerciseDiaryView: View {
         let kcal = kcalPerHourKg * hours * kg
         return kcal
     }
+}
+
+#Preview {
+    
+    struct DP: ExerciseDiaryDependency {
+        func tapAddHistory() { }
+        func tapHistory(history: ExerciseHistory) { }
+        func scrollBottom() { }
+        func delete(data: ExerciseHistory) { }
+        func tapProfile() { }
+        func tapGrass(histories: [ExerciseHistory], volumeByPart: [String: Double]) { }
+    }
+    
+    store.history.updateHistories()
+    store.exercise.updateExercises()
+    store.health
+    
+    return ExerciseDiaryView(dependency: DP(), addFloatingButtonVisible: false)
 }

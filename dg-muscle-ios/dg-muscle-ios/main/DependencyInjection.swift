@@ -273,14 +273,6 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
         }
     }
     
-    func tapChart(histories: [ExerciseHistory], volumeByPart: [String: Double]) {
-        monthlyChartViewIngredient.exerciseHistories = histories
-        monthlyChartViewIngredient.volumeBasedOnExercise = volumeByPart
-        withAnimation {
-            monthlyChartViewIngredient.showing = true
-        }
-    }
-    
     func tapProfile() {
         paths.append(.setting)
     }
