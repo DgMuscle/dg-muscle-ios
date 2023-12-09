@@ -16,7 +16,6 @@ struct ContentView: View {
     @State var loadingState = LoadingState(showing: false)
     @State var showingErrorState = ShowingErrorState(showing: false, message: "")
     @State var showingSuccessState = ShowingSuccessState(showing: false, message: "")
-    
     @State var monthlyChartViewIngredient: MonthlyChartViewIngredient = .init()
     
     @StateObject var userStore = store.user

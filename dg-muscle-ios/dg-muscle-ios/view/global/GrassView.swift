@@ -44,7 +44,7 @@ struct GrassView: View {
     
     static func getHistoryGrassData(from histories: [ExerciseHistory]) -> [GrassData] {
         let row = 5
-        let item = 17
+        let item = 20
         let itemCount = row * item
         guard let startDate = subtractDays(from: Date(), numberOfDays: itemCount - 1) else { return [] }
         let dateFormatter = DateFormatter()

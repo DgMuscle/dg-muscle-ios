@@ -265,22 +265,6 @@ struct ExerciseDiaryDependencyImpl: ExerciseDiaryDependency {
         store.history.appendHistories()
     }
     
-    func delete(data: ExerciseHistory) {
-        Task {
-            store.history.delete(history: data)
-            let _ = try await HistoryRepository.shared.delete(data: data)
-            store.history.updateHistories()
-        }
-    }
-    
-    func tapChart(histories: [ExerciseHistory], volumeByPart: [String: Double]) {
-        monthlyChartViewIngredient.exerciseHistories = histories
-        monthlyChartViewIngredient.volumeBasedOnExercise = volumeByPart
-        withAnimation {
-            monthlyChartViewIngredient.showing = true
-        }
-    }
-    
     func tapProfile() {
         paths.append(.setting)
     }
