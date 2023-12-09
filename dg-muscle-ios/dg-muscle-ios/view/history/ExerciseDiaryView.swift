@@ -30,84 +30,17 @@ struct ExerciseDiaryView: View {
     var body: some View {
         ZStack {
             List {
-                Button {
-                    dependency.tapProfile()
-                } label: {
-                    HStack {
-                        KFImage(userStore.photoURL)
-                            .placeholder {
-                                Circle().fill(Color(uiColor: .secondarySystemBackground).gradient)
-                            }
-                            .resizable()
-                            .frame(width: profileImageSize, height: profileImageSize)
-                            .scaledToFit()
-                            .clipShape(.circle)
-                        
-                        if let displayName = userStore.displayName {
-                            Text(displayName)
-                                .foregroundStyle(Color(uiColor: .label))
-                                .font(.caption)
-                                .italic()
-                        } else {
-                            Text("fill your profile")
-                                .foregroundStyle(Color(uiColor: .secondaryLabel))
-                                .font(.caption)
-                                .italic()
-                        }
-                    }
-                }
-
                 if historyStore.historyGrassData.isEmpty == false {
-                    GrassView(datas: historyStore.historyGrassData, count: 17)
-                        .padding(.vertical, 8)
-                        .onTapGesture {
-                            dependency.tapGrass(histories: historyStore.histories, volumeByPart: historyStore.histories.volumeByPart())
-                        }
+                    grass
                 }
                 
-                Section {
-                    Button("Add record", systemImage: "plus.app") {
-                        dependency.tapAddHistory()
-                    }
-                    .onAppear {
-                        withAnimation {
-                            addFloatingButtonVisible = false
-                        }
-                    }
-                    .onDisappear {
-                        withAnimation {
-                            addFloatingButtonVisible = true
-                        }
-                    }
-                }
+                profileButton
+                addButton
 
                 ForEach(historyStore.historySections) { section in
                     Section {
                         ForEach(section.histories) { history in
-                            Button {
-                                dependency.tapHistory(history: history)
-                            } label: {
-                                VStack {
-                                    HStack {
-                                        Text(onlyDay(from: history.date))
-                                            .font(.caption2)
-                                            .foregroundStyle(Color(uiColor: .secondaryLabel))
-                                        
-                                        Text(getParts(from: history.records))
-                                            .italic()
-                                            .font(.footnote)
-                                        
-                                        Spacer()
-                                        Text("\(Int(history.volume))")
-                                            .font(.footnote)
-                                    }
-                                    
-                                    if let metaData = healthStore.workoutMetaDatas.first(where: { history.date == $0.startDateString }) {
-                                        metaDataView(metaData: metaData)
-                                    }
-                                }
-                                .foregroundStyle(Color(uiColor: .label))
-                            }
+                            historyItem(history: history)
                             .onAppear {
                                 if history == historyStore.histories.last {
                                     dependency.scrollBottom()
@@ -150,6 +83,99 @@ struct ExerciseDiaryView: View {
                     }
                 }
             }
+        }
+    }
+    
+    var grass: some View {
+        Section {
+            GrassView(datas: historyStore.historyGrassData, count: 17)
+                .padding(.vertical, 8)
+                .onTapGesture {
+                    dependency.tapGrass(histories: historyStore.histories, volumeByPart: historyStore.histories.volumeByPart())
+                }
+                .listRowBackground(Color.clear)
+        }
+    }
+    
+    var profileButton: some View {
+        Button {
+            dependency.tapProfile()
+        } label: {
+            HStack {
+                KFImage(userStore.photoURL)
+                    .placeholder {
+                        Circle().fill(Color(uiColor: .secondarySystemBackground).gradient)
+                    }
+                    .resizable()
+                    .frame(width: profileImageSize, height: profileImageSize)
+                    .scaledToFit()
+                    .clipShape(.circle)
+                
+                if let displayName = userStore.displayName {
+                    Text(displayName)
+                        .foregroundStyle(Color(uiColor: .label))
+                        .font(.caption)
+                        .italic()
+                } else {
+                    Text("fill your profile")
+                        .foregroundStyle(Color(uiColor: .secondaryLabel))
+                        .font(.caption)
+                        .italic()
+                }
+            }
+        }
+    }
+    
+    var addButton: some View {
+        Button("add history", systemImage: "plus.app") {
+            dependency.tapAddHistory()
+        }
+        .onAppear {
+            withAnimation {
+                addFloatingButtonVisible = false
+            }
+        }
+        .onDisappear {
+            withAnimation {
+                addFloatingButtonVisible = true
+            }
+        }
+    }
+    
+    func historyItem(history: ExerciseHistory) -> some View {
+        Button {
+            dependency.tapHistory(history: history)
+        } label: {
+            VStack {
+                if history.memo?.isEmpty == false {
+                    HStack {
+                        Image(systemName: "scribble")
+                            .padding(.leading, 20)
+                            .foregroundStyle(Color(uiColor: .secondaryLabel))
+                        Spacer()
+                    }
+                    .padding(.bottom, 2)
+                }
+                
+                HStack {
+                    Text(onlyDay(from: history.date))
+                        .font(.caption2)
+                        .foregroundStyle(Color(uiColor: .secondaryLabel))
+                    
+                    Text(getParts(from: history.records))
+                        .italic()
+                        .font(.footnote)
+                    
+                    Spacer()
+                    Text("\(Int(history.volume))")
+                        .font(.footnote)
+                }
+                
+                if let metaData = healthStore.workoutMetaDatas.first(where: { history.date == $0.startDateString }) {
+                    metaDataView(metaData: metaData)
+                }
+            }
+            .foregroundStyle(Color(uiColor: .label))
         }
     }
     
