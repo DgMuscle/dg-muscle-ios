@@ -470,7 +470,14 @@ struct ExerciseGuideListDependencyImpl: ExerciseGuideListDependency {
     
     @Binding var paths: [ContentView.NavigationPath]
     
-    func tapSquat() {
-        paths.append(.exerciseInfo(.squat))
+    func tap(type: ExerciseGuideListView.ExerciseInfoType) {
+        switch type {
+        case .squat:
+            paths.append(.exerciseInfo(.squat))
+        case .deadlift:
+            paths.append(.exerciseInfo(.deadlift))
+        case .benchPress:
+            paths.append(.exerciseInfo(.benchpress))
+        }
     }
 }
