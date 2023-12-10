@@ -29,27 +29,24 @@ struct ExerciseDiaryView: View {
     var body: some View {
         ZStack {
             ScrollView {
+                
+                Spacer(minLength: 50)
+                
                 if historyStore.historyGrassData.isEmpty == false {
                     grass
                         .scrollTransition { effect, phase in
-                            effect
-                                .opacity(phase.isIdentity ? 1 : 0)
-                                .scaleEffect(phase.isIdentity ? 1 : 0.75)
-                                .blur(radius: phase.isIdentity ? 0 : 10)
+                            effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
                         }
-                    
                 }
                 
                 VStack {
                     profileButton
+                    Spacer(minLength: 20)
                     addButton
                 }
                 .padding(.vertical)
                 .scrollTransition { effect, phase in
-                    effect
-                        .opacity(phase.isIdentity ? 1 : 0)
-                        .scaleEffect(phase.isIdentity ? 1 : 0.75)
-                        .blur(radius: phase.isIdentity ? 0 : 10)
+                    effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
                 }
 
                 ForEach(historyStore.historySections) { section in
@@ -57,10 +54,7 @@ struct ExerciseDiaryView: View {
                         ForEach(section.histories) { history in
                             historyItem(history: history)
                                 .scrollTransition { effect, phase in
-                                    effect
-                                        .opacity(phase.isIdentity ? 1 : 0)
-                                        .scaleEffect(phase.isIdentity ? 1 : 0.75)
-                                        .blur(radius: phase.isIdentity ? 0 : 10)
+                                    effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
                                 }
                             .onAppear {
                                 if history == historyStore.histories.last {
@@ -75,10 +69,7 @@ struct ExerciseDiaryView: View {
                         }
                         .padding(.bottom)
                         .scrollTransition { effect, phase in
-                            effect
-                                .opacity(phase.isIdentity ? 1 : 0)
-                                .scaleEffect(phase.isIdentity ? 1 : 0.75)
-                                .blur(radius: phase.isIdentity ? 0 : 10)
+                            effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
                         }
                     } footer: {
                         VStack {
@@ -96,10 +87,7 @@ struct ExerciseDiaryView: View {
                             .padding(.bottom)
                         }
                         .scrollTransition { effect, phase in
-                            effect
-                                .opacity(phase.isIdentity ? 1 : 0)
-                                .scaleEffect(phase.isIdentity ? 1 : 0.75)
-                                .blur(radius: phase.isIdentity ? 0 : 10)
+                            effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
                         }
                     }
                 }
@@ -120,6 +108,7 @@ struct ExerciseDiaryView: View {
                 }
             }
         }
+        .ignoresSafeArea()
     }
     
     var grass: some View {
@@ -192,7 +181,7 @@ struct ExerciseDiaryView: View {
             VStack {
                 if history.memo?.isEmpty == false {
                     HStack {
-                        Image(systemName: "scribble")
+                        Image(systemName: "square.and.pencil")
                             .padding(.leading, 20)
                             .foregroundStyle(Color(uiColor: .secondaryLabel))
                         Spacer()
@@ -216,6 +205,9 @@ struct ExerciseDiaryView: View {
                 
                 if let metaData = healthStore.workoutMetaDatas.first(where: { history.date == $0.startDateString }) {
                     metadata(metaData: metaData)
+                        .padding(.bottom, 10)
+                } else {
+                    Spacer(minLength: 20)
                 }
             }
             .foregroundStyle(Color(uiColor: .label))
