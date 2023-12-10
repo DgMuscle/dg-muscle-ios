@@ -45,8 +45,11 @@ struct ContentView: View {
                             )
                         case .exerciseForm(let id, let order, let name, let parts, let favorite):
                             ExerciseFormView(
-                                dependency: DependencyInjection.shared.exerciseForm(paths: $paths),
-                                id: id, 
+                                dependency: DependencyInjection.shared.exerciseForm(paths: $paths,
+                                                                                    showingErrorState: $showingErrorState,
+                                                                                    showingSuccessState: $showingSuccessState,
+                                                                                    loadingState: $loadingState),
+                                id: id,
                                 order: order,
                                 name: name,
                                 selectedParts: parts,

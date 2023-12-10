@@ -53,8 +53,14 @@ final class DependencyInjection {
         RecordFormDependencyImpl(paths: paths)
     }
     
-    func exerciseForm(paths: Binding<[ContentView.NavigationPath]>) -> ExerciseFormDependency {
-        ExerciseFormDependencyImpl(paths: paths)
+    func exerciseForm(paths: Binding<[ContentView.NavigationPath]>,
+                      showingErrorState: Binding<ContentView.ShowingErrorState>,
+                      showingSuccessState: Binding<ContentView.ShowingSuccessState>,
+                      loadingState: Binding<ContentView.LoadingState>) -> ExerciseFormDependency {
+        ExerciseFormDependencyImpl(paths: paths,
+                                   showingErrorState: showingErrorState,
+                                   showingSuccessState: showingSuccessState,
+                                   loadingState: loadingState)
     }
     
     func setForm(paths: Binding<[ContentView.NavigationPath]>) -> SetFormViewDependency {
@@ -115,6 +121,12 @@ struct ExerciseListViewDependencyImpl: ExerciseListViewDependency {
     }
     
     func tapSave(exercises: [Exercise]) {
+        guard loadingState.showing == false else {
+            withAnimation {
+                showingErrorState = .init(showing: true, message: "Can't save right now. Try later")
+            }
+            return
+        }
         Task {
             do {
                 let _ = paths.popLast()
@@ -122,6 +134,7 @@ struct ExerciseListViewDependencyImpl: ExerciseListViewDependency {
                 withAnimation {
                     loadingState = .init(showing: true, message: "please don't quit the app")
                 }
+                
                 let response = try await ExerciseRepository.shared.set(exercises: exercises)
                 withAnimation {
                     loadingState = .init(showing: false)
@@ -167,14 +180,46 @@ struct SetFormViewDependencyImpl: SetFormViewDependency {
 struct ExerciseFormDependencyImpl: ExerciseFormDependency {
     
     @Binding var paths: [ContentView.NavigationPath]
+    @Binding var showingErrorState: ContentView.ShowingErrorState
+    @Binding var showingSuccessState: ContentView.ShowingSuccessState
+    @Binding var loadingState: ContentView.LoadingState
     
     func tapSave(data: Exercise) {
+        guard loadingState.showing == false else {
+            withAnimation {
+                showingErrorState = .init(showing: true, message: "Try later")
+            }
+            return
+        }
         let _ = paths.popLast()
         ExerciseListViewNotificationCenter.shared.exercise = data
         Task {
-            store.exercise.update(exercise: data)
-            let _ = try await ExerciseRepository.shared.post(data: data)
-            store.exercise.updateExercises()
+            do {
+                store.exercise.update(exercise: data)
+                withAnimation {
+                    loadingState = .init(showing: true)
+                }
+                let response = try await ExerciseRepository.shared.post(data: data)
+                withAnimation {
+                    loadingState = .init(showing: false)
+                }
+                store.exercise.updateExercises()
+                
+                if let message = response.message {
+                    withAnimation {
+                        showingErrorState = .init(showing: true, message: message)
+                    }
+                } else {
+                    withAnimation {
+                        showingSuccessState = .init(showing: true, message: "done")
+                    }
+                }
+            } catch {
+                withAnimation {
+                    loadingState = .init(showing: false)
+                    showingErrorState = .init(showing: true, message: error.localizedDescription)
+                }
+            }
         }
     }
 }
@@ -470,7 +515,14 @@ struct ExerciseGuideListDependencyImpl: ExerciseGuideListDependency {
     
     @Binding var paths: [ContentView.NavigationPath]
     
-    func tapSquat() {
-        paths.append(.exerciseInfo(.squat))
+    func tap(type: ExerciseGuideListView.ExerciseInfoType) {
+        switch type {
+        case .squat:
+            paths.append(.exerciseInfo(.squat))
+        case .deadlift:
+            paths.append(.exerciseInfo(.deadlift))
+        case .benchPress:
+            paths.append(.exerciseInfo(.benchpress))
+        }
     }
 }

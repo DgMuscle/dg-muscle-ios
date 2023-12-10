@@ -8,20 +8,28 @@
 import SwiftUI
 
 protocol ExerciseGuideListDependency {
-    func tapSquat()
+    func tap(type: ExerciseGuideListView.ExerciseInfoType)
 }
 
 struct ExerciseGuideListView: View {
+    
+    enum ExerciseInfoType: String, CaseIterable {
+        case squat
+        case deadlift
+        case benchPress = "bench press"
+    }
     
     let dependency: ExerciseGuideListDependency
     
     var body: some View {
         ZStack {
             Form {
-                Button {
-                    dependency.tapSquat()
-                } label: {
-                    Label("squat", systemImage: "chevron.right").foregroundStyle(Color(uiColor: .label))
+                ForEach(ExerciseInfoType.allCases, id: \.self) { type in
+                    Button {
+                        dependency.tap(type: type)
+                    } label: {
+                        Label(type.rawValue, systemImage: "chevron.right").foregroundStyle(Color(uiColor: .label))
+                    }
                 }
             }
             .scrollIndicators(.hidden)
@@ -31,7 +39,7 @@ struct ExerciseGuideListView: View {
 
 #Preview {
     struct DP: ExerciseGuideListDependency {
-        func tapSquat() { }
+        func tap(type: ExerciseGuideListView.ExerciseInfoType) { }
     }
     
     return ExerciseGuideListView(dependency: DP())
