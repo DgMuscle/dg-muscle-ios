@@ -139,7 +139,6 @@ struct ExerciseListViewDependencyImpl: ExerciseListViewDependency {
                 withAnimation {
                     loadingState = .init(showing: false)
                 }
-                store.exercise.updateExercises()
                 
                 if let errorMessage = response.message {
                     withAnimation {
@@ -203,7 +202,6 @@ struct ExerciseFormDependencyImpl: ExerciseFormDependency {
                 withAnimation {
                     loadingState = .init(showing: false)
                 }
-                store.exercise.updateExercises()
                 
                 if let message = response.message {
                     withAnimation {
@@ -495,8 +493,6 @@ struct ExerciseInfoContainerDependencyImpl: ExerciseInfoContainerDependency {
             withAnimation {
                 loadingState = .init(showing: false)
             }
-            
-            store.exercise.updateExercises()
             
             if let errorMessage = response.message {
                 withAnimation {
