@@ -148,7 +148,7 @@ struct RecordFormView: View {
                 }
                 .scrollIndicators(.hidden)
                 
-                if let record = recentRecord() {
+                if let (record, dateString) = recentRecord() {
                     HStack(spacing: 0) {
                         if currentVolume > record.volume {
                             Text("you exercised")
@@ -168,7 +168,7 @@ struct RecordFormView: View {
                         dependency.tapPreviusRecordButton(record: record, dateString: dateString)
                     } label: {
                         HStack {
-                            Text("Go to see previus record")
+                            Text("Go to see previous record")
                                 .italic()
                             Image(systemName: "arrowshape.turn.up.right")
                             Spacer()
@@ -213,12 +213,14 @@ struct RecordFormView: View {
     }
     
     // Get the recent previous record which has same exercise
-    func recentRecord() -> Record? {
+    func recentRecord() -> (Record, String)? {
         var histories = store.history.histories
         histories = histories.filter({ $0.date < self.dateString })
         guard let recentHistory = histories.first(where: { history in
             history.records.contains(where: { $0.exerciseId == selectedExercise?.id ?? "" })
         }) else { return nil }
-        return recentHistory.records.first(where: { $0.exerciseId == selectedExercise?.id ?? "" })
+        
+        guard let record = recentHistory.records.first(where: { $0.exerciseId == selectedExercise?.id ?? "" }) else { return nil }
+        return (record, recentHistory.date)
     }
 }
