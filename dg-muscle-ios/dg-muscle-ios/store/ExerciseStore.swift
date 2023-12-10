@@ -17,9 +17,6 @@ final class ExerciseStore: ObservableObject {
     
     private var cancellables: Set<AnyCancellable> = []
     private init() {
-        
-        setSections(exercises: self.exercises)
-        
         $exercises
             .sink { exercises in
                 self.setSections(exercises: exercises)
@@ -47,9 +44,7 @@ final class ExerciseStore: ObservableObject {
     func set(exercises: [Exercise]) {
         let exercises = exercises.sorted(by: { $0.order < $1.order })
         DispatchQueue.main.async {
-            withAnimation {
-                self.exercises = exercises
-            }
+            self.exercises = exercises
         }
     }
     
