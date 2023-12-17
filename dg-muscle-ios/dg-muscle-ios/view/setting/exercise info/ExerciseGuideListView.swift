@@ -8,15 +8,20 @@
 import SwiftUI
 
 protocol ExerciseGuideListDependency {
+    func tap(type: ExerciseGuideListView.BigExerciseInfoType)
     func tap(type: ExerciseGuideListView.ExerciseInfoType)
 }
 
 struct ExerciseGuideListView: View {
     
-    enum ExerciseInfoType: String, CaseIterable {
+    enum BigExerciseInfoType: String, CaseIterable {
         case squat
         case deadlift
         case benchPress = "bench press"
+    }
+    
+    enum ExerciseInfoType: String, CaseIterable {
+        case pullUp = "pull up"
     }
     
     let dependency: ExerciseGuideListDependency
@@ -24,13 +29,26 @@ struct ExerciseGuideListView: View {
     var body: some View {
         ZStack {
             Form {
-                ForEach(ExerciseInfoType.allCases, id: \.self) { type in
-                    Button {
-                        dependency.tap(type: type)
-                    } label: {
-                        Label(type.rawValue, systemImage: "chevron.right").foregroundStyle(Color(uiColor: .label))
+                Section("big muscle") {
+                    ForEach(BigExerciseInfoType.allCases, id: \.self) { type in
+                        Button {
+                            dependency.tap(type: type)
+                        } label: {
+                            Label(type.rawValue, systemImage: "chevron.right").foregroundStyle(Color(uiColor: .label))
+                        }
                     }
                 }
+                
+                Section {
+                    ForEach(ExerciseInfoType.allCases, id: \.self) { type in
+                        Button {
+                            dependency.tap(type: type)
+                        } label: {
+                            Label(type.rawValue, systemImage: "chevron.right").foregroundStyle(Color(uiColor: .label))
+                        }
+                    }
+                }
+                
             }
             .scrollIndicators(.hidden)
         }
@@ -39,6 +57,7 @@ struct ExerciseGuideListView: View {
 
 #Preview {
     struct DP: ExerciseGuideListDependency {
+        func tap(type: ExerciseGuideListView.BigExerciseInfoType) { }
         func tap(type: ExerciseGuideListView.ExerciseInfoType) { }
     }
     

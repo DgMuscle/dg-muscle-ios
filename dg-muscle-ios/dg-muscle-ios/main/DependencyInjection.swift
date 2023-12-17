@@ -511,7 +511,7 @@ struct ExerciseGuideListDependencyImpl: ExerciseGuideListDependency {
     
     @Binding var paths: [ContentView.NavigationPath]
     
-    func tap(type: ExerciseGuideListView.ExerciseInfoType) {
+    func tap(type: ExerciseGuideListView.BigExerciseInfoType) {
         switch type {
         case .squat:
             paths.append(.exerciseInfo(.squat))
@@ -519,6 +519,13 @@ struct ExerciseGuideListDependencyImpl: ExerciseGuideListDependency {
             paths.append(.exerciseInfo(.deadlift))
         case .benchPress:
             paths.append(.exerciseInfo(.benchpress))
+        }
+    }
+    
+    func tap(type: ExerciseGuideListView.ExerciseInfoType) {
+        switch type {
+        case .pullUp:
+            paths.append(.exerciseInfo(.pullUp))
         }
     }
 }

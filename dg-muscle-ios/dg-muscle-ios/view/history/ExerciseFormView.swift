@@ -1,10 +1,3 @@
-//
-//  ExerciseFormView.swift
-//  dg-muscle-ios
-//
-//  Created by 신동규 on 10/1/23.
-//
-
 import SwiftUI
 
 protocol ExerciseFormDependency {
@@ -36,19 +29,22 @@ struct ExerciseFormView: View {
                 Section("parts") {
                     ForEach(Exercise.Part.allCases, id: \.self) { part in
                         HStack {
-                            Text(part.rawValue)
-                            Spacer()
+                            Button {
+                                withAnimation {
+                                    if let index = selectedParts.firstIndex(of: part) {
+                                        selectedParts.remove(at: index)
+                                    } else {
+                                        selectedParts.append(part)
+                                    }
+                                }
+                            } label: {
+                                HStack {
+                                    Text(part.rawValue).foregroundStyle(Color(uiColor: .label))
+                                    Spacer()
+                                }
+                            }
                             if selectedParts.contains(part) {
                                 Image(systemName: "checkmark").foregroundStyle(.blue)
-                            }
-                        }
-                        .onTapGesture {
-                            withAnimation {
-                                if let index = selectedParts.firstIndex(of: part) {
-                                    selectedParts.remove(at: index)
-                                } else {
-                                    selectedParts.append(part)
-                                }
                             }
                         }
                     }
@@ -83,3 +79,10 @@ struct ExerciseFormView: View {
     }
 }
 
+#Preview {
+    struct DP: ExerciseFormDependency {
+        func tapSave(data: Exercise) { }
+    }
+    
+    return ExerciseFormView(dependency: DP(), id: nil, order: nil, name: "", selectedParts: [], favorite: true, saveButtonVisible: false)
+}
