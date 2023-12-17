@@ -34,9 +34,12 @@ struct ExerciseInfoContainerView: View {
             exerciseParts = [.back, .leg]
         case .benchpress:
             contentView = AnyView(BenchPressInfoView())
-            exerciseName = "benchpress"
+            exerciseName = "bench press"
             exerciseParts = [.chest]
-            
+        case .pullUp:
+            contentView = AnyView(PullUpInfoView())
+            exerciseName = "pull up"
+            exerciseParts = [.back]
         }
     }
     
@@ -107,6 +110,7 @@ extension ExerciseInfoContainerView {
         case squat
         case deadlift
         case benchpress
+        case pullUp
     }
 }
 
@@ -116,5 +120,5 @@ extension ExerciseInfoContainerView {
             print(exercise)
         }
     }
-    return ExerciseInfoContainerView(type: .deadlift, dependency: DP())
+    return ExerciseInfoContainerView(type: .pullUp, dependency: DP())
 }
