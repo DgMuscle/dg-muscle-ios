@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GrassDatasourceBridge {
+struct GrassDatasourceBridge: Codable {
     let date: String
     let volume: Double
 }
@@ -17,11 +17,15 @@ final class WidgetBridge {
     
     private init() { }
     
-    func save(data: [GrassDatasourceBridge]) {
-        
+    func save(data: [GrassDatasourceBridge]) throws {
+        try FileManagerHelper.save(data, toFile: .grassDatasourceBridge)
     }
     
     func get() -> [GrassDatasourceBridge] {
-        []
+        do {
+            return try FileManagerHelper.load([GrassDatasourceBridge].self, fromFile: .grassDatasourceBridge)
+        } catch {
+            return []
+        }
     }
 }

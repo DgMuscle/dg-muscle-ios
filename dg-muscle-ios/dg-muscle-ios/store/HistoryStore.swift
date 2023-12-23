@@ -8,6 +8,7 @@
 import Combine
 import Foundation
 import SwiftUI
+import WidgetKit
 
 final class HistoryStore: ObservableObject {
     static let shared = HistoryStore()
@@ -52,6 +53,7 @@ final class HistoryStore: ObservableObject {
                 self.histories = histories
             }
             try HistoryRepository.shared.saveCache(histories: histories)
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
     
