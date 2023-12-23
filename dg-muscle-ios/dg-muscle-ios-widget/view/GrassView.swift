@@ -8,8 +8,30 @@
 import SwiftUI
 
 struct GrassView: View {
+    static private let row = 7
+    static private let item = 20
+    
     var body: some View {
         Text("GrassView")
+    }
+    
+    static func getHistoryGrassData(from datasource: [GrassDatasource]) -> [GrassData] {
+        
+        let itemCount = row * item
+        guard let startDate = subtractDays(from: Date(), numberOfDays: itemCount - 1) else { return [] }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        let dates = generateDates(startingFrom: startDate, numberOfDays: itemCount).compactMap({ dateFormatter.string(from: $0)})
+        var datas: [GrassData] = dates.map({ date in
+            guard let data = datasource.first(where: { $0.date == date }) else { return .init(date: date, value: 0) }
+            return .init(date: date, value: data.volume)
+        })
+        
+        while datas.first?.value == 0 {
+            datas.removeFirst()
+        }
+        
+        return datas
     }
     
     static private func generateDates(startingFrom startDate: Date, numberOfDays: Int) -> [Date] {

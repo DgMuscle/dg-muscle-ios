@@ -59,6 +59,7 @@
 		70884B912ADBB9AA001FA252 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884B902ADBB9AA001FA252 /* PieChartView.swift */; };
 		708AF2AC2B36D05B00658D6B /* GrassData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2AA2B36D04400658D6B /* GrassData.swift */; };
 		708AF2B02B36D0A300658D6B /* GrassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2AE2B36D09F00658D6B /* GrassView.swift */; };
+		708AF2B32B36D28C00658D6B /* GrassDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2B12B36D23F00658D6B /* GrassDatasource.swift */; };
 		709B540D2AC999D000C282E9 /* ExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709B540C2AC999D000C282E9 /* ExerciseFormView.swift */; };
 		70A708D92B13315A0013A237 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A708D82B13315A0013A237 /* MemoView.swift */; };
 		70A74E8A2AC8433F00EA7A35 /* ExerciseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */; };
@@ -163,6 +164,7 @@
 		70884B902ADBB9AA001FA252 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		708AF2AA2B36D04400658D6B /* GrassData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassData.swift; sourceTree = "<group>"; };
 		708AF2AE2B36D09F00658D6B /* GrassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassView.swift; sourceTree = "<group>"; };
+		708AF2B12B36D23F00658D6B /* GrassDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassDatasource.swift; sourceTree = "<group>"; };
 		709B540C2AC999D000C282E9 /* ExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormView.swift; sourceTree = "<group>"; };
 		70A708D82B13315A0013A237 /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStore.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				708AF2AA2B36D04400658D6B /* GrassData.swift */,
+				708AF2B12B36D23F00658D6B /* GrassDatasource.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				708AF2AC2B36D05B00658D6B /* GrassData.swift in Sources */,
+				708AF2B32B36D28C00658D6B /* GrassDatasource.swift in Sources */,
 				70240BEE2ADC1FF800B87A79 /* dg_muscle_ios_widgetLiveActivity.swift in Sources */,
 				70240BF22ADC1FF800B87A79 /* AppIntent.swift in Sources */,
 				70240BF02ADC1FF800B87A79 /* dg_muscle_ios_widget.swift in Sources */,
