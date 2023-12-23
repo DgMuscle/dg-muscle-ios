@@ -45,7 +45,7 @@ struct GrassView: View {
         return .green.opacity(data.value / self.highestValue)
     }
     
-    static func getHistoryGrassData(from datasource: [ExerciseHistory]) -> [GrassData] {
+    static func getData(from datasource: [ExerciseHistory]) -> [GrassData] {
         
         let itemCount = row * item
         guard let startDate = subtractDays(from: Date(), numberOfDays: itemCount - 1) else { return [] }

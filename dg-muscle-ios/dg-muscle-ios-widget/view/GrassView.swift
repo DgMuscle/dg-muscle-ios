@@ -15,7 +15,7 @@ struct GrassView: View {
         Text("GrassView")
     }
     
-    static func getHistoryGrassData(from datasource: [GrassDatasource]) -> [GrassData] {
+    static func getData(from datasource: [GrassDatasource]) -> [GrassData] {
         
         let itemCount = row * item
         guard let startDate = subtractDays(from: Date(), numberOfDays: itemCount - 1) else { return [] }

@@ -71,7 +71,7 @@ final class HistoryStore: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { histories in
                 self.historySections = self.getHistorySections(histories: histories)
-                self.historyGrassData = GrassView.getHistoryGrassData(from: histories)
+                self.historyGrassData = GrassView.getData(from: histories)
             }
             .store(in: &cancellables)
     }
