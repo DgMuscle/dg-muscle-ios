@@ -45,7 +45,7 @@ struct GrassView: View {
         return .green.opacity(data.value / self.highestValue)
     }
     
-    static func getHistoryGrassData(from histories: [ExerciseHistory]) -> [GrassData] {
+    static func getHistoryGrassData(from datasource: [ExerciseHistory]) -> [GrassData] {
         
         let itemCount = row * item
         guard let startDate = subtractDays(from: Date(), numberOfDays: itemCount - 1) else { return [] }
@@ -53,8 +53,8 @@ struct GrassView: View {
         dateFormatter.dateFormat = "yyyyMMdd"
         let dates = generateDates(startingFrom: startDate, numberOfDays: itemCount).compactMap({ dateFormatter.string(from: $0)})
         var datas: [GrassData] = dates.map({ date in
-            guard let history = histories.first(where: { $0.date == date }) else { return .init(date: date, value: 0) }
-            return .init(date: date, value: history.volume)
+            guard let data = datasource.first(where: { $0.date == date }) else { return .init(date: date, value: 0) }
+            return .init(date: date, value: data.volume)
         })
         
         while datas.first?.value == 0 {
