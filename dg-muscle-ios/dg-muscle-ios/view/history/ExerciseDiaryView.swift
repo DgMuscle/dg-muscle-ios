@@ -113,7 +113,7 @@ struct ExerciseDiaryView: View {
     
     var grass: some View {
         Section {
-            GrassView(datas: historyStore.historyGrassData, count: 20)
+            GrassView(datas: historyStore.historyGrassData)
                 .padding(.vertical, 8)
                 .onTapGesture {
                     dependency.tapGrass(histories: historyStore.histories, volumeByPart: historyStore.histories.volumeByPart())

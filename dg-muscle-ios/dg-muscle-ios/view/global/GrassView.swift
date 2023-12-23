@@ -13,12 +13,15 @@ struct GrassView: View {
     
     var columns: [GridItem]
     
+    static private let row = 7
+    static private let item = 20
+    
     private let averageValue: Double
     private let highestValue: Double
     
-    init(datas: [GrassData], count: Int) {
+    init(datas: [GrassData]) {
         self.datas = datas
-        self.columns = Array(repeating: .init(.flexible(), spacing: 3), count: count)
+        self.columns = Array(repeating: .init(.flexible(), spacing: 3), count: Self.item)
         let filteredData = datas.filter({ $0.value > 0 })
         let sum = filteredData.reduce(0, { $0 + $1.value })
         averageValue = sum / Double(filteredData.count)
@@ -43,8 +46,7 @@ struct GrassView: View {
     }
     
     static func getHistoryGrassData(from histories: [ExerciseHistory]) -> [GrassData] {
-        let row = 7
-        let item = 20
+        
         let itemCount = row * item
         guard let startDate = subtractDays(from: Date(), numberOfDays: itemCount - 1) else { return [] }
         let dateFormatter = DateFormatter()
