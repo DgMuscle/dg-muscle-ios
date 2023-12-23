@@ -39,9 +39,10 @@ struct SimpleEntry: TimelineEntry {
 
 struct dg_muscle_ios_widgetEntryView : View {
     var entry: Provider.Entry
+    var datas = WidgetBridge.shared.get().map({ GrassDatasource(date: $0.date, volume: $0.volume) })
 
     var body: some View {
-        GrassView()
+        GrassView(datas: GrassView.getData(from: datas))
     }
 }
 

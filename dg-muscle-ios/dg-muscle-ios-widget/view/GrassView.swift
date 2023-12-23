@@ -11,8 +11,14 @@ struct GrassView: View {
     static private let row = 7
     static private let item = 20
     
+    var datas: [GrassData]
+    
     var body: some View {
-        Text("GrassView")
+        if datas.isEmpty {
+            Text("empty data")
+        } else {
+            Text("has data")
+        }
     }
     
     static func getData(from datasource: [GrassDatasource]) -> [GrassData] {

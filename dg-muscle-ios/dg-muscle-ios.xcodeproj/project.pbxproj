@@ -60,6 +60,9 @@
 		708AF2AC2B36D05B00658D6B /* GrassData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2AA2B36D04400658D6B /* GrassData.swift */; };
 		708AF2B02B36D0A300658D6B /* GrassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2AE2B36D09F00658D6B /* GrassView.swift */; };
 		708AF2B32B36D28C00658D6B /* GrassDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2B12B36D23F00658D6B /* GrassDatasource.swift */; };
+		708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4C52AD2875700852E2E /* FileManagerHelper.swift */; };
+		708AF2B62B36D38400658D6B /* WidgetBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2B52B36D38400658D6B /* WidgetBridge.swift */; };
+		708AF2B72B36D38B00658D6B /* WidgetBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2B52B36D38400658D6B /* WidgetBridge.swift */; };
 		709B540D2AC999D000C282E9 /* ExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709B540C2AC999D000C282E9 /* ExerciseFormView.swift */; };
 		70A708D92B13315A0013A237 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A708D82B13315A0013A237 /* MemoView.swift */; };
 		70A74E8A2AC8433F00EA7A35 /* ExerciseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */; };
@@ -165,6 +168,7 @@
 		708AF2AA2B36D04400658D6B /* GrassData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassData.swift; sourceTree = "<group>"; };
 		708AF2AE2B36D09F00658D6B /* GrassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassView.swift; sourceTree = "<group>"; };
 		708AF2B12B36D23F00658D6B /* GrassDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassDatasource.swift; sourceTree = "<group>"; };
+		708AF2B52B36D38400658D6B /* WidgetBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBridge.swift; sourceTree = "<group>"; };
 		709B540C2AC999D000C282E9 /* ExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormView.swift; sourceTree = "<group>"; };
 		70A708D82B13315A0013A237 /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStore.swift; sourceTree = "<group>"; };
@@ -286,6 +290,7 @@
 				701CC4C52AD2875700852E2E /* FileManagerHelper.swift */,
 				703CD5E92AC0139600BC76D4 /* FileUploader.swift */,
 				70D9033C2AC5A70A001DDC0B /* Vibration.swift */,
+				708AF2B52B36D38400658D6B /* WidgetBridge.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -597,7 +602,9 @@
 				70240BEE2ADC1FF800B87A79 /* dg_muscle_ios_widgetLiveActivity.swift in Sources */,
 				70240BF22ADC1FF800B87A79 /* AppIntent.swift in Sources */,
 				70240BF02ADC1FF800B87A79 /* dg_muscle_ios_widget.swift in Sources */,
+				708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */,
 				70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */,
+				708AF2B72B36D38B00658D6B /* WidgetBridge.swift in Sources */,
 				708AF2B02B36D0A300658D6B /* GrassView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -607,6 +614,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70C144DA2AC82866007F0540 /* ExerciseRepository.swift in Sources */,
+				708AF2B62B36D38400658D6B /* WidgetBridge.swift in Sources */,
 				701CC4AE2AD2720200852E2E /* Profile.swift in Sources */,
 				70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */,
 				707BBF1A2AF7D39700A8ABD2 /* BodyMass.swift in Sources */,
