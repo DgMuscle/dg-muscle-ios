@@ -59,6 +59,7 @@ struct dg_muscle_ios_widget: Widget {
             dg_muscle_ios_widgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
+        .supportedFamilies([.systemMedium])
     }
 }
 
