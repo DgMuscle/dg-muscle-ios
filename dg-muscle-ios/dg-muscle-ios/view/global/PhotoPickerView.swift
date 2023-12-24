@@ -50,13 +50,8 @@ struct PhotoPickerView: View {
                         } label: {
                             Text("delete")
                                 .frame(maxWidth: .infinity)
-                                .foregroundStyle(.red)
+                                .foregroundStyle(.yellow)
                                 .padding()
-                                .background {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(.gray)
-                                        .opacity(0.6)
-                                }
                         }
                     }
                     
@@ -66,13 +61,7 @@ struct PhotoPickerView: View {
                     } label: {
                         Text("save")
                             .frame(maxWidth: .infinity)
-                            .foregroundStyle(.white)
                             .padding()
-                            .background {
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(.blue)
-                                    .opacity(0.6)
-                            }
                     }
                 }
                 .padding()
@@ -101,13 +90,14 @@ struct PhotoPickerView: View {
             Text("Hello world")
             Button("toggle") {
                 withAnimation {
-                    showing.toggle()
+                    showing = true
                 }
             }
         }
     }
     .sheet(isPresented: $showing, content: {
         PhotoPickerView(isShowing: $showing, dependency: DP())
+            .presentationDetents([.medium, .large])
     })
     .preferredColorScheme(.dark)
 }
