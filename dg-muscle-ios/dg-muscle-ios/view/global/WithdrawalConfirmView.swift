@@ -27,12 +27,11 @@ struct WithdrawalConfirmView: View {
     var body: some View {
         Form {
             Section {
-                Text("Are you sure want to remove your account?")
-                
+                Text("agree_remove_account")
                 
             } footer: {
                 if animation1 {
-                    Text("You can't undo this behavior")
+                    Text("agree_remove_account2")
                         .foregroundStyle(.red)
                 }
             }
@@ -41,7 +40,7 @@ struct WithdrawalConfirmView: View {
                 TextField("Type your display name", text: $text)
             } footer: {
                 if animation2 {
-                    Text("If you don't have display name, just press continue")
+                    Text("agree_remove_account3")
                         .italic()
                 }
             }
@@ -95,3 +94,12 @@ struct WithdrawalConfirmView: View {
     }
 }
 
+#Preview {
+    struct DP: WithdrawalConfirmDependency {
+        func delete() { }
+    }
+    
+    @State var showing = true
+    
+    return WithdrawalConfirmView(isPresented: $showing, dependency: DP())
+}

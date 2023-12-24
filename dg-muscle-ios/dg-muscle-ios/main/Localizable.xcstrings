@@ -1,0 +1,477 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    " %lld" : {
+
+    },
+    " volumes less than before" : {
+
+    },
+    " volumes more than before" : {
+
+    },
+    " x " : {
+
+    },
+    "'Traditional Strength Training'" : {
+
+    },
+    "(%@)" : {
+
+    },
+    "(%lld)" : {
+
+    },
+    "(Maybe this is network issue. Please retry later.)" : {
+
+    },
+    "%@ record" : {
+
+    },
+    "%lld" : {
+
+    },
+    "%lld%@ x %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld%2$@ x %3$lld"
+          }
+        }
+      }
+    },
+    "1. Lie on your back on a flat bench. Grip a barbell with hands slightly wider than shoulder width. The bar should be directly over the shoulders." : {
+
+    },
+    "1. stand in a relaxed manner. Open your feet shoulder-width apart and attach your arms lightly to your body." : {
+
+    },
+    "1. Start with the feet shoulder width apart (foot stance may vary depending on variation). Feet are under the bar with the bar close to the shins" : {
+
+    },
+    "1. Turn on apple watch's workout app" : {
+
+    },
+    "2. As you balance and breathe in, bend your knees and lower your upper body above your waist. Never raise your heels at this time. Keep the upper body as upright as possible so that the back of the waist stays arched. A bend in the waist causes injury." : {
+
+    },
+    "2. Lower the torso to the bar by pushing the buttocks back and hinging at the waist. Then grasp the bar in your hands." : {
+
+    },
+    "2. Press your feet firmly into the ground and keep your hips on the bench throughout the entire movement." : {
+
+    },
+    "2. Select " : {
+
+    },
+    "3. Keep your core engaged and maintain a neutral spine position throughout the movement. Avoid arching your back." : {
+
+    },
+    "3. Lower your waist until your thighs and bottom are parallel. And stay in parallel for about a second if possible. As you breathe out, raise your waist while standing up your knees and back." : {
+
+    },
+    "3. Squeeze the shoulder blades together to engage the lats, followed by engaging the core musculature. Make sure to keep the hips lower than the shoulders and the head/neck in a neutral position." : {
+
+    },
+    "3. Start recording at the beginning of the exercise, and stop recording at the end of the exercise." : {
+
+    },
+    "4. Push through the feet and pull the weight up. Think about pushing the floor away, rather than lifting the weight up. The bar should stay relatively close to the shins. Squeeze the glutes to lock the top of the lift." : {
+
+    },
+    "4. Repeat 1 to 3." : {
+
+    },
+    "4. Slowly lift the bar or dumbbells off the rack, if using. Lower the bar to the chest, about nipple level, allowing elbows to bend out to the side, about 45 degrees away from the body." : {
+
+    },
+    "5. Lower to the floor the the reverse manner." : {
+
+    },
+    "5. Stop lowering when your elbows are just below the bench. Press feet into the floor as you push the bar back up to return to starting position." : {
+
+    },
+    "6. Perform 5 to 10 reps, depending on weight used. Perform up to 3 sets." : {
+
+    },
+    "A pull-up is an upper-body strength exercise. The pull-up is a closed-chain movement where the body is suspended by the hands, gripping a bar or other implement at a distance typically wider than shoulder-width, and pulled up. As this happens, the elbows flex and the shoulders adduct and extend to bring the elbows to the torso.\n\nPull-ups build up several muscles of the upper body, including the latissimus dorsi, trapezius, and biceps brachii. A pull-up may be performed with overhand (pronated), underhand (supinated)—sometimes referred to as a chin-up—neutral, or rotating hand position." : {
+
+    },
+    "A squat is a strength exercise in which the trainee lowers their hips from a standing position and then stands back up. During the descent, the hip and knee joints flex while the ankle joint dorsiflexes; conversely the hip and knee joints extend and the ankle joint plantarflexes when standing up. Squats also help the hip muscles." : {
+
+    },
+    "A-" : {
+
+    },
+    "A+" : {
+
+    },
+    "AB-" : {
+
+    },
+    "AB+" : {
+
+    },
+    "account" : {
+
+    },
+    "add" : {
+
+    },
+    "Add" : {
+
+    },
+    "add history" : {
+
+    },
+    "agree_remove_account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure want to remove your account?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정말 계정을 삭제 하시겠습니까?"
+          }
+        }
+      }
+    },
+    "agree_remove_account2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can't undo this behavior"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 행동은 되돌릴 수 없습니다"
+          }
+        }
+      }
+    },
+    "agree_remove_account3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you don't have display name, just press continue"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "만약 display name이 없다면 계속하기 버튼을 눌러주세요"
+          }
+        }
+      }
+    },
+    "B-" : {
+
+    },
+    "B+" : {
+
+    },
+    "Be careful, removal exercises can affect your previous records" : {
+
+    },
+    "Bench press" : {
+
+    },
+    "big muscle" : {
+
+    },
+    "birth" : {
+
+    },
+    "blood type" : {
+
+    },
+    "cm" : {
+
+    },
+    "consume %lld kcal" : {
+
+    },
+    "continue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "continue"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속하기"
+          }
+        }
+      }
+    },
+    "Continue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속하기"
+          }
+        }
+      }
+    },
+    "current exercise volume: %lld" : {
+
+    },
+    "day" : {
+
+    },
+    "Deadlift" : {
+
+    },
+    "delete" : {
+
+    },
+    "dg-muscle profile" : {
+
+    },
+    "display name" : {
+
+    },
+    "Do you want to add this exercise into you exercise list?" : {
+
+    },
+    "duration: %@" : {
+
+    },
+    "Enter profile in the Health app" : {
+
+    },
+    "exercise" : {
+
+    },
+    "Exercise Form" : {
+
+    },
+    "exercise guide" : {
+
+    },
+    "Exercise of this record was deleted" : {
+
+    },
+    "exercise parts: %@" : {
+
+    },
+    "exercises" : {
+
+    },
+    "favorite" : {
+
+    },
+    "Favorite" : {
+
+    },
+    "female" : {
+
+    },
+    "fill your profile" : {
+
+    },
+    "Go to see previous record" : {
+
+    },
+    "health" : {
+
+    },
+    "health profile" : {
+
+    },
+    "heights" : {
+
+    },
+    "Hello world" : {
+
+    },
+    "History Form" : {
+
+    },
+    "kg" : {
+
+    },
+    "lbs" : {
+
+    },
+    "list" : {
+
+    },
+    "logout" : {
+
+    },
+    "Make use of apple watch" : {
+
+    },
+    "male" : {
+
+    },
+    "mark type" : {
+
+    },
+    "Memo" : {
+
+    },
+    "name" : {
+
+    },
+    "name: %@" : {
+
+    },
+    "O-" : {
+
+    },
+    "O+" : {
+
+    },
+    "Part" : {
+
+    },
+    "parts" : {
+
+    },
+    "profile" : {
+
+    },
+    "Pull Up" : {
+
+    },
+    "record add button" : {
+
+    },
+    "Record Form" : {
+
+    },
+    "Record sets" : {
+
+    },
+    "remove account" : {
+
+    },
+    "reps" : {
+
+    },
+    "save" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "save"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저장하기"
+          }
+        }
+      }
+    },
+    "Save" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저장하기"
+          }
+        }
+      }
+    },
+    "Select a photo" : {
+
+    },
+    "Select exercise" : {
+
+    },
+    "Select Exercise" : {
+
+    },
+    "Set Form" : {
+
+    },
+    "sex" : {
+
+    },
+    "Sign in with apple ID" : {
+
+    },
+    "Squat" : {
+
+    },
+    "The bench press, or chest press, is a weight training exercise where a person presses a weight upwards while lying horizontally on a weight training bench. Although the bench press is a full-body exercise, the muscles primarily used are the pectoralis major, the anterior deltoids, and the triceps, among other stabilizing muscles. A barbell is generally used to hold the weight, but a pair of dumbbells can also be used." : {
+
+    },
+    "The deadlift exercise is a relatively simple exercise to perform, a weight is lifted from a resting position on the floor to an upright position. The deadlift exercise utilizes multiple muscle groups to perform but has been used to strength the hips, thighs, and back musculature." : {
+
+    },
+    "This record was deleted because of absence of exercise" : {
+
+    },
+    "toggle" : {
+
+    },
+    "total volume: %lld" : {
+
+    },
+    "total volumes" : {
+
+    },
+    "Type your display name" : {
+
+    },
+    "Unavailable to show this record" : {
+
+    },
+    "watch workout app" : {
+
+    },
+    "weight" : {
+
+    },
+    "weights" : {
+
+    },
+    "yes" : {
+
+    },
+    "You can see your exercise duration, kcal consumed, intensity." : {
+
+    },
+    "you exercised" : {
+
+    }
+  },
+  "version" : "1.0"
+}
