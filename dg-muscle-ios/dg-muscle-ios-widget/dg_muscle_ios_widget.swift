@@ -52,7 +52,7 @@ struct dg_muscle_ios_widget: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
             dg_muscle_ios_widgetEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
+                .containerBackground(.widgetBackground, for: .widget)
         }
         .supportedFamilies([.systemMedium])
     }
