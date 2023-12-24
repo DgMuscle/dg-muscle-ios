@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct GrassView: View {
-    
-    var datas: [GrassData]
-    
-    var columns: [GridItem]
-    
     static private let row = 7
     static private let item = 20
     
+    var datas: [GrassData]
+    var columns: [GridItem]
+    
     private let averageValue: Double
     private let highestValue: Double
+    private let spacing = 2.0
     
     init(datas: [GrassData]) {
         self.datas = datas
-        self.columns = Array(repeating: .init(.flexible(), spacing: 3), count: Self.item)
+        self.columns = Array(repeating: .init(.flexible(), spacing: spacing), count: Self.item)
         let filteredData = datas.filter({ $0.value > 0 })
         let sum = filteredData.reduce(0, { $0 + $1.value })
         averageValue = sum / Double(filteredData.count)
@@ -29,7 +28,7 @@ struct GrassView: View {
     }
 
     var body: some View {
-        LazyVGrid(columns: columns, alignment: .center, spacing: 3) {
+        LazyVGrid(columns: columns, alignment: .center, spacing: spacing) {
             ForEach(datas) { data in
                 RoundedRectangle(cornerRadius: 4).fill(grassColor(data: data))
                     .aspectRatio(1, contentMode: .fit)

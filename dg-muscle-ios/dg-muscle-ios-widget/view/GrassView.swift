@@ -12,13 +12,40 @@ struct GrassView: View {
     static private let item = 20
     
     var datas: [GrassData]
+    var columns: [GridItem]
+    
+    private let averageValue: Double
+    private let highestValue: Double
+    private let spacing = 2.0
+    
+    init(datas: [GrassData]) {
+        self.datas = datas
+        self.columns = Array(repeating: .init(.flexible(), spacing: spacing), count: Self.item)
+        let filteredData = datas.filter({ $0.value > 0 })
+        let sum = filteredData.reduce(0, { $0 + $1.value })
+        averageValue = sum / Double(filteredData.count)
+        self.highestValue = filteredData.map({ $0.value }).sorted().last ?? 0
+    }
     
     var body: some View {
         if datas.isEmpty {
-            Text("empty data")
+            Text("Do exercise, grow a lawn")
         } else {
-            Text("has data")
+            LazyVGrid(columns: columns, alignment: .center, spacing: spacing) {
+                ForEach(datas) { data in
+                    RoundedRectangle(cornerRadius: 4).fill(grassColor(data: data))
+                        .aspectRatio(1, contentMode: .fit)
+                }
+            }
         }
+    }
+    
+    func grassColor(data: GrassData) -> Color {
+        if data.value == 0 {
+            return Color.black.opacity(0.2)
+        }
+        
+        return .green.opacity(data.value / self.highestValue)
     }
     
     static func getData(from datasource: [GrassDatasource]) -> [GrassData] {
