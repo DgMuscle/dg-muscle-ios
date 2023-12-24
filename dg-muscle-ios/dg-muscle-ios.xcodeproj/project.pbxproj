@@ -57,6 +57,12 @@
 		7083E6C92ABF0F45007D43CE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6C82ABF0F45007D43CE /* FirebaseAuth */; };
 		708508C42AF626990035BB9D /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708508C32AF626990035BB9D /* HealthStore.swift */; };
 		70884B912ADBB9AA001FA252 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884B902ADBB9AA001FA252 /* PieChartView.swift */; };
+		708AF2AC2B36D05B00658D6B /* GrassData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2AA2B36D04400658D6B /* GrassData.swift */; };
+		708AF2B02B36D0A300658D6B /* GrassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2AE2B36D09F00658D6B /* GrassView.swift */; };
+		708AF2B32B36D28C00658D6B /* GrassDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2B12B36D23F00658D6B /* GrassDatasource.swift */; };
+		708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4C52AD2875700852E2E /* FileManagerHelper.swift */; };
+		708AF2B62B36D38400658D6B /* WidgetBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2B52B36D38400658D6B /* WidgetBridge.swift */; };
+		708AF2B72B36D38B00658D6B /* WidgetBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2B52B36D38400658D6B /* WidgetBridge.swift */; };
 		709B540D2AC999D000C282E9 /* ExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709B540C2AC999D000C282E9 /* ExerciseFormView.swift */; };
 		70A708D92B13315A0013A237 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A708D82B13315A0013A237 /* MemoView.swift */; };
 		70A74E8A2AC8433F00EA7A35 /* ExerciseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */; };
@@ -159,6 +165,10 @@
 		708508C22AF625EE0035BB9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		708508C32AF626990035BB9D /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		70884B902ADBB9AA001FA252 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		708AF2AA2B36D04400658D6B /* GrassData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassData.swift; sourceTree = "<group>"; };
+		708AF2AE2B36D09F00658D6B /* GrassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassView.swift; sourceTree = "<group>"; };
+		708AF2B12B36D23F00658D6B /* GrassDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassDatasource.swift; sourceTree = "<group>"; };
+		708AF2B52B36D38400658D6B /* WidgetBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBridge.swift; sourceTree = "<group>"; };
 		709B540C2AC999D000C282E9 /* ExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormView.swift; sourceTree = "<group>"; };
 		70A708D82B13315A0013A237 /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStore.swift; sourceTree = "<group>"; };
@@ -226,6 +236,8 @@
 		70240BEA2ADC1FF800B87A79 /* dg-muscle-ios-widget */ = {
 			isa = PBXGroup;
 			children = (
+				708AF2A92B36D03B00658D6B /* model */,
+				708AF2AD2B36D09400658D6B /* view */,
 				70240BEB2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift */,
 				70240BED2ADC1FF800B87A79 /* dg_muscle_ios_widgetLiveActivity.swift */,
 				70240BEF2ADC1FF800B87A79 /* dg_muscle_ios_widget.swift */,
@@ -278,6 +290,7 @@
 				701CC4C52AD2875700852E2E /* FileManagerHelper.swift */,
 				703CD5E92AC0139600BC76D4 /* FileUploader.swift */,
 				70D9033C2AC5A70A001DDC0B /* Vibration.swift */,
+				708AF2B52B36D38400658D6B /* WidgetBridge.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -308,6 +321,23 @@
 				7083E6C22ABF0C62007D43CE /* SignInView.swift */,
 			);
 			path = signin;
+			sourceTree = "<group>";
+		};
+		708AF2A92B36D03B00658D6B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				708AF2AA2B36D04400658D6B /* GrassData.swift */,
+				708AF2B12B36D23F00658D6B /* GrassDatasource.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		708AF2AD2B36D09400658D6B /* view */ = {
+			isa = PBXGroup;
+			children = (
+				708AF2AE2B36D09F00658D6B /* GrassView.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		70AC465D2ABFF81800BFE46D /* setting */ = {
@@ -567,10 +597,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				708AF2AC2B36D05B00658D6B /* GrassData.swift in Sources */,
+				708AF2B32B36D28C00658D6B /* GrassDatasource.swift in Sources */,
 				70240BEE2ADC1FF800B87A79 /* dg_muscle_ios_widgetLiveActivity.swift in Sources */,
 				70240BF22ADC1FF800B87A79 /* AppIntent.swift in Sources */,
 				70240BF02ADC1FF800B87A79 /* dg_muscle_ios_widget.swift in Sources */,
+				708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */,
 				70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */,
+				708AF2B72B36D38B00658D6B /* WidgetBridge.swift in Sources */,
+				708AF2B02B36D0A300658D6B /* GrassView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,6 +614,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70C144DA2AC82866007F0540 /* ExerciseRepository.swift in Sources */,
+				708AF2B62B36D38400658D6B /* WidgetBridge.swift in Sources */,
 				701CC4AE2AD2720200852E2E /* Profile.swift in Sources */,
 				70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */,
 				707BBF1A2AF7D39700A8ABD2 /* BodyMass.swift in Sources */,

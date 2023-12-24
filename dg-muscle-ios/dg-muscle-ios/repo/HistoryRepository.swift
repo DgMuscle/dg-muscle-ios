@@ -17,7 +17,10 @@ final class HistoryRepository {
     }
     
     func saveCache(histories: [ExerciseHistory]) throws {
+        let grassDatasourceBridge: [GrassDatasourceBridge] = histories.map({ .init(date: $0.date, volume: $0.volume) })
+        
         try FileManagerHelper.save(histories, toFile: .history)
+        try WidgetBridge.shared.save(data: grassDatasourceBridge)
     }
     
     func get(lastId: String?, limit: Int) async throws -> [ExerciseHistory] {

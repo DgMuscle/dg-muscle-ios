@@ -37,5 +37,6 @@ extension FileManagerHelper {
         case history
         case exercise
         case workoutMetaData
+        case grassDatasourceBridge
     }
 }

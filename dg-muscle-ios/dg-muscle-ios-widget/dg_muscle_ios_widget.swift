@@ -39,15 +39,10 @@ struct SimpleEntry: TimelineEntry {
 
 struct dg_muscle_ios_widgetEntryView : View {
     var entry: Provider.Entry
+    var datas = WidgetBridge.shared.get().map({ GrassDatasource(date: $0.date, volume: $0.volume) })
 
     var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Favorite Emoji:")
-            Text(entry.configuration.favoriteEmoji)
-        }
+        GrassView(datas: GrassView.getData(from: datas))
     }
 }
 
@@ -57,8 +52,9 @@ struct dg_muscle_ios_widget: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
             dg_muscle_ios_widgetEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
+                .containerBackground(.widgetBackground, for: .widget)
         }
+        .supportedFamilies([.systemMedium])
     }
 }
 

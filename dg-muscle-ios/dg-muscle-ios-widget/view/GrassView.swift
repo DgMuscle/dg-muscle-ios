@@ -1,8 +1,8 @@
 //
-//  HistoryGrassView.swift
+//  GrassView.swift
 //  dg-muscle-ios
 //
-//  Created by 신동규 on 10/15/23.
+//  Created by 신동규 on 12/23/23.
 //
 
 import SwiftUI
@@ -26,12 +26,16 @@ struct GrassView: View {
         averageValue = sum / Double(filteredData.count)
         self.highestValue = filteredData.map({ $0.value }).sorted().last ?? 0
     }
-
+    
     var body: some View {
-        LazyVGrid(columns: columns, alignment: .center, spacing: spacing) {
-            ForEach(datas) { data in
-                RoundedRectangle(cornerRadius: 4).fill(grassColor(data: data))
-                    .aspectRatio(1, contentMode: .fit)
+        if datas.isEmpty {
+            Text("Do exercise, grow a lawn")
+        } else {
+            LazyVGrid(columns: columns, alignment: .center, spacing: spacing) {
+                ForEach(datas) { data in
+                    RoundedRectangle(cornerRadius: 4).fill(grassColor(data: data))
+                        .aspectRatio(1, contentMode: .fit)
+                }
             }
         }
     }
@@ -44,7 +48,7 @@ struct GrassView: View {
         return .green.opacity(data.value / self.highestValue)
     }
     
-    static func getData(from datasource: [ExerciseHistory]) -> [GrassData] {
+    static func getData(from datasource: [GrassDatasource]) -> [GrassData] {
         
         let itemCount = row * item
         guard let startDate = subtractDays(from: Date(), numberOfDays: itemCount - 1) else { return [] }
