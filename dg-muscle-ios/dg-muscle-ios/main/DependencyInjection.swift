@@ -81,11 +81,13 @@ final class DependencyInjection {
         SelectExerciseDependencyImpl(paths: paths)
     }
     
-    func exerciseInfoContainer(loadingState: Binding<ContentView.LoadingState>,
+    func exerciseInfoContainer(paths: Binding<[ContentView.NavigationPath]>,
+                               loadingState: Binding<ContentView.LoadingState>,
                                showingErrorState: Binding<ContentView.ShowingErrorState>,
                                showingSuccessState: Binding<ContentView.ShowingSuccessState>
     ) -> ExerciseInfoContainerDependency {
-        ExerciseInfoContainerDependencyImpl(loadingState: loadingState,
+        ExerciseInfoContainerDependencyImpl(paths: paths,
+                                            loadingState: loadingState,
                                             showingErrorState: showingErrorState,
                                             showingSuccessState: showingSuccessState)
     }
@@ -468,7 +470,7 @@ struct SettingViewDependencyImpl: SettingViewDependency {
 }
 
 struct ExerciseInfoContainerDependencyImpl: ExerciseInfoContainerDependency {
-    
+    @Binding var paths: [ContentView.NavigationPath]
     @Binding var loadingState: ContentView.LoadingState
     @Binding var showingErrorState: ContentView.ShowingErrorState
     @Binding var showingSuccessState: ContentView.ShowingSuccessState
@@ -499,6 +501,7 @@ struct ExerciseInfoContainerDependencyImpl: ExerciseInfoContainerDependency {
                     showingErrorState = .init(showing: true, message: errorMessage)
                 }
             } else {
+                paths.append(.exerciseList)
                 withAnimation {
                     showingSuccessState = .init(showing: true, message: "successfully added")
                 }
