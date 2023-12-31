@@ -524,8 +524,20 @@ struct ExerciseGuideListDependencyImpl: ExerciseGuideListDependency {
     
     func tap(type: ExerciseGuideListView.ExerciseInfoType) {
         switch type {
+        case .bicepCurl:
+            paths.append(.exerciseInfo(.bicepCurl))
+        case .legCurl:
+            paths.append(.exerciseInfo(.legCurl))
+        case .legExtension:
+            paths.append(.exerciseInfo(.legExtension))
+        case .legPress:
+            paths.append(.exerciseInfo(.legPress))
         case .pullUp:
             paths.append(.exerciseInfo(.pullUp))
+        case .pushUp:
+            paths.append(.exerciseInfo(.pushUp))
+        case .tricepPushdown:
+            paths.append(.exerciseInfo(.tricepPushdown))
         }
     }
 }

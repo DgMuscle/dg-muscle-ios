@@ -1,10 +1,3 @@
-//
-//  ExerciseInfoContainerView.swift
-//  dg-muscle-ios
-//
-//  Created by 신동규 on 11/19/23.
-//
-
 import SwiftUI
 
 protocol ExerciseInfoContainerDependency {
@@ -40,6 +33,30 @@ struct ExerciseInfoContainerView: View {
             contentView = AnyView(PullUpInfoView())
             exerciseName = "pull up"
             exerciseParts = [.back]
+        case .bicepCurl:
+            contentView = AnyView(BicepCurlInfoView())
+            exerciseName = "bicep curl"
+            exerciseParts = [.arm]
+        case .legCurl:
+            contentView = AnyView(LegCurlInfoView())
+            exerciseName = "leg curl"
+            exerciseParts = [.leg]
+        case .legExtension:
+            contentView = AnyView(LegExtensionInfoView())
+            exerciseName = "leg extension"
+            exerciseParts = [.leg]
+        case .legPress:
+            contentView = AnyView(LegPressInfoView())
+            exerciseName = "leg press"
+            exerciseParts = [.leg]
+        case .pushUp:
+            contentView = AnyView(PushUpInfoView())
+            exerciseName = "push up"
+            exerciseParts = [.chest]
+        case .tricepPushdown:
+            contentView = AnyView(TricepPushDownInfoView())
+            exerciseName = "tricep pushdown"
+            exerciseParts = [.arm]
         }
     }
     
@@ -107,10 +124,16 @@ struct ExerciseInfoContainerView: View {
 
 extension ExerciseInfoContainerView {
     enum ExerciseType {
-        case squat
-        case deadlift
         case benchpress
+        case bicepCurl
+        case deadlift
+        case legCurl
+        case legExtension
+        case legPress
         case pullUp
+        case pushUp
+        case squat
+        case tricepPushdown
     }
 }
 

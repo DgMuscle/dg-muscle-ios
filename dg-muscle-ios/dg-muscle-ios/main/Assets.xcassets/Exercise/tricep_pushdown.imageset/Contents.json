@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "tricep_pushdown.jpeg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

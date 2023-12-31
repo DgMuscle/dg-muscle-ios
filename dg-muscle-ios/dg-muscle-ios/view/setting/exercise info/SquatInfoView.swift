@@ -1,10 +1,3 @@
-//
-//  SquatInfoView.swift
-//  dg-muscle-ios
-//
-//  Created by 신동규 on 11/19/23.
-//
-
 import SwiftUI
 
 struct SquatInfoView: View {
@@ -51,4 +44,3 @@ struct SquatInfoView: View {
 #Preview {
     SquatInfoView()
 }
-
