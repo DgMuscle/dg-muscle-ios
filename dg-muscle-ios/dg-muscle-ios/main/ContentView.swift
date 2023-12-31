@@ -93,9 +93,10 @@ struct ContentView: View {
                         case .memo(text: let memo):
                             MemoView(dependency: DependencyInjection.shared.memoFromHistoryForm(paths: $paths), memo: memo)
                         case .exerciseInfo(let type):
-                            let dp = DependencyInjection.shared.exerciseInfoContainer(loadingState: $loadingState,
-                                                                             showingErrorState: $showingErrorState,
-                                                                             showingSuccessState: $showingSuccessState)
+                            let dp = DependencyInjection.shared.exerciseInfoContainer(paths: $paths,
+                                                                                      loadingState: $loadingState,
+                                                                                      showingErrorState: $showingErrorState,
+                                                                                      showingSuccessState: $showingSuccessState)
                             ExerciseInfoContainerView(type: type, dependency: dp)
                         }
                     }

@@ -1,10 +1,3 @@
-//
-//  ExerciseGuideListView.swift
-//  dg-muscle-ios
-//
-//  Created by 신동규 on 11/19/23.
-//
-
 import SwiftUI
 
 protocol ExerciseGuideListDependency {
@@ -21,7 +14,13 @@ struct ExerciseGuideListView: View {
     }
     
     enum ExerciseInfoType: String, CaseIterable {
+        case bicepCurl = "bicep curl"
+        case legCurl = "leg curl"
+        case legExtension = "leg extension"
+        case legPress = "leg press"
         case pullUp = "pull up"
+        case pushUp = "push up"
+        case tricepPushdown = "ticep pushdown"
     }
     
     let dependency: ExerciseGuideListDependency

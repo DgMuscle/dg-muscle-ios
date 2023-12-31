@@ -1,10 +1,3 @@
-//
-//  BenchpressInfoView.swift
-//  dg-muscle-ios
-//
-//  Created by 신동규 on 12/3/23.
-//
-
 import SwiftUI
 
 struct BenchPressInfoView: View {

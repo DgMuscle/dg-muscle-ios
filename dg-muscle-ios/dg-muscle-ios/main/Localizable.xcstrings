@@ -4,6 +4,9 @@
     " %lld" : {
 
     },
+    " As you prepare for this move, face the tricep pushdown cable machine and grasp the horizontal cable bar or rope attachment (depending on the machine your gym has) with an overhand grip.1 Adjust the bar or rope grips to about chest level.\n \n Use the pin-and-place adjustment and set a low weight to start. Different versions of the machine may include other weighting mechanisms.\n\n    1. Start by bracing your abdominals.\n\n    2. Tuck your elbows in at your sides and position your feet slightly apart.1\n\n    3. Inhale. Push down until your elbows are fully extended but not yet in the straight, locked position. Keep your elbows close to your body and bend your knees slightly on the pushdown. Resist bending forward. Try to keep your back as straight as possible as you push down.1\n\n    4. As you exhale, return to the starting point using a controlled movement. Try not to crash the weights.\n\n\n For beginners, aim to complete 4 sets of 8 reps. As you gain fitness, you can increase the number of reps you do and the amount of weight you use as resistance." : {
+
+    },
     " volumes less than before" : {
 
     },
@@ -349,6 +352,12 @@
     "Bench press" : {
 
     },
+    "Bicep curl" : {
+
+    },
+    "Bicep curls are a group of weight training exercises in which a person bends their arm towards their body at the elbow in order to make their biceps stronger." : {
+
+    },
     "big muscle" : {
 
     },
@@ -486,6 +495,15 @@
     "lbs" : {
 
     },
+    "Leg curl" : {
+
+    },
+    "Leg extension" : {
+
+    },
+    "Leg press" : {
+
+    },
     "list" : {
 
     },
@@ -526,6 +544,9 @@
 
     },
     "Pull Up" : {
+
+    },
+    "Push up" : {
 
     },
     "record add button" : {
@@ -608,6 +629,9 @@
         }
       }
     },
+    "The bicep curl mainly targets the biceps brachii, brachialis and brachioradialis muscles. The biceps is stronger at elbow flexion when the forearm is supinated (palms turned upward) and weaker when the forearm is pronated. The brachioradialis is at its most effective when the palms are facing inward, and the brachialis is unaffected by forearm rotation. Therefore, the degree of forearm rotation affects the degree of muscle recruitment between the three muscles." : {
+
+    },
     "The deadlift exercise is a relatively simple exercise to perform, a weight is lifted from a resting position on the floor to an upright position. The deadlift exercise utilizes multiple muscle groups to perform but has been used to strength the hips, thighs, and back musculature." : {
       "localizations" : {
         "ko" : {
@@ -617,6 +641,21 @@
           }
         }
       }
+    },
+    "The exercise consists of bending the leg at the knee and extending the legs, then lowering them back to the original position." : {
+
+    },
+    "The leg curl is an isolation exercise that targets the hamstring muscles. The exercise involves flexing the lower leg against resistance towards the buttocks. There are three types of leg curls. There are seated leg curls, lying leg curls, and standing leg curls.\n\nOther exercises that can be used to strengthen the hamstrings include the glute-ham raise and the deadlift." : {
+
+    },
+    "The leg extension is a resistance weight training exercise that targets the quadriceps muscle (m. quadriceps femoris) in the legs. The exercise is done using a machine called the Leg Extension Machine. There are various manufacturers of these machines and each one is slightly different. Most gym and weight rooms will have the machine in their facility. The leg extension is an isolated exercise targeting one specific muscle group, the quadriceps. It should not be considered as a total leg workout, such as the squat or deadlift.[citation needed]" : {
+
+    },
+    "The leg press is a compound weight training exercise in which the individual pushes a weight or resistance away from them using their legs. The term leg press machine refers to the apparatus used to perform this exercise. The leg press can be used to evaluate an athlete's overall lower body strength (from the gluteus Maximus to the lower leg muscles). It can help to build squat strength. If performed correctly, the inclined leg press can help develop knees to manage heavier free weights, on the other hand, it has the potential to inflict grave injury: the knees could bend the wrong way if they are locked during the exercise." : {
+
+    },
+    "The push-up (press-up in British English) is a common calisthenics exercise beginning from the prone position. By raising and lowering the body using the arms, push-ups exercise the pectoral muscles, triceps, and anterior deltoids, with ancillary benefits to the rest of the deltoids, serratus anterior, coracobrachialis and the midsection as a whole.[1] Push-ups are a basic exercise used in civilian athletic training or physical education and commonly in military physical training. They are also a common form of punishment used in the military, school sport, and some martial arts disciplines. Variations of push-ups, such as wide-arm push-ups, diamond push-ups target specific muscle groups and provide further challenges." : {
+
     },
     "This record was deleted because of absence of exercise" : {
 
@@ -628,6 +667,9 @@
 
     },
     "total volumes" : {
+
+    },
+    "Tricep pushdown" : {
 
     },
     "Type your display name" : {
