@@ -82,6 +82,7 @@ struct RecordFormView: View {
                 HStack {
                     Text("Record Form").font(.largeTitle)
                     Text("(\(selectedExercise.name))").italic()
+                        .foregroundStyle(.blue)
                     Spacer()
                 }
                 .padding(.horizontal)
