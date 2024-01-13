@@ -36,7 +36,18 @@ final class HealthStore: ObservableObject {
         bodyMasses.sorted(by: { $0.startDate > $1.startDate }).first
     }
     
-    private init() { }
+    private var cancellables: Set<AnyCancellable> = []
+    private init() {
+        bind()
+    }
+    
+    private func bind() {
+        $workoutMetaDatas
+            .sink { metadatas in
+                HistoryStore.shared.set(metadatas: metadatas)
+            }
+            .store(in: &cancellables)
+    }
     
     func requestAuthorization() async throws {
         

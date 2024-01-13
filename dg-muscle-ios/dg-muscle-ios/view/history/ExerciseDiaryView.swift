@@ -50,17 +50,18 @@ struct ExerciseDiaryView: View {
                 }
 
                 ForEach(historyStore.historySections) { section in
+                    
                     Section {
                         ForEach(section.histories) { history in
                             historyItem(history: history)
                                 .scrollTransition { effect, phase in
                                     effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
                                 }
-                            .onAppear {
-                                if history == historyStore.histories.last {
-                                    dependency.scrollBottom()
+                                .onAppear {
+                                    if history.exercise == historyStore.histories.last {
+                                        dependency.scrollBottom()
+                                    }
                                 }
-                            }
                         }
                     } header: {
                         HStack {
@@ -73,7 +74,7 @@ struct ExerciseDiaryView: View {
                         }
                     } footer: {
                         VStack {
-                            let volumeByPart = section.histories.volumeByPart()
+                            let volumeByPart = section.histories.map ({ $0.exercise }).volumeByPart()
                             if volumeByPart.isEmpty == false {
                                 let datas: [PieChartView.Data] = volumeByPart.map({ .init(name: $0.key, value: $0.value) })
                                 PieChartView(datas: datas)
@@ -174,12 +175,12 @@ struct ExerciseDiaryView: View {
         }
     }
     
-    func historyItem(history: ExerciseHistory) -> some View {
+    func historyItem(history: ExerciseHistorySection.History) -> some View {
         Button {
-            dependency.tapHistory(history: history)
+            dependency.tapHistory(history: history.exercise)
         } label: {
             VStack {
-                if history.memo?.isEmpty == false {
+                if history.exercise.memo?.isEmpty == false {
                     HStack {
                         Image(systemName: "square.and.pencil")
                             .padding(.leading, 20)
@@ -190,20 +191,20 @@ struct ExerciseDiaryView: View {
                 }
                 
                 HStack {
-                    Text(onlyDay(from: history.date))
+                    Text(onlyDay(from: history.exercise.date))
                         .font(.caption2)
                         .foregroundStyle(Color(uiColor: .secondaryLabel))
                     
-                    Text(getParts(from: history.records))
+                    Text(getParts(from: history.exercise.records))
                         .italic()
                         .font(.footnote)
                     
                     Spacer()
-                    Text("\(Int(history.volume))")
+                    Text("\(Int(history.exercise.volume))")
                         .font(.footnote)
                 }
                 
-                if let metaData = healthStore.workoutMetaDatas.first(where: { history.date == $0.startDateString }) {
+                if let metaData = history.metadata {
                     metadata(metaData: metaData)
                         .padding(.bottom, 10)
                 } else {
