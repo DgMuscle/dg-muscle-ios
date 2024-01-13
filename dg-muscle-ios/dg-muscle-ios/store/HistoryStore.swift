@@ -16,6 +16,7 @@ final class HistoryStore: ObservableObject {
     @Published private(set) var histories: [ExerciseHistory] = HistoryRepository.shared.getCache()
     @Published private(set) var historySections: [ExerciseHistorySection] = []
     @Published private(set) var historyGrassData: [GrassData] = []
+    @Published private(set) var metadatas: [WorkoutMetaData] = []
     
     private let historyLimit = 365
     private var canLoadMoreHistoryFromServer = false
@@ -68,17 +69,22 @@ final class HistoryStore: ObservableObject {
         }
     }
     
+    func set(metadatas: [WorkoutMetaData]) {
+        self.metadatas = metadatas
+    }
+    
     private func bind() {
         $histories
+            .combineLatest($metadatas)
             .receive(on: DispatchQueue.main)
-            .sink { histories in
-                self.historySections = self.getHistorySections(histories: histories)
+            .sink { histories, metadatas in
+                self.historySections = self.getHistorySections(histories: histories, metadatas: metadatas)
                 self.historyGrassData = GrassView.getData(from: histories)
             }
             .store(in: &cancellables)
     }
     
-    private func getHistorySections(histories: [ExerciseHistory]) -> [ExerciseHistorySection] {
+    private func getHistorySections(histories: [ExerciseHistory], metadatas: [WorkoutMetaData]) -> [ExerciseHistorySection] {
         var twoDimensionalArray: [[ExerciseHistory]] = []
         
         // Create a dictionary to group dates by year and month
@@ -102,6 +108,9 @@ final class HistoryStore: ObservableObject {
             }
         }
         
-        return twoDimensionalArray.map({ .init(histories: $0) })
+        return twoDimensionalArray.map({ ExerciseHistorySection(histories: $0.map({ exercise in
+            let metadata = metadatas.first(where: { exercise.date == $0.startDateString })
+            return .init(exercise: exercise, metadata: metadata) })
+        )})
     }
 }

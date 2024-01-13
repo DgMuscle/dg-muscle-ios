@@ -4,14 +4,15 @@
 //
 //  Created by 신동규 on 2023/09/30.
 //
+
 import Foundation
 
 struct ExerciseHistorySection: Identifiable {
     let id = UUID().uuidString
-    let histories: [ExerciseHistory]
+    let histories: [History]
     
     private var date: Date {
-        let dateString = histories.first?.date ?? ""
+        let dateString = histories.first?.exercise.date ?? ""
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
         return dateFormatter.date(from: dateString) ?? Date()
@@ -24,6 +25,14 @@ struct ExerciseHistorySection: Identifiable {
     }
     
     var volume: Double {
-        histories.map({ $0.volume }).reduce(0.0, { $0 + $1 })
+        histories.map({ $0.exercise.volume }).reduce(0.0, { $0 + $1 })
+    }
+}
+
+extension ExerciseHistorySection {
+    struct History: Identifiable {
+        let id = UUID().uuidString
+        let exercise: ExerciseHistory
+        let metadata: WorkoutMetaData?
     }
 }
