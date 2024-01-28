@@ -19,12 +19,13 @@ struct ContentView: View {
     @State var monthlyChartViewIngredient: MonthlyChartViewIngredient = .init()
     
     @StateObject var userStore = store.user
+    @StateObject var healthStore = store.health
     
     var body: some View {
         ZStack {
             if userStore.login {
                 NavigationStack(path: $paths) {
-                    ExerciseDiaryView(dependency: DependencyInjection.shared.exerciseDiary(paths: $paths, monthlyChartViewIngredient: $monthlyChartViewIngredient))
+                    ExerciseDiaryView(dependency: DependencyInjection.shared.exerciseDiary(paths: $paths, monthlyChartViewIngredient: $monthlyChartViewIngredient), bodyMass: healthStore.recentBodyMass)
                     .navigationDestination(for: NavigationPath.self) { path in
                         switch path {
                         case .historyForm(let history):

@@ -19,12 +19,16 @@ protocol ExerciseDiaryDependency {
 struct ExerciseDiaryView: View {
     
     let dependency: ExerciseDiaryDependency
+    let bodyMass: BodyMass?
     private let profileImageSize: CGFloat = 30
     
     @State var addFloatingButtonVisible = false
+    @State var isExpandedFilterView = false
+    @State var filters: [Exercise.Part] = []
+    @State var historySections: [ExerciseHistorySection] = []
+    
     @StateObject var historyStore = store.history
     @StateObject var userStore = store.user
-    @StateObject var healthStore = store.health
     
     var body: some View {
         ZStack {
@@ -43,14 +47,14 @@ struct ExerciseDiaryView: View {
                     profileButton
                     Spacer(minLength: 20)
                     addButton
+                    filtersView
                 }
                 .padding(.vertical)
                 .scrollTransition { effect, phase in
                     effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
                 }
 
-                ForEach(historyStore.historySections) { section in
-                    
+                ForEach(historySections) { section in
                     Section {
                         ForEach(section.histories) { history in
                             historyItem(history: history)
@@ -110,6 +114,22 @@ struct ExerciseDiaryView: View {
             }
         }
         .ignoresSafeArea()
+        .onChange(of: self.filters) { _, filters in
+            DispatchQueue.global(qos: .background).async {
+                let historySections = generateHistorySection(historySections: historyStore.historySections, filters: filters)
+                DispatchQueue.main.async {
+                    self.historySections = historySections
+                }
+            }
+        }
+        .onReceive(historyStore.$historySections) { historySections in
+            DispatchQueue.global(qos: .background).async {
+                let historySections = generateHistorySection(historySections: historySections, filters: filters)
+                DispatchQueue.main.async {
+                    self.historySections = historySections
+                }
+            }
+        }
     }
     
     var grass: some View {
@@ -175,6 +195,62 @@ struct ExerciseDiaryView: View {
         }
     }
     
+    var filtersView: some View {
+        var text = self.filters.map({ $0.rawValue }).joined(separator: ", ")
+        
+        return VStack {
+            HStack {
+                
+                Button {
+                    withAnimation {
+                        isExpandedFilterView.toggle()
+                    }
+                } label: {
+                    HStack {
+                        Image(systemName: "line.3.horizontal.decrease").foregroundStyle(.gray)
+                        Text("filters").foregroundStyle(.gray)
+                    }
+                }
+                
+                Spacer()
+                Text(text)
+            }
+            .padding(8)
+            
+            
+            if isExpandedFilterView {
+                VStack {
+                    ForEach(Exercise.Part.allCases, id: \.self) { part in
+                        Button {
+                            if let index = self.filters.firstIndex(where: { $0.rawValue == part.rawValue }) {
+                                withAnimation {
+                                    self.filters.remove(atOffsets: [index])
+                                }
+                            } else {
+                                withAnimation {
+                                    self.filters.append(part)
+                                }
+                            }
+                        } label: {
+                            HStack {
+                                Text(part.rawValue).foregroundStyle(Color(uiColor: .label))
+                                Spacer()
+                                if self.filters.contains(part) {
+                                    Image(systemName: "checkmark")
+                                }
+                            }
+                            .padding(8)
+                        }
+                    }
+                }
+                .padding(8)
+            }
+        }
+        .background {
+            RoundedRectangle(cornerRadius: 8).fill(Color(uiColor: .secondarySystemBackground))
+        }
+    }
+    
     func historyItem(history: ExerciseHistorySection.History) -> some View {
         Button {
             dependency.tapHistory(history: history.exercise)
@@ -224,7 +300,7 @@ struct ExerciseDiaryView: View {
                         .font(.caption2)
                 }
                 
-                if let kcalPerHourKg = metaData.kcalPerHourKg, let bodyMass = healthStore.recentBodyMass {
+                if let kcalPerHourKg = metaData.kcalPerHourKg, let bodyMass {
                     if bodyMass.unit == .kg {
                         HStack {
                             Text("consume \(Int(getKcal(duration: metaData.duration, weight: bodyMass.value, kcalPerHourKg: kcalPerHourKg))) kcal")
@@ -292,6 +368,35 @@ struct ExerciseDiaryView: View {
         let kcal = kcalPerHourKg * hours * kg
         return kcal
     }
+    
+    private func generateHistorySection(historySections: [ExerciseHistorySection], filters: [Exercise.Part]) -> [ExerciseHistorySection] {
+        guard filters.isEmpty == false else { return historySections }
+        
+        return historySections.map { historySection in
+            var historySection = historySection
+            let histories = historySection.histories.filter({ history in
+                let parts = history.exercise.records.map({ $0.parts }).flatMap({ $0 })
+                var contains = false
+                
+                for part in parts {
+                    if filters.contains(part) {
+                        contains = true
+                        break
+                    }
+                }
+                return contains
+            })
+            
+            if histories.isEmpty {
+                return nil
+            }
+            
+            historySection.histories = histories
+            
+            return historySection
+        }
+        .compactMap({ $0 })
+    }
 }
 
 #Preview {
@@ -308,5 +413,5 @@ struct ExerciseDiaryView: View {
     store.exercise.updateExercises()
     store.health
     
-    return ExerciseDiaryView(dependency: DP(), addFloatingButtonVisible: false).preferredColorScheme(.dark)
+    return ExerciseDiaryView(dependency: DP(), bodyMass: nil, addFloatingButtonVisible: false).preferredColorScheme(.dark)
 }

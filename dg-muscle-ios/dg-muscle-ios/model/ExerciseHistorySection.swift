@@ -9,7 +9,7 @@ import Foundation
 
 struct ExerciseHistorySection: Identifiable {
     let id = UUID().uuidString
-    let histories: [History]
+    var histories: [History]
     
     private var date: Date {
         let dateString = histories.first?.exercise.date ?? ""
