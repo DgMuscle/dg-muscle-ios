@@ -20,7 +20,7 @@ struct ExerciseGuideListView: View {
         case legPress = "leg press"
         case pullUp = "pull up"
         case pushUp = "push up"
-        case tricepPushdown = "ticep pushdown"
+        case tricepPushdown = "tricep pushdown"
     }
     
     let dependency: ExerciseGuideListDependency
