@@ -79,6 +79,7 @@
 		70A708D92B13315A0013A237 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A708D82B13315A0013A237 /* MemoView.swift */; };
 		70A74E8A2AC8433F00EA7A35 /* ExerciseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */; };
 		70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */; };
+		70A898BD2B6FA0B1009B16FF /* dg_muscle_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A898BC2B6FA0B1009B16FF /* dg_muscle_iosTests.swift */; };
 		70A9B7412ACBCFC70061DAA3 /* BodyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A9B7402ACBCFC70061DAA3 /* BodyProfileView.swift */; };
 		70AC465F2ABFF82D00BFE46D /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AC465E2ABFF82D00BFE46D /* SettingView.swift */; };
 		70B5080C2AC51D4300FC0540 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */; };
@@ -116,6 +117,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 70240BE42ADC1FF800B87A79;
 			remoteInfo = "dg-muscle-ios-widgetExtension";
+		};
+		70A898BE2B6FA0B1009B16FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 70E555F42ABF010C006D4DA0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 70E555FB2ABF010C006D4DA0;
+			remoteInfo = "dg-muscle-ios";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -197,6 +205,8 @@
 		70A708D82B13315A0013A237 /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStore.swift; sourceTree = "<group>"; };
 		70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormView.swift; sourceTree = "<group>"; };
+		70A898BA2B6FA0B1009B16FF /* dg-muscle-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dg-muscle-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		70A898BC2B6FA0B1009B16FF /* dg_muscle_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dg_muscle_iosTests.swift; sourceTree = "<group>"; };
 		70A9B7402ACBCFC70061DAA3 /* BodyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyProfileView.swift; sourceTree = "<group>"; };
 		70AC465E2ABFF82D00BFE46D /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
@@ -236,6 +246,13 @@
 			files = (
 				70240BE92ADC1FF800B87A79 /* SwiftUI.framework in Frameworks */,
 				70240BE72ADC1FF800B87A79 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70A898B72B6FA0B1009B16FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +396,14 @@
 			path = gif;
 			sourceTree = "<group>";
 		};
+		70A898BB2B6FA0B1009B16FF /* dg-muscle-iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				70A898BC2B6FA0B1009B16FF /* dg_muscle_iosTests.swift */,
+			);
+			path = "dg-muscle-iosTests";
+			sourceTree = "<group>";
+		};
 		70AC465D2ABFF81800BFE46D /* setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -451,6 +476,7 @@
 				70E555FE2ABF010C006D4DA0 /* dg-muscle-ios */,
 				7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */,
 				70240BEA2ADC1FF800B87A79 /* dg-muscle-ios-widget */,
+				70A898BB2B6FA0B1009B16FF /* dg-muscle-iosTests */,
 				70E555FD2ABF010C006D4DA0 /* Products */,
 				7083E6C72ABF0F45007D43CE /* Frameworks */,
 			);
@@ -461,6 +487,7 @@
 			children = (
 				70E555FC2ABF010C006D4DA0 /* dg-muscle-ios.app */,
 				70240BE52ADC1FF800B87A79 /* dg-muscle-ios-widgetExtension.appex */,
+				70A898BA2B6FA0B1009B16FF /* dg-muscle-iosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -546,6 +573,24 @@
 			productReference = 70240BE52ADC1FF800B87A79 /* dg-muscle-ios-widgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		70A898B92B6FA0B1009B16FF /* dg-muscle-iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70A898C22B6FA0B2009B16FF /* Build configuration list for PBXNativeTarget "dg-muscle-iosTests" */;
+			buildPhases = (
+				70A898B62B6FA0B1009B16FF /* Sources */,
+				70A898B72B6FA0B1009B16FF /* Frameworks */,
+				70A898B82B6FA0B1009B16FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				70A898BF2B6FA0B1009B16FF /* PBXTargetDependency */,
+			);
+			name = "dg-muscle-iosTests";
+			productName = "dg-muscle-iosTests";
+			productReference = 70A898BA2B6FA0B1009B16FF /* dg-muscle-iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		70E555FB2ABF010C006D4DA0 /* dg-muscle-ios */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 70E5560B2ABF010D006D4DA0 /* Build configuration list for PBXNativeTarget "dg-muscle-ios" */;
@@ -584,11 +629,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					70240BE42ADC1FF800B87A79 = {
 						CreatedOnToolsVersion = 15.0;
+					};
+					70A898B92B6FA0B1009B16FF = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 70E555FB2ABF010C006D4DA0;
 					};
 					70E555FB2ABF010C006D4DA0 = {
 						CreatedOnToolsVersion = 15.0;
@@ -615,6 +664,7 @@
 			targets = (
 				70E555FB2ABF010C006D4DA0 /* dg-muscle-ios */,
 				70240BE42ADC1FF800B87A79 /* dg-muscle-ios-widgetExtension */,
+				70A898B92B6FA0B1009B16FF /* dg-muscle-iosTests */,
 			);
 		};
 /* End PBXProject section */
@@ -625,6 +675,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				70240BF42ADC1FF900B87A79 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70A898B82B6FA0B1009B16FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +717,14 @@
 				70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */,
 				708AF2B72B36D38B00658D6B /* WidgetBridge.swift in Sources */,
 				708AF2B02B36D0A300658D6B /* GrassView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70A898B62B6FA0B1009B16FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70A898BD2B6FA0B1009B16FF /* dg_muscle_iosTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,6 +811,11 @@
 			target = 70240BE42ADC1FF800B87A79 /* dg-muscle-ios-widgetExtension */;
 			targetProxy = 70240BF62ADC1FF900B87A79 /* PBXContainerItemProxy */;
 		};
+		70A898BF2B6FA0B1009B16FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 70E555FB2ABF010C006D4DA0 /* dg-muscle-ios */;
+			targetProxy = 70A898BE2B6FA0B1009B16FF /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -806,6 +876,47 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		70A898C02B6FA0B2009B16FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YV58Q28W8Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.donggyu.dg-muscle-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dg-muscle-ios.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/dg-muscle-ios";
+			};
+			name = Debug;
+		};
+		70A898C12B6FA0B2009B16FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YV58Q28W8Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.donggyu.dg-muscle-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dg-muscle-ios.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/dg-muscle-ios";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1010,6 +1121,15 @@
 			buildConfigurations = (
 				70240BFA2ADC1FF900B87A79 /* Debug */,
 				70240BFB2ADC1FF900B87A79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		70A898C22B6FA0B2009B16FF /* Build configuration list for PBXNativeTarget "dg-muscle-iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70A898C02B6FA0B2009B16FF /* Debug */,
+				70A898C12B6FA0B2009B16FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
