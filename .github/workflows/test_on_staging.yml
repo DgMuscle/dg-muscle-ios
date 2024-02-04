@@ -31,8 +31,7 @@ jobs:
           if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
           # xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
-          # xcodebuild build -project HappyChuseok/HappyChuseok.xcodeproj
-          xcodebuild build-for-testing -project dg-muscle-ios.xcodeproj -scheme dg-muscle-ios -destination "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest"
+          xcodebuild build-for-testing -scheme dg-muscle-ios -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
       - name: Test
         env:
           scheme: ${{ 'default' }}
