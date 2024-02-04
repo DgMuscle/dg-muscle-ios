@@ -535,7 +535,14 @@
       }
     },
     "Make use of apple watch" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "애플워치 활용하기"
+          }
+        }
+      }
     },
     "male" : {
 
