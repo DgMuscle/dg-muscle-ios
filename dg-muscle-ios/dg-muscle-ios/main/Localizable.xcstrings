@@ -17,7 +17,14 @@
 
     },
     "'Traditional Strength Training'" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "'근력 강화 운동'"
+          }
+        }
+      }
     },
     "(%@)" : {
 
@@ -115,7 +122,14 @@
       }
     },
     "2. Select " : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 선택하십시오"
+          }
+        }
+      }
     },
     "3. Keep your core engaged and maintain a neutral spine position throughout the movement. Avoid arching your back." : {
       "localizations" : {
@@ -511,7 +525,14 @@
 
     },
     "logout" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로그아웃"
+          }
+        }
+      }
     },
     "Make use of apple watch" : {
 
@@ -562,7 +583,14 @@
 
     },
     "remove account" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계정삭제"
+          }
+        }
+      }
     },
     "reps" : {
 
@@ -701,7 +729,14 @@
       }
     },
     "You can see your exercise duration, kcal consumed, intensity." : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "운동 시간, 칼로리 소모량, 운동 강도 등을 볼 수 있습니다."
+          }
+        }
+      }
     },
     "you exercised" : {
 
