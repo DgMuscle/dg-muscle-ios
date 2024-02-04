@@ -34,6 +34,7 @@ final class HistoryStore: ObservableObject {
                 } else {
                     self.histories.insert(history, at: 0)
                 }
+                try? HistoryRepository.shared.saveCache(histories: self.histories)
             }
         }
     }
