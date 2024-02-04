@@ -2,9 +2,9 @@ name: iOS starter workflow
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["staging"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["staging"]
 
 jobs:
   build:
@@ -30,7 +30,9 @@ jobs:
           if [ $scheme = default ]; then scheme=$(cat default); fi
           if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
+          # xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
+          # xcodebuild build -project HappyChuseok/HappyChuseok.xcodeproj
+          xcodebuild build-for-testing -project dg-muscle-ios/dg-muscle-ios.xcodeproj -scheme dg-muscle-ios -destination "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest"
       - name: Test
         env:
           scheme: ${{ 'default' }}
@@ -41,4 +43,5 @@ jobs:
           if [ $scheme = default ]; then scheme=$(cat default); fi
           if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild test-without-building -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
+          # xcodebuild test-without-building -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
+          xcodebuild test-without-building -project dg-muscle-ios/dg-muscle-ios.xcodeproj -scheme dg-muscle-ios -destination "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest"
