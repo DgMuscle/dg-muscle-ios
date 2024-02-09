@@ -45,6 +45,9 @@ _One exercise history can be filled one per day and consists of several exercise
 
 Now, go grow your muscles💪
 
+### Contact
+If you need to contact me, please contact us at donggyu9410@gmail.com
+
 <details>
   <summary>Package Dependencies</summary>
   1. [Firebase](https://github.com/firebase/firebase-ios-sdk)https://github.com/firebase/firebase-ios-sdk
