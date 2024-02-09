@@ -16,7 +16,7 @@ I will create a window where anyone who uses this app can easily make bug report
 
 The key to this app is, to put it simply, to record the exercise while referring to the previous exercise record so that you can exercise a little stronger than the previous performance when doing a specific exercise.
 
-### [App Guide]([https://github.com/donggyushin/dg-muscle-ios/blob/main/documents/GUIDE.md](https://www.notion.so/dg-muscle-app-guide-2f58d99c886b458eaca6b82f1403fa4b))
+### [App Guide](https://www.notion.so/dg-muscle-app-guide-2f58d99c886b458eaca6b82f1403fa4b)
 
 ### Contact
 If you need to contact me, please contact us at donggyu9410@gmail.com
