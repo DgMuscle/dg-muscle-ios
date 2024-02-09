@@ -39,8 +39,12 @@ _One exercise history can be filled one per day and consists of several exercise
    - If you don't have your own exercise list, don't worry. You can add by tapping "add" button.
 4. Then you can see "Add" button. Tap that button, write down the weight and the number of times.
 5. After you added at least one set, then you can see something like placeholder under the your last set.
+
+   
 <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/1df2e7e7-fdcc-4409-ad4c-fe536ecbece3" width=150 />
+   
    You can easily add your new set by tapping that.
+   
 6. If there's a previous record of the same kind of exercise, you can see how much more or less exercise you have done compared to before and can see previous record by tapping "Go to see previous record" button.
 
 Now, go grow your muscles💪
