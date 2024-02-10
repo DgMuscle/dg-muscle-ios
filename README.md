@@ -12,8 +12,8 @@ Record exercises effortlessly, compare your progress, and achieve muscle growth 
 
 This project is purely an app I made to use. I focused on simple UI and features, and the purpose is only to increase muscle mass.
 
-I will create a window where anyone who uses this app can easily make bug reports and feature suggestions, and I will also use it as a springboard for learning good code.
-
 The key to this app is, to put it simply, to record the exercise while referring to the previous exercise record so that you can exercise a little stronger than the previous performance when doing a specific exercise.
+
+I will create a window as soon as possible where anyone who uses this app can easily make bug reports and feature suggestions. Please wait a minute.
 
 Introduction page => https://judicious-hoof-33e.notion.site/dgmuscle-ios-a7162152c1594a09902d7d6c07da8bdd
