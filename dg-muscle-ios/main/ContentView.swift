@@ -117,13 +117,12 @@ struct ContentView: View {
                                                                                               showingErrorState: $showingErrorState))
                     .presentationDetents([.large, .medium])
                 }
-                
-                if monthlyChartViewIngredient.showing {
+                .sheet(isPresented: $monthlyChartViewIngredient.showing, content: {
                     MonthlyChartView(
                         histories: monthlyChartViewIngredient.exerciseHistories,
                         volumeByPart: monthlyChartViewIngredient.volumeBasedOnExercise,
                         showing: $monthlyChartViewIngredient.showing)
-                }
+                })
                 
             } else {
                 SignInView()
