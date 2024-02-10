@@ -110,6 +110,7 @@
 		70F838AA2AC7FEE1009725EF /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A92AC7FEE1009725EF /* HistoryStore.swift */; };
 		70F838AD2AC7FFB5009725EF /* ExerciseDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838AC2AC7FFB5009725EF /* ExerciseDiaryView.swift */; };
 		70FB87B52ACAAE9F00B6B432 /* SetFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FB87B42ACAAE9F00B6B432 /* SetFormView.swift */; };
+		70FF30362B77627E008E03DD /* IntroduceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FF30352B77627E008E03DD /* IntroduceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -241,6 +242,7 @@
 		70F838A92AC7FEE1009725EF /* HistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
 		70F838AC2AC7FFB5009725EF /* ExerciseDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDiaryView.swift; sourceTree = "<group>"; };
 		70FB87B42ACAAE9F00B6B432 /* SetFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFormView.swift; sourceTree = "<group>"; };
+		70FF30352B77627E008E03DD /* IntroduceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -411,6 +413,7 @@
 		70AC465D2ABFF81800BFE46D /* setting */ = {
 			isa = PBXGroup;
 			children = (
+				70FF30342B776212008E03DD /* etc section */,
 				70CB69412B09E590001588E2 /* exercise info */,
 				7054F7E22B08BC1A00C5678E /* health section */,
 				70A9B7402ACBCFC70061DAA3 /* BodyProfileView.swift */,
@@ -432,7 +435,6 @@
 				705AB7A12B009F8A00418B46 /* SuccessView.swift */,
 				70A61BDE2B7639D40068F321 /* WebView.swift */,
 				70D17E0C2AC5D70B00B86E37 /* WithdrawalConfirmView.swift */,
-				70BFFF132B7747E600C8A8C8 /* GuideView.swift */,
 			);
 			path = global;
 			sourceTree = "<group>";
@@ -557,6 +559,15 @@
 				70FB87B42ACAAE9F00B6B432 /* SetFormView.swift */,
 			);
 			path = history;
+			sourceTree = "<group>";
+		};
+		70FF30342B776212008E03DD /* etc section */ = {
+			isa = PBXGroup;
+			children = (
+				70BFFF132B7747E600C8A8C8 /* GuideView.swift */,
+				70FF30352B77627E008E03DD /* IntroduceView.swift */,
+			);
+			path = "etc section";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -759,6 +770,7 @@
 				7060FDB02AC5E1C3001A2198 /* ErrorView.swift in Sources */,
 				707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */,
 				708F0A832B414D4A001AF089 /* ExerciseInfoContainerView.swift in Sources */,
+				70FF30362B77627E008E03DD /* IntroduceView.swift in Sources */,
 				707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */,
 				70A708D92B13315A0013A237 /* MemoView.swift in Sources */,
 				705AB7A02B009F7500418B46 /* LoadingView.swift in Sources */,

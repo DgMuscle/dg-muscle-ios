@@ -16,6 +16,7 @@ protocol SettingViewDependency {
     func tapWithdrawal()
     func tapWatchApp()
     func tapGuide()
+    func tapIntroduce()
 }
 
 struct SettingView: View {
@@ -84,7 +85,16 @@ struct SettingView: View {
                 }
             }
             
-            Section("guide") {
+            Section {
+                Button {
+                    dependency.tapIntroduce()
+                } label: {
+                    HStack {
+                        Image(systemName: "magazine").foregroundStyle(.purple)
+                        Text("introduce").foregroundStyle(Color(uiColor: .label))
+                    }
+                }
+                
                 Button {
                     dependency.tapGuide()
                 } label: {
@@ -129,6 +139,7 @@ struct SettingView: View {
         func tapWithdrawal() { }
         func tapWatchApp() { }
         func tapGuide() { }
+        func tapIntroduce() { }
     }
     
     return SettingView(dependency: DP()).preferredColorScheme(.dark)

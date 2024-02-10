@@ -522,6 +522,19 @@
     "History Form" : {
 
     },
+    "introduce" : {
+
+    },
+    "Introduce" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "소개"
+          }
+        }
+      }
+    },
     "kg" : {
 
     },
