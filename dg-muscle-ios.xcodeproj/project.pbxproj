@@ -413,9 +413,9 @@
 		70AC465D2ABFF81800BFE46D /* setting */ = {
 			isa = PBXGroup;
 			children = (
+				70FF30342B776212008E03DD /* etc section */,
 				70CB69412B09E590001588E2 /* exercise info */,
 				7054F7E22B08BC1A00C5678E /* health section */,
-				70FF30342B776212008E03DD /* introduce section */,
 				70A9B7402ACBCFC70061DAA3 /* BodyProfileView.swift */,
 				70AC465E2ABFF82D00BFE46D /* SettingView.swift */,
 			);
@@ -561,13 +561,13 @@
 			path = history;
 			sourceTree = "<group>";
 		};
-		70FF30342B776212008E03DD /* introduce section */ = {
+		70FF30342B776212008E03DD /* etc section */ = {
 			isa = PBXGroup;
 			children = (
 				70BFFF132B7747E600C8A8C8 /* GuideView.swift */,
 				70FF30352B77627E008E03DD /* IntroduceView.swift */,
 			);
-			path = "introduce section";
+			path = "etc section";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
