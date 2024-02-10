@@ -412,5 +412,6 @@ struct ExerciseDiaryView: View {
     store.exercise.updateExercises()
     store.health
     
+    
     return ExerciseDiaryView(dependency: DP(), bodyMass: nil, addFloatingButtonVisible: false).preferredColorScheme(.dark)
 }
