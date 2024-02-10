@@ -84,7 +84,7 @@ struct SettingView: View {
                 }
             }
             
-            Section("guide") {
+            Section {
                 Button {
                     dependency.tapGuide()
                 } label: {
