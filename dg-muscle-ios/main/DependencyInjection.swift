@@ -471,6 +471,10 @@ struct SettingViewDependencyImpl: SettingViewDependency {
     func tapGuide() {
         paths.append(.guide)
     }
+    
+    func tapIntroduce() {
+        paths.append(.introduce)
+    }
 }
 
 struct ExerciseInfoContainerDependencyImpl: ExerciseInfoContainerDependency {

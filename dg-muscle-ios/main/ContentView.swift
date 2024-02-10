@@ -101,6 +101,8 @@ struct ContentView: View {
                             ExerciseInfoContainerView(type: type, dependency: dp)
                         case .guide:
                             GuideView()
+                        case .introduce:
+                            IntroduceView()
                         }
                     }
                 }
@@ -171,6 +173,7 @@ extension ContentView {
         case memo(text: String)
         case exerciseInfo(ExerciseInfoContainerView.ExerciseType)
         case guide
+        case introduce
         
         func hash(into hasher: inout Hasher) {
             
