@@ -467,6 +467,10 @@ struct SettingViewDependencyImpl: SettingViewDependency {
     func tapWatchApp() {
         paths.append(.watchWorkoutAppInfoView)
     }
+    
+    func tapGuide() {
+        paths.append(.guide)
+    }
 }
 
 struct ExerciseInfoContainerDependencyImpl: ExerciseInfoContainerDependency {

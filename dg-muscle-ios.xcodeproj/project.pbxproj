@@ -76,6 +76,7 @@
 		708F0A842B414D4A001AF089 /* BenchpressInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708F0A782B414D4A001AF089 /* BenchpressInfoView.swift */; };
 		708F0A862B414D6F001AF089 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 708F0A852B414D6F001AF089 /* SDWebImageSwiftUI */; };
 		709B540D2AC999D000C282E9 /* ExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709B540C2AC999D000C282E9 /* ExerciseFormView.swift */; };
+		70A61BDF2B7639D40068F321 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A61BDE2B7639D40068F321 /* WebView.swift */; };
 		70A708D92B13315A0013A237 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A708D82B13315A0013A237 /* MemoView.swift */; };
 		70A74E8A2AC8433F00EA7A35 /* ExerciseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */; };
 		70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */; };
@@ -85,6 +86,7 @@
 		70B5080C2AC51D4300FC0540 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */; };
 		70B5080F2AC51FD900FC0540 /* DependencyInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */; };
 		70BB52182B37EC1D00EC606D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 70BB52172B37EC1D00EC606D /* Localizable.xcstrings */; };
+		70BFFF142B7747E600C8A8C8 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BFFF132B7747E600C8A8C8 /* GuideView.swift */; };
 		70C144D32AC82558007F0540 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
 		70C144D62AC825DE007F0540 /* HistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D52AC825DE007F0540 /* HistoryRepository.swift */; };
 		70C144D82AC82807007F0540 /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D72AC82807007F0540 /* DefaultResponse.swift */; };
@@ -202,6 +204,7 @@
 		708F0A772B414D4A001AF089 /* ExerciseInfoContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseInfoContainerView.swift; sourceTree = "<group>"; };
 		708F0A782B414D4A001AF089 /* BenchpressInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BenchpressInfoView.swift; sourceTree = "<group>"; };
 		709B540C2AC999D000C282E9 /* ExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormView.swift; sourceTree = "<group>"; };
+		70A61BDE2B7639D40068F321 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		70A708D82B13315A0013A237 /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStore.swift; sourceTree = "<group>"; };
 		70A74E8B2AC8439C00EA7A35 /* HistoryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormView.swift; sourceTree = "<group>"; };
@@ -212,6 +215,7 @@
 		70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjection.swift; sourceTree = "<group>"; };
 		70BB52172B37EC1D00EC606D /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		70BFFF132B7747E600C8A8C8 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		70C144D22AC82558007F0540 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		70C144D52AC825DE007F0540 /* HistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRepository.swift; sourceTree = "<group>"; };
 		70C144D72AC82807007F0540 /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
@@ -426,7 +430,9 @@
 				70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */,
 				70884B902ADBB9AA001FA252 /* PieChartView.swift */,
 				705AB7A12B009F8A00418B46 /* SuccessView.swift */,
+				70A61BDE2B7639D40068F321 /* WebView.swift */,
 				70D17E0C2AC5D70B00B86E37 /* WithdrawalConfirmView.swift */,
+				70BFFF132B7747E600C8A8C8 /* GuideView.swift */,
 			);
 			path = global;
 			sourceTree = "<group>";
@@ -756,6 +762,7 @@
 				707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */,
 				70A708D92B13315A0013A237 /* MemoView.swift in Sources */,
 				705AB7A02B009F7500418B46 /* LoadingView.swift in Sources */,
+				70A61BDF2B7639D40068F321 /* WebView.swift in Sources */,
 				70F838A02AC7FE4D009725EF /* Exercise.swift in Sources */,
 				70C144D62AC825DE007F0540 /* HistoryRepository.swift in Sources */,
 				701964312AD41CE400ED39BF /* SelectExerciseView.swift in Sources */,
@@ -770,6 +777,7 @@
 				705EC0A92AFF7C530085801A /* GrassData.swift in Sources */,
 				703CD5F02AC015C900BC76D4 /* CustomError.swift in Sources */,
 				708F0A812B414D4A001AF089 /* ExerciseGuideListView.swift in Sources */,
+				70BFFF142B7747E600C8A8C8 /* GuideView.swift in Sources */,
 				70AC465F2ABFF82D00BFE46D /* SettingView.swift in Sources */,
 				7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */,
 				70C144D32AC82558007F0540 /* APIClient.swift in Sources */,

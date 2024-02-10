@@ -99,6 +99,8 @@ struct ContentView: View {
                                                                                       showingErrorState: $showingErrorState,
                                                                                       showingSuccessState: $showingSuccessState)
                             ExerciseInfoContainerView(type: type, dependency: dp)
+                        case .guide:
+                            GuideView()
                         }
                     }
                 }
@@ -115,13 +117,12 @@ struct ContentView: View {
                                                                                               showingErrorState: $showingErrorState))
                     .presentationDetents([.large, .medium])
                 }
-                
-                if monthlyChartViewIngredient.showing {
+                .sheet(isPresented: $monthlyChartViewIngredient.showing, content: {
                     MonthlyChartView(
                         histories: monthlyChartViewIngredient.exerciseHistories,
                         volumeByPart: monthlyChartViewIngredient.volumeBasedOnExercise,
                         showing: $monthlyChartViewIngredient.showing)
-                }
+                })
                 
             } else {
                 SignInView()
@@ -169,21 +170,10 @@ extension ContentView {
         case exerciseGuideList
         case memo(text: String)
         case exerciseInfo(ExerciseInfoContainerView.ExerciseType)
+        case guide
         
         func hash(into hasher: inout Hasher) {
-            switch self {
-            case .historyForm(_):
-                break
-            case .recordForm(let value, _, _):
-                hasher.combine(value)
-            case .recordSets(let value, _):
-                hasher.combine(value)
-            case .memo(text: let value):
-                hasher.combine(value)
-            case .exerciseInfo:
-                break
-            case .exerciseForm, .setForm, .bodyProfile, .exerciseList, .selectExercise, .setting, .watchWorkoutAppInfoView, .exerciseGuideList: break
-            }
+            
         }
     }
 }
