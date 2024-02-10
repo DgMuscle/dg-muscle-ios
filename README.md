@@ -23,7 +23,9 @@ If you need to contact me, please contact us at donggyu9410@gmail.com
 
 <details>
   <summary>Package Dependencies</summary>
-  1. [Firebase](https://github.com/firebase/firebase-ios-sdk)https://github.com/firebase/firebase-ios-sdk
-  2. [Kingfisher](https://github.com/onevcat/Kingfisher)https://github.com/onevcat/Kingfisher
-  3. [SDWebImageSwiftUI](https://github.com/SDWebImage/SDWebImageSwiftUI)https://github.com/SDWebImage/SDWebImageSwiftUI
+  
+  1. [Firebase](https://github.com/firebase/firebase-ios-sdk)
+  2. [Kingfisher](https://github.com/onevcat/Kingfisher)
+  3. [SDWebImageSwiftUI](https://github.com/SDWebImage/SDWebImageSwiftUI)
+     
 </details>
