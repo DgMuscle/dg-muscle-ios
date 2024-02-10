@@ -196,11 +196,10 @@ struct ExerciseDiaryView: View {
     }
     
     var filtersView: some View {
-        var text = self.filters.map({ $0.rawValue }).joined(separator: ", ")
+        let text = self.filters.map({ $0.rawValue }).joined(separator: ", ")
         
         return VStack {
             HStack {
-                
                 Button {
                     withAnimation {
                         isExpandedFilterView.toggle()
