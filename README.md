@@ -16,16 +16,4 @@ I will create a window where anyone who uses this app can easily make bug report
 
 The key to this app is, to put it simply, to record the exercise while referring to the previous exercise record so that you can exercise a little stronger than the previous performance when doing a specific exercise.
 
-### [App Guide](https://judicious-hoof-33e.notion.site/dg-muscle-app-guide-2f58d99c886b458eaca6b82f1403fa4b)
-
-### Contact
-If you need to contact me, please contact us at donggyu9410@gmail.com
-
-<details>
-  <summary>Package Dependencies</summary>
-  
-  1. [Firebase](https://github.com/firebase/firebase-ios-sdk)
-  2. [Kingfisher](https://github.com/onevcat/Kingfisher)
-  3. [SDWebImageSwiftUI](https://github.com/SDWebImage/SDWebImageSwiftUI)
-     
-</details>
+Introduction page => https://judicious-hoof-33e.notion.site/dgmuscle-ios-a7162152c1594a09902d7d6c07da8bdd
