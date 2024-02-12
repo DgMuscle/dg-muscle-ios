@@ -13,7 +13,7 @@ struct GuideView: View {
     
     var isKorean: Bool {
         let preferredLanguages = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
-        let isKorean = preferredLanguages?.first == "ko"
+        let isKorean = preferredLanguages?.first == "ko-KR"
         return isKorean
     }
     
