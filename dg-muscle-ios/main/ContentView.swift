@@ -25,7 +25,7 @@ struct ContentView: View {
         ZStack {
             if userStore.login {
                 NavigationStack(path: $paths) {
-                    ExerciseDiaryView(dependency: DependencyInjection.shared.exerciseDiary(paths: $paths, monthlyChartViewIngredient: $monthlyChartViewIngredient), bodyMass: healthStore.recentBodyMass)
+                    ExerciseDiaryView(dependency: DependencyInjection.shared.exerciseDiary(paths: $paths, monthlyChartViewIngredient: $monthlyChartViewIngredient), addHistorySubscribable: subscriber.quickAction, bodyMass: healthStore.recentBodyMass)
                     .navigationDestination(for: NavigationPath.self) { path in
                         switch path {
                         case .historyForm(let history):
@@ -154,6 +154,10 @@ struct ContentView: View {
                 }
             }
         }
+        .onReceive(subscriber.quickAction.$exerciseList, perform: { exerciseList in
+            guard exerciseList else { return }
+            paths.append(.exerciseList)
+        })
     }
 }
 
