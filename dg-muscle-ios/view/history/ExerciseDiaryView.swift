@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 import Kingfisher
 
 protocol ExerciseDiaryDependency {
@@ -129,6 +130,10 @@ struct ExerciseDiaryView: View {
                     self.historySections = historySections
                 }
             }
+        }
+        .onReceive(QuickActionSubscriber.shared.$addHistory) { addHistory in
+            guard addHistory else { return }
+            dependency.tapAddHistory()
         }
     }
     
@@ -395,6 +400,18 @@ struct ExerciseDiaryView: View {
             return historySection
         }
         .compactMap({ $0 })
+    }
+}
+
+final class QuickActionSubscriber {
+    static let shared = QuickActionSubscriber()
+    
+    @Published private(set) var addHistory = false
+    
+    private init() { }
+    
+    func set(addHistory: Bool) {
+        self.addHistory = addHistory
     }
 }
 
