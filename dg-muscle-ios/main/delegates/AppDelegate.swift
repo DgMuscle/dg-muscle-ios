@@ -23,9 +23,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
     
     private func setShortCutItems() {
-        let recordAction = QuickAction(type: .record)
-        let composeItem = UIApplicationShortcutItem(type: recordAction.type.rawValue, localizedTitle: recordAction.title, localizedSubtitle: recordAction.subTitle, icon: .init(type: .compose))
-        
-        UIApplication.shared.shortcutItems = [composeItem]
+        UIApplication.shared.shortcutItems = [
+            generateShortCutItem(action: .init(type: .exerciseList), icon: .init(type: .play)),
+            generateShortCutItem(action: .init(type: .record), icon: .init(type: .compose))
+        ]
+    }
+    
+    private func generateShortCutItem(action: QuickAction, icon: UIApplicationShortcutIcon?) -> UIApplicationShortcutItem {
+        return .init(type: action.type.rawValue, localizedTitle: action.title, localizedSubtitle: action.subTitle, icon: icon)
     }
 }

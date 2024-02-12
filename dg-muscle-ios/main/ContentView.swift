@@ -154,6 +154,10 @@ struct ContentView: View {
                 }
             }
         }
+        .onReceive(subscriber.quickAction.$exerciseList, perform: { exerciseList in
+            guard exerciseList else { return }
+            paths.append(.exerciseList)
+        })
     }
 }
 
