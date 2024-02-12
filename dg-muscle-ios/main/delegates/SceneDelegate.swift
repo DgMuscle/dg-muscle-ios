@@ -23,7 +23,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     private func handleUIApplicationShortCutItem(item: UIApplicationShortcutItem) {
         switch item.type {
         case QuickAction.Actiontype.record.rawValue:
-            QuickActionSubscriber.shared.set(addHistory: true)
+            subscriber.quickAction.addHistory = true
         default: break
         }
     }

@@ -9,6 +9,10 @@ import SwiftUI
 import Combine
 import Kingfisher
 
+protocol AddHistorySubscribable {
+    var addHistoryPublisher: AnyPublisher<Bool, Never> { get }
+}
+
 protocol ExerciseDiaryDependency {
     func tapAddHistory()
     func tapHistory(history: ExerciseHistory)
@@ -20,6 +24,7 @@ protocol ExerciseDiaryDependency {
 struct ExerciseDiaryView: View {
     
     let dependency: ExerciseDiaryDependency
+    let addHistorySubscribable: AddHistorySubscribable
     let bodyMass: BodyMass?
     private let profileImageSize: CGFloat = 30
     
@@ -131,7 +136,7 @@ struct ExerciseDiaryView: View {
                 }
             }
         }
-        .onReceive(QuickActionSubscriber.shared.$addHistory) { addHistory in
+        .onReceive(addHistorySubscribable.addHistoryPublisher) { addHistory in
             guard addHistory else { return }
             dependency.tapAddHistory()
         }
@@ -403,18 +408,6 @@ struct ExerciseDiaryView: View {
     }
 }
 
-final class QuickActionSubscriber {
-    static let shared = QuickActionSubscriber()
-    
-    @Published private(set) var addHistory = false
-    
-    private init() { }
-    
-    func set(addHistory: Bool) {
-        self.addHistory = addHistory
-    }
-}
-
 #Preview {
     
     struct DP: ExerciseDiaryDependency {
@@ -425,9 +418,18 @@ final class QuickActionSubscriber {
         func tapGrass(histories: [ExerciseHistory], volumeByPart: [String: Double]) { }
     }
     
+    class Subscriber: AddHistorySubscribable {
+        
+        @Published var addHistory = false
+        
+        var addHistoryPublisher: AnyPublisher<Bool, Never> {
+            $addHistory.eraseToAnyPublisher()
+        }
+    }
+    
     store.history.updateHistories()
     store.exercise.updateExercises()
     store.health
     
-    return ExerciseDiaryView(dependency: DP(), bodyMass: nil, addFloatingButtonVisible: false).preferredColorScheme(.dark)
+    return ExerciseDiaryView(dependency: DP(), addHistorySubscribable: Subscriber(), bodyMass: nil, addFloatingButtonVisible: false).preferredColorScheme(.dark)
 }
