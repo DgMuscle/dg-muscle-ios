@@ -67,7 +67,6 @@ struct FullRecordsView: View {
             Section {
                 HStack {
                     Text("Total volume is")
-                        .foregroundStyle(colorScheme == .dark ? .white : .black)
                     Text("\(Self.formatted(double: history.volume))")
                         .foregroundStyle(.green)
                         .italic()
@@ -93,7 +92,6 @@ struct FullRecordsView: View {
     
     func contentsForSnap(history: ExerciseHistory) -> some View {
         VStack {
-            
             Text("\(history.date)'s Record").bold().italic()
                 .foregroundStyle(colorScheme == .dark ? .white : .black)
                 .padding()
