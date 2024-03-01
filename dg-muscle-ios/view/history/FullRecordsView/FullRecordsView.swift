@@ -8,16 +8,22 @@
 import SwiftUI
 
 protocol FullRecordsViewDependency {
-    func share(image: UIImage)
     func save(image: UIImage)
 }
 
 struct FullRecordsView: View {
+    struct ShareImage {
+        var isShowing = false
+        var image: UIImage? = nil
+    }
+    
+    
     let dp: FullRecordsViewDependency
     @State var history: ExerciseHistory
     @State var exercises: [Exercise]
     @State var isShowingBottomsheet = false
     @State var failToMakeImage = false
+    @State var shareImage = ShareImage()
     
     var body: some View {
         Form {
@@ -69,7 +75,8 @@ struct FullRecordsView: View {
             } shareAction: {
                 isShowingBottomsheet = false
                 if let image = makeImage() {
-                    dp.share(image: image)
+                    shareImage.image = image
+                    shareImage.isShowing = true
                 } else {
                     withAnimation {
                         failToMakeImage = true
@@ -78,6 +85,11 @@ struct FullRecordsView: View {
             }
             .presentationDetents([.height(150)])
         })
+        .sheet(isPresented: $shareImage.isShowing) {
+            if let image = shareImage.image {
+                ActivityView(activityItems: [image], applicationActivities: nil)
+            }
+        }
     }
     
     func makeImage() -> UIImage? {
