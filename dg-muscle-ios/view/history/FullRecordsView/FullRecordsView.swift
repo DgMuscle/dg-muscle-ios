@@ -12,21 +12,17 @@ protocol FullRecordsViewDependency {
 }
 
 struct FullRecordsView: View {
-    struct ShareImage {
-        var isShowing = false
-        var image: UIImage? = nil
-    }
-    
-    
     let dp: FullRecordsViewDependency
     @State var history: ExerciseHistory
     @State var exercises: [Exercise]
-    @State var isShowingBottomsheet = false
     @State var failToMakeImage = false
-    @State var shareImage = ShareImage()
+    
+    @State var image: UIImage?
+    
+    @Environment(\.displayScale) var displayScale
     
     var body: some View {
-        Form {
+        ScrollView {
             if failToMakeImage {
                 HStack {
                     Text("Fail to make image file.")
@@ -36,10 +32,56 @@ struct FullRecordsView: View {
                 }
             }
             
-            ForEach(history.records) { record in
-                Section {
-                    RecordView(record: record, exercise: exercises.first(where: { $0.id == record.exerciseId }))
+            if let image {
+                VStack(alignment: .leading) {
+                    HStack {
+                        ShareLink("Share", item: Image(uiImage: image), preview: SharePreview(Text("Shared image"), image: Image(uiImage: image)))
+                        
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Button("Save") {
+                            dp.save(image: image)
+                        }
+                        .padding(.leading, 28)
+                        Spacer()
+                    }
+                    
                 }
+                .padding(.horizontal)
+                
+            }
+            
+            contents(history: history)
+        }
+        .scrollIndicators(.hidden)
+        .navigationTitle("\(history.date)'s Record")
+        .navigationBarTitleDisplayMode(.large)
+        .onAppear {
+            DispatchQueue.main.async {
+                withAnimation {
+                    if let image = makeImage() {
+                        self.image = image
+                    } else {
+                        self.failToMakeImage = true
+                    }
+                    
+                }
+            }
+        }
+    }
+    
+    func contents(history: ExerciseHistory) -> some View {
+        VStack {
+            ForEach(history.records) { record in
+                RecordView(record: record, exercise: exercises.first(where: { $0.id == record.exerciseId }))
+                    .padding()
+                    .background {
+                        RoundedRectangle(cornerRadius: 18)
+                            .fill(Color(uiColor: .secondarySystemBackground))
+                    }
+                    .padding()
             }
             
             Section {
@@ -50,60 +92,16 @@ struct FullRecordsView: View {
                         .italic()
                 }
             }
-        }
-        .scrollIndicators(.hidden)
-        .navigationTitle("\(history.date)'s Record")
-        .navigationBarTitleDisplayMode(.large)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    isShowingBottomsheet = true
-                }) {
-                    Image(systemName: "square.and.arrow.up")
-                }
-            }
-        }
-        .sheet(isPresented: $isShowingBottomsheet, content: {
-            BottomSheet {
-                isShowingBottomsheet = false
-                if let image = makeImage() {
-                    dp.save(image: image)
-                } else {
-                    withAnimation {
-                        failToMakeImage = true
-                    }
-                }
-            } shareAction: {
-                isShowingBottomsheet = false
-                if let image = makeImage() {
-                    shareImage.image = image
-                    shareImage.isShowing = true
-                } else {
-                    withAnimation {
-                        failToMakeImage = true
-                    }
-                }
-            }
-            .presentationDetents([.height(150)])
-        })
-        .sheet(isPresented: $shareImage.isShowing) {
-            if let image = shareImage.image {
-                ActivityView(activityItems: [image], applicationActivities: nil)
-            }
+            
+            Spacer()
         }
     }
     
-    func makeImage() -> UIImage? {
-        let hostingController = UIHostingController(rootView: self)
-        let image = snapshot(view: hostingController.view)
-        return image
-    }
-    
-    func snapshot(view: UIView) -> UIImage? {
-        let renderer = UIGraphicsImageRenderer(bounds: view.bounds)
-        return renderer.image { context in
-            view.layer.render(in: context.cgContext)
-        }
+    @MainActor func makeImage() -> UIImage? {
+        let renderer = ImageRenderer(content: contents(history: history))
+        // make sure and use the correct display scale for this device
+        renderer.scale = displayScale
+        return renderer.uiImage
     }
     
     static func formatted(double: Double) -> String {

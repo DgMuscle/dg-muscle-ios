@@ -78,7 +78,6 @@
 		708F0A862B414D6F001AF089 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 708F0A852B414D6F001AF089 /* SDWebImageSwiftUI */; };
 		709826042B91FA2D00D2C3B0 /* FullRecordsView_SetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709826002B91FA2D00D2C3B0 /* FullRecordsView_SetView.swift */; };
 		709826052B91FA2D00D2C3B0 /* FullRecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709826012B91FA2D00D2C3B0 /* FullRecordsView.swift */; };
-		709826062B91FA2D00D2C3B0 /* FullRecordsView_Bottomsheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709826022B91FA2D00D2C3B0 /* FullRecordsView_Bottomsheet.swift */; };
 		709826072B91FA2D00D2C3B0 /* FullRecordsView_RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709826032B91FA2D00D2C3B0 /* FullRecordsView_RecordView.swift */; };
 		709B540D2AC999D000C282E9 /* ExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709B540C2AC999D000C282E9 /* ExerciseFormView.swift */; };
 		70A61BDF2B7639D40068F321 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A61BDE2B7639D40068F321 /* WebView.swift */; };
@@ -217,7 +216,6 @@
 		708F0A782B414D4A001AF089 /* BenchpressInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BenchpressInfoView.swift; sourceTree = "<group>"; };
 		709826002B91FA2D00D2C3B0 /* FullRecordsView_SetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRecordsView_SetView.swift; sourceTree = "<group>"; };
 		709826012B91FA2D00D2C3B0 /* FullRecordsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRecordsView.swift; sourceTree = "<group>"; };
-		709826022B91FA2D00D2C3B0 /* FullRecordsView_Bottomsheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRecordsView_Bottomsheet.swift; sourceTree = "<group>"; };
 		709826032B91FA2D00D2C3B0 /* FullRecordsView_RecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRecordsView_RecordView.swift; sourceTree = "<group>"; };
 		709B540C2AC999D000C282E9 /* ExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormView.swift; sourceTree = "<group>"; };
 		70A61BDE2B7639D40068F321 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -426,7 +424,6 @@
 		709825FF2B91FA1500D2C3B0 /* FullRecordsView */ = {
 			isa = PBXGroup;
 			children = (
-				709826022B91FA2D00D2C3B0 /* FullRecordsView_Bottomsheet.swift */,
 				709826032B91FA2D00D2C3B0 /* FullRecordsView_RecordView.swift */,
 				709826002B91FA2D00D2C3B0 /* FullRecordsView_SetView.swift */,
 				709826012B91FA2D00D2C3B0 /* FullRecordsView.swift */,
@@ -818,7 +815,6 @@
 				70D17E0D2AC5D70B00B86E37 /* WithdrawalConfirmView.swift in Sources */,
 				70F838AD2AC7FFB5009725EF /* ExerciseDiaryView.swift in Sources */,
 				70F838A82AC7FEB6009725EF /* Record.swift in Sources */,
-				709826062B91FA2D00D2C3B0 /* FullRecordsView_Bottomsheet.swift in Sources */,
 				70C144D82AC82807007F0540 /* DefaultResponse.swift in Sources */,
 				70F0E4012AE3BD5800AFFCF7 /* ChartView.swift in Sources */,
 				7083E6C32ABF0C62007D43CE /* SignInView.swift in Sources */,

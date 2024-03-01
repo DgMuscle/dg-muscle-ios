@@ -732,6 +732,16 @@
         }
       }
     },
+    "Shared image" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미지 공유하기"
+          }
+        }
+      }
+    },
     "Sign in with apple ID" : {
 
     },

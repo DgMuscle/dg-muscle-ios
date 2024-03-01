@@ -565,21 +565,20 @@ struct ExerciseGuideListDependencyImpl: ExerciseGuideListDependency {
 struct FullRecordsViewDependencyImpl: FullRecordsViewDependency {
     @Binding var paths: [ContentView.NavigationPath]
     @Binding var showingErrorState: ContentView.ShowingErrorState
-    let imageClass = Image.shared
+    let imageSaver = ImageSaver.shared
     
-    class Image {
-        static let shared = Image()
-        private init() {}
-        
-        @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-            if let error = error {
-                // We got back an error!
-                print("Error saving photo: \(error.localizedDescription)")
-            } else {
-                print("Successfully saved photo")
-            }
+    class ImageSaver: NSObject {
+        static let shared = ImageSaver()
+        private override init() { }
+        func writeToPhotoAlbum(image: UIImage) {
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompleted), nil)
+        }
+
+        @objc func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+            print("Save finished!")
         }
     }
+
     
     func save(image: UIImage) {
         saveImageToPhotoLibrary(image)
@@ -590,13 +589,12 @@ struct FullRecordsViewDependencyImpl: FullRecordsViewDependency {
         let status = PHPhotoLibrary.authorizationStatus()
         if status == .authorized || status == .limited {
             // Authorized, save the image
-            UIImageWriteToSavedPhotosAlbum(image, self, #selector(imageClass.image(_:didFinishSavingWithError:contextInfo:)), nil)
+            imageSaver.writeToPhotoAlbum(image: image)
         } else if status == .notDetermined {
             // Not determined, request access
             PHPhotoLibrary.requestAuthorization { newStatus in
                 if newStatus == .authorized || newStatus == .limited {
-                    // Once authorized, save the image
-                    UIImageWriteToSavedPhotosAlbum(image, self, #selector(imageClass.image(_:didFinishSavingWithError:contextInfo:)), nil)
+                    imageSaver.writeToPhotoAlbum(image: image)
                 } else {
                     withAnimation {
                         showingErrorState = .init(showing: true, message: "Denied or restricted to access to photo library. Please change setting.")
