@@ -51,6 +51,7 @@
 		7083E6C62ABF0EC9007D43CE /* AppleAuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */; };
 		7083E6C92ABF0F45007D43CE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6C82ABF0F45007D43CE /* FirebaseAuth */; };
 		708508C42AF626990035BB9D /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708508C32AF626990035BB9D /* HealthStore.swift */; };
+		7086C2F72B924B6700D034B0 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7086C2F62B924B6700D034B0 /* ImageSaver.swift */; };
 		70884B912ADBB9AA001FA252 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884B902ADBB9AA001FA252 /* PieChartView.swift */; };
 		708AF2AC2B36D05B00658D6B /* GrassData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2AA2B36D04400658D6B /* GrassData.swift */; };
 		708AF2B02B36D0A300658D6B /* GrassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2AE2B36D09F00658D6B /* GrassView.swift */; };
@@ -192,6 +193,7 @@
 		7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthCoordinator.swift; sourceTree = "<group>"; };
 		708508C22AF625EE0035BB9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		708508C32AF626990035BB9D /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
+		7086C2F62B924B6700D034B0 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		70884B902ADBB9AA001FA252 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		708AF2AA2B36D04400658D6B /* GrassData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassData.swift; sourceTree = "<group>"; };
 		708AF2AE2B36D09F00658D6B /* GrassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassView.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				703CD5E92AC0139600BC76D4 /* FileUploader.swift */,
 				70D9033C2AC5A70A001DDC0B /* Vibration.swift */,
 				708AF2B52B36D38400658D6B /* WidgetBridge.swift */,
+				7086C2F62B924B6700D034B0 /* ImageSaver.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -867,6 +870,7 @@
 				70884B912ADBB9AA001FA252 /* PieChartView.swift in Sources */,
 				70F838AA2AC7FEE1009725EF /* HistoryStore.swift in Sources */,
 				70C0559F2B79FC0800375526 /* SceneDelegate.swift in Sources */,
+				7086C2F72B924B6700D034B0 /* ImageSaver.swift in Sources */,
 				702D895B2B9226F8008EA220 /* ActivityView.swift in Sources */,
 				708508C42AF626990035BB9D /* HealthStore.swift in Sources */,
 				70226B882AF7765400379ED3 /* WorkoutMetaData.swift in Sources */,

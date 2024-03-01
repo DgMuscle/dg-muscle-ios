@@ -565,20 +565,8 @@ struct ExerciseGuideListDependencyImpl: ExerciseGuideListDependency {
 struct FullRecordsViewDependencyImpl: FullRecordsViewDependency {
     @Binding var paths: [ContentView.NavigationPath]
     @Binding var showingErrorState: ContentView.ShowingErrorState
-    let imageSaver = ImageSaver.shared
     
-    class ImageSaver: NSObject {
-        static let shared = ImageSaver()
-        private override init() { }
-        func writeToPhotoAlbum(image: UIImage) {
-            UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompleted), nil)
-        }
-
-        @objc func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-            print("Save finished!")
-        }
-    }
-
+    let imageSaver = ImageSaver()
     
     func save(image: UIImage) {
         saveImageToPhotoLibrary(image)
