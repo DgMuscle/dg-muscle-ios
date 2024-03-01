@@ -51,7 +51,8 @@ struct FullRecordsView: View {
                 }
             }
         }
-        .navigationTitle("\(history.date)'s exercise record")
+        .scrollIndicators(.hidden)
+        .navigationTitle("\(history.date)'s Record")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

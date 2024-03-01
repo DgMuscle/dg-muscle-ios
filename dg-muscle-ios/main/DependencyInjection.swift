@@ -565,6 +565,21 @@ struct ExerciseGuideListDependencyImpl: ExerciseGuideListDependency {
 struct FullRecordsViewDependencyImpl: FullRecordsViewDependency {
     @Binding var paths: [ContentView.NavigationPath]
     @Binding var showingErrorState: ContentView.ShowingErrorState
+    let imageClass = Image.shared
+    
+    class Image {
+        static let shared = Image()
+        private init() {}
+        
+        @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+            if let error = error {
+                // We got back an error!
+                print("Error saving photo: \(error.localizedDescription)")
+            } else {
+                print("Successfully saved photo")
+            }
+        }
+    }
     
     func save(image: UIImage) {
         saveImageToPhotoLibrary(image)
@@ -575,13 +590,13 @@ struct FullRecordsViewDependencyImpl: FullRecordsViewDependency {
         let status = PHPhotoLibrary.authorizationStatus()
         if status == .authorized || status == .limited {
             // Authorized, save the image
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(imageClass.image(_:didFinishSavingWithError:contextInfo:)), nil)
         } else if status == .notDetermined {
             // Not determined, request access
             PHPhotoLibrary.requestAuthorization { newStatus in
                 if newStatus == .authorized || newStatus == .limited {
                     // Once authorized, save the image
-                    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                    UIImageWriteToSavedPhotosAlbum(image, self, #selector(imageClass.image(_:didFinishSavingWithError:contextInfo:)), nil)
                 } else {
                     withAnimation {
                         showingErrorState = .init(showing: true, message: "Denied or restricted to access to photo library. Please change setting.")
@@ -594,5 +609,4 @@ struct FullRecordsViewDependencyImpl: FullRecordsViewDependency {
             }
         }
     }
-
 }
