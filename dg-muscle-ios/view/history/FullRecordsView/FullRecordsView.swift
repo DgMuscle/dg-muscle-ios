@@ -20,6 +20,7 @@ struct FullRecordsView: View {
     @State var image: UIImage?
     
     @Environment(\.displayScale) var displayScale
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         ScrollView {
@@ -33,7 +34,7 @@ struct FullRecordsView: View {
             }
             
             if let image {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 15) {
                     HStack {
                         ShareLink("Share", item: Image(uiImage: image), preview: SharePreview(Text("Shared image"), image: Image(uiImage: image)))
                         
@@ -50,10 +51,28 @@ struct FullRecordsView: View {
                     
                 }
                 .padding(.horizontal)
-                
             }
             
-            contents(history: history)
+            ForEach(history.records) { record in
+                RecordView(record: record, exercise: exercises.first(where: { $0.id == record.exerciseId }))
+                    .foregroundStyle(colorScheme == .dark ? .white : .black)
+                    .padding()
+                    .background {
+                        RoundedRectangle(cornerRadius: 18)
+                            .fill(Color(uiColor: colorScheme == .dark ? .black : .systemGroupedBackground))
+                    }
+                    .padding()
+            }
+            
+            Section {
+                HStack {
+                    Text("Total volume is")
+                        .foregroundStyle(colorScheme == .dark ? .white : .black)
+                    Text("\(Self.formatted(double: history.volume))")
+                        .foregroundStyle(.green)
+                        .italic()
+                }
+            }
         }
         .scrollIndicators(.hidden)
         .navigationTitle("\(history.date)'s Record")
@@ -72,14 +91,20 @@ struct FullRecordsView: View {
         }
     }
     
-    func contents(history: ExerciseHistory) -> some View {
+    func contentsForSnap(history: ExerciseHistory) -> some View {
         VStack {
+            
+            Text("\(history.date)'s Record").bold().italic()
+                .foregroundStyle(colorScheme == .dark ? .white : .black)
+                .padding()
+            
             ForEach(history.records) { record in
                 RecordView(record: record, exercise: exercises.first(where: { $0.id == record.exerciseId }))
+                    .foregroundStyle(colorScheme == .dark ? .white : .black)
                     .padding()
                     .background {
                         RoundedRectangle(cornerRadius: 18)
-                            .fill(Color(uiColor: .secondarySystemBackground))
+                            .fill(Color(uiColor: colorScheme == .dark ? .black : .systemGroupedBackground))
                     }
                     .padding()
             }
@@ -87,6 +112,7 @@ struct FullRecordsView: View {
             Section {
                 HStack {
                     Text("Total volume is")
+                        .foregroundStyle(colorScheme == .dark ? .white : .black)
                     Text("\(Self.formatted(double: history.volume))")
                         .foregroundStyle(.green)
                         .italic()
@@ -95,10 +121,11 @@ struct FullRecordsView: View {
             
             Spacer()
         }
+        .background(colorScheme == .light ? .white : .black)
     }
     
     @MainActor func makeImage() -> UIImage? {
-        let renderer = ImageRenderer(content: contents(history: history))
+        let renderer = ImageRenderer(content: contentsForSnap(history: history))
         // make sure and use the correct display scale for this device
         renderer.scale = displayScale
         return renderer.uiImage
