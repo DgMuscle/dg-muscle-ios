@@ -19,6 +19,7 @@ protocol HistoryFormDependency {
     func tapAdd(dateString: String)
     func tapSave(data: ExerciseHistory)
     func tapMemo(memo: String?)
+    func tapPreview(history: ExerciseHistory)
 }
 
 struct HistoryFormView: View {
@@ -26,15 +27,18 @@ struct HistoryFormView: View {
     @State var records: [Record]
     @State var memo: String?
     @State var saveButtonDisabled: Bool
+    @State var exercises: [Exercise]
     
     let dependency: HistoryFormDependency
     private let history: ExerciseHistory
     
     init(dependency: HistoryFormDependency,
          history: ExerciseHistory,
-         saveButtonDisabled: Bool) {
+         saveButtonDisabled: Bool,
+         exercises: [Exercise]) {
         self.dependency = dependency
         self.history = history
+        self._exercises = .init(initialValue: exercises)
         self._records = .init(initialValue: history.records)
         self._saveButtonDisabled = .init(initialValue: saveButtonDisabled)
         self._memo = .init(initialValue: history.memo)
@@ -49,7 +53,7 @@ struct HistoryFormView: View {
             
             List {
                 ForEach(records) { record in
-                    if let exercise = store.exercise.exercises.first(where: { $0.id ==  record.exerciseId}) {
+                    if let exercise = exercises.first(where: { $0.id ==  record.exerciseId}) {
                         recordItem(record: record, exercise: exercise)
                     } else {
                         missedRecordItem()
@@ -64,6 +68,21 @@ struct HistoryFormView: View {
                 }
                 
                 memoSection
+                
+                if records.isEmpty == false {
+                    Button {
+                        dependency.tapPreview(history: history)
+                    } label: {
+                        Text("Preview")
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background {
+                                RoundedRectangle(cornerRadius: 10).fill(.blue)
+                            }
+                            .padding()
+                    }
+                }
             }
             
             if saveButtonDisabled == false {
@@ -88,7 +107,7 @@ struct HistoryFormView: View {
         .onChange(of: records) { oldValue, newValue in
             withAnimation {
                 saveButtonDisabled = newValue.filter{ record in
-                    store.exercise.exercises.contains(where: { $0.id == record.exerciseId })
+                    exercises.contains(where: { $0.id == record.exerciseId })
                 }.isEmpty
             }
         }
@@ -159,18 +178,34 @@ struct HistoryFormView: View {
         func tap(record: Record, dateString: String) { }
         func tapAdd(dateString: String) { }
         func tapSave(data: ExerciseHistory) { }
+        func tapPreview(history: ExerciseHistory) { }
     }
     
-    store.history.updateHistories()
-    store.exercise.updateExercises()
-    let histories = store.history.histories
-    let history = histories.first!
+    let sets: [ExerciseSet] = [
+        .init(unit: .kg, reps: 10, weight: 60, id: "1"),
+        .init(unit: .kg, reps: 10, weight: 60, id: "2"),
+        .init(unit: .kg, reps: 10, weight: 60, id: "3"),
+        .init(unit: .kg, reps: 10, weight: 60, id: "4"),
+        .init(unit: .kg, reps: 10, weight: 60, id: "5"),
+    ]
+    
+    let records: [Record] = [
+        .init(id: "1", exerciseId: "squat", sets: sets),
+        .init(id: "2", exerciseId: "bench", sets: sets)
+    ]
+    
+    let exercises: [Exercise] = [
+        .init(id: "squat", name: "squat", parts: [.leg], favorite: true, order: 0, createdAt: nil),
+        .init(id: "bench", name: "bench", parts: [.chest], favorite: true, order: 1, createdAt: nil),
+    ]
+    
+    let history: ExerciseHistory = .init(id: "1", date: "20240301", memo: nil, records: records, createdAt: nil)
     
     return VStack {
         Button("record add button") {
-            let record: Record = .init(id: "1", exerciseId: "shoulder press", sets: [.init(unit: .kg, reps: 12, weight: 50)])
-            let record2: Record = .init(id: "2", exerciseId: "squat", sets: [.init(unit: .kg, reps: 12, weight: 50)])
-            let record3: Record = .init(id: "3", exerciseId: "babel row", sets: [.init(unit: .kg, reps: 12, weight: 50)])
+            let record: Record = .init(id: "1", exerciseId: "squat", sets: [.init(unit: .kg, reps: 12, weight: 50)])
+            let record2: Record = .init(id: "2", exerciseId: "bench", sets: [.init(unit: .kg, reps: 12, weight: 50)])
+            let record3: Record = .init(id: "3", exerciseId: "squat", sets: [.init(unit: .kg, reps: 12, weight: 50)])
             if Bool.random() {
                 HistoryFormNotificationCenter.shared.record = record
             } else {
@@ -182,6 +217,6 @@ struct HistoryFormView: View {
             }
             
         }
-        HistoryFormView(dependency: DP(), history: history, saveButtonDisabled: false).preferredColorScheme(.dark)
+        HistoryFormView(dependency: DP(), history: history, saveButtonDisabled: false, exercises: exercises).preferredColorScheme(.dark)
     }
 }

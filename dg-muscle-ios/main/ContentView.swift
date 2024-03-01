@@ -36,7 +36,8 @@ struct ContentView: View {
                             
                             HistoryFormView(dependency: DependencyInjection.shared.historyForm(showingErrorState: $showingErrorState, paths: $paths),
                                             history: history,
-                                            saveButtonDisabled: validRecords.isEmpty)
+                                            saveButtonDisabled: validRecords.isEmpty,
+                                            exercises: store.exercise.exercises)
                         case .recordForm(let selectedExercise, let sets, let dateString):
                             RecordFormView(
                                 selectedExercise: selectedExercise,
@@ -103,6 +104,9 @@ struct ContentView: View {
                             GuideView()
                         case .introduce:
                             IntroduceView()
+                        case .fullRecordsView(let history):
+                            let dp = DependencyInjection.shared.fullRecordsView(paths: $paths, showingErrorState: $showingErrorState)
+                            FullRecordsView(dp: dp, history: history, exercises: store.exercise.exercises)
                         }
                     }
                 }
@@ -178,6 +182,7 @@ extension ContentView {
         case exerciseInfo(ExerciseInfoContainerView.ExerciseType)
         case guide
         case introduce
+        case fullRecordsView(ExerciseHistory)
         
         func hash(into hasher: inout Hasher) {
             

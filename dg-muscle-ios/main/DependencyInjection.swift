@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Foundation
+import Photos
 
 final class DependencyInjection {
     static let shared = DependencyInjection()
@@ -98,6 +99,10 @@ final class DependencyInjection {
     
     func exerciseGuideInfo(paths: Binding<[ContentView.NavigationPath]>) -> ExerciseGuideListDependency {
         ExerciseGuideListDependencyImpl(paths: paths)
+    }
+    
+    func fullRecordsView(paths: Binding<[ContentView.NavigationPath]>, showingErrorState: Binding<ContentView.ShowingErrorState>) -> FullRecordsViewDependency {
+        FullRecordsViewDependencyImpl(paths: paths, showingErrorState: showingErrorState)
     }
 }
 
@@ -283,6 +288,10 @@ struct HistoryFormDependencyImpl: HistoryFormDependency {
     
     func tapMemo(memo: String?) {
         paths.append(.memo(text: memo ?? ""))
+    }
+    
+    func tapPreview(history: ExerciseHistory) {
+        paths.append(.fullRecordsView(history))
     }
 }
 
@@ -551,4 +560,39 @@ struct ExerciseGuideListDependencyImpl: ExerciseGuideListDependency {
             paths.append(.exerciseInfo(.tricepPushdown))
         }
     }
+}
+
+struct FullRecordsViewDependencyImpl: FullRecordsViewDependency {
+    @Binding var paths: [ContentView.NavigationPath]
+    @Binding var showingErrorState: ContentView.ShowingErrorState
+    
+    func save(image: UIImage) {
+        saveImageToPhotoLibrary(image)
+    }
+    
+    private func saveImageToPhotoLibrary(_ image: UIImage) {
+        // Check the authorization status of the photo library
+        let status = PHPhotoLibrary.authorizationStatus()
+        if status == .authorized || status == .limited {
+            // Authorized, save the image
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        } else if status == .notDetermined {
+            // Not determined, request access
+            PHPhotoLibrary.requestAuthorization { newStatus in
+                if newStatus == .authorized || newStatus == .limited {
+                    // Once authorized, save the image
+                    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                } else {
+                    withAnimation {
+                        showingErrorState = .init(showing: true, message: "Denied or restricted to access to photo library. Please change setting.")
+                    }
+                }
+            }
+        } else {
+            withAnimation {
+                showingErrorState = .init(showing: true, message: "Denied or restricted to access to photo library. Please change setting.")
+            }
+        }
+    }
+
 }
