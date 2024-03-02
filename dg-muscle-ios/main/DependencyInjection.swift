@@ -101,8 +101,8 @@ final class DependencyInjection {
         ExerciseGuideListDependencyImpl(paths: paths)
     }
     
-    func fullRecordsView(paths: Binding<[ContentView.NavigationPath]>, showingErrorState: Binding<ContentView.ShowingErrorState>) -> FullRecordsViewDependency {
-        FullRecordsViewDependencyImpl(paths: paths, showingErrorState: showingErrorState)
+    func fullRecordsView(paths: Binding<[ContentView.NavigationPath]>, showingErrorState: Binding<ContentView.ShowingErrorState>, showingSuccessState: Binding<ContentView.ShowingSuccessState>) -> FullRecordsViewDependency {
+        FullRecordsViewDependencyImpl(paths: paths, showingErrorState: showingErrorState, showingSuccessState: showingSuccessState)
     }
 }
 
@@ -565,6 +565,7 @@ struct ExerciseGuideListDependencyImpl: ExerciseGuideListDependency {
 struct FullRecordsViewDependencyImpl: FullRecordsViewDependency {
     @Binding var paths: [ContentView.NavigationPath]
     @Binding var showingErrorState: ContentView.ShowingErrorState
+    @Binding var showingSuccessState: ContentView.ShowingSuccessState
     
     let imageSaver = ImageSaver()
     
@@ -578,11 +579,19 @@ struct FullRecordsViewDependencyImpl: FullRecordsViewDependency {
         if status == .authorized || status == .limited {
             // Authorized, save the image
             imageSaver.writeToPhotoAlbum(image: image)
+            withAnimation {
+                showingSuccessState = .init(showing: true, message: "")
+            }
+            Vibration.soft.vibrate()
         } else if status == .notDetermined {
             // Not determined, request access
             PHPhotoLibrary.requestAuthorization { newStatus in
                 if newStatus == .authorized || newStatus == .limited {
                     imageSaver.writeToPhotoAlbum(image: image)
+                    withAnimation {
+                        showingSuccessState = .init(showing: true, message: "")
+                    }
+                    Vibration.soft.vibrate()
                 } else {
                     withAnimation {
                         showingErrorState = .init(showing: true, message: "Denied or restricted to access to photo library. Please change setting.")

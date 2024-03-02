@@ -105,7 +105,7 @@ struct ContentView: View {
                         case .introduce:
                             IntroduceView()
                         case .fullRecordsView(let history):
-                            let dp = DependencyInjection.shared.fullRecordsView(paths: $paths, showingErrorState: $showingErrorState)
+                            let dp = DependencyInjection.shared.fullRecordsView(paths: $paths, showingErrorState: $showingErrorState, showingSuccessState: $showingSuccessState)
                             FullRecordsView(dp: dp, history: history, exercises: store.exercise.exercises)
                         }
                     }
