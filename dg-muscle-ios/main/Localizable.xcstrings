@@ -44,7 +44,7 @@
     "%@ volume is" : {
 
     },
-    "%@'s exercise record" : {
+    "%@'s Record" : {
 
     },
     "%lld" : {
@@ -725,6 +725,20 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "공유하기"
+          }
+        }
+      }
+    },
+    "Shared" : {
+
+    },
+    "Shared image" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미지 공유하기"
           }
         }
       }

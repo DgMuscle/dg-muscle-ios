@@ -8,7 +8,6 @@
 import SwiftUI
 
 protocol FullRecordsViewDependency {
-    func share(image: UIImage)
     func save(image: UIImage)
 }
 
@@ -16,11 +15,16 @@ struct FullRecordsView: View {
     let dp: FullRecordsViewDependency
     @State var history: ExerciseHistory
     @State var exercises: [Exercise]
-    @State var isShowingBottomsheet = false
     @State var failToMakeImage = false
+    @State var showShareSheet = false
+    
+    @State var image: UIImage?
+    
+    @Environment(\.displayScale) var displayScale
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
-        Form {
+        ScrollView {
             if failToMakeImage {
                 HStack {
                     Text("Fail to make image file.")
@@ -31,9 +35,14 @@ struct FullRecordsView: View {
             }
             
             ForEach(history.records) { record in
-                Section {
-                    RecordView(record: record, exercise: exercises.first(where: { $0.id == record.exerciseId }))
-                }
+                RecordView(record: record, exercise: exercises.first(where: { $0.id == record.exerciseId }))
+                    .foregroundStyle(colorScheme == .dark ? .white : .black)
+                    .padding()
+                    .background {
+                        RoundedRectangle(cornerRadius: 18)
+                            .fill(Color(uiColor: colorScheme == .dark ? .black : .systemGroupedBackground))
+                    }
+                    .padding()
             }
             
             Section {
@@ -45,52 +54,77 @@ struct FullRecordsView: View {
                 }
             }
         }
-        .navigationTitle("\(history.date)'s exercise record")
+        .scrollIndicators(.hidden)
+        .navigationTitle("\(history.date)'s Record")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    isShowingBottomsheet = true
+                    showShareSheet = true
                 }) {
                     Image(systemName: "square.and.arrow.up")
                 }
             }
         }
-        .sheet(isPresented: $isShowingBottomsheet, content: {
-            BottomSheet {
-                isShowingBottomsheet = false
-                if let image = makeImage() {
-                    dp.save(image: image)
-                } else {
-                    withAnimation {
-                        failToMakeImage = true
+        .onAppear {
+            DispatchQueue.main.async {
+                withAnimation {
+                    if let image = makeImage() {
+                        self.image = image
+                    } else {
+                        self.failToMakeImage = true
                     }
-                }
-            } shareAction: {
-                isShowingBottomsheet = false
-                if let image = makeImage() {
-                    dp.share(image: image)
-                } else {
-                    withAnimation {
-                        failToMakeImage = true
-                    }
+                    
                 }
             }
-            .presentationDetents([.height(150)])
-        })
-    }
-    
-    func makeImage() -> UIImage? {
-        let hostingController = UIHostingController(rootView: self)
-        let image = snapshot(view: hostingController.view)
-        return image
-    }
-    
-    func snapshot(view: UIView) -> UIImage? {
-        let renderer = UIGraphicsImageRenderer(bounds: view.bounds)
-        return renderer.image { context in
-            view.layer.render(in: context.cgContext)
         }
+        .sheet(isPresented: $showShareSheet) {
+            if let image {
+                FullRecordsView.BottomSheet(show: $showShareSheet, saveAction: {
+                    dp.save(image: image)
+                }, image: Image(uiImage: image))
+                .presentationDetents([.height(150)])
+            }
+        }
+    }
+    
+    func contentsForSnap(history: ExerciseHistory) -> some View {
+        VStack {
+            Text("\(history.date)'s Record").bold().italic()
+                .foregroundStyle(colorScheme == .dark ? .white : .black)
+                .padding()
+            
+            ForEach(history.records) { record in
+                RecordView(record: record, exercise: exercises.first(where: { $0.id == record.exerciseId }))
+                    .foregroundStyle(colorScheme == .dark ? .white : .black)
+                    .padding()
+                    .background {
+                        RoundedRectangle(cornerRadius: 18)
+                            .fill(Color(uiColor: colorScheme == .dark ? .black : .systemGroupedBackground))
+                    }
+                    .padding()
+            }
+            
+            Section {
+                HStack {
+                    Text("Total volume is")
+                        .foregroundStyle(colorScheme == .dark ? .white : .black)
+                    Text("\(Self.formatted(double: history.volume))")
+                        .foregroundStyle(.green)
+                        .italic()
+                }
+            }
+            
+            Spacer()
+        }
+        .background(colorScheme == .light ? .white : .black)
+    }
+    
+    @MainActor func makeImage() -> UIImage? {
+        let renderer = ImageRenderer(content: contentsForSnap(history: history))
+        // make sure and use the correct display scale for this device
+        renderer.scale = displayScale
+        return renderer.uiImage
     }
     
     static func formatted(double: Double) -> String {
