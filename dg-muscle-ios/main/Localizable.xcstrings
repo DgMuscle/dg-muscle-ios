@@ -35,11 +35,30 @@
     "(Maybe this is network issue. Please retry later.)" : {
 
     },
+    "%@" : {
+
+    },
     "%@ record" : {
+
+    },
+    "%@ volume is" : {
+
+    },
+    "%@'s Record" : {
 
     },
     "%lld" : {
 
+    },
+    "%lld x %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld x %2$@"
+          }
+        }
+      }
     },
     "%lld%@ x %lld" : {
       "localizations" : {
@@ -434,6 +453,16 @@
     "current exercise volume: %lld" : {
 
     },
+    "Data is unreadable due to absence of exercise data" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "운동 데이터의 부재로 인해 기록 데이터를 읽을 수 없습니다."
+          }
+        }
+      }
+    },
     "day" : {
 
     },
@@ -485,6 +514,16 @@
     },
     "Fail to load." : {
 
+    },
+    "Fail to make image file." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미지 파일 생성 실패"
+          }
+        }
+      }
     },
     "favorite" : {
 
@@ -680,6 +719,30 @@
     "sex" : {
 
     },
+    "Share" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공유하기"
+          }
+        }
+      }
+    },
+    "Shared" : {
+
+    },
+    "Shared image" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미지 공유하기"
+          }
+        }
+      }
+    },
     "Sign in with apple ID" : {
 
     },
@@ -728,6 +791,9 @@
 
     },
     "toggle" : {
+
+    },
+    "Total volume is" : {
 
     },
     "total volume: %lld" : {
