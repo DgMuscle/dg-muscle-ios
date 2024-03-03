@@ -77,9 +77,6 @@
 		708F0A832B414D4A001AF089 /* ExerciseInfoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708F0A772B414D4A001AF089 /* ExerciseInfoContainerView.swift */; };
 		708F0A842B414D4A001AF089 /* BenchpressInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708F0A782B414D4A001AF089 /* BenchpressInfoView.swift */; };
 		708F0A862B414D6F001AF089 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 708F0A852B414D6F001AF089 /* SDWebImageSwiftUI */; };
-		709826042B91FA2D00D2C3B0 /* FullRecordsView_SetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709826002B91FA2D00D2C3B0 /* FullRecordsView_SetView.swift */; };
-		709826052B91FA2D00D2C3B0 /* FullRecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709826012B91FA2D00D2C3B0 /* FullRecordsView.swift */; };
-		709826072B91FA2D00D2C3B0 /* FullRecordsView_RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709826032B91FA2D00D2C3B0 /* FullRecordsView_RecordView.swift */; };
 		709B540D2AC999D000C282E9 /* ExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709B540C2AC999D000C282E9 /* ExerciseFormView.swift */; };
 		70A61BDF2B7639D40068F321 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A61BDE2B7639D40068F321 /* WebView.swift */; };
 		70A708D92B13315A0013A237 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A708D82B13315A0013A237 /* MemoView.swift */; };
@@ -91,6 +88,10 @@
 		70B5080C2AC51D4300FC0540 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */; };
 		70B5080F2AC51FD900FC0540 /* DependencyInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */; };
 		70BB52182B37EC1D00EC606D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 70BB52172B37EC1D00EC606D /* Localizable.xcstrings */; };
+		70BDDB4F2B947B01002FCEEA /* FullRecordsView_RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BDDB4B2B947B01002FCEEA /* FullRecordsView_RecordView.swift */; };
+		70BDDB502B947B01002FCEEA /* FullRecordsView_BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BDDB4C2B947B01002FCEEA /* FullRecordsView_BottomSheet.swift */; };
+		70BDDB512B947B01002FCEEA /* FullRecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BDDB4D2B947B01002FCEEA /* FullRecordsView.swift */; };
+		70BDDB522B947B01002FCEEA /* FullRecordsView_SetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BDDB4E2B947B01002FCEEA /* FullRecordsView_SetView.swift */; };
 		70BFFF142B7747E600C8A8C8 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BFFF132B7747E600C8A8C8 /* GuideView.swift */; };
 		70C0559B2B79F9F300375526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C0559A2B79F9F300375526 /* AppDelegate.swift */; };
 		70C0559D2B79FB4600375526 /* QuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C0559C2B79FB4600375526 /* QuickAction.swift */; };
@@ -216,9 +217,6 @@
 		708F0A762B414D4A001AF089 /* SquatInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquatInfoView.swift; sourceTree = "<group>"; };
 		708F0A772B414D4A001AF089 /* ExerciseInfoContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseInfoContainerView.swift; sourceTree = "<group>"; };
 		708F0A782B414D4A001AF089 /* BenchpressInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BenchpressInfoView.swift; sourceTree = "<group>"; };
-		709826002B91FA2D00D2C3B0 /* FullRecordsView_SetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRecordsView_SetView.swift; sourceTree = "<group>"; };
-		709826012B91FA2D00D2C3B0 /* FullRecordsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRecordsView.swift; sourceTree = "<group>"; };
-		709826032B91FA2D00D2C3B0 /* FullRecordsView_RecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRecordsView_RecordView.swift; sourceTree = "<group>"; };
 		709B540C2AC999D000C282E9 /* ExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormView.swift; sourceTree = "<group>"; };
 		70A61BDE2B7639D40068F321 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		70A708D82B13315A0013A237 /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
@@ -231,6 +229,10 @@
 		70B5080B2AC51D4300FC0540 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjection.swift; sourceTree = "<group>"; };
 		70BB52172B37EC1D00EC606D /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		70BDDB4B2B947B01002FCEEA /* FullRecordsView_RecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRecordsView_RecordView.swift; sourceTree = "<group>"; };
+		70BDDB4C2B947B01002FCEEA /* FullRecordsView_BottomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRecordsView_BottomSheet.swift; sourceTree = "<group>"; };
+		70BDDB4D2B947B01002FCEEA /* FullRecordsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRecordsView.swift; sourceTree = "<group>"; };
+		70BDDB4E2B947B01002FCEEA /* FullRecordsView_SetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRecordsView_SetView.swift; sourceTree = "<group>"; };
 		70BFFF132B7747E600C8A8C8 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		70C0559A2B79F9F300375526 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70C0559C2B79FB4600375526 /* QuickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
@@ -427,9 +429,10 @@
 		709825FF2B91FA1500D2C3B0 /* FullRecordsView */ = {
 			isa = PBXGroup;
 			children = (
-				709826032B91FA2D00D2C3B0 /* FullRecordsView_RecordView.swift */,
-				709826002B91FA2D00D2C3B0 /* FullRecordsView_SetView.swift */,
-				709826012B91FA2D00D2C3B0 /* FullRecordsView.swift */,
+				70BDDB4C2B947B01002FCEEA /* FullRecordsView_BottomSheet.swift */,
+				70BDDB4B2B947B01002FCEEA /* FullRecordsView_RecordView.swift */,
+				70BDDB4E2B947B01002FCEEA /* FullRecordsView_SetView.swift */,
+				70BDDB4D2B947B01002FCEEA /* FullRecordsView.swift */,
 			);
 			path = FullRecordsView;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				701CC4AE2AD2720200852E2E /* Profile.swift in Sources */,
 				70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */,
 				708F0A7A2B414D4A001AF089 /* PushUpInfoView.swift in Sources */,
+				70BDDB522B947B01002FCEEA /* FullRecordsView_SetView.swift in Sources */,
 				707BBF1A2AF7D39700A8ABD2 /* BodyMass.swift in Sources */,
 				70C055A32B7A04B200375526 /* QuickActionSubscriber.swift in Sources */,
 				705AB7A22B009F8A00418B46 /* SuccessView.swift in Sources */,
@@ -826,29 +830,29 @@
 				707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */,
 				708F0A832B414D4A001AF089 /* ExerciseInfoContainerView.swift in Sources */,
 				70FF30362B77627E008E03DD /* IntroduceView.swift in Sources */,
-				709826042B91FA2D00D2C3B0 /* FullRecordsView_SetView.swift in Sources */,
 				707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */,
 				70A708D92B13315A0013A237 /* MemoView.swift in Sources */,
+				70BDDB512B947B01002FCEEA /* FullRecordsView.swift in Sources */,
 				705AB7A02B009F7500418B46 /* LoadingView.swift in Sources */,
 				70A61BDF2B7639D40068F321 /* WebView.swift in Sources */,
+				70BDDB502B947B01002FCEEA /* FullRecordsView_BottomSheet.swift in Sources */,
 				70C055A52B7A050400375526 /* Subscriber.swift in Sources */,
 				70F838A02AC7FE4D009725EF /* Exercise.swift in Sources */,
 				70C144D62AC825DE007F0540 /* HistoryRepository.swift in Sources */,
 				701964312AD41CE400ED39BF /* SelectExerciseView.swift in Sources */,
 				708F0A7B2B414D4A001AF089 /* TricepPushDownInfoView.swift in Sources */,
 				708F0A822B414D4A001AF089 /* SquatInfoView.swift in Sources */,
-				709826052B91FA2D00D2C3B0 /* FullRecordsView.swift in Sources */,
 				708F0A7F2B414D4A001AF089 /* BicepCurlInfoView.swift in Sources */,
 				7083E6C62ABF0EC9007D43CE /* AppleAuthCoordinator.swift in Sources */,
 				70A9B7412ACBCFC70061DAA3 /* BodyProfileView.swift in Sources */,
 				703E547B2ADBD5D900E7D911 /* GrassView.swift in Sources */,
-				709826072B91FA2D00D2C3B0 /* FullRecordsView_RecordView.swift in Sources */,
 				707B8FC92ABF1D37008ADECE /* Store.swift in Sources */,
 				70E156942AD2D6C50019329C /* RecordSetsView.swift in Sources */,
 				705EC0A92AFF7C530085801A /* GrassData.swift in Sources */,
 				703CD5F02AC015C900BC76D4 /* CustomError.swift in Sources */,
 				708F0A812B414D4A001AF089 /* ExerciseGuideListView.swift in Sources */,
 				70BFFF142B7747E600C8A8C8 /* GuideView.swift in Sources */,
+				70BDDB4F2B947B01002FCEEA /* FullRecordsView_RecordView.swift in Sources */,
 				70AC465F2ABFF82D00BFE46D /* SettingView.swift in Sources */,
 				7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */,
 				70C144D32AC82558007F0540 /* APIClient.swift in Sources */,

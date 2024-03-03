@@ -16,6 +16,7 @@ struct FullRecordsView: View {
     @State var history: ExerciseHistory
     @State var exercises: [Exercise]
     @State var failToMakeImage = false
+    @State var showShareSheet = true
     
     @State var image: UIImage?
     
@@ -31,26 +32,6 @@ struct FullRecordsView: View {
                         .italic()
                     Spacer()
                 }
-            }
-            
-            if let image {
-                VStack(alignment: .leading, spacing: 15) {
-                    HStack {
-                        ShareLink("Share", item: Image(uiImage: image), preview: SharePreview(Text("Shared image"), image: Image(uiImage: image)))
-                        
-                        Spacer()
-                    }
-                    
-                    HStack {
-                        Button("Save") {
-                            dp.save(image: image)
-                        }
-                        .padding(.leading, 28)
-                        Spacer()
-                    }
-                    
-                }
-                .padding(.horizontal)
             }
             
             ForEach(history.records) { record in
@@ -76,6 +57,15 @@ struct FullRecordsView: View {
         .scrollIndicators(.hidden)
         .navigationTitle("\(history.date)'s Record")
         .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    showShareSheet = true
+                }) {
+                    Image(systemName: "square.and.arrow.up")
+                }
+            }
+        }
         .onAppear {
             DispatchQueue.main.async {
                 withAnimation {
@@ -86,6 +76,14 @@ struct FullRecordsView: View {
                     }
                     
                 }
+            }
+        }
+        .sheet(isPresented: $showShareSheet) {
+            if let image {
+                FullRecordsView.BottomSheet(show: $showShareSheet, saveAction: {
+                    dp.save(image: image)
+                }, image: Image(uiImage: image))
+                .presentationDetents([.height(150)])
             }
         }
     }

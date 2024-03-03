@@ -73,7 +73,7 @@ struct HistoryFormView: View {
                     Button {
                         dependency.tapPreview(history: history)
                     } label: {
-                        Text("Preview")
+                        Text("Share")
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
                             .padding()

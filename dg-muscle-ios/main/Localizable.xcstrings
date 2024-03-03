@@ -639,9 +639,6 @@
     "parts" : {
 
     },
-    "Preview" : {
-
-    },
     "profile" : {
 
     },
@@ -732,7 +729,11 @@
         }
       }
     },
+    "Shared" : {
+
+    },
     "Shared image" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
