@@ -14,8 +14,8 @@ struct ContentView: View {
     @State var isShowingProfilePhotoPicker = false
     @State var isPresentedWithDrawalConfirm = false
     @State var loadingState = LoadingState(showing: false)
-    @State var showingErrorState = ShowingErrorState(showing: false, message: "")
-    @State var showingSuccessState = ShowingSuccessState(showing: false, message: "")
+    @State var showingErrorState = ShowingErrorState(showing: false, message: nil)
+    @State var showingSuccessState = ShowingSuccessState(showing: false, message: nil)
     @State var monthlyChartViewIngredient: MonthlyChartViewIngredient = .init()
     
     @StateObject var userStore = store.user
@@ -201,12 +201,12 @@ extension ContentView {
 extension ContentView {
     struct ShowingErrorState {
         var showing: Bool
-        var message: String
+        var message: String?
     }
     
     struct ShowingSuccessState {
         var showing: Bool
-        var message: String
+        var message: String?
     }
     
     struct LoadingState {

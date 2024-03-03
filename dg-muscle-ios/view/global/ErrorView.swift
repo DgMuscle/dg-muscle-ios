@@ -9,13 +9,15 @@ import SwiftUI
 
 struct ErrorView: View {
     
-    let message: String
+    let message: String?
     @Binding var isShowing: Bool
     
     var body: some View {
         VStack(spacing: 12) {
             Image(systemName: "xmark.octagon").font(.largeTitle).foregroundStyle(.red)
-            Text(message)
+            if let message {
+                Text(message)
+            }
         }
         .padding()
         .background {

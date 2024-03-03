@@ -580,7 +580,7 @@ struct FullRecordsViewDependencyImpl: FullRecordsViewDependency {
             // Authorized, save the image
             imageSaver.writeToPhotoAlbum(image: image)
             withAnimation {
-                showingSuccessState = .init(showing: true, message: "")
+                showingSuccessState = .init(showing: true, message: nil)
             }
             Vibration.soft.vibrate()
         } else if status == .notDetermined {
@@ -589,7 +589,7 @@ struct FullRecordsViewDependencyImpl: FullRecordsViewDependency {
                 if newStatus == .authorized || newStatus == .limited {
                     imageSaver.writeToPhotoAlbum(image: image)
                     withAnimation {
-                        showingSuccessState = .init(showing: true, message: "")
+                        showingSuccessState = .init(showing: true, message: nil)
                     }
                     Vibration.soft.vibrate()
                 } else {
