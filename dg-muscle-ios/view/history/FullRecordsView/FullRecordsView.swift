@@ -18,8 +18,6 @@ struct FullRecordsView: View {
     @State var failToMakeImage = false
     @State var showShareSheet = false
     
-    @State var image: UIImage?
-    
     @Environment(\.displayScale) var displayScale
     @Environment(\.colorScheme) private var colorScheme
     
@@ -66,20 +64,8 @@ struct FullRecordsView: View {
                 }
             }
         }
-        .onAppear {
-            DispatchQueue.main.async {
-                withAnimation {
-                    if let image = makeImage() {
-                        self.image = image
-                    } else {
-                        self.failToMakeImage = true
-                    }
-                    
-                }
-            }
-        }
         .sheet(isPresented: $showShareSheet) {
-            if let image {
+            if let image = makeImage() {
                 FullRecordsView.BottomSheet(show: $showShareSheet, saveAction: {
                     dp.save(image: image)
                 }, image: Image(uiImage: image))
@@ -127,6 +113,11 @@ struct FullRecordsView: View {
         let renderer = ImageRenderer(content: contentsForSnap(history: history))
         // make sure and use the correct display scale for this device
         renderer.scale = displayScale
+        
+        if renderer.uiImage == nil {
+            self.failToMakeImage = true
+        }
+        
         return renderer.uiImage
     }
     
