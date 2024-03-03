@@ -16,7 +16,7 @@ struct FullRecordsView: View {
     @State var history: ExerciseHistory
     @State var exercises: [Exercise]
     @State var failToMakeImage = false
-    @State var showShareSheet = true
+    @State var showShareSheet = false
     
     @State var image: UIImage?
     
