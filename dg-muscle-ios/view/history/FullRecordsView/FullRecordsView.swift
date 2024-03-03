@@ -84,6 +84,9 @@ struct FullRecordsView: View {
                     dp.save(image: image)
                 }, image: Image(uiImage: image))
                 .presentationDetents([.height(150)])
+            } else {
+                Text("Please try later")
+                    .presentationDetents([.height(150)])
             }
         }
     }

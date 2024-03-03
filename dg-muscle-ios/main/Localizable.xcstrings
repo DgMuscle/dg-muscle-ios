@@ -639,6 +639,16 @@
     "parts" : {
 
     },
+    "Please try again" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잠시후 다시 시도해주세요"
+          }
+        }
+      }
+    },
     "profile" : {
 
     },
