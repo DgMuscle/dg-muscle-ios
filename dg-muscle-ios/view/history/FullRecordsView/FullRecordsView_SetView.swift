@@ -14,7 +14,7 @@ extension FullRecordsView {
         var body: some View {
             VStack {
                 HStack {
-                    Text("\(set.reps) x \(FullRecordsView.formatted(double: set.weight))").italic()
+                    Text("\(FullRecordsView.formatted(double: set.weight))\(set.unit.rawValue) x \(set.reps)").italic()
                     Spacer()
                 }
                 .padding(.bottom, 4)
@@ -23,4 +23,8 @@ extension FullRecordsView {
             }
         }
     }
+}
+
+#Preview {
+    FullRecordsView.SetView(set: .init(unit: .kg, reps: 12, weight: 50, id: "123"))
 }

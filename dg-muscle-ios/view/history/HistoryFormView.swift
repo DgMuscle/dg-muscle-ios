@@ -71,6 +71,8 @@ struct HistoryFormView: View {
                 
                 if records.isEmpty == false {
                     Button {
+                        var history = history
+                        history.records = records
                         dependency.tapPreview(history: history)
                     } label: {
                         Text("Share")

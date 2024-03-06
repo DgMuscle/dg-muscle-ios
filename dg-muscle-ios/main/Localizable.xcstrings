@@ -47,18 +47,18 @@
     "%@'s Record" : {
 
     },
-    "%lld" : {
-
-    },
-    "%lld x %@" : {
+    "%@%@ x %lld" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "%1$lld x %2$@"
+            "value" : "%1$@%2$@ x %3$lld"
           }
         }
       }
+    },
+    "%lld" : {
+
     },
     "%lld%@ x %lld" : {
       "localizations" : {
