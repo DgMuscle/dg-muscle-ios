@@ -20,7 +20,8 @@ final class ExerciseRepository {
     }
     
     func set(exercises: [Exercise]) async throws -> DefaultResponse {
-        try await APIClient.shared.request(method: .post, url: "https://exercise-setexercises-kpjvgnqz6a-uc.a.run.app", body: exercises)
+        try saveCache(exercises: exercises)
+        return try await APIClient.shared.request(method: .post, url: "https://exercise-setexercises-kpjvgnqz6a-uc.a.run.app", body: exercises)
     }
     
     func get() async throws -> [Exercise] {
@@ -35,10 +36,18 @@ final class ExerciseRepository {
         
         let parameter = Parameter(id: id)
         
+        let previousExercises = store.exercise.exercises
+        let newExercises = previousExercises.filter({ $0.id != id })
+        try saveCache(exercises: newExercises)
+        
         return try await APIClient.shared.request(method: .delete, url: "https://exercise-deleteexercise-kpjvgnqz6a-uc.a.run.app", body: parameter)
     }
     
     func post(data: Exercise) async throws -> DefaultResponse {
+        var newExercises = store.exercise.exercises
+        newExercises.append(data)
+        try saveCache(exercises: newExercises)
+        
         return try await APIClient.shared.request(method: .post, url: "https://exercise-postexercise-kpjvgnqz6a-uc.a.run.app", body: data)
     }
 }
