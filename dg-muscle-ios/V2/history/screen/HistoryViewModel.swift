@@ -21,6 +21,7 @@ final class HistoryViewModel: ObservableObject {
          healthRepository: HealthRepository) {
         self.historyRepository = historyRepository
         self.healthRepository = healthRepository
+        bind()
     }
     
     private func bind() {
