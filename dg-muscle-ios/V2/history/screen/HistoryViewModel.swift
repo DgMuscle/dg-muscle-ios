@@ -38,15 +38,14 @@ final class HistoryViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    // O(n)
     private func getHistorySections(histories: [ExerciseHistory], metadatas: [WorkoutMetaData]) -> [ExerciseHistorySection] {
         var twoDimensionalArray: [[ExerciseHistory]] = []
         
-        // Create a dictionary to group dates by year and month
         var grouped: [String: [ExerciseHistory]] = [:]
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM"
         
-        // O(n)
         for history in histories {
             let key = dateFormatter.string(from: history.dateValue ?? Date())
             if grouped[key] == nil {
@@ -63,8 +62,14 @@ final class HistoryViewModel: ObservableObject {
             }
         }
         
+        var metaDataHashMap: [String: WorkoutMetaData] = [:]
+        
+        for data in metadatas {
+            metaDataHashMap[data.startDateString] = data
+        }
+        
         return twoDimensionalArray.map({ ExerciseHistorySection(histories: $0.map({ exercise in
-            let metadata = metadatas.first(where: { exercise.date == $0.startDateString })
+            let metadata = metaDataHashMap[exercise.date]
             return .init(exercise: exercise, metadata: metadata) })
         )})
     }
