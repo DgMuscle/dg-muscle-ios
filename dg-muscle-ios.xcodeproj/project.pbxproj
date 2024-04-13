@@ -106,6 +106,7 @@
 		70756F3A2BCAC87A0035EFF4 /* UserRepositoryV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F042BCA9E640035EFF4 /* UserRepositoryV2.swift */; };
 		70756F3B2BCAC89B0035EFF4 /* UserRepositoryV2Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F0B2BCAA0900035EFF4 /* UserRepositoryV2Test.swift */; };
 		70756F3E2BCACD850035EFF4 /* ManageExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F3D2BCACD850035EFF4 /* ManageExerciseView.swift */; };
+		70756F402BCAD45F0035EFF4 /* FirstExerciseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F3F2BCAD45F0035EFF4 /* FirstExerciseButton.swift */; };
 		707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC62ABF1CAC008ADECE /* UserStore.swift */; };
 		707B8FC92ABF1D37008ADECE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC82ABF1D37008ADECE /* Store.swift */; };
 		707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
@@ -284,6 +285,7 @@
 		70756F302BCAC4F40035EFF4 /* ExerciseListSectionV2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListSectionV2View.swift; sourceTree = "<group>"; };
 		70756F342BCAC7BA0035EFF4 /* exerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exerciseTests.swift; sourceTree = "<group>"; };
 		70756F3D2BCACD850035EFF4 /* ManageExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageExerciseView.swift; sourceTree = "<group>"; };
+		70756F3F2BCAD45F0035EFF4 /* FirstExerciseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstExerciseButton.swift; sourceTree = "<group>"; };
 		707B8FC62ABF1CAC008ADECE /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		707B8FC82ABF1D37008ADECE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		707B8FD22ABF207F008ADECE /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
@@ -603,6 +605,7 @@
 				70756F302BCAC4F40035EFF4 /* ExerciseListSectionV2View.swift */,
 				70756F272BCAC1D60035EFF4 /* ExerciseListV2View.swift */,
 				70756F292BCAC2110035EFF4 /* ExerciseListV2ViewModel.swift */,
+				70756F3F2BCAD45F0035EFF4 /* FirstExerciseButton.swift */,
 			);
 			path = exerciseList;
 			sourceTree = "<group>";
@@ -1183,6 +1186,7 @@
 				70756EEE2BCA683D0035EFF4 /* HealthRepositoryTest.swift in Sources */,
 				708F0A7B2B414D4A001AF089 /* TricepPushDownInfoView.swift in Sources */,
 				708F0A822B414D4A001AF089 /* SquatInfoView.swift in Sources */,
+				70756F402BCAD45F0035EFF4 /* FirstExerciseButton.swift in Sources */,
 				708F0A7F2B414D4A001AF089 /* BicepCurlInfoView.swift in Sources */,
 				7083E6C62ABF0EC9007D43CE /* AppleAuthCoordinator.swift in Sources */,
 				70A9B7412ACBCFC70061DAA3 /* BodyProfileView.swift in Sources */,

@@ -24,27 +24,7 @@ struct ExerciseListV2View: View {
             }
             
             if viewModel.sections.isEmpty {
-                Button {
-                    addAction?()
-                } label: {
-                    Text("Configure Your\nFirst Exercise!")
-                        .fontWeight(.black)
-                        .foregroundStyle(.white)
-                        .padding(12)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(
-                                    LinearGradient(colors: [.blue, .pink],
-                                                   startPoint: isAnimating ? .bottomLeading : .topLeading,
-                                                   endPoint: isAnimating ? .topTrailing : .bottomTrailing)
-                                )
-                        )
-                        .onAppear {
-                            withAnimation(.linear(duration: 3).repeatForever(autoreverses: true)) {
-                                isAnimating.toggle()
-                            }
-                        }
-                }
+                FirstExerciseButton(addAction: addAction)
             }
         }
         .drawingGroup()
