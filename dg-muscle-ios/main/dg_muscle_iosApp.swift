@@ -31,9 +31,26 @@ extension EnvironmentValues {
 struct dg_muscle_iosApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    @State var splash = true
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if splash {
+                SplashView()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            withAnimation(.interpolatingSpring) {
+                                splash = false
+                            }
+                        }
+                    }
+            } else {
+                ContentViewV2(viewModel: .init(historyRepository: HistoryRepositoryV2Impl.shared,
+                                               healthRepository: HealthRepositoryLive.shared,
+                                               userRepository: UserRepositoryV2Live.shared),
+                              exerciseRepository: ExerciseRepositoryV2Live.shared,
+                              healthRepository: HealthRepositoryLive.shared)
+            }
         }
     }
 }

@@ -88,6 +88,8 @@
 		70756F0A2BCA9F340035EFF4 /* UserRepositoryV2Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F092BCA9F340035EFF4 /* UserRepositoryV2Live.swift */; };
 		70756F0C2BCAA0900035EFF4 /* UserRepositoryV2Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F0B2BCAA0900035EFF4 /* UserRepositoryV2Test.swift */; };
 		70756F0E2BCAA19B0035EFF4 /* UserBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F0D2BCAA19B0035EFF4 /* UserBoxView.swift */; };
+		70756F112BCAA7C80035EFF4 /* ContentViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F102BCAA7C80035EFF4 /* ContentViewV2.swift */; };
+		70756F152BCAAB8B0035EFF4 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F142BCAAB8B0035EFF4 /* SplashView.swift */; };
 		707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC62ABF1CAC008ADECE /* UserStore.swift */; };
 		707B8FC92ABF1D37008ADECE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC82ABF1D37008ADECE /* Store.swift */; };
 		707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
@@ -254,6 +256,8 @@
 		70756F092BCA9F340035EFF4 /* UserRepositoryV2Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryV2Live.swift; sourceTree = "<group>"; };
 		70756F0B2BCAA0900035EFF4 /* UserRepositoryV2Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryV2Test.swift; sourceTree = "<group>"; };
 		70756F0D2BCAA19B0035EFF4 /* UserBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBoxView.swift; sourceTree = "<group>"; };
+		70756F102BCAA7C80035EFF4 /* ContentViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewV2.swift; sourceTree = "<group>"; };
+		70756F142BCAAB8B0035EFF4 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		707B8FC62ABF1CAC008ADECE /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		707B8FC82ABF1D37008ADECE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		707B8FD22ABF207F008ADECE /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
@@ -420,9 +424,11 @@
 		702E21752BCA5D8800147279 /* V2 */ = {
 			isa = PBXGroup;
 			children = (
+				70756F102BCAA7C80035EFF4 /* ContentViewV2.swift */,
 				702E21652BCA535800147279 /* history */,
 				70756F062BCA9E910035EFF4 /* model */,
 				702E216C2BCA559500147279 /* repository */,
+				70756F132BCAAB7D0035EFF4 /* screen */,
 			);
 			path = V2;
 			sourceTree = "<group>";
@@ -492,6 +498,14 @@
 				70756F072BCA9EA80035EFF4 /* DGUser.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		70756F132BCAAB7D0035EFF4 /* screen */ = {
+			isa = PBXGroup;
+			children = (
+				70756F142BCAAB8B0035EFF4 /* SplashView.swift */,
+			);
+			path = screen;
 			sourceTree = "<group>";
 		};
 		707B8FC52ABF1C92008ADECE /* store */ = {
@@ -1036,6 +1050,7 @@
 				708F0A832B414D4A001AF089 /* ExerciseInfoContainerView.swift in Sources */,
 				70FF30362B77627E008E03DD /* IntroduceView.swift in Sources */,
 				707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */,
+				70756F112BCAA7C80035EFF4 /* ContentViewV2.swift in Sources */,
 				70A708D92B13315A0013A237 /* MemoView.swift in Sources */,
 				70BDDB512B947B01002FCEEA /* FullRecordsView.swift in Sources */,
 				705AB7A02B009F7500418B46 /* LoadingView.swift in Sources */,
@@ -1058,6 +1073,7 @@
 				70E156942AD2D6C50019329C /* RecordSetsView.swift in Sources */,
 				705EC0A92AFF7C530085801A /* GrassData.swift in Sources */,
 				703CD5F02AC015C900BC76D4 /* CustomError.swift in Sources */,
+				70756F152BCAAB8B0035EFF4 /* SplashView.swift in Sources */,
 				708F0A812B414D4A001AF089 /* ExerciseGuideListView.swift in Sources */,
 				70BFFF142B7747E600C8A8C8 /* GuideView.swift in Sources */,
 				70BDDB4F2B947B01002FCEEA /* FullRecordsView_RecordView.swift in Sources */,

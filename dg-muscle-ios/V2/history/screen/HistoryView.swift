@@ -17,6 +17,8 @@ struct HistoryView: View {
     var body: some View {
         ScrollView {
             
+            Spacer(minLength: 60)
+            
             if let user = viewModel.user {
                 Button {
                     print("Go to setting")
@@ -27,14 +29,23 @@ struct HistoryView: View {
                     }
                 }
                 .padding(.bottom, 20)
+                .scrollTransition { effect, phase in
+                    effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
+                }
             }
             
             ForEach(viewModel.historySections) { section in
                 HistorySectionView(section: section, exerciseRepository: exerciseRepository, healthRepository: healthRepository)
+                    .scrollTransition { effect, phase in
+                        effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
+                    }
             }
+            
+            Spacer(minLength: 120)
         }
         .padding()
         .scrollIndicators(.hidden)
+        .ignoresSafeArea()
     }
 }
 

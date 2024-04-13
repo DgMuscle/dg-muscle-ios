@@ -24,7 +24,7 @@ struct HistorySectionView: View {
             
             ForEach(section.histories) { history in
                 HistoryListItemView(history: history, exerciseRepository: exerciseRepository, healthRepository: healthRepository)
-                    .padding(.bottom, 8)
+                    .padding(.bottom, 20)
             }
         }
     }

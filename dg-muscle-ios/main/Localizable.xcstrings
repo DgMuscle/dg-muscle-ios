@@ -479,6 +479,9 @@
         }
       }
     },
+    "DG" : {
+
+    },
     "dg-muscle profile" : {
 
     },
@@ -544,6 +547,9 @@
 
     },
     "Go to see previous record" : {
+
+    },
+    "Go to setting" : {
 
     },
     "guide" : {
@@ -628,6 +634,9 @@
 
     },
     "name: %@" : {
+
+    },
+    "No user" : {
 
     },
     "O-" : {
