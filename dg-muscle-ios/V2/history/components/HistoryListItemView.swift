@@ -17,8 +17,8 @@ struct HistoryListItemView: View {
         HStack {
             VStack(alignment: .leading) {
                 HStack(spacing: 2) {
-                    Image(systemName: "calendar.circle")
-                    Text(getDay(history: history))
+                    Image(systemName: "calendar")
+                    Text(getDay(history: history)).italic()
                 }
                 .font(.title3)
                 .padding(.leading, 2)
