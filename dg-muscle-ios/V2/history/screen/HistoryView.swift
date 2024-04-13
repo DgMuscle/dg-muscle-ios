@@ -16,6 +16,19 @@ struct HistoryView: View {
     
     var body: some View {
         ScrollView {
+            
+            if let user = viewModel.user {
+                Button {
+                    print("Go to setting")
+                } label: {
+                    HStack {
+                        UserBoxView(user: user)
+                        Spacer()
+                    }
+                }
+                .padding(.bottom, 20)
+            }
+            
             ForEach(viewModel.historySections) { section in
                 HistorySectionView(section: section, exerciseRepository: exerciseRepository, healthRepository: healthRepository)
             }
@@ -26,8 +39,12 @@ struct HistoryView: View {
 }
 
 #Preview {
-    let viewModel = HistoryViewModel(historyRepository: HistoryRepositoryV2Test(), healthRepository: HealthRepositoryTest())
+    let viewModel = HistoryViewModel(historyRepository: HistoryRepositoryV2Test(),
+                                     healthRepository: HealthRepositoryTest(), 
+                                     userRepository: UserRepositoryV2Test())
     
-    return HistoryView(viewModel: viewModel, exerciseRepository: ExerciseRepositoryV2Test(), healthRepository: HealthRepositoryTest())
+    return HistoryView(viewModel: viewModel, 
+                       exerciseRepository: ExerciseRepositoryV2Test(),
+                       healthRepository: HealthRepositoryTest())
         .preferredColorScheme(.dark)
 }

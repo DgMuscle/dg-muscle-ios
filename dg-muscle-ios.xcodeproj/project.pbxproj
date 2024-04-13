@@ -83,6 +83,11 @@
 		70756EFB2BCA6C4B0035EFF4 /* ExerciseRepositoryV2Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756EFA2BCA6C4B0035EFF4 /* ExerciseRepositoryV2Live.swift */; };
 		70756EFD2BCA6D680035EFF4 /* ExerciseRepositoryV2Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756EFC2BCA6D680035EFF4 /* ExerciseRepositoryV2Test.swift */; };
 		70756F022BCA75E10035EFF4 /* HistorySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F012BCA75E10035EFF4 /* HistorySectionView.swift */; };
+		70756F052BCA9E640035EFF4 /* UserRepositoryV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F042BCA9E640035EFF4 /* UserRepositoryV2.swift */; };
+		70756F082BCA9EA80035EFF4 /* DGUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F072BCA9EA80035EFF4 /* DGUser.swift */; };
+		70756F0A2BCA9F340035EFF4 /* UserRepositoryV2Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F092BCA9F340035EFF4 /* UserRepositoryV2Live.swift */; };
+		70756F0C2BCAA0900035EFF4 /* UserRepositoryV2Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F0B2BCAA0900035EFF4 /* UserRepositoryV2Test.swift */; };
+		70756F0E2BCAA19B0035EFF4 /* UserBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F0D2BCAA19B0035EFF4 /* UserBoxView.swift */; };
 		707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC62ABF1CAC008ADECE /* UserStore.swift */; };
 		707B8FC92ABF1D37008ADECE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC82ABF1D37008ADECE /* Store.swift */; };
 		707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
@@ -244,6 +249,11 @@
 		70756EFA2BCA6C4B0035EFF4 /* ExerciseRepositoryV2Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepositoryV2Live.swift; sourceTree = "<group>"; };
 		70756EFC2BCA6D680035EFF4 /* ExerciseRepositoryV2Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepositoryV2Test.swift; sourceTree = "<group>"; };
 		70756F012BCA75E10035EFF4 /* HistorySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySectionView.swift; sourceTree = "<group>"; };
+		70756F042BCA9E640035EFF4 /* UserRepositoryV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryV2.swift; sourceTree = "<group>"; };
+		70756F072BCA9EA80035EFF4 /* DGUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGUser.swift; sourceTree = "<group>"; };
+		70756F092BCA9F340035EFF4 /* UserRepositoryV2Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryV2Live.swift; sourceTree = "<group>"; };
+		70756F0B2BCAA0900035EFF4 /* UserRepositoryV2Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryV2Test.swift; sourceTree = "<group>"; };
+		70756F0D2BCAA19B0035EFF4 /* UserBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBoxView.swift; sourceTree = "<group>"; };
 		707B8FC62ABF1CAC008ADECE /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		707B8FC82ABF1D37008ADECE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		707B8FD22ABF207F008ADECE /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
@@ -402,6 +412,7 @@
 				70756EFE2BCA6E0A0035EFF4 /* exercise */,
 				70756EFF2BCA6E120035EFF4 /* health */,
 				70756F002BCA6E190035EFF4 /* history */,
+				70756F032BCA9E550035EFF4 /* user */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -409,8 +420,9 @@
 		702E21752BCA5D8800147279 /* V2 */ = {
 			isa = PBXGroup;
 			children = (
-				702E216C2BCA559500147279 /* repository */,
 				702E21652BCA535800147279 /* history */,
+				70756F062BCA9E910035EFF4 /* model */,
+				702E216C2BCA559500147279 /* repository */,
 			);
 			path = V2;
 			sourceTree = "<group>";
@@ -429,6 +441,7 @@
 			children = (
 				70756EF42BCA68E70035EFF4 /* HistoryListItemView.swift */,
 				70756F012BCA75E10035EFF4 /* HistorySectionView.swift */,
+				70756F0D2BCAA19B0035EFF4 /* UserBoxView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -461,6 +474,24 @@
 				70756EF02BCA68700035EFF4 /* HistoryRepositoryV2Test.swift */,
 			);
 			path = history;
+			sourceTree = "<group>";
+		};
+		70756F032BCA9E550035EFF4 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				70756F042BCA9E640035EFF4 /* UserRepositoryV2.swift */,
+				70756F092BCA9F340035EFF4 /* UserRepositoryV2Live.swift */,
+				70756F0B2BCAA0900035EFF4 /* UserRepositoryV2Test.swift */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
+		70756F062BCA9E910035EFF4 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				70756F072BCA9EA80035EFF4 /* DGUser.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		707B8FC52ABF1C92008ADECE /* store */ = {
@@ -978,7 +1009,9 @@
 				708F0A792B414D4A001AF089 /* DeadliftInfoView.swift in Sources */,
 				70C144DA2AC82866007F0540 /* ExerciseRepository.swift in Sources */,
 				708AF2B62B36D38400658D6B /* WidgetBridge.swift in Sources */,
+				70756F0E2BCAA19B0035EFF4 /* UserBoxView.swift in Sources */,
 				701CC4AE2AD2720200852E2E /* Profile.swift in Sources */,
+				70756F082BCA9EA80035EFF4 /* DGUser.swift in Sources */,
 				70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */,
 				708F0A7A2B414D4A001AF089 /* PushUpInfoView.swift in Sources */,
 				70BDDB522B947B01002FCEEA /* FullRecordsView_SetView.swift in Sources */,
@@ -989,6 +1022,7 @@
 				700BB60B2AE513AF008B8132 /* MonthlyChartView.swift in Sources */,
 				708F0A7C2B414D4A001AF089 /* LegCurlInfoView.swift in Sources */,
 				708F0A7D2B414D4A001AF089 /* LegExtensionInfoView.swift in Sources */,
+				70756F052BCA9E640035EFF4 /* UserRepositoryV2.swift in Sources */,
 				70D17E0D2AC5D70B00B86E37 /* WithdrawalConfirmView.swift in Sources */,
 				70F838AD2AC7FFB5009725EF /* ExerciseDiaryView.swift in Sources */,
 				70F838A82AC7FEB6009725EF /* Record.swift in Sources */,
@@ -1061,10 +1095,12 @@
 				708F0A802B414D4A001AF089 /* PullUpInfoView.swift in Sources */,
 				70756EF52BCA68E70035EFF4 /* HistoryListItemView.swift in Sources */,
 				70D3418A2ACC03350010EAF9 /* ExerciseListView.swift in Sources */,
+				70756F0C2BCAA0900035EFF4 /* UserRepositoryV2Test.swift in Sources */,
 				70B5080C2AC51D4300FC0540 /* PhotoPickerView.swift in Sources */,
 				708F0A7E2B414D4A001AF089 /* LegPressInfoView.swift in Sources */,
 				70756EFD2BCA6D680035EFF4 /* ExerciseRepositoryV2Test.swift in Sources */,
 				702E21682BCA53BC00147279 /* HistoryView.swift in Sources */,
+				70756F0A2BCA9F340035EFF4 /* UserRepositoryV2Live.swift in Sources */,
 				708F0A842B414D4A001AF089 /* BenchpressInfoView.swift in Sources */,
 				70D9033D2AC5A70A001DDC0B /* Vibration.swift in Sources */,
 				70B5080F2AC51FD900FC0540 /* DependencyInjection.swift in Sources */,

@@ -11,16 +11,20 @@ import Foundation
 final class HistoryViewModel: ObservableObject {
     @Published private(set) var grassData: [GrassData] = []
     @Published private(set) var historySections: [ExerciseHistorySection] = []
+    @Published private(set) var user: DGUser?
     
     private let historyRepository: HistoryRepositoryV2
     private let healthRepository: HealthRepository
+    private let userRepository: UserRepositoryV2
     
     private var cancellables = Set<AnyCancellable>()
     
     init(historyRepository: HistoryRepositoryV2,
-         healthRepository: HealthRepository) {
+         healthRepository: HealthRepository,
+         userRepository: UserRepositoryV2) {
         self.historyRepository = historyRepository
         self.healthRepository = healthRepository
+        self.userRepository = userRepository
         bind()
     }
     
@@ -34,6 +38,14 @@ final class HistoryViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.historySections = historySections
                 }
+            }
+            .store(in: &cancellables)
+        
+        userRepository.userPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] user in
+                guard let self else { return }
+                self.user = user
             }
             .store(in: &cancellables)
     }
