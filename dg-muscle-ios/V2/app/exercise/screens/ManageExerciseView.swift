@@ -17,6 +17,8 @@ struct ManageExerciseView: View {
                 print("tap exercise \(exercise.name)")
             } addAction: {
                 print("tap add button")
+            } deleteAction: { exercise in
+                print("delete exercise \(exercise)")
             }
             
         }

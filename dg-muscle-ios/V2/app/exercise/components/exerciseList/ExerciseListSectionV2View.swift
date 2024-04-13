@@ -13,6 +13,7 @@ struct ExerciseListSectionV2View: View {
     @State var exercises: [Exercise]
     
     let exerciseAction: ((Exercise) -> ())?
+    let deleteAction: ((Exercise) -> ())?
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -33,8 +34,14 @@ struct ExerciseListSectionV2View: View {
                         exerciseAction?(exercise)
                     } label: {
                         ExerciseListItemView(exercise: exercise)
-                            .padding(.bottom, 6)
+                            .contextMenu(menuItems: {
+                                Button("Delete Item") {
+                                    deleteAction?(exercise)
+                                }
+                            })
+                            
                     }
+                    .padding(.bottom, 6)
                 }
             }
             .padding(.leading, 12)
@@ -50,6 +57,7 @@ struct ExerciseListSectionV2View: View {
 #Preview {
     return ExerciseListSectionV2View(part: .leg, 
                                      exercises: ExerciseRepositoryV2Test().exercises,
-                                     exerciseAction: nil)
+                                     exerciseAction: nil,
+                                     deleteAction: nil)
         .preferredColorScheme(.dark)
 }

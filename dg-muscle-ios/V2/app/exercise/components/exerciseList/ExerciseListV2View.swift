@@ -13,12 +13,16 @@ struct ExerciseListV2View: View {
     
     let exerciseAction: ((Exercise) -> ())?
     let addAction: (() -> ())?
+    let deleteAction: ((Exercise) -> ())?
     
     var body: some View {
         ZStack {
             VStack {
                 ForEach(viewModel.sections, id: \.self) { section in
-                    ExerciseListSectionV2View(part: section.part, exercises: section.exercises, exerciseAction: exerciseAction)
+                    ExerciseListSectionV2View(part: section.part, 
+                                              exercises: section.exercises,
+                                              exerciseAction: exerciseAction,
+                                              deleteAction: deleteAction)
                         .padding(.bottom, 8)
                 }
             }
@@ -37,6 +41,7 @@ struct ExerciseListV2View: View {
     
     return ExerciseListV2View(viewModel: viewModel,
                               exerciseAction: nil,
-                              addAction: nil)
+                              addAction: nil, 
+                              deleteAction: nil)
         .preferredColorScheme(.dark)
 }
