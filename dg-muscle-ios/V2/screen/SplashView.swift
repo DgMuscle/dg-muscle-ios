@@ -20,7 +20,7 @@ struct SplashView: View {
                                    endPoint: animation ? .topTrailing : .bottomTrailing)
                 )
                 .onAppear {
-                    withAnimation(.linear(duration: 3)) {
+                    withAnimation(.linear(duration: 3).repeatForever(autoreverses: true)) {
                         animation = true
                     }
                 }

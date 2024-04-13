@@ -9,6 +9,7 @@ import SwiftUI
 
 enum NavigationPath: Hashable {
     case setting
+    case manageExercise
 }
 
 struct ContentViewV2: View {
@@ -30,7 +31,10 @@ struct ContentViewV2: View {
                 .navigationDestination(for: NavigationPath.self) { path in
                     switch path {
                     case .setting:
-                        SettingV2View(viewModel: SettingV2ViewModel(userRepository: userRepository))
+                        SettingV2View(viewModel: SettingV2ViewModel(userRepository: userRepository),
+                                      paths: $paths)
+                    case .manageExercise:
+                        ManageExerciseView(exerciseRepository: exerciseRepository)
                     }
                 }
             }
