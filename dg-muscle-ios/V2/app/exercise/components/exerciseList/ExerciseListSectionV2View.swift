@@ -27,7 +27,7 @@ struct ExerciseListSectionV2View: View {
             .padding(.bottom, 10)
             
             VStack {
-                ForEach(exercises) { exercise in
+                ForEach(exercises.sorted(by: { $0.name < $1.name })) { exercise in
                     
                     Button {
                         exerciseAction?(exercise)
