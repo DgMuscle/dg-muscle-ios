@@ -13,10 +13,26 @@ final class historyTests: XCTestCase {
     func testSetUpHistorySection() async throws {
         let viewModel = HistoryViewModel(historyRepository: HistoryRepositoryTest(), healthRepository: HealthRepositoryTest())
         
-        // I want to check viewModel.historySections after 1 seconds
-        try await Task.sleep(nanoseconds: 1_000_000_000)
+        // I want to check viewModel.historySections after 0.5 seconds
+        try await Task.sleep(nanoseconds: 500_000_000)
         
-        print("viewModel.historySections is \(viewModel.historySections)")
+        var sectionCount: Int = 0
+        var historyCount: Int = 0
+        var metadataCount: Int = 0
+        
+        for section in viewModel.historySections {
+            sectionCount += 1
+            for history in section.histories {
+                historyCount += 1
+                if history.metadata != nil {
+                    metadataCount += 1
+                }
+            }
+        }
+        
+        XCTAssertEqual(sectionCount, 3)
+        XCTAssertEqual(historyCount, 11)
+        XCTAssertEqual(metadataCount, 4)
     }
 }
 
@@ -63,6 +79,7 @@ extension historyTests {
                 .init(id: "8", date: "20240201", memo: "random memo", records: records, createdAt: nil),
                 .init(id: "9", date: "20240202", memo: "random memo", records: records, createdAt: nil),
                 .init(id: "10", date: "20240203", memo: "random memo", records: records, createdAt: nil),
+                .init(id: "11", date: "20240301", memo: "random memo", records: records, createdAt: nil),
             ]
         }
     }
@@ -91,14 +108,14 @@ extension historyTests {
             
             _workoutMetaDatas = [
                 .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-01 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-01 20:20:00")),
-                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-01 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-02 20:20:00")),
-                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-01 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-03 20:20:00")),
-                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-01 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-04 20:20:00")),
-                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-01 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-07 20:20:00")),
-                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-01 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-08 20:20:00")),
-                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-01 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-10 20:20:00")),
-                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-01 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-20 20:20:00")),
-                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-01 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-21 20:20:00")),
+                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-02 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-02 20:20:00")),
+                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-03 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-03 20:20:00")),
+                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-04 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-04 20:20:00")),
+                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-07 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-07 20:20:00")),
+                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-08 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-08 20:20:00")),
+                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-10 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-10 20:20:00")),
+                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-20 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-20 20:20:00")),
+                .init(duration: 100, kcalPerHourKg: 100, startDate: dateFormatter.date(from: "2024-01-21 20:00:00")!, endDate: dateFormatter.date(from: "2024-01-21 20:20:00")),
             ]
         }
     }
