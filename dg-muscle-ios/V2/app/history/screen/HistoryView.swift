@@ -10,6 +10,7 @@ import SwiftUI
 struct HistoryView: View {
     
     @StateObject var viewModel: HistoryViewModel
+    @Binding var paths: [NavigationPath]
     
     let exerciseRepository: ExerciseRepositoryV2
     let healthRepository: HealthRepository
@@ -21,10 +22,10 @@ struct HistoryView: View {
             
             if let user = viewModel.user {
                 Button {
-                    print("Go to setting")
+                    paths.append(.setting)
                 } label: {
                     HStack {
-                        UserBoxView(user: user)
+                        UserBoxView(user: user, descriptionLabel: "Go to setting")
                         Spacer()
                     }
                 }
@@ -51,7 +52,7 @@ struct HistoryView: View {
                                      healthRepository: HealthRepositoryTest(), 
                                      userRepository: UserRepositoryV2Test())
     
-    return HistoryView(viewModel: viewModel, 
+    return HistoryView(viewModel: viewModel, paths: .constant([]),
                        exerciseRepository: ExerciseRepositoryV2Test(),
                        healthRepository: HealthRepositoryTest())
         .preferredColorScheme(.dark)

@@ -90,6 +90,10 @@
 		70756F0E2BCAA19B0035EFF4 /* UserBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F0D2BCAA19B0035EFF4 /* UserBoxView.swift */; };
 		70756F112BCAA7C80035EFF4 /* ContentViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F102BCAA7C80035EFF4 /* ContentViewV2.swift */; };
 		70756F152BCAAB8B0035EFF4 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F142BCAAB8B0035EFF4 /* SplashView.swift */; };
+		70756F1A2BCAB5D40035EFF4 /* SettingV2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F192BCAB5D40035EFF4 /* SettingV2View.swift */; };
+		70756F1C2BCAB6D80035EFF4 /* SettingV2ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F1B2BCAB6D80035EFF4 /* SettingV2ViewModel.swift */; };
+		70756F202BCAB95F0035EFF4 /* SettingListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F1F2BCAB95F0035EFF4 /* SettingListItemView.swift */; };
+		70756F222BCABBE80035EFF4 /* ExerciseListSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F212BCABBE80035EFF4 /* ExerciseListSectionView.swift */; };
 		707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC62ABF1CAC008ADECE /* UserStore.swift */; };
 		707B8FC92ABF1D37008ADECE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC82ABF1D37008ADECE /* Store.swift */; };
 		707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
@@ -258,6 +262,10 @@
 		70756F0D2BCAA19B0035EFF4 /* UserBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBoxView.swift; sourceTree = "<group>"; };
 		70756F102BCAA7C80035EFF4 /* ContentViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewV2.swift; sourceTree = "<group>"; };
 		70756F142BCAAB8B0035EFF4 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		70756F192BCAB5D40035EFF4 /* SettingV2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingV2View.swift; sourceTree = "<group>"; };
+		70756F1B2BCAB6D80035EFF4 /* SettingV2ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingV2ViewModel.swift; sourceTree = "<group>"; };
+		70756F1F2BCAB95F0035EFF4 /* SettingListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListItemView.swift; sourceTree = "<group>"; };
+		70756F212BCABBE80035EFF4 /* ExerciseListSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListSectionView.swift; sourceTree = "<group>"; };
 		707B8FC62ABF1CAC008ADECE /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		707B8FC82ABF1D37008ADECE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		707B8FD22ABF207F008ADECE /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
@@ -424,8 +432,9 @@
 		702E21752BCA5D8800147279 /* V2 */ = {
 			isa = PBXGroup;
 			children = (
+				70756F162BCAB5BF0035EFF4 /* app */,
+				70756F1D2BCAB8E80035EFF4 /* components */,
 				70756F102BCAA7C80035EFF4 /* ContentViewV2.swift */,
-				702E21652BCA535800147279 /* history */,
 				70756F062BCA9E910035EFF4 /* model */,
 				702E216C2BCA559500147279 /* repository */,
 				70756F132BCAAB7D0035EFF4 /* screen */,
@@ -447,7 +456,6 @@
 			children = (
 				70756EF42BCA68E70035EFF4 /* HistoryListItemView.swift */,
 				70756F012BCA75E10035EFF4 /* HistorySectionView.swift */,
-				70756F0D2BCAA19B0035EFF4 /* UserBoxView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -506,6 +514,50 @@
 				70756F142BCAAB8B0035EFF4 /* SplashView.swift */,
 			);
 			path = screen;
+			sourceTree = "<group>";
+		};
+		70756F162BCAB5BF0035EFF4 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				70756F172BCAB5C80035EFF4 /* setting */,
+				702E21652BCA535800147279 /* history */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		70756F172BCAB5C80035EFF4 /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				70756F1E2BCAB9470035EFF4 /* components */,
+				70756F182BCAB5CE0035EFF4 /* screen */,
+			);
+			path = setting;
+			sourceTree = "<group>";
+		};
+		70756F182BCAB5CE0035EFF4 /* screen */ = {
+			isa = PBXGroup;
+			children = (
+				70756F192BCAB5D40035EFF4 /* SettingV2View.swift */,
+				70756F1B2BCAB6D80035EFF4 /* SettingV2ViewModel.swift */,
+			);
+			path = screen;
+			sourceTree = "<group>";
+		};
+		70756F1D2BCAB8E80035EFF4 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				70756F0D2BCAA19B0035EFF4 /* UserBoxView.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		70756F1E2BCAB9470035EFF4 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				70756F212BCABBE80035EFF4 /* ExerciseListSectionView.swift */,
+				70756F1F2BCAB95F0035EFF4 /* SettingListItemView.swift */,
+			);
+			path = components;
 			sourceTree = "<group>";
 		};
 		707B8FC52ABF1C92008ADECE /* store */ = {
@@ -1050,7 +1102,9 @@
 				708F0A832B414D4A001AF089 /* ExerciseInfoContainerView.swift in Sources */,
 				70FF30362B77627E008E03DD /* IntroduceView.swift in Sources */,
 				707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */,
+				70756F1A2BCAB5D40035EFF4 /* SettingV2View.swift in Sources */,
 				70756F112BCAA7C80035EFF4 /* ContentViewV2.swift in Sources */,
+				70756F222BCABBE80035EFF4 /* ExerciseListSectionView.swift in Sources */,
 				70A708D92B13315A0013A237 /* MemoView.swift in Sources */,
 				70BDDB512B947B01002FCEEA /* FullRecordsView.swift in Sources */,
 				705AB7A02B009F7500418B46 /* LoadingView.swift in Sources */,
@@ -1074,6 +1128,7 @@
 				705EC0A92AFF7C530085801A /* GrassData.swift in Sources */,
 				703CD5F02AC015C900BC76D4 /* CustomError.swift in Sources */,
 				70756F152BCAAB8B0035EFF4 /* SplashView.swift in Sources */,
+				70756F202BCAB95F0035EFF4 /* SettingListItemView.swift in Sources */,
 				708F0A812B414D4A001AF089 /* ExerciseGuideListView.swift in Sources */,
 				70BFFF142B7747E600C8A8C8 /* GuideView.swift in Sources */,
 				70BDDB4F2B947B01002FCEEA /* FullRecordsView_RecordView.swift in Sources */,
@@ -1088,6 +1143,7 @@
 				70C0559B2B79F9F300375526 /* AppDelegate.swift in Sources */,
 				702E216B2BCA541C00147279 /* HistoryViewModel.swift in Sources */,
 				70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */,
+				70756F1C2BCAB6D80035EFF4 /* SettingV2ViewModel.swift in Sources */,
 				707BBF182AF7D1D800A8ABD2 /* Height.swift in Sources */,
 				70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */,
 				70756EF72BCA6C210035EFF4 /* ExerciseRepositoryV2.swift in Sources */,

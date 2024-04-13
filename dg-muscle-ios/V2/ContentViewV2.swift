@@ -7,16 +7,34 @@
 
 import SwiftUI
 
+enum NavigationPath: Hashable {
+    case setting
+}
+
 struct ContentViewV2: View {
+    
+    @State var paths: [NavigationPath] = []
     
     let historyViewModel: HistoryViewModel
     let exerciseRepository: ExerciseRepositoryV2
     let healthRepository: HealthRepository
+    let userRepository: UserRepositoryV2
     
     var body: some View {
-        HistoryView(viewModel: historyViewModel,
-                    exerciseRepository: exerciseRepository,
-                    healthRepository: healthRepository)
+        ZStack {
+            NavigationStack(path: $paths) {
+                HistoryView(viewModel: historyViewModel,
+                            paths: $paths,
+                            exerciseRepository: exerciseRepository,
+                            healthRepository: healthRepository)
+                .navigationDestination(for: NavigationPath.self) { path in
+                    switch path {
+                    case .setting:
+                        SettingV2View(viewModel: SettingV2ViewModel(userRepository: userRepository))
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -33,6 +51,7 @@ struct ContentViewV2: View {
     
     return ContentViewV2(historyViewModel: historyViewModel,
                          exerciseRepository: exerciseRepository,
-                         healthRepository: healthRepository)
+                         healthRepository: healthRepository, 
+                         userRepository: userRepository)
         .preferredColorScheme(.dark)
 }

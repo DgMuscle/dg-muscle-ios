@@ -13,6 +13,8 @@ struct UserBoxView: View {
     @State var user: DGUser
     @State private var isAnimating = false
     
+    let descriptionLabel: String
+    
     private let circleSize: CGFloat = 60
     
     var body: some View {
@@ -47,7 +49,7 @@ struct UserBoxView: View {
                 }
                 
                 HStack {
-                    Text("Go to setting").fontWeight(.heavy)
+                    Text(descriptionLabel).fontWeight(.heavy)
                         .foregroundStyle(
                         LinearGradient(colors: [
                             .secondary,
@@ -66,7 +68,9 @@ struct UserBoxView: View {
 
 #Preview {
     if let user = UserRepositoryV2Test().user {
-        return UserBoxView(user: user).preferredColorScheme(.dark)
+        return UserBoxView(user: user,
+                           descriptionLabel: "Go to setting")
+        .preferredColorScheme(.dark)
     } else {
         return Text("No user")
     }
