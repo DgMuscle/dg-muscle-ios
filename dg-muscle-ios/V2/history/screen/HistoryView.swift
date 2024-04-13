@@ -8,12 +8,26 @@
 import SwiftUI
 
 struct HistoryView: View {
+    
+    @StateObject var viewModel: HistoryViewModel
+    
+    let exerciseRepository: ExerciseRepositoryV2
+    let healthRepository: HealthRepository
+    
     var body: some View {
-        Text("Hello, World!")
+        ScrollView {
+            ForEach(viewModel.historySections) { section in
+                HistorySectionView(section: section, exerciseRepository: exerciseRepository, healthRepository: healthRepository)
+            }
+        }
+        .padding()
+        .scrollIndicators(.hidden)
     }
 }
 
 #Preview {
-    HistoryView()
+    let viewModel = HistoryViewModel(historyRepository: HistoryRepositoryV2Test(), healthRepository: HealthRepositoryTest())
+    
+    return HistoryView(viewModel: viewModel, exerciseRepository: ExerciseRepositoryV2Test(), healthRepository: HealthRepositoryTest())
         .preferredColorScheme(.dark)
 }

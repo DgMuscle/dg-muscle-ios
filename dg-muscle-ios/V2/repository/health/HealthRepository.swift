@@ -10,4 +10,5 @@ import Combine
 protocol HealthRepository {
     var workoutMetaDatas: [WorkoutMetaData] { get }
     var workoutMetaDatasPublisher: AnyPublisher<[WorkoutMetaData], Never> { get }
+    var recentBodyMass: BodyMass? { get }
 }

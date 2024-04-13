@@ -19,7 +19,12 @@ final class HealthRepositoryLive: HealthRepository {
         $_workoutMetaDatas.eraseToAnyPublisher()
     }
     
+    var recentBodyMass: BodyMass? {
+        _bodyMasses.sorted(by: { $0.startDate > $1.startDate }).first
+    }
+    
     @Published private var _workoutMetaDatas: [WorkoutMetaData] = []
+    private var _bodyMasses: [BodyMass] = []
     
     private let store = HKHealthStore()
     
@@ -30,6 +35,10 @@ final class HealthRepositoryLive: HealthRepository {
         // Load datas from server
         Task {
             _workoutMetaDatas = try await fetchWorkoutMetaDatasFromServer()
+        }
+        
+        Task {
+            _bodyMasses = try await fetchMass()
         }
     }
     
@@ -77,6 +86,30 @@ final class HealthRepositoryLive: HealthRepository {
                     continuation.resume(returning: results as? [HKWorkout] ?? [])
                 }
             }
+            store.execute(query)
+        }
+    }
+    
+    private func fetchMass() async throws -> [BodyMass] {
+        let samples = try await fetchSamples(type: HKQuantityType(.bodyMass))
+        let quantitySamples = samples.compactMap({ $0 as? HKQuantitySample })
+        
+        return quantitySamples.map({
+            BodyMass(unit: .kg,
+                     value: $0.quantity.doubleValue(for: .init(from: "kg")),
+                     startDate: $0.startDate)
+        })
+    }
+    
+    private func fetchSamples(type: HKSampleType) async throws -> [HKSample] {
+        return try await withCheckedThrowingContinuation { continuation in
+            let query = HKSampleQuery(sampleType: type, predicate: nil, limit: 10, sortDescriptors: nil, resultsHandler: {(query, result, error)in
+                if let error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume(returning: result ?? [])
+                }
+            })
             store.execute(query)
         }
     }
