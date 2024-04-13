@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ContentViewV2: View {
     
-    let viewModel: HistoryViewModel
+    let historyViewModel: HistoryViewModel
     let exerciseRepository: ExerciseRepositoryV2
     let healthRepository: HealthRepository
     
     var body: some View {
-        HistoryView(viewModel: viewModel,
+        HistoryView(viewModel: historyViewModel,
                     exerciseRepository: exerciseRepository,
                     healthRepository: healthRepository)
     }
@@ -31,7 +31,7 @@ struct ContentViewV2: View {
                                             healthRepository: healthRepository,
                                             userRepository: userRepository)
     
-    return ContentViewV2(viewModel: historyViewModel,
+    return ContentViewV2(historyViewModel: historyViewModel,
                          exerciseRepository: exerciseRepository,
                          healthRepository: healthRepository)
         .preferredColorScheme(.dark)
