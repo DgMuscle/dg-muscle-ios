@@ -35,21 +35,21 @@ struct dg_muscle_iosApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if splash {
-                SplashView()
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                            withAnimation(.interpolatingSpring) {
-                                splash = false
-                            }
-                        }
-                    }
-            } else {
+            ZStack {
                 ContentViewV2(viewModel: .init(historyRepository: HistoryRepositoryV2Impl.shared,
                                                healthRepository: HealthRepositoryLive.shared,
                                                userRepository: UserRepositoryV2Live.shared),
                               exerciseRepository: ExerciseRepositoryV2Live.shared,
                               healthRepository: HealthRepositoryLive.shared)
+                
+                SplashView()
+                    .opacity(splash ? 1 : 0)
+                    .animation(.easeIn, value: splash)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            splash = false
+                        }
+                    }
             }
         }
     }

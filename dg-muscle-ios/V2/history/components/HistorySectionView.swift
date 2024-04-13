@@ -25,6 +25,9 @@ struct HistorySectionView: View {
             ForEach(section.histories) { history in
                 HistoryListItemView(history: history, exerciseRepository: exerciseRepository, healthRepository: healthRepository)
                     .padding(.bottom, 20)
+                    .scrollTransition { effect, phase in
+                        effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
+                    }
             }
         }
     }

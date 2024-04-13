@@ -15,7 +15,7 @@ struct SplashView: View {
         ZStack {
             Rectangle()
                 .fill(
-                    LinearGradient(colors: [.black, Color(uiColor: .secondarySystemFill)],
+                    LinearGradient(colors: [.black, Color(uiColor: .secondarySystemBackground)],
                                    startPoint: animation ? .bottomLeading : .topLeading,
                                    endPoint: animation ? .topTrailing : .bottomTrailing)
                 )

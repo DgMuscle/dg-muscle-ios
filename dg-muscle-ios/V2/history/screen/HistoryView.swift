@@ -36,9 +36,6 @@ struct HistoryView: View {
             
             ForEach(viewModel.historySections) { section in
                 HistorySectionView(section: section, exerciseRepository: exerciseRepository, healthRepository: healthRepository)
-                    .scrollTransition { effect, phase in
-                        effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
-                    }
             }
             
             Spacer(minLength: 120)
