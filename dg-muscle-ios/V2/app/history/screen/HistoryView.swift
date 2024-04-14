@@ -17,7 +17,6 @@ struct HistoryView: View {
     
     var body: some View {
         ScrollView {
-            
             Spacer(minLength: 60)
             
             if let user = viewModel.user {
@@ -35,8 +34,18 @@ struct HistoryView: View {
                 }
             }
             
+            Button {
+                print("dg: workout")
+            } label: {
+                WorkoutRectangleButton()
+                    .scrollTransition { effect, phase in
+                        effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
+                    }
+            }
+            
             ForEach(viewModel.historySections) { section in
                 HistorySectionView(section: section, exerciseRepository: exerciseRepository, healthRepository: healthRepository)
+                .padding(.bottom, 40)
             }
             
             Spacer(minLength: 120)

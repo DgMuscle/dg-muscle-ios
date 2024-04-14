@@ -78,6 +78,8 @@
 		703A97C92BCB97C6002C0843 /* EditExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97C82BCB97C6002C0843 /* EditExerciseViewModel.swift */; };
 		703A97CB2BCB98F2002C0843 /* EditExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97CA2BCB98F2002C0843 /* EditExerciseView.swift */; };
 		703A97CD2BCBA7F5002C0843 /* ManageExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97CC2BCBA7F5002C0843 /* ManageExerciseViewModel.swift */; };
+		703A97CF2BCBB488002C0843 /* WorkoutFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97CE2BCBB488002C0843 /* WorkoutFloatingButton.swift */; };
+		703A97D12BCBB4E9002C0843 /* WorkoutRectangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97D02BCBB4E9002C0843 /* WorkoutRectangleButton.swift */; };
 		703CD5EA2AC0139600BC76D4 /* FileUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5E92AC0139600BC76D4 /* FileUploader.swift */; };
 		703CD5EC2AC013D300BC76D4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 703CD5EB2AC013D300BC76D4 /* FirebaseFirestore */; };
 		703CD5EE2AC0148800BC76D4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 703CD5ED2AC0148800BC76D4 /* FirebaseStorage */; };
@@ -281,6 +283,8 @@
 		703A97C82BCB97C6002C0843 /* EditExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseViewModel.swift; sourceTree = "<group>"; };
 		703A97CA2BCB98F2002C0843 /* EditExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseView.swift; sourceTree = "<group>"; };
 		703A97CC2BCBA7F5002C0843 /* ManageExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageExerciseViewModel.swift; sourceTree = "<group>"; };
+		703A97CE2BCBB488002C0843 /* WorkoutFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutFloatingButton.swift; sourceTree = "<group>"; };
+		703A97D02BCBB4E9002C0843 /* WorkoutRectangleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRectangleButton.swift; sourceTree = "<group>"; };
 		703CD5E92AC0139600BC76D4 /* FileUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
 		703CD5EF2AC015C900BC76D4 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		703E547A2ADBD5D900E7D911 /* GrassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassView.swift; sourceTree = "<group>"; };
@@ -484,7 +488,6 @@
 				70756F1D2BCAB8E80035EFF4 /* components */,
 				70D3418D2ACC07FD0010EAF9 /* extension */,
 				70F8389C2AC7FE20009725EF /* model */,
-				70756F062BCA9E910035EFF4 /* model */,
 				703A97C02BCB929B002C0843 /* navigation */,
 				702E216C2BCA559500147279 /* repository */,
 				70756F132BCAAB7D0035EFF4 /* screen */,
@@ -593,6 +596,8 @@
 			children = (
 				70756EF42BCA68E70035EFF4 /* HistoryListItemView.swift */,
 				70756F012BCA75E10035EFF4 /* HistorySectionView.swift */,
+				703A97CE2BCBB488002C0843 /* WorkoutFloatingButton.swift */,
+				703A97D02BCBB4E9002C0843 /* WorkoutRectangleButton.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -635,14 +640,6 @@
 				70756F0B2BCAA0900035EFF4 /* UserRepositoryV2Test.swift */,
 			);
 			path = user;
-			sourceTree = "<group>";
-		};
-		70756F062BCA9E910035EFF4 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				70756F072BCA9EA80035EFF4 /* DGUser.swift */,
-			);
-			path = model;
 			sourceTree = "<group>";
 		};
 		70756F132BCAAB7D0035EFF4 /* screen */ = {
@@ -992,6 +989,7 @@
 				707BBF192AF7D39700A8ABD2 /* BodyMass.swift */,
 				70F8389D2AC7FE36009725EF /* CreatedAt.swift */,
 				70C144D72AC82807007F0540 /* DefaultResponse.swift */,
+				70756F072BCA9EA80035EFF4 /* DGUser.swift */,
 				70F8389F2AC7FE4D009725EF /* Exercise.swift */,
 				70F838A12AC7FE84009725EF /* ExerciseHistory.swift */,
 				70F838A32AC7FE96009725EF /* ExerciseHistorySection.swift */,
@@ -1000,10 +998,10 @@
 				705EC0A82AFF7C530085801A /* GrassData.swift */,
 				707BBF172AF7D1D800A8ABD2 /* Height.swift */,
 				701CC4AD2AD2720200852E2E /* Profile.swift */,
+				70C0559C2B79FB4600375526 /* QuickAction.swift */,
 				70F838A72AC7FEB6009725EF /* Record.swift */,
 				701042112AEE483400FAD52C /* UserCache.swift */,
 				70226B872AF7765400379ED3 /* WorkoutMetaData.swift */,
-				70C0559C2B79FB4600375526 /* QuickAction.swift */,
 			);
 			name = model;
 			path = ../model;
@@ -1256,6 +1254,7 @@
 				703A97B92BCB81AB002C0843 /* ExerciseFormStep2ViewModel.swift in Sources */,
 				70756F2A2BCAC2110035EFF4 /* ExerciseListV2ViewModel.swift in Sources */,
 				703A97CB2BCB98F2002C0843 /* EditExerciseView.swift in Sources */,
+				703A97D12BCBB4E9002C0843 /* WorkoutRectangleButton.swift in Sources */,
 				708F0A792B414D4A001AF089 /* DeadliftInfoView.swift in Sources */,
 				70C144DA2AC82866007F0540 /* ExerciseRepository.swift in Sources */,
 				708AF2B62B36D38400658D6B /* WidgetBridge.swift in Sources */,
@@ -1285,6 +1284,7 @@
 				703A97AC2BCB6EBF002C0843 /* ExerciseFormStep1View.swift in Sources */,
 				7083E6C32ABF0C62007D43CE /* SignInView.swift in Sources */,
 				709B540D2AC999D000C282E9 /* ExerciseFormView.swift in Sources */,
+				703A97CF2BCBB488002C0843 /* WorkoutFloatingButton.swift in Sources */,
 				7060FDB02AC5E1C3001A2198 /* ErrorView.swift in Sources */,
 				707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */,
 				708F0A832B414D4A001AF089 /* ExerciseInfoContainerView.swift in Sources */,
