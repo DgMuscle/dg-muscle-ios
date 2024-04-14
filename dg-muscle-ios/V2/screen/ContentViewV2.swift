@@ -15,6 +15,7 @@ struct ContentViewV2: View {
     let exerciseRepository: ExerciseRepositoryV2
     let healthRepository: HealthRepository
     let userRepository: UserRepositoryV2
+    let historyRepository: HistoryRepositoryV2
     
     var body: some View {
         ZStack {
@@ -30,6 +31,21 @@ struct ContentViewV2: View {
                                       paths: $paths)
                     }
                 }
+                .navigationDestination(for: HistoryNavigation.self, destination: { navigation in
+                    switch navigation.name {
+                    case .historyForm:
+                        HistoryFormV2View(viewModel: .init(history:
+                                                            navigation.historyForForm ??
+                                                           ExerciseHistory(id: UUID().uuidString,
+                                                                           date: todayDateString(),
+                                                                           memo: nil,
+                                                                           records: [],
+                                                                           createdAt: nil),
+                                                           paths: $paths,
+                                                           historyRepository: historyRepository),
+                                          exerciseRepository: exerciseRepository)
+                    }
+                })
                 .navigationDestination(for: ExerciseNavigation.self) { navigation in
                     switch navigation.name {
                     case .manage:
@@ -61,6 +77,12 @@ struct ContentViewV2: View {
             }
         }
     }
+    
+    private func todayDateString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyMMdd"
+        return dateFormatter.string(from: Date())
+    }
 }
 
 #Preview {
@@ -77,6 +99,7 @@ struct ContentViewV2: View {
     return ContentViewV2(historyViewModel: historyViewModel,
                          exerciseRepository: exerciseRepository,
                          healthRepository: healthRepository, 
-                         userRepository: userRepository)
+                         userRepository: userRepository, 
+                         historyRepository: historyRepository)
         .preferredColorScheme(.dark)
 }

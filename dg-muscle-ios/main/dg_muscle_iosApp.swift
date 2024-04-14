@@ -41,7 +41,8 @@ struct dg_muscle_iosApp: App {
                                                userRepository: UserRepositoryV2Live.shared),
                               exerciseRepository: ExerciseRepositoryV2Live.shared,
                               healthRepository: HealthRepositoryLive.shared,
-                              userRepository: UserRepositoryV2Live.shared)
+                              userRepository: UserRepositoryV2Live.shared, 
+                              historyRepository: HistoryRepositoryV2Impl.shared)
                 
                 SplashView()
                     .opacity(splash ? 1 : 0)

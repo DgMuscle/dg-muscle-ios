@@ -35,7 +35,9 @@ struct HistoryView: View {
             }
             
             Button {
-                print("dg: workout")
+                paths.append(HistoryNavigation(name: .historyForm,
+                                               historyForForm: viewModel.findTodayExerciseHistory()))
+                
             } label: {
                 WorkoutRectangleButton()
                     .scrollTransition { effect, phase in

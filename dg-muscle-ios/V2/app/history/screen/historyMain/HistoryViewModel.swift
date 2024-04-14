@@ -28,6 +28,13 @@ final class HistoryViewModel: ObservableObject {
         bind()
     }
     
+    func findTodayExerciseHistory() -> ExerciseHistory? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        let todayDateString = dateFormatter.string(from: Date())
+        return historyRepository.histories.first(where: { $0.date == todayDateString })
+    }
+    
     private func bind() {
         historyRepository.historiesPublisher
             .combineLatest(healthRepository.workoutMetaDatasPublisher)

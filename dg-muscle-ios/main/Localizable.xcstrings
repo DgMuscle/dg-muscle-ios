@@ -321,6 +321,9 @@
     "ADD NEW SET" : {
 
     },
+    "ADD RECORD" : {
+
+    },
     "agree_remove_account" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -465,6 +468,12 @@
     "Current sets count is %lld" : {
 
     },
+    "Current Sets: %lld" : {
+
+    },
+    "Current Volume: %lld" : {
+
+    },
     "Current workout volume is %lld" : {
 
     },
@@ -516,6 +525,9 @@
 
     },
     "exercise" : {
+
+    },
+    "EXERCISE DIARY" : {
 
     },
     "Exercise Form" : {
@@ -704,6 +716,9 @@
     "Push up" : {
 
     },
+    "Record" : {
+
+    },
     "record add button" : {
 
     },
@@ -763,6 +778,9 @@
         }
       }
     },
+    "SAVE HISTORY" : {
+
+    },
     "Select a photo" : {
 
     },
@@ -815,6 +833,9 @@
       "comment" : "unknown"
     },
     "Squat" : {
+
+    },
+    "Tap to continue" : {
 
     },
     "Target parts are" : {

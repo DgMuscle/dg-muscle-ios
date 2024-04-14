@@ -17,6 +17,22 @@ struct MainNavigation: Identifiable, Hashable {
     var id: Int { name.hashValue }
 }
 
+struct HistoryNavigation: Identifiable, Hashable {
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+        hasher.combine(id)
+    }
+    
+    enum Name: String {
+        case historyForm
+    }
+    
+    let name: Name
+    var id: Int { name.hashValue }
+    var historyForForm: ExerciseHistory?
+}
+
 struct ExerciseNavigation: Identifiable, Hashable, Equatable {
     static func == (lhs: ExerciseNavigation, rhs: ExerciseNavigation) -> Bool {
         lhs.hashValue == rhs.hashValue
