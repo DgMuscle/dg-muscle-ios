@@ -41,7 +41,9 @@ final class HistoryFormV2ViewModel: ObservableObject {
     
     func post() {
         Task {
-            let _ = try await historyRepository.post(data: history)
+            if history.records.isEmpty == false {
+                let _ = try await historyRepository.post(data: history)
+            }
             paths.removeLast()
         }
     }

@@ -46,7 +46,11 @@ struct HistoryView: View {
             }
             
             ForEach(viewModel.historySections) { section in
-                HistorySectionView(section: section, exerciseRepository: exerciseRepository, healthRepository: healthRepository)
+                HistorySectionView(section: section, 
+                                   exerciseRepository: exerciseRepository,
+                                   healthRepository: healthRepository) { history in
+                    paths.append(HistoryNavigation(name: .historyForm, historyForForm: history))
+                }
                 .padding(.bottom, 40)
             }
             

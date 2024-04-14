@@ -13,6 +13,8 @@ struct HistorySectionView: View {
     let exerciseRepository: ExerciseRepositoryV2
     let healthRepository: HealthRepository
     
+    let historyAction: ((ExerciseHistory) -> ())?
+    
     var body: some View {
         VStack {
             HStack {
@@ -23,11 +25,16 @@ struct HistorySectionView: View {
             }
             
             ForEach(section.histories) { history in
-                HistoryListItemView(history: history, exerciseRepository: exerciseRepository, healthRepository: healthRepository)
-                    .padding(.bottom, 20)
-                    .scrollTransition { effect, phase in
-                        effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
-                    }
+                
+                Button {
+                    historyAction?(history.exercise)
+                } label: {
+                    HistoryListItemView(history: history, exerciseRepository: exerciseRepository, healthRepository: healthRepository)
+                        .padding(.bottom, 20)
+                        .scrollTransition { effect, phase in
+                            effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
+                        }
+                }
             }
         }
     }
@@ -67,6 +74,9 @@ struct HistorySectionView: View {
     
     let section: ExerciseHistorySection = .init(histories: histories)
     
-    return HistorySectionView(section: section, exerciseRepository: ExerciseRepositoryV2Test(), healthRepository: HealthRepositoryTest())
+    return HistorySectionView(section: section, 
+                              exerciseRepository: ExerciseRepositoryV2Test(),
+                              healthRepository: HealthRepositoryTest(),
+                              historyAction: nil)
         .preferredColorScheme(.dark)
 }

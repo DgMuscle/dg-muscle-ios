@@ -50,6 +50,7 @@ struct HistoryListItemView: View {
             Spacer()
             volume
         }
+        .foregroundStyle(Color(uiColor: .label))
     }
     
     var volume: some View {

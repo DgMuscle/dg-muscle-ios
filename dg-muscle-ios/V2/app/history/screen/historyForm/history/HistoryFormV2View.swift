@@ -19,7 +19,7 @@ struct HistoryFormV2View: View {
                             duration: $viewModel.duration) {
                 print("ADD HISTORY")
             } saveAction: {
-                print("SAVE HISTORY")
+                viewModel.post()
             }
             
             List {
