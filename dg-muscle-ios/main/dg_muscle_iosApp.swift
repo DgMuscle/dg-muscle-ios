@@ -47,7 +47,7 @@ struct dg_muscle_iosApp: App {
                     .opacity(splash ? 1 : 0)
                     .animation(.easeIn, value: splash)
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                             splash = false
                         }
                     }

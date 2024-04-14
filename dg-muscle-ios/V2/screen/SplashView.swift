@@ -15,9 +15,10 @@ struct SplashView: View {
         ZStack {
             Rectangle()
                 .fill(
-                    LinearGradient(colors: [.black, Color(uiColor: .secondarySystemBackground)],
+                    LinearGradient(colors: [.black, .black.opacity(0.65)],
                                    startPoint: animation ? .bottomLeading : .topLeading,
-                                   endPoint: animation ? .topTrailing : .bottomTrailing)
+                                   endPoint: animation ? .topTrailing : .bottomTrailing
+                                  )
                 )
                 .onAppear {
                     withAnimation(.linear(duration: 3).repeatForever(autoreverses: true)) {
