@@ -10,6 +10,7 @@ import SwiftUI
 enum NavigationPath: Hashable {
     case setting
     case manageExercise
+    case exerciseFormStep
 }
 
 struct ContentViewV2: View {
@@ -34,7 +35,12 @@ struct ContentViewV2: View {
                         SettingV2View(viewModel: SettingV2ViewModel(userRepository: userRepository),
                                       paths: $paths)
                     case .manageExercise:
-                        ManageExerciseView(exerciseRepository: exerciseRepository)
+                        ManageExerciseView(exerciseRepository: exerciseRepository,
+                                           paths: $paths)
+                    case .exerciseFormStep:
+                        ExerciseFormStep1View(viewModel: .init(),
+                                              globalPaths: $paths,
+                                              exerciseRepository: exerciseRepository)
                     }
                 }
             }

@@ -12,7 +12,7 @@ struct ExerciseFormStep1View: View {
     typealias GlobalNavigationPath = NavigationPath
     
     @StateObject var viewModel: ExerciseFormStep1ViewModel
-    @State private var paths: [NavigationPath] = []
+    @State private var paths: [LocalNavigationPath] = []
     @Binding var globalPaths: [GlobalNavigationPath]
     let exerciseRepository: ExerciseRepositoryV2
     
@@ -49,7 +49,7 @@ struct ExerciseFormStep1View: View {
                 .padding()
                 .animation(.default, value: viewModel.isVisiblePartsForm)
                 .animation(.default, value: viewModel.canProceed)
-                .navigationDestination(for: NavigationPath.self) { path in
+                .navigationDestination(for: LocalNavigationPath.self) { path in
                     switch path {
                     case .step2:
                         ExerciseFormStep2View(viewModel: .init(name: viewModel.name,
@@ -66,7 +66,7 @@ struct ExerciseFormStep1View: View {
 }
 
 extension ExerciseFormStep1View {
-    enum NavigationPath: Hashable {
+    enum LocalNavigationPath: Hashable {
         case step2
     }
 }
