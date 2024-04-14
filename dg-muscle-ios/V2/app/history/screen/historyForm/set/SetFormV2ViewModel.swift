@@ -31,9 +31,9 @@ final class SetFormV2ViewModel: ObservableObject {
     }
     
     func add() {
-        isPresenting.toggle()
         guard let reps = Int(reps), let weight = Double(weight) else { return }
         let set = ExerciseSet(unit: unit, reps: reps, weight: weight, id: UUID().uuidString)
         completeAction?(set)
+        isPresenting.toggle()
     }
 }

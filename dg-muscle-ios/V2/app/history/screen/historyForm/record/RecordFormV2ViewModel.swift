@@ -31,10 +31,10 @@ final class RecordFormV2ViewModel: ObservableObject {
     }
     
     func post(set: ExerciseSet) {
-        if let index = record.sets.firstIndex(of: set) {
-            record.sets[index] = set
+        if let index = sets.firstIndex(of: set) {
+            sets[index] = set
         } else {
-            record.sets.append(set)
+            sets.append(set)
         }
     }
     
