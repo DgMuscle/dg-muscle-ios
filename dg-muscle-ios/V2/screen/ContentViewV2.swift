@@ -7,15 +7,9 @@
 
 import SwiftUI
 
-enum NavigationPath: Hashable {
-    case setting
-    case manageExercise
-    case exerciseFormStep
-}
-
 struct ContentViewV2: View {
     
-    @State var paths: [NavigationPath] = []
+    @State var paths = NavigationPath()
     
     let historyViewModel: HistoryViewModel
     let exerciseRepository: ExerciseRepositoryV2
@@ -29,18 +23,31 @@ struct ContentViewV2: View {
                             paths: $paths,
                             exerciseRepository: exerciseRepository,
                             healthRepository: healthRepository)
-                .navigationDestination(for: NavigationPath.self) { path in
-                    switch path {
+                .navigationDestination(for: MainNavigation.self) { navigation in
+                    switch navigation.name {
                     case .setting:
                         SettingV2View(viewModel: SettingV2ViewModel(userRepository: userRepository),
                                       paths: $paths)
-                    case .manageExercise:
+                    }
+                }
+                .navigationDestination(for: ExerciseNavigation.self) { navigation in
+                    switch navigation.name {
+                    case .manage:
                         ManageExerciseView(exerciseRepository: exerciseRepository,
                                            paths: $paths)
-                    case .exerciseFormStep:
+                    case .step1:
                         ExerciseFormStep1View(viewModel: .init(),
                                               paths: $paths,
                                               exerciseRepository: exerciseRepository)
+                    case .step2:
+                        if let dependency = navigation.step2Depndency {
+                            ExerciseFormStep2View(viewModel: .init(name: dependency.name,
+                                                                   parts: dependency.parts,
+                                                                   exerciseRepository: exerciseRepository,
+                                                                   completeAction: {
+                                paths.removeLast(2)
+                            }))
+                        }
                     }
                 }
             }

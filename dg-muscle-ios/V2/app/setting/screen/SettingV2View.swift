@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingV2View: View {
     
     @StateObject var viewModel: SettingV2ViewModel
-    @Binding var paths: [NavigationPath]
+    @Binding var paths: NavigationPath
     
     var body: some View {
         ScrollView {
@@ -26,7 +26,7 @@ struct SettingV2View: View {
             }
             
             ExerciseListSectionView {
-                paths.append(.manageExercise)
+                paths.append(ExerciseNavigation(name: .manage))
             } guideAction: {
                 print("guide action")
             } appleWatchAction: {
@@ -64,6 +64,6 @@ struct SettingV2View: View {
     
     let settingViewModel = SettingV2ViewModel(userRepository: UserRepositoryV2Test())
     
-    return SettingV2View(viewModel: settingViewModel, paths: .constant([]))
+    return SettingV2View(viewModel: settingViewModel, paths: .constant(.init()))
         .preferredColorScheme(.dark)
 }

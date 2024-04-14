@@ -10,14 +10,15 @@ import SwiftUI
 struct ManageExerciseView: View {
     
     let exerciseRepository: ExerciseRepositoryV2
-    @Binding var paths: [NavigationPath]
+    @Binding var paths: NavigationPath
     
     var body: some View {
         ScrollView {
             ExerciseListV2View(viewModel: .init(exerciseRepository: exerciseRepository)) { exercise in
                 print("tap exercise \(exercise.name)")
             } addAction: {
-                paths.append(.exerciseFormStep)
+                paths.append(ExerciseNavigation(name: .step1))
+                
             } deleteAction: { exercise in
                 print("delete exercise \(exercise)")
             }
@@ -28,7 +29,7 @@ struct ManageExerciseView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    paths.append(.exerciseFormStep)
+                    paths.append(ExerciseNavigation(name: .step1))
                 } label: {
                     Image(systemName: "plus")
                 }
@@ -38,6 +39,6 @@ struct ManageExerciseView: View {
 }
 
 #Preview {
-    return ManageExerciseView(exerciseRepository: ExerciseRepositoryV2Test(), paths: .constant([]))
+    return ManageExerciseView(exerciseRepository: ExerciseRepositoryV2Test(), paths: .constant(.init()))
         .preferredColorScheme(.dark)
 }
