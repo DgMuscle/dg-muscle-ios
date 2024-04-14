@@ -24,11 +24,14 @@ final class EditExerciseViewModel: ObservableObject {
         self.completeAction = completeAction
     }
     
+    @MainActor
     func update() {
         Task {
+            guard loading == false else { return }
             loading = true
             do {
                 let _ = try await exerciseRepository.edit(data: exercise)
+                completeAction?()
             } catch {
                 errorMessage = error.localizedDescription
             }

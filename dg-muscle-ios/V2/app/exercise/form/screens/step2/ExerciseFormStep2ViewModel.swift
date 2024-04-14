@@ -29,6 +29,7 @@ final class ExerciseFormStep2ViewModel: ObservableObject {
         self.completeAction = completeAction
     }
     
+    @MainActor
     func tapRegister() {
         Task {
             guard loading == false else { return }

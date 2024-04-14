@@ -36,6 +36,7 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
     
     func edit(data: Exercise) async throws -> DefaultResponse {
         guard let index = exercises.firstIndex(of: data) else { throw CustomError.index }
+        
         _exercises[index] = data
         
         try FileManagerHelper.save(exercises, toFile: .exercise)

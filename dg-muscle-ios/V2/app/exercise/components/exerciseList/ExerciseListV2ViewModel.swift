@@ -15,7 +15,6 @@ final class ExerciseListV2ViewModel: ObservableObject {
         let exercises: [Exercise]
     }
     
-    
     @Published private(set) var sections: [ExerciseSection] = []
     @Published private var exercisesHashMap: [Exercise.Part: [Exercise]] = [:]
     
@@ -30,6 +29,7 @@ final class ExerciseListV2ViewModel: ObservableObject {
     
     private func bind() {
         exerciseRepository.exercisesPublisher
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] exercises in
                 guard let self else { return }
                 exercisesHashMap = getExercisesHashMap(exercises: exercises)
