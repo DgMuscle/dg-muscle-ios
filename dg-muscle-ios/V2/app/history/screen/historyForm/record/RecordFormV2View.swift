@@ -40,7 +40,7 @@ struct RecordFormV2View: View {
                 }
                 .fontWeight(.black)
                 .foregroundStyle(Color(uiColor: .label))
-                .padding()
+                .padding(.top)
             }
             
             List {
