@@ -64,6 +64,11 @@
 		702E21942BCA620D00147279 /* ExerciseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D92AC82866007F0540 /* ExerciseRepository.swift */; };
 		702E21952BCA621800147279 /* GrassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703E547A2ADBD5D900E7D911 /* GrassView.swift */; };
 		702E21962BCA621D00147279 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4AB2AD271CF00852E2E /* UserRepository.swift */; };
+		703A97AC2BCB6EBF002C0843 /* ExerciseFormStep1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97AB2BCB6EBF002C0843 /* ExerciseFormStep1View.swift */; };
+		703A97AE2BCB6EFB002C0843 /* ExerciseFormStep1ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97AD2BCB6EFB002C0843 /* ExerciseFormStep1ViewModel.swift */; };
+		703A97B12BCB72EA002C0843 /* ExercisePartsSelectionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97B02BCB72EA002C0843 /* ExercisePartsSelectionForm.swift */; };
+		703A97B32BCB734D002C0843 /* ExercisePartSecltionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97B22BCB734D002C0843 /* ExercisePartSecltionItem.swift */; };
+		703A97B52BCB7508002C0843 /* ExercisePartsSelectionFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97B42BCB7508002C0843 /* ExercisePartsSelectionFormModel.swift */; };
 		703CD5EA2AC0139600BC76D4 /* FileUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5E92AC0139600BC76D4 /* FileUploader.swift */; };
 		703CD5EC2AC013D300BC76D4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 703CD5EB2AC013D300BC76D4 /* FirebaseFirestore */; };
 		703CD5EE2AC0148800BC76D4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 703CD5ED2AC0148800BC76D4 /* FirebaseStorage */; };
@@ -253,6 +258,11 @@
 		702E21712BCA587700147279 /* HealthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRepository.swift; sourceTree = "<group>"; };
 		702E21732BCA588A00147279 /* HealthRepositoryLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRepositoryLive.swift; sourceTree = "<group>"; };
 		702E21762BCA5DEF00147279 /* historyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = historyTests.swift; sourceTree = "<group>"; };
+		703A97AB2BCB6EBF002C0843 /* ExerciseFormStep1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormStep1View.swift; sourceTree = "<group>"; };
+		703A97AD2BCB6EFB002C0843 /* ExerciseFormStep1ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormStep1ViewModel.swift; sourceTree = "<group>"; };
+		703A97B02BCB72EA002C0843 /* ExercisePartsSelectionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePartsSelectionForm.swift; sourceTree = "<group>"; };
+		703A97B22BCB734D002C0843 /* ExercisePartSecltionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePartSecltionItem.swift; sourceTree = "<group>"; };
+		703A97B42BCB7508002C0843 /* ExercisePartsSelectionFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePartsSelectionFormModel.swift; sourceTree = "<group>"; };
 		703CD5E92AC0139600BC76D4 /* FileUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
 		703CD5EF2AC015C900BC76D4 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		703E547A2ADBD5D900E7D911 /* GrassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassView.swift; sourceTree = "<group>"; };
@@ -461,6 +471,34 @@
 			path = V2;
 			sourceTree = "<group>";
 		};
+		703A97A92BCB6E7A002C0843 /* form */ = {
+			isa = PBXGroup;
+			children = (
+				703A97AF2BCB713B002C0843 /* components */,
+				703A97AA2BCB6E96002C0843 /* screens */,
+			);
+			path = form;
+			sourceTree = "<group>";
+		};
+		703A97AA2BCB6E96002C0843 /* screens */ = {
+			isa = PBXGroup;
+			children = (
+				703A97AB2BCB6EBF002C0843 /* ExerciseFormStep1View.swift */,
+				703A97AD2BCB6EFB002C0843 /* ExerciseFormStep1ViewModel.swift */,
+			);
+			path = screens;
+			sourceTree = "<group>";
+		};
+		703A97AF2BCB713B002C0843 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				703A97B22BCB734D002C0843 /* ExercisePartSecltionItem.swift */,
+				703A97B02BCB72EA002C0843 /* ExercisePartsSelectionForm.swift */,
+				703A97B42BCB7508002C0843 /* ExercisePartsSelectionFormModel.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
 		7054F7E22B08BC1A00C5678E /* health section */ = {
 			isa = PBXGroup;
 			children = (
@@ -584,6 +622,7 @@
 		70756F232BCAC1810035EFF4 /* exercise */ = {
 			isa = PBXGroup;
 			children = (
+				703A97A92BCB6E7A002C0843 /* form */,
 				70756F242BCAC1B30035EFF4 /* components */,
 				70756F3C2BCACCF80035EFF4 /* screens */,
 			);
@@ -1153,6 +1192,7 @@
 				70C055A32B7A04B200375526 /* QuickActionSubscriber.swift in Sources */,
 				702E21722BCA587700147279 /* HealthRepository.swift in Sources */,
 				705AB7A22B009F8A00418B46 /* SuccessView.swift in Sources */,
+				703A97B12BCB72EA002C0843 /* ExercisePartsSelectionForm.swift in Sources */,
 				700BB60B2AE513AF008B8132 /* MonthlyChartView.swift in Sources */,
 				708F0A7C2B414D4A001AF089 /* LegCurlInfoView.swift in Sources */,
 				708F0A7D2B414D4A001AF089 /* LegExtensionInfoView.swift in Sources */,
@@ -1163,6 +1203,7 @@
 				70C144D82AC82807007F0540 /* DefaultResponse.swift in Sources */,
 				70F0E4012AE3BD5800AFFCF7 /* ChartView.swift in Sources */,
 				70756EFB2BCA6C4B0035EFF4 /* ExerciseRepositoryV2Live.swift in Sources */,
+				703A97AC2BCB6EBF002C0843 /* ExerciseFormStep1View.swift in Sources */,
 				7083E6C32ABF0C62007D43CE /* SignInView.swift in Sources */,
 				709B540D2AC999D000C282E9 /* ExerciseFormView.swift in Sources */,
 				7060FDB02AC5E1C3001A2198 /* ErrorView.swift in Sources */,
@@ -1200,6 +1241,7 @@
 				70756F202BCAB95F0035EFF4 /* SettingListItemView.swift in Sources */,
 				708F0A812B414D4A001AF089 /* ExerciseGuideListView.swift in Sources */,
 				70BFFF142B7747E600C8A8C8 /* GuideView.swift in Sources */,
+				703A97B32BCB734D002C0843 /* ExercisePartSecltionItem.swift in Sources */,
 				70BDDB4F2B947B01002FCEEA /* FullRecordsView_RecordView.swift in Sources */,
 				70AC465F2ABFF82D00BFE46D /* SettingView.swift in Sources */,
 				7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */,
@@ -1213,6 +1255,7 @@
 				70C0559B2B79F9F300375526 /* AppDelegate.swift in Sources */,
 				702E216B2BCA541C00147279 /* HistoryViewModel.swift in Sources */,
 				70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */,
+				703A97AE2BCB6EFB002C0843 /* ExerciseFormStep1ViewModel.swift in Sources */,
 				70756F1C2BCAB6D80035EFF4 /* SettingV2ViewModel.swift in Sources */,
 				707BBF182AF7D1D800A8ABD2 /* Height.swift in Sources */,
 				70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */,
@@ -1222,6 +1265,7 @@
 				701CC4AC2AD271CF00852E2E /* UserRepository.swift in Sources */,
 				70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */,
 				70F838A42AC7FE96009725EF /* ExerciseHistorySection.swift in Sources */,
+				703A97B52BCB7508002C0843 /* ExercisePartsSelectionFormModel.swift in Sources */,
 				70D3418F2ACC081E0010EAF9 /* Extension+Sequence.swift in Sources */,
 				7003E7C42AC86C2D00AFE1C2 /* RecordFormView.swift in Sources */,
 				702E21742BCA588A00147279 /* HealthRepositoryLive.swift in Sources */,
