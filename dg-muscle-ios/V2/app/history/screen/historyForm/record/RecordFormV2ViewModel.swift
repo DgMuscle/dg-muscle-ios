@@ -74,17 +74,18 @@ final class RecordFormV2ViewModel: ObservableObject {
     }
     
     private func configurePreviousDate(exercise: Exercise) {
-        let histories = historyRepository.histories.sorted(by: { $0.date > $1.date })
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
         let dateString = dateFormatter.string(from: date)
+        
+        let histories = historyRepository.histories
+            .filter({ $0.date < dateString })
+            .sorted(by: { $0.date > $1.date })
         
         var escape = false
         
         for history in histories {
             if escape { break }
-            if history.date == dateString { continue }
             
             for record in history.records {
                 if record.exerciseId == self.record.exerciseId {
