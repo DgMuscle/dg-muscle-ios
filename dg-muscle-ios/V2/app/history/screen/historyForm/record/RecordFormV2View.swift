@@ -23,16 +23,16 @@ struct RecordFormV2View: View {
                 }
             }
             
-            Text("Current sets count is \(viewModel.record.sets.count)")
+            Text("Current sets count is \(viewModel.sets.count)")
                 .fontWeight(.bold)
                 .italic()
             
-            Text("Current workout volume is \(Int(viewModel.record.volume))")
+            Text("Current workout volume is \(Int(viewModel.currentVolume))")
                 .fontWeight(.bold)
                 .italic()
             
             List {
-                ForEach($viewModel.record.sets) { set in
+                ForEach($viewModel.sets) { set in
                     RecordFormSetItem(set: set)
                 }
                 .onDelete(perform: viewModel.delete)
@@ -55,7 +55,7 @@ struct RecordFormV2View: View {
         }
         .padding()
         .sheet(isPresented: $isPresentSetForm, content: {
-            if let lastSet = viewModel.record.sets.last {
+            if let lastSet = viewModel.sets.last {
                 SetFormV2View(viewModel: .init(unit: lastSet.unit,
                                                reps: lastSet.reps,
                                                weight: lastSet.weight, 

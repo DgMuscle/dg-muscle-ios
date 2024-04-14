@@ -37,6 +37,7 @@ struct HistoryFormV2View: View {
             .scrollIndicators(.hidden)
         }
         .navigationTitle("EXERCISE DIARY")
+        .navigationBarTitleDisplayMode(.large)
         .padding()
     }
 }

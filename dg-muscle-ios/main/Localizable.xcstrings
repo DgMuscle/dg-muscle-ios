@@ -474,6 +474,9 @@
     "Current Volume: %lld" : {
 
     },
+    "Current workout volume is %lf" : {
+
+    },
     "Current workout volume is %lld" : {
 
     },

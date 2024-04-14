@@ -10,16 +10,24 @@ import Combine
 import SwiftUI
 
 final class RecordFormV2ViewModel: ObservableObject {
-    @Binding var record: Record
+    @Binding private var record: Record
+    
+    @Published var sets: [ExerciseSet]
+    @Published var currentVolume: Double = 0
     @Published var exercise: Exercise? = nil
     
     let exerciseRepository: ExerciseRepositoryV2
     
+    private var cancellables = Set<AnyCancellable>()
+    
     init(record: Binding<Record>,
          exerciseRepository: ExerciseRepositoryV2) {
         _record = record
+        sets = record.wrappedValue.sets
         self.exerciseRepository = exerciseRepository
         configureExercise()
+        
+        bind()
     }
     
     func post(set: ExerciseSet) {
@@ -31,11 +39,20 @@ final class RecordFormV2ViewModel: ObservableObject {
     }
     
     func delete(at offsets: IndexSet) {
-        record.sets.remove(atOffsets: offsets)
+        sets.remove(atOffsets: offsets)
     }
     
     private func configureExercise() {
         let exercises = exerciseRepository.exercises
         self.exercise = exercises.first(where: { $0.id == record.exerciseId })
+    }
+    
+    private func bind() {
+        $sets
+            .sink { [weak self] sets in
+                self?.record.sets = sets
+                self?.currentVolume = sets.reduce(0, { $0 + $1.volume })
+            }
+            .store(in: &cancellables)
     }
 }
