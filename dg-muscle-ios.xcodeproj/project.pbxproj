@@ -99,6 +99,7 @@
 		706760B02BCBE54F00649BF3 /* HistoryFormV2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760AF2BCBE54F00649BF3 /* HistoryFormV2View.swift */; };
 		706760B42BCBEB3F00649BF3 /* RecordListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760B32BCBEB3F00649BF3 /* RecordListItemView.swift */; };
 		706760B62BCBEDE300649BF3 /* HistoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760B52BCBEDE300649BF3 /* HistoryCardView.swift */; };
+		706760BA2BCC074200649BF3 /* SelectExerciseV2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760B92BCC074200649BF3 /* SelectExerciseV2View.swift */; };
 		70756EEE2BCA683D0035EFF4 /* HealthRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756EED2BCA683D0035EFF4 /* HealthRepositoryTest.swift */; };
 		70756EEF2BCA68530035EFF4 /* HealthRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756EED2BCA683D0035EFF4 /* HealthRepositoryTest.swift */; };
 		70756EF12BCA68700035EFF4 /* HistoryRepositoryV2Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756EF02BCA68700035EFF4 /* HistoryRepositoryV2Test.swift */; };
@@ -311,6 +312,7 @@
 		706760AF2BCBE54F00649BF3 /* HistoryFormV2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormV2View.swift; sourceTree = "<group>"; };
 		706760B32BCBEB3F00649BF3 /* RecordListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListItemView.swift; sourceTree = "<group>"; };
 		706760B52BCBEDE300649BF3 /* HistoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCardView.swift; sourceTree = "<group>"; };
+		706760B92BCC074200649BF3 /* SelectExerciseV2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExerciseV2View.swift; sourceTree = "<group>"; };
 		70756EED2BCA683D0035EFF4 /* HealthRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRepositoryTest.swift; sourceTree = "<group>"; };
 		70756EF02BCA68700035EFF4 /* HistoryRepositoryV2Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRepositoryV2Test.swift; sourceTree = "<group>"; };
 		70756EF42BCA68E70035EFF4 /* HistoryListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListItemView.swift; sourceTree = "<group>"; };
@@ -663,6 +665,7 @@
 				70756F012BCA75E10035EFF4 /* HistorySectionView.swift */,
 				703A97D82BCBC070002C0843 /* RecordFormSetItem.swift */,
 				706760B32BCBEB3F00649BF3 /* RecordListItemView.swift */,
+				706760B92BCC074200649BF3 /* SelectExerciseV2View.swift */,
 				703A97CE2BCBB488002C0843 /* WorkoutFloatingButton.swift */,
 				703A97D02BCBB4E9002C0843 /* WorkoutRectangleButton.swift */,
 			);
@@ -1320,6 +1323,7 @@
 			files = (
 				703A97B92BCB81AB002C0843 /* ExerciseFormStep2ViewModel.swift in Sources */,
 				70756F2A2BCAC2110035EFF4 /* ExerciseListV2ViewModel.swift in Sources */,
+				706760BA2BCC074200649BF3 /* SelectExerciseV2View.swift in Sources */,
 				703A97CB2BCB98F2002C0843 /* EditExerciseView.swift in Sources */,
 				703A97D12BCBB4E9002C0843 /* WorkoutRectangleButton.swift in Sources */,
 				708F0A792B414D4A001AF089 /* DeadliftInfoView.swift in Sources */,

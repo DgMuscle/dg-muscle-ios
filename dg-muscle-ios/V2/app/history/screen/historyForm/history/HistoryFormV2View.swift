@@ -11,6 +11,7 @@ struct HistoryFormV2View: View {
     
     @StateObject var viewModel: HistoryFormV2ViewModel
     @Binding var paths: NavigationPath
+    @State var isPresentSelectSheet: Bool = false
     let exerciseRepository: ExerciseRepositoryV2
     
     var body: some View {
@@ -18,7 +19,7 @@ struct HistoryFormV2View: View {
 
             HistoryCardView(dateString: viewModel.dateString,
                             duration: $viewModel.duration) {
-                print("ADD HISTORY")
+                isPresentSelectSheet.toggle()
             } saveAction: {
                 viewModel.post()
             }
@@ -39,6 +40,24 @@ struct HistoryFormV2View: View {
         .navigationTitle("EXERCISE DIARY")
         .navigationBarTitleDisplayMode(.large)
         .padding()
+        .sheet(isPresented: $isPresentSelectSheet, content: {
+            SelectExerciseV2View(exerciseRepository: exerciseRepository) { exercise in
+                addNewRecord(exercise: exercise)
+            }
+        })
+    }
+    
+    private func addNewRecord(exercise: Exercise) {
+        let newRecord = Record(id: UUID().uuidString,
+                               exerciseId: exercise.id,
+                               sets: [])
+        
+        viewModel.history.records.append(newRecord)
+        
+        paths.append(HistoryNavigation(name: .recordForm,
+                                       recordForForm: $viewModel.history.records.last))
+        
+        isPresentSelectSheet.toggle()
     }
 }
 

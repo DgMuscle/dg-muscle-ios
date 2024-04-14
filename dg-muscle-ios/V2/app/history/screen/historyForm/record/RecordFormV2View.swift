@@ -31,14 +31,6 @@ struct RecordFormV2View: View {
                 .fontWeight(.bold)
                 .italic()
             
-            List {
-                ForEach($viewModel.sets) { set in
-                    RecordFormSetItem(set: set)
-                }
-                .onDelete(perform: viewModel.delete)
-            }
-            .scrollIndicators(.hidden)
-            
             Button {
                 isPresentSetForm.toggle()
             } label: {
@@ -51,7 +43,14 @@ struct RecordFormV2View: View {
                 .padding()
             }
             
-            Spacer()
+            List {
+                ForEach($viewModel.sets) { set in
+                    RecordFormSetItem(set: set)
+                }
+                .onDelete(perform: viewModel.delete)
+            }
+            .scrollIndicators(.hidden)
+            
         }
         .padding()
         .sheet(isPresented: $isPresentSetForm, content: {
