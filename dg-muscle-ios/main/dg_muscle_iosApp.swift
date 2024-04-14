@@ -45,13 +45,13 @@ struct dg_muscle_iosApp: App {
                 
                 SplashView()
                     .opacity(splash ? 1 : 0)
-                    .animation(.easeIn, value: splash)
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             splash = false
                         }
                     }
             }
+            .animation(.default, value: splash)
         }
     }
 }

@@ -13,9 +13,10 @@ struct SplashView: View {
     
     var body: some View {
         ZStack {
+            Rectangle().fill(.black)
             Rectangle()
                 .fill(
-                    LinearGradient(colors: [.black, .black.opacity(0.65)],
+                    LinearGradient(colors: [.black, .white.opacity(0.1)],
                                    startPoint: animation ? .bottomLeading : .topLeading,
                                    endPoint: animation ? .topTrailing : .bottomTrailing
                                   )
