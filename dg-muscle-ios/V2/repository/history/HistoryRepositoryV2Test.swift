@@ -22,6 +22,10 @@ final class HistoryRepositoryV2Test: HistoryRepositoryV2 {
         prepareMockData()
     }
     
+    func post(data: ExerciseHistory) async throws -> DefaultResponse {
+        return .init(ok: true, message: nil)
+    }
+    
     private func prepareMockData() {
         
         let sets: [ExerciseSet] = [

@@ -10,4 +10,5 @@ import Combine
 protocol HistoryRepositoryV2 {
     var histories: [ExerciseHistory] { get }
     var historiesPublisher: AnyPublisher<[ExerciseHistory], Never> { get }
+    func post(data: ExerciseHistory) async throws -> DefaultResponse
 }

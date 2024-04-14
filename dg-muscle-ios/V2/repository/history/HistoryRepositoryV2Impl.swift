@@ -28,6 +28,19 @@ final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
         }
     }
     
+    func post(data: ExerciseHistory) async throws -> DefaultResponse {
+        
+        if let index = histories.firstIndex(where: { $0.id == data.id }) {
+            _histories[index] = data
+        } else {
+            _histories.append(data)
+        }
+        
+        try? FileManagerHelper.save(histories, toFile: .history)
+        
+        return try await APIClient.shared.request(method: .post, url: "https://exercisehistory-posthistory-kpjvgnqz6a-uc.a.run.app", body: data)
+    }
+    
     private func getExerciseHistoryFromFile() -> [ExerciseHistory] {
         (try? FileManagerHelper.load([ExerciseHistory].self, fromFile: .history)) ?? []
     }
