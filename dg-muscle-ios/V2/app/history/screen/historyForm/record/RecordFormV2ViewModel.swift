@@ -55,6 +55,7 @@ final class RecordFormV2ViewModel: ObservableObject {
     
     private func bind() {
         $sets
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] sets in
                 self?.record.sets = sets
                 self?.currentVolume = sets.reduce(0, { $0 + $1.volume })
