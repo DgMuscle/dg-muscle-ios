@@ -11,4 +11,5 @@ protocol ExerciseRepositoryV2 {
     var exercises: [Exercise] { get }
     var exercisesPublisher: AnyPublisher<[Exercise], Never> { get }
     func post(data: Exercise) async throws -> DefaultResponse
+    func edit(data: Exercise) async throws -> DefaultResponse
 }

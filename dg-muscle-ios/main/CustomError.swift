@@ -12,19 +12,22 @@ enum CustomError: Error {
     case invalidUrl
     case invalidResponse
     case unknown
+    case index
 }
 
 extension CustomError: CustomStringConvertible {
     public var description: String {
         switch self {
         case .authentication:
-            return "authentication error"
+            return "Authentication error"
         case .invalidUrl:
-            return "invalid url error"
+            return "Invalid url error"
         case .invalidResponse:
-            return "invalid response error"
+            return "Invalid response error"
         case .unknown:
-            return "unknown error"
+            return "Unknown error"
+        case .index:
+            return "Can not find data index"
         }
     }
 }

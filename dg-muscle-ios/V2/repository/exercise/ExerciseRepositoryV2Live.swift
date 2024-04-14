@@ -34,6 +34,14 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
         return try await APIClient.shared.request(method: .post, url: "https://exercise-postexercise-kpjvgnqz6a-uc.a.run.app", body: data)
     }
     
+    func edit(data: Exercise) async throws -> DefaultResponse {
+        guard let index = exercises.firstIndex(of: data) else { throw CustomError.index }
+        _exercises[index] = data
+        
+        try FileManagerHelper.save(exercises, toFile: .exercise)
+        return try await APIClient.shared.request(method: .post, url: "https://exercise-setexercises-kpjvgnqz6a-uc.a.run.app", body: exercises)
+    }
+    
     private func fetchExerciseDataFromFile() -> [Exercise] {
         (try? FileManagerHelper.load([Exercise].self, fromFile: .exercise)) ?? []
     }
