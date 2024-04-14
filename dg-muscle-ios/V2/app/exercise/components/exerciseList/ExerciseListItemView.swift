@@ -14,9 +14,16 @@ struct ExerciseListItemView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("\(exercise.name)")
-                    .fontWeight(.black)
-                    .foregroundStyle(Color(uiColor: .label))
+                HStack {
+                    Text("\(exercise.name)")
+                        .fontWeight(.black)
+                        .foregroundStyle(Color(uiColor: .label))
+                    
+                    if exercise.favorite {
+                        Image(systemName: "star.fill").foregroundStyle(.yellow)
+                    }
+                }
+                
                 
                 Text(getParts())
                     .italic()
@@ -33,7 +40,7 @@ struct ExerciseListItemView: View {
 
 #Preview {
     let exercise: Exercise = .init(id: "1", name: "squat", parts: [.leg], favorite: true, order: 0, createdAt: nil)
-    let exercise2: Exercise = .init(id: "2", name: "bench press", parts: [.chest, .arm], favorite: true, order: 0, createdAt: nil)
+    let exercise2: Exercise = .init(id: "2", name: "bench press", parts: [.chest, .arm], favorite: false, order: 0, createdAt: nil)
     
     return VStack(spacing: 20) {
         ExerciseListItemView(exercise: exercise)
