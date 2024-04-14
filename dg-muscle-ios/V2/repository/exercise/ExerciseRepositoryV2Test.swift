@@ -30,6 +30,10 @@ final class ExerciseRepositoryV2Test: ExerciseRepositoryV2 {
         return .init(ok: true, message: nil)
     }
     
+    func delete(data: Exercise) async throws -> DefaultResponse {
+        return .init(ok: true, message: nil)
+    }
+    
     private func prepareMockData() {
         _exercises = [
             .init(id: "squat", name: "squat", parts: [.leg], favorite: true, order: 0, createdAt: nil),

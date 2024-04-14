@@ -9,21 +9,33 @@ import SwiftUI
 
 struct ManageExerciseView: View {
     
-    let exerciseRepository: ExerciseRepositoryV2
+    @StateObject var viewModel: ManageExerciseViewModel
     @Binding var paths: NavigationPath
+    
     
     var body: some View {
         ScrollView {
-            ExerciseListV2View(viewModel: .init(exerciseRepository: exerciseRepository)) { exercise in
+            
+            if let errorMessage = viewModel.errorMessage {
+                BannerErrorMessageView(errorMessage: errorMessage)
+            }
+            
+            if viewModel.loading {
+                BannerLoadingView(loading: $viewModel.loading)
+            }
+            
+            ExerciseListV2View(viewModel: .init(exerciseRepository: viewModel.exerciseRepository)) { exercise in
                 paths.append(ExerciseNavigation(name: .edit, editExercise: exercise))
             } addAction: {
                 paths.append(ExerciseNavigation(name: .step1))
                 
             } deleteAction: { exercise in
-                print("delete exercise \(exercise)")
+                viewModel.delete(data: exercise)
             }
             
         }
+        .animation(.default, value: viewModel.loading)
+        .animation(.default, value: viewModel.errorMessage)
         .padding()
         .scrollIndicators(.hidden)
         .toolbar {
@@ -39,6 +51,6 @@ struct ManageExerciseView: View {
 }
 
 #Preview {
-    return ManageExerciseView(exerciseRepository: ExerciseRepositoryV2Test(), paths: .constant(.init()))
+    return ManageExerciseView(viewModel: .init(exerciseRepository: ExerciseRepositoryV2Test()), paths: .constant(.init()))
         .preferredColorScheme(.dark)
 }

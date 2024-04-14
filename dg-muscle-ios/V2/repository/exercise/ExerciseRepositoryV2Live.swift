@@ -45,6 +45,17 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
         return try await APIClient.shared.request(method: .post, url: "https://exercise-setexercises-kpjvgnqz6a-uc.a.run.app", body: exercises)
     }
     
+    func delete(data: Exercise) async throws -> DefaultResponse {
+        if let index = exercises.firstIndex(where: { $0.id == data.id }) {
+            _exercises.remove(at: index)
+        } else {
+            throw CustomError.index
+        }
+        
+        try FileManagerHelper.save(exercises, toFile: .exercise)
+        return try await APIClient.shared.request(method: .post, url: "https://exercise-setexercises-kpjvgnqz6a-uc.a.run.app", body: exercises)
+    }
+    
     private func fetchExerciseDataFromFile() -> [Exercise] {
         (try? FileManagerHelper.load([Exercise].self, fromFile: .exercise)) ?? []
     }

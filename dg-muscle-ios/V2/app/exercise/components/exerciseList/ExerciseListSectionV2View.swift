@@ -34,14 +34,15 @@ struct ExerciseListSectionV2View: View {
                         exerciseAction?(exercise)
                     } label: {
                         ExerciseListItemView(exercise: exercise)
-                            .contextMenu(menuItems: {
-                                Button("Delete Item") {
-                                    deleteAction?(exercise)
-                                }
-                            })
-                            
                     }
                     .padding(.bottom, 6)
+                    .contextMenu(menuItems: {
+                        if let deleteAction {
+                            Button("Delete Item") {
+                                deleteAction(exercise)
+                            }
+                        }
+                    })
                 }
             }
             .padding(.leading, 12)
