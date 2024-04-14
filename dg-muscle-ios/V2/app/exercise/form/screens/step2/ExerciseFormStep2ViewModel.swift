@@ -31,6 +31,7 @@ final class ExerciseFormStep2ViewModel: ObservableObject {
     
     func tapRegister() {
         Task {
+            guard loading == false else { return }
             loading = true
             do {
                 try await registerExercise()

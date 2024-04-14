@@ -17,6 +17,10 @@ struct ExerciseFormStep2View: View {
                 BannerErrorMessageView(errorMessage: errorMessage)
             }
             
+            if viewModel.loading {
+                BannerLoadingView(loading: $viewModel.loading)
+            }
+            
             ExerciseSimpleInfoView(name: viewModel.name,
                                    parts: viewModel.parts,
                                    favorite: $viewModel.favorite)
@@ -39,6 +43,7 @@ struct ExerciseFormStep2View: View {
         }
         .padding()
         .animation(.default, value: viewModel.errorMessage)
+        .animation(.default, value: viewModel.loading)
     }
 }
 
