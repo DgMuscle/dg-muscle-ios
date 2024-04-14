@@ -39,7 +39,7 @@ struct ContentViewV2: View {
                                            paths: $paths)
                     case .exerciseFormStep:
                         ExerciseFormStep1View(viewModel: .init(),
-                                              globalPaths: $paths,
+                                              paths: $paths,
                                               exerciseRepository: exerciseRepository)
                     }
                 }
