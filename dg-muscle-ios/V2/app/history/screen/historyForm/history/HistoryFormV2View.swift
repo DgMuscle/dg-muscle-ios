@@ -29,7 +29,7 @@ struct HistoryFormV2View: View {
                         paths.append(HistoryNavigation(name: .recordForm,
                                                        recordForForm: record))
                     } label: {
-                        RecordListItemView(record: record.wrappedValue, exerciseRepository: exerciseRepository)
+                        RecordListItemView(record: record, exerciseRepository: exerciseRepository)
                     }
                 }
                 .onDelete(perform: viewModel.onDelete)

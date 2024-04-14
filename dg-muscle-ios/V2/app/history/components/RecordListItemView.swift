@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecordListItemView: View {
     
-    @State var record: Record
+    @Binding var record: Record
     @State var exercise: Exercise? = nil
     
     let exerciseRepository: ExerciseRepositoryV2
@@ -60,7 +60,7 @@ struct RecordListItemView: View {
     
     let record = Record(exerciseId: "squat", sets: sets)
     
-    return RecordListItemView(record: record,
+    return RecordListItemView(record: .constant(record),
                               exerciseRepository: ExerciseRepositoryV2Test()
     ).preferredColorScheme(.dark)
 }
