@@ -42,8 +42,14 @@ struct ContentViewV2: View {
                                                                            records: [],
                                                                            createdAt: nil),
                                                            paths: $paths,
-                                                           historyRepository: historyRepository),
+                                                           historyRepository: historyRepository), 
+                                          paths: $paths,
                                           exerciseRepository: exerciseRepository)
+                    case .recordForm:
+                        if let record = navigation.recordForForm {
+                            RecordFormV2View(viewModel: .init(record: record,
+                                                              exerciseRepository: exerciseRepository))
+                        }
                     }
                 })
                 .navigationDestination(for: ExerciseNavigation.self) { navigation in

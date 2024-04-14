@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct MainNavigation: Identifiable, Hashable {
     
@@ -18,6 +19,9 @@ struct MainNavigation: Identifiable, Hashable {
 }
 
 struct HistoryNavigation: Identifiable, Hashable {
+    static func == (lhs: HistoryNavigation, rhs: HistoryNavigation) -> Bool {
+        lhs.id == rhs.id
+    }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(name)
@@ -26,11 +30,13 @@ struct HistoryNavigation: Identifiable, Hashable {
     
     enum Name: String {
         case historyForm
+        case recordForm
     }
     
     let name: Name
     var id: Int { name.hashValue }
     var historyForForm: ExerciseHistory?
+    var recordForForm: Binding<Record>?
 }
 
 struct ExerciseNavigation: Identifiable, Hashable, Equatable {

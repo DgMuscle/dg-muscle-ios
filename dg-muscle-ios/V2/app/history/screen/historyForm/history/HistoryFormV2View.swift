@@ -10,6 +10,7 @@ import SwiftUI
 struct HistoryFormV2View: View {
     
     @StateObject var viewModel: HistoryFormV2ViewModel
+    @Binding var paths: NavigationPath
     let exerciseRepository: ExerciseRepositoryV2
     
     var body: some View {
@@ -23,11 +24,12 @@ struct HistoryFormV2View: View {
             }
             
             List {
-                ForEach(viewModel.history.records) { record in
+                ForEach($viewModel.history.records) { record in
                     Button {
-                        print("TAP RECORD")
+                        paths.append(HistoryNavigation(name: .recordForm,
+                                                       recordForForm: record))
                     } label: {
-                        RecordListItemView(record: record, exerciseRepository: exerciseRepository)
+                        RecordListItemView(record: record.wrappedValue, exerciseRepository: exerciseRepository)
                     }
                 }
                 .onDelete(perform: viewModel.onDelete)
@@ -59,5 +61,8 @@ struct HistoryFormV2View: View {
     
     let viewModel: HistoryFormV2ViewModel = .init(history: history, paths: .constant(.init()), historyRepository: HistoryRepositoryV2Test())
     
-    return HistoryFormV2View(viewModel: viewModel, exerciseRepository: ExerciseRepositoryV2Test()).preferredColorScheme(.dark)
+    return HistoryFormV2View(viewModel: viewModel, 
+                             paths: .constant(.init()),
+                             exerciseRepository: ExerciseRepositoryV2Test())
+    .preferredColorScheme(.dark)
 }
