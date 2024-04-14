@@ -43,6 +43,7 @@ struct SetFormV2View: View {
 }
 
 #Preview {
-    let viewModel: SetFormV2ViewModel = .init(completeAction: nil)
+    let viewModel: SetFormV2ViewModel = .init(isPresenting: .constant(true),
+                                              completeAction: nil)
     return SetFormV2View(viewModel: viewModel).preferredColorScheme(.dark)
 }

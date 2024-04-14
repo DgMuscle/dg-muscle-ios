@@ -10,6 +10,7 @@ import SwiftUI
 struct RecordFormV2View: View {
     
     @StateObject var viewModel: RecordFormV2ViewModel
+    @State private var isPresentSetForm: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -38,9 +39,33 @@ struct RecordFormV2View: View {
             }
             .scrollIndicators(.hidden)
             
+            Button {
+                isPresentSetForm.toggle()
+            } label: {
+                HStack {
+                    Text("ADD NEW SET")
+                    Image(systemName: "dumbbell")
+                }
+                .fontWeight(.black)
+                .foregroundStyle(Color(uiColor: .label))
+                .padding()
+            }
+            
             Spacer()
         }
         .padding()
+        .sheet(isPresented: $isPresentSetForm, content: {
+            if let lastSet = viewModel.record.sets.last {
+                SetFormV2View(viewModel: .init(unit: lastSet.unit,
+                                               reps: lastSet.reps,
+                                               weight: lastSet.weight, 
+                                               isPresenting: $isPresentSetForm,
+                                               completeAction: viewModel.post))
+            } else {
+                SetFormV2View(viewModel: .init(isPresenting: $isPresentSetForm,
+                                               completeAction: viewModel.post))
+            }
+        })
         
     }
 }

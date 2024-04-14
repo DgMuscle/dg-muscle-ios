@@ -312,7 +312,13 @@
         }
       }
     },
+    "ADD" : {
+
+    },
     "add history" : {
+
+    },
+    "ADD NEW SET" : {
 
     },
     "agree_remove_account" : {
@@ -454,6 +460,12 @@
       }
     },
     "current exercise volume: %lld" : {
+
+    },
+    "Current sets count is %lld" : {
+
+    },
+    "Current workout volume is %lld" : {
 
     },
     "Data is unreadable due to absence of exercise data" : {
@@ -714,6 +726,9 @@
     "reps" : {
 
     },
+    "Reps" : {
+
+    },
     "save" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -882,6 +897,12 @@
     "weight" : {
 
     },
+    "Weight" : {
+
+    },
+    "Weight is" : {
+
+    },
     "weights" : {
 
     },
@@ -905,6 +926,9 @@
       }
     },
     "YES" : {
+
+    },
+    "You are currently doing %@" : {
 
     },
     "You can see your exercise duration, kcal consumed, intensity." : {
