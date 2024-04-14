@@ -35,9 +35,11 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
     }
     
     func edit(data: Exercise) async throws -> DefaultResponse {
-        guard let index = exercises.firstIndex(of: data) else { throw CustomError.index }
-        
-        _exercises[index] = data
+        if let index = exercises.firstIndex(where: { $0.id == data.id }) {
+            _exercises[index] = data
+        } else {
+            throw CustomError.index
+        }
         
         try FileManagerHelper.save(exercises, toFile: .exercise)
         return try await APIClient.shared.request(method: .post, url: "https://exercise-setexercises-kpjvgnqz6a-uc.a.run.app", body: exercises)

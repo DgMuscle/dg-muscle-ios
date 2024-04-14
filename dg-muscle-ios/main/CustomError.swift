@@ -15,19 +15,19 @@ enum CustomError: Error {
     case index
 }
 
-extension CustomError: CustomStringConvertible {
-    public var description: String {
+extension CustomError: LocalizedError {
+    var errorDescription: String? {
         switch self {
         case .authentication:
-            return "Authentication error"
+            return NSLocalizedString("Your authentication is not perfect. Please use it again after you log out.", comment: "authentication")
         case .invalidUrl:
-            return "Invalid url error"
+            return NSLocalizedString("Sorry for inconvenience. Error code is 2", comment: "invalidUrl")
         case .invalidResponse:
-            return "Invalid response error"
+            return NSLocalizedString("Sorry for inconvenience. Error code is 3", comment: "invalidResponse")
         case .unknown:
-            return "Unknown error"
+            return NSLocalizedString("Sorry for inconvenience. Error code is 4", comment: "unknown")
         case .index:
-            return "Can not find data index"
+            return NSLocalizedString("There is index error.", comment: "index")
         }
     }
 }

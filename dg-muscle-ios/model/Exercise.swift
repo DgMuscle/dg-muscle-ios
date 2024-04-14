@@ -7,7 +7,7 @@
 
 struct Exercise: Codable, Identifiable, Hashable, Equatable {
     static func == (lhs: Exercise, rhs: Exercise) -> Bool {
-        lhs.id == rhs.id
+        lhs.id == rhs.id && lhs.name == rhs.name && lhs.parts == rhs.parts
     }
     
     func hash(into hasher: inout Hasher) {
