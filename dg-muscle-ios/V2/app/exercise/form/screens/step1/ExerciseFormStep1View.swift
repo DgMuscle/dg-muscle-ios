@@ -42,6 +42,7 @@ struct ExerciseFormStep1View: View {
                 
                 Text("What's the name of the exercise?").font(.headline)
                 TextField("Squat", text: $viewModel.name)
+                    .fontWeight(.black)
                 Divider()
                 
                 Spacer()

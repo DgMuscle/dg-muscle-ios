@@ -75,6 +75,8 @@
 		703A97BF2BCB8608002C0843 /* ExerciseSimpleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97BE2BCB8608002C0843 /* ExerciseSimpleInfoView.swift */; };
 		703A97C22BCB92B7002C0843 /* Navigations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97C12BCB92B7002C0843 /* Navigations.swift */; };
 		703A97C42BCB950C002C0843 /* BannerLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97C32BCB950C002C0843 /* BannerLoadingView.swift */; };
+		703A97C92BCB97C6002C0843 /* EditExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97C82BCB97C6002C0843 /* EditExerciseViewModel.swift */; };
+		703A97CB2BCB98F2002C0843 /* EditExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97CA2BCB98F2002C0843 /* EditExerciseView.swift */; };
 		703CD5EA2AC0139600BC76D4 /* FileUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5E92AC0139600BC76D4 /* FileUploader.swift */; };
 		703CD5EC2AC013D300BC76D4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 703CD5EB2AC013D300BC76D4 /* FirebaseFirestore */; };
 		703CD5EE2AC0148800BC76D4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 703CD5ED2AC0148800BC76D4 /* FirebaseStorage */; };
@@ -275,6 +277,8 @@
 		703A97BE2BCB8608002C0843 /* ExerciseSimpleInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSimpleInfoView.swift; sourceTree = "<group>"; };
 		703A97C12BCB92B7002C0843 /* Navigations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigations.swift; sourceTree = "<group>"; };
 		703A97C32BCB950C002C0843 /* BannerLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerLoadingView.swift; sourceTree = "<group>"; };
+		703A97C82BCB97C6002C0843 /* EditExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseViewModel.swift; sourceTree = "<group>"; };
+		703A97CA2BCB98F2002C0843 /* EditExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseView.swift; sourceTree = "<group>"; };
 		703CD5E92AC0139600BC76D4 /* FileUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
 		703CD5EF2AC015C900BC76D4 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		703E547A2ADBD5D900E7D911 /* GrassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassView.swift; sourceTree = "<group>"; };
@@ -476,10 +480,13 @@
 			children = (
 				70756F162BCAB5BF0035EFF4 /* app */,
 				70756F1D2BCAB8E80035EFF4 /* components */,
+				70D3418D2ACC07FD0010EAF9 /* extension */,
+				70F8389C2AC7FE20009725EF /* model */,
 				70756F062BCA9E910035EFF4 /* model */,
 				703A97C02BCB929B002C0843 /* navigation */,
 				702E216C2BCA559500147279 /* repository */,
 				70756F132BCAAB7D0035EFF4 /* screen */,
+				707B8FD12ABF204A008ADECE /* util */,
 			);
 			path = V2;
 			sourceTree = "<group>";
@@ -537,6 +544,36 @@
 				703A97C12BCB92B7002C0843 /* Navigations.swift */,
 			);
 			path = navigation;
+			sourceTree = "<group>";
+		};
+		703A97C52BCB9710002C0843 /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				70E556012ABF010C006D4DA0 /* ContentView.swift */,
+				70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */,
+				70C144D42AC82595007F0540 /* repo */,
+				707B8FC52ABF1C92008ADECE /* store */,
+				70C055A12B7A048C00375526 /* subscriber */,
+				7083E6C02ABF0C44007D43CE /* view */,
+			);
+			path = Legacy;
+			sourceTree = "<group>";
+		};
+		703A97C62BCB97AA002C0843 /* manage */ = {
+			isa = PBXGroup;
+			children = (
+				70756F3D2BCACD850035EFF4 /* ManageExerciseView.swift */,
+			);
+			path = manage;
+			sourceTree = "<group>";
+		};
+		703A97C72BCB97AD002C0843 /* edit */ = {
+			isa = PBXGroup;
+			children = (
+				703A97CA2BCB98F2002C0843 /* EditExerciseView.swift */,
+				703A97C82BCB97C6002C0843 /* EditExerciseViewModel.swift */,
+			);
+			path = edit;
 			sourceTree = "<group>";
 		};
 		7054F7E22B08BC1A00C5678E /* health section */ = {
@@ -694,7 +731,8 @@
 		70756F3C2BCACCF80035EFF4 /* screens */ = {
 			isa = PBXGroup;
 			children = (
-				70756F3D2BCACD850035EFF4 /* ManageExerciseView.swift */,
+				703A97C72BCB97AD002C0843 /* edit */,
+				703A97C62BCB97AA002C0843 /* manage */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -716,9 +754,7 @@
 			children = (
 				70C055A02B79FCAA00375526 /* delegates */,
 				70E556032ABF010D006D4DA0 /* Assets.xcassets */,
-				70E556012ABF010C006D4DA0 /* ContentView.swift */,
 				703CD5EF2AC015C900BC76D4 /* CustomError.swift */,
-				70B5080E2AC51FD900FC0540 /* DependencyInjection.swift */,
 				70E555FF2ABF010C006D4DA0 /* dg_muscle_iosApp.swift */,
 				70BB52172B37EC1D00EC606D /* Localizable.xcstrings */,
 			);
@@ -929,18 +965,12 @@
 		70E555FE2ABF010C006D4DA0 /* dg-muscle-ios */ = {
 			isa = PBXGroup;
 			children = (
-				702E21752BCA5D8800147279 /* V2 */,
 				70E556082ABF010D006D4DA0 /* dg_muscle_ios.entitlements */,
 				708508C22AF625EE0035BB9D /* Info.plist */,
-				70D3418D2ACC07FD0010EAF9 /* extension */,
+				703A97C52BCB9710002C0843 /* Legacy */,
 				707B8FD02ABF1FD5008ADECE /* main */,
-				70F8389C2AC7FE20009725EF /* model */,
 				70E556052ABF010D006D4DA0 /* Preview Content */,
-				70C144D42AC82595007F0540 /* repo */,
-				707B8FC52ABF1C92008ADECE /* store */,
-				70C055A12B7A048C00375526 /* subscriber */,
-				707B8FD12ABF204A008ADECE /* util */,
-				7083E6C02ABF0C44007D43CE /* view */,
+				702E21752BCA5D8800147279 /* V2 */,
 			);
 			path = "dg-muscle-ios";
 			sourceTree = "<group>";
@@ -972,7 +1002,8 @@
 				70226B872AF7765400379ED3 /* WorkoutMetaData.swift */,
 				70C0559C2B79FB4600375526 /* QuickAction.swift */,
 			);
-			path = model;
+			name = model;
+			path = ../model;
 			sourceTree = "<group>";
 		};
 		70F838AB2AC7FFA6009725EF /* history */ = {
@@ -1221,6 +1252,7 @@
 			files = (
 				703A97B92BCB81AB002C0843 /* ExerciseFormStep2ViewModel.swift in Sources */,
 				70756F2A2BCAC2110035EFF4 /* ExerciseListV2ViewModel.swift in Sources */,
+				703A97CB2BCB98F2002C0843 /* EditExerciseView.swift in Sources */,
 				708F0A792B414D4A001AF089 /* DeadliftInfoView.swift in Sources */,
 				70C144DA2AC82866007F0540 /* ExerciseRepository.swift in Sources */,
 				708AF2B62B36D38400658D6B /* WidgetBridge.swift in Sources */,
@@ -1263,6 +1295,7 @@
 				705AB7A02B009F7500418B46 /* LoadingView.swift in Sources */,
 				70A61BDF2B7639D40068F321 /* WebView.swift in Sources */,
 				70BDDB502B947B01002FCEEA /* FullRecordsView_BottomSheet.swift in Sources */,
+				703A97C92BCB97C6002C0843 /* EditExerciseViewModel.swift in Sources */,
 				70C055A52B7A050400375526 /* Subscriber.swift in Sources */,
 				70756EF12BCA68700035EFF4 /* HistoryRepositoryV2Test.swift in Sources */,
 				70F838A02AC7FE4D009725EF /* Exercise.swift in Sources */,

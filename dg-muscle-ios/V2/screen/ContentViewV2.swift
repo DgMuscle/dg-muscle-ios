@@ -35,6 +35,14 @@ struct ContentViewV2: View {
                     case .manage:
                         ManageExerciseView(exerciseRepository: exerciseRepository,
                                            paths: $paths)
+                    case .edit:
+                        if let exercise = navigation.editExercise {
+                            EditExerciseView(viewModel: .init(exercise: exercise,
+                                                              exerciseRepository: exerciseRepository,
+                                                              completeAction: {
+                                paths.removeLast()
+                            }))
+                        }
                     case .step1:
                         ExerciseFormStep1View(viewModel: .init(),
                                               paths: $paths,

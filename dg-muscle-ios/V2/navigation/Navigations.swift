@@ -29,6 +29,7 @@ struct ExerciseNavigation: Identifiable, Hashable, Equatable {
     
     enum Name: String {
         case manage
+        case edit
         case step1
         case step2
     }
@@ -36,6 +37,7 @@ struct ExerciseNavigation: Identifiable, Hashable, Equatable {
     let name: Name
     var id: Int { name.hashValue }
     var step2Depndency: Step2Dependency?
+    var editExercise: Exercise?
     
     struct Step2Dependency {
         let name: String

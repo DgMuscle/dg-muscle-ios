@@ -15,7 +15,7 @@ struct ManageExerciseView: View {
     var body: some View {
         ScrollView {
             ExerciseListV2View(viewModel: .init(exerciseRepository: exerciseRepository)) { exercise in
-                print("tap exercise \(exercise.name)")
+                paths.append(ExerciseNavigation(name: .edit, editExercise: exercise))
             } addAction: {
                 paths.append(ExerciseNavigation(name: .step1))
                 
