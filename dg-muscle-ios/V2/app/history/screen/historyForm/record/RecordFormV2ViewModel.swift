@@ -16,17 +16,23 @@ final class RecordFormV2ViewModel: ObservableObject {
     @Published var currentVolume: Double = 0
     @Published var exercise: Exercise? = nil
     
+    @Published var previousRecord: Record?
+    @Published var previousDate: Date?
+    
     let exerciseRepository: ExerciseRepositoryV2
+    let historyRepository: HistoryRepositoryV2
     
     private var cancellables = Set<AnyCancellable>()
     
     init(record: Binding<Record>,
-         exerciseRepository: ExerciseRepositoryV2) {
+         exerciseRepository: ExerciseRepositoryV2,
+         historyRepository: HistoryRepositoryV2) {
         _record = record
         sets = record.wrappedValue.sets
         self.exerciseRepository = exerciseRepository
-        configureExercise()
+        self.historyRepository = historyRepository
         
+        configureExercise()
         bind()
     }
     
@@ -54,5 +60,36 @@ final class RecordFormV2ViewModel: ObservableObject {
                 self?.currentVolume = sets.reduce(0, { $0 + $1.volume })
             }
             .store(in: &cancellables)
+        
+        $exercise
+            .compactMap({ $0 })
+            .sink { [weak self] exercise in
+                self?.configurePreviousDate(exercise: exercise)
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func configurePreviousDate(exercise: Exercise) {
+        var histories = historyRepository.histories
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        let dateString = dateFormatter.string(from: Date())
+        
+        for history in histories {
+            
+            if history.date == dateString { continue }
+            
+            for record in history.records {
+                if record.exerciseId == self.record.exerciseId {
+                    let date = dateFormatter.date(from: history.date)
+                    
+                    self.previousRecord = record
+                    self.previousDate = date
+                    break
+                }
+            }
+        }
+        
     }
 }

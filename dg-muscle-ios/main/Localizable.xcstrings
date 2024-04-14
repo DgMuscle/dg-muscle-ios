@@ -41,7 +41,7 @@
     "%@ record" : {
 
     },
-    "%@ volume is" : {
+    "%@ volume are" : {
 
     },
     "%@'s Record" : {
@@ -474,10 +474,7 @@
     "Current Volume: %lld" : {
 
     },
-    "Current workout volume is %lf" : {
-
-    },
-    "Current workout volume is %lld" : {
+    "Current workout volume are %lld" : {
 
     },
     "Data is unreadable due to absence of exercise data" : {
@@ -799,6 +796,9 @@
     "Set Form" : {
 
     },
+    "Sets count is %lld" : {
+
+    },
     "sex" : {
 
     },
@@ -942,6 +942,9 @@
     "WORKOUT" : {
 
     },
+    "Workout volume are %lld" : {
+
+    },
     "yes" : {
       "localizations" : {
         "ko" : {
@@ -973,6 +976,9 @@
     },
     "Your authentication is not perfect. Please use it again after you log out." : {
       "comment" : "authentication"
+    },
+    "Your last '%@' record like below" : {
+
     }
   },
   "version" : "1.0"

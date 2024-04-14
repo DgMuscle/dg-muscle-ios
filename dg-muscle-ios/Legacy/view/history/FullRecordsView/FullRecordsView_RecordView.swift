@@ -25,7 +25,7 @@ extension FullRecordsView {
                     }
                     
                     HStack {
-                        Text("\(exercise.name) volume is")
+                        Text("\(exercise.name) volume are")
                         Text("\(FullRecordsView.formatted(double: record.volume))")
                             .foregroundStyle(.tint)
                             .italic()

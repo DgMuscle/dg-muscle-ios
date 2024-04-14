@@ -11,6 +11,7 @@ struct RecordFormV2View: View {
     
     @StateObject var viewModel: RecordFormV2ViewModel
     @State private var isPresentSetForm: Bool = false
+    @State private var isPresentPreviousSheet: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -27,20 +28,39 @@ struct RecordFormV2View: View {
                 .fontWeight(.bold)
                 .italic()
             
-            Text("Current workout volume is \(Int(viewModel.currentVolume))")
+            Text("Current workout volume are \(Int(viewModel.currentVolume))")
                 .fontWeight(.bold)
                 .italic()
             
-            Button {
-                isPresentSetForm.toggle()
-            } label: {
-                HStack {
-                    Text("ADD NEW SET")
-                    Image(systemName: "dumbbell")
+            HStack {
+                Button {
+                    isPresentSetForm.toggle()
+                } label: {
+                    HStack {
+                        Image(systemName: "dumbbell")
+                        Text("ADD NEW SET")
+                    }
+                    .fontWeight(.black)
+                    .foregroundStyle(Color(uiColor: .label))
+                    .padding(.top)
                 }
-                .fontWeight(.black)
-                .foregroundStyle(Color(uiColor: .label))
-                .padding(.top)
+                
+                Spacer()
+                
+                if viewModel.previousDate != nil && viewModel.previousRecord != nil {
+                    Button {
+                        isPresentPreviousSheet.toggle()
+                    } label: {
+                        HStack {
+                            Image(systemName: "doc")
+                            Text("PREVIOUS")
+                        }
+                        .fontWeight(.black)
+                        .foregroundStyle(Color(uiColor: .label))
+                        .padding(.top)
+                    }
+                }
+                
             }
             
             List {
@@ -65,6 +85,13 @@ struct RecordFormV2View: View {
                                                completeAction: viewModel.post))
             }
         })
+        .sheet(isPresented: $isPresentPreviousSheet, content: {
+            if let date = viewModel.previousDate, let record = viewModel.previousRecord {
+                PreviousRecordView(viewModel: .init(record: record,
+                                                    date: date,
+                                                    exerciseRepository: viewModel.exerciseRepository))
+            }
+        })
         
     }
 }
@@ -80,7 +107,9 @@ struct RecordFormV2View: View {
     ]
     
     let record = Record(id: "1", exerciseId: "squat", sets: sets)
-    let viewModel = RecordFormV2ViewModel(record: .constant(record), exerciseRepository: ExerciseRepositoryV2Test())
+    let viewModel = RecordFormV2ViewModel(record: .constant(record), 
+                                          exerciseRepository: ExerciseRepositoryV2Test(),
+                                          historyRepository: HistoryRepositoryV2Test())
     
     return RecordFormV2View(viewModel: viewModel).preferredColorScheme(.dark)
 }

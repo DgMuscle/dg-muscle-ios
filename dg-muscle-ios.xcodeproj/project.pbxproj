@@ -100,6 +100,9 @@
 		706760B42BCBEB3F00649BF3 /* RecordListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760B32BCBEB3F00649BF3 /* RecordListItemView.swift */; };
 		706760B62BCBEDE300649BF3 /* HistoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760B52BCBEDE300649BF3 /* HistoryCardView.swift */; };
 		706760BA2BCC074200649BF3 /* SelectExerciseV2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760B92BCC074200649BF3 /* SelectExerciseV2View.swift */; };
+		706760BC2BCC0CCD00649BF3 /* PreviousRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760BB2BCC0CCD00649BF3 /* PreviousRecordView.swift */; };
+		706760BE2BCC0CE800649BF3 /* PreviousRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760BD2BCC0CE800649BF3 /* PreviousRecordViewModel.swift */; };
+		706760C02BCC0F4A00649BF3 /* PreviousRecordListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760BF2BCC0F4A00649BF3 /* PreviousRecordListItem.swift */; };
 		70756EEE2BCA683D0035EFF4 /* HealthRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756EED2BCA683D0035EFF4 /* HealthRepositoryTest.swift */; };
 		70756EEF2BCA68530035EFF4 /* HealthRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756EED2BCA683D0035EFF4 /* HealthRepositoryTest.swift */; };
 		70756EF12BCA68700035EFF4 /* HistoryRepositoryV2Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756EF02BCA68700035EFF4 /* HistoryRepositoryV2Test.swift */; };
@@ -313,6 +316,9 @@
 		706760B32BCBEB3F00649BF3 /* RecordListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListItemView.swift; sourceTree = "<group>"; };
 		706760B52BCBEDE300649BF3 /* HistoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCardView.swift; sourceTree = "<group>"; };
 		706760B92BCC074200649BF3 /* SelectExerciseV2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExerciseV2View.swift; sourceTree = "<group>"; };
+		706760BB2BCC0CCD00649BF3 /* PreviousRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousRecordView.swift; sourceTree = "<group>"; };
+		706760BD2BCC0CE800649BF3 /* PreviousRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousRecordViewModel.swift; sourceTree = "<group>"; };
+		706760BF2BCC0F4A00649BF3 /* PreviousRecordListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousRecordListItem.swift; sourceTree = "<group>"; };
 		70756EED2BCA683D0035EFF4 /* HealthRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRepositoryTest.swift; sourceTree = "<group>"; };
 		70756EF02BCA68700035EFF4 /* HistoryRepositoryV2Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRepositoryV2Test.swift; sourceTree = "<group>"; };
 		70756EF42BCA68E70035EFF4 /* HistoryListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListItemView.swift; sourceTree = "<group>"; };
@@ -624,6 +630,8 @@
 		703A97DA2BCBC61F002C0843 /* record */ = {
 			isa = PBXGroup;
 			children = (
+				706760BB2BCC0CCD00649BF3 /* PreviousRecordView.swift */,
+				706760BD2BCC0CE800649BF3 /* PreviousRecordViewModel.swift */,
 				703A97D62BCBBDB6002C0843 /* RecordFormV2View.swift */,
 				703A97D42BCBBC3D002C0843 /* RecordFormV2ViewModel.swift */,
 			);
@@ -663,6 +671,7 @@
 				706760B52BCBEDE300649BF3 /* HistoryCardView.swift */,
 				70756EF42BCA68E70035EFF4 /* HistoryListItemView.swift */,
 				70756F012BCA75E10035EFF4 /* HistorySectionView.swift */,
+				706760BF2BCC0F4A00649BF3 /* PreviousRecordListItem.swift */,
 				703A97D82BCBC070002C0843 /* RecordFormSetItem.swift */,
 				706760B32BCBEB3F00649BF3 /* RecordListItemView.swift */,
 				706760B92BCC074200649BF3 /* SelectExerciseV2View.swift */,
@@ -1327,6 +1336,7 @@
 				703A97CB2BCB98F2002C0843 /* EditExerciseView.swift in Sources */,
 				703A97D12BCBB4E9002C0843 /* WorkoutRectangleButton.swift in Sources */,
 				708F0A792B414D4A001AF089 /* DeadliftInfoView.swift in Sources */,
+				706760C02BCC0F4A00649BF3 /* PreviousRecordListItem.swift in Sources */,
 				70C144DA2AC82866007F0540 /* ExerciseRepository.swift in Sources */,
 				708AF2B62B36D38400658D6B /* WidgetBridge.swift in Sources */,
 				70756F0E2BCAA19B0035EFF4 /* UserBoxView.swift in Sources */,
@@ -1401,6 +1411,7 @@
 				70BDDB4F2B947B01002FCEEA /* FullRecordsView_RecordView.swift in Sources */,
 				70AC465F2ABFF82D00BFE46D /* SettingView.swift in Sources */,
 				7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */,
+				706760BE2BCC0CE800649BF3 /* PreviousRecordViewModel.swift in Sources */,
 				70C144D32AC82558007F0540 /* APIClient.swift in Sources */,
 				703A97BD2BCB8514002C0843 /* BannerErrorMessageView.swift in Sources */,
 				70A74E8A2AC8433F00EA7A35 /* ExerciseStore.swift in Sources */,
@@ -1435,6 +1446,7 @@
 				7054F7E42B08BC3300C5678E /* WatchWorkoutAppInfoView.swift in Sources */,
 				70884B912ADBB9AA001FA252 /* PieChartView.swift in Sources */,
 				70F838AA2AC7FEE1009725EF /* HistoryStore.swift in Sources */,
+				706760BC2BCC0CCD00649BF3 /* PreviousRecordView.swift in Sources */,
 				70C0559F2B79FC0800375526 /* SceneDelegate.swift in Sources */,
 				7086C2F72B924B6700D034B0 /* ImageSaver.swift in Sources */,
 				702D895B2B9226F8008EA220 /* ActivityView.swift in Sources */,

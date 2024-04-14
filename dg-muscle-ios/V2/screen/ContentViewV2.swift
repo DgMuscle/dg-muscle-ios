@@ -48,7 +48,8 @@ struct ContentViewV2: View {
                     case .recordForm:
                         if let record = navigation.recordForForm {
                             RecordFormV2View(viewModel: .init(record: record,
-                                                              exerciseRepository: exerciseRepository))
+                                                              exerciseRepository: exerciseRepository, 
+                                                              historyRepository: historyRepository))
                         }
                     }
                 })
