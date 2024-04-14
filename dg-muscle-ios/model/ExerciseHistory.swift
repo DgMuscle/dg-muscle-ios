@@ -9,7 +9,7 @@ import Foundation
 
 struct ExerciseHistory: Codable, Identifiable, Equatable {
     static func == (lhs: ExerciseHistory, rhs: ExerciseHistory) -> Bool {
-        lhs.id == rhs.id
+        lhs.id == rhs.id && lhs.records == rhs.records && lhs.memo == rhs.memo
     }
     
     let id: String

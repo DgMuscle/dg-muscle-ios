@@ -8,6 +8,11 @@
 import Foundation
 
 struct Record: Codable, Equatable, Identifiable, Hashable {
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id && lhs.sets == rhs.sets
+    }
+    
     var id: String? = UUID().uuidString
     let exerciseId: String
     let sets: [ExerciseSet]
