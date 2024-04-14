@@ -11,6 +11,7 @@ struct ExerciseFormStep1View: View {
     
     @StateObject var viewModel: ExerciseFormStep1ViewModel
     @Binding var paths: NavigationPath
+    @FocusState private var isFocused: Bool
     let exerciseRepository: ExerciseRepositoryV2
     
     var body: some View {
@@ -43,6 +44,10 @@ struct ExerciseFormStep1View: View {
                 Text("What's the name of the exercise?").font(.headline)
                 TextField("Squat", text: $viewModel.name)
                     .fontWeight(.black)
+                    .focused($isFocused)
+                    .onAppear {
+                        isFocused.toggle()
+                    }
                 Divider()
                 
                 Spacer()
