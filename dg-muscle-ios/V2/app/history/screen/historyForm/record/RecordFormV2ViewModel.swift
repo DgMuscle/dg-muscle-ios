@@ -76,9 +76,11 @@ final class RecordFormV2ViewModel: ObservableObject {
         dateFormatter.dateFormat = "yyyyMMdd"
         let dateString = dateFormatter.string(from: Date())
         
-        for history in histories {
+        var i: Int = histories.count - 1
+        
+        while i >= 0 {
             
-            if history.date == dateString { continue }
+            let history = histories[i]
             
             for record in history.records {
                 if record.exerciseId == self.record.exerciseId {
@@ -89,7 +91,8 @@ final class RecordFormV2ViewModel: ObservableObject {
                     break
                 }
             }
+            
+            i -= 1
         }
-        
     }
 }
