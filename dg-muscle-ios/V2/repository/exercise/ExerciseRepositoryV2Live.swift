@@ -28,6 +28,12 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
         }
     }
     
+    func post(data: Exercise) async throws -> DefaultResponse {
+        _exercises.append(data)
+        try FileManagerHelper.save(exercises, toFile: .exercise)
+        return try await APIClient.shared.request(method: .post, url: "https://exercise-postexercise-kpjvgnqz6a-uc.a.run.app", body: data)
+    }
+    
     private func fetchExerciseDataFromFile() -> [Exercise] {
         (try? FileManagerHelper.load([Exercise].self, fromFile: .exercise)) ?? []
     }

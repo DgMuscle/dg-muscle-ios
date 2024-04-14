@@ -589,6 +589,9 @@
         }
       }
     },
+    "Is above information correct?" : {
+
+    },
     "kg" : {
 
     },
@@ -640,6 +643,9 @@
 
     },
     "name: %@" : {
+
+    },
+    "Next" : {
 
     },
     "No user" : {
@@ -781,6 +787,9 @@
     "Squat" : {
 
     },
+    "Target parts are" : {
+
+    },
     "The bench press, or chest press, is a weight training exercise where a person presses a weight upwards while lying horizontally on a weight training bench. Although the bench press is a full-body exercise, the muscles primarily used are the pectoralis major, the anterior deltoids, and the triceps, among other stabilizing muscles. A barbell is generally used to hold the weight, but a pair of dumbbells can also be used." : {
       "localizations" : {
         "ko" : {
@@ -855,6 +864,12 @@
     "weights" : {
 
     },
+    "What's the name of the exercise?" : {
+
+    },
+    "What's the target parts of this exercise?" : {
+
+    },
     "yes" : {
       "localizations" : {
         "ko" : {
@@ -864,6 +879,9 @@
           }
         }
       }
+    },
+    "YES" : {
+
     },
     "You can see your exercise duration, kcal consumed, intensity." : {
       "localizations" : {
