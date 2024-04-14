@@ -15,7 +15,7 @@ struct Record: Codable, Equatable, Identifiable, Hashable {
     
     var id: String? = UUID().uuidString
     let exerciseId: String
-    let sets: [ExerciseSet]
+    var sets: [ExerciseSet]
     
     var volume: Double {
         sets.reduce(0, { $0 + $1.volume })
