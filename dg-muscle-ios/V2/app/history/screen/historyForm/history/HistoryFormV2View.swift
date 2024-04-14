@@ -27,8 +27,15 @@ struct HistoryFormV2View: View {
             List {
                 ForEach($viewModel.history.records) { record in
                     Button {
+                        
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyyMMdd"
+                        guard let date = dateFormatter.date(from: viewModel.history.date) else { return }
+                        
                         paths.append(HistoryNavigation(name: .recordForm,
-                                                       recordForForm: record))
+                                                       recordForForm: record,
+                                                       dateForRecordForm: date)
+                        )
                     } label: {
                         RecordListItemView(record: record, exerciseRepository: exerciseRepository)
                     }
@@ -52,10 +59,16 @@ struct HistoryFormV2View: View {
                                exerciseId: exercise.id,
                                sets: [])
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        guard let date = dateFormatter.date(from: viewModel.history.date) else { return }
+        
         viewModel.history.records.append(newRecord)
         
         paths.append(HistoryNavigation(name: .recordForm,
-                                       recordForForm: $viewModel.history.records.last))
+                                       recordForForm: $viewModel.history.records.last,
+                                       dateForRecordForm: date
+                                      ))
         
         isPresentSelectSheet.toggle()
     }

@@ -109,7 +109,8 @@ struct RecordFormV2View: View {
     let record = Record(id: "1", exerciseId: "squat", sets: sets)
     let viewModel = RecordFormV2ViewModel(record: .constant(record), 
                                           exerciseRepository: ExerciseRepositoryV2Test(),
-                                          historyRepository: HistoryRepositoryV2Test())
+                                          historyRepository: HistoryRepositoryV2Test(), 
+                                          date: Date())
     
     return RecordFormV2View(viewModel: viewModel).preferredColorScheme(.dark)
 }

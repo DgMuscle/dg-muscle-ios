@@ -21,16 +21,19 @@ final class RecordFormV2ViewModel: ObservableObject {
     
     let exerciseRepository: ExerciseRepositoryV2
     let historyRepository: HistoryRepositoryV2
+    let date: Date
     
     private var cancellables = Set<AnyCancellable>()
     
     init(record: Binding<Record>,
          exerciseRepository: ExerciseRepositoryV2,
-         historyRepository: HistoryRepositoryV2) {
+         historyRepository: HistoryRepositoryV2,
+         date: Date) {
         _record = record
         sets = record.wrappedValue.sets
         self.exerciseRepository = exerciseRepository
         self.historyRepository = historyRepository
+        self.date = date
         
         configureExercise()
         bind()
@@ -75,10 +78,12 @@ final class RecordFormV2ViewModel: ObservableObject {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
-        let dateString = dateFormatter.string(from: Date())
+        let dateString = dateFormatter.string(from: date)
+        
+        var escape = false
         
         for history in histories {
-            
+            if escape { break }
             if history.date == dateString { continue }
             
             for record in history.records {
@@ -87,6 +92,7 @@ final class RecordFormV2ViewModel: ObservableObject {
                     
                     self.previousRecord = record
                     self.previousDate = date
+                    escape = true
                     break
                 }
             }

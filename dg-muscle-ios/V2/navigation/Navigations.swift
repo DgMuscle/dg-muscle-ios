@@ -37,6 +37,7 @@ struct HistoryNavigation: Identifiable, Hashable {
     var id: Int { name.hashValue }
     var historyForForm: ExerciseHistory?
     var recordForForm: Binding<Record>?
+    var dateForRecordForm: Date?
 }
 
 struct ExerciseNavigation: Identifiable, Hashable, Equatable {

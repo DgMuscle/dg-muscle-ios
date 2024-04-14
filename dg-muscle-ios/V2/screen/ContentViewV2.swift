@@ -46,10 +46,11 @@ struct ContentViewV2: View {
                                           paths: $paths,
                                           exerciseRepository: exerciseRepository)
                     case .recordForm:
-                        if let record = navigation.recordForForm {
+                        if let record = navigation.recordForForm, let date = navigation.dateForRecordForm {
                             RecordFormV2View(viewModel: .init(record: record,
                                                               exerciseRepository: exerciseRepository, 
-                                                              historyRepository: historyRepository))
+                                                              historyRepository: historyRepository, 
+                                                              date: date))
                         }
                     }
                 })
