@@ -1,5 +1,5 @@
 //
-//  WorkoutHitMapViewModel.swift
+//  WorkoutHeatMapViewModel.swift
 //  dg-muscle-ios
 //
 //  Created by Donggyu Shin on 4/15/24.
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class WorkoutHitMapViewModel: ObservableObject {
+final class WorkoutHeatMapViewModel: ObservableObject {
     
     @Published var hashMap: [String: [Int]] = [:]
     

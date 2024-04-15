@@ -8,13 +8,13 @@
 import XCTest
 import Combine
 
-final class hitMapTests: XCTestCase {
+final class heatMapTests: XCTestCase {
 
     func testHashMap() async throws {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
         let date = dateFormatter.date(from: "20240415")!
-        let viewModel = WorkoutHitMapViewModel(historyRepository: HistoryRepositoryV2Test(), today: date)
+        let viewModel = WorkoutHeatMapViewModel(historyRepository: HistoryRepositoryV2Test(), today: date)
         
         try await Task.sleep(nanoseconds: 1_000_000_000)
     }
