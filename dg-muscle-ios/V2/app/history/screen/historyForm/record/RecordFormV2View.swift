@@ -80,9 +80,11 @@ struct RecordFormV2View: View {
                                                weight: lastSet.weight, 
                                                isPresenting: $isPresentSetForm,
                                                completeAction: viewModel.post))
+                .presentationDetents([.medium, .large])
             } else {
                 SetFormV2View(viewModel: .init(isPresenting: $isPresentSetForm,
                                                completeAction: viewModel.post))
+                .presentationDetents([.medium, .large])
             }
         })
         .sheet(isPresented: $isPresentPreviousSheet, content: {
