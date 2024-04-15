@@ -19,7 +19,6 @@ struct Provider: AppIntentTimelineProvider {
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
         var entries: [SimpleEntry] = []
-
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
@@ -38,10 +37,24 @@ struct SimpleEntry: TimelineEntry {
 }
 
 struct dg_muscle_ios_widgetEntryView : View {
+    
     var entry: Provider.Entry
+    var datas: [WorkoutHeatMapViewModel.Data] = (try? FileManagerHelper.load([WorkoutHeatMapViewModel.Data].self, fromFile: .workoutHeatMapData)) ?? []
+
+    var maxVolume: Double {
+        datas.flatMap({ $0.volumes }).map({ $0.value }).max() ?? 0
+    }
 
     var body: some View {
-        WorkoutHeatMapViewForWidget()
+        if datas.isEmpty {
+            Text("Data is Empty").fontWeight(.black)
+        } else {
+            HStack(alignment: .top, spacing: 4) {
+                ForEach(datas) { data in
+                    HeatMapColumnView(data: data, maxVolume: maxVolume)
+                }
+            }
+        }
     }
 }
 
@@ -71,7 +84,7 @@ extension ConfigurationAppIntent {
     }
 }
 
-#Preview(as: .systemSmall) {
+#Preview(as: .systemMedium) {
     dg_muscle_ios_widget()
 } timeline: {
     SimpleEntry(date: .now, configuration: .smiley)
