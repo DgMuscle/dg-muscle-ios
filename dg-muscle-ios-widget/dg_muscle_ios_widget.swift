@@ -39,22 +39,10 @@ struct SimpleEntry: TimelineEntry {
 struct dg_muscle_ios_widgetEntryView : View {
     
     var entry: Provider.Entry
-    var datas: [WorkoutHeatMapViewModel.Data] = (try? FileManagerHelper.load([WorkoutHeatMapViewModel.Data].self, fromFile: .workoutHeatMapData)) ?? []
-
-    var maxVolume: Double {
-        datas.flatMap({ $0.volumes }).map({ $0.value }).max() ?? 0
-    }
+    let datas: [WorkoutHeatMapViewModel.Data] = (try? FileManagerHelper.load([WorkoutHeatMapViewModel.Data].self, fromFile: .workoutHeatMapData)) ?? []
 
     var body: some View {
-        if datas.isEmpty {
-            Text("Data is Empty").fontWeight(.black)
-        } else {
-            HStack(alignment: .top, spacing: 3.5) {
-                ForEach(datas) { data in
-                    HeatMapColumnView(data: data, maxVolume: maxVolume)
-                }
-            }
-        }
+        WorkoutHeatMapCommonView(datas: datas)
     }
 }
 

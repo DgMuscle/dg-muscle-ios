@@ -200,6 +200,8 @@
 		70C144D62AC825DE007F0540 /* HistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D52AC825DE007F0540 /* HistoryRepository.swift */; };
 		70C144D82AC82807007F0540 /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D72AC82807007F0540 /* DefaultResponse.swift */; };
 		70C144DA2AC82866007F0540 /* ExerciseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D92AC82866007F0540 /* ExerciseRepository.swift */; };
+		70CA7E842BCD811C00D47674 /* WorkoutHeatMapCommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA7E832BCD811C00D47674 /* WorkoutHeatMapCommonView.swift */; };
+		70CA7E852BCD818A00D47674 /* WorkoutHeatMapCommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA7E832BCD811C00D47674 /* WorkoutHeatMapCommonView.swift */; };
 		70CD21C72BCD662B009B72F3 /* WorkoutHeatMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */; };
 		70CD21C82BCD6633009B72F3 /* HistoryRepositoryV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E216D2BCA55C500147279 /* HistoryRepositoryV2.swift */; };
 		70CD21C92BCD663C009B72F3 /* ExerciseHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A12AC7FE84009725EF /* ExerciseHistory.swift */; };
@@ -420,6 +422,7 @@
 		70C144D52AC825DE007F0540 /* HistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRepository.swift; sourceTree = "<group>"; };
 		70C144D72AC82807007F0540 /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
 		70C144D92AC82866007F0540 /* ExerciseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepository.swift; sourceTree = "<group>"; };
+		70CA7E832BCD811C00D47674 /* WorkoutHeatMapCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeatMapCommonView.swift; sourceTree = "<group>"; };
 		70CD21D02BCD6732009B72F3 /* HeatMapColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatMapColumnView.swift; sourceTree = "<group>"; };
 		70CD21D22BCD6881009B72F3 /* WorkoutHeatMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeatMapView.swift; sourceTree = "<group>"; };
 		70D17E0C2AC5D70B00B86E37 /* WithdrawalConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalConfirmView.swift; sourceTree = "<group>"; };
@@ -488,6 +491,7 @@
 			isa = PBXGroup;
 			children = (
 				70CD21D02BCD6732009B72F3 /* HeatMapColumnView.swift */,
+				70CA7E832BCD811C00D47674 /* WorkoutHeatMapCommonView.swift */,
 				70CD21D22BCD6881009B72F3 /* WorkoutHeatMapView.swift */,
 				0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */,
 			);
@@ -1283,6 +1287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70CA7E852BCD818A00D47674 /* WorkoutHeatMapCommonView.swift in Sources */,
 				70CD21CD2BCD666C009B72F3 /* ExerciseSet.swift in Sources */,
 				70CD21D72BCD6E33009B72F3 /* HistoryRepositoryV2Test.swift in Sources */,
 				70CD21CE2BCD6678009B72F3 /* Exercise.swift in Sources */,
@@ -1448,6 +1453,7 @@
 				70C144D32AC82558007F0540 /* APIClient.swift in Sources */,
 				703A97BD2BCB8514002C0843 /* BannerErrorMessageView.swift in Sources */,
 				70A74E8A2AC8433F00EA7A35 /* ExerciseStore.swift in Sources */,
+				70CA7E842BCD811C00D47674 /* WorkoutHeatMapCommonView.swift in Sources */,
 				70F8389E2AC7FE36009725EF /* CreatedAt.swift in Sources */,
 				70756F2D2BCAC2C70035EFF4 /* ExerciseListItemView.swift in Sources */,
 				701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */,

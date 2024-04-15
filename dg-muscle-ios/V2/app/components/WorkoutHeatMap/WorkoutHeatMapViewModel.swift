@@ -15,7 +15,6 @@ final class WorkoutHeatMapViewModel: ObservableObject {
             try? historyRepository.post(data: datas)
         }
     }
-    @Published var maxVolume: Double = 0
     
     let historyRepository: HistoryRepositoryV2
     let today: Date
@@ -97,7 +96,6 @@ final class WorkoutHeatMapViewModel: ObservableObject {
             .sorted(by: { $0.week < $1.week })
         
         self.datas = datas
-        self.maxVolume = datas.flatMap({ $0.volumes }).map({ $0.value }).max() ?? 0
     }
 }
 
