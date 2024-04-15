@@ -212,6 +212,8 @@
 		70CD21CC2BCD665F009B72F3 /* CreatedAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F8389D2AC7FE36009725EF /* CreatedAt.swift */; };
 		70CD21CD2BCD666C009B72F3 /* ExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A52AC7FEA8009725EF /* ExerciseSet.swift */; };
 		70CD21CE2BCD6678009B72F3 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F8389F2AC7FE4D009725EF /* Exercise.swift */; };
+		70CD21D12BCD6732009B72F3 /* HeatMapColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD21D02BCD6732009B72F3 /* HeatMapColumnView.swift */; };
+		70CD21D32BCD6881009B72F3 /* WorkoutHeatMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD21D22BCD6881009B72F3 /* WorkoutHeatMapView.swift */; };
 		70D17E0D2AC5D70B00B86E37 /* WithdrawalConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D17E0C2AC5D70B00B86E37 /* WithdrawalConfirmView.swift */; };
 		70D3418A2ACC03350010EAF9 /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D341892ACC03350010EAF9 /* ExerciseListView.swift */; };
 		70D3418F2ACC081E0010EAF9 /* Extension+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D3418E2ACC081E0010EAF9 /* Extension+Sequence.swift */; };
@@ -415,6 +417,8 @@
 		70C144D52AC825DE007F0540 /* HistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRepository.swift; sourceTree = "<group>"; };
 		70C144D72AC82807007F0540 /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
 		70C144D92AC82866007F0540 /* ExerciseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepository.swift; sourceTree = "<group>"; };
+		70CD21D02BCD6732009B72F3 /* HeatMapColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatMapColumnView.swift; sourceTree = "<group>"; };
+		70CD21D22BCD6881009B72F3 /* WorkoutHeatMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeatMapView.swift; sourceTree = "<group>"; };
 		70D17E0C2AC5D70B00B86E37 /* WithdrawalConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalConfirmView.swift; sourceTree = "<group>"; };
 		70D341892ACC03350010EAF9 /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
 		70D3418E2ACC081E0010EAF9 /* Extension+Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Sequence.swift"; sourceTree = "<group>"; };
@@ -479,6 +483,8 @@
 		0208CF492BCCF9FF00FD973D /* WorkoutHeatMap */ = {
 			isa = PBXGroup;
 			children = (
+				70CD21D02BCD6732009B72F3 /* HeatMapColumnView.swift */,
+				70CD21D22BCD6881009B72F3 /* WorkoutHeatMapView.swift */,
 				0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */,
 			);
 			path = WorkoutHeatMap;
@@ -1420,6 +1426,7 @@
 				70F838A02AC7FE4D009725EF /* Exercise.swift in Sources */,
 				70C144D62AC825DE007F0540 /* HistoryRepository.swift in Sources */,
 				701964312AD41CE400ED39BF /* SelectExerciseView.swift in Sources */,
+				70CD21D32BCD6881009B72F3 /* WorkoutHeatMapView.swift in Sources */,
 				703A97D92BCBC070002C0843 /* RecordFormSetItem.swift in Sources */,
 				703A97BF2BCB8608002C0843 /* ExerciseSimpleInfoView.swift in Sources */,
 				70756EEE2BCA683D0035EFF4 /* HealthRepositoryTest.swift in Sources */,
@@ -1497,6 +1504,7 @@
 				70B5080C2AC51D4300FC0540 /* PhotoPickerView.swift in Sources */,
 				70756F312BCAC4F40035EFF4 /* ExerciseListSectionV2View.swift in Sources */,
 				708F0A7E2B414D4A001AF089 /* LegPressInfoView.swift in Sources */,
+				70CD21D12BCD6732009B72F3 /* HeatMapColumnView.swift in Sources */,
 				70756EFD2BCA6D680035EFF4 /* ExerciseRepositoryV2Test.swift in Sources */,
 				702E21682BCA53BC00147279 /* HistoryView.swift in Sources */,
 				70756F0A2BCA9F340035EFF4 /* UserRepositoryV2Live.swift in Sources */,

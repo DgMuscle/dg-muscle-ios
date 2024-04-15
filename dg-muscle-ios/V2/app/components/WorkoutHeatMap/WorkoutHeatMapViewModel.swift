@@ -11,6 +11,7 @@ import Combine
 final class WorkoutHeatMapViewModel: ObservableObject {
     
     @Published var datas: [Data] = []
+    @Published var maxVolume: Double = 0
     
     let historyRepository: HistoryRepositoryV2
     let today: Date
@@ -58,7 +59,12 @@ final class WorkoutHeatMapViewModel: ObservableObject {
                 defaultValues.removeLast(7 - weekdayNumber)
             }
             
-            hashMap["\(year)\(weekOfYear)", default: []].append(contentsOf: defaultValues)
+            var key: String = "\(year)\(weekOfYear)"
+            if weekOfYear < 10 {
+                key = "\(year)0\(weekOfYear)"
+            }
+            
+            hashMap[key, default: []].append(contentsOf: defaultValues)
             
             if let newDate = calendar.date(byAdding: .day, value: -7, to: date) {
                 date = newDate
@@ -73,7 +79,12 @@ final class WorkoutHeatMapViewModel: ObservableObject {
                 let weekOfYear = calendar.component(.weekOfYear, from: date)
                 let weekdayNumber = calendar.component(.weekday, from: date)
                 
-                hashMap["\(year)\(weekOfYear)"]?[weekdayNumber - 1] = history.volume
+                var key: String = "\(year)\(weekOfYear)"
+                if weekOfYear < 10 {
+                    key = "\(year)0\(weekOfYear)"
+                }
+                
+                hashMap[key]?[weekdayNumber - 1] = history.volume
             }
         }
         
@@ -81,9 +92,8 @@ final class WorkoutHeatMapViewModel: ObservableObject {
             .map({ .init(week: $0.key, volumes: $0.value) })
             .sorted(by: { $0.week < $1.week })
         
-        DispatchQueue.main.async { [weak self] in
-            self?.datas = datas
-        }
+        self.datas = datas
+        self.maxVolume = datas.flatMap({ $0.volumes }).max() ?? 0
     }
 }
 
