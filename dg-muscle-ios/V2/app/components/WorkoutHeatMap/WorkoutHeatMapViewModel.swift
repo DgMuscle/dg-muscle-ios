@@ -10,7 +10,11 @@ import Combine
 
 final class WorkoutHeatMapViewModel: ObservableObject {
     
-    @Published var datas: [Data] = []
+    @Published var datas: [Data] = [] {
+        didSet {
+            try? historyRepository.post(data: datas)
+        }
+    }
     @Published var maxVolume: Double = 0
     
     let historyRepository: HistoryRepositoryV2
@@ -98,14 +102,14 @@ final class WorkoutHeatMapViewModel: ObservableObject {
 }
 
 extension WorkoutHeatMapViewModel {
-    struct Data: Identifiable {
-        let id: String = UUID().uuidString
+    struct Data: Identifiable, Codable {
+        var id: String = UUID().uuidString
         var week: String
         var volumes: [Volume]
     }
     
-    struct Volume: Identifiable {
-        let id: String = UUID().uuidString
+    struct Volume: Identifiable, Codable {
+        var id: String = UUID().uuidString
         var value: Double
     }
 }

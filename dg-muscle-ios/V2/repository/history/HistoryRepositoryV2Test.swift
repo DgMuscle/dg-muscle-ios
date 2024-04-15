@@ -56,4 +56,12 @@ final class HistoryRepositoryV2Test: HistoryRepositoryV2 {
             .init(id: "11", date: "20240301", memo: "random memo", records: records, createdAt: nil),
         ]
     }
+    
+    func get() throws -> [WorkoutHeatMapViewModel.Data] {
+        []
+    }
+    
+    func post(data: [WorkoutHeatMapViewModel.Data]) throws {
+        
+    }
 }

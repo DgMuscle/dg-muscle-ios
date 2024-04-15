@@ -41,8 +41,7 @@ struct dg_muscle_ios_widgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text("Preparing Widget!")
-            .fontWeight(.black)
+        WorkoutHeatMapViewForWidget()
     }
 }
 

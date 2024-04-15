@@ -19,11 +19,7 @@ final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
         $_histories.eraseToAnyPublisher()
     }
     
-    @Published private var _histories: [ExerciseHistory] = [] {
-        didSet {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
-    }
+    @Published private var _histories: [ExerciseHistory] = []
     
     private init() {
         _histories = getExerciseHistoryFromFile()
@@ -31,6 +27,10 @@ final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
         Task {
             _histories = try await get(lastId: nil, limit: 365)
         }
+    }
+    
+    func get() throws -> [WorkoutHeatMapViewModel.Data] {
+        try FileManagerHelper.load([WorkoutHeatMapViewModel.Data].self, fromFile: .workoutHeatMapData)
     }
     
     func post(data: ExerciseHistory) async throws -> DefaultResponse {
@@ -44,6 +44,11 @@ final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
         try? FileManagerHelper.save(histories, toFile: .history)
         
         return try await APIClient.shared.request(method: .post, url: "https://exercisehistory-posthistory-kpjvgnqz6a-uc.a.run.app", body: data)
+    }
+    
+    func post(data: [WorkoutHeatMapViewModel.Data]) throws {
+        try FileManagerHelper.save(data, toFile: .workoutHeatMapData)
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     private func getExerciseHistoryFromFile() -> [ExerciseHistory] {
