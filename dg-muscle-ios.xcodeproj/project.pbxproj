@@ -511,12 +511,10 @@
 			isa = PBXGroup;
 			children = (
 				70756F162BCAB5BF0035EFF4 /* app */,
-				70756F1D2BCAB8E80035EFF4 /* components */,
 				70D3418D2ACC07FD0010EAF9 /* extension */,
 				70F8389C2AC7FE20009725EF /* model */,
 				703A97C02BCB929B002C0843 /* navigation */,
 				702E216C2BCA559500147279 /* repository */,
-				70756F132BCAAB7D0035EFF4 /* screen */,
 				707B8FD12ABF204A008ADECE /* util */,
 			);
 			path = V2;
@@ -721,21 +719,23 @@
 			path = user;
 			sourceTree = "<group>";
 		};
-		70756F132BCAAB7D0035EFF4 /* screen */ = {
+		70756F132BCAAB7D0035EFF4 /* screens */ = {
 			isa = PBXGroup;
 			children = (
 				70756F102BCAA7C80035EFF4 /* ContentViewV2.swift */,
 				70756F142BCAAB8B0035EFF4 /* SplashView.swift */,
 			);
-			path = screen;
+			path = screens;
 			sourceTree = "<group>";
 		};
 		70756F162BCAB5BF0035EFF4 /* app */ = {
 			isa = PBXGroup;
 			children = (
+				70756F1D2BCAB8E80035EFF4 /* components */,
 				70756F232BCAC1810035EFF4 /* exercise */,
-				70756F172BCAB5C80035EFF4 /* setting */,
 				702E21652BCA535800147279 /* history */,
+				70756F132BCAAB7D0035EFF4 /* screens */,
+				70756F172BCAB5C80035EFF4 /* setting */,
 			);
 			path = app;
 			sourceTree = "<group>";
