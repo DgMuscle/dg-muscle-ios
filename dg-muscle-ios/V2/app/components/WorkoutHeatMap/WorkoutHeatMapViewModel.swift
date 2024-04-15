@@ -89,11 +89,11 @@ final class WorkoutHeatMapViewModel: ObservableObject {
         }
         
         let datas: [Data] = hashMap
-            .map({ .init(week: $0.key, volumes: $0.value) })
+            .map({ .init(week: $0.key, volumes: $0.value.map({ .init(value: $0)}) ) })
             .sorted(by: { $0.week < $1.week })
         
         self.datas = datas
-        self.maxVolume = datas.flatMap({ $0.volumes }).max() ?? 0
+        self.maxVolume = datas.flatMap({ $0.volumes }).map({ $0.value }).max() ?? 0
     }
 }
 
@@ -101,6 +101,11 @@ extension WorkoutHeatMapViewModel {
     struct Data: Identifiable {
         let id: String = UUID().uuidString
         var week: String
-        var volumes: [Double]
+        var volumes: [Volume]
+    }
+    
+    struct Volume: Identifiable {
+        let id: String = UUID().uuidString
+        var value: Double
     }
 }

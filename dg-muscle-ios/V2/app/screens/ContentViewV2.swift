@@ -16,6 +16,7 @@ struct ContentViewV2: View {
     let healthRepository: HealthRepository
     let userRepository: UserRepositoryV2
     let historyRepository: HistoryRepositoryV2
+    let today: Date
     
     var body: some View {
         ZStack {
@@ -23,7 +24,10 @@ struct ContentViewV2: View {
                 HistoryView(viewModel: historyViewModel,
                             paths: $paths,
                             exerciseRepository: exerciseRepository,
-                            healthRepository: healthRepository)
+                            healthRepository: healthRepository,
+                            historyRepository: historyRepository,
+                            today: today
+                )
                 .navigationDestination(for: MainNavigation.self) { navigation in
                     switch navigation.name {
                     case .setting:
@@ -104,10 +108,15 @@ struct ContentViewV2: View {
                                             healthRepository: healthRepository,
                                             userRepository: userRepository)
     
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyyMMdd"
+    let today = dateFormatter.date(from: "20240415")!
+    
     return ContentViewV2(historyViewModel: historyViewModel,
                          exerciseRepository: exerciseRepository,
                          healthRepository: healthRepository, 
                          userRepository: userRepository, 
-                         historyRepository: historyRepository)
+                         historyRepository: historyRepository, 
+                         today: today)
         .preferredColorScheme(.dark)
 }

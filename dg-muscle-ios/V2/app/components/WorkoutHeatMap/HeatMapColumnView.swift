@@ -16,13 +16,12 @@ struct HeatMapColumnView: View {
     
     var body: some View {
         VStack(spacing: 4) {
-            ForEach(data.volumes, id: \.self) { volume in
-                
-                if volume == 0 {
+            ForEach(data.volumes) { volume in
+                if volume.value == 0 {
                     RoundedRectangle(cornerRadius: 2).fill(.gray).opacity(0.2)
                         .frame(width: size, height: size)
                 } else {
-                    RoundedRectangle(cornerRadius: 2).fill(.green).opacity(volume / maxVolume)
+                    RoundedRectangle(cornerRadius: 2).fill(.green).opacity(volume.value / maxVolume)
                         .frame(width: size, height: size)
                 }
             }
@@ -32,7 +31,7 @@ struct HeatMapColumnView: View {
 
 #Preview {
     
-    let data: WorkoutHeatMapViewModel.Data = .init(week: "202416", volumes: [4, 0, 4, 8, 10])
+    let data: WorkoutHeatMapViewModel.Data = .init(week: "202416", volumes: [4, 0, 4, 8, 10].map({ .init(value: $0) }))
     
     return HeatMapColumnView(data: data, maxVolume: 10)
         .preferredColorScheme(.dark)
