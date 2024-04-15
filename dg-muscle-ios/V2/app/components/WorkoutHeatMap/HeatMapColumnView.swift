@@ -12,10 +12,10 @@ struct HeatMapColumnView: View {
     @State var data: WorkoutHeatMapViewModel.Data
     @State var maxVolume: Double
     
-    private let size: CGFloat = 16
+    private let size: CGFloat = 15
     
     var body: some View {
-        VStack(spacing: 4) {
+        VStack(spacing: 3) {
             ForEach(data.volumes) { volume in
                 if volume.value == 0 {
                     RoundedRectangle(cornerRadius: 2).fill(.gray).opacity(0.2)

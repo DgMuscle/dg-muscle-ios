@@ -49,7 +49,7 @@ struct dg_muscle_ios_widgetEntryView : View {
         if datas.isEmpty {
             Text("Data is Empty").fontWeight(.black)
         } else {
-            HStack(alignment: .top, spacing: 4) {
+            HStack(alignment: .top, spacing: 3.5) {
                 ForEach(datas) { data in
                     HeatMapColumnView(data: data, maxVolume: maxVolume)
                 }

@@ -12,7 +12,7 @@ struct WorkoutHeatMapView: View {
     @StateObject var viewModel: WorkoutHeatMapViewModel
     
     var body: some View {
-        HStack(alignment: .top, spacing: 4) {
+        HStack(alignment: .top, spacing: 3.5) {
             ForEach(viewModel.datas) { data in
                 HeatMapColumnView(data: data, maxVolume: viewModel.maxVolume)
             }
