@@ -33,7 +33,7 @@ final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
         if let index = histories.firstIndex(where: { $0.id == data.id }) {
             _histories[index] = data
         } else {
-            _histories.append(data)
+            _histories.insert(data, at: 0)
         }
         
         try? FileManagerHelper.save(histories, toFile: .history)
