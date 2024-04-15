@@ -6,6 +6,7 @@
 //
 
 import Combine
+import WidgetKit
 
 final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
     static let shared = HistoryRepositoryV2Impl()
@@ -18,7 +19,11 @@ final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
         $_histories.eraseToAnyPublisher()
     }
     
-    @Published private var _histories: [ExerciseHistory] = []
+    @Published private var _histories: [ExerciseHistory] = [] {
+        didSet {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
+    }
     
     private init() {
         _histories = getExerciseHistoryFromFile()
