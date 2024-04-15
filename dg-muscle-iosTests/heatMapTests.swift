@@ -17,6 +17,18 @@ final class heatMapTests: XCTestCase {
         let viewModel = WorkoutHeatMapViewModel(historyRepository: HistoryRepositoryV2Test(), today: date)
         
         try await Task.sleep(nanoseconds: 1_000_000_000)
+        
+        var dataCount: Int = 0
+        var volumesCount: Int = 0
+        
+        for data in viewModel.datas {
+            dataCount += 1
+            for _ in data.volumes {
+                volumesCount += 1
+            }
+        }
+        
+        XCTAssertEqual(dataCount, 17)
+        XCTAssertEqual(volumesCount, 114)
     }
-
 }

@@ -10,7 +10,7 @@ import Combine
 
 final class WorkoutHeatMapViewModel: ObservableObject {
     
-    @Published var hashMap: [String: [Int]] = [:]
+    @Published var datas: [Data] = []
     
     let historyRepository: HistoryRepositoryV2
     let today: Date
@@ -38,7 +38,7 @@ final class WorkoutHeatMapViewModel: ObservableObject {
         /// 오늘을 n번째 주라고 할 때, (n-16 ~ n) 번째 주까지 구한다.
         /// 예) 2024년 16번째 주: hashMap["202416"] = [0, 0, 0, 0, 0, 0, 0]
         ///
-        var hashMap: [String: [Int]] = [:]
+        var hashMap: [String: [Double]] = [:]
         
         let calendar = Calendar(identifier: .gregorian)
         var date = today
@@ -49,7 +49,7 @@ final class WorkoutHeatMapViewModel: ObservableObject {
         while count > 0 {
             let year = calendar.component(.year, from: date)
             let weekOfYear = calendar.component(.weekOfYear, from: date)
-            var defaultValues: [Int] = [0,0,0,0,0,0,0]
+            var defaultValues: [Double] = [0,0,0,0,0,0,0]
             
             if count == 17 {
                 let weekdayNumber = calendar.component(.weekday, from: date)
@@ -67,6 +67,30 @@ final class WorkoutHeatMapViewModel: ObservableObject {
             count -= 1
         }
         
-        print("dg: hashMap is \(hashMap)")
+        for history in histories {
+            if let date = history.dateValue {
+                let year = calendar.component(.year, from: date)
+                let weekOfYear = calendar.component(.weekOfYear, from: date)
+                let weekdayNumber = calendar.component(.weekday, from: date)
+                
+                hashMap["\(year)\(weekOfYear)"]?[weekdayNumber - 1] = history.volume
+            }
+        }
+        
+        let datas: [Data] = hashMap
+            .map({ .init(week: $0.key, volumes: $0.value) })
+            .sorted(by: { $0.week < $1.week })
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.datas = datas
+        }
+    }
+}
+
+extension WorkoutHeatMapViewModel {
+    struct Data: Identifiable {
+        let id: String = UUID().uuidString
+        var week: String
+        var volumes: [Double]
     }
 }
