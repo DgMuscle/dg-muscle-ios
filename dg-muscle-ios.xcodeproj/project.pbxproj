@@ -204,6 +204,14 @@
 		70C144D62AC825DE007F0540 /* HistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D52AC825DE007F0540 /* HistoryRepository.swift */; };
 		70C144D82AC82807007F0540 /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D72AC82807007F0540 /* DefaultResponse.swift */; };
 		70C144DA2AC82866007F0540 /* ExerciseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D92AC82866007F0540 /* ExerciseRepository.swift */; };
+		70CD21C72BCD662B009B72F3 /* WorkoutHeatMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */; };
+		70CD21C82BCD6633009B72F3 /* HistoryRepositoryV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E216D2BCA55C500147279 /* HistoryRepositoryV2.swift */; };
+		70CD21C92BCD663C009B72F3 /* ExerciseHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A12AC7FE84009725EF /* ExerciseHistory.swift */; };
+		70CD21CA2BCD6644009B72F3 /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D72AC82807007F0540 /* DefaultResponse.swift */; };
+		70CD21CB2BCD665A009B72F3 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A72AC7FEB6009725EF /* Record.swift */; };
+		70CD21CC2BCD665F009B72F3 /* CreatedAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F8389D2AC7FE36009725EF /* CreatedAt.swift */; };
+		70CD21CD2BCD666C009B72F3 /* ExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A52AC7FEA8009725EF /* ExerciseSet.swift */; };
+		70CD21CE2BCD6678009B72F3 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F8389F2AC7FE4D009725EF /* Exercise.swift */; };
 		70D17E0D2AC5D70B00B86E37 /* WithdrawalConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D17E0C2AC5D70B00B86E37 /* WithdrawalConfirmView.swift */; };
 		70D3418A2ACC03350010EAF9 /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D341892ACC03350010EAF9 /* ExerciseListView.swift */; };
 		70D3418F2ACC081E0010EAF9 /* Extension+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D3418E2ACC081E0010EAF9 /* Extension+Sequence.swift */; };
@@ -1281,15 +1289,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70CD21CD2BCD666C009B72F3 /* ExerciseSet.swift in Sources */,
 				708AF2AC2B36D05B00658D6B /* GrassData.swift in Sources */,
 				708AF2B32B36D28C00658D6B /* GrassDatasource.swift in Sources */,
+				70CD21CE2BCD6678009B72F3 /* Exercise.swift in Sources */,
 				70240BEE2ADC1FF800B87A79 /* dg_muscle_ios_widgetLiveActivity.swift in Sources */,
 				70240BF22ADC1FF800B87A79 /* AppIntent.swift in Sources */,
+				70CD21CB2BCD665A009B72F3 /* Record.swift in Sources */,
 				70240BF02ADC1FF800B87A79 /* dg_muscle_ios_widget.swift in Sources */,
+				70CD21CC2BCD665F009B72F3 /* CreatedAt.swift in Sources */,
+				70CD21C82BCD6633009B72F3 /* HistoryRepositoryV2.swift in Sources */,
 				708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */,
 				70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */,
+				70CD21C72BCD662B009B72F3 /* WorkoutHeatMapViewModel.swift in Sources */,
 				708AF2B72B36D38B00658D6B /* WidgetBridge.swift in Sources */,
+				70CD21C92BCD663C009B72F3 /* ExerciseHistory.swift in Sources */,
 				708AF2B02B36D0A300658D6B /* GrassView.swift in Sources */,
+				70CD21CA2BCD6644009B72F3 /* DefaultResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

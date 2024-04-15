@@ -22,6 +22,7 @@ struct Record: Codable, Equatable, Identifiable, Hashable {
     }
     
     var parts: [Exercise.Part] {
-        store.exercise.exercises.first(where: { $0.id == exerciseId })?.parts ?? []
+//        store.exercise.exercises.first(where: { $0.id == exerciseId })?.parts ?? []
+        []
     }
 }
