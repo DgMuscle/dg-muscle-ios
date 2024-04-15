@@ -214,6 +214,16 @@
 		70CD21CE2BCD6678009B72F3 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F8389F2AC7FE4D009725EF /* Exercise.swift */; };
 		70CD21D12BCD6732009B72F3 /* HeatMapColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD21D02BCD6732009B72F3 /* HeatMapColumnView.swift */; };
 		70CD21D32BCD6881009B72F3 /* WorkoutHeatMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD21D22BCD6881009B72F3 /* WorkoutHeatMapView.swift */; };
+		70CD21D42BCD6E1B009B72F3 /* HeatMapColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD21D02BCD6732009B72F3 /* HeatMapColumnView.swift */; };
+		70CD21D52BCD6E1E009B72F3 /* WorkoutHeatMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD21D22BCD6881009B72F3 /* WorkoutHeatMapView.swift */; };
+		70CD21D72BCD6E33009B72F3 /* HistoryRepositoryV2Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756EF02BCA68700035EFF4 /* HistoryRepositoryV2Test.swift */; };
+		70CD21D82BCD6E3E009B72F3 /* HistoryRepositoryV2Impl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E216F2BCA55D600147279 /* HistoryRepositoryV2Impl.swift */; };
+		70CD21D92BCD6E63009B72F3 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
+		70CD21DA2BCD6E92009B72F3 /* UserRepositoryV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F042BCA9E640035EFF4 /* UserRepositoryV2.swift */; };
+		70CD21DB2BCD6E97009B72F3 /* UserRepositoryV2Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F092BCA9F340035EFF4 /* UserRepositoryV2Live.swift */; };
+		70CD21DC2BCD6EA9009B72F3 /* DGUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F072BCA9EA80035EFF4 /* DGUser.swift */; };
+		70CD21DD2BCD6EB3009B72F3 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5EF2AC015C900BC76D4 /* CustomError.swift */; };
+		70CD21DF2BCD6ED6009B72F3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 70CD21DE2BCD6ED6009B72F3 /* FirebaseAuth */; };
 		70D17E0D2AC5D70B00B86E37 /* WithdrawalConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D17E0C2AC5D70B00B86E37 /* WithdrawalConfirmView.swift */; };
 		70D3418A2ACC03350010EAF9 /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D341892ACC03350010EAF9 /* ExerciseListView.swift */; };
 		70D3418F2ACC081E0010EAF9 /* Extension+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D3418E2ACC081E0010EAF9 /* Extension+Sequence.swift */; };
@@ -449,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70240BE92ADC1FF800B87A79 /* SwiftUI.framework in Frameworks */,
+				70CD21DF2BCD6ED6009B72F3 /* FirebaseAuth in Frameworks */,
 				70240BE72ADC1FF800B87A79 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1156,6 +1167,9 @@
 			dependencies = (
 			);
 			name = "dg-muscle-ios-widgetExtension";
+			packageProductDependencies = (
+				70CD21DE2BCD6ED6009B72F3 /* FirebaseAuth */,
+			);
 			productName = "dg-muscle-ios-widgetExtension";
 			productReference = 70240BE52ADC1FF800B87A79 /* dg-muscle-ios-widgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -1297,18 +1311,27 @@
 			files = (
 				70CD21CD2BCD666C009B72F3 /* ExerciseSet.swift in Sources */,
 				708AF2AC2B36D05B00658D6B /* GrassData.swift in Sources */,
+				70CD21D72BCD6E33009B72F3 /* HistoryRepositoryV2Test.swift in Sources */,
 				708AF2B32B36D28C00658D6B /* GrassDatasource.swift in Sources */,
 				70CD21CE2BCD6678009B72F3 /* Exercise.swift in Sources */,
+				70CD21D92BCD6E63009B72F3 /* APIClient.swift in Sources */,
 				70240BEE2ADC1FF800B87A79 /* dg_muscle_ios_widgetLiveActivity.swift in Sources */,
+				70CD21DA2BCD6E92009B72F3 /* UserRepositoryV2.swift in Sources */,
 				70240BF22ADC1FF800B87A79 /* AppIntent.swift in Sources */,
 				70CD21CB2BCD665A009B72F3 /* Record.swift in Sources */,
+				70CD21D52BCD6E1E009B72F3 /* WorkoutHeatMapView.swift in Sources */,
+				70CD21D42BCD6E1B009B72F3 /* HeatMapColumnView.swift in Sources */,
 				70240BF02ADC1FF800B87A79 /* dg_muscle_ios_widget.swift in Sources */,
 				70CD21CC2BCD665F009B72F3 /* CreatedAt.swift in Sources */,
 				70CD21C82BCD6633009B72F3 /* HistoryRepositoryV2.swift in Sources */,
+				70CD21DD2BCD6EB3009B72F3 /* CustomError.swift in Sources */,
 				708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */,
+				70CD21DC2BCD6EA9009B72F3 /* DGUser.swift in Sources */,
 				70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */,
 				70CD21C72BCD662B009B72F3 /* WorkoutHeatMapViewModel.swift in Sources */,
+				70CD21D82BCD6E3E009B72F3 /* HistoryRepositoryV2Impl.swift in Sources */,
 				708AF2B72B36D38B00658D6B /* WidgetBridge.swift in Sources */,
+				70CD21DB2BCD6E97009B72F3 /* UserRepositoryV2Live.swift in Sources */,
 				70CD21C92BCD663C009B72F3 /* ExerciseHistory.swift in Sources */,
 				708AF2B02B36D0A300658D6B /* GrassView.swift in Sources */,
 				70CD21CA2BCD6644009B72F3 /* DefaultResponse.swift in Sources */,
@@ -1948,6 +1971,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 708F0A612B414D1B001AF089 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		70CD21DE2BCD6ED6009B72F3 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7083E6B52ABF06B7007D43CE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

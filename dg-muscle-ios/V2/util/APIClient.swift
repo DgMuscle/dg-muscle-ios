@@ -10,7 +10,7 @@ import Foundation
 final class APIClient {
     static let shared = APIClient()
     private var defaultHeaders: [String: String] {
-        if let uid = store.user.uid {
+        if let uid = UserRepositoryV2Live.shared.user?.uid {
             return [
                 "uid": uid,
                 "Content-Type": "application/json"
