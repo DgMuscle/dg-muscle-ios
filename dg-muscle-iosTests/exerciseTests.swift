@@ -13,19 +13,19 @@ final class exerciseTests: XCTestCase {
         
         let viewModel = ExerciseListV2ViewModel(exerciseRepository: ExerciseRepositoryV2Test())
         
-        try await Task.sleep(nanoseconds: 500_000_000)
+        try await Task.sleep(nanoseconds: 1_000_000_000)
         
         var keyCount: Int = 0
         var exerciseCount: Int = 0
         
-        for section in viewModel.exerciseSection {
+        for section in viewModel.sections {
             keyCount += 1
             
-            for exercise in section.value {
+            for _ in section.exercises {
                 exerciseCount += 1
             }
         }
-        
+          
         XCTAssertEqual(keyCount, 4)
         XCTAssertEqual(exerciseCount, 5)
     }
