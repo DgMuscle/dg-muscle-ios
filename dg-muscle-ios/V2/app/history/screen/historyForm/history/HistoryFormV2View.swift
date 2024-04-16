@@ -16,13 +16,17 @@ struct HistoryFormV2View: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-
-            HistoryCardView(dateString: viewModel.dateString,
-                            duration: $viewModel.duration) {
-                isPresentSelectSheet.toggle()
-            } saveAction: {
-                viewModel.post()
+            
+            VStack {
+                HistoryCardView(dateString: viewModel.dateString,
+                                duration: $viewModel.duration) {
+                    isPresentSelectSheet.toggle()
+                } saveAction: {
+                    viewModel.post()
+                }
             }
+            .padding(.horizontal)
+            
             
             List {
                 ForEach($viewModel.history.records) { record in
@@ -46,7 +50,6 @@ struct HistoryFormV2View: View {
         }
         .navigationTitle("EXERCISE DIARY")
         .navigationBarTitleDisplayMode(.large)
-        .padding()
         .sheet(isPresented: $isPresentSelectSheet, content: {
             SelectExerciseV2View(exerciseRepository: exerciseRepository) { exercise in
                 addNewRecord(exercise: exercise)
