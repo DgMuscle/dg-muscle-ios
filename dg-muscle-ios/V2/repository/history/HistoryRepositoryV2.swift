@@ -13,4 +13,5 @@ protocol HistoryRepositoryV2 {
     func get() throws -> [WorkoutHeatMapViewModel.Data]
     func post(data: ExerciseHistory) async throws -> DefaultResponse
     func post(data: [WorkoutHeatMapViewModel.Data]) throws
+    func delete(data: ExerciseHistory) async throws -> DefaultResponse
 }

@@ -64,4 +64,8 @@ final class HistoryRepositoryV2Test: HistoryRepositoryV2 {
     func post(data: [WorkoutHeatMapViewModel.Data]) throws {
         
     }
+    
+    func delete(data: ExerciseHistory) async throws -> DefaultResponse {
+        return .init(ok: true, message: nil)
+    }
 }

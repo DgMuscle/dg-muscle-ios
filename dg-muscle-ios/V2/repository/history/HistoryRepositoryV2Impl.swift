@@ -51,6 +51,21 @@ final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
+    func delete(data: ExerciseHistory) async throws -> DefaultResponse {
+        struct Parameter: Codable {
+            let id: String
+        }
+        let data = Parameter(id: data.id)
+        
+        if let index = _histories.firstIndex(where: { $0.id == data.id }) {
+            _histories.remove(at: index)
+        }
+        
+        try? FileManagerHelper.save(histories, toFile: .history)
+        
+        return try await APIClient.shared.request(method: .delete, url: "https://exercisehistory-deletehistory-kpjvgnqz6a-uc.a.run.app", body: data)
+    }
+    
     private func getExerciseHistoryFromFile() -> [ExerciseHistory] {
         (try? FileManagerHelper.load([ExerciseHistory].self, fromFile: .history)) ?? []
     }
