@@ -95,7 +95,6 @@ struct RecordFormV2View: View {
                                                     exerciseRepository: viewModel.exerciseRepository))
             }
         })
-        
     }
 }
 
