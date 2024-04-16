@@ -18,9 +18,6 @@ struct QuickAction {
         case .record:
             title = "Record"
             subTitle = "record today exercise"
-        case .exerciseList:
-            title = "Exercise"
-            subTitle = "manage exercise list"
         }
     }
 }
@@ -28,6 +25,5 @@ struct QuickAction {
 extension QuickAction {
     enum Actiontype: String {
         case record = "com.dgmuscle.record"
-        case exerciseList = "com.dgmuscle.exercise_list"
     }
 }

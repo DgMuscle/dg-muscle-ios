@@ -24,8 +24,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         switch item.type {
         case QuickAction.Actiontype.record.rawValue:
             subscriber.quickAction.addHistory = true
-        case QuickAction.Actiontype.exerciseList.rawValue:
-            subscriber.quickAction.exerciseList = true
+            print("dg: quick action handleUIApplicationShortCutItem")
         default: break
         }
     }
