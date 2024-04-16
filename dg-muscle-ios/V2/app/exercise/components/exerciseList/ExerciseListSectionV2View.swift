@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ExerciseListSectionV2View: View {
     
-    @State var part: Exercise.Part
-    @State var exercises: [Exercise]
+    var part: Exercise.Part
+    var exercises: [Exercise]
     
     let exerciseAction: ((Exercise) -> ())?
     let deleteAction: ((Exercise) -> ())?

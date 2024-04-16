@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ExercisePartSelectionItem: View {
     
-    @State var part: Exercise.Part
-    @State var selected: Bool
+    var part: Exercise.Part
+    var selected: Bool
     
     let action: ((Exercise.Part) -> ())?
     

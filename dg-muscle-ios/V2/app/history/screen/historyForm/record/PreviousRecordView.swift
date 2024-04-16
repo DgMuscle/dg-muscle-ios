@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PreviousRecordView: View {
     
-    @State var viewModel: PreviousRecordViewModel
+    @StateObject var viewModel: PreviousRecordViewModel
     
     var body: some View {
         ScrollView {

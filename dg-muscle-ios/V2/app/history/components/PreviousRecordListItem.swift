@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PreviousRecordListItem: View {
     
-    @State var exercise: ExerciseSet
+    var exercise: ExerciseSet
     
     var body: some View {
         VStack {

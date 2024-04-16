@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExerciseListItemView: View {
     
-    @State var exercise: Exercise
+    var exercise: Exercise
     
     var body: some View {
         HStack {

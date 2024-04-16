@@ -11,10 +11,10 @@ struct SettingListItemView: View {
     
     private let rectangleSize: CGFloat = 32
     
-    @State var systemImageName: String
-    @State var title: String
-    @State var description: String?
-    @State var color: Color
+    var systemImageName: String
+    var title: String
+    var description: String?
+    var color: Color
     
     var body: some View {
         HStack {
