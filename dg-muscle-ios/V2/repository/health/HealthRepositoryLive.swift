@@ -52,6 +52,10 @@ final class HealthRepositoryLive: HealthRepository {
         Task {
             _heights = try await fetchHeight()
         }
+        
+        Task {
+            try await requestAuthorization()
+        }
     }
     
     private func fetchWorkoutMetaDatasFromFile() -> [WorkoutMetaData] {
@@ -134,6 +138,26 @@ final class HealthRepositoryLive: HealthRepository {
                 }
             })
             store.execute(query)
+        }
+    }
+    
+    private func requestAuthorization() async throws {
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            store.requestAuthorization(toShare: nil, read: [
+                HKObjectType.workoutType(),
+                HKCharacteristicType(.biologicalSex),
+                HKCharacteristicType(.dateOfBirth),
+                HKCharacteristicType(.bloodType),
+                HKQuantityType(.height),
+                HKQuantityType(.bodyMass)
+            ]) { success, error in
+                if success {
+                    continuation.resume()
+                } else if let error {
+                    continuation.resume(throwing: error)
+                }
+            }
         }
     }
 }
