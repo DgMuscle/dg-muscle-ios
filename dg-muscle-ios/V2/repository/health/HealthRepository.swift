@@ -6,6 +6,8 @@
 //
 
 import Combine
+import HealthKit
+import Foundation
 
 protocol HealthRepository {
     var workoutMetaDatas: [WorkoutMetaData] { get }
@@ -14,4 +16,7 @@ protocol HealthRepository {
     var heights: [Height] { get }
     var heightsPublisher: AnyPublisher<[Height], Never> { get }
     var recentHeight: Height? { get }
+    var sex: HKBiologicalSexObject? { get }
+    var birthDateComponents: DateComponents? { get }
+    var bloodType: HKBloodTypeObject? { get }
 }

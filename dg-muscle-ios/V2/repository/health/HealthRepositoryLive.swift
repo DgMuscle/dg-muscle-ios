@@ -29,6 +29,18 @@ final class HealthRepositoryLive: HealthRepository {
         heights.sorted(by: { $0.startDate > $1.startDate }).first
     }
     
+    var sex: HKBiologicalSexObject? {
+        try? store.biologicalSex()
+    }
+    
+    var birthDateComponents: DateComponents? {
+        try? store.dateOfBirthComponents()
+    }
+    
+    var bloodType: HKBloodTypeObject? {
+        try? store.bloodType()
+    }
+    
     @Published private var _workoutMetaDatas: [WorkoutMetaData] = []
     @Published private var _heights: [Height] = []
     

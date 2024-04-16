@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import HealthKit
 
 final class HealthRepositoryTest: HealthRepository {
     var workoutMetaDatas: [WorkoutMetaData] {
@@ -29,6 +30,21 @@ final class HealthRepositoryTest: HealthRepository {
     
     var recentHeight: Height? {
         heights.sorted(by: { $0.startDate > $1.startDate }).first
+    }
+    
+    var sex: HKBiologicalSexObject? {
+        let sex = HKBiologicalSexObject()
+        return sex
+    }
+    var birthDateComponents: DateComponents? {
+        var dateComponents = DateComponents()
+        dateComponents.year = 1994
+        dateComponents.month = 10
+        dateComponents.day = 13
+        return dateComponents
+    }
+    var bloodType: HKBloodTypeObject? {
+        HKBloodTypeObject()
     }
     
     @Published private var _workoutMetaDatas: [WorkoutMetaData] = []
