@@ -2,9 +2,9 @@ name: iOS starter workflow
 
 on:
   push:
-    branches: ["main","staging"]
+    branches: ["main", "staging"]
   pull_request:
-    branches: ["main","staging"]
+    branches: ["main", "staging"]
 
 jobs:
   build:
@@ -21,7 +21,8 @@ jobs:
       - name: Set Default Scheme
         run: |
           scheme_list=$(xcodebuild -list -json | tr -d "\n")
-          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
+          # default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
+          default='dg-muscle-ios'
           echo $default | cat >default
           echo Using default scheme: $default
       - name: Build
