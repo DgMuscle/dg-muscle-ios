@@ -97,6 +97,8 @@ struct MyProfileView: View {
                 .padding(.top, 60)
                 .foregroundStyle(Color(uiColor: .label))
             }
+            
+            Spacer()
         }
         .padding()
     }

@@ -56,7 +56,8 @@ struct SettingV2View: View {
         }
         .padding()
         .scrollIndicators(.hidden)
-        
+        .navigationTitle("Setting")
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
