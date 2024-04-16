@@ -515,6 +515,9 @@
     "display name" : {
 
     },
+    "Display Name" : {
+
+    },
     "Do you want to add this exercise into you exercise list?" : {
 
     },
@@ -598,6 +601,9 @@
 
     },
     "Hello world" : {
+
+    },
+    "Hello, World!" : {
 
     },
     "History Form" : {

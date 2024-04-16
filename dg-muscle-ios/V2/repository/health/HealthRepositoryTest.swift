@@ -48,7 +48,7 @@ final class HealthRepositoryTest: HealthRepository {
     }
     
     @Published private var _workoutMetaDatas: [WorkoutMetaData] = []
-    @Published private var _heights: [Height] = []
+    @Published private var _heights: [Height] = [.init(unit: .centi, value: 171.2, startDate: Date())]
     
     init() {
         prepareMockData()

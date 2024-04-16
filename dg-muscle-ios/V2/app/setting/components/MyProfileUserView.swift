@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct MyProfileUserView: View {
-    var user: DGUser
+    @State var user: DGUser
     
     private let profileImageSize: CGFloat = 60
     let tapPhoto: (() -> ())?
@@ -27,6 +27,7 @@ struct MyProfileUserView: View {
                         .frame(width: profileImageSize, height: profileImageSize)
                         .clipShape(Circle())
                 }
+                .padding(.trailing)
                 
                 Button {
                     tapDisplayName?()
