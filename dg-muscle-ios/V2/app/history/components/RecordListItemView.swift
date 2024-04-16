@@ -10,7 +10,7 @@ import SwiftUI
 struct RecordListItemView: View {
     
     @Binding var record: Record
-    var exercise: Exercise? = nil
+    @State var exercise: Exercise? = nil
     
     let exerciseRepository: ExerciseRepositoryV2
     
