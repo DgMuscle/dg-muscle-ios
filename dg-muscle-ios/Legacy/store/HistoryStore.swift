@@ -13,7 +13,7 @@ import WidgetKit
 final class HistoryStore: ObservableObject {
     static let shared = HistoryStore()
     
-    @Published private(set) var histories: [ExerciseHistory] = HistoryRepository.shared.getCache()
+    @Published private(set) var histories: [ExerciseHistory] = []
     @Published private(set) var historySections: [ExerciseHistorySection] = []
     @Published private(set) var historyGrassData: [GrassData] = []
     @Published private(set) var metadatas: [WorkoutMetaData] = []
@@ -34,7 +34,7 @@ final class HistoryStore: ObservableObject {
                 } else {
                     self.histories.insert(history, at: 0)
                 }
-                try? HistoryRepository.shared.saveCache(histories: self.histories)
+//                try? HistoryRepository.shared.saveCache(histories: self.histories)
             }
         }
     }
@@ -49,25 +49,25 @@ final class HistoryStore: ObservableObject {
     
     func updateHistories() {
         Task {
-            let histories = try await HistoryRepository.shared.get(lastId: nil, limit: historyLimit)
-            canLoadMoreHistoryFromServer = histories.count >= historyLimit
-            DispatchQueue.main.async {
-                self.histories = histories
-            }
-            try HistoryRepository.shared.saveCache(histories: histories)
-            WidgetCenter.shared.reloadAllTimelines()
+//            let histories = try await HistoryRepository.shared.get(lastId: nil, limit: historyLimit)
+//            canLoadMoreHistoryFromServer = histories.count >= historyLimit
+//            DispatchQueue.main.async {
+//                self.histories = histories
+//            }
+//            try HistoryRepository.shared.saveCache(histories: histories)
+//            WidgetCenter.shared.reloadAllTimelines()
         }
     }
     
     func appendHistories() {
-        guard canLoadMoreHistoryFromServer else { return }
-        Task {
-            let histories = try await HistoryRepository.shared.get(lastId: self.histories.last?.id, limit: historyLimit)
-            canLoadMoreHistoryFromServer = histories.count >= historyLimit
-            DispatchQueue.main.async {
-                self.histories.append(contentsOf: histories)
-            }
-        }
+//        guard canLoadMoreHistoryFromServer else { return }
+//        Task {
+//            let histories = try await HistoryRepository.shared.get(lastId: self.histories.last?.id, limit: historyLimit)
+//            canLoadMoreHistoryFromServer = histories.count >= historyLimit
+//            DispatchQueue.main.async {
+//                self.histories.append(contentsOf: histories)
+//            }
+//        }
     }
     
     func set(metadatas: [WorkoutMetaData]) {

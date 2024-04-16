@@ -10,6 +10,8 @@
 		0208CF4B2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */; };
 		0208CF4D2BCCFC9D00FD973D /* heatMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4C2BCCFC9D00FD973D /* heatMapTests.swift */; };
 		0208CF4E2BCCFCCA00FD973D /* WorkoutHeatMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */; };
+		02D037F22BCE15A500238309 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
+		02D037F32BCE15AC00238309 /* UserRepositoryV2Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F092BCA9F340035EFF4 /* UserRepositoryV2Live.swift */; };
 		7003E7C42AC86C2D00AFE1C2 /* RecordFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003E7C32AC86C2D00AFE1C2 /* RecordFormView.swift */; };
 		700BB60B2AE513AF008B8132 /* MonthlyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700BB60A2AE513AF008B8132 /* MonthlyChartView.swift */; };
 		701042122AEE483400FAD52C /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701042112AEE483400FAD52C /* UserCache.swift */; };
@@ -60,7 +62,6 @@
 		702E218D2BCA615500147279 /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708508C32AF626990035BB9D /* HealthStore.swift */; };
 		702E218E2BCA615800147279 /* ExerciseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A74E892AC8433F00EA7A35 /* ExerciseStore.swift */; };
 		702E218F2BCA616700147279 /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4C52AD2875700852E2E /* FileManagerHelper.swift */; };
-		702E21902BCA617B00147279 /* HistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D52AC825DE007F0540 /* HistoryRepository.swift */; };
 		702E21922BCA61EC00147279 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
 		702E21932BCA620100147279 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5EF2AC015C900BC76D4 /* CustomError.swift */; };
 		702E21942BCA620D00147279 /* ExerciseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D92AC82866007F0540 /* ExerciseRepository.swift */; };
@@ -216,7 +217,6 @@
 		70CD21D52BCD6E1E009B72F3 /* WorkoutHeatMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD21D22BCD6881009B72F3 /* WorkoutHeatMapView.swift */; };
 		70CD21D72BCD6E33009B72F3 /* HistoryRepositoryV2Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756EF02BCA68700035EFF4 /* HistoryRepositoryV2Test.swift */; };
 		70CD21D82BCD6E3E009B72F3 /* HistoryRepositoryV2Impl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E216F2BCA55D600147279 /* HistoryRepositoryV2Impl.swift */; };
-		70CD21D92BCD6E63009B72F3 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
 		70CD21DA2BCD6E92009B72F3 /* UserRepositoryV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F042BCA9E640035EFF4 /* UserRepositoryV2.swift */; };
 		70CD21DB2BCD6E97009B72F3 /* UserRepositoryV2Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F092BCA9F340035EFF4 /* UserRepositoryV2Live.swift */; };
 		70CD21DC2BCD6EA9009B72F3 /* DGUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F072BCA9EA80035EFF4 /* DGUser.swift */; };
@@ -278,6 +278,7 @@
 /* Begin PBXFileReference section */
 		0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeatMapViewModel.swift; sourceTree = "<group>"; };
 		0208CF4C2BCCFC9D00FD973D /* heatMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = heatMapTests.swift; sourceTree = "<group>"; };
+		02D037F12BCE151900238309 /* dg-muscle-ios.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dg-muscle-ios.xctestplan"; sourceTree = "<group>"; };
 		7003E7C32AC86C2D00AFE1C2 /* RecordFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFormView.swift; sourceTree = "<group>"; };
 		700BB60A2AE513AF008B8132 /* MonthlyChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyChartView.swift; sourceTree = "<group>"; };
 		701042112AEE483400FAD52C /* UserCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCache.swift; sourceTree = "<group>"; };
@@ -1039,6 +1040,7 @@
 		70E555F32ABF010C006D4DA0 = {
 			isa = PBXGroup;
 			children = (
+				02D037F12BCE151900238309 /* dg-muscle-ios.xctestplan */,
 				70240BFD2ADC201C00B87A79 /* dg-muscle-ios-widgetExtension.entitlements */,
 				70E555FE2ABF010C006D4DA0 /* dg-muscle-ios */,
 				7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */,
@@ -1291,7 +1293,6 @@
 				70CD21CD2BCD666C009B72F3 /* ExerciseSet.swift in Sources */,
 				70CD21D72BCD6E33009B72F3 /* HistoryRepositoryV2Test.swift in Sources */,
 				70CD21CE2BCD6678009B72F3 /* Exercise.swift in Sources */,
-				70CD21D92BCD6E63009B72F3 /* APIClient.swift in Sources */,
 				70240BEE2ADC1FF800B87A79 /* dg_muscle_ios_widgetLiveActivity.swift in Sources */,
 				70CD21DA2BCD6E92009B72F3 /* UserRepositoryV2.swift in Sources */,
 				70240BF22ADC1FF800B87A79 /* AppIntent.swift in Sources */,
@@ -1299,6 +1300,7 @@
 				70CD21D52BCD6E1E009B72F3 /* WorkoutHeatMapView.swift in Sources */,
 				70CD21D42BCD6E1B009B72F3 /* HeatMapColumnView.swift in Sources */,
 				70240BF02ADC1FF800B87A79 /* dg_muscle_ios_widget.swift in Sources */,
+				02D037F22BCE15A500238309 /* APIClient.swift in Sources */,
 				70CD21CC2BCD665F009B72F3 /* CreatedAt.swift in Sources */,
 				70CD21C82BCD6633009B72F3 /* HistoryRepositoryV2.swift in Sources */,
 				70CD21DD2BCD6EB3009B72F3 /* CustomError.swift in Sources */,
@@ -1326,6 +1328,7 @@
 				70756F372BCAC8220035EFF4 /* ExerciseRepositoryV2.swift in Sources */,
 				702E217C2BCA5E6000147279 /* ExerciseSet.swift in Sources */,
 				702E21872BCA5E8900147279 /* QuickAction.swift in Sources */,
+				02D037F32BCE15AC00238309 /* UserRepositoryV2Live.swift in Sources */,
 				702E21952BCA621800147279 /* GrassView.swift in Sources */,
 				702E217B2BCA5E5900147279 /* ExerciseHistory.swift in Sources */,
 				70756EEF2BCA68530035EFF4 /* HealthRepositoryTest.swift in Sources */,
@@ -1353,7 +1356,6 @@
 				702E21932BCA620100147279 /* CustomError.swift in Sources */,
 				702E21862BCA5E8700147279 /* WorkoutMetaData.swift in Sources */,
 				702E217A2BCA5E4C00147279 /* ExerciseHistorySection.swift in Sources */,
-				702E21902BCA617B00147279 /* HistoryRepository.swift in Sources */,
 				0208CF4D2BCCFC9D00FD973D /* heatMapTests.swift in Sources */,
 				702E21782BCA5E2A00147279 /* HistoryViewModel.swift in Sources */,
 				702E218D2BCA615500147279 /* HealthStore.swift in Sources */,
