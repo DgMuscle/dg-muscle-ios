@@ -23,6 +23,9 @@ struct HistorySectionView: View {
                     .fontWeight(.black)
                 Spacer()
             }
+            .scrollTransition { effect, phase in
+                effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
+            }
             
             ForEach(section.histories) { history in
                 
