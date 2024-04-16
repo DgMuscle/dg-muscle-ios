@@ -16,7 +16,7 @@ struct SettingV2View: View {
         ScrollView {
             if let user = viewModel.user {
                 Button {
-                    print("Go to Edit Profile screen")
+                    paths.append(MainNavigation(name: .profile))
                 } label: {
                     HStack {
                         UserBoxView(user: user, descriptionLabel: "Configure Your Profile")
@@ -56,7 +56,8 @@ struct SettingV2View: View {
         }
         .padding()
         .scrollIndicators(.hidden)
-        
+        .navigationTitle("Setting")
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 

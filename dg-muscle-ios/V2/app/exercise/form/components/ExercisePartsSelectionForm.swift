@@ -14,7 +14,7 @@ struct ExercisePartsSelectionForm: View {
     var body: some View {
         VStack {
             ForEach(viewModel.parts, id: \.self) { part in
-                ExercisePartSecltionItem(part: part.part, selected: part.selected) { part in
+                ExercisePartSelectionItem(part: part.part, selected: part.selected) { part in
                     viewModel.selected(part: part)
                 }
             }

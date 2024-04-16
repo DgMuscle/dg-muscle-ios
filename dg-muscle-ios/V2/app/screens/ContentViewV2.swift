@@ -33,6 +33,9 @@ struct ContentViewV2: View {
                     case .setting:
                         SettingV2View(viewModel: SettingV2ViewModel(userRepository: userRepository),
                                       paths: $paths)
+                    case .profile:
+                        MyProfileView(viewModel: .init(userRepository: userRepository,
+                                                       healthRepository: healthRepository))
                     }
                 }
                 .navigationDestination(for: HistoryNavigation.self, destination: { navigation in

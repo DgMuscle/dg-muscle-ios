@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HistoryListItemView: View {
     
-    @State var history: ExerciseHistorySection.History
+    var history: ExerciseHistorySection.History
     let exerciseRepository: ExerciseRepositoryV2
     let healthRepository: HealthRepository
     

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HistoryCardView: View {
     
-    @State var dateString: String
+    var dateString: String
     @Binding var duration: String
     
     let addAction: (() -> ())?

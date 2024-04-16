@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ExerciseSimpleInfoView: View {
     
-    @State var name: String
-    @State var parts: [Exercise.Part]
+    var name: String
+    var parts: [Exercise.Part]
     @Binding var favorite: Bool
     
     var body: some View {

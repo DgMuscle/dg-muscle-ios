@@ -12,6 +12,7 @@ struct MainNavigation: Identifiable, Hashable {
     
     enum Name: String {
         case setting
+        case profile
     }
     
     let name: Name

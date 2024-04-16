@@ -14,54 +14,56 @@ struct RecordFormV2View: View {
     @State private var isPresentPreviousSheet: Bool = false
     
     var body: some View {
-        VStack(alignment: .leading) {
-            if let exercise = viewModel.exercise {
-                HStack {
-                    Text("You are currently doing \(exercise.name)")
-                        .font(.title)
-                        .fontWeight(.black)
-                    Spacer()
-                }
-            }
-            
-            Text("Current sets count is \(viewModel.sets.count)")
-                .fontWeight(.bold)
-                .italic()
-            
-            Text("Current workout volume are \(Int(viewModel.currentVolume))")
-                .fontWeight(.bold)
-                .italic()
-            
-            HStack {
-                Button {
-                    isPresentSetForm.toggle()
-                } label: {
+        VStack {
+            VStack(alignment: .leading) {
+                if let exercise = viewModel.exercise {
                     HStack {
-                        Image(systemName: "dumbbell")
-                        Text("ADD NEW SET")
+                        Text("You are currently doing \(exercise.name)")
+                            .font(.title)
+                            .fontWeight(.black)
+                        Spacer()
                     }
-                    .fontWeight(.black)
-                    .foregroundStyle(Color(uiColor: .label))
-                    .padding(.top)
                 }
                 
-                Spacer()
+                Text("Current sets count is \(viewModel.sets.count)")
+                    .fontWeight(.bold)
+                    .italic()
                 
-                if viewModel.previousDate != nil && viewModel.previousRecord != nil {
+                Text("Current workout volume are \(Int(viewModel.currentVolume))")
+                    .fontWeight(.bold)
+                    .italic()
+                
+                HStack {
                     Button {
-                        isPresentPreviousSheet.toggle()
+                        isPresentSetForm.toggle()
                     } label: {
                         HStack {
-                            Image(systemName: "doc")
-                            Text("PREVIOUS")
+                            Image(systemName: "dumbbell")
+                            Text("ADD NEW SET")
                         }
                         .fontWeight(.black)
                         .foregroundStyle(Color(uiColor: .label))
                         .padding(.top)
                     }
+                    
+                    Spacer()
+                    
+                    if viewModel.previousDate != nil && viewModel.previousRecord != nil {
+                        Button {
+                            isPresentPreviousSheet.toggle()
+                        } label: {
+                            HStack {
+                                Image(systemName: "doc")
+                                Text("PREVIOUS")
+                            }
+                            .fontWeight(.black)
+                            .foregroundStyle(Color(uiColor: .label))
+                            .padding(.top)
+                        }
+                    }
                 }
-                
             }
+            .padding(.horizontal)
             
             List {
                 ForEach($viewModel.sets) { set in
@@ -72,7 +74,6 @@ struct RecordFormV2View: View {
             .scrollIndicators(.hidden)
             
         }
-        .padding()
         .sheet(isPresented: $isPresentSetForm, content: {
             if let lastSet = viewModel.sets.last {
                 SetFormV2View(viewModel: .init(unit: lastSet.unit,

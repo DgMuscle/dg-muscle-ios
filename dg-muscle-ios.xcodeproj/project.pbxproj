@@ -13,6 +13,8 @@
 		0208CF4E2BCCFCCA00FD973D /* WorkoutHeatMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */; };
 		02D037F22BCE15A500238309 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
 		02D037F32BCE15AC00238309 /* UserRepositoryV2Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F092BCA9F340035EFF4 /* UserRepositoryV2Live.swift */; };
+		02D212972BCE6D410088F93B /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D212962BCE6D410088F93B /* MyProfileView.swift */; };
+		02D212992BCE6DAF0088F93B /* MyProfileUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D212982BCE6DAF0088F93B /* MyProfileUserView.swift */; };
 		7003E7C42AC86C2D00AFE1C2 /* RecordFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003E7C32AC86C2D00AFE1C2 /* RecordFormView.swift */; };
 		700BB60B2AE513AF008B8132 /* MonthlyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700BB60A2AE513AF008B8132 /* MonthlyChartView.swift */; };
 		701042122AEE483400FAD52C /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701042112AEE483400FAD52C /* UserCache.swift */; };
@@ -71,7 +73,7 @@
 		703A97AC2BCB6EBF002C0843 /* ExerciseFormStep1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97AB2BCB6EBF002C0843 /* ExerciseFormStep1View.swift */; };
 		703A97AE2BCB6EFB002C0843 /* ExerciseFormStep1ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97AD2BCB6EFB002C0843 /* ExerciseFormStep1ViewModel.swift */; };
 		703A97B12BCB72EA002C0843 /* ExercisePartsSelectionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97B02BCB72EA002C0843 /* ExercisePartsSelectionForm.swift */; };
-		703A97B32BCB734D002C0843 /* ExercisePartSecltionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97B22BCB734D002C0843 /* ExercisePartSecltionItem.swift */; };
+		703A97B32BCB734D002C0843 /* ExercisePartSelectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97B22BCB734D002C0843 /* ExercisePartSelectionItem.swift */; };
 		703A97B52BCB7508002C0843 /* ExercisePartsSelectionFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97B42BCB7508002C0843 /* ExercisePartsSelectionFormModel.swift */; };
 		703A97B92BCB81AB002C0843 /* ExerciseFormStep2ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97B82BCB81AB002C0843 /* ExerciseFormStep2ViewModel.swift */; };
 		703A97BB2BCB8417002C0843 /* ExerciseFormStep2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703A97BA2BCB8417002C0843 /* ExerciseFormStep2View.swift */; };
@@ -157,6 +159,7 @@
 		7083E6C92ABF0F45007D43CE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6C82ABF0F45007D43CE /* FirebaseAuth */; };
 		708508C42AF626990035BB9D /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708508C32AF626990035BB9D /* HealthStore.swift */; };
 		7086C2F72B924B6700D034B0 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7086C2F62B924B6700D034B0 /* ImageSaver.swift */; };
+		708785142BCEC16100930B0D /* MyProfileListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708785132BCEC16100930B0D /* MyProfileListItemView.swift */; };
 		70884B912ADBB9AA001FA252 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884B902ADBB9AA001FA252 /* PieChartView.swift */; };
 		708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4C52AD2875700852E2E /* FileManagerHelper.swift */; };
 		708AF2B62B36D38400658D6B /* WidgetBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AF2B52B36D38400658D6B /* WidgetBridge.swift */; };
@@ -281,6 +284,8 @@
 		0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeatMapViewModel.swift; sourceTree = "<group>"; };
 		0208CF4C2BCCFC9D00FD973D /* heatMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = heatMapTests.swift; sourceTree = "<group>"; };
 		02D037F12BCE151900238309 /* dg-muscle-ios.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dg-muscle-ios.xctestplan"; sourceTree = "<group>"; };
+		02D212962BCE6D410088F93B /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		02D212982BCE6DAF0088F93B /* MyProfileUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileUserView.swift; sourceTree = "<group>"; };
 		7003E7C32AC86C2D00AFE1C2 /* RecordFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFormView.swift; sourceTree = "<group>"; };
 		700BB60A2AE513AF008B8132 /* MonthlyChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyChartView.swift; sourceTree = "<group>"; };
 		701042112AEE483400FAD52C /* UserCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCache.swift; sourceTree = "<group>"; };
@@ -311,7 +316,7 @@
 		703A97AB2BCB6EBF002C0843 /* ExerciseFormStep1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormStep1View.swift; sourceTree = "<group>"; };
 		703A97AD2BCB6EFB002C0843 /* ExerciseFormStep1ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormStep1ViewModel.swift; sourceTree = "<group>"; };
 		703A97B02BCB72EA002C0843 /* ExercisePartsSelectionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePartsSelectionForm.swift; sourceTree = "<group>"; };
-		703A97B22BCB734D002C0843 /* ExercisePartSecltionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePartSecltionItem.swift; sourceTree = "<group>"; };
+		703A97B22BCB734D002C0843 /* ExercisePartSelectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePartSelectionItem.swift; sourceTree = "<group>"; };
 		703A97B42BCB7508002C0843 /* ExercisePartsSelectionFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePartsSelectionFormModel.swift; sourceTree = "<group>"; };
 		703A97B82BCB81AB002C0843 /* ExerciseFormStep2ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormStep2ViewModel.swift; sourceTree = "<group>"; };
 		703A97BA2BCB8417002C0843 /* ExerciseFormStep2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormStep2View.swift; sourceTree = "<group>"; };
@@ -381,6 +386,7 @@
 		708508C22AF625EE0035BB9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		708508C32AF626990035BB9D /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		7086C2F62B924B6700D034B0 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		708785132BCEC16100930B0D /* MyProfileListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileListItemView.swift; sourceTree = "<group>"; };
 		70884B902ADBB9AA001FA252 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		708AF2B52B36D38400658D6B /* WidgetBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBridge.swift; sourceTree = "<group>"; };
 		708F0A632B414D34001AF089 /* leg_extension.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = leg_extension.gif; sourceTree = "<group>"; };
@@ -502,6 +508,7 @@
 		02070F082BCE521900518744 /* profile */ = {
 			isa = PBXGroup;
 			children = (
+				02D212962BCE6D410088F93B /* MyProfileView.swift */,
 				02070F092BCE526B00518744 /* MyProfileViewModel.swift */,
 			);
 			path = profile;
@@ -594,7 +601,7 @@
 		703A97AF2BCB713B002C0843 /* components */ = {
 			isa = PBXGroup;
 			children = (
-				703A97B22BCB734D002C0843 /* ExercisePartSecltionItem.swift */,
+				703A97B22BCB734D002C0843 /* ExercisePartSelectionItem.swift */,
 				703A97B02BCB72EA002C0843 /* ExercisePartsSelectionForm.swift */,
 				703A97B42BCB7508002C0843 /* ExercisePartsSelectionFormModel.swift */,
 				703A97BE2BCB8608002C0843 /* ExerciseSimpleInfoView.swift */,
@@ -827,6 +834,8 @@
 			isa = PBXGroup;
 			children = (
 				70756F212BCABBE80035EFF4 /* ExerciseListSectionView.swift */,
+				708785132BCEC16100930B0D /* MyProfileListItemView.swift */,
+				02D212982BCE6DAF0088F93B /* MyProfileUserView.swift */,
 				70756F1F2BCAB95F0035EFF4 /* SettingListItemView.swift */,
 			);
 			path = components;
@@ -1404,6 +1413,7 @@
 				70756F082BCA9EA80035EFF4 /* DGUser.swift in Sources */,
 				70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */,
 				708F0A7A2B414D4A001AF089 /* PushUpInfoView.swift in Sources */,
+				708785142BCEC16100930B0D /* MyProfileListItemView.swift in Sources */,
 				70756F282BCAC1D60035EFF4 /* ExerciseListV2View.swift in Sources */,
 				70BDDB522B947B01002FCEEA /* FullRecordsView_SetView.swift in Sources */,
 				707BBF1A2AF7D39700A8ABD2 /* BodyMass.swift in Sources */,
@@ -1419,6 +1429,7 @@
 				70F838AD2AC7FFB5009725EF /* ExerciseDiaryView.swift in Sources */,
 				70F838A82AC7FEB6009725EF /* Record.swift in Sources */,
 				706760B42BCBEB3F00649BF3 /* RecordListItemView.swift in Sources */,
+				02D212992BCE6DAF0088F93B /* MyProfileUserView.swift in Sources */,
 				70C144D82AC82807007F0540 /* DefaultResponse.swift in Sources */,
 				70F0E4012AE3BD5800AFFCF7 /* ChartView.swift in Sources */,
 				70756EFB2BCA6C4B0035EFF4 /* ExerciseRepositoryV2Live.swift in Sources */,
@@ -1434,6 +1445,7 @@
 				707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */,
 				70756F1A2BCAB5D40035EFF4 /* SettingV2View.swift in Sources */,
 				70756F112BCAA7C80035EFF4 /* ContentViewV2.swift in Sources */,
+				02D212972BCE6D410088F93B /* MyProfileView.swift in Sources */,
 				70756F222BCABBE80035EFF4 /* ExerciseListSectionView.swift in Sources */,
 				70A708D92B13315A0013A237 /* MemoView.swift in Sources */,
 				70BDDB512B947B01002FCEEA /* FullRecordsView.swift in Sources */,
@@ -1467,7 +1479,7 @@
 				70756F202BCAB95F0035EFF4 /* SettingListItemView.swift in Sources */,
 				708F0A812B414D4A001AF089 /* ExerciseGuideListView.swift in Sources */,
 				70BFFF142B7747E600C8A8C8 /* GuideView.swift in Sources */,
-				703A97B32BCB734D002C0843 /* ExercisePartSecltionItem.swift in Sources */,
+				703A97B32BCB734D002C0843 /* ExercisePartSelectionItem.swift in Sources */,
 				70BDDB4F2B947B01002FCEEA /* FullRecordsView_RecordView.swift in Sources */,
 				70AC465F2ABFF82D00BFE46D /* SettingView.swift in Sources */,
 				7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */,

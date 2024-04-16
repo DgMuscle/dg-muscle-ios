@@ -419,6 +419,9 @@
     "blood type" : {
 
     },
+    "Can't find user info" : {
+
+    },
     "cm" : {
 
     },
@@ -513,6 +516,9 @@
 
     },
     "display name" : {
+
+    },
+    "Display Name" : {
 
     },
     "Do you want to add this exercise into you exercise list?" : {
@@ -687,6 +693,9 @@
     "One moment, please." : {
 
     },
+    "OPEN" : {
+
+    },
     "Part" : {
 
     },
@@ -800,6 +809,9 @@
 
     },
     "Sets count is %lld" : {
+
+    },
+    "Setting" : {
 
     },
     "sex" : {
@@ -973,6 +985,9 @@
           }
         }
       }
+    },
+    "You can update your health data in Apple Health" : {
+
     },
     "you exercised" : {
 
