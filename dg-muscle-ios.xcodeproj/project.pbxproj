@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02070F0A2BCE526B00518744 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02070F092BCE526B00518744 /* MyProfileViewModel.swift */; };
 		0208CF4B2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */; };
 		0208CF4D2BCCFC9D00FD973D /* heatMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4C2BCCFC9D00FD973D /* heatMapTests.swift */; };
 		0208CF4E2BCCFCCA00FD973D /* WorkoutHeatMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */; };
@@ -276,6 +277,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		02070F092BCE526B00518744 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
 		0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeatMapViewModel.swift; sourceTree = "<group>"; };
 		0208CF4C2BCCFC9D00FD973D /* heatMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = heatMapTests.swift; sourceTree = "<group>"; };
 		02D037F12BCE151900238309 /* dg-muscle-ios.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dg-muscle-ios.xctestplan"; sourceTree = "<group>"; };
@@ -488,6 +490,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02070F072BCE521100518744 /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				70756F192BCAB5D40035EFF4 /* SettingV2View.swift */,
+				70756F1B2BCAB6D80035EFF4 /* SettingV2ViewModel.swift */,
+			);
+			path = setting;
+			sourceTree = "<group>";
+		};
+		02070F082BCE521900518744 /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				02070F092BCE526B00518744 /* MyProfileViewModel.swift */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
 		0208CF492BCCF9FF00FD973D /* WorkoutHeatMap */ = {
 			isa = PBXGroup;
 			children = (
@@ -787,8 +806,8 @@
 		70756F182BCAB5CE0035EFF4 /* screen */ = {
 			isa = PBXGroup;
 			children = (
-				70756F192BCAB5D40035EFF4 /* SettingV2View.swift */,
-				70756F1B2BCAB6D80035EFF4 /* SettingV2ViewModel.swift */,
+				02070F082BCE521900518744 /* profile */,
+				02070F072BCE521100518744 /* setting */,
 			);
 			path = screen;
 			sourceTree = "<group>";
@@ -1375,6 +1394,7 @@
 				703A97CB2BCB98F2002C0843 /* EditExerciseView.swift in Sources */,
 				703A97D12BCBB4E9002C0843 /* WorkoutRectangleButton.swift in Sources */,
 				708F0A792B414D4A001AF089 /* DeadliftInfoView.swift in Sources */,
+				02070F0A2BCE526B00518744 /* MyProfileViewModel.swift in Sources */,
 				706760C02BCC0F4A00649BF3 /* PreviousRecordListItem.swift in Sources */,
 				70C144DA2AC82866007F0540 /* ExerciseRepository.swift in Sources */,
 				708AF2B62B36D38400658D6B /* WidgetBridge.swift in Sources */,

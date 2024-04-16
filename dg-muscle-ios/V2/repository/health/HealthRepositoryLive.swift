@@ -24,6 +24,7 @@ final class HealthRepositoryLive: HealthRepository {
     }
     
     @Published private var _workoutMetaDatas: [WorkoutMetaData] = []
+    
     private var _bodyMasses: [BodyMass] = []
     
     private let store = HKHealthStore()
