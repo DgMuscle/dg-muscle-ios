@@ -10,7 +10,7 @@ import Kingfisher
 
 struct UserBoxView: View {
     
-    @State var user: DGUser
+    var user: DGUser
     @State private var isAnimating = false
     
     let descriptionLabel: String

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct HeatMapColumnView: View {
     
-    @State var data: WorkoutHeatMapViewModel.Data
-    @State var maxVolume: Double
+    var data: WorkoutHeatMapViewModel.Data
+    var maxVolume: Double
     
     private let size: CGFloat = 15
     

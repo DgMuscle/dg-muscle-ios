@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BannerErrorMessageView: View {
     
-    @State var errorMessage: String
+    var errorMessage: String
     
     var body: some View {
         HStack {

@@ -1,5 +1,5 @@
 //
-//  ExercisePartSecltionItem.swift
+//  ExercisePartSelectionItem.swift
 //  dg-muscle-ios
 //
 //  Created by 신동규 on 4/14/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ExercisePartSecltionItem: View {
+struct ExercisePartSelectionItem: View {
     
     @State var part: Exercise.Part
     @State var selected: Bool
@@ -40,8 +40,8 @@ struct ExercisePartSecltionItem: View {
 
 #Preview {
     return VStack {
-        ExercisePartSecltionItem(part: .leg, selected: true, action: nil)
-        ExercisePartSecltionItem(part: .leg, selected: false, action: nil)
+        ExercisePartSelectionItem(part: .leg, selected: true, action: nil)
+        ExercisePartSelectionItem(part: .leg, selected: false, action: nil)
     }
     .preferredColorScheme(.dark)
 }
