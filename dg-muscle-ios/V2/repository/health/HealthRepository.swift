@@ -11,4 +11,7 @@ protocol HealthRepository {
     var workoutMetaDatas: [WorkoutMetaData] { get }
     var workoutMetaDatasPublisher: AnyPublisher<[WorkoutMetaData], Never> { get }
     var recentBodyMass: BodyMass? { get }
+    var heights: [Height] { get }
+    var heightsPublisher: AnyPublisher<[Height], Never> { get }
+    var recentHeight: Height? { get }
 }

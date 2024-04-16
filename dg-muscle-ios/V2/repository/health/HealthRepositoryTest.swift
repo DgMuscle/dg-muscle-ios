@@ -21,7 +21,18 @@ final class HealthRepositoryTest: HealthRepository {
         BodyMass(unit: .kg, value: 69, startDate: Date())
     }
     
-    @Published var _workoutMetaDatas: [WorkoutMetaData] = []
+    var heights: [Height] { _heights }
+    
+    var heightsPublisher: AnyPublisher<[Height], Never> {
+        $_heights.eraseToAnyPublisher()
+    }
+    
+    var recentHeight: Height? {
+        heights.sorted(by: { $0.startDate > $1.startDate }).first
+    }
+    
+    @Published private var _workoutMetaDatas: [WorkoutMetaData] = []
+    @Published private var _heights: [Height] = []
     
     init() {
         prepareMockData()

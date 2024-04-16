@@ -11,19 +11,26 @@ import HealthKit
 final class HealthRepositoryLive: HealthRepository {
     static let shared = HealthRepositoryLive()
     
-    var workoutMetaDatas: [WorkoutMetaData] {
-        _workoutMetaDatas
-    }
+    var workoutMetaDatas: [WorkoutMetaData] { _workoutMetaDatas }
     
     var workoutMetaDatasPublisher: AnyPublisher<[WorkoutMetaData], Never> {
         $_workoutMetaDatas.eraseToAnyPublisher()
     }
     
-    var recentBodyMass: BodyMass? {
-        _bodyMasses.sorted(by: { $0.startDate > $1.startDate }).first
+    var recentBodyMass: BodyMass? { _bodyMasses.sorted(by: { $0.startDate > $1.startDate }).first }
+    
+    var heights: [Height] { _heights }
+    
+    var heightsPublisher: AnyPublisher<[Height], Never> {
+        $_heights.eraseToAnyPublisher()
+    }
+    
+    var recentHeight: Height? {
+        heights.sorted(by: { $0.startDate > $1.startDate }).first
     }
     
     @Published private var _workoutMetaDatas: [WorkoutMetaData] = []
+    @Published private var _heights: [Height] = []
     
     private var _bodyMasses: [BodyMass] = []
     
@@ -40,6 +47,10 @@ final class HealthRepositoryLive: HealthRepository {
         
         Task {
             _bodyMasses = try await fetchMass()
+        }
+        
+        Task {
+            _heights = try await fetchHeight()
         }
     }
     
@@ -99,6 +110,17 @@ final class HealthRepositoryLive: HealthRepository {
             BodyMass(unit: .kg,
                      value: $0.quantity.doubleValue(for: .init(from: "kg")),
                      startDate: $0.startDate)
+        })
+    }
+    
+    private func fetchHeight() async throws -> [Height] {
+        let samples = try await fetchSamples(type: HKQuantityType(.height))
+        let quantitySamples = samples.compactMap({ $0 as? HKQuantitySample })
+        
+        return quantitySamples.map({
+            Height(unit: .centi,
+                   value: $0.quantity.doubleValue(for: .meterUnit(with: .centi)),
+                   startDate: $0.startDate)
         })
     }
     
