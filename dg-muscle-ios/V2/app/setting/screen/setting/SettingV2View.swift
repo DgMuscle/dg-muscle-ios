@@ -37,7 +37,7 @@ struct SettingV2View: View {
             
             VStack(spacing: 12) {
                 Button {
-                    print("logout")
+                    viewModel.logout()
                 } label: {
                     SettingListItemView(systemImageName: "figure.run",
                                         title: "Logout",
