@@ -12,9 +12,9 @@ import PhotosUI
 
 final class UpdateProfilePhotoViewModel: ObservableObject {
     @Published var photosPickerItem: PhotosPickerItem?
-    @Published private(set) var uiimage: UIImage?
-    @Published private(set) var errorMessage: String?
-    @Published private(set) var loading: Bool = false
+    @Published var uiimage: UIImage?
+    @Published var errorMessage: String?
+    @Published var loading: Bool = false
     
     let userRepository: UserRepositoryV2
     let fileUploader: FileUploaderInterface
@@ -46,6 +46,17 @@ final class UpdateProfilePhotoViewModel: ObservableObject {
             loading = false
         }
         
+        // Delete Task
+        Task {
+            guard let previousPhotoURLString = userRepository.user?.photoURL?.absoluteString else { return }
+            guard let path = URL(string: previousPhotoURLString)?.lastPathComponent else { return }
+            try await fileUploader.deleteImage(path: path)
+        }
+    }
+    
+    @MainActor
+    func delete() {
+        uiimage = nil
         // Delete Task
         Task {
             guard let previousPhotoURLString = userRepository.user?.photoURL?.absoluteString else { return }
