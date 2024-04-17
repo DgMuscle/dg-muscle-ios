@@ -53,8 +53,17 @@ struct HistoryFormV2View: View {
         .sheet(isPresented: $isPresentSelectSheet, content: {
             SelectExerciseV2View(exerciseRepository: exerciseRepository) { exercise in
                 addNewRecord(exercise: exercise)
+            } addAction: {
+                isPresentSelectSheet.toggle()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    addAction()
+                }
             }
         })
+    }
+    
+    private func addAction() {
+        paths.append(ExerciseNavigation(name: .manage))
     }
     
     private func addNewRecord(exercise: Exercise) {
