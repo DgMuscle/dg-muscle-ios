@@ -14,6 +14,8 @@
 		024785652BCFBA9B00C9DF4F /* AppleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024785642BCFBA9B00C9DF4F /* AppleAuth.swift */; };
 		024785682BCFBC5A00C9DF4F /* AppleAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024785672BCFBC5A00C9DF4F /* AppleAuthViewModel.swift */; };
 		0247856C2BCFBCC700C9DF4F /* AppleAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247856B2BCFBCC700C9DF4F /* AppleAuthView.swift */; };
+		0247856D2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
+		0247856E2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
 		02D037F22BCE15A500238309 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
 		02D037F32BCE15AC00238309 /* UserRepositoryV2Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F092BCA9F340035EFF4 /* UserRepositoryV2Live.swift */; };
 		02D212972BCE6D410088F93B /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D212962BCE6D410088F93B /* MyProfileView.swift */; };
@@ -1357,6 +1359,7 @@
 				70CD21CC2BCD665F009B72F3 /* CreatedAt.swift in Sources */,
 				70CD21C82BCD6633009B72F3 /* HistoryRepositoryV2.swift in Sources */,
 				70CD21DD2BCD6EB3009B72F3 /* CustomError.swift in Sources */,
+				0247856D2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */,
 				708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */,
 				70CD21DC2BCD6EA9009B72F3 /* DGUser.swift in Sources */,
 				70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */,
@@ -1379,6 +1382,7 @@
 				70756F352BCAC7BA0035EFF4 /* exerciseTests.swift in Sources */,
 				702E21882BCA5E8E00147279 /* HistoryRepositoryV2.swift in Sources */,
 				70756F372BCAC8220035EFF4 /* ExerciseRepositoryV2.swift in Sources */,
+				0247856E2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */,
 				702E217C2BCA5E6000147279 /* ExerciseSet.swift in Sources */,
 				702E21872BCA5E8900147279 /* QuickAction.swift in Sources */,
 				02D037F32BCE15AC00238309 /* UserRepositoryV2Live.swift in Sources */,
