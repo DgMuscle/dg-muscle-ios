@@ -36,19 +36,21 @@ struct SettingV2View: View {
             
             
             VStack(spacing: 12) {
-                HStack {
-                    Button("logout") {
-                        print("logout")
-                    }
-                    Spacer()
+                Button {
+                    print("logout")
+                } label: {
+                    SettingListItemView(systemImageName: "figure.run",
+                                        title: "Logout",
+                                        color: .green)
                 }
+                .padding(.bottom, 20)
                 
-                HStack {
-                    Button("remove account") {
-                        print("remove account")
-                    }
-                    .foregroundStyle(.red)
-                    Spacer()
+                Button {
+                    print("remove Account")
+                } label: {
+                    SettingListItemView(systemImageName: "trash",
+                                        title: "Remove Account",
+                                        color: .red)
                 }
             }
             .padding(.vertical, 60)
