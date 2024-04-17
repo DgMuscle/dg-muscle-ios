@@ -11,6 +11,13 @@
 		0208CF4B2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */; };
 		0208CF4D2BCCFC9D00FD973D /* heatMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4C2BCCFC9D00FD973D /* heatMapTests.swift */; };
 		0208CF4E2BCCFCCA00FD973D /* WorkoutHeatMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */; };
+		024785652BCFBA9B00C9DF4F /* AppleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024785642BCFBA9B00C9DF4F /* AppleAuth.swift */; };
+		024785682BCFBC5A00C9DF4F /* AppleAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024785672BCFBC5A00C9DF4F /* AppleAuthViewModel.swift */; };
+		0247856C2BCFBCC700C9DF4F /* AppleAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247856B2BCFBCC700C9DF4F /* AppleAuthView.swift */; };
+		0247856D2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
+		0247856E2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
+		02CA6D802BCFCD1400A8746B /* ContentViewV2Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA6D7F2BCFCD1400A8746B /* ContentViewV2Model.swift */; };
+		02CA6D822BCFCDEF00A8746B /* AppleAuthTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA6D812BCFCDEF00A8746B /* AppleAuthTest.swift */; };
 		02D037F22BCE15A500238309 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
 		02D037F32BCE15AC00238309 /* UserRepositoryV2Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F092BCA9F340035EFF4 /* UserRepositoryV2Live.swift */; };
 		02D212972BCE6D410088F93B /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D212962BCE6D410088F93B /* MyProfileView.swift */; };
@@ -283,6 +290,11 @@
 		02070F092BCE526B00518744 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
 		0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeatMapViewModel.swift; sourceTree = "<group>"; };
 		0208CF4C2BCCFC9D00FD973D /* heatMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = heatMapTests.swift; sourceTree = "<group>"; };
+		024785642BCFBA9B00C9DF4F /* AppleAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuth.swift; sourceTree = "<group>"; };
+		024785672BCFBC5A00C9DF4F /* AppleAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthViewModel.swift; sourceTree = "<group>"; };
+		0247856B2BCFBCC700C9DF4F /* AppleAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthView.swift; sourceTree = "<group>"; };
+		02CA6D7F2BCFCD1400A8746B /* ContentViewV2Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewV2Model.swift; sourceTree = "<group>"; };
+		02CA6D812BCFCDEF00A8746B /* AppleAuthTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthTest.swift; sourceTree = "<group>"; };
 		02D037F12BCE151900238309 /* dg-muscle-ios.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dg-muscle-ios.xctestplan"; sourceTree = "<group>"; };
 		02D212962BCE6D410088F93B /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		02D212982BCE6DAF0088F93B /* MyProfileUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileUserView.swift; sourceTree = "<group>"; };
@@ -523,6 +535,25 @@
 				0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */,
 			);
 			path = WorkoutHeatMap;
+			sourceTree = "<group>";
+		};
+		024785632BCFBA8800C9DF4F /* AppleAuth */ = {
+			isa = PBXGroup;
+			children = (
+				024785642BCFBA9B00C9DF4F /* AppleAuth.swift */,
+				7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */,
+				02CA6D812BCFCDEF00A8746B /* AppleAuthTest.swift */,
+			);
+			path = AppleAuth;
+			sourceTree = "<group>";
+		};
+		024785662BCFBC4900C9DF4F /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				0247856B2BCFBCC700C9DF4F /* AppleAuthView.swift */,
+				024785672BCFBC5A00C9DF4F /* AppleAuthViewModel.swift */,
+			);
+			path = auth;
 			sourceTree = "<group>";
 		};
 		70240BEA2ADC1FF800B87A79 /* dg-muscle-ios-widget */ = {
@@ -784,6 +815,7 @@
 			isa = PBXGroup;
 			children = (
 				70756F102BCAA7C80035EFF4 /* ContentViewV2.swift */,
+				02CA6D7F2BCFCD1400A8746B /* ContentViewV2Model.swift */,
 				70756F142BCAAB8B0035EFF4 /* SplashView.swift */,
 			);
 			path = screens;
@@ -792,6 +824,7 @@
 		70756F162BCAB5BF0035EFF4 /* app */ = {
 			isa = PBXGroup;
 			children = (
+				024785662BCFBC4900C9DF4F /* auth */,
 				70756F1D2BCAB8E80035EFF4 /* components */,
 				70756F232BCAC1810035EFF4 /* exercise */,
 				702E21652BCA535800147279 /* history */,
@@ -908,12 +941,12 @@
 			isa = PBXGroup;
 			children = (
 				70C144D22AC82558007F0540 /* APIClient.swift */,
-				7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */,
 				707B8FD22ABF207F008ADECE /* Authenticator.swift */,
 				701CC4C52AD2875700852E2E /* FileManagerHelper.swift */,
 				703CD5E92AC0139600BC76D4 /* FileUploader.swift */,
-				70D9033C2AC5A70A001DDC0B /* Vibration.swift */,
 				7086C2F62B924B6700D034B0 /* ImageSaver.swift */,
+				70D9033C2AC5A70A001DDC0B /* Vibration.swift */,
+				024785632BCFBA8800C9DF4F /* AppleAuth */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1332,6 +1365,7 @@
 				70CD21CC2BCD665F009B72F3 /* CreatedAt.swift in Sources */,
 				70CD21C82BCD6633009B72F3 /* HistoryRepositoryV2.swift in Sources */,
 				70CD21DD2BCD6EB3009B72F3 /* CustomError.swift in Sources */,
+				0247856D2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */,
 				708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */,
 				70CD21DC2BCD6EA9009B72F3 /* DGUser.swift in Sources */,
 				70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */,
@@ -1354,6 +1388,7 @@
 				70756F352BCAC7BA0035EFF4 /* exerciseTests.swift in Sources */,
 				702E21882BCA5E8E00147279 /* HistoryRepositoryV2.swift in Sources */,
 				70756F372BCAC8220035EFF4 /* ExerciseRepositoryV2.swift in Sources */,
+				0247856E2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */,
 				702E217C2BCA5E6000147279 /* ExerciseSet.swift in Sources */,
 				702E21872BCA5E8900147279 /* QuickAction.swift in Sources */,
 				02D037F32BCE15AC00238309 /* UserRepositoryV2Live.swift in Sources */,
@@ -1419,6 +1454,7 @@
 				707BBF1A2AF7D39700A8ABD2 /* BodyMass.swift in Sources */,
 				70C055A32B7A04B200375526 /* QuickActionSubscriber.swift in Sources */,
 				702E21722BCA587700147279 /* HealthRepository.swift in Sources */,
+				0247856C2BCFBCC700C9DF4F /* AppleAuthView.swift in Sources */,
 				705AB7A22B009F8A00418B46 /* SuccessView.swift in Sources */,
 				703A97B12BCB72EA002C0843 /* ExercisePartsSelectionForm.swift in Sources */,
 				700BB60B2AE513AF008B8132 /* MonthlyChartView.swift in Sources */,
@@ -1447,6 +1483,7 @@
 				70756F112BCAA7C80035EFF4 /* ContentViewV2.swift in Sources */,
 				02D212972BCE6D410088F93B /* MyProfileView.swift in Sources */,
 				70756F222BCABBE80035EFF4 /* ExerciseListSectionView.swift in Sources */,
+				024785682BCFBC5A00C9DF4F /* AppleAuthViewModel.swift in Sources */,
 				70A708D92B13315A0013A237 /* MemoView.swift in Sources */,
 				70BDDB512B947B01002FCEEA /* FullRecordsView.swift in Sources */,
 				705AB7A02B009F7500418B46 /* LoadingView.swift in Sources */,
@@ -1507,6 +1544,7 @@
 				70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */,
 				70756EF72BCA6C210035EFF4 /* ExerciseRepositoryV2.swift in Sources */,
 				70756F3E2BCACD850035EFF4 /* ManageExerciseView.swift in Sources */,
+				024785652BCFBA9B00C9DF4F /* AppleAuth.swift in Sources */,
 				70C0559D2B79FB4600375526 /* QuickAction.swift in Sources */,
 				701CC4AC2AD271CF00852E2E /* UserRepository.swift in Sources */,
 				70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */,
@@ -1532,7 +1570,9 @@
 				702E216E2BCA55C500147279 /* HistoryRepositoryV2.swift in Sources */,
 				708F0A802B414D4A001AF089 /* PullUpInfoView.swift in Sources */,
 				70756EF52BCA68E70035EFF4 /* HistoryListItemView.swift in Sources */,
+				02CA6D802BCFCD1400A8746B /* ContentViewV2Model.swift in Sources */,
 				70D3418A2ACC03350010EAF9 /* ExerciseListView.swift in Sources */,
+				02CA6D822BCFCDEF00A8746B /* AppleAuthTest.swift in Sources */,
 				70756F0C2BCAA0900035EFF4 /* UserRepositoryV2Test.swift in Sources */,
 				70B5080C2AC51D4300FC0540 /* PhotoPickerView.swift in Sources */,
 				70756F312BCAC4F40035EFF4 /* ExerciseListSectionV2View.swift in Sources */,

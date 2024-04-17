@@ -30,6 +30,18 @@ final class UserRepositoryV2Live: UserRepositoryV2 {
         bind()
     }
     
+    func signOut() throws {
+        try Authenticator().signOut()
+    }
+    
+    func updateUser(displayName: String?, photoURL: URL?) async throws {
+        try await Authenticator().updateUser(displayName: displayName, photoURL: photoURL)
+    }
+    
+    func withDrawal() async -> Error? {
+        await Authenticator().withDrawal()
+    }
+    
     private func bind() {
         Auth.auth().addStateDidChangeListener { _, user in
             guard let user else {

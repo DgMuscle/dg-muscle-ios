@@ -10,6 +10,7 @@ import Combine
 
 final class SettingV2ViewModel: ObservableObject {
     @Published private(set) var user: DGUser?
+    @Published private(set) var errorMessage: String?
     
     private let userRepository: UserRepositoryV2
     
@@ -18,6 +19,14 @@ final class SettingV2ViewModel: ObservableObject {
     init(userRepository: UserRepositoryV2) {
         self.userRepository = userRepository
         bind()
+    }
+    
+    func logout() {
+        do {
+            try userRepository.signOut()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
     }
     
     private func bind() {
