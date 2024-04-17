@@ -14,6 +14,7 @@ struct EditDisplayNameView: View {
     let userRepository: UserRepositoryV2
     
     @State private var animate: Bool = false
+    @FocusState private var focus: Bool
     
     var body: some View {
         ZStack {
@@ -22,8 +23,11 @@ struct EditDisplayNameView: View {
                 .opacity(0.5)
                 .ignoresSafeArea()
                 .onTapGesture {
-                    animate.toggle()
-                    isPresent.toggle()
+                    focus.toggle()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        animate.toggle()
+                        isPresent.toggle()
+                    }
                 }
             
             if animate {
@@ -32,15 +36,22 @@ struct EditDisplayNameView: View {
                         .multilineTextAlignment(.center)
                         .fontWeight(.black)
                         .padding()
+                        .focused($focus)
+                        .onAppear {
+                            focus.toggle()
+                        }
                     
                     Divider()
                     
                     Button("SAVE") {
-                        animate.toggle()
-                        Task {
-                            try? await userRepository.updateUser(displayName: displayName)
+                        focus.toggle()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            animate.toggle()
+                            Task {
+                                try? await userRepository.updateUser(displayName: displayName)
+                            }
+                            isPresent.toggle()
                         }
-                        isPresent.toggle()
                     }
                     .padding(.bottom)
                 }
