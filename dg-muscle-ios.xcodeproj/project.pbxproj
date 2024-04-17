@@ -105,6 +105,10 @@
 		703CD5F02AC015C900BC76D4 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5EF2AC015C900BC76D4 /* CustomError.swift */; };
 		703E547B2ADBD5D900E7D911 /* GrassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703E547A2ADBD5D900E7D911 /* GrassView.swift */; };
 		704464162BD00D3300CB21F6 /* EditDisplayNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704464152BD00D3300CB21F6 /* EditDisplayNameView.swift */; };
+		704464182BD013EE00CB21F6 /* UpdateProfilePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704464172BD013EE00CB21F6 /* UpdateProfilePhotoView.swift */; };
+		7044641A2BD0140200CB21F6 /* UpdateProfilePhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704464192BD0140200CB21F6 /* UpdateProfilePhotoViewModel.swift */; };
+		7044641D2BD0185600CB21F6 /* FileUploaderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */; };
+		7044641F2BD0187E00CB21F6 /* FileUploaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */; };
 		7054F7E42B08BC3300C5678E /* WatchWorkoutAppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7054F7E32B08BC3300C5678E /* WatchWorkoutAppInfoView.swift */; };
 		705AB7A02B009F7500418B46 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705AB79F2B009F7500418B46 /* LoadingView.swift */; };
 		705AB7A22B009F8A00418B46 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705AB7A12B009F8A00418B46 /* SuccessView.swift */; };
@@ -351,6 +355,10 @@
 		703CD5EF2AC015C900BC76D4 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		703E547A2ADBD5D900E7D911 /* GrassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassView.swift; sourceTree = "<group>"; };
 		704464152BD00D3300CB21F6 /* EditDisplayNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDisplayNameView.swift; sourceTree = "<group>"; };
+		704464172BD013EE00CB21F6 /* UpdateProfilePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfilePhotoView.swift; sourceTree = "<group>"; };
+		704464192BD0140200CB21F6 /* UpdateProfilePhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfilePhotoViewModel.swift; sourceTree = "<group>"; };
+		7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploaderInterface.swift; sourceTree = "<group>"; };
+		7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploaderTest.swift; sourceTree = "<group>"; };
 		7054F7E32B08BC3300C5678E /* WatchWorkoutAppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWorkoutAppInfoView.swift; sourceTree = "<group>"; };
 		705AB79F2B009F7500418B46 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		705AB7A12B009F8A00418B46 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
@@ -524,6 +532,8 @@
 			children = (
 				02D212962BCE6D410088F93B /* MyProfileView.swift */,
 				02070F092BCE526B00518744 /* MyProfileViewModel.swift */,
+				704464172BD013EE00CB21F6 /* UpdateProfilePhotoView.swift */,
+				704464192BD0140200CB21F6 /* UpdateProfilePhotoViewModel.swift */,
 			);
 			path = profile;
 			sourceTree = "<group>";
@@ -739,6 +749,16 @@
 			path = set;
 			sourceTree = "<group>";
 		};
+		7044641B2BD0183100CB21F6 /* FileUploader */ = {
+			isa = PBXGroup;
+			children = (
+				703CD5E92AC0139600BC76D4 /* FileUploader.swift */,
+				7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */,
+				7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */,
+			);
+			path = FileUploader;
+			sourceTree = "<group>";
+		};
 		7054F7E22B08BC1A00C5678E /* health section */ = {
 			isa = PBXGroup;
 			children = (
@@ -946,10 +966,10 @@
 				70C144D22AC82558007F0540 /* APIClient.swift */,
 				707B8FD22ABF207F008ADECE /* Authenticator.swift */,
 				701CC4C52AD2875700852E2E /* FileManagerHelper.swift */,
-				703CD5E92AC0139600BC76D4 /* FileUploader.swift */,
 				7086C2F62B924B6700D034B0 /* ImageSaver.swift */,
 				70D9033C2AC5A70A001DDC0B /* Vibration.swift */,
 				024785632BCFBA8800C9DF4F /* AppleAuth */,
+				7044641B2BD0183100CB21F6 /* FileUploader */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1440,6 +1460,7 @@
 				706760BA2BCC074200649BF3 /* SelectExerciseV2View.swift in Sources */,
 				703A97CB2BCB98F2002C0843 /* EditExerciseView.swift in Sources */,
 				703A97D12BCBB4E9002C0843 /* WorkoutRectangleButton.swift in Sources */,
+				7044641D2BD0185600CB21F6 /* FileUploaderInterface.swift in Sources */,
 				708F0A792B414D4A001AF089 /* DeadliftInfoView.swift in Sources */,
 				02070F0A2BCE526B00518744 /* MyProfileViewModel.swift in Sources */,
 				706760C02BCC0F4A00649BF3 /* PreviousRecordListItem.swift in Sources */,
@@ -1543,11 +1564,13 @@
 				703A97D72BCBBDB6002C0843 /* RecordFormV2View.swift in Sources */,
 				70756F1C2BCAB6D80035EFF4 /* SettingV2ViewModel.swift in Sources */,
 				706760B62BCBEDE300649BF3 /* HistoryCardView.swift in Sources */,
+				704464182BD013EE00CB21F6 /* UpdateProfilePhotoView.swift in Sources */,
 				706760AE2BCBE37800649BF3 /* HistoryFormV2ViewModel.swift in Sources */,
 				707BBF182AF7D1D800A8ABD2 /* Height.swift in Sources */,
 				70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */,
 				70756EF72BCA6C210035EFF4 /* ExerciseRepositoryV2.swift in Sources */,
 				70756F3E2BCACD850035EFF4 /* ManageExerciseView.swift in Sources */,
+				7044641A2BD0140200CB21F6 /* UpdateProfilePhotoViewModel.swift in Sources */,
 				024785652BCFBA9B00C9DF4F /* AppleAuth.swift in Sources */,
 				70C0559D2B79FB4600375526 /* QuickAction.swift in Sources */,
 				701CC4AC2AD271CF00852E2E /* UserRepository.swift in Sources */,
@@ -1588,6 +1611,7 @@
 				708F0A842B414D4A001AF089 /* BenchpressInfoView.swift in Sources */,
 				70D9033D2AC5A70A001DDC0B /* Vibration.swift in Sources */,
 				70B5080F2AC51FD900FC0540 /* DependencyInjection.swift in Sources */,
+				7044641F2BD0187E00CB21F6 /* FileUploaderTest.swift in Sources */,
 				703CD5EA2AC0139600BC76D4 /* FileUploader.swift in Sources */,
 				701042122AEE483400FAD52C /* UserCache.swift in Sources */,
 			);

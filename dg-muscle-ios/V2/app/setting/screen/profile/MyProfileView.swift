@@ -108,6 +108,7 @@ struct MyProfileView: View {
                                     userRepository: viewModel.userRepository)
             }
         }
+        .navigationTitle("Profile")
         .animation(.default, value: isPresentEditDisplayNameView)
     }
     

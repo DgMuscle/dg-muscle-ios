@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseStorage
 
-final class FileUploader {
+final class FileUploader: FileUploaderInterface {
     static let shared = FileUploader()
     
     private let storage = Storage.storage()

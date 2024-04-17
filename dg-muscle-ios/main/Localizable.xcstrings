@@ -725,6 +725,9 @@
     "profile" : {
 
     },
+    "Profile" : {
+
+    },
     "Pull Up" : {
 
     },
@@ -934,6 +937,9 @@
 
     },
     "Update" : {
+
+    },
+    "UpdateProfilePhotoView" : {
 
     },
     "Volume" : {
