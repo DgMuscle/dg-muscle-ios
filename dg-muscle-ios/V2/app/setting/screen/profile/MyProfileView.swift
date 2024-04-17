@@ -10,97 +10,105 @@ import SwiftUI
 struct MyProfileView: View {
     
     @StateObject var viewModel: MyProfileViewModel
+    @State var isPresentEditDisplayNameView: Bool = false
     
     var body: some View {
-        VStack {
-            
-            if let user = viewModel.user {
-                MyProfileUserView(user: user) {
-                    print("tap photo")
-                } tapDisplayName: {
-                    print("tap displayname")
-                }
-                .padding(.bottom, 40)
-            } else {
-                HStack {
-                    Text("Can't find user info")
-                    Image(systemName: "person.crop.circle.badge.exclamationmark")
-                    Spacer()
-                }
-                .fontWeight(.heavy)
-                .padding(8)
-                .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(uiColor: .secondarySystemBackground))
-                )
-                .padding(.bottom, 40)
-            }
-            
-            VStack(spacing: 16) {
-                if let bodyMass = viewModel.bodyMass {
-                    MyProfileListItemView(systemImageName: "figure",
-                                          iconBackgroundColor: .green,
-                                          label: "Weight(\(bodyMass.unit == .kg ? "kg" : "lb"))",
-                                          value: String(bodyMass.value))
+        ZStack {
+            VStack {
+                if let user = viewModel.user {
+                    MyProfileUserView(user: user) {
+                        print("tap photo")
+                    } tapDisplayName: {
+                        isPresentEditDisplayNameView.toggle()
+                    }
+                    .padding(.bottom, 40)
                 } else {
-                    MyProfileListItemView(systemImageName: "figure",
-                                          iconBackgroundColor: .green,
-                                          label: "Weight",
-                                          value: "Need Input")
+                    HStack {
+                        Text("Can't find user info")
+                        Image(systemName: "person.crop.circle.badge.exclamationmark")
+                        Spacer()
+                    }
+                    .fontWeight(.heavy)
+                    .padding(8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color(uiColor: .secondarySystemBackground))
+                    )
+                    .padding(.bottom, 40)
                 }
                 
-                if let height = viewModel.height {
-                    MyProfileListItemView(systemImageName: "figure.walk",
-                                          iconBackgroundColor: .blue,
-                                          label: "Height",
-                                          value: String(height.value))
-                } else {
-                    MyProfileListItemView(systemImageName: "figure.walk",
-                                          iconBackgroundColor: .blue,
-                                          label: "Height",
-                                          value: "Need Input")
-                }
-                
-                MyProfileListItemView(systemImageName: "figure.dress.line.vertical.figure",
-                                      iconBackgroundColor: .cyan,
-                                      label: "Sex",
-                                      value: viewModel.sexString)
-                
-                MyProfileListItemView(systemImageName: "birthday.cake",
-                                      iconBackgroundColor: .purple,
-                                      label: "Birth",
-                                      value: viewModel.birthDateString)
-                
-                MyProfileListItemView(systemImageName: "drop",
-                                      iconBackgroundColor: .red,
-                                      label: "BloodType",
-                                      value: viewModel.bloodTypeString)
-                
-            }
-            
-            Button {
-                openUrl(urlString: "x-apple-health://")
-            } label: {
-                HStack {
-                    Text("You can update your health data in Apple Health").fontWeight(.bold)
-                        .multilineTextAlignment(.leading)
-                    Spacer(minLength: 20)
+                VStack(spacing: 16) {
+                    if let bodyMass = viewModel.bodyMass {
+                        MyProfileListItemView(systemImageName: "figure",
+                                              iconBackgroundColor: .green,
+                                              label: "Weight(\(bodyMass.unit == .kg ? "kg" : "lb"))",
+                                              value: String(bodyMass.value))
+                    } else {
+                        MyProfileListItemView(systemImageName: "figure",
+                                              iconBackgroundColor: .green,
+                                              label: "Weight",
+                                              value: "Need Input")
+                    }
                     
-                    Text("OPEN").fontWeight(.black)
-                        .padding(8)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8).fill(
-                                LinearGradient(colors: [.green, .red], startPoint: .leading, endPoint: .trailing)
-                            )
-                        )
+                    if let height = viewModel.height {
+                        MyProfileListItemView(systemImageName: "figure.walk",
+                                              iconBackgroundColor: .blue,
+                                              label: "Height",
+                                              value: String(height.value))
+                    } else {
+                        MyProfileListItemView(systemImageName: "figure.walk",
+                                              iconBackgroundColor: .blue,
+                                              label: "Height",
+                                              value: "Need Input")
+                    }
+                    
+                    MyProfileListItemView(systemImageName: "figure.dress.line.vertical.figure",
+                                          iconBackgroundColor: .cyan,
+                                          label: "Sex",
+                                          value: viewModel.sexString)
+                    
+                    MyProfileListItemView(systemImageName: "birthday.cake",
+                                          iconBackgroundColor: .purple,
+                                          label: "Birth",
+                                          value: viewModel.birthDateString)
+                    
+                    MyProfileListItemView(systemImageName: "drop",
+                                          iconBackgroundColor: .red,
+                                          label: "BloodType",
+                                          value: viewModel.bloodTypeString)
+                    
                 }
-                .padding(.top, 60)
-                .foregroundStyle(Color(uiColor: .label))
+                
+                Button {
+                    openUrl(urlString: "x-apple-health://")
+                } label: {
+                    HStack {
+                        Text("You can update your health data in Apple Health").fontWeight(.bold)
+                            .multilineTextAlignment(.leading)
+                        Spacer(minLength: 20)
+                        
+                        Text("OPEN").fontWeight(.black)
+                            .padding(8)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8).fill(
+                                    LinearGradient(colors: [.green, .red], startPoint: .leading, endPoint: .trailing)
+                                )
+                            )
+                    }
+                    .padding(.top, 60)
+                    .foregroundStyle(Color(uiColor: .label))
+                }
+                Spacer()
             }
+            .padding()
             
-            Spacer()
+            if isPresentEditDisplayNameView {
+                EditDisplayNameView(displayName: viewModel.user?.displayName ?? "",
+                                    isPresent: $isPresentEditDisplayNameView,
+                                    userRepository: viewModel.userRepository)
+            }
         }
-        .padding()
+        .animation(.default, value: isPresentEditDisplayNameView)
     }
     
     private func openUrl(urlString: String) {

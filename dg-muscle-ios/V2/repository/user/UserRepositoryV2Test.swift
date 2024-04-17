@@ -37,6 +37,13 @@ final class UserRepositoryV2Test: UserRepositoryV2 {
         nil
     }
     
+    func updateUser(displayName: String?) async throws {
+        
+    }
+    func updateUser(photoURL: URL?) async throws {
+        
+    }
+    
     
     private func prepareMockData() {
         /// photo url https://firebasestorage.googleapis.com:443/v0/b/dg-muscle.appspot.com/o/profilePhoto%2FtaEJh30OpGVsR3FEFN2s67A8FvF3%2F3D91567D-E280-4861-B3B2-68E571150165.png?alt=media&token=35985183-c69b-4c6d-8e56-f1aba8daabd4

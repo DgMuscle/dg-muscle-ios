@@ -38,6 +38,18 @@ final class UserRepositoryV2Live: UserRepositoryV2 {
         try await Authenticator().updateUser(displayName: displayName, photoURL: photoURL)
     }
     
+    func updateUser(displayName: String?) async throws {
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = displayName
+        try await changeRequest?.commitChanges()
+    }
+    
+    func updateUser(photoURL: URL?) async throws {
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.photoURL = photoURL
+        try await changeRequest?.commitChanges()
+    }
+    
     func withDrawal() async -> Error? {
         await Authenticator().withDrawal()
     }

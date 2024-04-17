@@ -104,6 +104,7 @@
 		703CD5EE2AC0148800BC76D4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 703CD5ED2AC0148800BC76D4 /* FirebaseStorage */; };
 		703CD5F02AC015C900BC76D4 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5EF2AC015C900BC76D4 /* CustomError.swift */; };
 		703E547B2ADBD5D900E7D911 /* GrassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703E547A2ADBD5D900E7D911 /* GrassView.swift */; };
+		704464162BD00D3300CB21F6 /* EditDisplayNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704464152BD00D3300CB21F6 /* EditDisplayNameView.swift */; };
 		7054F7E42B08BC3300C5678E /* WatchWorkoutAppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7054F7E32B08BC3300C5678E /* WatchWorkoutAppInfoView.swift */; };
 		705AB7A02B009F7500418B46 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705AB79F2B009F7500418B46 /* LoadingView.swift */; };
 		705AB7A22B009F8A00418B46 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705AB7A12B009F8A00418B46 /* SuccessView.swift */; };
@@ -349,6 +350,7 @@
 		703CD5E92AC0139600BC76D4 /* FileUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
 		703CD5EF2AC015C900BC76D4 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		703E547A2ADBD5D900E7D911 /* GrassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrassView.swift; sourceTree = "<group>"; };
+		704464152BD00D3300CB21F6 /* EditDisplayNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDisplayNameView.swift; sourceTree = "<group>"; };
 		7054F7E32B08BC3300C5678E /* WatchWorkoutAppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWorkoutAppInfoView.swift; sourceTree = "<group>"; };
 		705AB79F2B009F7500418B46 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		705AB7A12B009F8A00418B46 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
@@ -866,6 +868,7 @@
 		70756F1E2BCAB9470035EFF4 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				704464152BD00D3300CB21F6 /* EditDisplayNameView.swift */,
 				70756F212BCABBE80035EFF4 /* ExerciseListSectionView.swift */,
 				708785132BCEC16100930B0D /* MyProfileListItemView.swift */,
 				02D212982BCE6DAF0088F93B /* MyProfileUserView.swift */,
@@ -1456,6 +1459,7 @@
 				702E21722BCA587700147279 /* HealthRepository.swift in Sources */,
 				0247856C2BCFBCC700C9DF4F /* AppleAuthView.swift in Sources */,
 				705AB7A22B009F8A00418B46 /* SuccessView.swift in Sources */,
+				704464162BD00D3300CB21F6 /* EditDisplayNameView.swift in Sources */,
 				703A97B12BCB72EA002C0843 /* ExercisePartsSelectionForm.swift in Sources */,
 				700BB60B2AE513AF008B8132 /* MonthlyChartView.swift in Sources */,
 				708F0A7C2B414D4A001AF089 /* LegCurlInfoView.swift in Sources */,
