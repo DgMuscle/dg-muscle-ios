@@ -672,6 +672,9 @@
     "Memo" : {
 
     },
+    "Move to Exercise Manager" : {
+
+    },
     "name" : {
 
     },
@@ -720,6 +723,9 @@
 
     },
     "profile" : {
+
+    },
+    "Profile" : {
 
     },
     "Pull Up" : {
@@ -789,6 +795,9 @@
           }
         }
       }
+    },
+    "SAVE" : {
+
     },
     "SAVE HISTORY" : {
 
@@ -928,6 +937,9 @@
 
     },
     "Update" : {
+
+    },
+    "UpdateProfilePhotoView" : {
 
     },
     "Volume" : {

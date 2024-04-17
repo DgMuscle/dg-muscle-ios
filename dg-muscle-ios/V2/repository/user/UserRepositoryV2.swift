@@ -14,5 +14,7 @@ protocol UserRepositoryV2 {
     
     func signOut() throws
     func updateUser(displayName: String?, photoURL: URL?) async throws
+    func updateUser(displayName: String?) async throws
+    func updateUser(photoURL: URL?) async throws
     func withDrawal() async -> Error?
 }

@@ -7,7 +7,7 @@
 
 import Combine
 
-final class ExerciseRepositoryV2Test: ExerciseRepositoryV2 {
+class ExerciseRepositoryV2Test: ExerciseRepositoryV2 {
     var exercises: [Exercise] {
         _exercises
     }
@@ -16,7 +16,7 @@ final class ExerciseRepositoryV2Test: ExerciseRepositoryV2 {
         $_exercises.eraseToAnyPublisher()
     }
     
-    @Published private var _exercises: [Exercise] = []
+    @Published fileprivate var _exercises: [Exercise] = []
     
     init() {
         prepareMockData()
@@ -34,7 +34,7 @@ final class ExerciseRepositoryV2Test: ExerciseRepositoryV2 {
         return .init(ok: true, message: nil)
     }
     
-    private func prepareMockData() {
+    fileprivate func prepareMockData() {
         _exercises = [
             .init(id: "squat", name: "squat", parts: [.leg], favorite: true, order: 0, createdAt: nil),
             .init(id: "bench press", name: "bench press", parts: [.chest, .arm], favorite: true, order: 1, createdAt: nil),
@@ -44,4 +44,8 @@ final class ExerciseRepositoryV2Test: ExerciseRepositoryV2 {
     }
 }
 
-
+final class ExerciseRepositoryV3Test: ExerciseRepositoryV2Test {
+    override func prepareMockData() {
+        _exercises = []
+    }
+}

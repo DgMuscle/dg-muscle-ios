@@ -19,7 +19,6 @@ struct RecordListItemView: View {
             if let exercise {
                 HStack {
                     Text(exercise.name).font(.title2)
-                    Text("Record").italic()
                     Spacer()
                     
                     Text("Tap to continue")

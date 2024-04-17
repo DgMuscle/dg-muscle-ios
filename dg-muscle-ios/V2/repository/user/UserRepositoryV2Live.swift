@@ -35,7 +35,23 @@ final class UserRepositoryV2Live: UserRepositoryV2 {
     }
     
     func updateUser(displayName: String?, photoURL: URL?) async throws {
+        _user?.displayName = displayName
+        _user?.photoURL = photoURL
         try await Authenticator().updateUser(displayName: displayName, photoURL: photoURL)
+    }
+    
+    func updateUser(displayName: String?) async throws {
+        _user?.displayName = displayName
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = displayName
+        try await changeRequest?.commitChanges()
+    }
+    
+    func updateUser(photoURL: URL?) async throws {
+        _user?.photoURL = photoURL
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.photoURL = photoURL
+        try await changeRequest?.commitChanges()
     }
     
     func withDrawal() async -> Error? {
