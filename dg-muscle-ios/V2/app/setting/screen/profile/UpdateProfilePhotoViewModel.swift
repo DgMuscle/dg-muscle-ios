@@ -29,6 +29,7 @@ final class UpdateProfilePhotoViewModel: ObservableObject {
         bind()
     }
     
+    @MainActor
     func save() {
         // Upload Task
         Task {
@@ -50,13 +51,11 @@ final class UpdateProfilePhotoViewModel: ObservableObject {
             guard let previousPhotoURLString = userRepository.user?.photoURL?.absoluteString else { return }
             guard let path = URL(string: previousPhotoURLString)?.lastPathComponent else { return }
             try await fileUploader.deleteImage(path: path)
-            
         }
     }
     
     private func bind() {
         $photosPickerItem
-            .receive(on: DispatchQueue.main)
             .compactMap({ $0 })
             .sink { [weak self] item in
                 self?.convertPhotoPickerItemToUIImage(item: item)
@@ -67,7 +66,9 @@ final class UpdateProfilePhotoViewModel: ObservableObject {
     private func convertPhotoPickerItemToUIImage(item: PhotosPickerItem) {
         Task {
             guard let data = try await item.loadTransferable(type: Data.self) else { return }
-            self.uiimage = .init(data: data)
+            DispatchQueue.main.async { [weak self] in
+                self?.uiimage = .init(data: data)
+            }
         }
     }
     
