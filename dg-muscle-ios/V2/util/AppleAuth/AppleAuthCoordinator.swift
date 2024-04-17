@@ -9,7 +9,7 @@ import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
 
-class AppleAuthCoordinator: NSObject {
+class AppleAuthCoordinator: NSObject, AppleAuth {
     var currentNonce: String?
     let window: UIWindow?
     
