@@ -32,6 +32,12 @@ final class RemoveAccountViewModel: ObservableObject {
     @MainActor
     func tapRemoveButton() {
         Task {
+            
+            if userRepository.user?.uid == "taEJh30OpGVsR3FEFN2s67A8FvF3" {
+                localErrorMessage = "Admin account can not be removed."
+                return
+            }
+            
             guard loading == false else { return }
             
             guard userRepository.user?.displayName ?? "" == self.displayName else {
