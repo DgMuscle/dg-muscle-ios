@@ -43,7 +43,7 @@ struct UserBoxView: View {
             .frame(width: circleSize, height: circleSize)
             
             VStack(alignment: .leading) {
-                if let displayName = user.displayName {
+                if let displayName = user.displayName, displayName.isEmpty == false {
                     Text(displayName).fontWeight(.heavy)
                         .foregroundStyle(Color(uiColor: .label))
                 }

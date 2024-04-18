@@ -45,7 +45,8 @@ struct dg_muscle_iosApp: App {
                               userRepository: UserRepositoryV2Live.shared,
                               historyRepository: HistoryRepositoryV2Impl.shared,
                               today: Date(),
-                              appleAuth: AppleAuthCoordinator(window: window))
+                              appleAuth: AppleAuthCoordinator(window: window), 
+                              fileUploader: FileUploader.shared)
                 
                 SplashView()
                     .opacity(splash ? 1 : 0)

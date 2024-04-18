@@ -11,13 +11,14 @@ struct MyProfileView: View {
     
     @StateObject var viewModel: MyProfileViewModel
     @State var isPresentEditDisplayNameView: Bool = false
+    @Binding var paths: NavigationPath
     
     var body: some View {
         ZStack {
             VStack {
                 if let user = viewModel.user {
                     MyProfileUserView(user: user) {
-                        print("tap photo")
+                        paths.append(MainNavigation(name: .editProfilePhoto))
                     } tapDisplayName: {
                         isPresentEditDisplayNameView.toggle()
                     }
@@ -127,5 +128,6 @@ struct MyProfileView: View {
     let viewModel: MyProfileViewModel = .init(userRepository: UserRepositoryV2Test(),
                                               healthRepository: HealthRepositoryTest())
     
-    return MyProfileView(viewModel: viewModel).preferredColorScheme(.dark)
+    return MyProfileView(viewModel: viewModel, 
+                         paths: .constant(.init())).preferredColorScheme(.dark)
 }

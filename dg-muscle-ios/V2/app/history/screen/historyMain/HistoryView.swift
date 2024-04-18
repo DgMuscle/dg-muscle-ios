@@ -58,6 +58,8 @@ struct HistoryView: View {
                                    exerciseRepository: exerciseRepository,
                                    healthRepository: healthRepository) { history in
                     paths.append(HistoryNavigation(name: .historyForm, historyForForm: history))
+                } deleteAction: { history in
+                    viewModel.delete(history: history)
                 }
                 .padding(.bottom, 40)
             }

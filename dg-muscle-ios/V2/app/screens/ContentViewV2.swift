@@ -19,6 +19,7 @@ struct ContentViewV2: View {
     let historyRepository: HistoryRepositoryV2
     let today: Date
     let appleAuth: AppleAuth
+    let fileUploader: FileUploaderInterface
     
     var body: some View {
         ZStack {
@@ -40,7 +41,11 @@ struct ContentViewV2: View {
                                           paths: $paths)
                         case .profile:
                             MyProfileView(viewModel: .init(userRepository: userRepository,
-                                                           healthRepository: healthRepository))
+                                                           healthRepository: healthRepository), 
+                                          paths: $paths)
+                        case .editProfilePhoto:
+                            UpdateProfilePhotoView(viewModel: .init(userRepository: userRepository,
+                                                                    fileUploader: fileUploader))
                         }
                     }
                     .navigationDestination(for: HistoryNavigation.self, destination: { navigation in
@@ -127,6 +132,7 @@ struct ContentViewV2: View {
                          userRepository: userRepository, 
                          historyRepository: historyRepository, 
                          today: today, 
-                         appleAuth: AppleAuthTest())
+                         appleAuth: AppleAuthTest(), 
+                         fileUploader: FileUploaderTest())
         .preferredColorScheme(.dark)
 }

@@ -14,6 +14,7 @@ struct HistorySectionView: View {
     let healthRepository: HealthRepository
     
     let historyAction: ((ExerciseHistory) -> ())?
+    let deleteAction: ((ExerciseHistory) -> ())?
     
     var body: some View {
         VStack {
@@ -36,6 +37,13 @@ struct HistorySectionView: View {
                         .padding(.bottom, 20)
                         .scrollTransition { effect, phase in
                             effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
+                        }
+                        .contextMenu {
+                            if let deleteAction {
+                                Button("DELETE HISTORY") {
+                                    deleteAction(history.exercise)
+                                }
+                            }
                         }
                 }
             }
@@ -80,6 +88,7 @@ struct HistorySectionView: View {
     return HistorySectionView(section: section, 
                               exerciseRepository: ExerciseRepositoryV2Test(),
                               healthRepository: HealthRepositoryTest(),
-                              historyAction: nil)
+                              historyAction: nil, 
+                              deleteAction: nil)
         .preferredColorScheme(.dark)
 }
