@@ -157,6 +157,14 @@
 		70756F3B2BCAC89B0035EFF4 /* UserRepositoryV2Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F0B2BCAA0900035EFF4 /* UserRepositoryV2Test.swift */; };
 		70756F3E2BCACD850035EFF4 /* ManageExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F3D2BCACD850035EFF4 /* ManageExerciseView.swift */; };
 		70756F402BCAD45F0035EFF4 /* FirstExerciseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F3F2BCAD45F0035EFF4 /* FirstExerciseButton.swift */; };
+		707B0AEF2BD1622700D8250B /* HeatmapRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AEE2BD1622700D8250B /* HeatmapRepositoryImpl.swift */; };
+		707B0AF12BD1626E00D8250B /* HeatmapColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AF02BD1626E00D8250B /* HeatmapColor.swift */; };
+		707B0AF32BD163B000D8250B /* HeatmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AF22BD163B000D8250B /* HeatmapRepository.swift */; };
+		707B0AF42BD163C600D8250B /* HeatmapColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AF02BD1626E00D8250B /* HeatmapColor.swift */; };
+		707B0AF52BD163C700D8250B /* HeatmapColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AF02BD1626E00D8250B /* HeatmapColor.swift */; };
+		707B0AF62BD163CA00D8250B /* HeatmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AF22BD163B000D8250B /* HeatmapRepository.swift */; };
+		707B0AF72BD163CA00D8250B /* HeatmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AF22BD163B000D8250B /* HeatmapRepository.swift */; };
+		707B0AF92BD163F700D8250B /* HeatmapRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AF82BD163F700D8250B /* HeatmapRepositoryTest.swift */; };
 		707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC62ABF1CAC008ADECE /* UserStore.swift */; };
 		707B8FC92ABF1D37008ADECE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC82ABF1D37008ADECE /* Store.swift */; };
 		707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
@@ -401,6 +409,10 @@
 		70756F342BCAC7BA0035EFF4 /* exerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exerciseTests.swift; sourceTree = "<group>"; };
 		70756F3D2BCACD850035EFF4 /* ManageExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageExerciseView.swift; sourceTree = "<group>"; };
 		70756F3F2BCAD45F0035EFF4 /* FirstExerciseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstExerciseButton.swift; sourceTree = "<group>"; };
+		707B0AEE2BD1622700D8250B /* HeatmapRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapRepositoryImpl.swift; sourceTree = "<group>"; };
+		707B0AF02BD1626E00D8250B /* HeatmapColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapColor.swift; sourceTree = "<group>"; };
+		707B0AF22BD163B000D8250B /* HeatmapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapRepository.swift; sourceTree = "<group>"; };
+		707B0AF82BD163F700D8250B /* HeatmapRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapRepositoryTest.swift; sourceTree = "<group>"; };
 		707B8FC62ABF1CAC008ADECE /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		707B8FC82ABF1D37008ADECE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		707B8FD22ABF207F008ADECE /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
@@ -617,6 +629,7 @@
 			children = (
 				70756EFE2BCA6E0A0035EFF4 /* exercise */,
 				70756EFF2BCA6E120035EFF4 /* health */,
+				707B0AED2BD1621900D8250B /* heatmap */,
 				70756F002BCA6E190035EFF4 /* history */,
 				70756F032BCA9E550035EFF4 /* user */,
 			);
@@ -950,6 +963,16 @@
 			path = screens;
 			sourceTree = "<group>";
 		};
+		707B0AED2BD1621900D8250B /* heatmap */ = {
+			isa = PBXGroup;
+			children = (
+				707B0AF22BD163B000D8250B /* HeatmapRepository.swift */,
+				707B0AEE2BD1622700D8250B /* HeatmapRepositoryImpl.swift */,
+				707B0AF82BD163F700D8250B /* HeatmapRepositoryTest.swift */,
+			);
+			path = heatmap;
+			sourceTree = "<group>";
+		};
 		707B8FC52ABF1C92008ADECE /* store */ = {
 			isa = PBXGroup;
 			children = (
@@ -1193,6 +1216,7 @@
 				7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */,
 				70F838A52AC7FEA8009725EF /* ExerciseSet.swift */,
 				705EC0A82AFF7C530085801A /* GrassData.swift */,
+				707B0AF02BD1626E00D8250B /* HeatmapColor.swift */,
 				707BBF172AF7D1D800A8ABD2 /* Height.swift */,
 				701CC4AD2AD2720200852E2E /* Profile.swift */,
 				70C0559C2B79FB4600375526 /* QuickAction.swift */,
@@ -1404,9 +1428,11 @@
 				70CD21DD2BCD6EB3009B72F3 /* CustomError.swift in Sources */,
 				0247856D2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */,
 				708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */,
+				707B0AF62BD163CA00D8250B /* HeatmapRepository.swift in Sources */,
 				70CD21DC2BCD6EA9009B72F3 /* DGUser.swift in Sources */,
 				70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */,
 				70CD21C72BCD662B009B72F3 /* WorkoutHeatMapViewModel.swift in Sources */,
+				707B0AF42BD163C600D8250B /* HeatmapColor.swift in Sources */,
 				70CD21D82BCD6E3E009B72F3 /* HistoryRepositoryV2Impl.swift in Sources */,
 				70CD21DB2BCD6E97009B72F3 /* UserRepositoryV2Live.swift in Sources */,
 				70CD21C92BCD663C009B72F3 /* ExerciseHistory.swift in Sources */,
@@ -1451,6 +1477,7 @@
 				702E218C2BCA615200147279 /* HistoryStore.swift in Sources */,
 				702E21822BCA5E7C00147279 /* Height.swift in Sources */,
 				702E218B2BCA614F00147279 /* UserStore.swift in Sources */,
+				707B0AF52BD163C700D8250B /* HeatmapColor.swift in Sources */,
 				702E218A2BCA614C00147279 /* Store.swift in Sources */,
 				70756F3B2BCAC89B0035EFF4 /* UserRepositoryV2Test.swift in Sources */,
 				702E21932BCA620100147279 /* CustomError.swift in Sources */,
@@ -1462,6 +1489,7 @@
 				70756F382BCAC8350035EFF4 /* ExerciseRepositoryV2Test.swift in Sources */,
 				702E217E2BCA5E6A00147279 /* CreatedAt.swift in Sources */,
 				702E21942BCA620D00147279 /* ExerciseRepository.swift in Sources */,
+				707B0AF72BD163CA00D8250B /* HeatmapRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1483,9 +1511,11 @@
 				70756F0E2BCAA19B0035EFF4 /* UserBoxView.swift in Sources */,
 				703A97CD2BCBA7F5002C0843 /* ManageExerciseViewModel.swift in Sources */,
 				701CC4AE2AD2720200852E2E /* Profile.swift in Sources */,
+				707B0AF32BD163B000D8250B /* HeatmapRepository.swift in Sources */,
 				70756F082BCA9EA80035EFF4 /* DGUser.swift in Sources */,
 				70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */,
 				708F0A7A2B414D4A001AF089 /* PushUpInfoView.swift in Sources */,
+				707B0AF92BD163F700D8250B /* HeatmapRepositoryTest.swift in Sources */,
 				708785142BCEC16100930B0D /* MyProfileListItemView.swift in Sources */,
 				70756F282BCAC1D60035EFF4 /* ExerciseListV2View.swift in Sources */,
 				70BDDB522B947B01002FCEEA /* FullRecordsView_SetView.swift in Sources */,
@@ -1539,6 +1569,7 @@
 				703A97BF2BCB8608002C0843 /* ExerciseSimpleInfoView.swift in Sources */,
 				70756EEE2BCA683D0035EFF4 /* HealthRepositoryTest.swift in Sources */,
 				708F0A7B2B414D4A001AF089 /* TricepPushDownInfoView.swift in Sources */,
+				707B0AF12BD1626E00D8250B /* HeatmapColor.swift in Sources */,
 				708F0A822B414D4A001AF089 /* SquatInfoView.swift in Sources */,
 				70756F402BCAD45F0035EFF4 /* FirstExerciseButton.swift in Sources */,
 				708F0A7F2B414D4A001AF089 /* BicepCurlInfoView.swift in Sources */,
@@ -1583,6 +1614,7 @@
 				706760AE2BCBE37800649BF3 /* HistoryFormV2ViewModel.swift in Sources */,
 				707BBF182AF7D1D800A8ABD2 /* Height.swift in Sources */,
 				70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */,
+				707B0AEF2BD1622700D8250B /* HeatmapRepositoryImpl.swift in Sources */,
 				70756EF72BCA6C210035EFF4 /* ExerciseRepositoryV2.swift in Sources */,
 				70756F3E2BCACD850035EFF4 /* ManageExerciseView.swift in Sources */,
 				7044641A2BD0140200CB21F6 /* UpdateProfilePhotoViewModel.swift in Sources */,
