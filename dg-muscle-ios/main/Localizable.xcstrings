@@ -506,6 +506,9 @@
         }
       }
     },
+    "DELETE" : {
+
+    },
     "Delete Item" : {
 
     },
@@ -703,6 +706,9 @@
 
     },
     "parts" : {
+
+    },
+    "PhotosPicker" : {
 
     },
     "Please try again" : {
@@ -937,9 +943,6 @@
 
     },
     "Update" : {
-
-    },
-    "UpdateProfilePhotoView" : {
 
     },
     "Volume" : {

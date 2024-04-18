@@ -13,6 +13,7 @@ struct MainNavigation: Identifiable, Hashable {
     enum Name: String {
         case setting
         case profile
+        case editProfilePhoto
     }
     
     let name: Name
