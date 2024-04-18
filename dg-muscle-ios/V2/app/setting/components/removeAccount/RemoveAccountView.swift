@@ -43,8 +43,8 @@ struct RemoveAccountView: View {
                         )
                 }
             }
-            .padding()
         }
+        .padding()
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 animate.toggle()
