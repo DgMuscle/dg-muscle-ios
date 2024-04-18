@@ -167,6 +167,8 @@
 		707B0AF92BD163F700D8250B /* HeatmapRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AF82BD163F700D8250B /* HeatmapRepositoryTest.swift */; };
 		707B0AFA2BD1650100D8250B /* HeatmapRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AF82BD163F700D8250B /* HeatmapRepositoryTest.swift */; };
 		707B0AFB2BD1650200D8250B /* HeatmapRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AF82BD163F700D8250B /* HeatmapRepositoryTest.swift */; };
+		707B0AFD2BD1675100D8250B /* HeatmapColorSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AFC2BD1675100D8250B /* HeatmapColorSelectionView.swift */; };
+		707B0AFF2BD1676700D8250B /* HeatmapColorSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AFE2BD1676700D8250B /* HeatmapColorSelectionViewModel.swift */; };
 		707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC62ABF1CAC008ADECE /* UserStore.swift */; };
 		707B8FC92ABF1D37008ADECE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC82ABF1D37008ADECE /* Store.swift */; };
 		707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
@@ -415,6 +417,8 @@
 		707B0AF02BD1626E00D8250B /* HeatmapColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapColor.swift; sourceTree = "<group>"; };
 		707B0AF22BD163B000D8250B /* HeatmapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapRepository.swift; sourceTree = "<group>"; };
 		707B0AF82BD163F700D8250B /* HeatmapRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapRepositoryTest.swift; sourceTree = "<group>"; };
+		707B0AFC2BD1675100D8250B /* HeatmapColorSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapColorSelectionView.swift; sourceTree = "<group>"; };
+		707B0AFE2BD1676700D8250B /* HeatmapColorSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapColorSelectionViewModel.swift; sourceTree = "<group>"; };
 		707B8FC62ABF1CAC008ADECE /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		707B8FC82ABF1D37008ADECE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		707B8FD22ABF207F008ADECE /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
@@ -741,6 +745,8 @@
 		703A97D22BCBBB6B002C0843 /* historyMain */ = {
 			isa = PBXGroup;
 			children = (
+				707B0AFC2BD1675100D8250B /* HeatmapColorSelectionView.swift */,
+				707B0AFE2BD1676700D8250B /* HeatmapColorSelectionViewModel.swift */,
 				702E21672BCA53BC00147279 /* HistoryView.swift */,
 				702E216A2BCA541C00147279 /* HistoryViewModel.swift */,
 			);
@@ -1545,6 +1551,7 @@
 				703A97AC2BCB6EBF002C0843 /* ExerciseFormStep1View.swift in Sources */,
 				7083E6C32ABF0C62007D43CE /* SignInView.swift in Sources */,
 				709B540D2AC999D000C282E9 /* ExerciseFormView.swift in Sources */,
+				707B0AFD2BD1675100D8250B /* HeatmapColorSelectionView.swift in Sources */,
 				703A97CF2BCBB488002C0843 /* WorkoutFloatingButton.swift in Sources */,
 				7060FDB02AC5E1C3001A2198 /* ErrorView.swift in Sources */,
 				707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */,
@@ -1625,6 +1632,7 @@
 				024785652BCFBA9B00C9DF4F /* AppleAuth.swift in Sources */,
 				70C0559D2B79FB4600375526 /* QuickAction.swift in Sources */,
 				701CC4AC2AD271CF00852E2E /* UserRepository.swift in Sources */,
+				707B0AFF2BD1676700D8250B /* HeatmapColorSelectionViewModel.swift in Sources */,
 				70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */,
 				70F838A42AC7FE96009725EF /* ExerciseHistorySection.swift in Sources */,
 				703A97B52BCB7508002C0843 /* ExercisePartsSelectionFormModel.swift in Sources */,

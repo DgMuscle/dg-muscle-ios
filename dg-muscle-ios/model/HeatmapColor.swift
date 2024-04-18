@@ -9,15 +9,16 @@ import SwiftUI
 
 enum HeatmapColor: Codable, CaseIterable {
     case green
-    case mint
     case blue
     case red
     case pink
+    case purple
     case yellow
     case orange
     case brown
     case cyan
-    case purple
+    case mint
+    
     
     var color: Color {
         switch self {
