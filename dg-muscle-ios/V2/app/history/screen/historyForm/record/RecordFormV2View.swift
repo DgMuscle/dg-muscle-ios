@@ -12,6 +12,7 @@ struct RecordFormV2View: View {
     @StateObject var viewModel: RecordFormV2ViewModel
     @State private var isPresentSetForm: Bool = false
     @State private var isPresentPreviousSheet: Bool = false
+    @Binding var duration: String
     
     var body: some View {
         VStack {
@@ -32,6 +33,13 @@ struct RecordFormV2View: View {
                 Text("Current workout volume are \(Int(viewModel.currentVolume))")
                     .fontWeight(.bold)
                     .italic()
+                
+                HStack {
+                    Image(systemName: "clock")
+                    Text(duration)
+                }
+                .padding(.top, 4)
+                .fontWeight(.heavy)
                 
                 HStack {
                     Button {
@@ -114,5 +122,5 @@ struct RecordFormV2View: View {
                                           historyRepository: HistoryRepositoryV2Test(), 
                                           date: Date())
     
-    return RecordFormV2View(viewModel: viewModel).preferredColorScheme(.dark)
+    return RecordFormV2View(viewModel: viewModel, duration: .constant("7 seconds")).preferredColorScheme(.dark)
 }

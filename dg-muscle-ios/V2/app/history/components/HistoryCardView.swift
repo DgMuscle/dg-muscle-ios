@@ -10,7 +10,7 @@ import SwiftUI
 struct HistoryCardView: View {
     
     var dateString: String
-    @Binding var duration: String
+    var duration: String
     
     let addAction: (() -> ())?
     
@@ -54,6 +54,6 @@ struct HistoryCardView: View {
 }
 
 #Preview {
-    HistoryCardView(dateString: "2024.04.14", duration: .constant("0 seconds"), addAction: nil)
+    HistoryCardView(dateString: "2024.04.14", duration: "0 seconds", addAction: nil)
         .preferredColorScheme(.dark)
 }

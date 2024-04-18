@@ -21,6 +21,13 @@ struct MainNavigation: Identifiable, Hashable {
 }
 
 struct HistoryNavigation: Identifiable, Hashable {
+    
+    struct RecordFornIngredient {
+        var recordForForm: Binding<Record>
+        var dateForRecordForm: Date
+        var duration: Binding<String>
+    }
+    
     static func == (lhs: HistoryNavigation, rhs: HistoryNavigation) -> Bool {
         lhs.id == rhs.id
     }
@@ -38,8 +45,7 @@ struct HistoryNavigation: Identifiable, Hashable {
     let name: Name
     var id: Int { name.hashValue }
     var historyForForm: ExerciseHistory?
-    var recordForForm: Binding<Record>?
-    var dateForRecordForm: Date?
+    var recordFornIngredient: RecordFornIngredient?
 }
 
 struct ExerciseNavigation: Identifiable, Hashable, Equatable {
