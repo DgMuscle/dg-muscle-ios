@@ -11,6 +11,7 @@ struct HeatMapColumnView: View {
     
     var data: WorkoutHeatMapViewModel.Data
     var maxVolume: Double
+    var heatColor: HeatmapColor
     
     private let size: CGFloat = 15
     
@@ -21,7 +22,7 @@ struct HeatMapColumnView: View {
                     RoundedRectangle(cornerRadius: 2).fill(.gray).opacity(0.2)
                         .frame(width: size, height: size)
                 } else {
-                    RoundedRectangle(cornerRadius: 2).fill(.green).opacity(volume.value / maxVolume)
+                    RoundedRectangle(cornerRadius: 2).fill(heatColor.color).opacity(volume.value / maxVolume)
                         .frame(width: size, height: size)
                 }
             }
@@ -33,6 +34,6 @@ struct HeatMapColumnView: View {
     
     let data: WorkoutHeatMapViewModel.Data = .init(week: "202416", volumes: [4, 0, 4, 8, 10].map({ .init(value: $0) }))
     
-    return HeatMapColumnView(data: data, maxVolume: 10)
+    return HeatMapColumnView(data: data, maxVolume: 10, heatColor: HeatmapRepositoryTest().color)
         .preferredColorScheme(.dark)
 }

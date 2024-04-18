@@ -5,9 +5,11 @@
 //  Created by 신동규 on 4/18/24.
 //
 
-import SwiftUI
+import Combine
 
 protocol HeatmapRepository {
-    func get() -> Color
+    var color: HeatmapColor { get }
+    var colorPublisher: AnyPublisher<HeatmapColor, Never> { get }
+    
     func post(color: HeatmapColor) throws
 }

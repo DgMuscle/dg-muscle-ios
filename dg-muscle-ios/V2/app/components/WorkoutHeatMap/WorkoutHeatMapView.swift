@@ -12,7 +12,8 @@ struct WorkoutHeatMapView: View {
     @StateObject var viewModel: WorkoutHeatMapViewModel
     
     var body: some View {
-        WorkoutHeatMapCommonView(datas: viewModel.datas)
+        WorkoutHeatMapCommonView(datas: viewModel.datas, 
+                                 heatColor: viewModel.heatmapColor)
     }
 }
 
@@ -21,7 +22,9 @@ struct WorkoutHeatMapView: View {
     dateFormatter.dateFormat = "yyyyMMdd"
     let date = dateFormatter.date(from: "20240415")!
     
-    let viewModel: WorkoutHeatMapViewModel = .init(historyRepository: HistoryRepositoryV2Test(), today: date)
+    let viewModel: WorkoutHeatMapViewModel = .init(historyRepository: HistoryRepositoryV2Test(), 
+                                                   today: date,
+                                                   heatmapRepository: HeatmapRepositoryTest())
     
     return WorkoutHeatMapView(viewModel: viewModel)
         .preferredColorScheme(.dark)

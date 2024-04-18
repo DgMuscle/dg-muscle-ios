@@ -15,13 +15,16 @@ struct HistoryView: View {
     let exerciseRepository: ExerciseRepositoryV2
     let healthRepository: HealthRepository
     let historyRepository: HistoryRepositoryV2
+    let heatmapRepository: HeatmapRepository
     let today: Date
     
     var body: some View {
         ScrollView {
             Spacer(minLength: 60)
             
-            WorkoutHeatMapView(viewModel: .init(historyRepository: historyRepository, today: today))
+            WorkoutHeatMapView(viewModel: .init(historyRepository: historyRepository, 
+                                                today: today,
+                                                heatmapRepository: heatmapRepository))
                 .scrollTransition { effect, phase in
                     effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
                 }
@@ -84,7 +87,8 @@ struct HistoryView: View {
     return HistoryView(viewModel: viewModel, paths: .constant(.init()),
                        exerciseRepository: ExerciseRepositoryV2Test(),
                        healthRepository: HealthRepositoryTest(),
-                       historyRepository: HistoryRepositoryV2Test(),
+                       historyRepository: HistoryRepositoryV2Test(), 
+                       heatmapRepository: HeatmapRepositoryTest(),
                        today: today)
         .preferredColorScheme(.dark)
 }

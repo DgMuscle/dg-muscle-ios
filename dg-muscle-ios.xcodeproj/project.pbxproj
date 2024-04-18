@@ -165,6 +165,8 @@
 		707B0AF62BD163CA00D8250B /* HeatmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AF22BD163B000D8250B /* HeatmapRepository.swift */; };
 		707B0AF72BD163CA00D8250B /* HeatmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AF22BD163B000D8250B /* HeatmapRepository.swift */; };
 		707B0AF92BD163F700D8250B /* HeatmapRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AF82BD163F700D8250B /* HeatmapRepositoryTest.swift */; };
+		707B0AFA2BD1650100D8250B /* HeatmapRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AF82BD163F700D8250B /* HeatmapRepositoryTest.swift */; };
+		707B0AFB2BD1650200D8250B /* HeatmapRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B0AF82BD163F700D8250B /* HeatmapRepositoryTest.swift */; };
 		707B8FC72ABF1CAC008ADECE /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC62ABF1CAC008ADECE /* UserStore.swift */; };
 		707B8FC92ABF1D37008ADECE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FC82ABF1D37008ADECE /* Store.swift */; };
 		707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
@@ -1425,6 +1427,7 @@
 				02D037F22BCE15A500238309 /* APIClient.swift in Sources */,
 				70CD21CC2BCD665F009B72F3 /* CreatedAt.swift in Sources */,
 				70CD21C82BCD6633009B72F3 /* HistoryRepositoryV2.swift in Sources */,
+				707B0AFA2BD1650100D8250B /* HeatmapRepositoryTest.swift in Sources */,
 				70CD21DD2BCD6EB3009B72F3 /* CustomError.swift in Sources */,
 				0247856D2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */,
 				708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */,
@@ -1447,6 +1450,7 @@
 			files = (
 				70756F362BCAC7FC0035EFF4 /* ExerciseListV2ViewModel.swift in Sources */,
 				0208CF4E2BCCFCCA00FD973D /* WorkoutHeatMapViewModel.swift in Sources */,
+				707B0AFB2BD1650200D8250B /* HeatmapRepositoryTest.swift in Sources */,
 				702E218F2BCA616700147279 /* FileManagerHelper.swift in Sources */,
 				70756F352BCAC7BA0035EFF4 /* exerciseTests.swift in Sources */,
 				702E21882BCA5E8E00147279 /* HistoryRepositoryV2.swift in Sources */,
