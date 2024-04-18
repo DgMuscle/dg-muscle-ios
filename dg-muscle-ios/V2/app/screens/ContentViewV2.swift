@@ -58,16 +58,17 @@ struct ContentViewV2: View {
                                                                                memo: nil,
                                                                                records: [],
                                                                                createdAt: nil),
-                                                               paths: $paths,
                                                                historyRepository: historyRepository),
                                               paths: $paths,
                                               exerciseRepository: exerciseRepository)
                         case .recordForm:
-                            if let record = navigation.recordForForm, let date = navigation.dateForRecordForm {
-                                RecordFormV2View(viewModel: .init(record: record,
+                            
+                            if let ingredient = navigation.recordFornIngredient {
+                                RecordFormV2View(viewModel: .init(record: ingredient.recordForForm,
                                                                   exerciseRepository: exerciseRepository,
                                                                   historyRepository: historyRepository,
-                                                                  date: date))
+                                                                  date: ingredient.dateForRecordForm),
+                                                 duration: ingredient.duration)
                             }
                         }
                     })

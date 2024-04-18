@@ -15,6 +15,8 @@ struct MyProfileUserView: View {
     let tapPhoto: (() -> ())?
     let tapDisplayName: (() -> ())?
     
+    @State private var isAnimating: Bool = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -22,10 +24,27 @@ struct MyProfileUserView: View {
                     tapPhoto?()
                 } label: {
                     KFImage(user.photoURL)
+                        .placeholder {
+                            Circle()
+                                .fill(
+                                    LinearGradient(colors: [
+                                        .secondary,
+                                        Color(uiColor: .secondarySystemGroupedBackground)
+                                    ],
+                                                   startPoint: isAnimating ? .bottomLeading : .topLeading,
+                                                   endPoint: isAnimating ? .topTrailing : .bottomTrailing)
+                                )
+                                .onAppear {
+                                    withAnimation(.linear(duration: 3).repeatForever(autoreverses: true)) {
+                                        isAnimating = true
+                                    }
+                                }
+                        }
                         .resizable()
                         .scaledToFill()
                         .frame(width: profileImageSize, height: profileImageSize)
                         .clipShape(Circle())
+                    
                 }
                 .padding(.trailing)
                 

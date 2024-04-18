@@ -19,10 +19,8 @@ struct HistoryFormV2View: View {
             
             VStack {
                 HistoryCardView(dateString: viewModel.dateString,
-                                duration: $viewModel.duration) {
+                                duration: viewModel.duration) {
                     isPresentSelectSheet.toggle()
-                } saveAction: {
-                    viewModel.post()
                 }
             }
             .padding(.horizontal)
@@ -31,15 +29,7 @@ struct HistoryFormV2View: View {
             List {
                 ForEach($viewModel.history.records) { record in
                     Button {
-                        
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyyMMdd"
-                        guard let date = dateFormatter.date(from: viewModel.history.date) else { return }
-                        
-                        paths.append(HistoryNavigation(name: .recordForm,
-                                                       recordForForm: record,
-                                                       dateForRecordForm: date)
-                        )
+                        tapRecord(record: record)
                     } label: {
                         RecordListItemView(record: record, exerciseRepository: exerciseRepository)
                     }
@@ -76,13 +66,37 @@ struct HistoryFormV2View: View {
         guard let date = dateFormatter.date(from: viewModel.history.date) else { return }
         
         viewModel.history.records.append(newRecord)
+        guard let recordForForm = $viewModel.history.records.last else { return }
         
-        paths.append(HistoryNavigation(name: .recordForm,
-                                       recordForForm: $viewModel.history.records.last,
-                                       dateForRecordForm: date
-                                      ))
+        
+        let ingredient: HistoryNavigation.RecordFornIngredient =
+            .init(recordForForm: recordForForm,
+                  dateForRecordForm: date,
+                  duration: $viewModel.duration)
+        
+        let navigation = HistoryNavigation(name: .recordForm,
+                          recordFornIngredient: ingredient)
+        
+        paths.append(navigation)
         
         isPresentSelectSheet.toggle()
+    }
+    
+    private func tapRecord(record: Binding<Record>) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        guard let date = dateFormatter.date(from: viewModel.history.date) else { return }
+
+        let ingredient: HistoryNavigation.RecordFornIngredient =
+            .init(recordForForm: record,
+                  dateForRecordForm: date,
+                  duration: $viewModel.duration)
+        
+        let navigation: HistoryNavigation =
+        HistoryNavigation(name: .recordForm,
+                          recordFornIngredient: ingredient)
+        
+        paths.append(navigation)
     }
 }
 
@@ -104,7 +118,8 @@ struct HistoryFormV2View: View {
     
     let history = ExerciseHistory(id: "id", date: "20240414", memo: "Some memo.....Some memo.....Some memo.....", records: records, createdAt: nil)
     
-    let viewModel: HistoryFormV2ViewModel = .init(history: history, paths: .constant(.init()), historyRepository: HistoryRepositoryV2Test())
+    let viewModel: HistoryFormV2ViewModel = .init(history: history,
+                                                  historyRepository: HistoryRepositoryV2Test())
     
     return HistoryFormV2View(viewModel: viewModel, 
                              paths: .constant(.init()),

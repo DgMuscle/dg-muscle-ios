@@ -13,18 +13,17 @@ final class HistoryFormV2ViewModel: ObservableObject {
     @Published var history: ExerciseHistory
     @Published var dateString: String = ""
     @Published var duration: String = ""
-    @Binding var paths: NavigationPath
     
     let historyRepository: HistoryRepositoryV2
     
     private let start = Date().timeIntervalSince1970
     private var timer: Timer?
     
+    private var cancellables = Set<AnyCancellable>()
+    
     init(history: ExerciseHistory,
-         paths: Binding<NavigationPath>,
          historyRepository: HistoryRepositoryV2) {
         self.history = history
-        self._paths = paths
         self.historyRepository = historyRepository
         
         configureDateString()
@@ -37,15 +36,8 @@ final class HistoryFormV2ViewModel: ObservableObject {
                                              selector: #selector(configureDuration),
                                              userInfo: nil,
                                              repeats: true)
-    }
-    
-    func post() {
-        Task {
-            paths.removeLast()
-            if history.records.isEmpty == false {
-                let _ = try await historyRepository.post(data: history)
-            }
-        }
+        
+        bind()
     }
     
     func onDelete(indexSet: IndexSet) {
@@ -58,6 +50,25 @@ final class HistoryFormV2ViewModel: ObservableObject {
         guard let date = dateFormatter.date(from: history.date) else { return }
         dateFormatter.dateFormat = "yyyy.MM.dd"
         dateString = dateFormatter.string(from: date)
+    }
+    
+    private func bind() {
+        $history
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .filter({ $0.records.isEmpty == false })
+            .sink { [weak self] _ in
+                self?.post()
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func post() {
+        Task {
+            if history.records.isEmpty == false {
+                let _ = try await historyRepository.post(data: history)
+            }
+        }
     }
     
     @objc private func configureDuration() {
