@@ -28,6 +28,12 @@ final class HistoryViewModel: ObservableObject {
         bind()
     }
     
+    func delete(history: ExerciseHistory) {
+        Task {
+            try await historyRepository.delete(data: history)
+        }
+    }
+    
     func findTodayExerciseHistory() -> ExerciseHistory? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
