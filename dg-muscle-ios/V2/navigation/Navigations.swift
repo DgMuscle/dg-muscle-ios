@@ -14,6 +14,7 @@ struct MainNavigation: Identifiable, Hashable {
         case setting
         case profile
         case editProfilePhoto
+        case selectHeatmapColor
     }
     
     let name: Name

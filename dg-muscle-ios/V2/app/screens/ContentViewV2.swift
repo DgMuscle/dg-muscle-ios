@@ -48,6 +48,8 @@ struct ContentViewV2: View {
                         case .editProfilePhoto:
                             UpdateProfilePhotoView(viewModel: .init(userRepository: userRepository,
                                                                     fileUploader: fileUploader))
+                        case .selectHeatmapColor:
+                            HeatmapColorSelectionView(viewModel: .init(heatmapRepository: heatmapRepository))
                         }
                     }
                     .navigationDestination(for: HistoryNavigation.self, destination: { navigation in
