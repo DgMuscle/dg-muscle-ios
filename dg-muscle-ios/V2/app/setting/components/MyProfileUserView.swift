@@ -32,10 +32,10 @@ struct MyProfileUserView: View {
                 Button {
                     tapDisplayName?()
                 } label: {
-                    if let displayName = user.displayName {
+                    if let displayName = user.displayName, displayName.isEmpty == false {
                         Text(displayName).fontWeight(.bold)
                     } else {
-                        Text("Display Name")
+                        Text("Display Name").foregroundStyle(.secondary)
                     }
                 }
                 .foregroundStyle(Color(uiColor: .label))
