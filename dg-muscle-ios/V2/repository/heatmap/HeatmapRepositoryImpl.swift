@@ -6,6 +6,7 @@
 //
 
 import Combine
+import WidgetKit
 
 final class HeatmapRepositoryImpl: HeatmapRepository {
     static let shared = HeatmapRepositoryImpl()
@@ -25,6 +26,7 @@ final class HeatmapRepositoryImpl: HeatmapRepository {
     func post(color: HeatmapColor) throws {
         _color = color
         try FileManagerHelper.save(color, toFile: .heatmapColor)
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     private func configureColor() {
