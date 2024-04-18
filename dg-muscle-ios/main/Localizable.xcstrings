@@ -509,6 +509,9 @@
     "DELETE" : {
 
     },
+    "DELETE ACCOUNT" : {
+
+    },
     "DELETE HISTORY" : {
 
     },
@@ -699,6 +702,9 @@
     "O+" : {
 
     },
+    "Once deleted, the account cannot be restored." : {
+
+    },
     "One moment, please." : {
 
     },
@@ -712,6 +718,9 @@
 
     },
     "PhotosPicker" : {
+
+    },
+    "Please enter your display name." : {
 
     },
     "Please try again" : {

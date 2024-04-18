@@ -22,6 +22,8 @@
 		02D037F32BCE15AC00238309 /* UserRepositoryV2Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756F092BCA9F340035EFF4 /* UserRepositoryV2Live.swift */; };
 		02D212972BCE6D410088F93B /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D212962BCE6D410088F93B /* MyProfileView.swift */; };
 		02D212992BCE6DAF0088F93B /* MyProfileUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D212982BCE6DAF0088F93B /* MyProfileUserView.swift */; };
+		700308FE2BD150CF00C6DA26 /* RemoveAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700308FD2BD150CF00C6DA26 /* RemoveAccountView.swift */; };
+		700309002BD150DB00C6DA26 /* RemoveAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700308FF2BD150DB00C6DA26 /* RemoveAccountViewModel.swift */; };
 		7003E7C42AC86C2D00AFE1C2 /* RecordFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003E7C32AC86C2D00AFE1C2 /* RecordFormView.swift */; };
 		700BB60B2AE513AF008B8132 /* MonthlyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700BB60A2AE513AF008B8132 /* MonthlyChartView.swift */; };
 		701042122AEE483400FAD52C /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701042112AEE483400FAD52C /* UserCache.swift */; };
@@ -303,6 +305,8 @@
 		02D037F12BCE151900238309 /* dg-muscle-ios.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dg-muscle-ios.xctestplan"; sourceTree = "<group>"; };
 		02D212962BCE6D410088F93B /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		02D212982BCE6DAF0088F93B /* MyProfileUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileUserView.swift; sourceTree = "<group>"; };
+		700308FD2BD150CF00C6DA26 /* RemoveAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAccountView.swift; sourceTree = "<group>"; };
+		700308FF2BD150DB00C6DA26 /* RemoveAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAccountViewModel.swift; sourceTree = "<group>"; };
 		7003E7C32AC86C2D00AFE1C2 /* RecordFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFormView.swift; sourceTree = "<group>"; };
 		700BB60A2AE513AF008B8132 /* MonthlyChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyChartView.swift; sourceTree = "<group>"; };
 		701042112AEE483400FAD52C /* UserCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCache.swift; sourceTree = "<group>"; };
@@ -566,6 +570,15 @@
 				024785672BCFBC5A00C9DF4F /* AppleAuthViewModel.swift */,
 			);
 			path = auth;
+			sourceTree = "<group>";
+		};
+		700309012BD150E500C6DA26 /* removeAccount */ = {
+			isa = PBXGroup;
+			children = (
+				700308FD2BD150CF00C6DA26 /* RemoveAccountView.swift */,
+				700308FF2BD150DB00C6DA26 /* RemoveAccountViewModel.swift */,
+			);
+			path = removeAccount;
 			sourceTree = "<group>";
 		};
 		70240BEA2ADC1FF800B87A79 /* dg-muscle-ios-widget */ = {
@@ -893,6 +906,7 @@
 				708785132BCEC16100930B0D /* MyProfileListItemView.swift */,
 				02D212982BCE6DAF0088F93B /* MyProfileUserView.swift */,
 				70756F1F2BCAB95F0035EFF4 /* SettingListItemView.swift */,
+				700309012BD150E500C6DA26 /* removeAccount */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -1530,6 +1544,7 @@
 				708F0A7F2B414D4A001AF089 /* BicepCurlInfoView.swift in Sources */,
 				7083E6C62ABF0EC9007D43CE /* AppleAuthCoordinator.swift in Sources */,
 				70A9B7412ACBCFC70061DAA3 /* BodyProfileView.swift in Sources */,
+				700309002BD150DB00C6DA26 /* RemoveAccountViewModel.swift in Sources */,
 				703E547B2ADBD5D900E7D911 /* GrassView.swift in Sources */,
 				703A97C42BCB950C002C0843 /* BannerLoadingView.swift in Sources */,
 				70756F022BCA75E10035EFF4 /* HistorySectionView.swift in Sources */,
@@ -1591,6 +1606,7 @@
 				702D895B2B9226F8008EA220 /* ActivityView.swift in Sources */,
 				708508C42AF626990035BB9D /* HealthStore.swift in Sources */,
 				70226B882AF7765400379ED3 /* WorkoutMetaData.swift in Sources */,
+				700308FE2BD150CF00C6DA26 /* RemoveAccountView.swift in Sources */,
 				70FB87B52ACAAE9F00B6B432 /* SetFormView.swift in Sources */,
 				703A97C22BCB92B7002C0843 /* Navigations.swift in Sources */,
 				706760B02BCBE54F00649BF3 /* HistoryFormV2View.swift in Sources */,

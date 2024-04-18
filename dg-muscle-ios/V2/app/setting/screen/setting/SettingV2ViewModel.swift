@@ -9,10 +9,11 @@ import Foundation
 import Combine
 
 final class SettingV2ViewModel: ObservableObject {
-    @Published private(set) var user: DGUser?
-    @Published private(set) var errorMessage: String?
+    @Published var user: DGUser?
+    @Published var errorMessage: String?
+    @Published var loading: Bool = false
     
-    private let userRepository: UserRepositoryV2
+    let userRepository: UserRepositoryV2
     
     private var cancellables = Set<AnyCancellable>()
     

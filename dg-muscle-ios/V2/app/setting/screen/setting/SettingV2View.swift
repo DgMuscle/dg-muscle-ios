@@ -11,9 +11,19 @@ struct SettingV2View: View {
     
     @StateObject var viewModel: SettingV2ViewModel
     @Binding var paths: NavigationPath
+    @State private var isPresentRemoveAccount: Bool = false
     
     var body: some View {
         ScrollView {
+            
+            if let errorMessage = viewModel.errorMessage {
+                BannerErrorMessageView(errorMessage: errorMessage)
+            }
+            
+            if viewModel.loading {
+                BannerLoadingView(loading: $viewModel.loading)
+            }
+            
             if let user = viewModel.user {
                 Button {
                     paths.append(MainNavigation(name: .profile))
@@ -46,7 +56,7 @@ struct SettingV2View: View {
                 .padding(.bottom, 20)
                 
                 Button {
-                    print("remove Account")
+                    isPresentRemoveAccount.toggle()
                 } label: {
                     SettingListItemView(systemImageName: "trash",
                                         title: "Remove Account",
@@ -60,6 +70,13 @@ struct SettingV2View: View {
         .scrollIndicators(.hidden)
         .navigationTitle("Setting")
         .navigationBarTitleDisplayMode(.large)
+        .sheet(isPresented: $isPresentRemoveAccount) {
+            RemoveAccountView(viewModel: .init(userRepository: viewModel.userRepository,
+                                               loading: $viewModel.loading,
+                                               errorMessage: $viewModel.errorMessage,
+                                               isPresent: $isPresentRemoveAccount))
+            .presentationDetents([.medium])
+        }
     }
 }
 
