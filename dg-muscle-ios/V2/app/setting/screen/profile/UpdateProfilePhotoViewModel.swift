@@ -63,6 +63,10 @@ final class UpdateProfilePhotoViewModel: ObservableObject {
             guard let path = URL(string: previousPhotoURLString)?.lastPathComponent else { return }
             try await fileUploader.deleteImage(path: path)
         }
+        
+        Task {
+            try await userRepository.updateUser(photoURL: nil)
+        }
     }
     
     private func bind() {
