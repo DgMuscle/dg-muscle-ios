@@ -10,6 +10,7 @@ import SwiftUI
 struct WorkoutHeatMapCommonView: View {
     
     var datas: [WorkoutHeatMapViewModel.Data]
+    var heatColor: HeatmapColor
     
     var maxVolume: Double {
         datas.flatMap({ $0.volumes }).map({ $0.value }).max() ?? 0
@@ -18,7 +19,7 @@ struct WorkoutHeatMapCommonView: View {
     var body: some View {
         HStack(alignment: .top, spacing: 3.5) {
             ForEach(datas) { data in
-                HeatMapColumnView(data: data, maxVolume: maxVolume)
+                HeatMapColumnView(data: data, maxVolume: maxVolume, heatColor: heatColor)
             }
         }
     }

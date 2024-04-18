@@ -40,5 +40,6 @@ extension FileManagerHelper {
         case workoutMetaData
         case grassDatasourceBridge
         case workoutHeatMapData
+        case heatmapColor
     }
 }

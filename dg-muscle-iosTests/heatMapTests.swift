@@ -14,7 +14,9 @@ final class heatMapTests: XCTestCase {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
         let date = dateFormatter.date(from: "20240415")!
-        let viewModel = WorkoutHeatMapViewModel(historyRepository: HistoryRepositoryV2Test(), today: date)
+        let viewModel = WorkoutHeatMapViewModel(historyRepository: HistoryRepositoryV2Test(), 
+                                                today: date,
+                                                heatmapRepository: HeatmapRepositoryTest())
         
         try await Task.sleep(nanoseconds: 1_000_000_000)
         

@@ -15,17 +15,24 @@ struct HistoryView: View {
     let exerciseRepository: ExerciseRepositoryV2
     let healthRepository: HealthRepository
     let historyRepository: HistoryRepositoryV2
+    let heatmapRepository: HeatmapRepository
     let today: Date
     
     var body: some View {
         ScrollView {
             Spacer(minLength: 60)
             
-            WorkoutHeatMapView(viewModel: .init(historyRepository: historyRepository, today: today))
-                .scrollTransition { effect, phase in
-                    effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
-                }
-                .padding(.bottom, 20)
+            Button {
+                paths.append(MainNavigation(name: .selectHeatmapColor))
+            } label: {
+                WorkoutHeatMapView(viewModel: .init(historyRepository: historyRepository,
+                                                    today: today,
+                                                    heatmapRepository: heatmapRepository))
+                    .scrollTransition { effect, phase in
+                        effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
+                    }
+                    .padding(.bottom, 20)
+            }
             
             if let user = viewModel.user {
                 Button {
@@ -84,7 +91,8 @@ struct HistoryView: View {
     return HistoryView(viewModel: viewModel, paths: .constant(.init()),
                        exerciseRepository: ExerciseRepositoryV2Test(),
                        healthRepository: HealthRepositoryTest(),
-                       historyRepository: HistoryRepositoryV2Test(),
+                       historyRepository: HistoryRepositoryV2Test(), 
+                       heatmapRepository: HeatmapRepositoryTest(),
                        today: today)
         .preferredColorScheme(.dark)
 }

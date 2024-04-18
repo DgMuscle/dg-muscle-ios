@@ -16,15 +16,20 @@ final class WorkoutHeatMapViewModel: ObservableObject {
         }
     }
     
+    @Published var heatmapColor: HeatmapColor = .green
+    
     let historyRepository: HistoryRepositoryV2
     let today: Date
+    let heatmapRepository: HeatmapRepository
     
     private var cancellables = Set<AnyCancellable>()
     
     init(historyRepository: HistoryRepositoryV2,
-         today: Date) {
+         today: Date,
+         heatmapRepository: HeatmapRepository) {
         self.historyRepository = historyRepository
         self.today = today
+        self.heatmapRepository = heatmapRepository
         bind()
     }
     
@@ -34,6 +39,14 @@ final class WorkoutHeatMapViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] histories in
                 self?.configureHashMap(histories: histories)
+            }
+            .store(in: &cancellables)
+        
+        heatmapRepository
+            .colorPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] color in
+                self?.heatmapColor = color
             }
             .store(in: &cancellables)
     }

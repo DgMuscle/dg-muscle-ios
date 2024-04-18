@@ -20,6 +20,7 @@ struct ContentViewV2: View {
     let today: Date
     let appleAuth: AppleAuth
     let fileUploader: FileUploaderInterface
+    let heatmapRepository: HeatmapRepository
     
     var body: some View {
         ZStack {
@@ -31,7 +32,8 @@ struct ContentViewV2: View {
                                 paths: $paths,
                                 exerciseRepository: exerciseRepository,
                                 healthRepository: healthRepository,
-                                historyRepository: historyRepository,
+                                historyRepository: historyRepository, 
+                                heatmapRepository: heatmapRepository,
                                 today: today
                     )
                     .navigationDestination(for: MainNavigation.self) { navigation in
@@ -46,6 +48,8 @@ struct ContentViewV2: View {
                         case .editProfilePhoto:
                             UpdateProfilePhotoView(viewModel: .init(userRepository: userRepository,
                                                                     fileUploader: fileUploader))
+                        case .selectHeatmapColor:
+                            HeatmapColorSelectionView(viewModel: .init(heatmapRepository: heatmapRepository))
                         }
                     }
                     .navigationDestination(for: HistoryNavigation.self, destination: { navigation in
@@ -134,6 +138,7 @@ struct ContentViewV2: View {
                          historyRepository: historyRepository, 
                          today: today, 
                          appleAuth: AppleAuthTest(), 
-                         fileUploader: FileUploaderTest())
+                         fileUploader: FileUploaderTest(), 
+                         heatmapRepository: HeatmapRepositoryTest())
         .preferredColorScheme(.dark)
 }
