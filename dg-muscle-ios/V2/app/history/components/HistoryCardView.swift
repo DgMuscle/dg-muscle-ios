@@ -13,7 +13,6 @@ struct HistoryCardView: View {
     @Binding var duration: String
     
     let addAction: (() -> ())?
-    let saveAction: (() -> ())?
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -49,27 +48,12 @@ struct HistoryCardView: View {
                 }
                 
                 Spacer()
-                Rectangle().frame(width: 1, height: 20)
-                Spacer()
-                
-                Button {
-                    saveAction?()
-                } label: {
-                    Text("SAVE HISTORY")
-                        .foregroundStyle(
-                            LinearGradient(colors: [.secondary, Color(uiColor: .label)],
-                                           startPoint: .leading,
-                                           endPoint: .trailing)
-                        )
-                        .fontWeight(.heavy)
-                        .font(.title3)
-                }
             }
         }
     }
 }
 
 #Preview {
-    HistoryCardView(dateString: "2024.04.14", duration: .constant("0 seconds"), addAction: nil, saveAction: nil)
+    HistoryCardView(dateString: "2024.04.14", duration: .constant("0 seconds"), addAction: nil)
         .preferredColorScheme(.dark)
 }

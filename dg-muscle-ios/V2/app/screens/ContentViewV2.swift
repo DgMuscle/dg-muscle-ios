@@ -58,7 +58,6 @@ struct ContentViewV2: View {
                                                                                memo: nil,
                                                                                records: [],
                                                                                createdAt: nil),
-                                                               paths: $paths,
                                                                historyRepository: historyRepository),
                                               paths: $paths,
                                               exerciseRepository: exerciseRepository)

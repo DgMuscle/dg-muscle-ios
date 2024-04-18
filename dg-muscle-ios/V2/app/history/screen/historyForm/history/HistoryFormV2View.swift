@@ -21,8 +21,6 @@ struct HistoryFormV2View: View {
                 HistoryCardView(dateString: viewModel.dateString,
                                 duration: $viewModel.duration) {
                     isPresentSelectSheet.toggle()
-                } saveAction: {
-                    viewModel.post()
                 }
             }
             .padding(.horizontal)
@@ -104,7 +102,8 @@ struct HistoryFormV2View: View {
     
     let history = ExerciseHistory(id: "id", date: "20240414", memo: "Some memo.....Some memo.....Some memo.....", records: records, createdAt: nil)
     
-    let viewModel: HistoryFormV2ViewModel = .init(history: history, paths: .constant(.init()), historyRepository: HistoryRepositoryV2Test())
+    let viewModel: HistoryFormV2ViewModel = .init(history: history,
+                                                  historyRepository: HistoryRepositoryV2Test())
     
     return HistoryFormV2View(viewModel: viewModel, 
                              paths: .constant(.init()),
