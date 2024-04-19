@@ -24,11 +24,7 @@ final class MonthlySectionViewModel: ObservableObject {
     @Published var leastPart: Exercise.Part?
     @Published var minPartVolume: Double = 0
     
-    @Published var mostVolume: Double = 0
-    @Published var leastVolume: Double = 0
-    
     @Published var navigationTitle: String = ""
-    
     
     let exerciseHistorySection: ExerciseHistorySection
     let exerciseRepository: ExerciseRepositoryV2
@@ -38,7 +34,6 @@ final class MonthlySectionViewModel: ObservableObject {
         self.exerciseHistorySection = exerciseHistorySection
         self.exerciseRepository = exerciseRepository
         configureData()
-        configureVolume()
         configureExercise()
         configureNavigationTitle()
     }
@@ -71,22 +66,6 @@ final class MonthlySectionViewModel: ObservableObject {
         if let leastExercise {
             self.minExerciseVolume = hashMap[leastExercise, default: 0]
         }
-    }
-    
-    private func configureVolume() {
-        var maxVolume: Double = 0
-        var minVolme: Double = 0
-        
-        for history in exerciseHistorySection.histories.map({ $0.exercise }) {
-            if minVolme == 0 {
-                minVolme = history.volume
-            }
-            maxVolume = max(maxVolume, history.volume)
-            minVolme = min(minVolme, history.volume)
-        }
-        
-        self.mostVolume = maxVolume
-        self.leastVolume = minVolme
     }
     
     private func configureData() {

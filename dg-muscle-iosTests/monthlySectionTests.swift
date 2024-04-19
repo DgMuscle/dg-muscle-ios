@@ -19,18 +19,16 @@ final class monthlySectionTests: XCTestCase {
         
         try await Task.sleep(nanoseconds: 2_000_000_000)
         
-        XCTAssertEqual(viewModel.datas[0].part, .arm)
-        XCTAssertEqual(viewModel.datas[0].volume, 70000.0)
-        XCTAssertEqual(viewModel.datas[3].volume, 105000.0)
+        XCTAssertEqual(viewModel.mostExercise?.name, "squat")
+        XCTAssertEqual(viewModel.maxExerciseVolume, 57750.0)
         
         XCTAssertEqual(viewModel.mostPart, .leg)
+        XCTAssertEqual(viewModel.maxPartVolume, 105000.0)
+        
+        XCTAssertEqual(viewModel.leastExercise?.name, "arm curl")
+        XCTAssertEqual(viewModel.minExerciseVolume, 31500.0)
+        
         XCTAssertEqual(viewModel.leastPart, .chest)
-        
-        XCTAssertEqual(viewModel.mostVolume, 22750.0)
-        XCTAssertEqual(viewModel.leastVolume, 8750.0)
-        
-        XCTAssertEqual(viewModel.mostExercise?.id, "squat")
-        XCTAssertEqual(viewModel.leastExercise?.id, "arm curl")
+        XCTAssertEqual(viewModel.minPartVolume, 38500.0)
     }
-
 }
