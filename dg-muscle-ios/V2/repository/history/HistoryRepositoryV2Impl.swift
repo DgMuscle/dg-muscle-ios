@@ -21,12 +21,34 @@ final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
     
     @Published private var _histories: [ExerciseHistory] = []
     
+    private var cancellables = Set<AnyCancellable>()
+    
     private init() {
         _histories = getExerciseHistoryFromFile()
         
         Task {
             _histories = try await get(lastId: nil, limit: 365)
         }
+        
+        bind()
+    }
+    
+    private func bind() {
+        UserRepositoryV2Live.shared.isLoginPublisher
+            .dropFirst()
+            .removeDuplicates()
+            .sink { login in
+                if login {
+                    DispatchQueue.main.async {
+                        Task {
+                            self._histories = try await self.get(lastId: nil, limit: 365)
+                        }
+                    }
+                } else {
+                    self._histories = []
+                }
+            }
+            .store(in: &cancellables)
     }
     
     func get() throws -> [WorkoutHeatMapViewModel.Data] {

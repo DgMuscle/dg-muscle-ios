@@ -17,15 +17,6 @@ struct RecordFormV2View: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                if let exercise = viewModel.exercise {
-                    HStack {
-                        Text("You are currently doing \(exercise.name)")
-                            .font(.title)
-                            .fontWeight(.black)
-                        Spacer()
-                    }
-                }
-                
                 Text("Current sets count is \(viewModel.sets.count)")
                     .fontWeight(.bold)
                     .italic()
@@ -103,6 +94,7 @@ struct RecordFormV2View: View {
                                                     exerciseRepository: viewModel.exerciseRepository))
             }
         })
+        .navigationTitle("\(viewModel.exercise?.name ?? "") Record")
     }
 }
 
