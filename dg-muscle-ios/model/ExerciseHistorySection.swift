@@ -15,7 +15,7 @@ struct ExerciseHistorySection: Identifiable, Equatable {
     let id = UUID().uuidString
     var histories: [History]
     
-    private var date: Date {
+    var date: Date {
         let dateString = histories.first?.exercise.date ?? ""
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"

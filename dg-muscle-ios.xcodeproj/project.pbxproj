@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02053E342BD24F5A003B8D76 /* MonthlySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02053E332BD24F5A003B8D76 /* MonthlySectionView.swift */; };
+		02053E362BD24F63003B8D76 /* MonthlySectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02053E352BD24F63003B8D76 /* MonthlySectionViewModel.swift */; };
 		02070F0A2BCE526B00518744 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02070F092BCE526B00518744 /* MyProfileViewModel.swift */; };
 		0208CF4B2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */; };
 		0208CF4D2BCCFC9D00FD973D /* heatMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4C2BCCFC9D00FD973D /* heatMapTests.swift */; };
@@ -306,6 +308,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		02053E332BD24F5A003B8D76 /* MonthlySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySectionView.swift; sourceTree = "<group>"; };
+		02053E352BD24F63003B8D76 /* MonthlySectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySectionViewModel.swift; sourceTree = "<group>"; };
 		02070F092BCE526B00518744 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
 		0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeatMapViewModel.swift; sourceTree = "<group>"; };
 		0208CF4C2BCCFC9D00FD973D /* heatMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = heatMapTests.swift; sourceTree = "<group>"; };
@@ -540,6 +544,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02053E322BD24F46003B8D76 /* monthlySection */ = {
+			isa = PBXGroup;
+			children = (
+				02053E332BD24F5A003B8D76 /* MonthlySectionView.swift */,
+				02053E352BD24F63003B8D76 /* MonthlySectionViewModel.swift */,
+			);
+			path = monthlySection;
+			sourceTree = "<group>";
+		};
 		02070F072BCE521100518744 /* setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -624,6 +637,7 @@
 		702E21692BCA540E00147279 /* screen */ = {
 			isa = PBXGroup;
 			children = (
+				02053E322BD24F46003B8D76 /* monthlySection */,
 				703A97D32BCBBB7E002C0843 /* historyForm */,
 				703A97D22BCBBB6B002C0843 /* historyMain */,
 			);
@@ -1529,6 +1543,7 @@
 				708785142BCEC16100930B0D /* MyProfileListItemView.swift in Sources */,
 				70756F282BCAC1D60035EFF4 /* ExerciseListV2View.swift in Sources */,
 				70BDDB522B947B01002FCEEA /* FullRecordsView_SetView.swift in Sources */,
+				02053E342BD24F5A003B8D76 /* MonthlySectionView.swift in Sources */,
 				707BBF1A2AF7D39700A8ABD2 /* BodyMass.swift in Sources */,
 				70C055A32B7A04B200375526 /* QuickActionSubscriber.swift in Sources */,
 				702E21722BCA587700147279 /* HealthRepository.swift in Sources */,
@@ -1597,6 +1612,7 @@
 				70756F152BCAAB8B0035EFF4 /* SplashView.swift in Sources */,
 				70756F202BCAB95F0035EFF4 /* SettingListItemView.swift in Sources */,
 				708F0A812B414D4A001AF089 /* ExerciseGuideListView.swift in Sources */,
+				02053E362BD24F63003B8D76 /* MonthlySectionViewModel.swift in Sources */,
 				70BFFF142B7747E600C8A8C8 /* GuideView.swift in Sources */,
 				703A97B32BCB734D002C0843 /* ExercisePartSelectionItem.swift in Sources */,
 				70BDDB4F2B947B01002FCEEA /* FullRecordsView_RecordView.swift in Sources */,
