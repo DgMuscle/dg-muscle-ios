@@ -18,7 +18,7 @@ final class RecordFormV2ViewModel: ObservableObject {
     
     @Published var previousRecord: Record?
     @Published var previousDate: Date?
-    @Published var duration: String = "..."
+    @Published var duration: String = "calculating.."
     
     let exerciseRepository: ExerciseRepositoryV2
     let historyRepository: HistoryRepositoryV2
