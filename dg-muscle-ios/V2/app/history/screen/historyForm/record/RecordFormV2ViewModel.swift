@@ -41,6 +41,8 @@ final class RecordFormV2ViewModel: ObservableObject {
         self.date = date
         self.startTimeInterval = startTimeInterval
         
+        configureDuration()
+        
         timer = Timer.scheduledTimer(timeInterval: 1.0,
                                              target: self,
                                              selector: #selector(configureDuration),
