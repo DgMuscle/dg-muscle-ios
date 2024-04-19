@@ -49,7 +49,7 @@ extension Exercise {
             case .chest:
                 return .cyan
             case .leg:
-                return .pink
+                return .mint
             case .shoulder:
                 return .indigo
             case .core:

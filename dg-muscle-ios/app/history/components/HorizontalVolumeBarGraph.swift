@@ -17,7 +17,7 @@ struct HorizontalVolumeBarGraph: View {
     var body: some View {
         GeometryReader { geometry in
             Rectangle()
-                .fill(data.part.color.opacity(0.9))
+                .fill(data.part.color)
                 .frame(width: animate ? geometry.size.width * (data.volume / maxExerciseVolume) : 0)
                 .onAppear {
                     animate.toggle()
