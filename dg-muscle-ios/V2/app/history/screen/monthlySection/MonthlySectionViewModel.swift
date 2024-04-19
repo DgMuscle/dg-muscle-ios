@@ -92,7 +92,7 @@ final class MonthlySectionViewModel: ObservableObject {
 }
 
 extension MonthlySectionViewModel {
-    struct Data {
+    struct Data: Hashable {
         var part: Exercise.Part
         var volume: Double
     }
