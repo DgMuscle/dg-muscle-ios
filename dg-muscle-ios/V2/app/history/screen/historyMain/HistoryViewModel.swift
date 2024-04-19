@@ -9,7 +9,6 @@ import Combine
 import Foundation
 
 final class HistoryViewModel: ObservableObject {
-    @Published private(set) var grassData: [GrassData] = []
     @Published private(set) var historySections: [ExerciseHistorySection] = []
     @Published private(set) var user: DGUser?
     
