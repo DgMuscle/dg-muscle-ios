@@ -13,6 +13,7 @@ struct OpenWeb: View {
     
     var body: some View {
         DGWebViewPresenter(url: url)
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 
