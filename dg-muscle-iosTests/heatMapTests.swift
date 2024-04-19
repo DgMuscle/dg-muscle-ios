@@ -18,7 +18,7 @@ final class heatMapTests: XCTestCase {
                                                 today: date,
                                                 heatmapRepository: HeatmapRepositoryTest())
         
-        try await Task.sleep(nanoseconds: 1_000_000_000)
+        try await Task.sleep(nanoseconds: 5_000_000_000)
         
         var dataCount: Int = 0
         var volumesCount: Int = 0

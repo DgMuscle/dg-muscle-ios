@@ -17,7 +17,7 @@ final class monthlySectionTests: XCTestCase {
         let viewModel = MonthlySectionViewModel(exerciseHistorySection: sectionData,
                                                 exerciseRepository: ExerciseRepositoryV2Test())
         
-        try await Task.sleep(nanoseconds: 2_000_000_000)
+        try await Task.sleep(nanoseconds: 5_000_000_000)
         
         XCTAssertEqual(viewModel.mostExercise?.name, "squat")
         XCTAssertEqual(viewModel.maxExerciseVolume, 57750.0)

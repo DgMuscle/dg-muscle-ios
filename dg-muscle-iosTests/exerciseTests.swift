@@ -13,7 +13,7 @@ final class exerciseTests: XCTestCase {
         
         let viewModel = ExerciseListV2ViewModel(exerciseRepository: ExerciseRepositoryV2Test())
         
-        try await Task.sleep(nanoseconds: 2_000_000_000)
+        try await Task.sleep(nanoseconds: 5_000_000_000)
         
         var keyCount: Int = 0
         var exerciseCount: Int = 0

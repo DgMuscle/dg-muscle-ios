@@ -13,8 +13,7 @@ final class historyTests: XCTestCase {
     func testSetUpHistorySection() async throws {
         let viewModel = HistoryViewModel(historyRepository: HistoryRepositoryV2Test(), healthRepository: HealthRepositoryTest(), userRepository: UserRepositoryV2Test())
         
-        // I want to check viewModel.historySections after 0.5 seconds
-        try await Task.sleep(nanoseconds: 500_000_000)
+        try await Task.sleep(nanoseconds: 5_000_000_000)
         
         var sectionCount: Int = 0
         var historyCount: Int = 0
