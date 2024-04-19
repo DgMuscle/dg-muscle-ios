@@ -318,6 +318,9 @@
     "ADD" : {
 
     },
+    "ADD EXERCISE" : {
+
+    },
     "add history" : {
 
     },
@@ -676,6 +679,9 @@
       }
     },
     "male" : {
+
+    },
+    "Manage Exercise" : {
 
     },
     "mark type" : {
