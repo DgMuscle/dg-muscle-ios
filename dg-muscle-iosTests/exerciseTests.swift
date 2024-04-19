@@ -27,6 +27,6 @@ final class exerciseTests: XCTestCase {
         }
           
         XCTAssertEqual(keyCount, 4)
-        XCTAssertEqual(exerciseCount, 5)
+        XCTAssertEqual(exerciseCount, 6)
     }
 }

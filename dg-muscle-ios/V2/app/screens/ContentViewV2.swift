@@ -74,6 +74,11 @@ struct ContentViewV2: View {
                                                                   date: ingredient.dateForRecordForm, 
                                                                   startTimeInterval: ingredient.startTimeInterval))
                             }
+                        case .monthlySection:
+                            if let ingredient = navigation.monthlySectionIngredient {
+                                MonthlySectionView(viewModel: .init(exerciseHistorySection: ingredient,
+                                                                    exerciseRepository: exerciseRepository))
+                            }
                         }
                     })
                     .navigationDestination(for: ExerciseNavigation.self) { navigation in
@@ -82,7 +87,7 @@ struct ContentViewV2: View {
                             ManageExerciseView(viewModel: .init(exerciseRepository: exerciseRepository),
                                                paths: $paths)
                         case .edit:
-                            if let exercise = navigation.editExercise {
+                            if let exercise = navigation.editIngredient {
                                 EditExerciseView(viewModel: .init(exercise: exercise,
                                                                   exerciseRepository: exerciseRepository,
                                                                   completeAction: nil))
