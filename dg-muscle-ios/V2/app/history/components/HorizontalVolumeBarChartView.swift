@@ -20,12 +20,16 @@ struct HorizontalVolumeBarChartView: View {
                         .fontWeight(.heavy)
                         .frame(height: 30)
                 }
+                
+                Rectangle().fill(.clear).frame(height: 1).fixedSize(horizontal: true, vertical: false)
             }
             
             VStack {
                 ForEach(datas, id: \.self) { data in
                     HorizontalVolumeBarGraph(data: data, maxExerciseVolume: maxExerciseVolume)
                 }
+                
+                Rectangle().frame(height: 1)
             }
         }
     }
