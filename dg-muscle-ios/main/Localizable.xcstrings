@@ -41,6 +41,9 @@
     "%@ record" : {
 
     },
+    "%@ Record" : {
+
+    },
     "%@ volume are" : {
 
     },
@@ -995,9 +998,6 @@
       }
     },
     "YES" : {
-
-    },
-    "You are currently doing %@" : {
 
     },
     "You can see your exercise duration, kcal consumed, intensity." : {

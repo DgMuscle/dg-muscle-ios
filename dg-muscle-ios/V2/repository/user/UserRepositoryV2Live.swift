@@ -20,11 +20,13 @@ final class UserRepositoryV2Live: UserRepositoryV2 {
         $_user.eraseToAnyPublisher()
     }
     
-    var isLogin: Bool {
-        return user != nil
+    var isLogin: Bool { _isLogin }
+    var isLoginPublisher: AnyPublisher<Bool, Never> {
+        $_isLogin.eraseToAnyPublisher()
     }
     
     @Published private var _user: DGUser?
+    @Published private var _isLogin: Bool = false
     
     private init() {
         bind()
@@ -62,9 +64,11 @@ final class UserRepositoryV2Live: UserRepositoryV2 {
         Auth.auth().addStateDidChangeListener { _, user in
             guard let user else {
                 self._user = nil
+                self._isLogin = false
                 return
             }
             self._user = .init(uid: user.uid, displayName: user.displayName, photoURL: user.photoURL)
+            self._isLogin = true
         }
     }
 }

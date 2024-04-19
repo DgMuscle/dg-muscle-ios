@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
     static let shared = ExerciseRepositoryV2Live()
@@ -20,12 +21,37 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
     
     @Published private var _exercises: [Exercise] = []
     
+    private var cancellables = Set<AnyCancellable>()
+    
     private init() {
         _exercises = fetchExerciseDataFromFile()
         
         Task {
             _exercises = try await fetchExerciseDataFromServer()
         }
+        
+        bind()
+    }
+    
+    private func bind() {
+        UserRepositoryV2Live.shared
+            .isLoginPublisher
+            .dropFirst()
+            .removeDuplicates()
+            .sink { login in
+                if login {
+                    
+                    DispatchQueue.main.async {
+                        Task {
+                            self._exercises = try await self.fetchExerciseDataFromServer()
+                        }
+                    }
+                    
+                } else {
+                    self._exercises = []
+                }
+            }
+            .store(in: &cancellables)
     }
     
     func post(data: Exercise) async throws -> DefaultResponse {

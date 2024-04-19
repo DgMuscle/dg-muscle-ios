@@ -17,11 +17,13 @@ final class UserRepositoryV2Test: UserRepositoryV2 {
         $_user.eraseToAnyPublisher()
     }
     
-    var isLogin: Bool {
-        return user != nil
+    var isLogin: Bool { _isLogin }
+    var isLoginPublisher: AnyPublisher<Bool, Never> {
+        $_isLogin.eraseToAnyPublisher()
     }
     
     @Published private var _user: DGUser?
+    @Published private var _isLogin: Bool = true
     
     init() {
         prepareMockData()
