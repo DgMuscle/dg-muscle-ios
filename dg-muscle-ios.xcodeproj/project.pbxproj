@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		02053E342BD24F5A003B8D76 /* MonthlySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02053E332BD24F5A003B8D76 /* MonthlySectionView.swift */; };
 		02053E362BD24F63003B8D76 /* MonthlySectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02053E352BD24F63003B8D76 /* MonthlySectionViewModel.swift */; };
+		02053E372BD2511C003B8D76 /* MonthlySectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02053E352BD24F63003B8D76 /* MonthlySectionViewModel.swift */; };
+		02053E392BD25181003B8D76 /* monthlySectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02053E382BD25181003B8D76 /* monthlySectionTests.swift */; };
 		02070F0A2BCE526B00518744 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02070F092BCE526B00518744 /* MyProfileViewModel.swift */; };
 		0208CF4B2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */; };
 		0208CF4D2BCCFC9D00FD973D /* heatMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4C2BCCFC9D00FD973D /* heatMapTests.swift */; };
@@ -310,6 +312,7 @@
 /* Begin PBXFileReference section */
 		02053E332BD24F5A003B8D76 /* MonthlySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySectionView.swift; sourceTree = "<group>"; };
 		02053E352BD24F63003B8D76 /* MonthlySectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySectionViewModel.swift; sourceTree = "<group>"; };
+		02053E382BD25181003B8D76 /* monthlySectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = monthlySectionTests.swift; sourceTree = "<group>"; };
 		02070F092BCE526B00518744 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
 		0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeatMapViewModel.swift; sourceTree = "<group>"; };
 		0208CF4C2BCCFC9D00FD973D /* heatMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = heatMapTests.swift; sourceTree = "<group>"; };
@@ -1088,8 +1091,9 @@
 			isa = PBXGroup;
 			children = (
 				70756F342BCAC7BA0035EFF4 /* exerciseTests.swift */,
-				702E21762BCA5DEF00147279 /* historyTests.swift */,
 				0208CF4C2BCCFC9D00FD973D /* heatMapTests.swift */,
+				702E21762BCA5DEF00147279 /* historyTests.swift */,
+				02053E382BD25181003B8D76 /* monthlySectionTests.swift */,
 			);
 			path = "dg-muscle-iosTests";
 			sourceTree = "<group>";
@@ -1475,6 +1479,7 @@
 				70756F352BCAC7BA0035EFF4 /* exerciseTests.swift in Sources */,
 				702E21882BCA5E8E00147279 /* HistoryRepositoryV2.swift in Sources */,
 				70756F372BCAC8220035EFF4 /* ExerciseRepositoryV2.swift in Sources */,
+				02053E392BD25181003B8D76 /* monthlySectionTests.swift in Sources */,
 				0247856E2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */,
 				702E217C2BCA5E6000147279 /* ExerciseSet.swift in Sources */,
 				702E21872BCA5E8900147279 /* QuickAction.swift in Sources */,
@@ -1484,6 +1489,7 @@
 				70756EEF2BCA68530035EFF4 /* HealthRepositoryTest.swift in Sources */,
 				702E21812BCA5E7700147279 /* ExerciseSection.swift in Sources */,
 				702E21832BCA5E7F00147279 /* Profile.swift in Sources */,
+				02053E372BD2511C003B8D76 /* MonthlySectionViewModel.swift in Sources */,
 				702E21852BCA5E8400147279 /* UserCache.swift in Sources */,
 				702E21842BCA5E8100147279 /* Record.swift in Sources */,
 				702E21772BCA5DEF00147279 /* historyTests.swift in Sources */,
