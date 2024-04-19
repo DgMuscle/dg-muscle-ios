@@ -530,19 +530,6 @@
 			path = repository;
 			sourceTree = "<group>";
 		};
-		702E21752BCA5D8800147279 /* V2 */ = {
-			isa = PBXGroup;
-			children = (
-				70756F162BCAB5BF0035EFF4 /* app */,
-				70D3418D2ACC07FD0010EAF9 /* extension */,
-				70F8389C2AC7FE20009725EF /* model */,
-				703A97C02BCB929B002C0843 /* navigation */,
-				702E216C2BCA559500147279 /* repository */,
-				707B8FD12ABF204A008ADECE /* util */,
-			);
-			path = V2;
-			sourceTree = "<group>";
-		};
 		703A97A92BCB6E7A002C0843 /* form */ = {
 			isa = PBXGroup;
 			children = (
@@ -942,9 +929,14 @@
 			children = (
 				70E556082ABF010D006D4DA0 /* dg_muscle_ios.entitlements */,
 				708508C22AF625EE0035BB9D /* Info.plist */,
+				70756F162BCAB5BF0035EFF4 /* app */,
+				70D3418D2ACC07FD0010EAF9 /* extension */,
 				707B8FD02ABF1FD5008ADECE /* main */,
+				70F8389C2AC7FE20009725EF /* model */,
+				703A97C02BCB929B002C0843 /* navigation */,
 				70E556052ABF010D006D4DA0 /* Preview Content */,
-				702E21752BCA5D8800147279 /* V2 */,
+				702E216C2BCA559500147279 /* repository */,
+				707B8FD12ABF204A008ADECE /* util */,
 			);
 			path = "dg-muscle-ios";
 			sourceTree = "<group>";
@@ -975,8 +967,7 @@
 				70F838A72AC7FEB6009725EF /* Record.swift */,
 				70226B872AF7765400379ED3 /* WorkoutMetaData.swift */,
 			);
-			name = model;
-			path = ../model;
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
