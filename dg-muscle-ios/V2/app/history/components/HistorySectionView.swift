@@ -19,7 +19,6 @@ struct HistorySectionView: View {
     
     var body: some View {
         VStack {
-            
             Button {
                 tapSectionHeader?()
             } label: {
@@ -29,6 +28,10 @@ struct HistorySectionView: View {
                         .fontWeight(.black)
                     Spacer()
                 }
+                .foregroundStyle(LinearGradient(colors: [Color(uiColor: .label),
+                                                         Color(uiColor: .label).opacity(0.4)],
+                                                startPoint: .leading,
+                                                endPoint: .trailing))
                 .scrollTransition { effect, phase in
                     effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
                 }
