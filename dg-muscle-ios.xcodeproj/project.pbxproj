@@ -47,6 +47,9 @@
 		70240BF22ADC1FF800B87A79 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70240BF12ADC1FF800B87A79 /* AppIntent.swift */; };
 		70240BF42ADC1FF900B87A79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70240BF32ADC1FF900B87A79 /* Assets.xcassets */; };
 		70240BF82ADC1FF900B87A79 /* dg-muscle-ios-widgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 70240BE52ADC1FF800B87A79 /* dg-muscle-ios-widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		702448D52BD2BA1C00C79056 /* DGWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702448D42BD2BA1C00C79056 /* DGWebView.swift */; };
+		702448D82BD2BAB400C79056 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 702448D72BD2BAB400C79056 /* SnapKit */; };
+		702448DA2BD2BBCC00C79056 /* OpenWeb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702448D92BD2BBCC00C79056 /* OpenWeb.swift */; };
 		702BC70C2ABF2A0800E325DB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 702BC70B2ABF2A0800E325DB /* Kingfisher */; };
 		702D895B2B9226F8008EA220 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702D895A2B9226F8008EA220 /* ActivityView.swift */; };
 		702E21682BCA53BC00147279 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E21672BCA53BC00147279 /* HistoryView.swift */; };
@@ -349,6 +352,8 @@
 		70240BF32ADC1FF900B87A79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70240BF52ADC1FF900B87A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70240BFD2ADC201C00B87A79 /* dg-muscle-ios-widgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dg-muscle-ios-widgetExtension.entitlements"; sourceTree = "<group>"; };
+		702448D42BD2BA1C00C79056 /* DGWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGWebView.swift; sourceTree = "<group>"; };
+		702448D92BD2BBCC00C79056 /* OpenWeb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeb.swift; sourceTree = "<group>"; };
 		702D895A2B9226F8008EA220 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		702E21672BCA53BC00147279 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		702E216A2BCA541C00147279 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
@@ -545,6 +550,7 @@
 				703CD5EC2AC013D300BC76D4 /* FirebaseFirestore in Frameworks */,
 				7083E6BF2ABF06B7007D43CE /* FirebaseAppCheck in Frameworks */,
 				7083E6BD2ABF06B7007D43CE /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				702448D82BD2BAB400C79056 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +901,7 @@
 			children = (
 				70756F102BCAA7C80035EFF4 /* ContentViewV2.swift */,
 				02CA6D7F2BCFCD1400A8746B /* ContentViewV2Model.swift */,
+				702448D92BD2BBCC00C79056 /* OpenWeb.swift */,
 				70756F142BCAAB8B0035EFF4 /* SplashView.swift */,
 			);
 			path = screens;
@@ -936,6 +943,7 @@
 			children = (
 				703A97BC2BCB8514002C0843 /* BannerErrorMessageView.swift */,
 				703A97C32BCB950C002C0843 /* BannerLoadingView.swift */,
+				702448D42BD2BA1C00C79056 /* DGWebView.swift */,
 				70756F0D2BCAA19B0035EFF4 /* UserBoxView.swift */,
 				0208CF492BCCF9FF00FD973D /* WorkoutHeatMap */,
 			);
@@ -1352,6 +1360,7 @@
 				703CD5EB2AC013D300BC76D4 /* FirebaseFirestore */,
 				703CD5ED2AC0148800BC76D4 /* FirebaseStorage */,
 				708F0A852B414D6F001AF089 /* SDWebImageSwiftUI */,
+				702448D72BD2BAB400C79056 /* SnapKit */,
 			);
 			productName = "dg-muscle-ios";
 			productReference = 70E555FC2ABF010C006D4DA0 /* dg-muscle-ios.app */;
@@ -1392,6 +1401,7 @@
 				7083E6B52ABF06B7007D43CE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				702BC70A2ABF2A0800E325DB /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				708F0A612B414D1B001AF089 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				702448D62BD2BA9A00C79056 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 70E555FD2ABF010C006D4DA0 /* Products */;
 			projectDirPath = "";
@@ -1661,6 +1671,7 @@
 				024785652BCFBA9B00C9DF4F /* AppleAuth.swift in Sources */,
 				02BE7C2C2BD26D3E00C6DD5C /* HorizontalVolumeBarChartView.swift in Sources */,
 				70C0559D2B79FB4600375526 /* QuickAction.swift in Sources */,
+				702448DA2BD2BBCC00C79056 /* OpenWeb.swift in Sources */,
 				701CC4AC2AD271CF00852E2E /* UserRepository.swift in Sources */,
 				707B0AFF2BD1676700D8250B /* HeatmapColorSelectionViewModel.swift in Sources */,
 				70A74E8C2AC8439C00EA7A35 /* HistoryFormView.swift in Sources */,
@@ -1691,6 +1702,7 @@
 				70D3418A2ACC03350010EAF9 /* ExerciseListView.swift in Sources */,
 				02CA6D822BCFCDEF00A8746B /* AppleAuthTest.swift in Sources */,
 				70756F0C2BCAA0900035EFF4 /* UserRepositoryV2Test.swift in Sources */,
+				702448D52BD2BA1C00C79056 /* DGWebView.swift in Sources */,
 				70B5080C2AC51D4300FC0540 /* PhotoPickerView.swift in Sources */,
 				70756F312BCAC4F40035EFF4 /* ExerciseListSectionV2View.swift in Sources */,
 				708F0A7E2B414D4A001AF089 /* LegPressInfoView.swift in Sources */,
@@ -2063,6 +2075,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		702448D62BD2BA9A00C79056 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 		702BC70A2ABF2A0800E325DB /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -2090,6 +2110,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		702448D72BD2BAB400C79056 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 702448D62BD2BA9A00C79056 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		702BC70B2ABF2A0800E325DB /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 702BC70A2ABF2A0800E325DB /* XCRemoteSwiftPackageReference "Kingfisher" */;

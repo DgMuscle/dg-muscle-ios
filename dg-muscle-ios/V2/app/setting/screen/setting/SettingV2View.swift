@@ -37,10 +37,9 @@ struct SettingV2View: View {
             
             ExerciseListSectionView {
                 paths.append(ExerciseNavigation(name: .manage))
-            } guideAction: {
-                print("guide action")
-            } appleWatchAction: {
-                print("apple watch action")
+            } introduceAction: {
+                paths.append(MainNavigation(name: .openWeb,
+                                            openWebIngredient: .init(url: "https://judicious-hoof-33e.notion.site/dgmuscle-ios-a7162152c1594a09902d7d6c07da8bdd")))
             }
             .padding(.top, 40)
             
