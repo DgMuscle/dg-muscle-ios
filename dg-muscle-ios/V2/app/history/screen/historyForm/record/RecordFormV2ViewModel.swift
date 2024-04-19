@@ -18,22 +18,34 @@ final class RecordFormV2ViewModel: ObservableObject {
     
     @Published var previousRecord: Record?
     @Published var previousDate: Date?
+    @Published var duration: String = ""
     
     let exerciseRepository: ExerciseRepositoryV2
     let historyRepository: HistoryRepositoryV2
     let date: Date
+    let startTimeInterval: TimeInterval
+    
+    private var timer: Timer?
     
     private var cancellables = Set<AnyCancellable>()
     
     init(record: Binding<Record>,
          exerciseRepository: ExerciseRepositoryV2,
          historyRepository: HistoryRepositoryV2,
-         date: Date) {
+         date: Date,
+         startTimeInterval: TimeInterval) {
         _record = record
         sets = record.wrappedValue.sets
         self.exerciseRepository = exerciseRepository
         self.historyRepository = historyRepository
         self.date = date
+        self.startTimeInterval = startTimeInterval
+        
+        timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                             target: self,
+                                             selector: #selector(configureDuration),
+                                             userInfo: nil,
+                                             repeats: true)
         
         configureExercise()
         bind()
@@ -97,6 +109,20 @@ final class RecordFormV2ViewModel: ObservableObject {
                     break
                 }
             }
+        }
+    }
+    
+    @objc private func configureDuration() {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .full
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.zeroFormattingBehavior = .dropAll
+        
+        let now = Date().timeIntervalSince1970
+        let diff = now - startTimeInterval
+        
+        if let string = formatter.string(from: TimeInterval(diff)) {
+            duration = string
         }
     }
 }

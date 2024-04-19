@@ -71,8 +71,8 @@ struct ContentViewV2: View {
                                 RecordFormV2View(viewModel: .init(record: ingredient.recordForForm,
                                                                   exerciseRepository: exerciseRepository,
                                                                   historyRepository: historyRepository,
-                                                                  date: ingredient.dateForRecordForm),
-                                                 duration: ingredient.duration)
+                                                                  date: ingredient.dateForRecordForm, 
+                                                                  startTimeInterval: ingredient.startTimeInterval))
                             }
                         }
                     })

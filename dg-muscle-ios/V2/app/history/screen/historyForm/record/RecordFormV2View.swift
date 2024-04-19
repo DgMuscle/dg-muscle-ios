@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct RecordFormV2View: View {
     
     @StateObject var viewModel: RecordFormV2ViewModel
     @State private var isPresentSetForm: Bool = false
     @State private var isPresentPreviousSheet: Bool = false
-    @Binding var duration: String
     
     var body: some View {
         VStack {
@@ -27,7 +27,7 @@ struct RecordFormV2View: View {
                 
                 HStack {
                     Image(systemName: "clock")
-                    Text(duration)
+                    Text(viewModel.duration)
                 }
                 .padding(.top, 4)
                 .fontWeight(.heavy)
@@ -112,7 +112,8 @@ struct RecordFormV2View: View {
     let viewModel = RecordFormV2ViewModel(record: .constant(record), 
                                           exerciseRepository: ExerciseRepositoryV2Test(),
                                           historyRepository: HistoryRepositoryV2Test(), 
-                                          date: Date())
+                                          date: Date(), 
+                                          startTimeInterval: Date().timeIntervalSince1970)
     
-    return RecordFormV2View(viewModel: viewModel, duration: .constant("7 seconds")).preferredColorScheme(.dark)
+    return RecordFormV2View(viewModel: viewModel).preferredColorScheme(.dark)
 }

@@ -16,7 +16,7 @@ final class HistoryFormV2ViewModel: ObservableObject {
     
     let historyRepository: HistoryRepositoryV2
     
-    private let start = Date().timeIntervalSince1970
+    let start = Date().timeIntervalSince1970
     private var timer: Timer?
     
     private var cancellables = Set<AnyCancellable>()

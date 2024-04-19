@@ -71,8 +71,8 @@ struct HistoryFormV2View: View {
         
         let ingredient: HistoryNavigation.RecordFornIngredient =
             .init(recordForForm: recordForForm,
-                  dateForRecordForm: date,
-                  duration: $viewModel.duration)
+                  dateForRecordForm: date, 
+                  startTimeInterval: viewModel.start)
         
         let navigation = HistoryNavigation(name: .recordForm,
                           recordFornIngredient: ingredient)
@@ -90,7 +90,7 @@ struct HistoryFormV2View: View {
         let ingredient: HistoryNavigation.RecordFornIngredient =
             .init(recordForForm: record,
                   dateForRecordForm: date,
-                  duration: $viewModel.duration)
+                  startTimeInterval: viewModel.start)
         
         let navigation: HistoryNavigation =
         HistoryNavigation(name: .recordForm,

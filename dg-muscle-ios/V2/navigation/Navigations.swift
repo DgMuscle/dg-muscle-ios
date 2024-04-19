@@ -26,7 +26,7 @@ struct HistoryNavigation: Identifiable, Hashable {
     struct RecordFornIngredient {
         var recordForForm: Binding<Record>
         var dateForRecordForm: Date
-        var duration: Binding<String>
+        var startTimeInterval: TimeInterval
     }
     
     static func == (lhs: HistoryNavigation, rhs: HistoryNavigation) -> Bool {
