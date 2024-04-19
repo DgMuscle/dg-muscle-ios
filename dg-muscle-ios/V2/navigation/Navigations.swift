@@ -41,12 +41,14 @@ struct HistoryNavigation: Identifiable, Hashable {
     enum Name: String {
         case historyForm
         case recordForm
+        case monthlySection
     }
     
     let name: Name
     var id: Int { name.hashValue }
     var historyForForm: ExerciseHistory?
     var recordFornIngredient: RecordFornIngredient?
+    var monthlySectionIngredient: ExerciseHistorySection?
 }
 
 struct ExerciseNavigation: Identifiable, Hashable, Equatable {
@@ -69,7 +71,7 @@ struct ExerciseNavigation: Identifiable, Hashable, Equatable {
     let name: Name
     var id: Int { name.hashValue }
     var step2Depndency: Step2Dependency?
-    var editExercise: Exercise?
+    var editIngredient: Exercise?
     
     struct Step2Dependency {
         let name: String

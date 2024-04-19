@@ -25,7 +25,7 @@ struct ManageExerciseView: View {
             }
             
             ExerciseListV2View(viewModel: .init(exerciseRepository: viewModel.exerciseRepository)) { exercise in
-                paths.append(ExerciseNavigation(name: .edit, editExercise: exercise))
+                paths.append(ExerciseNavigation(name: .edit, editIngredient: exercise))
             } addAction: {
                 paths.append(ExerciseNavigation(name: .step1))
                 
