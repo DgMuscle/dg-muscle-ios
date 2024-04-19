@@ -52,7 +52,8 @@ final class HistoryRepositoryV2Test: HistoryRepositoryV2 {
             .init(id: "1", exerciseId: "squat", sets: sets),
             .init(id: "2", exerciseId: "bench press", sets: sets2),
             .init(id: "3", exerciseId: "pull up", sets: sets),
-            .init(id: "4", exerciseId: "leg press", sets: sets2)
+            .init(id: "4", exerciseId: "leg press", sets: sets2),
+            .init(id: "5", exerciseId: "arm curl", sets: sets2),
         ]
         
         _histories = [

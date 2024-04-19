@@ -11,6 +11,14 @@ import Combine
 final class MonthlySectionViewModel: ObservableObject {
     
     @Published var datas: [Data] = []
+    // The most common exercise I've done
+    @Published var mostExercise: Exercise?
+    @Published var mostPart: Exercise.Part?
+    @Published var mostVolume: Double = 0
+    
+    @Published var leastExercise: Exercise?
+    @Published var leastPart: Exercise.Part?
+    @Published var leastVolume: Double = 0
     
     let exerciseHistorySection: ExerciseHistorySection
     let exerciseRepository: ExerciseRepositoryV2
@@ -37,13 +45,10 @@ final class MonthlySectionViewModel: ObservableObject {
         
         var datas: [Data] = hashMap.map({ .init(part: $0.key, volume: $0.value) })
         datas.sort(by: { $0.part.rawValue < $1.part.rawValue })
-        DispatchQueue.main.async { [weak self] in
-            self?.datas = datas
-        }
         
-        for data in datas {
-            print(data)
-        }
+        self.datas = datas
+        self.mostPart = hashMap.max(by: { $0.value < $1.value })?.key
+        self.leastPart = hashMap.min(by: { $0.value < $1.value })?.key
     }
 }
 

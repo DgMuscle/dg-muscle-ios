@@ -44,6 +44,7 @@ class ExerciseRepositoryV2Test: ExerciseRepositoryV2 {
             .init(id: "bench press", name: "bench press", parts: [.chest, .arm], favorite: true, order: 1, createdAt: nil),
             .init(id: "leg press", name: "leg press", parts: [.leg], favorite: false, order: 2, createdAt: nil),
             .init(id: "pull up", name: "pull up", parts: [.back], favorite: true, order: 3, createdAt: nil),
+            .init(id: "arm curl", name: "arm curl", parts: [.arm], favorite: false, order: 4, createdAt: nil)
         ]
     }
 }

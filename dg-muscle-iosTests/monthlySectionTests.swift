@@ -17,11 +17,14 @@ final class monthlySectionTests: XCTestCase {
         let viewModel = MonthlySectionViewModel(exerciseHistorySection: sectionData,
                                                 exerciseRepository: ExerciseRepositoryV2Test())
         
-        try await Task.sleep(nanoseconds: 1_000_000_000)
+        try await Task.sleep(nanoseconds: 2_000_000_000)
         
         XCTAssertEqual(viewModel.datas[0].part, .arm)
-        XCTAssertEqual(viewModel.datas[0].volume, 38500.0)
+        XCTAssertEqual(viewModel.datas[0].volume, 77000.0)
         XCTAssertEqual(viewModel.datas[3].volume, 96250.0)
+        
+        XCTAssertEqual(viewModel.mostPart, .leg)
+        XCTAssertEqual(viewModel.leastPart, .chest)
     }
 
 }
