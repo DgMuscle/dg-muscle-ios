@@ -10,11 +10,19 @@ import SwiftUI
 struct ExerciseListSectionView: View {
     
     let exerciseAction: (() -> ())?
-    let guideAction: (() -> ())?
-    let appleWatchAction: (() -> ())?
+    let introduceAction: (() -> ())?
     
     var body: some View {
         VStack(spacing: 20) {
+            Button {
+                introduceAction?()
+            } label: {
+                SettingListItemView(systemImageName: "a.book.closed",
+                                    title: "DgMuscle Introduce",
+                                    description: nil,
+                                    color: .red)
+            }
+            
             Button {
                 exerciseAction?()
             } label: {
@@ -22,24 +30,6 @@ struct ExerciseListSectionView: View {
                                     title: "Exercise",
                                     description: "Manage your exercise list",
                                     color: .pink)
-            }
-            
-            Button {
-                guideAction?()
-            } label: {
-                SettingListItemView(systemImageName: "a.book.closed",
-                                    title: "Exercise Guide",
-                                    description: nil,
-                                    color: .red)
-            }
-            
-            Button {
-                appleWatchAction?()
-            } label: {
-                SettingListItemView(systemImageName: "applewatch",
-                                    title: "Apple Watch Guide",
-                                    description: nil,
-                                    color: .orange)
             }
         }
         .padding()
@@ -51,6 +41,6 @@ struct ExerciseListSectionView: View {
 }
 
 #Preview {
-    ExerciseListSectionView(exerciseAction: nil, guideAction: nil, appleWatchAction: nil)
+    ExerciseListSectionView(exerciseAction: nil, introduceAction: nil)
         .preferredColorScheme(.dark)
 }

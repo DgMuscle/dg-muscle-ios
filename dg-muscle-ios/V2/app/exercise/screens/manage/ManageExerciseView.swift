@@ -33,6 +33,25 @@ struct ManageExerciseView: View {
                 viewModel.delete(data: exercise)
             }
             
+            Button {
+                paths.append(ExerciseNavigation(name: .step1))
+            } label: {
+                HStack {
+                    Spacer()
+                    Text("ADD EXERCISE")
+                        .foregroundStyle(.white)
+                        .fontWeight(.black)
+                        
+                    Spacer()
+                }
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(LinearGradient(colors: [.blue, .indigo],
+                                             startPoint: .leading,
+                                             endPoint: .trailing))
+                )
+            }
         }
         .animation(.default, value: viewModel.loading)
         .animation(.default, value: viewModel.errorMessage)
@@ -47,6 +66,7 @@ struct ManageExerciseView: View {
                 }
             }
         }
+        .navigationTitle("Manage Exercise")
     }
 }
 

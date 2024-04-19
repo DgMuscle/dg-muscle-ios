@@ -50,6 +50,10 @@ struct ContentViewV2: View {
                                                                     fileUploader: fileUploader))
                         case .selectHeatmapColor:
                             HeatmapColorSelectionView(viewModel: .init(heatmapRepository: heatmapRepository))
+                        case .openWeb:
+                            if let ingredient = navigation.openWebIngredient {
+                                OpenWeb(url: ingredient.url)
+                            }
                         }
                     }
                     .navigationDestination(for: HistoryNavigation.self, destination: { navigation in
