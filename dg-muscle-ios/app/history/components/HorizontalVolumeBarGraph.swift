@@ -18,11 +18,11 @@ struct HorizontalVolumeBarGraph: View {
         GeometryReader { geometry in
             Rectangle()
                 .fill(data.part.color.opacity(0.9))
-                .frame(width: geometry.size.width * (data.volume / maxExerciseVolume) )
+                .frame(width: animate ? geometry.size.width * (data.volume / maxExerciseVolume) : 0)
                 .onAppear {
                     animate.toggle()
                 }
-            .animation(.linear(duration: 3).repeatForever(autoreverses: true), value: animate)
+                .animation(.default, value: animate)
         }
         .frame(height: 30)
     }
