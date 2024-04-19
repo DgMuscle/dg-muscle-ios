@@ -22,6 +22,7 @@ struct MyProfileListItemView: View {
                 RoundedRectangle(cornerRadius: 8).fill(iconBackgroundColor)
                     .frame(width: iconSize, height: iconSize)
                 Image(systemName: systemImageName)
+                    .foregroundStyle(.white)
             }
             
                 

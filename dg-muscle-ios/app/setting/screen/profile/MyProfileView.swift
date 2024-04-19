@@ -88,7 +88,9 @@ struct MyProfileView: View {
                             .multilineTextAlignment(.leading)
                         Spacer(minLength: 20)
                         
-                        Text("OPEN").fontWeight(.black)
+                        Text("OPEN")
+                            .foregroundStyle(.white)
+                            .fontWeight(.black)
                             .padding(8)
                             .background(
                                 RoundedRectangle(cornerRadius: 8).fill(
@@ -129,5 +131,6 @@ struct MyProfileView: View {
                                               healthRepository: HealthRepositoryTest())
     
     return MyProfileView(viewModel: viewModel, 
-                         paths: .constant(.init())).preferredColorScheme(.dark)
+                         paths: .constant(.init()))
+    .preferredColorScheme(.dark)
 }

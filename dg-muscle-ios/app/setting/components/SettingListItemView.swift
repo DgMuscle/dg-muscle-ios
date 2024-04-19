@@ -24,6 +24,7 @@ struct SettingListItemView: View {
                     .frame(width: rectangleSize, height: rectangleSize)
                 Image(systemName: systemImageName)
                     .padding(4)
+                    .foregroundStyle(.white)
             }
             .padding(.trailing, 4)
             VStack(alignment: .leading) {
