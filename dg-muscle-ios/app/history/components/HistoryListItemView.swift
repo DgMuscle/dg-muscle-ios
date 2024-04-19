@@ -24,21 +24,20 @@ struct HistoryListItemView: View {
                 .padding(.leading, 2)
                 
                 HStack {
-                    Text("Exercise parts:")
+                    Text("Parts:")
                     Text(getExerciseParts(allExercises: exerciseRepository.exercises, records: history.exercise.records))
-                        .italic()
                         .fontWeight(.heavy)
                 }
                 
                 if let metadata = history.metadata {
-                    Text("duration: \(timeStringFor(seconds: Int(metadata.duration)))")
+                    Text("Duration: \(timeStringFor(seconds: Int(metadata.duration)))")
                         .foregroundStyle(Color(uiColor: .secondaryLabel)).italic()
                         .font(.caption2)
                     
                     if let kcalPerHourKg = metadata.kcalPerHourKg, let bodyMass = healthRepository.recentBodyMass {
                         if bodyMass.unit == .kg {
                             HStack {
-                                Text("consume \(Int(getKcal(duration: metadata.duration, weight: bodyMass.value, kcalPerHourKg: kcalPerHourKg))) kcal")
+                                Text("Consume \(Int(getKcal(duration: metadata.duration, weight: bodyMass.value, kcalPerHourKg: kcalPerHourKg))) kcal")
                                 Text("(\(Int(kcalPerHourKg)))")
                             }
                             .foregroundStyle(Color(uiColor: .secondaryLabel)).italic()

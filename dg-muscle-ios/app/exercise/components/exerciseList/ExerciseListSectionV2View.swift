@@ -18,10 +18,9 @@ struct ExerciseListSectionV2View: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(part.rawValue)
+                Text(part.rawValue.capitalized)
                     .font(.largeTitle)
                     .fontWeight(.black)
-                    .italic()
                 
                 Spacer()
             }
