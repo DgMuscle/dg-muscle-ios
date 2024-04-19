@@ -34,6 +34,10 @@ class ExerciseRepositoryV2Test: ExerciseRepositoryV2 {
         return .init(ok: true, message: nil)
     }
     
+    func get(exerciseId: String) -> Exercise? {
+        exercises.first(where: { $0.id == exerciseId })
+    }
+    
     fileprivate func prepareMockData() {
         _exercises = [
             .init(id: "squat", name: "squat", parts: [.leg], favorite: true, order: 0, createdAt: nil),

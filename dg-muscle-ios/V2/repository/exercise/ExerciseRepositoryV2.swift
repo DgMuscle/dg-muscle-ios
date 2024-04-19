@@ -13,4 +13,5 @@ protocol ExerciseRepositoryV2 {
     func post(data: Exercise) async throws -> DefaultResponse
     func edit(data: Exercise) async throws -> DefaultResponse
     func delete(data: Exercise) async throws -> DefaultResponse
+    func get(exerciseId: String) -> Exercise?
 }

@@ -82,6 +82,10 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
         return try await APIClient.shared.request(method: .post, url: "https://exercise-setexercises-kpjvgnqz6a-uc.a.run.app", body: exercises)
     }
     
+    func get(exerciseId: String) -> Exercise? {
+        exercises.first(where: { $0.id == exerciseId })
+    }
+    
     private func fetchExerciseDataFromFile() -> [Exercise] {
         (try? FileManagerHelper.load([Exercise].self, fromFile: .exercise)) ?? []
     }
