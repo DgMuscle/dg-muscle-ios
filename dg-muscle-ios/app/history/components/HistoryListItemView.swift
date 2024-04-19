@@ -95,7 +95,7 @@ struct HistoryListItemView: View {
                 parts.forEach({ partset.insert($0) })
             }
         }
-        return partset.map({ $0.rawValue }).sorted().joined(separator: ", ")
+        return partset.map({ $0.rawValue }).sorted().joined(separator: ", ").capitalized
     }
     
     private func timeStringFor(seconds: Int) -> String {
