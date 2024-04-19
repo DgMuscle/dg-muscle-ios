@@ -17,11 +17,7 @@ struct HorizontalVolumeBarGraph: View {
     var body: some View {
         GeometryReader { geometry in
             Rectangle()
-                .fill(
-                    LinearGradient(colors: [data.part.color.opacity(0.4), data.part.color],
-                                   startPoint: animate ? .bottomLeading : .topLeading,
-                                   endPoint: animate ? .topTrailing : .bottomTrailing)
-                )
+                .fill(data.part.color.opacity(0.9))
                 .frame(width: geometry.size.width * (data.volume / maxExerciseVolume) )
                 .onAppear {
                     animate.toggle()

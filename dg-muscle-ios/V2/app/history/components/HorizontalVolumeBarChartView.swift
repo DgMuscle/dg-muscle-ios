@@ -13,25 +13,72 @@ struct HorizontalVolumeBarChartView: View {
     var maxExerciseVolume: Double
     
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             VStack {
                 ForEach(datas, id: \.self) { data in
                     Text(data.part.rawValue)
                         .fontWeight(.heavy)
                         .frame(height: 30)
                 }
-                
-                Rectangle().fill(.clear).frame(height: 1).fixedSize(horizontal: true, vertical: false)
             }
             
+            Spacer(minLength: 20)
+            
             VStack {
-                ForEach(datas, id: \.self) { data in
-                    HorizontalVolumeBarGraph(data: data, maxExerciseVolume: maxExerciseVolume)
+                VStack {
+                    ForEach(datas, id: \.self) { data in
+                        HorizontalVolumeBarGraph(data: data, maxExerciseVolume: maxExerciseVolume)
+                    }
                 }
+                .padding(.bottom)
+                .background(
+                    line
+                )
                 
-                Rectangle().frame(height: 1)
+                volumeText
             }
         }
+    }
+    
+    var line: some View {
+        ZStack {
+            VStack {
+                Spacer()
+                Rectangle().frame(height: 1)
+            }
+            HStack {
+                Spacer()
+                Rectangle().frame(width: 1)
+                
+                Spacer()
+                Rectangle().frame(width: 1)
+                
+                Spacer()
+                Rectangle().frame(width: 1)
+                
+                Spacer()
+                Rectangle().frame(width: 1)
+                
+                Spacer()
+            }
+        }
+    }
+    
+    var volumeText: some View {
+        HStack {
+            Spacer()
+            Text("\(Int(maxExerciseVolume) * 1 / 5)")
+            Spacer()
+            Text("\(Int(maxExerciseVolume) * 2 / 5)")
+            Spacer()
+            Text("\(Int(maxExerciseVolume) * 3 / 5)")
+            Spacer()
+            Text("\(Int(maxExerciseVolume) * 4 / 5)")
+            Spacer()
+            Text("\(Int(maxExerciseVolume))")
+        }
+        .font(.caption2)
+        .fontWeight(.heavy)
     }
 }
 

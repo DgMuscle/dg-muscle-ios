@@ -13,14 +13,22 @@ final class MonthlySectionViewModel: ObservableObject {
     @Published var datas: [Data] = []
     // The most common exercise I've done
     @Published var mostExercise: Exercise?
+    @Published var maxExerciseVolume: Double = 0
+    
     @Published var mostPart: Exercise.Part?
-    @Published var mostVolume: Double = 0
+    @Published var maxPartVolume: Double = 0
     
     @Published var leastExercise: Exercise?
+    @Published var minExerciseVolume: Double = 0
+    
     @Published var leastPart: Exercise.Part?
+    @Published var minPartVolume: Double = 0
+    
+    @Published var mostVolume: Double = 0
     @Published var leastVolume: Double = 0
     
-    @Published var maxExerciseVolume: Double = 0
+    @Published var navigationTitle: String = ""
+    
     
     let exerciseHistorySection: ExerciseHistorySection
     let exerciseRepository: ExerciseRepositoryV2
@@ -32,6 +40,14 @@ final class MonthlySectionViewModel: ObservableObject {
         configureData()
         configureVolume()
         configureExercise()
+        configureNavigationTitle()
+    }
+    
+    private func configureNavigationTitle() {
+        let date = exerciseHistorySection.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM"
+        navigationTitle = dateFormatter.string(from: date)
     }
     
     private func configureExercise() {
@@ -50,6 +66,10 @@ final class MonthlySectionViewModel: ObservableObject {
         
         if let mostExercise {
             self.maxExerciseVolume = hashMap[mostExercise, default: 0]
+        }
+        
+        if let leastExercise {
+            self.minExerciseVolume = hashMap[leastExercise, default: 0]
         }
     }
     
@@ -88,6 +108,14 @@ final class MonthlySectionViewModel: ObservableObject {
         self.datas = datas
         self.mostPart = hashMap.max(by: { $0.value < $1.value })?.key
         self.leastPart = hashMap.min(by: { $0.value < $1.value })?.key
+        
+        if let mostPart {
+            maxPartVolume = hashMap[mostPart, default: 0]
+        }
+        
+        if let leastPart {
+            minPartVolume = hashMap[leastPart, default: 0]
+        }
     }
 }
 
