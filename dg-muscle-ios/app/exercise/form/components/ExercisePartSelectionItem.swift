@@ -23,7 +23,7 @@ struct ExercisePartSelectionItem: View {
                     .foregroundStyle(selected ? .green : .secondary)
                     .font(.title)
                 
-                Text(part.rawValue)
+                Text(part.rawValue.capitalized)
                     .fontWeight(.black)
                     .foregroundStyle(Color(uiColor: .label))
                 

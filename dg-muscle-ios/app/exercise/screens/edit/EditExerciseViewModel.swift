@@ -27,6 +27,10 @@ final class EditExerciseViewModel: ObservableObject {
     @MainActor
     func update() {
         Task {
+            guard exercise.parts.isEmpty == false else {
+                errorMessage = "Please choose at least one part"
+                return
+            }
             guard loading == false else { return }
             loading = true
             do {
