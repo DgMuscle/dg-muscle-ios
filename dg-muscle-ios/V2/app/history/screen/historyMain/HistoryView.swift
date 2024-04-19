@@ -67,6 +67,9 @@ struct HistoryView: View {
                     paths.append(HistoryNavigation(name: .historyForm, historyForForm: history))
                 } deleteAction: { history in
                     viewModel.delete(history: history)
+                } tapSectionHeader: {
+                    paths.append(HistoryNavigation(name: .monthlySection,
+                                                   monthlySectionIngredient: section))
                 }
                 .padding(.bottom, 40)
             }

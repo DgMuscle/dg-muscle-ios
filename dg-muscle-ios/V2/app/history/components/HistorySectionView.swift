@@ -15,17 +15,23 @@ struct HistorySectionView: View {
     
     let historyAction: ((ExerciseHistory) -> ())?
     let deleteAction: ((ExerciseHistory) -> ())?
+    let tapSectionHeader: (() -> ())?
     
     var body: some View {
         VStack {
-            HStack {
-                Text(section.header)
-                    .font(.largeTitle)
-                    .fontWeight(.black)
-                Spacer()
-            }
-            .scrollTransition { effect, phase in
-                effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
+            
+            Button {
+                tapSectionHeader?()
+            } label: {
+                HStack {
+                    Text(section.header)
+                        .font(.largeTitle)
+                        .fontWeight(.black)
+                    Spacer()
+                }
+                .scrollTransition { effect, phase in
+                    effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
+                }
             }
             
             ForEach(section.histories) { history in
@@ -89,6 +95,7 @@ struct HistorySectionView: View {
                               exerciseRepository: ExerciseRepositoryV2Test(),
                               healthRepository: HealthRepositoryTest(),
                               historyAction: nil, 
-                              deleteAction: nil)
+                              deleteAction: nil, 
+                              tapSectionHeader: nil)
         .preferredColorScheme(.dark)
 }
