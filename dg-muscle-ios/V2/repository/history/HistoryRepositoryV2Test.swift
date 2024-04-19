@@ -38,8 +38,21 @@ final class HistoryRepositoryV2Test: HistoryRepositoryV2 {
             .init(unit: .kg, reps: 10, weight: 75, id: "7"),
         ]
         
+        let sets2: [ExerciseSet] = [
+            .init(unit: .kg, reps: 10, weight: 50, id: "1"),
+            .init(unit: .kg, reps: 10, weight: 50, id: "2"),
+            .init(unit: .kg, reps: 10, weight: 50, id: "3"),
+            .init(unit: .kg, reps: 10, weight: 50, id: "4"),
+            .init(unit: .kg, reps: 10, weight: 50, id: "5"),
+            .init(unit: .kg, reps: 10, weight: 50, id: "6"),
+            .init(unit: .kg, reps: 10, weight: 50, id: "7"),
+        ]
+        
         let records: [Record] = [
-            .init(id: "1", exerciseId: "squat", sets: sets)
+            .init(id: "1", exerciseId: "squat", sets: sets),
+            .init(id: "2", exerciseId: "bench press", sets: sets2),
+            .init(id: "3", exerciseId: "pull up", sets: sets),
+            .init(id: "4", exerciseId: "leg press", sets: sets2)
         ]
         
         _histories = [
