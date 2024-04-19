@@ -25,7 +25,6 @@ struct HistoryFormV2View: View {
             }
             .padding(.horizontal)
             
-            
             List {
                 ForEach($viewModel.history.records) { record in
                     Button {
