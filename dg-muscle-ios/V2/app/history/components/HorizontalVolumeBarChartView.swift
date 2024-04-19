@@ -14,7 +14,7 @@ struct HorizontalVolumeBarChartView: View {
     
     var body: some View {
         HStack(alignment: .top) {
-            VStack {
+            VStack(alignment: .trailing) {
                 ForEach(datas, id: \.self) { data in
                     Text(data.part.rawValue)
                         .fontWeight(.heavy)

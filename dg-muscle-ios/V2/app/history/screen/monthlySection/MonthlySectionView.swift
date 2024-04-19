@@ -12,51 +12,56 @@ struct MonthlySectionView: View {
     @StateObject var viewModel: MonthlySectionViewModel
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HorizontalVolumeBarChartView(datas: viewModel.datas,
-                                         maxExerciseVolume: viewModel.maxPartVolume)
-            .padding(.bottom)
-            
-            if let mostExercise = viewModel.mostExercise {
-                Text("The most common exercise").bold()
-                HStack {
-                    Text(mostExercise.name).fontWeight(.black)
-                    Text("(\(Int(viewModel.maxExerciseVolume)))")
-                }
+        ScrollView {
+            VStack(alignment: .leading) {
+                HorizontalVolumeBarChartView(datas: viewModel.datas,
+                                             maxExerciseVolume: viewModel.maxPartVolume)
                 .padding(.bottom)
                 
-            }
-            
-            if let leastExercise = viewModel.leastExercise {
-                Text("The least common exercise").bold()
-                HStack {
-                    Text(leastExercise.name).fontWeight(.black)
-                    Text("(\(Int(viewModel.minExerciseVolume)))")
+                VStack(alignment: .leading) {
+                    if let mostExercise = viewModel.mostExercise {
+                        Text("The most common exercise").bold()
+                        HStack {
+                            Text(mostExercise.name).fontWeight(.black)
+                            Text("(\(Int(viewModel.maxExerciseVolume)))")
+                        }
+                        .padding(.bottom)
+                        
+                    }
+                    
+                    if let leastExercise = viewModel.leastExercise {
+                        Text("The least common exercise").bold()
+                        HStack {
+                            Text(leastExercise.name).fontWeight(.black)
+                            Text("(\(Int(viewModel.minExerciseVolume)))")
+                        }
+                        .padding(.bottom)
+                    }
+                    
+                    if let mostPart = viewModel.mostPart {
+                        Text("The most common part").bold()
+                        HStack {
+                            Text(mostPart.rawValue).fontWeight(.black)
+                            Text("(\(Int(viewModel.maxPartVolume)))")
+                        }
+                        .padding(.bottom)
+                    }
+                    
+                    if let leastPart = viewModel.leastPart {
+                        Text("The least common part").bold()
+                        HStack {
+                            Text(leastPart.rawValue).fontWeight(.black)
+                            Text("(\(Int(viewModel.minPartVolume)))")
+                        }
+                        .padding(.bottom)
+                    }
                 }
-                .padding(.bottom)
+                .padding()
             }
-            
-            if let mostPart = viewModel.mostPart {
-                Text("The most common part").bold()
-                HStack {
-                    Text(mostPart.rawValue).fontWeight(.black)
-                    Text("(\(Int(viewModel.maxPartVolume)))")
-                }
-                .padding(.bottom)
-            }
-            
-            if let leastPart = viewModel.leastPart {
-                Text("The least common part").bold()
-                HStack {
-                    Text(leastPart.rawValue).fontWeight(.black)
-                    Text("(\(Int(viewModel.minPartVolume)))")
-                }
-                .padding(.bottom)
-            }
-            
-            Spacer()
         }
+        .scrollIndicators(.hidden)
         .navigationTitle(viewModel.navigationTitle)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
