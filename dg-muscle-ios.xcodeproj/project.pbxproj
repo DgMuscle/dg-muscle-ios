@@ -20,6 +20,7 @@
 		0247856C2BCFBCC700C9DF4F /* AppleAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247856B2BCFBCC700C9DF4F /* AppleAuthView.swift */; };
 		0247856D2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
 		0247856E2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
+		02C95AB62BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C95AB52BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift */; };
 		02CA6D802BCFCD1400A8746B /* ContentViewV2Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA6D7F2BCFCD1400A8746B /* ContentViewV2Model.swift */; };
 		02CA6D822BCFCDEF00A8746B /* AppleAuthTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA6D812BCFCDEF00A8746B /* AppleAuthTest.swift */; };
 		02D037F22BCE15A500238309 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
@@ -319,6 +320,7 @@
 		024785642BCFBA9B00C9DF4F /* AppleAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuth.swift; sourceTree = "<group>"; };
 		024785672BCFBC5A00C9DF4F /* AppleAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthViewModel.swift; sourceTree = "<group>"; };
 		0247856B2BCFBCC700C9DF4F /* AppleAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthView.swift; sourceTree = "<group>"; };
+		02C95AB52BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalVolumeBarGraph.swift; sourceTree = "<group>"; };
 		02CA6D7F2BCFCD1400A8746B /* ContentViewV2Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewV2Model.swift; sourceTree = "<group>"; };
 		02CA6D812BCFCDEF00A8746B /* AppleAuthTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthTest.swift; sourceTree = "<group>"; };
 		02D037F12BCE151900238309 /* dg-muscle-ios.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dg-muscle-ios.xctestplan"; sourceTree = "<group>"; };
@@ -834,6 +836,7 @@
 				706760B52BCBEDE300649BF3 /* HistoryCardView.swift */,
 				70756EF42BCA68E70035EFF4 /* HistoryListItemView.swift */,
 				70756F012BCA75E10035EFF4 /* HistorySectionView.swift */,
+				02C95AB52BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift */,
 				706760BF2BCC0F4A00649BF3 /* PreviousRecordListItem.swift */,
 				703A97D82BCBC070002C0843 /* RecordFormSetItem.swift */,
 				706760B32BCBEB3F00649BF3 /* RecordListItemView.swift */,
@@ -1633,6 +1636,7 @@
 				70756F2D2BCAC2C70035EFF4 /* ExerciseListItemView.swift in Sources */,
 				701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */,
 				70E556022ABF010C006D4DA0 /* ContentView.swift in Sources */,
+				02C95AB62BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift in Sources */,
 				703A97DF2BCBC76E002C0843 /* SetFormV2View.swift in Sources */,
 				702E21702BCA55D600147279 /* HistoryRepositoryV2Impl.swift in Sources */,
 				70C0559B2B79F9F300375526 /* AppDelegate.swift in Sources */,

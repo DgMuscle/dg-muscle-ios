@@ -20,6 +20,8 @@ final class MonthlySectionViewModel: ObservableObject {
     @Published var leastPart: Exercise.Part?
     @Published var leastVolume: Double = 0
     
+    @Published var maxExerciseVolume: Double = 0
+    
     let exerciseHistorySection: ExerciseHistorySection
     let exerciseRepository: ExerciseRepositoryV2
     
@@ -45,6 +47,10 @@ final class MonthlySectionViewModel: ObservableObject {
         
         self.mostExercise = hashMap.max(by: { $0.value < $1.value })?.key
         self.leastExercise = hashMap.min(by: { $0.value < $1.value })?.key
+        
+        if let mostExercise {
+            self.maxExerciseVolume = hashMap[mostExercise, default: 0]
+        }
     }
     
     private func configureVolume() {
