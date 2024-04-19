@@ -389,7 +389,7 @@
     "Configure Your\nFirst Exercise!" : {
 
     },
-    "consume %lld kcal" : {
+    "Consume %lld kcal" : {
 
     },
     "continue" : {
@@ -478,16 +478,13 @@
     "Display Name" : {
 
     },
-    "duration: %@" : {
+    "Duration: %@" : {
 
     },
     "EXERCISE DIARY" : {
 
     },
     "Exercise Name" : {
-
-    },
-    "Exercise parts:" : {
 
     },
     "Fail to make image file." : {
@@ -571,6 +568,9 @@
 
     },
     "OPEN" : {
+
+    },
+    "Parts:" : {
 
     },
     "PhotosPicker" : {
