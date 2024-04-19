@@ -30,5 +30,6 @@ final class monthlySectionTests: XCTestCase {
         
         XCTAssertEqual(viewModel.leastPart, .chest)
         XCTAssertEqual(viewModel.minPartVolume, 38500.0)
+        
     }
 }
