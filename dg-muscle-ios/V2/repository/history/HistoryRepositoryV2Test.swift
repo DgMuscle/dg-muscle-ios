@@ -52,15 +52,20 @@ final class HistoryRepositoryV2Test: HistoryRepositoryV2 {
             .init(id: "1", exerciseId: "squat", sets: sets),
             .init(id: "2", exerciseId: "bench press", sets: sets2),
             .init(id: "3", exerciseId: "pull up", sets: sets),
-            .init(id: "4", exerciseId: "leg press", sets: sets2),
+            .init(id: "4", exerciseId: "leg press", sets: sets),
             .init(id: "5", exerciseId: "arm curl", sets: sets2),
+        ]
+        
+        let records2: [Record] = [
+            .init(id: "1", exerciseId: "squat", sets: sets),
+            .init(id: "2", exerciseId: "bench press", sets: sets2),
         ]
         
         _histories = [
             .init(id: "1", date: "20240101", memo: "random memo", records: records, createdAt: nil),
-            .init(id: "2", date: "20240102", memo: "random memo", records: records, createdAt: nil),
+            .init(id: "2", date: "20240102", memo: "random memo", records: records2, createdAt: nil),
             .init(id: "3", date: "20240103", memo: "random memo", records: records, createdAt: nil),
-            .init(id: "4", date: "20240106", memo: "random memo", records: records, createdAt: nil),
+            .init(id: "4", date: "20240106", memo: "random memo", records: records2, createdAt: nil),
             .init(id: "5", date: "20240110", memo: "random memo", records: records, createdAt: nil),
             .init(id: "6", date: "20240111", memo: "random memo", records: records, createdAt: nil),
             .init(id: "7", date: "20240112", memo: "random memo", records: records, createdAt: nil),
