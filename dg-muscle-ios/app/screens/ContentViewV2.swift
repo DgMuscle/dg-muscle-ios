@@ -41,8 +41,7 @@ struct ContentViewV2: View {
                             SettingV2View(viewModel: SettingV2ViewModel(userRepository: userRepository))
                         case .profile:
                             MyProfileView(viewModel: .init(userRepository: userRepository,
-                                                           healthRepository: healthRepository), 
-                                          paths: $path)
+                                                           healthRepository: healthRepository))
                         case .editProfilePhoto:
                             UpdateProfilePhotoView(viewModel: .init(userRepository: userRepository,
                                                                     fileUploader: fileUploader))
