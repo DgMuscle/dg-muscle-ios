@@ -11,6 +11,7 @@ struct ContentViewV2: View {
     
     @Binding var path: NavigationPath
     @StateObject var viewModel: ContentViewV2Model
+    @EnvironmentObject var coordinator: Coordinator
     
     let historyViewModel: HistoryViewModel
     let exerciseRepository: ExerciseRepositoryV2
@@ -99,9 +100,7 @@ struct ContentViewV2: View {
                                 ExerciseFormStep2View(viewModel: .init(name: dependency.name,
                                                                        parts: dependency.parts,
                                                                        exerciseRepository: exerciseRepository,
-                                                                       completeAction: {
-                                    path.removeLast(2)
-                                }))
+                                                                       coordinator: coordinator))
                             }
                         }
                     }

@@ -49,7 +49,10 @@ struct ExerciseFormStep2View: View {
 
 #Preview {
     
-    let viewModel = ExerciseFormStep2ViewModel(name: "squat", parts: [.leg, .core], exerciseRepository: ExerciseRepositoryV2Test(), completeAction: nil)
+    let viewModel = ExerciseFormStep2ViewModel(name: "squat",
+                                               parts: [.leg, .core],
+                                               exerciseRepository: ExerciseRepositoryV2Test(),
+                                               coordinator: .init(path: .constant(.init())))
     
     return ExerciseFormStep2View(viewModel: viewModel).preferredColorScheme(.dark)
 }

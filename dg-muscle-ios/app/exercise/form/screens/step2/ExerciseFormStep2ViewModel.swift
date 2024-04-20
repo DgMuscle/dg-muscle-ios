@@ -17,16 +17,16 @@ final class ExerciseFormStep2ViewModel: ObservableObject {
     @Published var errorMessage: String? = nil
     
     let exerciseRepository: ExerciseRepositoryV2
-    let completeAction: (() -> ())?
+    let coordinator: Coordinator
     
     init(name: String, 
          parts: [Exercise.Part],
          exerciseRepository: ExerciseRepositoryV2,
-         completeAction: (() -> ())?) {
+         coordinator: Coordinator) {
         self.name = name
         self.parts = parts
         self.exerciseRepository = exerciseRepository
-        self.completeAction = completeAction
+        self.coordinator = coordinator
     }
     
     @MainActor
@@ -36,12 +36,12 @@ final class ExerciseFormStep2ViewModel: ObservableObject {
             loading = true
             do {
                 try await registerExercise()
-                completeAction?()
             } catch {
                 errorMessage = error.localizedDescription
             }
             loading = false
         }
+        coordinator.path.removeLast(2)
     }
     
     private func registerExercise() async throws {
