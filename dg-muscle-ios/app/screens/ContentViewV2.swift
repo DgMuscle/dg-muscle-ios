@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentViewV2: View {
     
-    @Binding var path: NavigationPath
+    @State var path: NavigationPath = .init()
     @StateObject var viewModel: ContentViewV2Model
     
     let historyViewModel: HistoryViewModel
@@ -138,8 +138,7 @@ struct ContentViewV2: View {
     dateFormatter.dateFormat = "yyyyMMdd"
     let today = dateFormatter.date(from: "20240415")!
     
-    return ContentViewV2(path: Coordinator.shared.$path, 
-                         viewModel: .init(userRepository: userRepository),
+    return ContentViewV2(viewModel: .init(userRepository: userRepository),
                          historyViewModel: historyViewModel,
                          exerciseRepository: exerciseRepository,
                          healthRepository: healthRepository, 

@@ -8,13 +8,14 @@
 import SwiftUI
 
 final class Coordinator {
-    static let shared = Coordinator()
     
-    @State var path: NavigationPath = .init()
+    @Binding var path: NavigationPath
     
     lazy var exercise = ExerciseCoordinator(path: $path)
     lazy var history = HistoryCoordinator(path: $path)
     lazy var main = MainCoordinator(path: $path)
     
-    private init() { }
+    init(path: Binding<NavigationPath>) {
+        self._path = path
+    }
 }
