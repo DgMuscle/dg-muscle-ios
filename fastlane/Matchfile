@@ -1,4 +1,4 @@
-git_url("https://github.com/donggyushin/dg-muscle-ios")
+git_url("https://github.com/donggyushin/DgMuscleFastlaneCert")
 
 storage_mode("git")
 
