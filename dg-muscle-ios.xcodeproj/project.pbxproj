@@ -49,6 +49,7 @@
 		702D77CE2BD35CC8008AF48F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702D77CD2BD35CC8008AF48F /* MainCoordinator.swift */; };
 		702D77D02BD35E6D008AF48F /* HistoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702D77CF2BD35E6D008AF48F /* HistoryCoordinator.swift */; };
 		702D77D22BD36019008AF48F /* ExerciseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702D77D12BD36019008AF48F /* ExerciseCoordinator.swift */; };
+		702D77D42BD36B1B008AF48F /* RemoteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702D77D32BD36B1B008AF48F /* RemoteCoordinator.swift */; };
 		702E21682BCA53BC00147279 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E21672BCA53BC00147279 /* HistoryView.swift */; };
 		702E216B2BCA541C00147279 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E216A2BCA541C00147279 /* HistoryViewModel.swift */; };
 		702E216E2BCA55C500147279 /* HistoryRepositoryV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E216D2BCA55C500147279 /* HistoryRepositoryV2.swift */; };
@@ -279,6 +280,7 @@
 		702D77CD2BD35CC8008AF48F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		702D77CF2BD35E6D008AF48F /* HistoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCoordinator.swift; sourceTree = "<group>"; };
 		702D77D12BD36019008AF48F /* ExerciseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCoordinator.swift; sourceTree = "<group>"; };
+		702D77D32BD36B1B008AF48F /* RemoteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCoordinator.swift; sourceTree = "<group>"; };
 		702E21672BCA53BC00147279 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		702E216A2BCA541C00147279 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		702E216D2BCA55C500147279 /* HistoryRepositoryV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRepositoryV2.swift; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 				702D77D12BD36019008AF48F /* ExerciseCoordinator.swift */,
 				702D77CF2BD35E6D008AF48F /* HistoryCoordinator.swift */,
 				702D77CD2BD35CC8008AF48F /* MainCoordinator.swift */,
+				702D77D32BD36B1B008AF48F /* RemoteCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -1292,6 +1295,7 @@
 				703A97AE2BCB6EFB002C0843 /* ExerciseFormStep1ViewModel.swift in Sources */,
 				0208CF4B2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift in Sources */,
 				703A97D72BCBBDB6002C0843 /* RecordFormV2View.swift in Sources */,
+				702D77D42BD36B1B008AF48F /* RemoteCoordinator.swift in Sources */,
 				70756F1C2BCAB6D80035EFF4 /* SettingV2ViewModel.swift in Sources */,
 				706760B62BCBEDE300649BF3 /* HistoryCardView.swift in Sources */,
 				704464182BD013EE00CB21F6 /* UpdateProfilePhotoView.swift in Sources */,

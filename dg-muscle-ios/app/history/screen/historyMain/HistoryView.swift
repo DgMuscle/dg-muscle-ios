@@ -51,7 +51,6 @@ struct HistoryView: View {
             
             Button {
                 coordinator.history.historyForm(history: viewModel.findTodayExerciseHistory())
-                
             } label: {
                 WorkoutRectangleButton()
                     .scrollTransition { effect, phase in

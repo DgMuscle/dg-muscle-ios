@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentViewV2: View {
     
-    @State var path: NavigationPath = .init()
+    @Binding var path: NavigationPath
     @StateObject var viewModel: ContentViewV2Model
     
     let historyViewModel: HistoryViewModel
@@ -109,7 +109,6 @@ struct ContentViewV2: View {
             }
         }
         .animation(.default, value: viewModel.isLogin)
-        .environmentObject(Coordinator(path: $path))
     }
     
     private func todayDateString() -> String {
@@ -134,7 +133,8 @@ struct ContentViewV2: View {
     dateFormatter.dateFormat = "yyyyMMdd"
     let today = dateFormatter.date(from: "20240415")!
     
-    return ContentViewV2(viewModel: .init(userRepository: userRepository),
+    return ContentViewV2(path: .constant(.init()), 
+                         viewModel: .init(userRepository: userRepository),
                          historyViewModel: historyViewModel,
                          exerciseRepository: exerciseRepository,
                          healthRepository: healthRepository, 
