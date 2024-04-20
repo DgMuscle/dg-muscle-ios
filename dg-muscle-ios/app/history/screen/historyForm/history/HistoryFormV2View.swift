@@ -10,7 +10,7 @@ import SwiftUI
 struct HistoryFormV2View: View {
     
     @StateObject var viewModel: HistoryFormV2ViewModel
-    @Binding var paths: NavigationPath
+    @EnvironmentObject var coordinator: Coordinator
     @State private var isPresentSelectSheet: Bool = false
     let exerciseRepository: ExerciseRepositoryV2
     
@@ -52,7 +52,7 @@ struct HistoryFormV2View: View {
     }
     
     private func addAction() {
-        paths.append(ExerciseNavigation(name: .manage))
+        coordinator.exercise.manage()
     }
     
     private func addNewRecord(exercise: Exercise) {
@@ -66,17 +66,7 @@ struct HistoryFormV2View: View {
         
         viewModel.history.records.append(newRecord)
         guard let recordForForm = $viewModel.history.records.last else { return }
-        
-        
-        let ingredient: HistoryNavigation.RecordFornIngredient =
-            .init(recordForForm: recordForForm,
-                  dateForRecordForm: date, 
-                  startTimeInterval: viewModel.start)
-        
-        let navigation = HistoryNavigation(name: .recordForm,
-                          recordFornIngredient: ingredient)
-        
-        paths.append(navigation)
+        coordinator.history.recordForm(record: recordForForm, date: date, startTimeInterval: viewModel.start)
         
         isPresentSelectSheet.toggle()
     }
@@ -84,18 +74,8 @@ struct HistoryFormV2View: View {
     private func tapRecord(record: Binding<Record>) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
-        guard let date = dateFormatter.date(from: viewModel.history.date) else { return }
-
-        let ingredient: HistoryNavigation.RecordFornIngredient =
-            .init(recordForForm: record,
-                  dateForRecordForm: date,
-                  startTimeInterval: viewModel.start)
-        
-        let navigation: HistoryNavigation =
-        HistoryNavigation(name: .recordForm,
-                          recordFornIngredient: ingredient)
-        
-        paths.append(navigation)
+        guard let date = dateFormatter.date(from: viewModel.history.date) else { return }        
+        coordinator.history.recordForm(record: record, date: date, startTimeInterval: viewModel.start)
     }
 }
 
@@ -120,8 +100,8 @@ struct HistoryFormV2View: View {
     let viewModel: HistoryFormV2ViewModel = .init(history: history,
                                                   historyRepository: HistoryRepositoryV2Test())
     
-    return HistoryFormV2View(viewModel: viewModel, 
-                             paths: .constant(.init()),
+    return HistoryFormV2View(viewModel: viewModel,
                              exerciseRepository: ExerciseRepositoryV2Test())
     .preferredColorScheme(.dark)
+    .environmentObject(Coordinator(path: .constant(.init())))
 }

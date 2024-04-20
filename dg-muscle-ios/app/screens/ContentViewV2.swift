@@ -64,7 +64,6 @@ struct ContentViewV2: View {
                                                                                records: [],
                                                                                createdAt: nil),
                                                                historyRepository: historyRepository),
-                                              paths: $path,
                                               exerciseRepository: exerciseRepository)
                         case .recordForm:
                             
