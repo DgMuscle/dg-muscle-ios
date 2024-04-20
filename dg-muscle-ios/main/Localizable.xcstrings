@@ -1,22 +1,8 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    " %lld" : {
-
-    },
-    " As you prepare for this move, face the tricep pushdown cable machine and grasp the horizontal cable bar or rope attachment (depending on the machine your gym has) with an overhand grip.1 Adjust the bar or rope grips to about chest level.\n \n Use the pin-and-place adjustment and set a low weight to start. Different versions of the machine may include other weighting mechanisms.\n\n    1. Start by bracing your abdominals.\n\n    2. Tuck your elbows in at your sides and position your feet slightly apart.1\n\n    3. Inhale. Push down until your elbows are fully extended but not yet in the straight, locked position. Keep your elbows close to your body and bend your knees slightly on the pushdown. Resist bending forward. Try to keep your back as straight as possible as you push down.1\n\n    4. As you exhale, return to the starting point using a controlled movement. Try not to crash the weights.\n\n\n For beginners, aim to complete 4 sets of 8 reps. As you gain fitness, you can increase the number of reps you do and the amount of weight you use as resistance." : {
-
-    },
-    " volumes less than before" : {
-
-    },
-    " volumes more than before" : {
-
-    },
-    " x " : {
-
-    },
     "'Traditional Strength Training'" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -26,51 +12,20 @@
         }
       }
     },
-    "(%@)" : {
-
-    },
     "(%lld)" : {
-
-    },
-    "(Maybe this is network issue. Please retry later.)" : {
 
     },
     "%@" : {
 
     },
-    "%@ record" : {
+    "%@ Record" : {
 
-    },
-    "%@ volume is" : {
-
-    },
-    "%@'s Record" : {
-
-    },
-    "%@%@ x %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@%2$@ x %3$lld"
-          }
-        }
-      }
     },
     "%lld" : {
 
     },
-    "%lld%@ x %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld%2$@ x %3$lld"
-          }
-        }
-      }
-    },
     "1. Lie on your back on a flat bench. Grip a barbell with hands slightly wider than shoulder width. The bar should be directly over the shoulders." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -81,6 +36,7 @@
       }
     },
     "1. stand in a relaxed manner. Open your feet shoulder-width apart and attach your arms lightly to your body." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -91,6 +47,7 @@
       }
     },
     "1. Start with the feet shoulder width apart (foot stance may vary depending on variation). Feet are under the bar with the bar close to the shins" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -101,6 +58,7 @@
       }
     },
     "1. Turn on apple watch's workout app" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -111,6 +69,7 @@
       }
     },
     "2. As you balance and breathe in, bend your knees and lower your upper body above your waist. Never raise your heels at this time. Keep the upper body as upright as possible so that the back of the waist stays arched. A bend in the waist causes injury." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -121,6 +80,7 @@
       }
     },
     "2. Lower the torso to the bar by pushing the buttocks back and hinging at the waist. Then grasp the bar in your hands." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -131,6 +91,7 @@
       }
     },
     "2. Press your feet firmly into the ground and keep your hips on the bench throughout the entire movement." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -141,6 +102,7 @@
       }
     },
     "2. Select " : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -151,6 +113,7 @@
       }
     },
     "3. Keep your core engaged and maintain a neutral spine position throughout the movement. Avoid arching your back." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -161,6 +124,7 @@
       }
     },
     "3. Lower your waist until your thighs and bottom are parallel. And stay in parallel for about a second if possible. As you breathe out, raise your waist while standing up your knees and back." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -171,6 +135,7 @@
       }
     },
     "3. Squeeze the shoulder blades together to engage the lats, followed by engaging the core musculature. Make sure to keep the hips lower than the shoulders and the head/neck in a neutral position." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -181,6 +146,7 @@
       }
     },
     "3. Start recording at the beginning of the exercise, and stop recording at the end of the exercise." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -191,6 +157,7 @@
       }
     },
     "4. Push through the feet and pull the weight up. Think about pushing the floor away, rather than lifting the weight up. The bar should stay relatively close to the shins. Squeeze the glutes to lock the top of the lift." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -201,6 +168,7 @@
       }
     },
     "4. Repeat 1 to 3." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -211,6 +179,7 @@
       }
     },
     "4. Slowly lift the bar or dumbbells off the rack, if using. Lower the bar to the chest, about nipple level, allowing elbows to bend out to the side, about 45 degrees away from the body." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -221,6 +190,7 @@
       }
     },
     "5. Lower to the floor the the reverse manner." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -231,6 +201,7 @@
       }
     },
     "5. Stop lowering when your elbows are just below the bench. Press feet into the floor as you push the bar back up to return to starting position." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -241,6 +212,7 @@
       }
     },
     "6. Perform 5 to 10 reps, depending on weight used. Perform up to 3 sets." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -251,6 +223,7 @@
       }
     },
     "A pull-up is an upper-body strength exercise. The pull-up is a closed-chain movement where the body is suspended by the hands, gripping a bar or other implement at a distance typically wider than shoulder-width, and pulled up. As this happens, the elbows flex and the shoulders adduct and extend to bring the elbows to the torso.\n\nPull-ups build up several muscles of the upper body, including the latissimus dorsi, trapezius, and biceps brachii. A pull-up may be performed with overhand (pronated), underhand (supinated)—sometimes referred to as a chin-up—neutral, or rotating hand position." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -261,6 +234,7 @@
       }
     },
     "A squat is a strength exercise in which the trainee lowers their hips from a standing position and then stands back up. During the descent, the hip and knee joints flex while the ankle joint dorsiflexes; conversely the hip and knee joints extend and the ankle joint plantarflexes when standing up. Squats also help the hip muscles." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -270,19 +244,8 @@
         }
       }
     },
-    "A-" : {
-
-    },
-    "A+" : {
-
-    },
-    "AB-" : {
-
-    },
-    "AB+" : {
-
-    },
     "account" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -293,6 +256,7 @@
       }
     },
     "add" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -303,6 +267,7 @@
       }
     },
     "Add" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -312,7 +277,16 @@
         }
       }
     },
-    "add history" : {
+    "ADD" : {
+
+    },
+    "ADD EXERCISE" : {
+
+    },
+    "ADD NEW SET" : {
+
+    },
+    "ADD RECORD" : {
 
     },
     "agree_remove_account" : {
@@ -367,6 +341,7 @@
       }
     },
     "App Guide" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -376,13 +351,8 @@
         }
       }
     },
-    "B-" : {
-
-    },
-    "B+" : {
-
-    },
     "Be careful, removal exercises can affect your previous records" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -392,28 +362,13 @@
         }
       }
     },
-    "Bench press" : {
+    "Can't find user info" : {
 
     },
-    "Bicep curl" : {
+    "Configure Your\nFirst Exercise!" : {
 
     },
-    "Bicep curls are a group of weight training exercises in which a person bends their arm towards their body at the elbow in order to make their biceps stronger." : {
-
-    },
-    "big muscle" : {
-
-    },
-    "birth" : {
-
-    },
-    "blood type" : {
-
-    },
-    "cm" : {
-
-    },
-    "consume %lld kcal" : {
+    "Consume %lld kcal" : {
 
     },
     "continue" : {
@@ -450,10 +405,20 @@
         }
       }
     },
-    "current exercise volume: %lld" : {
+    "Current sets count is %lld" : {
+
+    },
+    "Current Sets: %lld" : {
+
+    },
+    "Current Volume: %lld" : {
+
+    },
+    "Current workout volume are %lld" : {
 
     },
     "Data is unreadable due to absence of exercise data" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -463,13 +428,8 @@
         }
       }
     },
-    "day" : {
-
-    },
-    "Deadlift" : {
-
-    },
     "delete" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -479,43 +439,35 @@
         }
       }
     },
-    "dg-muscle profile" : {
+    "DELETE" : {
 
     },
-    "display name" : {
+    "DELETE ACCOUNT" : {
 
     },
-    "Do you want to add this exercise into you exercise list?" : {
+    "DELETE HISTORY" : {
 
     },
-    "duration: %@" : {
+    "Delete Item" : {
 
     },
-    "Enter profile in the Health app" : {
+    "DG" : {
 
     },
-    "exercise" : {
+    "Display Name" : {
 
     },
-    "Exercise Form" : {
+    "Duration: %@" : {
 
     },
-    "exercise guide" : {
+    "EXERCISE DIARY" : {
 
     },
-    "Exercise of this record was deleted" : {
-
-    },
-    "exercise parts: %@" : {
-
-    },
-    "exercises" : {
-
-    },
-    "Fail to load." : {
+    "Exercise Name" : {
 
     },
     "Fail to make image file." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -525,46 +477,11 @@
         }
       }
     },
-    "favorite" : {
-
-    },
     "Favorite" : {
 
     },
-    "female" : {
-
-    },
-    "fill your profile" : {
-
-    },
-    "filters" : {
-
-    },
-    "Go to see previous record" : {
-
-    },
-    "guide" : {
-
-    },
-    "health" : {
-
-    },
-    "health profile" : {
-
-    },
-    "heights" : {
-
-    },
-    "Hello world" : {
-
-    },
-    "History Form" : {
-
-    },
-    "introduce" : {
-
-    },
     "Introduce" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -574,25 +491,11 @@
         }
       }
     },
-    "kg" : {
-
-    },
-    "lbs" : {
-
-    },
-    "Leg curl" : {
-
-    },
-    "Leg extension" : {
-
-    },
-    "Leg press" : {
-
-    },
-    "list" : {
+    "Is above information correct?" : {
 
     },
     "logout" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -603,6 +506,7 @@
       }
     },
     "Make use of apple watch" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -612,31 +516,34 @@
         }
       }
     },
-    "male" : {
+    "Manage Exercise" : {
 
     },
-    "mark type" : {
+    "Move to Exercise Manager" : {
 
     },
-    "Memo" : {
+    "Next" : {
 
     },
-    "name" : {
+    "No user" : {
 
     },
-    "name: %@" : {
+    "Once deleted, the account cannot be restored." : {
 
     },
-    "O-" : {
+    "One moment, please." : {
 
     },
-    "O+" : {
+    "OPEN" : {
 
     },
-    "Part" : {
+    "Parts:" : {
 
     },
-    "parts" : {
+    "PhotosPicker" : {
+
+    },
+    "Please enter your display name." : {
 
     },
     "Please try again" : {
@@ -650,28 +557,14 @@
         }
       }
     },
-    "Please try later" : {
+    "PREVIOUS" : {
 
     },
-    "profile" : {
-
-    },
-    "Pull Up" : {
-
-    },
-    "Push up" : {
-
-    },
-    "record add button" : {
-
-    },
-    "Record Form" : {
-
-    },
-    "Record sets" : {
+    "Profile" : {
 
     },
     "remove account" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -682,6 +575,9 @@
       }
     },
     "reps" : {
+
+    },
+    "Reps" : {
 
     },
     "save" : {
@@ -718,22 +614,20 @@
         }
       }
     },
-    "Select a photo" : {
+    "SAVE" : {
 
     },
-    "Select exercise" : {
+    "SELECT EXERCISE" : {
 
     },
-    "Select Exercise" : {
+    "Sets count is %lld" : {
 
     },
-    "Set Form" : {
-
-    },
-    "sex" : {
+    "Setting" : {
 
     },
     "Share" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -742,9 +636,6 @@
           }
         }
       }
-    },
-    "Shared" : {
-
     },
     "Shared image" : {
       "extractionState" : "stale",
@@ -760,10 +651,26 @@
     "Sign in with apple ID" : {
 
     },
+    "Sorry for inconvenience. Error code is 2" : {
+      "comment" : "invalidUrl"
+    },
+    "Sorry for inconvenience. Error code is 3" : {
+      "comment" : "invalidResponse"
+    },
+    "Sorry for inconvenience. Error code is 4" : {
+      "comment" : "unknown"
+    },
     "Squat" : {
 
     },
+    "Tap to continue" : {
+
+    },
+    "Target parts are" : {
+
+    },
     "The bench press, or chest press, is a weight training exercise where a person presses a weight upwards while lying horizontally on a weight training bench. Although the bench press is a full-body exercise, the muscles primarily used are the pectoralis major, the anterior deltoids, and the triceps, among other stabilizing muscles. A barbell is generally used to hold the weight, but a pair of dumbbells can also be used." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -773,10 +680,8 @@
         }
       }
     },
-    "The bicep curl mainly targets the biceps brachii, brachialis and brachioradialis muscles. The biceps is stronger at elbow flexion when the forearm is supinated (palms turned upward) and weaker when the forearm is pronated. The brachioradialis is at its most effective when the palms are facing inward, and the brachialis is unaffected by forearm rotation. Therefore, the degree of forearm rotation affects the degree of muscle recruitment between the three muscles." : {
-
-    },
     "The deadlift exercise is a relatively simple exercise to perform, a weight is lifted from a resting position on the floor to an upright position. The deadlift exercise utilizes multiple muscle groups to perform but has been used to strength the hips, thighs, and back musculature." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -786,55 +691,47 @@
         }
       }
     },
-    "The exercise consists of bending the leg at the knee and extending the legs, then lowering them back to the original position." : {
+    "The least common exercise" : {
 
     },
-    "The leg curl is an isolation exercise that targets the hamstring muscles. The exercise involves flexing the lower leg against resistance towards the buttocks. There are three types of leg curls. There are seated leg curls, lying leg curls, and standing leg curls.\n\nOther exercises that can be used to strengthen the hamstrings include the glute-ham raise and the deadlift." : {
+    "The least common part" : {
 
     },
-    "The leg extension is a resistance weight training exercise that targets the quadriceps muscle (m. quadriceps femoris) in the legs. The exercise is done using a machine called the Leg Extension Machine. There are various manufacturers of these machines and each one is slightly different. Most gym and weight rooms will have the machine in their facility. The leg extension is an isolated exercise targeting one specific muscle group, the quadriceps. It should not be considered as a total leg workout, such as the squat or deadlift.[citation needed]" : {
+    "The most common exercise" : {
 
     },
-    "The leg press is a compound weight training exercise in which the individual pushes a weight or resistance away from them using their legs. The term leg press machine refers to the apparatus used to perform this exercise. The leg press can be used to evaluate an athlete's overall lower body strength (from the gluteus Maximus to the lower leg muscles). It can help to build squat strength. If performed correctly, the inclined leg press can help develop knees to manage heavier free weights, on the other hand, it has the potential to inflict grave injury: the knees could bend the wrong way if they are locked during the exercise." : {
+    "The most common part" : {
 
     },
-    "The push-up (press-up in British English) is a common calisthenics exercise beginning from the prone position. By raising and lowering the body using the arms, push-ups exercise the pectoral muscles, triceps, and anterior deltoids, with ancillary benefits to the rest of the deltoids, serratus anterior, coracobrachialis and the midsection as a whole.[1] Push-ups are a basic exercise used in civilian athletic training or physical education and commonly in military physical training. They are also a common form of punishment used in the military, school sport, and some martial arts disciplines. Variations of push-ups, such as wide-arm push-ups, diamond push-ups target specific muscle groups and provide further challenges." : {
+    "There is index error." : {
+      "comment" : "index"
+    },
+    "Update" : {
 
     },
-    "This record was deleted because of absence of exercise" : {
+    "Volume" : {
 
     },
-    "toggle" : {
+    "Weight" : {
 
     },
-    "Total volume is" : {
+    "Weight is" : {
 
     },
-    "total volume: %lld" : {
+    "What are the target parts of this exercise?" : {
 
     },
-    "total volumes" : {
+    "What's the name of the exercise?" : {
 
     },
-    "Tricep pushdown" : {
+    "WORKOUT" : {
 
     },
-    "Type your display name" : {
-
-    },
-    "Unavailable to show this record" : {
-
-    },
-    "watch workout app" : {
-
-    },
-    "weight" : {
-
-    },
-    "weights" : {
+    "Workout volume are %lld" : {
 
     },
     "yes" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -844,7 +741,11 @@
         }
       }
     },
+    "YES" : {
+
+    },
     "You can see your exercise duration, kcal consumed, intensity." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -854,7 +755,13 @@
         }
       }
     },
-    "you exercised" : {
+    "You can update your health data in Apple Health" : {
+
+    },
+    "Your authentication is not perfect. Please use it again after you log out." : {
+      "comment" : "authentication"
+    },
+    "Your last '%@' record like below" : {
 
     }
   },

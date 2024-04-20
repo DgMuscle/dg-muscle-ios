@@ -10,7 +10,7 @@ import Foundation
 struct ExerciseSet: Codable, Equatable, Hashable, Identifiable {
     let unit: Unit
     var reps: Int
-    let weight: Double
+    var weight: Double
     var id: String? = UUID().uuidString
     var volume: Double {
         Double(reps) * weight

@@ -24,7 +24,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     private func setShortCutItems() {
         UIApplication.shared.shortcutItems = [
-            generateShortCutItem(action: .init(type: .exerciseList), icon: .init(type: .play)),
             generateShortCutItem(action: .init(type: .record), icon: .init(type: .compose))
         ]
     }

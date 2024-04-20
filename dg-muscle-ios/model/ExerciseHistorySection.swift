@@ -7,11 +7,15 @@
 
 import Foundation
 
-struct ExerciseHistorySection: Identifiable {
+struct ExerciseHistorySection: Identifiable, Equatable {
+    static func == (lhs: ExerciseHistorySection, rhs: ExerciseHistorySection) -> Bool {
+        lhs.id == rhs.id && lhs.histories == rhs.histories
+    }
+    
     let id = UUID().uuidString
     var histories: [History]
     
-    private var date: Date {
+    var date: Date {
         let dateString = histories.first?.exercise.date ?? ""
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
@@ -30,7 +34,11 @@ struct ExerciseHistorySection: Identifiable {
 }
 
 extension ExerciseHistorySection {
-    struct History: Identifiable {
+    struct History: Identifiable, Equatable {
+        static func == (lhs: ExerciseHistorySection.History, rhs: ExerciseHistorySection.History) -> Bool {
+            lhs.id == rhs.id && lhs.exercise == rhs.exercise && lhs.metadata == rhs.metadata
+        }
+        
         let id = UUID().uuidString
         let exercise: ExerciseHistory
         let metadata: WorkoutMetaData?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WorkoutMetaData: Codable {
+struct WorkoutMetaData: Codable, Equatable {
     let duration: TimeInterval
     let kcalPerHourKg: Double?
     let startDate: Date

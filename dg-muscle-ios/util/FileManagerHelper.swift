@@ -34,9 +34,12 @@ class FileManagerHelper {
 extension FileManagerHelper {
     enum File: String, CaseIterable {
         case user
+        case dguser
         case history
         case exercise
         case workoutMetaData
         case grassDatasourceBridge
+        case workoutHeatMapData
+        case heatmapColor
     }
 }

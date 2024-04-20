@@ -23,9 +23,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     private func handleUIApplicationShortCutItem(item: UIApplicationShortcutItem) {
         switch item.type {
         case QuickAction.Actiontype.record.rawValue:
-            subscriber.quickAction.addHistory = true
-        case QuickAction.Actiontype.exerciseList.rawValue:
-            subscriber.quickAction.exerciseList = true
+            RemoteCoordinator.shared.quickAction(quickAction: .init(type: .record))
         default: break
         }
     }
