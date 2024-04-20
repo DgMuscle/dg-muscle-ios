@@ -10,15 +10,15 @@ import SwiftUI
 struct MyProfileView: View {
     
     @StateObject var viewModel: MyProfileViewModel
+    @EnvironmentObject var coordinator: Coordinator
     @State var isPresentEditDisplayNameView: Bool = false
-    @Binding var paths: NavigationPath
     
     var body: some View {
         ZStack {
             VStack {
                 if let user = viewModel.user {
                     MyProfileUserView(user: user) {
-                        paths.append(MainNavigation(name: .editProfilePhoto))
+                        coordinator.main.editProfilePhoto()
                     } tapDisplayName: {
                         isPresentEditDisplayNameView.toggle()
                     }
@@ -130,7 +130,7 @@ struct MyProfileView: View {
     let viewModel: MyProfileViewModel = .init(userRepository: UserRepositoryV2Test(),
                                               healthRepository: HealthRepositoryTest())
     
-    return MyProfileView(viewModel: viewModel, 
-                         paths: .constant(.init()))
+    return MyProfileView(viewModel: viewModel)
     .preferredColorScheme(.dark)
+    .environmentObject(Coordinator(path: .constant(.init())))
 }

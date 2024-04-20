@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentViewV2: View {
     
-    @State var paths = NavigationPath()
+    @Binding var path: NavigationPath
     @StateObject var viewModel: ContentViewV2Model
     
     let historyViewModel: HistoryViewModel
@@ -27,9 +27,8 @@ struct ContentViewV2: View {
             if viewModel.isLogin == false {
                 AppleAuthView(viewModel: .init(appleAuth: appleAuth))
             } else {
-                NavigationStack(path: $paths) {
+                NavigationStack(path: $path) {
                     HistoryView(viewModel: historyViewModel,
-                                paths: $paths,
                                 exerciseRepository: exerciseRepository,
                                 healthRepository: healthRepository,
                                 historyRepository: historyRepository, 
@@ -39,12 +38,10 @@ struct ContentViewV2: View {
                     .navigationDestination(for: MainNavigation.self) { navigation in
                         switch navigation.name {
                         case .setting:
-                            SettingV2View(viewModel: SettingV2ViewModel(userRepository: userRepository),
-                                          paths: $paths)
+                            SettingV2View(viewModel: SettingV2ViewModel(userRepository: userRepository))
                         case .profile:
                             MyProfileView(viewModel: .init(userRepository: userRepository,
-                                                           healthRepository: healthRepository), 
-                                          paths: $paths)
+                                                           healthRepository: healthRepository))
                         case .editProfilePhoto:
                             UpdateProfilePhotoView(viewModel: .init(userRepository: userRepository,
                                                                     fileUploader: fileUploader))
@@ -67,7 +64,6 @@ struct ContentViewV2: View {
                                                                                records: [],
                                                                                createdAt: nil),
                                                                historyRepository: historyRepository),
-                                              paths: $paths,
                                               exerciseRepository: exerciseRepository)
                         case .recordForm:
                             
@@ -88,8 +84,7 @@ struct ContentViewV2: View {
                     .navigationDestination(for: ExerciseNavigation.self) { navigation in
                         switch navigation.name {
                         case .manage:
-                            ManageExerciseView(viewModel: .init(exerciseRepository: exerciseRepository),
-                                               paths: $paths)
+                            ManageExerciseView(viewModel: .init(exerciseRepository: exerciseRepository))
                         case .edit:
                             if let exercise = navigation.editIngredient {
                                 EditExerciseView(viewModel: .init(exercise: exercise,
@@ -98,7 +93,6 @@ struct ContentViewV2: View {
                             }
                         case .step1:
                             ExerciseFormStep1View(viewModel: .init(),
-                                                  paths: $paths,
                                                   exerciseRepository: exerciseRepository)
                         case .step2:
                             if let dependency = navigation.step2Depndency {
@@ -106,14 +100,15 @@ struct ContentViewV2: View {
                                                                        parts: dependency.parts,
                                                                        exerciseRepository: exerciseRepository,
                                                                        completeAction: {
-                                    paths.removeLast(2)
+                                    path.removeLast(2)
                                 }))
                             }
                         }
                     }
                 }
             }
-        }.animation(.default, value: viewModel.isLogin)
+        }
+        .animation(.default, value: viewModel.isLogin)
     }
     
     private func todayDateString() -> String {
@@ -138,9 +133,9 @@ struct ContentViewV2: View {
     dateFormatter.dateFormat = "yyyyMMdd"
     let today = dateFormatter.date(from: "20240415")!
     
-    return ContentViewV2(viewModel: .init(userRepository: userRepository),
-                        historyViewModel: historyViewModel,
-                         
+    return ContentViewV2(path: .constant(.init()), 
+                         viewModel: .init(userRepository: userRepository),
+                         historyViewModel: historyViewModel,
                          exerciseRepository: exerciseRepository,
                          healthRepository: healthRepository, 
                          userRepository: userRepository, 

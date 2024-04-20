@@ -32,11 +32,13 @@ struct dg_muscle_iosApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @Environment(\.window) var window: UIWindow?
     @State var splash = true
+    @State var path = NavigationPath()
     
     var body: some Scene {
         WindowGroup {
             ZStack {
-                ContentViewV2(viewModel: .init(userRepository: UserRepositoryV2Live.shared),
+                ContentViewV2(path: $path,
+                              viewModel: .init(userRepository: UserRepositoryV2Live.shared),
                               historyViewModel: .init(historyRepository: HistoryRepositoryV2Impl.shared,
                                                       healthRepository: HealthRepositoryLive.shared,
                                                       userRepository: UserRepositoryV2Live.shared),
@@ -52,12 +54,13 @@ struct dg_muscle_iosApp: App {
                 SplashView()
                     .opacity(splash ? 1 : 0)
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                             splash = false
                         }
                     }
             }
             .animation(.default, value: splash)
+            .environmentObject(Coordinator(path: $path))
         }
     }
 }

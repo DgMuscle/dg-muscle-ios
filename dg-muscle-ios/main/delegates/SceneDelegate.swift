@@ -23,8 +23,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     private func handleUIApplicationShortCutItem(item: UIApplicationShortcutItem) {
         switch item.type {
         case QuickAction.Actiontype.record.rawValue:
-            // TODO: - quick action handleUIApplicationShortCutItem
-            print("dg: quick action handleUIApplicationShortCutItem")
+            RemoteCoordinator.shared.quickAction(quickAction: .init(type: .record))
         default: break
         }
     }
