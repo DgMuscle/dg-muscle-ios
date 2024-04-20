@@ -12,9 +12,6 @@
         }
       }
     },
-    "(%@)" : {
-
-    },
     "(%lld)" : {
 
     },
@@ -247,18 +244,6 @@
         }
       }
     },
-    "A-" : {
-
-    },
-    "A+" : {
-
-    },
-    "AB-" : {
-
-    },
-    "AB+" : {
-
-    },
     "account" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -365,12 +350,6 @@
           }
         }
       }
-    },
-    "B-" : {
-
-    },
-    "B+" : {
-
     },
     "Be careful, removal exercises can affect your previous records" : {
       "extractionState" : "stale",
@@ -501,9 +480,6 @@
     "Favorite" : {
 
     },
-    "Go to setting" : {
-
-    },
     "Introduce" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -516,9 +492,6 @@
       }
     },
     "Is above information correct?" : {
-
-    },
-    "kg" : {
 
     },
     "logout" : {
@@ -555,12 +528,6 @@
     "No user" : {
 
     },
-    "O-" : {
-
-    },
-    "O+" : {
-
-    },
     "Once deleted, the account cannot be restored." : {
 
     },
@@ -594,9 +561,6 @@
 
     },
     "Profile" : {
-
-    },
-    "Record" : {
 
     },
     "remove account" : {
