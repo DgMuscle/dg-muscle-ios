@@ -20,7 +20,6 @@ platform :ios do
   lane :beta do
     match(type: "appstore")
     build_app(scheme: "dg-muscle-ios", destination: "generic/platform=iOS")
-    # auth
     upload_to_testflight
   end
 
