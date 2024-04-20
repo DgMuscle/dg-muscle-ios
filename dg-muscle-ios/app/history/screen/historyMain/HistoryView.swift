@@ -10,7 +10,7 @@ import SwiftUI
 struct HistoryView: View {
     
     @StateObject var viewModel: HistoryViewModel
-    @Binding var paths: NavigationPath
+    @EnvironmentObject var coordinator: Coordinator
     
     let exerciseRepository: ExerciseRepositoryV2
     let healthRepository: HealthRepository
@@ -23,7 +23,7 @@ struct HistoryView: View {
             Spacer(minLength: 60)
             
             Button {
-                paths.append(MainNavigation(name: .selectHeatmapColor))
+                coordinator.main.selectHeatmapColor()
             } label: {
                 WorkoutHeatMapView(viewModel: .init(historyRepository: historyRepository,
                                                     today: today,
@@ -36,7 +36,7 @@ struct HistoryView: View {
             
             if let user = viewModel.user {
                 Button {
-                    paths.append(MainNavigation(name: .setting))
+                    coordinator.main.setting()
                 } label: {
                     HStack {
                         UserBoxView(user: user, descriptionLabel: "Go to setting")
@@ -50,8 +50,7 @@ struct HistoryView: View {
             }
             
             Button {
-                paths.append(HistoryNavigation(name: .historyForm,
-                                               historyForForm: viewModel.findTodayExerciseHistory()))
+                coordinator.history.historyForm(history: viewModel.findTodayExerciseHistory())
                 
             } label: {
                 WorkoutRectangleButton()
@@ -64,12 +63,11 @@ struct HistoryView: View {
                 HistorySectionView(section: section, 
                                    exerciseRepository: exerciseRepository,
                                    healthRepository: healthRepository) { history in
-                    paths.append(HistoryNavigation(name: .historyForm, historyForForm: history))
+                    coordinator.history.historyForm(history: history)
                 } deleteAction: { history in
                     viewModel.delete(history: history)
                 } tapSectionHeader: {
-                    paths.append(HistoryNavigation(name: .monthlySection,
-                                                   monthlySectionIngredient: section))
+                    coordinator.history.monthlySection(historySection: section)
                 }
                 .padding(.bottom, 40)
             }
@@ -91,7 +89,7 @@ struct HistoryView: View {
                                      healthRepository: HealthRepositoryTest(), 
                                      userRepository: UserRepositoryV2Test())
     
-    return HistoryView(viewModel: viewModel, paths: .constant(.init()),
+    return HistoryView(viewModel: viewModel,
                        exerciseRepository: ExerciseRepositoryV2Test(),
                        healthRepository: HealthRepositoryTest(),
                        historyRepository: HistoryRepositoryV2Test(), 

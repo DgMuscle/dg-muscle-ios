@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class Coordinator {
+final class Coordinator: ObservableObject {
     
     @Binding var path: NavigationPath
     

@@ -29,7 +29,6 @@ struct ContentViewV2: View {
             } else {
                 NavigationStack(path: $path) {
                     HistoryView(viewModel: historyViewModel,
-                                paths: $path,
                                 exerciseRepository: exerciseRepository,
                                 healthRepository: healthRepository,
                                 historyRepository: historyRepository, 
@@ -113,7 +112,9 @@ struct ContentViewV2: View {
                     }
                 }
             }
-        }.animation(.default, value: viewModel.isLogin)
+        }
+        .animation(.default, value: viewModel.isLogin)
+        .environmentObject(Coordinator(path: $path))
     }
     
     private func todayDateString() -> String {
