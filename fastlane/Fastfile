@@ -19,7 +19,7 @@ platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
     increment_build_number(xcodeproj: "dg-muscle-ios.xcodeproj")
-    build_app(scheme: "dg-muscle-ios")
+    build_app(scheme: "dg-muscle-ios", destination: "generic/platform=iOS")
     upload_to_testflight
   end
 end
