@@ -18,9 +18,8 @@ default_platform(:ios)
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    auth
-    # increment_build_number(xcodeproj: "dg-muscle-ios.xcodeproj")
     build_app(scheme: "dg-muscle-ios", destination: "generic/platform=iOS")
+    # auth
     upload_to_testflight
   end
 
@@ -28,11 +27,9 @@ platform :ios do
   lane :auth do
     api_key = app_store_connect_api_key(
       key_id: "LPRRPF9RMN",
-      # issuer_id 가 뭐지?
-      # issuer_id: "6053b7fe-68a8-4acb-89be-165aa6465141",
+      issuer_id: "c60be45c-20c8-4bad-b6b2-7aee665f0f11",
       key_filepath: "./AuthKey_LPRRPF9RMN.p8"
     )
-
     pilot(api_key: api_key)
   end
 end
