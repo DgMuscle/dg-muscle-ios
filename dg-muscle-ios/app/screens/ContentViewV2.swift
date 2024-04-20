@@ -93,7 +93,6 @@ struct ContentViewV2: View {
                             }
                         case .step1:
                             ExerciseFormStep1View(viewModel: .init(),
-                                                  paths: $path,
                                                   exerciseRepository: exerciseRepository)
                         case .step2:
                             if let dependency = navigation.step2Depndency {

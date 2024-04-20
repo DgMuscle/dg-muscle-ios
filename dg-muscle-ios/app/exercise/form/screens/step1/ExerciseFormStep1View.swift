@@ -10,7 +10,7 @@ import SwiftUI
 struct ExerciseFormStep1View: View {
     
     @StateObject var viewModel: ExerciseFormStep1ViewModel
-    @Binding var paths: NavigationPath
+    @EnvironmentObject var coordinator: Coordinator
     @FocusState private var isFocused: Bool
     let exerciseRepository: ExerciseRepositoryV2
     
@@ -19,11 +19,7 @@ struct ExerciseFormStep1View: View {
             VStack(alignment: .leading) {
                 if viewModel.canProceed {
                     Button {
-                        paths.append(ExerciseNavigation(name: .step2,
-                                                        step2Depndency: .init(name: viewModel.name,
-                                                                              parts: viewModel.parts)
-                                                       )
-                        )
+                        coordinator.exercise.step2(name: viewModel.name, parts: viewModel.parts)
                     } label: {
                         HStack {
                             Text("Next")
@@ -62,7 +58,7 @@ struct ExerciseFormStep1View: View {
 
 #Preview {
     return ExerciseFormStep1View(viewModel: .init(),
-                                 paths: .constant(.init()),
                                  exerciseRepository: ExerciseRepositoryV2Test())
         .preferredColorScheme(.dark)
+        .environmentObject(Coordinator(path: .constant(.init())))
 }
