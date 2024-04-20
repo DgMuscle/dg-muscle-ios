@@ -20,9 +20,4 @@ struct Record: Codable, Equatable, Identifiable, Hashable {
     var volume: Double {
         sets.reduce(0, { $0 + $1.volume })
     }
-    
-    var parts: [Exercise.Part] {
-//        store.exercise.exercises.first(where: { $0.id == exerciseId })?.parts ?? []
-        []
-    }
 }

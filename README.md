@@ -1,19 +1,59 @@
 # dg-muscle-ios
-Record exercises effortlessly, compare your progress, and achieve muscle growth through focused progressive overload.
+
+효율적으로 비교하고 기록하여 점진적 과부하를 이루고 근 성장을 이루자는 목적의 프로젝트.
+
+### [Introduction](https://judicious-hoof-33e.notion.site/dgmuscle-ios-a7162152c1594a09902d7d6c07da8bdd?pvs=74)
+
 <div>
-  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/0dcc42a3-6062-43f5-b84a-af2d263ddff0" width=200 />
-  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/a820d20d-0b5a-4d8d-acd3-45f096c8a352" width=200 />
-  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/a307ab3c-f5cc-4f1b-9298-f43ba06de455" width=200 />
-  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/a4de715f-8777-4683-9061-b73223dfcc64" width=200 />
-  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/12778486-9a37-4d87-9ede-8ae86bb18250" width=200 />
-  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/e369876b-31ab-4c00-b64e-e90534323f54" width=200 />
-  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/fbcdf5ae-3e1d-4056-8536-3e490e2279db" width=200 />
+  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/336a9f76-1897-4ff9-9955-a9b287f5577f" width=200 />
+  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/f38bd62b-52ad-442d-ada8-050c198996a4" width=200 />
+  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/c1e9dee3-7fdc-4b2f-9c59-cdc7b7488584" width=200 />
+  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/a0d03403-ffdf-4039-9d1e-c4a739263223" width=200 />
+  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/1c1838e7-8050-41c3-8f6c-4e93e17f6c76" width=200 />
+  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/b253ca7f-85b1-4fd1-a2c7-efb024fb15a4" width=200 />
+  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/d0386438-5300-4511-98df-41dbb86390af" width=200 />
 </div>
 
-This project is purely an app I made to use. I focused on simple UI and features, and the purpose is only to increase muscle mass.
+![RPReplay_Final1713610744-ezgif com-resize](https://github.com/donggyushin/dg-muscle-ios/assets/34573243/5067705b-f234-47f5-8ca8-df15cbf625ca)
 
-The key to this app is, to put it simply, to record the exercise while referring to the previous exercise record so that you can exercise a little stronger than the previous performance when doing a specific exercise.
+## Architecture
 
-I will create a window as soon as possible where anyone who uses this app can easily make bug reports and feature suggestions. Please wait a minute.
+<img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/8c511068-167f-44b9-9506-058b4a6e54e3" width=500 />
 
-Introduction page => https://judicious-hoof-33e.notion.site/dgmuscle-ios-a7162152c1594a09902d7d6c07da8bdd
+UI, Framework, 데이터베이스 등 외부 요소로부터 코어 로직의 독립성을 유지. <br />
+특히 protocol을 활용한 Repository 구현으로 Data Access Logic 과 앱의 Core Logic의 결합도의 느슨함을 유지함.
+
+## Main Model
+
+<img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/4bd3b634-8100-4719-8ae7-e1c32389dc38" />
+
+### Exercise
+
+유저가 직접 등록하는 운동 모델. 이름과 운동을 통하여 발전시키고자 하는 타겟 부위를 담고 있음
+
+### History
+
+유저의 운동 기록 모델. Exercise Id 와 여러개의 Set가 모여서 하나의 Record를 이루고, 여러개의 Record가 모여서 그 날의 운동 기록을 구성.
+
+### Concern
+
+| Concern  | Purpose                                                                |
+| -------- | ---------------------------------------------------------------------- |
+| Auth     | 회원가입 및 로그인의 유저의 인증 관리                                  |
+| History  | 유저의 운동일지 기록 추가, 수정, 삭제 및 UI                            |
+| Exercise | 유저의 운동종목 추가, 수정, 삭제                                       |
+| Setting  | 유저의 프로필 이미지 등록 및 닉네임 설정 등 그 외의 자잘한 기능들 포함 |
+
+## CI
+
+Github Action을 활용하여 메인 branch에 코드가 붙기전 빌드 및 테스트 케이스를 검증
+
+## CD
+
+Fastlane을 이용하여 배포 절차 간소화
+
+1. 배포용 인증서 및 프로비저닝 프로파일을 Private Repository(storage: git)에 저장
+2. match를 활용하여 storage로 부터 필요한 프로비저닝 프로파일 다운
+3. 다운 받은 프로파일을 이용하여 앱 빌드
+4. App Store Connect API 인증
+5. 테스트 플라이트 배포

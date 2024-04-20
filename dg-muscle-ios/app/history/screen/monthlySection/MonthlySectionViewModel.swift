@@ -71,6 +71,10 @@ final class MonthlySectionViewModel: ObservableObject {
     private func configureData() {
         var hashMap: [Exercise.Part: Double] = [:]
         
+        for part in Exercise.Part.allCases {
+            hashMap[part] = 0
+        }
+        
         for history in exerciseHistorySection.histories.map({ $0.exercise }) {
             for record in history.records {
                 if let exercise = exerciseRepository.get(exerciseId: record.exerciseId) {

@@ -28,8 +28,10 @@ final class monthlySectionTests: XCTestCase {
         XCTAssertEqual(viewModel.leastExercise?.name, "arm curl")
         XCTAssertEqual(viewModel.minExerciseVolume, 31500.0)
         
-        XCTAssertEqual(viewModel.leastPart, .chest)
-        XCTAssertEqual(viewModel.minPartVolume, 38500.0)
+        let leastPart = viewModel.leastPart == .core || viewModel.leastPart == .shoulder
+        
+        XCTAssertTrue(leastPart)
+        XCTAssertEqual(viewModel.minPartVolume, 0.0)
         
     }
 }
