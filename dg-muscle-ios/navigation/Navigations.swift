@@ -37,7 +37,7 @@ struct MainNavigation: Identifiable, Hashable {
 
 struct HistoryNavigation: Identifiable, Hashable {
     
-    struct RecordFornIngredient {
+    struct RecordFormIngredient {
         var recordForForm: Binding<Record>
         var dateForRecordForm: Date
         var startTimeInterval: TimeInterval
@@ -61,7 +61,7 @@ struct HistoryNavigation: Identifiable, Hashable {
     let name: Name
     var id: Int { name.hashValue }
     var historyForForm: ExerciseHistory?
-    var recordFornIngredient: RecordFornIngredient?
+    var recordFormIngredient: RecordFormIngredient?
     var monthlySectionIngredient: ExerciseHistorySection?
 }
 

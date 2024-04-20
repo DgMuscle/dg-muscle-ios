@@ -67,7 +67,7 @@ struct ContentViewV2: View {
                                               exerciseRepository: exerciseRepository)
                         case .recordForm:
                             
-                            if let ingredient = navigation.recordFornIngredient {
+                            if let ingredient = navigation.recordFormIngredient {
                                 RecordFormV2View(viewModel: .init(record: ingredient.recordForForm,
                                                                   exerciseRepository: exerciseRepository,
                                                                   historyRepository: historyRepository,

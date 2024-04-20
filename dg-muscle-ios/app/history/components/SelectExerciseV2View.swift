@@ -51,7 +51,7 @@ struct SelectExerciseV2View: View {
     let exerciseRepository: ExerciseRepositoryV2 = ExerciseRepositoryV2Test()
     
     // Empty exercise
-    let exerciseRepository2: ExerciseRepositoryV2 = ExerciseRepositoryV3Test()
+//    let exerciseRepository2: ExerciseRepositoryV2 = ExerciseRepositoryV3Test()
     
     return SelectExerciseV2View(exerciseRepository: exerciseRepository,
                                 selectExercise: nil,

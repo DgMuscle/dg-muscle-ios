@@ -24,11 +24,11 @@ final class HistoryCoordinator {
     func recordForm(record: Binding<Record>,
                     date: Date,
                     startTimeInterval: TimeInterval) {
-        let ingredient = HistoryNavigation.RecordFornIngredient(recordForForm: record,
+        let ingredient = HistoryNavigation.RecordFormIngredient(recordForForm: record,
                                                dateForRecordForm: date,
                                                startTimeInterval: startTimeInterval)
         let navigation = HistoryNavigation(name: .recordForm,
-                                           recordFornIngredient: ingredient)
+                                           recordFormIngredient: ingredient)
         
         path.append(navigation)
     }
