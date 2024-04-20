@@ -18,7 +18,9 @@ default_platform(:ios)
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    build_app(scheme: "dg-muscle-ios", destination: "generic/platform=iOS")
+    match(type: "appstore")
+    # build_app(scheme: "dg-muscle-ios", destination: "generic/platform=iOS")
+    gym(scheme: "dg-muscle-ios", destination: "generic/platform=iOS")
     # auth
     upload_to_testflight
   end
