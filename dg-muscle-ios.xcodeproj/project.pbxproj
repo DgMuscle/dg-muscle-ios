@@ -104,6 +104,7 @@
 		7044641A2BD0140200CB21F6 /* UpdateProfilePhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704464192BD0140200CB21F6 /* UpdateProfilePhotoViewModel.swift */; };
 		7044641D2BD0185600CB21F6 /* FileUploaderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */; };
 		7044641F2BD0187E00CB21F6 /* FileUploaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */; };
+		705341C82BD3C07700F9B16C /* VerticalVolumeBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705341C72BD3C07700F9B16C /* VerticalVolumeBarChartView.swift */; };
 		706760AE2BCBE37800649BF3 /* HistoryFormV2ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760AD2BCBE37800649BF3 /* HistoryFormV2ViewModel.swift */; };
 		706760B02BCBE54F00649BF3 /* HistoryFormV2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760AF2BCBE54F00649BF3 /* HistoryFormV2View.swift */; };
 		706760B42BCBEB3F00649BF3 /* RecordListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760B32BCBEB3F00649BF3 /* RecordListItemView.swift */; };
@@ -316,6 +317,7 @@
 		704464192BD0140200CB21F6 /* UpdateProfilePhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfilePhotoViewModel.swift; sourceTree = "<group>"; };
 		7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploaderInterface.swift; sourceTree = "<group>"; };
 		7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploaderTest.swift; sourceTree = "<group>"; };
+		705341C72BD3C07700F9B16C /* VerticalVolumeBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalVolumeBarChartView.swift; sourceTree = "<group>"; };
 		706760AD2BCBE37800649BF3 /* HistoryFormV2ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormV2ViewModel.swift; sourceTree = "<group>"; };
 		706760AF2BCBE54F00649BF3 /* HistoryFormV2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormV2View.swift; sourceTree = "<group>"; };
 		706760B32BCBEB3F00649BF3 /* RecordListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListItemView.swift; sourceTree = "<group>"; };
@@ -698,6 +700,7 @@
 				706760B92BCC074200649BF3 /* SelectExerciseV2View.swift */,
 				703A97CE2BCBB488002C0843 /* WorkoutFloatingButton.swift */,
 				703A97D02BCBB4E9002C0843 /* WorkoutRectangleButton.swift */,
+				705341C72BD3C07700F9B16C /* VerticalVolumeBarChartView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -1263,6 +1266,7 @@
 				703A97C92BCB97C6002C0843 /* EditExerciseViewModel.swift in Sources */,
 				70756EF12BCA68700035EFF4 /* HistoryRepositoryV2Test.swift in Sources */,
 				70F838A02AC7FE4D009725EF /* Exercise.swift in Sources */,
+				705341C82BD3C07700F9B16C /* VerticalVolumeBarChartView.swift in Sources */,
 				70CD21D32BCD6881009B72F3 /* WorkoutHeatMapView.swift in Sources */,
 				703A97D92BCBC070002C0843 /* RecordFormSetItem.swift in Sources */,
 				703A97BF2BCB8608002C0843 /* ExerciseSimpleInfoView.swift in Sources */,

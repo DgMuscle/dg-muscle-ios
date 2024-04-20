@@ -14,9 +14,8 @@ struct MonthlySectionView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                HorizontalVolumeBarChartView(datas: viewModel.datas,
-                                             maxExerciseVolume: viewModel.maxPartVolume)
-                .padding(.bottom)
+                VerticalVolumeBarChartView(datas: viewModel.datas)
+                    .frame(height: 400)
                 
                 VStack(alignment: .leading) {
                     if let mostExercise = viewModel.mostExercise {
