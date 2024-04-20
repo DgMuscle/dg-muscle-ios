@@ -36,7 +36,8 @@ struct dg_muscle_iosApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                ContentViewV2(viewModel: .init(userRepository: UserRepositoryV2Live.shared),
+                ContentViewV2(path: Coordinator.shared.$path,
+                              viewModel: .init(userRepository: UserRepositoryV2Live.shared),
                               historyViewModel: .init(historyRepository: HistoryRepositoryV2Impl.shared,
                                                       healthRepository: HealthRepositoryLive.shared,
                                                       userRepository: UserRepositoryV2Live.shared),

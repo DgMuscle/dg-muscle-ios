@@ -45,6 +45,10 @@
 		702448D82BD2BAB400C79056 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 702448D72BD2BAB400C79056 /* SnapKit */; };
 		702448DA2BD2BBCC00C79056 /* OpenWeb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702448D92BD2BBCC00C79056 /* OpenWeb.swift */; };
 		702BC70C2ABF2A0800E325DB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 702BC70B2ABF2A0800E325DB /* Kingfisher */; };
+		702D77CB2BD35C40008AF48F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702D77CA2BD35C40008AF48F /* Coordinator.swift */; };
+		702D77CE2BD35CC8008AF48F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702D77CD2BD35CC8008AF48F /* MainCoordinator.swift */; };
+		702D77D02BD35E6D008AF48F /* HistoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702D77CF2BD35E6D008AF48F /* HistoryCoordinator.swift */; };
+		702D77D22BD36019008AF48F /* ExerciseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702D77D12BD36019008AF48F /* ExerciseCoordinator.swift */; };
 		702E21682BCA53BC00147279 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E21672BCA53BC00147279 /* HistoryView.swift */; };
 		702E216B2BCA541C00147279 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E216A2BCA541C00147279 /* HistoryViewModel.swift */; };
 		702E216E2BCA55C500147279 /* HistoryRepositoryV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E216D2BCA55C500147279 /* HistoryRepositoryV2.swift */; };
@@ -271,6 +275,10 @@
 		70240BFD2ADC201C00B87A79 /* dg-muscle-ios-widgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dg-muscle-ios-widgetExtension.entitlements"; sourceTree = "<group>"; };
 		702448D42BD2BA1C00C79056 /* DGWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGWebView.swift; sourceTree = "<group>"; };
 		702448D92BD2BBCC00C79056 /* OpenWeb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeb.swift; sourceTree = "<group>"; };
+		702D77CA2BD35C40008AF48F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		702D77CD2BD35CC8008AF48F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		702D77CF2BD35E6D008AF48F /* HistoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCoordinator.swift; sourceTree = "<group>"; };
+		702D77D12BD36019008AF48F /* ExerciseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCoordinator.swift; sourceTree = "<group>"; };
 		702E21672BCA53BC00147279 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		702E216A2BCA541C00147279 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		702E216D2BCA55C500147279 /* HistoryRepositoryV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRepositoryV2.swift; sourceTree = "<group>"; };
@@ -497,6 +505,17 @@
 			path = "dg-muscle-ios-widget";
 			sourceTree = "<group>";
 		};
+		702D77C92BD35BE4008AF48F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				702D77CA2BD35C40008AF48F /* Coordinator.swift */,
+				702D77D12BD36019008AF48F /* ExerciseCoordinator.swift */,
+				702D77CF2BD35E6D008AF48F /* HistoryCoordinator.swift */,
+				702D77CD2BD35CC8008AF48F /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		702E21652BCA535800147279 /* history */ = {
 			isa = PBXGroup;
 			children = (
@@ -578,6 +597,7 @@
 		703A97C02BCB929B002C0843 /* navigation */ = {
 			isa = PBXGroup;
 			children = (
+				702D77C92BD35BE4008AF48F /* Coordinator */,
 				703A97C12BCB92B7002C0843 /* Navigations.swift */,
 			);
 			path = navigation;
@@ -1223,6 +1243,7 @@
 				70756F052BCA9E640035EFF4 /* UserRepositoryV2.swift in Sources */,
 				70F838A82AC7FEB6009725EF /* Record.swift in Sources */,
 				706760B42BCBEB3F00649BF3 /* RecordListItemView.swift in Sources */,
+				702D77D02BD35E6D008AF48F /* HistoryCoordinator.swift in Sources */,
 				02D212992BCE6DAF0088F93B /* MyProfileUserView.swift in Sources */,
 				70C144D82AC82807007F0540 /* DefaultResponse.swift in Sources */,
 				70756EFB2BCA6C4B0035EFF4 /* ExerciseRepositoryV2Live.swift in Sources */,
@@ -1274,6 +1295,8 @@
 				70756F1C2BCAB6D80035EFF4 /* SettingV2ViewModel.swift in Sources */,
 				706760B62BCBEDE300649BF3 /* HistoryCardView.swift in Sources */,
 				704464182BD013EE00CB21F6 /* UpdateProfilePhotoView.swift in Sources */,
+				702D77CB2BD35C40008AF48F /* Coordinator.swift in Sources */,
+				702D77D22BD36019008AF48F /* ExerciseCoordinator.swift in Sources */,
 				706760AE2BCBE37800649BF3 /* HistoryFormV2ViewModel.swift in Sources */,
 				707BBF182AF7D1D800A8ABD2 /* Height.swift in Sources */,
 				70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */,
@@ -1285,6 +1308,7 @@
 				02BE7C2C2BD26D3E00C6DD5C /* HorizontalVolumeBarChartView.swift in Sources */,
 				702448DA2BD2BBCC00C79056 /* OpenWeb.swift in Sources */,
 				707B0AFF2BD1676700D8250B /* HeatmapColorSelectionViewModel.swift in Sources */,
+				702D77CE2BD35CC8008AF48F /* MainCoordinator.swift in Sources */,
 				70A2BB132BD2BFDC00317BAF /* QuickAction.swift in Sources */,
 				70F838A42AC7FE96009725EF /* ExerciseHistorySection.swift in Sources */,
 				703A97B52BCB7508002C0843 /* ExercisePartsSelectionFormModel.swift in Sources */,
