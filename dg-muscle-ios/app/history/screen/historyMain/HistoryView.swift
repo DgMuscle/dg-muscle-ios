@@ -96,4 +96,5 @@ struct HistoryView: View {
                        heatmapRepository: HeatmapRepositoryTest(),
                        today: today)
         .preferredColorScheme(.dark)
+        .environmentObject(Coordinator(path: .constant(.init())))
 }
