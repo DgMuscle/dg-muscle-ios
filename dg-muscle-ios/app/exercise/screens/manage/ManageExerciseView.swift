@@ -10,8 +10,7 @@ import SwiftUI
 struct ManageExerciseView: View {
     
     @StateObject var viewModel: ManageExerciseViewModel
-    @Binding var paths: NavigationPath
-    
+    @EnvironmentObject var coordinator: Coordinator
     
     var body: some View {
         ScrollView {
@@ -25,16 +24,16 @@ struct ManageExerciseView: View {
             }
             
             ExerciseListV2View(viewModel: .init(exerciseRepository: viewModel.exerciseRepository)) { exercise in
-                paths.append(ExerciseNavigation(name: .edit, editIngredient: exercise))
-            } addAction: {
-                paths.append(ExerciseNavigation(name: .step1))
                 
+                coordinator.exercise.edit(exercise: exercise)
+            } addAction: {
+                coordinator.exercise.step1()
             } deleteAction: { exercise in
                 viewModel.delete(data: exercise)
             }
             
             Button {
-                paths.append(ExerciseNavigation(name: .step1))
+                coordinator.exercise.step1()
             } label: {
                 HStack {
                     Spacer()
@@ -60,7 +59,7 @@ struct ManageExerciseView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    paths.append(ExerciseNavigation(name: .step1))
+                    coordinator.exercise.step1()
                 } label: {
                     Image(systemName: "plus")
                 }
@@ -71,6 +70,7 @@ struct ManageExerciseView: View {
 }
 
 #Preview {
-    return ManageExerciseView(viewModel: .init(exerciseRepository: ExerciseRepositoryV2Test()), paths: .constant(.init()))
+    return ManageExerciseView(viewModel: .init(exerciseRepository: ExerciseRepositoryV2Test()))
         .preferredColorScheme(.dark)
+        .environmentObject(Coordinator(path: .constant(.init())))
 }

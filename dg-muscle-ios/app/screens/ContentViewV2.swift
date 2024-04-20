@@ -84,8 +84,7 @@ struct ContentViewV2: View {
                     .navigationDestination(for: ExerciseNavigation.self) { navigation in
                         switch navigation.name {
                         case .manage:
-                            ManageExerciseView(viewModel: .init(exerciseRepository: exerciseRepository),
-                                               paths: $path)
+                            ManageExerciseView(viewModel: .init(exerciseRepository: exerciseRepository))
                         case .edit:
                             if let exercise = navigation.editIngredient {
                                 EditExerciseView(viewModel: .init(exercise: exercise,
