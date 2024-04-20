@@ -38,8 +38,7 @@ struct ContentViewV2: View {
                     .navigationDestination(for: MainNavigation.self) { navigation in
                         switch navigation.name {
                         case .setting:
-                            SettingV2View(viewModel: SettingV2ViewModel(userRepository: userRepository),
-                                          paths: $path)
+                            SettingV2View(viewModel: SettingV2ViewModel(userRepository: userRepository))
                         case .profile:
                             MyProfileView(viewModel: .init(userRepository: userRepository,
                                                            healthRepository: healthRepository), 

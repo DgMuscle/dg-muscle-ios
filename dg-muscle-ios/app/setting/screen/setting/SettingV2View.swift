@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingV2View: View {
     
     @StateObject var viewModel: SettingV2ViewModel
-    @Binding var paths: NavigationPath
+    @EnvironmentObject var coordinator: Coordinator
     @State private var isPresentRemoveAccount: Bool = false
     
     var body: some View {
@@ -26,7 +26,7 @@ struct SettingV2View: View {
             
             if let user = viewModel.user {
                 Button {
-                    paths.append(MainNavigation(name: .profile))
+                    coordinator.main.profile()
                 } label: {
                     HStack {
                         UserBoxView(user: user, descriptionLabel: "Configure Your Profile")
@@ -36,10 +36,9 @@ struct SettingV2View: View {
             }
             
             ExerciseListSectionView {
-                paths.append(ExerciseNavigation(name: .manage))
+                coordinator.exercise.manage()
             } introduceAction: {
-                paths.append(MainNavigation(name: .openWeb,
-                                            openWebIngredient: .init(url: "https://judicious-hoof-33e.notion.site/dgmuscle-ios-a7162152c1594a09902d7d6c07da8bdd")))
+                coordinator.main.openWeb(url: "https://judicious-hoof-33e.notion.site/dgmuscle-ios-a7162152c1594a09902d7d6c07da8bdd")
             }
             .padding(.top, 40)
             
@@ -83,6 +82,7 @@ struct SettingV2View: View {
     
     let settingViewModel = SettingV2ViewModel(userRepository: UserRepositoryV2Test())
     
-    return SettingV2View(viewModel: settingViewModel, paths: .constant(.init()))
+    return SettingV2View(viewModel: settingViewModel)
         .preferredColorScheme(.dark)
+        .environmentObject(Coordinator(path: .constant(.init())))
 }
