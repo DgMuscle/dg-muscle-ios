@@ -28,6 +28,8 @@ final class UserRepositoryV2Live: UserRepositoryV2 {
     @Published private var _user: DGUser?
     @Published private var _isLogin: Bool = false
     
+    private var cancellables = Set<AnyCancellable>()
+    
     private init() {
         bind()
     }
@@ -69,6 +71,31 @@ final class UserRepositoryV2Live: UserRepositoryV2 {
             }
             self._user = .init(uid: user.uid, displayName: user.displayName, photoURL: user.photoURL)
             self._isLogin = true
+            
+            
         }
+        
+        $_user
+            .compactMap({ $0 })
+            .sink { user in
+                Task {
+                    let _ = try await self.postProfile(id: user.uid, displayName: user.displayName, photoURL: user.photoURL?.absoluteString)
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func postProfile(id: String, displayName: String?, photoURL: String?) async throws -> DefaultResponse {
+        let url = "https://user-postprofile-kpjvgnqz6a-uc.a.run.app"
+        
+        struct Body: Codable {
+            let id: String
+            let displayName: String
+            let photoURL: String?
+        }
+        
+        let body: Body = .init(id: id, displayName: displayName ?? "", photoURL: photoURL)
+        
+        return try await APIClient.shared.requestV2(method: .post, url: url, body: body)
     }
 }
