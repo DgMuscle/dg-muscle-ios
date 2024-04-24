@@ -65,7 +65,7 @@ final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
         
         try? FileManagerHelper.save(histories, toFile: .history)
         
-        return try await APIClient.shared.request(method: .post, url: "https://exercisehistoryv2-posthistory-kpjvgnqz6a-uc.a.run.app", body: data)
+        return try await APIClient.shared.request(method: .post, url: "https://us-central1-dg-muscle.cloudfunctions.net/v3history-posthistory", body: data)
     }
     
     func post(data: [WorkoutHeatMapViewModel.Data]) throws {
@@ -85,7 +85,7 @@ final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
         
         try? FileManagerHelper.save(histories, toFile: .history)
         
-        return try await APIClient.shared.request(method: .delete, url: "https://exercisehistoryv2-deletehistory-kpjvgnqz6a-uc.a.run.app", body: data)
+        return try await APIClient.shared.request(method: .delete, url: "https://us-central1-dg-muscle.cloudfunctions.net/v3history-deletehistory", body: data)
     }
     
     private func getExerciseHistoryFromFile() -> [ExerciseHistory] {
@@ -93,7 +93,7 @@ final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
     }
     
     private func get(lastId: String?, limit: Int) async throws -> [ExerciseHistory] {
-        var url = "https://exercisehistoryv2-gethistories-kpjvgnqz6a-uc.a.run.app?limit=\(limit)"
+        var url = "https://us-central1-dg-muscle.cloudfunctions.net/v3history-gethistories?limit=\(limit)"
         
         if let lastId {
             url = url + "&lastId=\(lastId)"
