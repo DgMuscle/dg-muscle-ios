@@ -86,7 +86,7 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
         
         let body = Body(id: data.id)
         
-        return try await APIClient.shared.requestV2(method: .delete,
+        return try await APIClient.shared.request(method: .delete,
                                                     url: FunctionsURL.exercise(.deleteexercise),
                                                     body: body,
                                                     additionalHeaders: nil)

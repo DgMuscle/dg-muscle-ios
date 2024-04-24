@@ -96,6 +96,6 @@ final class UserRepositoryV2Live: UserRepositoryV2 {
         
         let body: Body = .init(id: id, displayName: displayName ?? "", photoURL: photoURL)
         
-        return try await APIClient.shared.requestV2(method: .post, url: url, body: body)
+        return try await APIClient.shared.request(method: .post, url: url, body: body)
     }
 }
