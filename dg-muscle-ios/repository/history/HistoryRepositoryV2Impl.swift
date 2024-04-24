@@ -37,6 +37,7 @@ final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
         UserRepositoryV2Live.shared.isLoginPublisher
             .dropFirst()
             .removeDuplicates()
+            .receive(on: DispatchQueue.main)
             .sink { login in
                 if login {
                     DispatchQueue.main.async {

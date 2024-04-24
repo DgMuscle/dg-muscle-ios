@@ -90,6 +90,7 @@ final class UserRepositoryV2Live: UserRepositoryV2 {
         
         $_user
             .compactMap({ $0 })
+            .receive(on: DispatchQueue.main)
             .sink { user in
                 Task {
                     let _ = try await self.postProfile(id: user.uid, displayName: user.displayName, photoURL: user.photoURL?.absoluteString)

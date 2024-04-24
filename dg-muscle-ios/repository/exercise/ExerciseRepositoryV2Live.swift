@@ -38,6 +38,7 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
             .isLoginPublisher
             .dropFirst()
             .removeDuplicates()
+            .receive(on: DispatchQueue.main)
             .sink { login in
                 if login {
                     
