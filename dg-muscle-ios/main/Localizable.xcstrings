@@ -486,6 +486,9 @@
     "Favorite" : {
 
     },
+    "Hello, World!" : {
+
+    },
     "Introduce" : {
       "extractionState" : "stale",
       "localizations" : {

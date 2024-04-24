@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 protocol FriendRepository {
-    var friends: [Friend] { _friends }
-    var friendsPublisher: AnyPublisher<[Friend], Never>
+    var friends: [Friend] { get } 
+    var friendsPublisher: AnyPublisher<[Friend], Never> { get }
     
     func fetchFriends()
 }
