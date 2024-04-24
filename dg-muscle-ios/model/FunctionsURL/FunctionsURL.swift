@@ -9,7 +9,7 @@ import Foundation
 
 struct FunctionsURL {
     
-    static private let suffix = ".kpjvgnqz6a-uc.a.run.app"
+    static private let suffix = "-kpjvgnqz6a-uc.a.run.app"
     static private let prefix = "https://"
     
     private init() { }
