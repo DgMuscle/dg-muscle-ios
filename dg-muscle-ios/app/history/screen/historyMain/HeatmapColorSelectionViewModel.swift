@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 final class HeatmapColorSelectionViewModel: ObservableObject {
-    @Published var selectedColor: HeatmapColor = .green
+    @Published var selectedColor: HeatmapColor
     @Published var allColors = HeatmapColor.allCases
     
     let heatmapRepository: HeatmapRepository
@@ -18,7 +18,7 @@ final class HeatmapColorSelectionViewModel: ObservableObject {
     
     init(heatmapRepository: HeatmapRepository) {
         self.heatmapRepository = heatmapRepository
-        
+        self.selectedColor = heatmapRepository.color
         bind()
     }
     
