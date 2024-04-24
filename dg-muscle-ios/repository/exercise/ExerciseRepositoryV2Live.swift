@@ -68,7 +68,7 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
         }
         
         try FileManagerHelper.save(exercises, toFile: .exercise)
-        return try await APIClient.shared.request(method: .post, url: FunctionsURL.exercise(.setexercises), body: exercises)
+        return try await APIClient.shared.request(method: .post, url: FunctionsURL.exercise(.postexercise), body: data)
     }
     
     func delete(data: Exercise) async throws -> DefaultResponse {
@@ -79,7 +79,17 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
         }
         
         try FileManagerHelper.save(exercises, toFile: .exercise)
-        return try await APIClient.shared.request(method: .post, url: FunctionsURL.exercise(.setexercises), body: exercises)
+        
+        struct Body: Codable {
+            let id: String
+        }
+        
+        let body = Body(id: data.id)
+        
+        return try await APIClient.shared.requestV2(method: .delete,
+                                                    url: FunctionsURL.exercise(.deleteexercise),
+                                                    body: body,
+                                                    additionalHeaders: nil)
     }
     
     func get(exerciseId: String) -> Exercise? {

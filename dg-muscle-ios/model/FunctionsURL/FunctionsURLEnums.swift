@@ -50,7 +50,6 @@ extension FunctionsURL {
 extension FunctionsURL {
     enum Exercise: String {
         case deleteexercise
-        case setexercises
         case getexercises
         case postexercise
         
