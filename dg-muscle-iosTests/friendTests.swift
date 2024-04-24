@@ -16,6 +16,7 @@ final class friendTests: XCTestCase {
         searchFriendsViewModel.query = "낙"
         
         try await Task.sleep(nanoseconds: 5_000_000_000)
+        let searchedUser = searchFriendsViewModel.searchedUsers[0]
+        XCTAssertEqual(searchedUser.user.uid, "56mGcK9Nm5cVcUk8vxW5h9jIQcA2")
     }
-
 }
