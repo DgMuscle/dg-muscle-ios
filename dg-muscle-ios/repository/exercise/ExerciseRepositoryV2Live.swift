@@ -57,7 +57,7 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
     func post(data: Exercise) async throws -> DefaultResponse {
         _exercises.append(data)
         try FileManagerHelper.save(exercises, toFile: .exercise)
-        return try await APIClient.shared.request(method: .post, url: "https://exercisev2-postexercise-kpjvgnqz6a-uc.a.run.app", body: data)
+        return try await APIClient.shared.request(method: .post, url: "https://us-central1-dg-muscle.cloudfunctions.net/v3exercise-postexercise", body: data)
     }
     
     func edit(data: Exercise) async throws -> DefaultResponse {
@@ -68,7 +68,7 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
         }
         
         try FileManagerHelper.save(exercises, toFile: .exercise)
-        return try await APIClient.shared.request(method: .post, url: "https://exercisev2-setexercises-kpjvgnqz6a-uc.a.run.app", body: exercises)
+        return try await APIClient.shared.request(method: .post, url: "https://us-central1-dg-muscle.cloudfunctions.net/v3exercise-setexercises", body: exercises)
     }
     
     func delete(data: Exercise) async throws -> DefaultResponse {
@@ -79,7 +79,7 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
         }
         
         try FileManagerHelper.save(exercises, toFile: .exercise)
-        return try await APIClient.shared.request(method: .post, url: "https://exercisev2-setexercises-kpjvgnqz6a-uc.a.run.app", body: exercises)
+        return try await APIClient.shared.request(method: .post, url: "https://us-central1-dg-muscle.cloudfunctions.net/v3exercise-setexercises", body: exercises)
     }
     
     func get(exerciseId: String) -> Exercise? {
@@ -91,7 +91,7 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
     }
     
     private func fetchExerciseDataFromServer() async throws -> [Exercise] {
-        var exercises: [Exercise] = try await APIClient.shared.request(url: "https://exercisev2-getexercises-kpjvgnqz6a-uc.a.run.app")
+        var exercises: [Exercise] = try await APIClient.shared.request(url: "https://us-central1-dg-muscle.cloudfunctions.net/v3exercise-getexercises")
         exercises = exercises.sorted(by: { $0.order < $1.order })
         try FileManagerHelper.save(exercises, toFile: .exercise)
         return exercises
