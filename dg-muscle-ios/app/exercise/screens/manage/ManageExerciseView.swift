@@ -24,7 +24,6 @@ struct ManageExerciseView: View {
             }
             
             ExerciseListV2View(viewModel: .init(exerciseRepository: viewModel.exerciseRepository)) { exercise in
-                
                 coordinator.exercise.edit(exercise: exercise)
             } addAction: {
                 coordinator.exercise.step1()
@@ -32,24 +31,26 @@ struct ManageExerciseView: View {
                 viewModel.delete(data: exercise)
             }
             
-            Button {
-                coordinator.exercise.step1()
-            } label: {
-                HStack {
-                    Spacer()
-                    Text("ADD EXERCISE")
-                        .foregroundStyle(.white)
-                        .fontWeight(.black)
-                        
-                    Spacer()
+            if viewModel.isVisibleAddButton {
+                Button {
+                    coordinator.exercise.step1()
+                } label: {
+                    HStack {
+                        Spacer()
+                        Text("ADD EXERCISE")
+                            .foregroundStyle(.white)
+                            .fontWeight(.black)
+                            
+                        Spacer()
+                    }
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(LinearGradient(colors: [.blue, .indigo],
+                                                 startPoint: .leading,
+                                                 endPoint: .trailing))
+                    )
                 }
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(LinearGradient(colors: [.blue, .indigo],
-                                             startPoint: .leading,
-                                             endPoint: .trailing))
-                )
             }
         }
         .animation(.default, value: viewModel.loading)

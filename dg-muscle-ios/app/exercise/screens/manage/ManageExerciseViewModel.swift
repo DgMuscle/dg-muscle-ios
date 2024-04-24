@@ -11,11 +11,15 @@ import Combine
 final class ManageExerciseViewModel: ObservableObject {
     @Published var loading: Bool = false
     @Published var errorMessage: String? = nil
+    @Published var isVisibleAddButton: Bool = false
     
     let exerciseRepository: ExerciseRepositoryV2
     
+    private var cancellables = Set<AnyCancellable>()
+    
     init(exerciseRepository: ExerciseRepositoryV2) {
         self.exerciseRepository = exerciseRepository
+        bind()
     }
     
     @MainActor
@@ -30,5 +34,14 @@ final class ManageExerciseViewModel: ObservableObject {
             }
             loading = false
         }
+    }
+    
+    private func bind() {
+        exerciseRepository.exercisesPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] exercises in
+                self?.isVisibleAddButton = exercises.isEmpty == false
+            }
+            .store(in: &cancellables)
     }
 }
