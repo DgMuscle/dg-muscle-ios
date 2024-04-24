@@ -86,7 +86,7 @@ final class UserRepositoryV2Live: UserRepositoryV2 {
     }
     
     private func postProfile(id: String, displayName: String?, photoURL: String?) async throws -> DefaultResponse {
-        let url = "https://userv2-postprofile-kpjvgnqz6a-uc.a.run.app"
+        let url = "https://us-central1-dg-muscle.cloudfunctions.net/v3user-postprofile"
         
         struct Body: Codable {
             let id: String
