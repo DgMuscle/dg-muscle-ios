@@ -21,17 +21,30 @@ final class UserRepositoryV2Live: UserRepositoryV2 {
     }
     
     var isLogin: Bool { _isLogin }
+    
     var isLoginPublisher: AnyPublisher<Bool, Never> {
         $_isLogin.eraseToAnyPublisher()
+    }
+    
+    var dgUsers: [DGUser] { _dgUsers }
+    
+    var dgUsersPublisher: AnyPublisher<[DGUser], Never> {
+        $_dgUsers.eraseToAnyPublisher()
     }
     
     @Published private var _user: DGUser?
     @Published private var _isLogin: Bool = false
     
+    @Published private var _dgUsers: [DGUser] = []
+    
     private var cancellables = Set<AnyCancellable>()
     
     private init() {
         bind()
+        
+        Task {
+            _dgUsers = try await getProfiles()
+        }
     }
     
     func signOut() throws {
@@ -97,5 +110,9 @@ final class UserRepositoryV2Live: UserRepositoryV2 {
         let body: Body = .init(id: id, displayName: displayName ?? "", photoURL: photoURL)
         
         return try await APIClient.shared.request(method: .post, url: url, body: body)
+    }
+    
+    private func getProfiles() async throws -> [DGUser] {
+        return try await APIClient.shared.request(url: FunctionsURL.user(.getprofiles))
     }
 }

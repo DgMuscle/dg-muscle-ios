@@ -12,6 +12,8 @@ protocol UserRepositoryV2 {
     var userPublisher: AnyPublisher<DGUser?, Never> { get }
     var isLogin: Bool { get }
     var isLoginPublisher: AnyPublisher<Bool, Never> { get }
+    var dgUsers: [DGUser] { get }
+    var dgUsersPublisher: AnyPublisher<[DGUser], Never> { get }
     
     func signOut() throws
     func updateUser(displayName: String?, photoURL: URL?) async throws
