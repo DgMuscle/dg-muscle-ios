@@ -221,6 +221,7 @@
 		70EA5B612BD8F2DF00DEFB15 /* FriendsSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA5B542BD8EEDC00DEFB15 /* FriendsSearchViewModel.swift */; };
 		70EA5B622BD8F2F200DEFB15 /* FriendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA5B5D2BD8F10A00DEFB15 /* FriendRepository.swift */; };
 		70EA5B632BD8F2F800DEFB15 /* FriendRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA5B5F2BD8F13500DEFB15 /* FriendRepositoryTest.swift */; };
+		70EA5B652BD8F38100DEFB15 /* friendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA5B642BD8F38100DEFB15 /* friendTests.swift */; };
 		70F8389E2AC7FE36009725EF /* CreatedAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F8389D2AC7FE36009725EF /* CreatedAt.swift */; };
 		70F838A02AC7FE4D009725EF /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F8389F2AC7FE4D009725EF /* Exercise.swift */; };
 		70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A12AC7FE84009725EF /* ExerciseHistory.swift */; };
@@ -407,6 +408,7 @@
 		70EA5B592BD8EFCE00DEFB15 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		70EA5B5D2BD8F10A00DEFB15 /* FriendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepository.swift; sourceTree = "<group>"; };
 		70EA5B5F2BD8F13500DEFB15 /* FriendRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepositoryTest.swift; sourceTree = "<group>"; };
+		70EA5B642BD8F38100DEFB15 /* friendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendTests.swift; sourceTree = "<group>"; };
 		70F8389D2AC7FE36009725EF /* CreatedAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedAt.swift; sourceTree = "<group>"; };
 		70F8389F2AC7FE4D009725EF /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		70F838A12AC7FE84009725EF /* ExerciseHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistory.swift; sourceTree = "<group>"; };
@@ -927,6 +929,7 @@
 			isa = PBXGroup;
 			children = (
 				70756F342BCAC7BA0035EFF4 /* exerciseTests.swift */,
+				70EA5B642BD8F38100DEFB15 /* friendTests.swift */,
 				0208CF4C2BCCFC9D00FD973D /* heatMapTests.swift */,
 				702E21762BCA5DEF00147279 /* historyTests.swift */,
 				02053E382BD25181003B8D76 /* monthlySectionTests.swift */,
@@ -1293,6 +1296,7 @@
 				70756F3B2BCAC89B0035EFF4 /* UserRepositoryV2Test.swift in Sources */,
 				702E21932BCA620100147279 /* CustomError.swift in Sources */,
 				702E21862BCA5E8700147279 /* WorkoutMetaData.swift in Sources */,
+				70EA5B652BD8F38100DEFB15 /* friendTests.swift in Sources */,
 				702E217A2BCA5E4C00147279 /* ExerciseHistorySection.swift in Sources */,
 				0208CF4D2BCCFC9D00FD973D /* heatMapTests.swift in Sources */,
 				702E21782BCA5E2A00147279 /* HistoryViewModel.swift in Sources */,
