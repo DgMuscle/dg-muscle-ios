@@ -173,6 +173,12 @@
 		708785142BCEC16100930B0D /* MyProfileListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708785132BCEC16100930B0D /* MyProfileListItemView.swift */; };
 		708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4C52AD2875700852E2E /* FileManagerHelper.swift */; };
 		70A2BB132BD2BFDC00317BAF /* QuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A2BB122BD2BFDC00317BAF /* QuickAction.swift */; };
+		70B07AC42BD8D0A200A0E732 /* FunctionsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */; };
+		70B07AC72BD8D0D800A0E732 /* FunctionsURLEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */; };
+		70B07AC82BD8D53B00A0E732 /* FunctionsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */; };
+		70B07AC92BD8D53B00A0E732 /* FunctionsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */; };
+		70B07ACA2BD8D54900A0E732 /* FunctionsURLEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */; };
+		70B07ACB2BD8D54A00A0E732 /* FunctionsURLEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */; };
 		70BB52182B37EC1D00EC606D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 70BB52172B37EC1D00EC606D /* Localizable.xcstrings */; };
 		70C0559B2B79F9F300375526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C0559A2B79F9F300375526 /* AppDelegate.swift */; };
 		70C0559F2B79FC0800375526 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C0559E2B79FC0800375526 /* SceneDelegate.swift */; };
@@ -367,6 +373,8 @@
 		708785132BCEC16100930B0D /* MyProfileListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileListItemView.swift; sourceTree = "<group>"; };
 		70A2BB122BD2BFDC00317BAF /* QuickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
 		70A898BA2B6FA0B1009B16FF /* dg-muscle-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dg-muscle-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURL.swift; sourceTree = "<group>"; };
+		70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURLEnums.swift; sourceTree = "<group>"; };
 		70BB52172B37EC1D00EC606D /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		70C0559A2B79F9F300375526 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70C0559E2B79FC0800375526 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -907,6 +915,15 @@
 			path = "dg-muscle-iosTests";
 			sourceTree = "<group>";
 		};
+		70B07AC52BD8D0B800A0E732 /* FunctionsURL */ = {
+			isa = PBXGroup;
+			children = (
+				70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */,
+				70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */,
+			);
+			path = FunctionsURL;
+			sourceTree = "<group>";
+		};
 		70C055A02B79FCAA00375526 /* delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -990,6 +1007,7 @@
 				70A2BB122BD2BFDC00317BAF /* QuickAction.swift */,
 				70F838A72AC7FEB6009725EF /* Record.swift */,
 				70226B872AF7765400379ED3 /* WorkoutMetaData.swift */,
+				70B07AC52BD8D0B800A0E732 /* FunctionsURL */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1169,9 +1187,11 @@
 				70CD21DC2BCD6EA9009B72F3 /* DGUser.swift in Sources */,
 				70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */,
 				70CD21C72BCD662B009B72F3 /* WorkoutHeatMapViewModel.swift in Sources */,
+				70B07ACA2BD8D54900A0E732 /* FunctionsURLEnums.swift in Sources */,
 				707B0AF42BD163C600D8250B /* HeatmapColor.swift in Sources */,
 				70CD21D82BCD6E3E009B72F3 /* HistoryRepositoryV2Impl.swift in Sources */,
 				70CD21DB2BCD6E97009B72F3 /* UserRepositoryV2Live.swift in Sources */,
+				70B07AC82BD8D53B00A0E732 /* FunctionsURL.swift in Sources */,
 				70CD21C92BCD663C009B72F3 /* ExerciseHistory.swift in Sources */,
 				70CD21CA2BCD6644009B72F3 /* DefaultResponse.swift in Sources */,
 			);
@@ -1185,6 +1205,7 @@
 				0208CF4E2BCCFCCA00FD973D /* WorkoutHeatMapViewModel.swift in Sources */,
 				707B0AFB2BD1650200D8250B /* HeatmapRepositoryTest.swift in Sources */,
 				702E218F2BCA616700147279 /* FileManagerHelper.swift in Sources */,
+				70B07ACB2BD8D54A00A0E732 /* FunctionsURLEnums.swift in Sources */,
 				70756F352BCAC7BA0035EFF4 /* exerciseTests.swift in Sources */,
 				702E21882BCA5E8E00147279 /* HistoryRepositoryV2.swift in Sources */,
 				70756F372BCAC8220035EFF4 /* ExerciseRepositoryV2.swift in Sources */,
@@ -1192,6 +1213,7 @@
 				0247856E2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */,
 				702E217C2BCA5E6000147279 /* ExerciseSet.swift in Sources */,
 				02D037F32BCE15AC00238309 /* UserRepositoryV2Live.swift in Sources */,
+				70B07AC92BD8D53B00A0E732 /* FunctionsURL.swift in Sources */,
 				702E217B2BCA5E5900147279 /* ExerciseHistory.swift in Sources */,
 				70756EEF2BCA68530035EFF4 /* HealthRepositoryTest.swift in Sources */,
 				702E21812BCA5E7700147279 /* ExerciseSection.swift in Sources */,
@@ -1270,6 +1292,7 @@
 				70CD21D32BCD6881009B72F3 /* WorkoutHeatMapView.swift in Sources */,
 				703A97D92BCBC070002C0843 /* RecordFormSetItem.swift in Sources */,
 				703A97BF2BCB8608002C0843 /* ExerciseSimpleInfoView.swift in Sources */,
+				70B07AC72BD8D0D800A0E732 /* FunctionsURLEnums.swift in Sources */,
 				70756EEE2BCA683D0035EFF4 /* HealthRepositoryTest.swift in Sources */,
 				707B0AF12BD1626E00D8250B /* HeatmapColor.swift in Sources */,
 				70756F402BCAD45F0035EFF4 /* FirstExerciseButton.swift in Sources */,
@@ -1345,6 +1368,7 @@
 				70D9033D2AC5A70A001DDC0B /* Vibration.swift in Sources */,
 				7044641F2BD0187E00CB21F6 /* FileUploaderTest.swift in Sources */,
 				703CD5EA2AC0139600BC76D4 /* FileUploader.swift in Sources */,
+				70B07AC42BD8D0A200A0E732 /* FunctionsURL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
