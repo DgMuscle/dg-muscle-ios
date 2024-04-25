@@ -32,7 +32,7 @@ __예)__ DGUser, Exercise, History 등 어플리케이션의 메인 데이터 �
 이 레이어는 Usecase, Entity 와 같은 내부 레이어와 데이터베이스나 프레임워크, UI와 같은 외부 레이어간의 데이터 조정을 위해 존재합니다. <br />
 __예)__ Repository
 
-### Out layer
+### External
 서버, 데이터베이스, 디바이스, 프레임워크와 같은 도구를 포함하는 가장 바깥쪽의 레이어입니다. 이 레이어는 내부 레이어에 영향을 주지 않으면서 쉽게 변경 될 수 있도록 의도되었습니다. <br />
 __예)__ [dg-muscle-functions](https://github.com/donggyushin/dg-muscle-funcstions), SwiftUI, UIKit, File in Device
 
