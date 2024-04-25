@@ -17,7 +17,7 @@
 ![RPReplay_Final1713610744-ezgif com-resize](https://github.com/donggyushin/dg-muscle-ios/assets/34573243/5067705b-f234-47f5-8ca8-df15cbf625ca)
 
 ## Architecture
-![Group 2](https://github.com/donggyushin/dg-muscle-ios/assets/34573243/f5cdd8aa-7555-45c7-ad4f-ba22f6aa2945)
+![Architecture](https://github.com/donggyushin/dg-muscle-ios/assets/34573243/8dc77855-10d8-4b71-ab5d-2df01beaef2b)
 
 ### Entity
 이들은 어플리케이션의 비지니스 객체입니다. 가장 일반적이고 코어한 데이터 및 규칙을 따릅니다. <br />
