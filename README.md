@@ -16,6 +16,25 @@
 
 ![RPReplay_Final1713610744-ezgif com-resize](https://github.com/donggyushin/dg-muscle-ios/assets/34573243/5067705b-f234-47f5-8ca8-df15cbf625ca)
 
+## Architecture
+![Group 2](https://github.com/donggyushin/dg-muscle-ios/assets/34573243/f5cdd8aa-7555-45c7-ad4f-ba22f6aa2945)
+
+### Entity
+이들은 어플리케이션의 비지니스 객체입니다. 가장 일반적이고 코어한 데이터 및 규칙을 따릅니다. <br />
+__예)__ DGUser, Exercise, History 등 어플리케이션의 메인 데이터 및 객체.
+
+### Usecase
+이 레이어에는 어플리케이션의 비즈니스 로직을 담당합니다. 현 프로젝트 내에서는 ViewModel 쪽에 주로 포함되어져서 UI 레이어와 겹치는 경우가 대부분이지만 Test 코드에서 검증하는 로직쪽이 실질적으로 이 레이어에 해당됩니다. 
+필요시(비즈니스 로직이 공통적으로 필요하게 되어지는 경우)에 더 안쪽 레이어로 언제든지 옮겨질 수 있으며, 분리되기 쉬운 구조로 유지합니다.
+
+
+### Interface Adapter
+이 레이어는 Usecase, Entity 와 같은 내부 레이어와 데이터베이스나 프레임워크, UI와 같은 외부 레이어간의 데이터 조정을 위해 존재합니다. <br />
+__예)__ Repository
+
+### Out layer
+서버, 데이터베이스, 디바이스, 프레임워크와 같은 도구를 포함하는 가장 바깥쪽의 레이어입니다. 이 레이어는 내부 레이어에 영향을 주지 않으면서 쉽게 변경 될 수 있도록 의도되었습니다. <br />
+__예)__ [dg-muscle-functions](https://github.com/donggyushin/dg-muscle-funcstions), SwiftUI, UIKit, File in Device
 
 ## Main Model
 
