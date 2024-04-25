@@ -28,7 +28,7 @@ __예)__ DGUser, Exercise, History 등 어플리케이션의 메인 데이터 �
 필요시(비즈니스 로직이 공통적으로 필요하게 되어지는 경우)에 더 안쪽 레이어로 언제든지 옮겨질 수 있으며, 분리되기 쉬운 구조로 유지합니다.
 
 
-### Interface Adapter
+### External
 이 레이어는 Usecase, Entity 와 같은 내부 레이어와 데이터베이스나 프레임워크, UI와 같은 외부 레이어간의 데이터 조정을 위해 존재합니다. <br />
 __예)__ Repository
 
