@@ -32,6 +32,10 @@ final class FriendsSearchViewModel: ObservableObject {
         bind()
     }
     
+    func requestFriend(user: SearchedUser) {
+        
+    }
+    
     private func searchUsers(query: String, dgusers: [DGUser], myFriends: [Friend]) {
         var usersMap: [String: String] = [:]
         let query = query.lowercased().filter({ !$0.isWhitespace })
@@ -84,7 +88,16 @@ final class FriendsSearchViewModel: ObservableObject {
 }
 
 extension FriendsSearchViewModel {
-    struct SearchedUser {
+    struct SearchedUser: Hashable {
+        static func == (lhs: FriendsSearchViewModel.SearchedUser, rhs: FriendsSearchViewModel.SearchedUser) -> Bool {
+            lhs.user.uid == rhs.user.uid
+        }
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(user.uid)
+            hasher.combine(isMyFriend)
+        }
+        
         let user: DGUser
         var isMyFriend: Bool
     }

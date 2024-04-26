@@ -21,6 +21,7 @@
 		0247856D2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
 		0247856E2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
 		029139852BDB9DB700A82A62 /* FriendSearchUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029139842BDB9DB700A82A62 /* FriendSearchUserView.swift */; };
+		029139872BDBA13100A82A62 /* FriendSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029139862BDBA13100A82A62 /* FriendSearchTextField.swift */; };
 		02BE7C2C2BD26D3E00C6DD5C /* HorizontalVolumeBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE7C2B2BD26D3E00C6DD5C /* HorizontalVolumeBarChartView.swift */; };
 		02C95AB62BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C95AB52BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift */; };
 		02CA6D802BCFCD1400A8746B /* ContentViewV2Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA6D7F2BCFCD1400A8746B /* ContentViewV2Model.swift */; };
@@ -273,6 +274,7 @@
 		024785672BCFBC5A00C9DF4F /* AppleAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthViewModel.swift; sourceTree = "<group>"; };
 		0247856B2BCFBCC700C9DF4F /* AppleAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthView.swift; sourceTree = "<group>"; };
 		029139842BDB9DB700A82A62 /* FriendSearchUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchUserView.swift; sourceTree = "<group>"; };
+		029139862BDBA13100A82A62 /* FriendSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchTextField.swift; sourceTree = "<group>"; };
 		02BE7C2B2BD26D3E00C6DD5C /* HorizontalVolumeBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalVolumeBarChartView.swift; sourceTree = "<group>"; };
 		02C95AB52BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalVolumeBarGraph.swift; sourceTree = "<group>"; };
 		02CA6D7F2BCFCD1400A8746B /* ContentViewV2Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewV2Model.swift; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 		029139832BDB9DAE00A82A62 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				029139862BDBA13100A82A62 /* FriendSearchTextField.swift */,
 				029139842BDB9DB700A82A62 /* FriendSearchUserView.swift */,
 			);
 			path = components;
@@ -1359,6 +1362,7 @@
 				70F838A02AC7FE4D009725EF /* Exercise.swift in Sources */,
 				705341C82BD3C07700F9B16C /* VerticalVolumeBarChartView.swift in Sources */,
 				70CD21D32BCD6881009B72F3 /* WorkoutHeatMapView.swift in Sources */,
+				029139872BDBA13100A82A62 /* FriendSearchTextField.swift in Sources */,
 				703A97D92BCBC070002C0843 /* RecordFormSetItem.swift in Sources */,
 				703A97BF2BCB8608002C0843 /* ExerciseSimpleInfoView.swift in Sources */,
 				70B07AC72BD8D0D800A0E732 /* FunctionsURLEnums.swift in Sources */,

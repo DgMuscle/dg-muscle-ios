@@ -8,11 +8,31 @@
 import SwiftUI
 
 struct FriendsSearchView: View {
+    
+    @StateObject var viewModel: FriendsSearchViewModel
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            FriendSearchTextField(text: $viewModel.query)
+            
+            ScrollView {
+                VStack {
+                    ForEach(viewModel.searchedUsers, id: \.self) { user in
+                        FriendSearchUserView(user: user) {
+                            viewModel.requestFriend(user: user)
+                        }
+                    }
+                }
+            }
+            .scrollIndicators(.hidden)
+        }
     }
 }
 
 #Preview {
-    return FriendsSearchView().preferredColorScheme(.dark)
+    
+    let viewModel: FriendsSearchViewModel = .init(userRepository: UserRepositoryV2Test(),
+                                                  friendRepository: FriendRepositoryTest())
+    
+    return FriendsSearchView(viewModel: viewModel).preferredColorScheme(.dark)
 }
