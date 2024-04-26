@@ -6,14 +6,61 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct FriendSearchUserView: View {
     
     typealias SearchedUser = FriendsSearchViewModel.SearchedUser
-    var user: SearchedUser
+    let user: SearchedUser
+    
+    let sendRequestAction: (() -> ())?
     
     var body: some View {
-        Text("Hello, World!")
+        HStack(spacing: 12) {
+            if let photoURL = user.user.photoURL {
+                KFImage(photoURL)
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(Circle())
+                    .frame(width: 60)
+            }
+            
+            if let name = user.user.displayName {
+                Text(name).fontWeight(.black)
+            } else {
+                Text("No DisplayName")
+                    .italic()
+                    .foregroundStyle(.secondary)
+                    .fontWeight(.black)
+            }
+            
+            if user.isMyFriend {
+                Image(systemName: "person.circle")
+                    .foregroundStyle(.yellow)
+            }
+            
+            Spacer()
+            
+            if user.isMyFriend == false {
+                Button {
+                    sendRequestAction?()
+                } label: {
+                    HStack {
+                        Text("send request".capitalized)
+                        Image(systemName: "paperplane")
+                    }
+                    .foregroundStyle(.white)
+                    .padding(8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(
+                                LinearGradient(colors: [.blue, .blue.opacity(0.4)], startPoint: .leading, endPoint: .trailing)
+                            )
+                    )
+                }
+            }
+            
+        }
     }
 }
 
@@ -22,12 +69,16 @@ struct FriendSearchUserView: View {
     let user1: FriendSearchUserView.SearchedUser = .init(user: .init(uid: "56mGcK9Nm5cVcUk8vxW5h9jIQcA2", displayName: "낙용", photoURL: URL(string: "https://firebasestorage.googleapis.com:443/v0/b/dg-muscle.appspot.com/o/profilePhoto%2F56mGcK9Nm5cVcUk8vxW5h9jIQcA2%2FFDED5B8E-229B-4EAE-BEF8-912E5C41D7D6.png?alt=media&token=f74e7d94-c050-461c-98bd-c2e8ded5f9c8")),
                                                         isMyFriend: true)
     
-    let user2 = FriendSearchUserView.SearchedUser(user: .init(uid: "TtR7J1C8hgOG3fnMdqPQIoDPdVZ2", displayName: "죽겠어요", photoURL: URL(string: "https://firebasestorage.googleapis.com:443/v0/b/dg-muscle.appspot.com/o/profilePhoto%2FTtR7J1C8hgOG3fnMdqPQIoDPdVZ2%2F75A1245A-B92F-4839-A09A-30FFE7E9FA7D.png?alt=media&token=0dfd0613-6b38-4b43-8887-9af3b0b1140a")),
+    let user2 = FriendSearchUserView.SearchedUser(user: .init(uid: "TtR7J1C8hgOG3fnMdqPQIoDPdVZ2", displayName: "죽겠어요", photoURL: nil),
+                                                  isMyFriend: false)
+    
+    let user3 = FriendSearchUserView.SearchedUser(user: .init(uid: "Asdasdjkahsdjkhdkjhsdkjfdj2d", displayName: nil, photoURL: nil),
                                                   isMyFriend: false)
     
     return VStack {
-        FriendSearchUserView(user: user1)
-        FriendSearchUserView(user: user2)
+        FriendSearchUserView(user: user1, sendRequestAction: nil)
+        FriendSearchUserView(user: user2, sendRequestAction: nil)
+        FriendSearchUserView(user: user3, sendRequestAction: nil)
     }
         .preferredColorScheme(.dark)
 }
