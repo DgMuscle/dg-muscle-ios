@@ -1,23 +1,23 @@
 //
-//  ExerciseSetData.swift
+//  ExerciseSetV.swift
 //  dg-muscle-ios
 //
-//  Created by 신동규 on 4/27/24.
+//  Created by 신동규 on 4/28/24.
 //
 
 import Foundation
 
-struct ExerciseSetData: Codable {
+struct ExerciseSetV {
     let id: String
-    let weight: Double
-    let reps: Int
     let unit: Unit
+    let reps: Int
+    let weight: Double
     
     init(from: ExerciseSetDomain) {
         id = from.id
-        weight = from.weight
-        reps = from.reps
         unit = .init(rawValue: from.unit.rawValue) ?? .kg
+        reps = from.reps
+        weight = from.weight
     }
     
     var domain: ExerciseSetDomain {
@@ -25,8 +25,8 @@ struct ExerciseSetData: Codable {
     }
 }
 
-extension ExerciseSetData {
-    enum Unit: String, Codable {
+extension ExerciseSetV {
+    enum Unit: String {
         case kg
         case lb
     }
