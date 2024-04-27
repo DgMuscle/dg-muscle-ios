@@ -41,8 +41,6 @@ extension FileManagerHelperV2 {
         case history
         case exercise
         case historyMetaData
-        case grassDatasourceBridge
-        case workoutHeatMapData
         case heatmapColor
     }
 }

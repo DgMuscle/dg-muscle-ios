@@ -11,4 +11,8 @@ struct RecordDomain {
     let id: String
     let exerciseId: String
     let sets: [ExerciseSetDomain]
+    
+    var volume: Double {
+        sets.map({ $0.volume }).reduce(0, +)
+    }
 }

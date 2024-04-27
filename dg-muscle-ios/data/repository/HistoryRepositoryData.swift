@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import WidgetKit
 
 final class HistoryRepositoryData: HistoryRepository {
     static let shared = HistoryRepositoryData()
@@ -28,12 +27,6 @@ final class HistoryRepositoryData: HistoryRepository {
         bind()
     }
     
-    func get() throws -> [HeatmapDomain] {
-        let heatmapDatas: [HeatmapData] = try FileManagerHelperV2.shared.load([HeatmapData].self, fromFile: .workoutHeatMapData)
-        let heatmapDomains: [HeatmapDomain] = heatmapDatas.map({ .init(id: $0.id, week: $0.week, volumes: $0.volumes) })
-        return heatmapDomains
-    }
-    
     func post(data: HistoryDomain) async throws {
         if let index = histories.firstIndex(where: { $0.id == data.id }) {
             _histories[index] = data
@@ -49,12 +42,6 @@ final class HistoryRepositoryData: HistoryRepository {
             url: FunctionsURL.history(.posthistory),
             body: HistoryData(from: data)
         )
-    }
-    
-    func post(data: [HeatmapDomain]) throws {
-        let data: [HeatmapData] = data.map({ .init(from: $0) })
-        try FileManagerHelperV2.shared.save(data, toFile: .workoutHeatMapData)
-        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func delete(data: HistoryDomain) async throws {
