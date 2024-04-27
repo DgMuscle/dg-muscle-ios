@@ -79,7 +79,7 @@ final class HistoryViewModel: ObservableObject {
         }
         
         let sortedKeys = grouped.keys.sorted().reversed()
-
+        
         for key in sortedKeys {
             if let histories = grouped[key] {
                 twoDimensionalArray.append(histories)

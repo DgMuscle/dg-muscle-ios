@@ -486,9 +486,6 @@
     "Favorite" : {
 
     },
-    "Hello, World!" : {
-
-    },
     "Introduce" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -532,6 +529,9 @@
 
     },
     "Next" : {
+
+    },
+    "No DisplayName" : {
 
     },
     "No user" : {
@@ -624,6 +624,9 @@
       }
     },
     "SAVE" : {
+
+    },
+    "Search by display name" : {
 
     },
     "SELECT EXERCISE" : {
