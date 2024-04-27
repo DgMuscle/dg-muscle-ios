@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct HistoryV {
+struct HistoryV: Equatable {
     let id: String
     let date: String
     let memo: String?
     let records: [RecordV]
+    var metaData: HistoryMetaDataV?
     
     init(from: HistoryDomain) {
         id = from.id
@@ -22,5 +23,9 @@ struct HistoryV {
     
     var domain: HistoryDomain {
         .init(id: id, date: date, memo: memo, records: records.map({ $0.domain }))
+    }
+    
+    var volume: Double {
+        records.reduce(0, { $0 + $1.volume })
     }
 }

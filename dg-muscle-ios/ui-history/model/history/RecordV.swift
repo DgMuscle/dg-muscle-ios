@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecordV {
+struct RecordV: Equatable {
     let id: String
     let exerciseId: String
     let sets: [ExerciseSetV]
@@ -20,5 +20,9 @@ struct RecordV {
     
     var domain: RecordDomain {
         .init(id: id, exerciseId: exerciseId, sets: sets.map({ $0.domain }))
+    }
+    
+    var volume: Double {
+        sets.reduce(0, { $0 + $1.volume })
     }
 }

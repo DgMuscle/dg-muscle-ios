@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExerciseSetV {
+struct ExerciseSetV: Equatable {
     let id: String
     let unit: Unit
     let reps: Int
@@ -22,6 +22,10 @@ struct ExerciseSetV {
     
     var domain: ExerciseSetDomain {
         .init(id: id, unit: .init(rawValue: unit.rawValue) ?? .kg, reps: reps, weight: weight)
+    }
+    
+    var volume: Double {
+        Double(reps) * weight
     }
 }
 
