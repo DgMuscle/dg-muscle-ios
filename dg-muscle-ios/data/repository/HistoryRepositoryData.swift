@@ -19,22 +19,12 @@ final class HistoryRepositoryData: HistoryRepository {
     private var cancellables = Set<AnyCancellable>()
     
     private init() {
-        UserRepositoryData.shared.isLoginPublisher
-            .removeDuplicates()
-            .sink { login in
-                if login {
-                    Task {
-                        self._histories = try await self.get(lastId: nil, limit: 365)
-                    }
-                } else {
-                    self._histories = []
-                }
-            }
-            .store(in: &cancellables)
+        _histories = getExerciseHistoryFromFile()
+        bind()
     }
     
     func get() throws -> [HeatmapDomain] {
-        let heatmapDatas: [HeatmapData] = try FileManagerHelperV2.shared.load([HeatmapData].self, fromFile: .workoutHeatMapDataV2)
+        let heatmapDatas: [HeatmapData] = try FileManagerHelperV2.shared.load([HeatmapData].self, fromFile: .workoutHeatMapData)
         let heatmapDomains: [HeatmapDomain] = heatmapDatas.map({ .init(id: $0.id, week: $0.week, volumes: $0.volumes) })
         return heatmapDomains
     }
@@ -48,7 +38,7 @@ final class HistoryRepositoryData: HistoryRepository {
         
         let historyDatas: [HistoryData] = histories.map({ .init(from: $0) })
         
-        try? FileManagerHelperV2.shared.save(historyDatas, toFile: .historyV2)
+        try? FileManagerHelperV2.shared.save(historyDatas, toFile: .history)
         
         let _: ResponseData = try await APIClient.shared.request(
             url: FunctionsURL.history(.posthistory),
@@ -58,7 +48,7 @@ final class HistoryRepositoryData: HistoryRepository {
     
     func post(data: [HeatmapDomain]) throws {
         let data: [HeatmapData] = data.map({ .init(from: $0) })
-        try FileManagerHelperV2.shared.save(data, toFile: .workoutHeatMapDataV2)
+        try FileManagerHelperV2.shared.save(data, toFile: .workoutHeatMapData)
         WidgetCenter.shared.reloadAllTimelines()
     }
     
@@ -73,7 +63,7 @@ final class HistoryRepositoryData: HistoryRepository {
         }
         
         let historyDatas: [HistoryData] = histories.map({ .init(from: $0) })
-        try? FileManagerHelperV2.shared.save(historyDatas, toFile: .historyV2)
+        try? FileManagerHelperV2.shared.save(historyDatas, toFile: .history)
         
         let _: ResponseData = try await APIClient.shared.request(method: .delete,
                                                                  url: FunctionsURL.history(.deletehistory),
@@ -81,7 +71,7 @@ final class HistoryRepositoryData: HistoryRepository {
     }
     
     private func getExerciseHistoryFromFile() -> [HistoryDomain] {
-        let historyDatas: [HistoryData] = (try? FileManagerHelperV2.shared.load([HistoryData].self, fromFile: .historyV2)) ?? []
+        let historyDatas: [HistoryData] = (try? FileManagerHelperV2.shared.load([HistoryData].self, fromFile: .history)) ?? []
         return historyDatas.map { $0.domain }
     }
     
@@ -93,5 +83,20 @@ final class HistoryRepositoryData: HistoryRepository {
         let historyDatas: [HistoryData] = try await APIClient.shared.request(url: url)
         try? FileManagerHelper.save(historyDatas, toFile: .history)
         return historyDatas.map { $0.domain }
+    }
+    
+    private func bind() {
+        UserRepositoryData.shared.isLoginPublisher
+            .removeDuplicates()
+            .sink { login in
+                if login {
+                    Task {
+                        self._histories = try await self.get(lastId: nil, limit: 365)
+                    }
+                } else {
+                    self._histories = []
+                }
+            }
+            .store(in: &cancellables)
     }
 }

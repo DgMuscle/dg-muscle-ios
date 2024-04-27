@@ -36,13 +36,13 @@ final class FileManagerHelperV2 {
 
 extension FileManagerHelperV2 {
     enum File: String, CaseIterable {
-        case userV2
-        case dguserV2
-        case historyV2
-        case exerciseV2
-        case workoutMetaDataV2
-        case grassDatasourceBridgeV2
-        case workoutHeatMapDataV2
-        case heatmapColorV2
+        case user
+        case dguser
+        case history
+        case exercise
+        case workoutMetaData
+        case grassDatasourceBridge
+        case workoutHeatMapData
+        case heatmapColor
     }
 }
