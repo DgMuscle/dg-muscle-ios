@@ -195,7 +195,7 @@
 		70884DD22BDD471F0059B22A /* ExerciseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DD12BDD471F0059B22A /* ExerciseRepository.swift */; };
 		70884DD42BDD47510059B22A /* ExerciseRepositoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DD32BDD47510059B22A /* ExerciseRepositoryData.swift */; };
 		70884DD62BDD47D10059B22A /* ExerciseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DD52BDD47D10059B22A /* ExerciseData.swift */; };
-		70884DDA2BDD4DCA0059B22A /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DD92BDD4DCA0059B22A /* UserView.swift */; };
+		70884DDA2BDD4DCA0059B22A /* UserV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DD92BDD4DCA0059B22A /* UserV.swift */; };
 		70884DDD2BDD4E340059B22A /* ExerciseSetV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DDC2BDD4E340059B22A /* ExerciseSetV.swift */; };
 		70884DDF2BDD4E3C0059B22A /* HistoryV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DDE2BDD4E3C0059B22A /* HistoryV.swift */; };
 		70884DE12BDD4E410059B22A /* RecordV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DE02BDD4E410059B22A /* RecordV.swift */; };
@@ -456,7 +456,7 @@
 		70884DD12BDD471F0059B22A /* ExerciseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepository.swift; sourceTree = "<group>"; };
 		70884DD32BDD47510059B22A /* ExerciseRepositoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepositoryData.swift; sourceTree = "<group>"; };
 		70884DD52BDD47D10059B22A /* ExerciseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseData.swift; sourceTree = "<group>"; };
-		70884DD92BDD4DCA0059B22A /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		70884DD92BDD4DCA0059B22A /* UserV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserV.swift; sourceTree = "<group>"; };
 		70884DDC2BDD4E340059B22A /* ExerciseSetV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSetV.swift; sourceTree = "<group>"; };
 		70884DDE2BDD4E3C0059B22A /* HistoryV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryV.swift; sourceTree = "<group>"; };
 		70884DE02BDD4E410059B22A /* RecordV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordV.swift; sourceTree = "<group>"; };
@@ -1163,7 +1163,7 @@
 		70884DD72BDD4D6D0059B22A /* model */ = {
 			isa = PBXGroup;
 			children = (
-				70884DD92BDD4DCA0059B22A /* UserView.swift */,
+				70884DD92BDD4DCA0059B22A /* UserV.swift */,
 				70884DDB2BDD4E1D0059B22A /* history */,
 			);
 			path = model;
@@ -1623,7 +1623,7 @@
 				703A97B92BCB81AB002C0843 /* ExerciseFormStep2ViewModel.swift in Sources */,
 				70756F2A2BCAC2110035EFF4 /* ExerciseListV2ViewModel.swift in Sources */,
 				707016422BDD2F880025C624 /* HistoryRepositoryData.swift in Sources */,
-				70884DDA2BDD4DCA0059B22A /* UserView.swift in Sources */,
+				70884DDA2BDD4DCA0059B22A /* UserV.swift in Sources */,
 				706760BA2BCC074200649BF3 /* SelectExerciseV2View.swift in Sources */,
 				703A97CB2BCB98F2002C0843 /* EditExerciseView.swift in Sources */,
 				703A97D12BCBB4E9002C0843 /* WorkoutRectangleButton.swift in Sources */,
