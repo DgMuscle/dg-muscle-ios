@@ -126,6 +126,9 @@
 		707016422BDD2F880025C624 /* HistoryRepositoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016412BDD2F880025C624 /* HistoryRepositoryData.swift */; };
 		707016452BDD31350025C624 /* FileManagerHelperV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016442BDD31350025C624 /* FileManagerHelperV2.swift */; };
 		707016472BDD38670025C624 /* UserRepositoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016462BDD38670025C624 /* UserRepositoryData.swift */; };
+		707016492BDD3D570025C624 /* UserDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016482BDD3D570025C624 /* UserDomain.swift */; };
+		7070164B2BDD3DBC0025C624 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070164A2BDD3DBC0025C624 /* UserRepository.swift */; };
+		7070164D2BDD3DEE0025C624 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070164C2BDD3DEE0025C624 /* UserData.swift */; };
 		70756EEE2BCA683D0035EFF4 /* HealthRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756EED2BCA683D0035EFF4 /* HealthRepositoryTest.swift */; };
 		70756EEF2BCA68530035EFF4 /* HealthRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756EED2BCA683D0035EFF4 /* HealthRepositoryTest.swift */; };
 		70756EF12BCA68700035EFF4 /* HistoryRepositoryV2Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70756EF02BCA68700035EFF4 /* HistoryRepositoryV2Test.swift */; };
@@ -372,6 +375,9 @@
 		707016412BDD2F880025C624 /* HistoryRepositoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRepositoryData.swift; sourceTree = "<group>"; };
 		707016442BDD31350025C624 /* FileManagerHelperV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelperV2.swift; sourceTree = "<group>"; };
 		707016462BDD38670025C624 /* UserRepositoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryData.swift; sourceTree = "<group>"; };
+		707016482BDD3D570025C624 /* UserDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDomain.swift; sourceTree = "<group>"; };
+		7070164A2BDD3DBC0025C624 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		7070164C2BDD3DEE0025C624 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		70756EED2BCA683D0035EFF4 /* HealthRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRepositoryTest.swift; sourceTree = "<group>"; };
 		70756EF02BCA68700035EFF4 /* HistoryRepositoryV2Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRepositoryV2Test.swift; sourceTree = "<group>"; };
 		70756EF42BCA68E70035EFF4 /* HistoryListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListItemView.swift; sourceTree = "<group>"; };
@@ -807,6 +813,7 @@
 			isa = PBXGroup;
 			children = (
 				7070162C2BDD2C5F0025C624 /* HeatmapDomain.swift */,
+				707016482BDD3D570025C624 /* UserDomain.swift */,
 				707016242BDD2AD80025C624 /* history */,
 			);
 			path = model;
@@ -826,6 +833,7 @@
 			isa = PBXGroup;
 			children = (
 				7070162E2BDD2CAD0025C624 /* HistoryRepository.swift */,
+				7070164A2BDD3DBC0025C624 /* UserRepository.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -835,7 +843,8 @@
 			children = (
 				7070163C2BDD2F230025C624 /* HeatmapData.swift */,
 				7070163E2BDD2F380025C624 /* ResponseData.swift */,
-				70B07AC52BD8D0B800A0E732 /* FunctionsURL */,
+				7070164C2BDD3DEE0025C624 /* UserData.swift */,
+				70B07AC52BD8D0B800A0E732 /* functionsURL */,
 				707016352BDD2DCA0025C624 /* history */,
 			);
 			path = model;
@@ -1086,13 +1095,13 @@
 			path = "dg-muscle-iosTests";
 			sourceTree = "<group>";
 		};
-		70B07AC52BD8D0B800A0E732 /* FunctionsURL */ = {
+		70B07AC52BD8D0B800A0E732 /* functionsURL */ = {
 			isa = PBXGroup;
 			children = (
 				70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */,
 				70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */,
 			);
-			path = FunctionsURL;
+			path = functionsURL;
 			sourceTree = "<group>";
 		};
 		70C055A02B79FCAA00375526 /* delegates */ = {
@@ -1477,12 +1486,14 @@
 				706760B42BCBEB3F00649BF3 /* RecordListItemView.swift in Sources */,
 				702D77D02BD35E6D008AF48F /* HistoryCoordinator.swift in Sources */,
 				02D212992BCE6DAF0088F93B /* MyProfileUserView.swift in Sources */,
+				7070164D2BDD3DEE0025C624 /* UserData.swift in Sources */,
 				70C144D82AC82807007F0540 /* DefaultResponse.swift in Sources */,
 				70756EFB2BCA6C4B0035EFF4 /* ExerciseRepositoryV2Live.swift in Sources */,
 				703A97AC2BCB6EBF002C0843 /* ExerciseFormStep1View.swift in Sources */,
 				707B0AFD2BD1675100D8250B /* HeatmapColorSelectionView.swift in Sources */,
 				703A97CF2BCBB488002C0843 /* WorkoutFloatingButton.swift in Sources */,
 				707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */,
+				7070164B2BDD3DBC0025C624 /* UserRepository.swift in Sources */,
 				703A97BB2BCB8417002C0843 /* ExerciseFormStep2View.swift in Sources */,
 				70756F1A2BCAB5D40035EFF4 /* SettingV2View.swift in Sources */,
 				70756F112BCAA7C80035EFF4 /* ContentViewV2.swift in Sources */,
@@ -1551,6 +1562,7 @@
 				70756F3E2BCACD850035EFF4 /* ManageExerciseView.swift in Sources */,
 				707016342BDD2DBD0025C624 /* HistoryData.swift in Sources */,
 				7070163D2BDD2F230025C624 /* HeatmapData.swift in Sources */,
+				707016492BDD3D570025C624 /* UserDomain.swift in Sources */,
 				7044641A2BD0140200CB21F6 /* UpdateProfilePhotoViewModel.swift in Sources */,
 				024785652BCFBA9B00C9DF4F /* AppleAuth.swift in Sources */,
 				02BE7C2C2BD26D3E00C6DD5C /* HorizontalVolumeBarChartView.swift in Sources */,

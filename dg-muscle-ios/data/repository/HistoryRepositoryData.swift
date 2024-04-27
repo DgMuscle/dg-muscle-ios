@@ -16,33 +16,8 @@ final class HistoryRepositoryData: HistoryRepository {
     
     @Published private var _histories: [HistoryDomain] = []
     
-    private var historyDatas: [HistoryData] {
-        histories.map({
-            .init(
-                id: $0.id,
-                date: $0.date,
-                memo: $0.memo,
-                records: $0.records.map({
-                    .init(
-                        id: $0.id,
-                        exerciseId: $0.exerciseId,
-                        sets: $0.sets.map({
-                            .init(
-                                id: $0.id,
-                                weight: $0.weight,
-                                reps: $0.reps,
-                                unit: .init(
-                                    rawValue: $0.unit.rawValue
-                                ) ?? .kb
-                            )
-                        })
-                    )
-                })
-            )
-        })
-    }
-    
     private var cancellables = Set<AnyCancellable>()
+    
     private init() {
         UserRepositoryData.shared.isLoginPublisher
             .removeDuplicates()
@@ -71,38 +46,18 @@ final class HistoryRepositoryData: HistoryRepository {
             _histories.insert(data, at: 0)
         }
         
+        let historyDatas: [HistoryData] = histories.map({ .init(from: $0) })
+        
         try? FileManagerHelperV2.shared.save(historyDatas, toFile: .historyV2)
         
         let _: ResponseData = try await APIClient.shared.request(
-            url: FunctionsURL.history(
-                .posthistory
-            ),
-            body: HistoryData(
-                id: data.id,
-                date: data.date,
-                memo: data.memo,
-                records: data.records.map({
-                    .init(
-                        id: $0.id,
-                        exerciseId: $0.exerciseId,
-                        sets: $0.sets.map({
-                            .init(
-                                id: $0.id,
-                                weight: $0.weight,
-                                reps: $0.reps,
-                                unit: .init(
-                                    rawValue: $0.unit.rawValue
-                                ) ?? .kb
-                            )
-                        })
-                    )
-                })
-            )
+            url: FunctionsURL.history(.posthistory),
+            body: HistoryData(from: data)
         )
     }
     
     func post(data: [HeatmapDomain]) throws {
-        let data: [HeatmapData] = data.map({ .init(id: $0.id, week: $0.week, volumes: $0.volumes) })
+        let data: [HeatmapData] = data.map({ .init(from: $0) })
         try FileManagerHelperV2.shared.save(data, toFile: .workoutHeatMapDataV2)
         WidgetCenter.shared.reloadAllTimelines()
     }
@@ -117,6 +72,7 @@ final class HistoryRepositoryData: HistoryRepository {
             _histories.remove(at: index)
         }
         
+        let historyDatas: [HistoryData] = histories.map({ .init(from: $0) })
         try? FileManagerHelperV2.shared.save(historyDatas, toFile: .historyV2)
         
         let _: ResponseData = try await APIClient.shared.request(method: .delete,
@@ -126,50 +82,16 @@ final class HistoryRepositoryData: HistoryRepository {
     
     private func getExerciseHistoryFromFile() -> [HistoryDomain] {
         let historyDatas: [HistoryData] = (try? FileManagerHelperV2.shared.load([HistoryData].self, fromFile: .historyV2)) ?? []
-        var historyDomains: [HistoryDomain] = historyDatas.map({
-            .init(id: $0.id, date: $0.date, memo: $0.memo, records: $0.records.map({
-                
-                var sets: [ExerciseSetDomain] = []
-                
-                for set in $0.sets {
-                    if let unit = ExerciseSetDomain.Unit(rawValue: set.unit.rawValue) {
-                        sets.append(.init(id: set.id, unit: unit, reps: set.reps, weight: set.weight))
-                    }
-                }
-                
-                return .init(id: $0.id, exerciseId: $0.exerciseId, sets: sets)
-            }))
-        })
-        
-        return historyDomains
+        return historyDatas.map { $0.domain }
     }
     
     private func get(lastId: String?, limit: Int) async throws -> [HistoryDomain] {
-        
         var url = "\(FunctionsURL.history(.gethistories))?limit=\(limit)"
-        
         if let lastId {
             url = url + "&lastId=\(lastId)"
         }
-        
         let historyDatas: [HistoryData] = try await APIClient.shared.request(url: url)
-        
         try? FileManagerHelper.save(historyDatas, toFile: .history)
-        
-        var historyDomains: [HistoryDomain] = historyDatas.map({
-            .init(id: $0.id, date: $0.date, memo: $0.memo, records: $0.records.map({
-                var sets: [ExerciseSetDomain] = []
-                
-                for set in $0.sets {
-                    if let unit = ExerciseSetDomain.Unit(rawValue: set.unit.rawValue) {
-                        sets.append(.init(id: set.id, unit: unit, reps: set.reps, weight: set.weight))
-                    }
-                }
-                
-                return .init(id: $0.id, exerciseId: $0.exerciseId, sets: sets)
-            }))
-        })
-        
-        return historyDomains
+        return historyDatas.map { $0.domain }
     }
 }
