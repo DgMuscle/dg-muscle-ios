@@ -13,14 +13,19 @@ struct HistoryData: Codable {
     let memo: String?
     let records: [RecordData]
     
+    private let dateBackup: Date
+    
     init(from: HistoryDomain) {
         id = from.id
-        date = from.date
+        dateBackup = from.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        date = dateFormatter.string(from: from.date)
         memo = from.memo
         records = from.records.map({ .init(from: $0) })
     }
     
     var domain: HistoryDomain {
-        .init(id: id, date: date, memo: memo, records: records.map({ $0.domain }))
+        return .init(id: id, date: dateBackup, memo: memo, records: records.map({ $0.domain }))
     }
 }

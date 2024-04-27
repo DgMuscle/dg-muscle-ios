@@ -13,6 +13,12 @@ struct HistoryMetaDataV: Equatable {
     let startDate: Date
     let endDate: Date?
     
+    var date: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        return dateFormatter.string(from: startDate)
+    }
+    
     init(duration: TimeInterval, kcalPerHourKg: Double?, startDate: Date, endDate: Date?) {
         self.duration = duration
         self.kcalPerHourKg = kcalPerHourKg

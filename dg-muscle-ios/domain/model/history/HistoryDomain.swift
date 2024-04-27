@@ -9,7 +9,7 @@ import Foundation
 
 struct HistoryDomain {
     let id: String
-    let date: String
+    let date: Date
     let memo: String?
     let records: [RecordDomain]
 }

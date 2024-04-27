@@ -211,6 +211,10 @@
 		70884DF92BDD53D50059B22A /* HealthRepositoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DF82BDD53D50059B22A /* HealthRepositoryData.swift */; };
 		70884DFB2BDD58800059B22A /* HistorySectionV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DFA2BDD58800059B22A /* HistorySectionV.swift */; };
 		70884DFD2BDD59620059B22A /* HistoryMetaDataV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DFC2BDD59620059B22A /* HistoryMetaDataV.swift */; };
+		70884E002BDD5B110059B22A /* HistoryViewModelV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DFF2BDD5B110059B22A /* HistoryViewModelV2.swift */; };
+		70884E052BDD60170059B22A /* GetGroupedHistoriesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884E042BDD60170059B22A /* GetGroupedHistoriesUsecase.swift */; };
+		70884E062BDD618C0059B22A /* GetGroupedHistoriesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884E042BDD60170059B22A /* GetGroupedHistoriesUsecase.swift */; };
+		70884E082BDD632E0059B22A /* GetMetaDatasMapUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884E072BDD632E0059B22A /* GetMetaDatasMapUsecase.swift */; };
 		708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4C52AD2875700852E2E /* FileManagerHelper.swift */; };
 		70A2BB132BD2BFDC00317BAF /* QuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A2BB122BD2BFDC00317BAF /* QuickAction.swift */; };
 		70B07AC42BD8D0A200A0E732 /* FunctionsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */; };
@@ -461,6 +465,9 @@
 		70884DF82BDD53D50059B22A /* HealthRepositoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRepositoryData.swift; sourceTree = "<group>"; };
 		70884DFA2BDD58800059B22A /* HistorySectionV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySectionV.swift; sourceTree = "<group>"; };
 		70884DFC2BDD59620059B22A /* HistoryMetaDataV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryMetaDataV.swift; sourceTree = "<group>"; };
+		70884DFF2BDD5B110059B22A /* HistoryViewModelV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModelV2.swift; sourceTree = "<group>"; };
+		70884E042BDD60170059B22A /* GetGroupedHistoriesUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupedHistoriesUsecase.swift; sourceTree = "<group>"; };
+		70884E072BDD632E0059B22A /* GetMetaDatasMapUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMetaDatasMapUsecase.swift; sourceTree = "<group>"; };
 		70A2BB122BD2BFDC00317BAF /* QuickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
 		70A898BA2B6FA0B1009B16FF /* dg-muscle-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dg-muscle-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURL.swift; sourceTree = "<group>"; };
@@ -832,6 +839,7 @@
 			children = (
 				707016212BDD2AAC0025C624 /* model */,
 				7070162B2BDD2BCB0025C624 /* repository */,
+				70884E012BDD5F470059B22A /* usecase */,
 				707016432BDD31220025C624 /* util */,
 			);
 			path = domain;
@@ -850,6 +858,7 @@
 			isa = PBXGroup;
 			children = (
 				70884DD72BDD4D6D0059B22A /* model */,
+				70884DFE2BDD5AFE0059B22A /* view */,
 			);
 			path = "ui-history";
 			sourceTree = "<group>";
@@ -1179,6 +1188,31 @@
 			path = health;
 			sourceTree = "<group>";
 		};
+		70884DFE2BDD5AFE0059B22A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				70884DFF2BDD5B110059B22A /* HistoryViewModelV2.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		70884E012BDD5F470059B22A /* usecase */ = {
+			isa = PBXGroup;
+			children = (
+				70884E092BDD67270059B22A /* history */,
+			);
+			path = usecase;
+			sourceTree = "<group>";
+		};
+		70884E092BDD67270059B22A /* history */ = {
+			isa = PBXGroup;
+			children = (
+				70884E042BDD60170059B22A /* GetGroupedHistoriesUsecase.swift */,
+				70884E072BDD632E0059B22A /* GetMetaDatasMapUsecase.swift */,
+			);
+			path = history;
+			sourceTree = "<group>";
+		};
 		70A898BB2B6FA0B1009B16FF /* dg-muscle-iosTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1505,6 +1539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70884E062BDD618C0059B22A /* GetGroupedHistoriesUsecase.swift in Sources */,
 				70756F362BCAC7FC0035EFF4 /* ExerciseListV2ViewModel.swift in Sources */,
 				0208CF4E2BCCFCCA00FD973D /* WorkoutHeatMapViewModel.swift in Sources */,
 				707B0AFB2BD1650200D8250B /* HeatmapRepositoryTest.swift in Sources */,
@@ -1649,6 +1684,7 @@
 				70C0559B2B79F9F300375526 /* AppDelegate.swift in Sources */,
 				7070162F2BDD2CAD0025C624 /* HistoryRepository.swift in Sources */,
 				702E216B2BCA541C00147279 /* HistoryViewModel.swift in Sources */,
+				70884E082BDD632E0059B22A /* GetMetaDatasMapUsecase.swift in Sources */,
 				70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */,
 				7070162D2BDD2C5F0025C624 /* HeatmapDomain.swift in Sources */,
 				70884DDD2BDD4E340059B22A /* ExerciseSetV.swift in Sources */,
@@ -1701,6 +1737,7 @@
 				706760BC2BCC0CCD00649BF3 /* PreviousRecordView.swift in Sources */,
 				70C0559F2B79FC0800375526 /* SceneDelegate.swift in Sources */,
 				70884DEF2BDD522D0059B22A /* HistoryMetaDataData.swift in Sources */,
+				70884E002BDD5B110059B22A /* HistoryViewModelV2.swift in Sources */,
 				7086C2F72B924B6700D034B0 /* ImageSaver.swift in Sources */,
 				70226B882AF7765400379ED3 /* WorkoutMetaData.swift in Sources */,
 				700308FE2BD150CF00C6DA26 /* RemoveAccountView.swift in Sources */,
@@ -1712,6 +1749,7 @@
 				02CA6D802BCFCD1400A8746B /* ContentViewV2Model.swift in Sources */,
 				02CA6D822BCFCDEF00A8746B /* AppleAuthTest.swift in Sources */,
 				70756F0C2BCAA0900035EFF4 /* UserRepositoryV2Test.swift in Sources */,
+				70884E052BDD60170059B22A /* GetGroupedHistoriesUsecase.swift in Sources */,
 				702448D52BD2BA1C00C79056 /* DGWebView.swift in Sources */,
 				70756F312BCAC4F40035EFF4 /* ExerciseListSectionV2View.swift in Sources */,
 				70CD21D12BCD6732009B72F3 /* HeatMapColumnView.swift in Sources */,
