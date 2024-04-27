@@ -870,8 +870,8 @@
 		707016202BDD2A7D0025C624 /* history */ = {
 			isa = PBXGroup;
 			children = (
-				70884DD72BDD4D6D0059B22A /* model */,
-				70884DFE2BDD5AFE0059B22A /* view */,
+				708DB2B62BDD6D3D00195605 /* HeatmapViewModel.swift */,
+				70884DFF2BDD5B110059B22A /* HistoryViewModelV2.swift */,
 			);
 			path = history;
 			sourceTree = "<group>";
@@ -1208,8 +1208,7 @@
 		70884DFE2BDD5AFE0059B22A /* view */ = {
 			isa = PBXGroup;
 			children = (
-				708DB2B62BDD6D3D00195605 /* HeatmapViewModel.swift */,
-				70884DFF2BDD5B110059B22A /* HistoryViewModelV2.swift */,
+				707016202BDD2A7D0025C624 /* history */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1236,8 +1235,9 @@
 		708DB2B12BDD69B500195605 /* presenter */ = {
 			isa = PBXGroup;
 			children = (
-				707016202BDD2A7D0025C624 /* history */,
+				70884DD72BDD4D6D0059B22A /* model */,
 				703A97C02BCB929B002C0843 /* navigation */,
+				70884DFE2BDD5AFE0059B22A /* view */,
 			);
 			path = presenter;
 			sourceTree = "<group>";
