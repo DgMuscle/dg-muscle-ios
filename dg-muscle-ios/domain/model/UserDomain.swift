@@ -9,6 +9,6 @@ import Foundation
 
 struct UserDomain {
     let uid: String
-    let displayName: String?
-    let photoURL: URL?
+    var displayName: String?
+    var photoURL: URL?
 }

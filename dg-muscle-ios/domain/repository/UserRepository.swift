@@ -13,8 +13,8 @@ protocol UserRepository {
     var userPublisher: AnyPublisher<UserDomain?, Never> { get }
     var isLogin: Bool { get }
     var isLoginPublisher: AnyPublisher<Bool, Never> { get }
-    var dgUsers: [UserDomain] { get }
-    var dgUsersPublisher: AnyPublisher<[UserDomain], Never> { get }
+    var users: [UserDomain] { get }
+    var usersPublisher: AnyPublisher<[UserDomain], Never> { get }
     
     func signOut() throws
     func updateUser(displayName: String?, photoURL: URL?) async throws

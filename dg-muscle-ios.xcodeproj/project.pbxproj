@@ -18,8 +18,6 @@
 		024785652BCFBA9B00C9DF4F /* AppleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024785642BCFBA9B00C9DF4F /* AppleAuth.swift */; };
 		024785682BCFBC5A00C9DF4F /* AppleAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024785672BCFBC5A00C9DF4F /* AppleAuthViewModel.swift */; };
 		0247856C2BCFBCC700C9DF4F /* AppleAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247856B2BCFBCC700C9DF4F /* AppleAuthView.swift */; };
-		0247856D2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
-		0247856E2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
 		029139852BDB9DB700A82A62 /* FriendSearchUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029139842BDB9DB700A82A62 /* FriendSearchUserView.swift */; };
 		029139872BDBA13100A82A62 /* FriendSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029139862BDBA13100A82A62 /* FriendSearchTextField.swift */; };
 		02BE7C2C2BD26D3E00C6DD5C /* HorizontalVolumeBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE7C2B2BD26D3E00C6DD5C /* HorizontalVolumeBarChartView.swift */; };
@@ -187,6 +185,12 @@
 		7083E6C92ABF0F45007D43CE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6C82ABF0F45007D43CE /* FirebaseAuth */; };
 		7086C2F72B924B6700D034B0 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7086C2F62B924B6700D034B0 /* ImageSaver.swift */; };
 		708785142BCEC16100930B0D /* MyProfileListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708785132BCEC16100930B0D /* MyProfileListItemView.swift */; };
+		70884DC92BDD449E0059B22A /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
+		70884DCA2BDD449E0059B22A /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
+		70884DCB2BDD44AD0059B22A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
+		70884DCC2BDD44AE0059B22A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
+		70884DCD2BDD44CF0059B22A /* FileManagerHelperV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016442BDD31350025C624 /* FileManagerHelperV2.swift */; };
+		70884DCE2BDD44D60059B22A /* FileManagerHelperV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016442BDD31350025C624 /* FileManagerHelperV2.swift */; };
 		708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4C52AD2875700852E2E /* FileManagerHelper.swift */; };
 		70A2BB132BD2BFDC00317BAF /* QuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A2BB122BD2BFDC00317BAF /* QuickAction.swift */; };
 		70B07AC42BD8D0A200A0E732 /* FunctionsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */; };
@@ -788,6 +792,7 @@
 			children = (
 				707016212BDD2AAC0025C624 /* model */,
 				7070162B2BDD2BCB0025C624 /* repository */,
+				707016432BDD31220025C624 /* util */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -797,7 +802,6 @@
 			children = (
 				707016322BDD2DB10025C624 /* model */,
 				707016402BDD2F650025C624 /* repository */,
-				707016432BDD31220025C624 /* util */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -873,6 +877,7 @@
 			isa = PBXGroup;
 			children = (
 				70C144D22AC82558007F0540 /* APIClient.swift */,
+				707B8FD22ABF207F008ADECE /* Authenticator.swift */,
 				707016442BDD31350025C624 /* FileManagerHelperV2.swift */,
 			);
 			path = util;
@@ -1064,7 +1069,6 @@
 		707B8FD12ABF204A008ADECE /* util */ = {
 			isa = PBXGroup;
 			children = (
-				707B8FD22ABF207F008ADECE /* Authenticator.swift */,
 				701CC4C52AD2875700852E2E /* FileManagerHelper.swift */,
 				7086C2F62B924B6700D034B0 /* ImageSaver.swift */,
 				70D9033C2AC5A70A001DDC0B /* Vibration.swift */,
@@ -1372,6 +1376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70CA7E852BCD818A00D47674 /* WorkoutHeatMapCommonView.swift in Sources */,
+				70884DC92BDD449E0059B22A /* Authenticator.swift in Sources */,
 				70CD21CD2BCD666C009B72F3 /* ExerciseSet.swift in Sources */,
 				70CD21D72BCD6E33009B72F3 /* HistoryRepositoryV2Test.swift in Sources */,
 				70CD21CE2BCD6678009B72F3 /* Exercise.swift in Sources */,
@@ -1384,9 +1389,9 @@
 				70240BF02ADC1FF800B87A79 /* dg_muscle_ios_widget.swift in Sources */,
 				70CD21CC2BCD665F009B72F3 /* CreatedAt.swift in Sources */,
 				70CD21C82BCD6633009B72F3 /* HistoryRepositoryV2.swift in Sources */,
+				70884DCD2BDD44CF0059B22A /* FileManagerHelperV2.swift in Sources */,
 				707B0AFA2BD1650100D8250B /* HeatmapRepositoryTest.swift in Sources */,
 				70CD21DD2BCD6EB3009B72F3 /* CustomError.swift in Sources */,
-				0247856D2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */,
 				708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */,
 				707B0AF62BD163CA00D8250B /* HeatmapRepository.swift in Sources */,
 				70CD21DC2BCD6EA9009B72F3 /* DGUser.swift in Sources */,
@@ -1394,6 +1399,7 @@
 				70CD21C72BCD662B009B72F3 /* WorkoutHeatMapViewModel.swift in Sources */,
 				70B07ACA2BD8D54900A0E732 /* FunctionsURLEnums.swift in Sources */,
 				707B0AF42BD163C600D8250B /* HeatmapColor.swift in Sources */,
+				70884DCB2BDD44AD0059B22A /* APIClient.swift in Sources */,
 				70CD21D82BCD6E3E009B72F3 /* HistoryRepositoryV2Impl.swift in Sources */,
 				70CD21DB2BCD6E97009B72F3 /* UserRepositoryV2Live.swift in Sources */,
 				70B07AC82BD8D53B00A0E732 /* FunctionsURL.swift in Sources */,
@@ -1411,13 +1417,13 @@
 				0208CF4E2BCCFCCA00FD973D /* WorkoutHeatMapViewModel.swift in Sources */,
 				707B0AFB2BD1650200D8250B /* HeatmapRepositoryTest.swift in Sources */,
 				702E218F2BCA616700147279 /* FileManagerHelper.swift in Sources */,
+				70884DCC2BDD44AE0059B22A /* APIClient.swift in Sources */,
 				70EA5B612BD8F2DF00DEFB15 /* FriendsSearchViewModel.swift in Sources */,
 				70B07ACB2BD8D54A00A0E732 /* FunctionsURLEnums.swift in Sources */,
 				70756F352BCAC7BA0035EFF4 /* exerciseTests.swift in Sources */,
 				702E21882BCA5E8E00147279 /* HistoryRepositoryV2.swift in Sources */,
 				70756F372BCAC8220035EFF4 /* ExerciseRepositoryV2.swift in Sources */,
 				02053E392BD25181003B8D76 /* monthlySectionTests.swift in Sources */,
-				0247856E2BCFBF8E00C9DF4F /* Authenticator.swift in Sources */,
 				702E217C2BCA5E6000147279 /* ExerciseSet.swift in Sources */,
 				02D037F32BCE15AC00238309 /* UserRepositoryV2Live.swift in Sources */,
 				70B07AC92BD8D53B00A0E732 /* FunctionsURL.swift in Sources */,
@@ -1434,9 +1440,11 @@
 				702E217F2BCA5E6C00147279 /* DefaultResponse.swift in Sources */,
 				702E21802BCA5E7100147279 /* Exercise.swift in Sources */,
 				70EA5B5C2BD8EFD500DEFB15 /* Friend.swift in Sources */,
+				70884DCE2BDD44D60059B22A /* FileManagerHelperV2.swift in Sources */,
 				70EA5B622BD8F2F200DEFB15 /* FriendRepository.swift in Sources */,
 				70756F3A2BCAC87A0035EFF4 /* UserRepositoryV2.swift in Sources */,
 				70756EF22BCA68730035EFF4 /* HistoryRepositoryV2Test.swift in Sources */,
+				70884DCA2BDD449E0059B22A /* Authenticator.swift in Sources */,
 				702E21822BCA5E7C00147279 /* Height.swift in Sources */,
 				707B0AF52BD163C700D8250B /* HeatmapColor.swift in Sources */,
 				70756F3B2BCAC89B0035EFF4 /* UserRepositoryV2Test.swift in Sources */,

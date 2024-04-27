@@ -84,8 +84,6 @@ final class UserRepositoryV2Live: UserRepositoryV2 {
             }
             self._user = .init(uid: user.uid, displayName: user.displayName, photoURL: user.photoURL)
             self._isLogin = true
-            
-            
         }
         
         $_user
