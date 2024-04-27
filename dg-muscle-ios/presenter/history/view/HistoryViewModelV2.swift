@@ -11,14 +11,14 @@ import Combine
 final class HistoryViewModelV2: ObservableObject {
     @Published var sections: [HistorySectionV] = []
     
-    let getGroupedHistoriesUsecase: GetGroupedHistoriesUsecase
-    let getMetaDatasMapUsecase: GetMetaDatasMapUsecase
+    let getGroupedHistoriesUsecase: SubscribeGroupedHistoriesUsecase
+    let getMetaDatasMapUsecase: SubscribeMetaDatasMapUsecase
     
     private var cancellables = Set<AnyCancellable>()
     
     init(
-        getGroupedHistoriesUsecase: GetGroupedHistoriesUsecase,
-        getMetaDatasMapUsecase: GetMetaDatasMapUsecase
+        getGroupedHistoriesUsecase: SubscribeGroupedHistoriesUsecase,
+        getMetaDatasMapUsecase: SubscribeMetaDatasMapUsecase
     ) {
         self.getGroupedHistoriesUsecase = getGroupedHistoriesUsecase
         self.getMetaDatasMapUsecase = getMetaDatasMapUsecase

@@ -1,5 +1,5 @@
 //
-//  GetMetaDatasMapUsecase.swift
+//  SubscribeMetaDatasMapUsecase.swift
 //  dg-muscle-ios
 //
 //  Created by 신동규 on 4/28/24.
@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 // metadata를 날짜별로 묶어서 반환해준다.
-final class GetMetaDatasMapUsecase {
+final class SubscribeMetaDatasMapUsecase {
     private let healthRepository: HealthRepositoryDomain
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()

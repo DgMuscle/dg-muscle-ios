@@ -1,5 +1,5 @@
 //
-//  GetGroupedHistoriesUsecase.swift
+//  SubscribeGroupedHistoriesUsecase.swift
 //  dg-muscle-ios
 //
 //  Created by 신동규 on 4/28/24.
@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 // history 데이터를 월별로 묶어서 2차 배열로 반환해준다
-final class GetGroupedHistoriesUsecase {
+final class SubscribeGroupedHistoriesUsecase {
     private let historyRepo: HistoryRepository
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
