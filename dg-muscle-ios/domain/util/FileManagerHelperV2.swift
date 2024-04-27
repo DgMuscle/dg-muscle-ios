@@ -40,7 +40,7 @@ extension FileManagerHelperV2 {
         case dguser
         case history
         case exercise
-        case workoutMetaData
+        case historyMetaData
         case grassDatasourceBridge
         case workoutHeatMapData
         case heatmapColor
