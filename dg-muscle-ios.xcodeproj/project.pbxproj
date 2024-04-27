@@ -817,7 +817,6 @@
 				70D3418D2ACC07FD0010EAF9 /* extension */,
 				707B8FD02ABF1FD5008ADECE /* main */,
 				70F8389C2AC7FE20009725EF /* model */,
-				703A97C02BCB929B002C0843 /* navigation */,
 			);
 			path = legacy;
 			sourceTree = "<group>";
@@ -854,13 +853,13 @@
 			path = data;
 			sourceTree = "<group>";
 		};
-		707016202BDD2A7D0025C624 /* ui-history */ = {
+		707016202BDD2A7D0025C624 /* history */ = {
 			isa = PBXGroup;
 			children = (
 				70884DD72BDD4D6D0059B22A /* model */,
 				70884DFE2BDD5AFE0059B22A /* view */,
 			);
-			path = "ui-history";
+			path = history;
 			sourceTree = "<group>";
 		};
 		707016212BDD2AAC0025C624 /* model */ = {
@@ -1213,6 +1212,15 @@
 			path = history;
 			sourceTree = "<group>";
 		};
+		708DB2B12BDD69B500195605 /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+				707016202BDD2A7D0025C624 /* history */,
+				703A97C02BCB929B002C0843 /* navigation */,
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
 		70A898BB2B6FA0B1009B16FF /* dg-muscle-iosTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1284,8 +1292,8 @@
 				7070161F2BDD2A760025C624 /* data */,
 				7070161E2BDD2A700025C624 /* domain */,
 				7070161C2BDD2A3B0025C624 /* legacy */,
+				708DB2B12BDD69B500195605 /* presenter */,
 				70E556052ABF010D006D4DA0 /* Preview Content */,
-				707016202BDD2A7D0025C624 /* ui-history */,
 			);
 			path = "dg-muscle-ios";
 			sourceTree = "<group>";
