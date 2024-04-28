@@ -300,6 +300,12 @@
 		70A85A902BDE5B5400537071 /* HealthInfoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A8F2BDE5B5400537071 /* HealthInfoItemView.swift */; };
 		70A85A922BDE5CDE00537071 /* HealthInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A912BDE5CDE00537071 /* HealthInfoView.swift */; };
 		70A85A942BDE5D7D00537071 /* HealthItemV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A932BDE5D7D00537071 /* HealthItemV.swift */; };
+		70A85A962BDE618100537071 /* ProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A952BDE618100537071 /* ProfileEditViewModel.swift */; };
+		70A85A982BDE625800537071 /* PostUserProfileImageUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A972BDE625800537071 /* PostUserProfileImageUsecase.swift */; };
+		70A85A9A2BDE637700537071 /* PostUserDisplayNameUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A992BDE637700537071 /* PostUserDisplayNameUsecase.swift */; };
+		70A85A9C2BDE648900537071 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A9B2BDE648900537071 /* ProfileEditView.swift */; };
+		70A85A9E2BDE655800537071 /* ProfileUserSimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A9D2BDE655800537071 /* ProfileUserSimpleView.swift */; };
+		70A85AA02BDE676C00537071 /* DisplayNameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A9F2BDE676C00537071 /* DisplayNameEditView.swift */; };
 		70B07AC42BD8D0A200A0E732 /* FunctionsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */; };
 		70B07AC72BD8D0D800A0E732 /* FunctionsURLEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */; };
 		70B07AC82BD8D53B00A0E732 /* FunctionsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */; };
@@ -615,6 +621,12 @@
 		70A85A8F2BDE5B5400537071 /* HealthInfoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInfoItemView.swift; sourceTree = "<group>"; };
 		70A85A912BDE5CDE00537071 /* HealthInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInfoView.swift; sourceTree = "<group>"; };
 		70A85A932BDE5D7D00537071 /* HealthItemV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthItemV.swift; sourceTree = "<group>"; };
+		70A85A952BDE618100537071 /* ProfileEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewModel.swift; sourceTree = "<group>"; };
+		70A85A972BDE625800537071 /* PostUserProfileImageUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserProfileImageUsecase.swift; sourceTree = "<group>"; };
+		70A85A992BDE637700537071 /* PostUserDisplayNameUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserDisplayNameUsecase.swift; sourceTree = "<group>"; };
+		70A85A9B2BDE648900537071 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
+		70A85A9D2BDE655800537071 /* ProfileUserSimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserSimpleView.swift; sourceTree = "<group>"; };
+		70A85A9F2BDE676C00537071 /* DisplayNameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNameEditView.swift; sourceTree = "<group>"; };
 		70A898BA2B6FA0B1009B16FF /* dg-muscle-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dg-muscle-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURL.swift; sourceTree = "<group>"; };
 		70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURLEnums.swift; sourceTree = "<group>"; };
@@ -801,6 +813,8 @@
 			isa = PBXGroup;
 			children = (
 				70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */,
+				70A85A992BDE637700537071 /* PostUserDisplayNameUsecase.swift */,
+				70A85A972BDE625800537071 /* PostUserProfileImageUsecase.swift */,
 				700526DE2BDDF5D9007838BA /* SubscribeUserUsecase.swift */,
 			);
 			path = user;
@@ -1001,7 +1015,6 @@
 		7044641B2BD0183100CB21F6 /* FileUploader */ = {
 			isa = PBXGroup;
 			children = (
-				703CD5E92AC0139600BC76D4 /* FileUploader.swift */,
 				7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */,
 				7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */,
 			);
@@ -1186,6 +1199,7 @@
 				70C144D22AC82558007F0540 /* APIClient.swift */,
 				707B8FD22ABF207F008ADECE /* Authenticator.swift */,
 				707016442BDD31350025C624 /* FileManagerHelperV2.swift */,
+				703CD5E92AC0139600BC76D4 /* FileUploader.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1522,9 +1536,13 @@
 		70A85A8C2BDE5A9800537071 /* user */ = {
 			isa = PBXGroup;
 			children = (
+				70A85A9F2BDE676C00537071 /* DisplayNameEditView.swift */,
 				70A85A8F2BDE5B5400537071 /* HealthInfoItemView.swift */,
 				70A85A912BDE5CDE00537071 /* HealthInfoView.swift */,
 				70A85A8D2BDE5AB100537071 /* HealthInfoViewModel.swift */,
+				70A85A9B2BDE648900537071 /* ProfileEditView.swift */,
+				70A85A952BDE618100537071 /* ProfileEditViewModel.swift */,
+				70A85A9D2BDE655800537071 /* ProfileUserSimpleView.swift */,
 			);
 			path = user;
 			sourceTree = "<group>";
@@ -1925,6 +1943,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				700526D12BDDEF92007838BA /* HistoryRepositoryTest.swift in Sources */,
+				70A85AA02BDE676C00537071 /* DisplayNameEditView.swift in Sources */,
 				700527022BDE051B007838BA /* GetNaturalDurationUsecase.swift in Sources */,
 				700526CC2BDDECA3007838BA /* HeatmapColumn.swift in Sources */,
 				703A97B92BCB81AB002C0843 /* ExerciseFormStep2ViewModel.swift in Sources */,
@@ -1968,8 +1987,10 @@
 				0247856C2BCFBCC700C9DF4F /* AppleAuthView.swift in Sources */,
 				7060BB682BDE26650092B987 /* ExercisePartItem.swift in Sources */,
 				700526F22BDDFF73007838BA /* MainCoordinatorV2.swift in Sources */,
+				70A85A962BDE618100537071 /* ProfileEditViewModel.swift in Sources */,
 				704464162BD00D3300CB21F6 /* EditDisplayNameView.swift in Sources */,
 				703A97B12BCB72EA002C0843 /* ExercisePartsSelectionForm.swift in Sources */,
+				70A85A9E2BDE655800537071 /* ProfileUserSimpleView.swift in Sources */,
 				70A85A8B2BDE58C700537071 /* BloodTypeV.swift in Sources */,
 				70756F052BCA9E640035EFF4 /* UserRepositoryV2.swift in Sources */,
 				70F838A82AC7FEB6009725EF /* Record.swift in Sources */,
@@ -2023,6 +2044,7 @@
 				703A97C42BCB950C002C0843 /* BannerLoadingView.swift in Sources */,
 				7005270A2BDE09D0007838BA /* ExerciseRepositoryTest.swift in Sources */,
 				7060BB722BDE2BAF0092B987 /* ExerciseAdd2ViewModel.swift in Sources */,
+				70A85A9A2BDE637700537071 /* PostUserDisplayNameUsecase.swift in Sources */,
 				707016472BDD38670025C624 /* UserRepositoryData.swift in Sources */,
 				700526FA2BDE0239007838BA /* ExerciseV.swift in Sources */,
 				70A85A822BDE56CB00537071 /* GetHealthInfoUsecase.swift in Sources */,
@@ -2061,6 +2083,7 @@
 				708DB2BF2BDD731F00195605 /* HeatmapColorV.swift in Sources */,
 				708DB2B92BDD6DDD00195605 /* HeatmapV.swift in Sources */,
 				70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */,
+				70A85A982BDE625800537071 /* PostUserProfileImageUsecase.swift in Sources */,
 				7070162D2BDD2C5F0025C624 /* HeatmapDomain.swift in Sources */,
 				70884DDD2BDD4E340059B22A /* ExerciseSetV.swift in Sources */,
 				703A97AE2BCB6EFB002C0843 /* ExerciseFormStep1ViewModel.swift in Sources */,
@@ -2075,6 +2098,7 @@
 				70EA5B532BD8EEC200DEFB15 /* FriendsSearchView.swift in Sources */,
 				70884DD42BDD47510059B22A /* ExerciseRepositoryData.swift in Sources */,
 				706760B62BCBEDE300649BF3 /* HistoryCardView.swift in Sources */,
+				70A85A9C2BDE648900537071 /* ProfileEditView.swift in Sources */,
 				704464182BD013EE00CB21F6 /* UpdateProfilePhotoView.swift in Sources */,
 				70884DD62BDD47D10059B22A /* ExerciseData.swift in Sources */,
 				702D77CB2BD35C40008AF48F /* Coordinator.swift in Sources */,
