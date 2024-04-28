@@ -365,6 +365,8 @@
 		70F838A42AC7FE96009725EF /* ExerciseHistorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A32AC7FE96009725EF /* ExerciseHistorySection.swift */; };
 		70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A52AC7FEA8009725EF /* ExerciseSet.swift */; };
 		70F838A82AC7FEB6009725EF /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A72AC7FEB6009725EF /* Record.swift */; };
+		70FF689C2BDE756E000B21E2 /* FileUploaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */; };
+		70FF689D2BDE75B2000B21E2 /* FileUploaderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1560,9 +1562,7 @@
 		70A85AA72BDE711B00537071 /* fileUploader */ = {
 			isa = PBXGroup;
 			children = (
-				703CD5E92AC0139600BC76D4 /* FileUploader.swift */,
 				7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */,
-				7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */,
 			);
 			path = fileUploader;
 			sourceTree = "<group>";
@@ -1571,6 +1571,8 @@
 			isa = PBXGroup;
 			children = (
 				707016442BDD31350025C624 /* FileManagerHelperV2.swift */,
+				703CD5E92AC0139600BC76D4 /* FileUploader.swift */,
+				7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1915,6 +1917,7 @@
 				70B07ACB2BD8D54A00A0E732 /* FunctionsURLEnums.swift in Sources */,
 				70756F352BCAC7BA0035EFF4 /* exerciseTests.swift in Sources */,
 				702E21882BCA5E8E00147279 /* HistoryRepositoryV2.swift in Sources */,
+				70FF689C2BDE756E000B21E2 /* FileUploaderTest.swift in Sources */,
 				70756F372BCAC8220035EFF4 /* ExerciseRepositoryV2.swift in Sources */,
 				02053E392BD25181003B8D76 /* monthlySectionTests.swift in Sources */,
 				702E217C2BCA5E6000147279 /* ExerciseSet.swift in Sources */,
@@ -1956,6 +1959,7 @@
 				70EA5B652BD8F38100DEFB15 /* friendTests.swift in Sources */,
 				702E217A2BCA5E4C00147279 /* ExerciseHistorySection.swift in Sources */,
 				0208CF4D2BCCFC9D00FD973D /* heatMapTests.swift in Sources */,
+				70FF689D2BDE75B2000B21E2 /* FileUploaderInterface.swift in Sources */,
 				702E21782BCA5E2A00147279 /* HistoryViewModel.swift in Sources */,
 				70756F382BCAC8350035EFF4 /* ExerciseRepositoryV2Test.swift in Sources */,
 				702E217E2BCA5E6A00147279 /* CreatedAt.swift in Sources */,
