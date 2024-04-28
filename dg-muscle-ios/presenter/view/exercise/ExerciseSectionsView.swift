@@ -11,11 +11,12 @@ struct ExerciseSectionsView: View {
     @StateObject var viewModel: ExerciseSectionsViewModel
     
     let tapExercise: ((ExerciseV) -> ())?
+    let deleteAction: ((ExerciseV) -> ())?
     
     var body: some View {
         VStack {
             ForEach(viewModel.sections) { section in
-                ExerciseSectionView(section: section, tapExercise: tapExercise)
+                ExerciseSectionView(section: section, tapExercise: tapExercise, deleteAction: deleteAction)
                     .padding(.bottom, 8)
             }
         }
@@ -27,6 +28,7 @@ struct ExerciseSectionsView: View {
     let viewModel: ExerciseSectionsViewModel = .init(subscribeGroupedExercisesUsecase: .init(exerciseRepository: exerciseRepository))
     
     return ExerciseSectionsView(viewModel: viewModel,
-                         tapExercise: nil)
+                                tapExercise: nil,
+                                deleteAction: nil)
     .preferredColorScheme(.dark)
 }

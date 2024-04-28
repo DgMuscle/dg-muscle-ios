@@ -12,6 +12,7 @@ struct ExerciseSectionView: View {
     var section: ExerciseSectionV
     
     let tapExercise: ((ExerciseV) -> ())?
+    let deleteAction: ((ExerciseV) -> ())?
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -34,9 +35,9 @@ struct ExerciseSectionView: View {
                     }
                     .padding(.bottom, 6)
                     .contextMenu(menuItems: {
-                        if let tapExercise {
+                        if let deleteAction {
                             Button("Delete Item") {
-                                tapExercise(exercise)
+                                deleteAction(exercise)
                             }
                         }
                     })
