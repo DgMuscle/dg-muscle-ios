@@ -39,6 +39,7 @@
 		700526CE2BDDED90007838BA /* HeatMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526CD2BDDED90007838BA /* HeatMap.swift */; };
 		700526D02BDDEF1E007838BA /* HeatmapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526CF2BDDEF1E007838BA /* HeatmapView.swift */; };
 		700526D12BDDEF92007838BA /* HistoryRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526C12BDDE9AA007838BA /* HistoryRepositoryTest.swift */; };
+		700526D32BDDF163007838BA /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526D22BDDF163007838BA /* HistoryListView.swift */; };
 		7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */; };
 		701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4C52AD2875700852E2E /* FileManagerHelper.swift */; };
 		70226B882AF7765400379ED3 /* WorkoutMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70226B872AF7765400379ED3 /* WorkoutMetaData.swift */; };
@@ -221,7 +222,7 @@
 		70884DF92BDD53D50059B22A /* HealthRepositoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DF82BDD53D50059B22A /* HealthRepositoryData.swift */; };
 		70884DFB2BDD58800059B22A /* HistorySectionV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DFA2BDD58800059B22A /* HistorySectionV.swift */; };
 		70884DFD2BDD59620059B22A /* HistoryMetaDataV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DFC2BDD59620059B22A /* HistoryMetaDataV.swift */; };
-		70884E002BDD5B110059B22A /* HistoryViewModelV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DFF2BDD5B110059B22A /* HistoryViewModelV2.swift */; };
+		70884E002BDD5B110059B22A /* HistoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DFF2BDD5B110059B22A /* HistoryListViewModel.swift */; };
 		70884E052BDD60170059B22A /* SubscribeGroupedHistoriesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884E042BDD60170059B22A /* SubscribeGroupedHistoriesUsecase.swift */; };
 		70884E062BDD618C0059B22A /* SubscribeGroupedHistoriesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884E042BDD60170059B22A /* SubscribeGroupedHistoriesUsecase.swift */; };
 		70884E082BDD632E0059B22A /* SubscribeMetaDatasMapUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884E072BDD632E0059B22A /* SubscribeMetaDatasMapUsecase.swift */; };
@@ -347,6 +348,7 @@
 		700526CB2BDDECA3007838BA /* HeatmapColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapColumn.swift; sourceTree = "<group>"; };
 		700526CD2BDDED90007838BA /* HeatMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatMap.swift; sourceTree = "<group>"; };
 		700526CF2BDDEF1E007838BA /* HeatmapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapView.swift; sourceTree = "<group>"; };
+		700526D22BDDF163007838BA /* HistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListView.swift; sourceTree = "<group>"; };
 		7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSection.swift; sourceTree = "<group>"; };
 		701CC4C52AD2875700852E2E /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
 		70226B872AF7765400379ED3 /* WorkoutMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMetaData.swift; sourceTree = "<group>"; };
@@ -486,7 +488,7 @@
 		70884DF82BDD53D50059B22A /* HealthRepositoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRepositoryData.swift; sourceTree = "<group>"; };
 		70884DFA2BDD58800059B22A /* HistorySectionV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySectionV.swift; sourceTree = "<group>"; };
 		70884DFC2BDD59620059B22A /* HistoryMetaDataV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryMetaDataV.swift; sourceTree = "<group>"; };
-		70884DFF2BDD5B110059B22A /* HistoryViewModelV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModelV2.swift; sourceTree = "<group>"; };
+		70884DFF2BDD5B110059B22A /* HistoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListViewModel.swift; sourceTree = "<group>"; };
 		70884E042BDD60170059B22A /* SubscribeGroupedHistoriesUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeGroupedHistoriesUsecase.swift; sourceTree = "<group>"; };
 		70884E072BDD632E0059B22A /* SubscribeMetaDatasMapUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeMetaDatasMapUsecase.swift; sourceTree = "<group>"; };
 		708DB2B22BDD6AD500195605 /* HeatmapColorDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapColorDomain.swift; sourceTree = "<group>"; };
@@ -668,10 +670,10 @@
 		700526CA2BDDEC94007838BA /* heatmap */ = {
 			isa = PBXGroup;
 			children = (
-				708DB2B62BDD6D3D00195605 /* HeatmapViewModel.swift */,
-				700526CB2BDDECA3007838BA /* HeatmapColumn.swift */,
 				700526CD2BDDED90007838BA /* HeatMap.swift */,
+				700526CB2BDDECA3007838BA /* HeatmapColumn.swift */,
 				700526CF2BDDEF1E007838BA /* HeatmapView.swift */,
+				708DB2B62BDD6D3D00195605 /* HeatmapViewModel.swift */,
 			);
 			path = heatmap;
 			sourceTree = "<group>";
@@ -915,7 +917,8 @@
 		707016202BDD2A7D0025C624 /* history */ = {
 			isa = PBXGroup;
 			children = (
-				70884DFF2BDD5B110059B22A /* HistoryViewModelV2.swift */,
+				700526D22BDDF163007838BA /* HistoryListView.swift */,
+				70884DFF2BDD5B110059B22A /* HistoryListViewModel.swift */,
 				700526CA2BDDEC94007838BA /* heatmap */,
 			);
 			path = history;
@@ -1761,6 +1764,7 @@
 				70756F2D2BCAC2C70035EFF4 /* ExerciseListItemView.swift in Sources */,
 				701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */,
 				02C95AB62BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift in Sources */,
+				700526D32BDDF163007838BA /* HistoryListView.swift in Sources */,
 				703A97DF2BCBC76E002C0843 /* SetFormV2View.swift in Sources */,
 				702E21702BCA55D600147279 /* HistoryRepositoryV2Impl.swift in Sources */,
 				70C0559B2B79F9F300375526 /* AppDelegate.swift in Sources */,
@@ -1825,7 +1829,7 @@
 				706760BC2BCC0CCD00649BF3 /* PreviousRecordView.swift in Sources */,
 				70C0559F2B79FC0800375526 /* SceneDelegate.swift in Sources */,
 				70884DEF2BDD522D0059B22A /* HistoryMetaDataData.swift in Sources */,
-				70884E002BDD5B110059B22A /* HistoryViewModelV2.swift in Sources */,
+				70884E002BDD5B110059B22A /* HistoryListViewModel.swift in Sources */,
 				7086C2F72B924B6700D034B0 /* ImageSaver.swift in Sources */,
 				70226B882AF7765400379ED3 /* WorkoutMetaData.swift in Sources */,
 				700308FE2BD150CF00C6DA26 /* RemoveAccountView.swift in Sources */,
