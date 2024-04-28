@@ -147,6 +147,9 @@
 		7044641D2BD0185600CB21F6 /* FileUploaderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */; };
 		7044641F2BD0187E00CB21F6 /* FileUploaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */; };
 		705341C82BD3C07700F9B16C /* VerticalVolumeBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705341C72BD3C07700F9B16C /* VerticalVolumeBarChartView.swift */; };
+		7057B2942BDE789A00A1418D /* AuthenticatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7057B2932BDE789A00A1418D /* AuthenticatorInterface.swift */; };
+		7057B2962BDE78D200A1418D /* AuthenticatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7057B2932BDE789A00A1418D /* AuthenticatorInterface.swift */; };
+		7057B2972BDE78E300A1418D /* AuthenticatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7057B2932BDE789A00A1418D /* AuthenticatorInterface.swift */; };
 		7060BB4C2BDE18160092B987 /* SubscribeGroupedExercisesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB4B2BDE18160092B987 /* SubscribeGroupedExercisesUsecase.swift */; };
 		7060BB4E2BDE19F60092B987 /* ExerciseItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB4D2BDE19F60092B987 /* ExerciseItemView.swift */; };
 		7060BB502BDE1AF90092B987 /* ExerciseSectionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB4F2BDE1AF90092B987 /* ExerciseSectionsViewModel.swift */; };
@@ -501,6 +504,7 @@
 		7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploaderInterface.swift; sourceTree = "<group>"; };
 		7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploaderTest.swift; sourceTree = "<group>"; };
 		705341C72BD3C07700F9B16C /* VerticalVolumeBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalVolumeBarChartView.swift; sourceTree = "<group>"; };
+		7057B2932BDE789A00A1418D /* AuthenticatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorInterface.swift; sourceTree = "<group>"; };
 		7060BB4B2BDE18160092B987 /* SubscribeGroupedExercisesUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeGroupedExercisesUsecase.swift; sourceTree = "<group>"; };
 		7060BB4D2BDE19F60092B987 /* ExerciseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseItemView.swift; sourceTree = "<group>"; };
 		7060BB4F2BDE1AF90092B987 /* ExerciseSectionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSectionsViewModel.swift; sourceTree = "<group>"; };
@@ -1207,6 +1211,7 @@
 		707016432BDD31220025C624 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				7057B2932BDE789A00A1418D /* AuthenticatorInterface.swift */,
 				7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */,
 			);
 			path = util;
@@ -1857,6 +1862,7 @@
 				70CA7E852BCD818A00D47674 /* WorkoutHeatMapCommonView.swift in Sources */,
 				70884DC92BDD449E0059B22A /* Authenticator.swift in Sources */,
 				70CD21CD2BCD666C009B72F3 /* ExerciseSet.swift in Sources */,
+				7057B2972BDE78E300A1418D /* AuthenticatorInterface.swift in Sources */,
 				70CD21D72BCD6E33009B72F3 /* HistoryRepositoryV2Test.swift in Sources */,
 				70CD21CE2BCD6678009B72F3 /* Exercise.swift in Sources */,
 				70240BEE2ADC1FF800B87A79 /* dg_muscle_ios_widgetLiveActivity.swift in Sources */,
@@ -1931,6 +1937,7 @@
 				702E21802BCA5E7100147279 /* Exercise.swift in Sources */,
 				700526D92BDDF3A7007838BA /* UserRepositoryTest.swift in Sources */,
 				70EA5B5C2BD8EFD500DEFB15 /* Friend.swift in Sources */,
+				7057B2962BDE78D200A1418D /* AuthenticatorInterface.swift in Sources */,
 				70884DCE2BDD44D60059B22A /* FileManagerHelperV2.swift in Sources */,
 				70EA5B622BD8F2F200DEFB15 /* FriendRepository.swift in Sources */,
 				700526C62BDDE9F8007838BA /* HeatmapColorDomain.swift in Sources */,
@@ -2189,6 +2196,7 @@
 				70226B882AF7765400379ED3 /* WorkoutMetaData.swift in Sources */,
 				700308FE2BD150CF00C6DA26 /* RemoveAccountView.swift in Sources */,
 				703A97C22BCB92B7002C0843 /* Navigations.swift in Sources */,
+				7057B2942BDE789A00A1418D /* AuthenticatorInterface.swift in Sources */,
 				706760B02BCBE54F00649BF3 /* HistoryFormV2View.swift in Sources */,
 				707016372BDD2DE30025C624 /* RecordData.swift in Sources */,
 				702E216E2BCA55C500147279 /* HistoryRepositoryV2.swift in Sources */,

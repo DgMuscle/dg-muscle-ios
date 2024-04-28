@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-final class Authenticator {
+final class Authenticator: AuthenticatorInterface {
     func signOut() throws {
         try Auth.auth().signOut()
     }
