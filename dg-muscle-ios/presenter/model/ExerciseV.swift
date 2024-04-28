@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExerciseV {
+struct ExerciseV: Equatable, Identifiable {
     let id: String
     var name: String
     var parts: [Part]
