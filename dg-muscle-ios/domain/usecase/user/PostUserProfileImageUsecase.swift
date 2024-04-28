@@ -10,22 +10,23 @@ import UIKit
 
 final class PostUserProfileImageUsecase {
     let userRepository: UserRepository
+    let fileUploader: FileUploaderInterface
     
-    init(userRepository: UserRepository) {
+    init(userRepository: UserRepository,
+         fileUploader: FileUploaderInterface) {
         self.userRepository = userRepository
+        self.fileUploader = fileUploader
     }
     
-    func implement(data: UIImage) {
-        Task {
-            guard let user = userRepository.user else { return }
-            let path = "profilePhoto/\(user.uid)/\(UUID().uuidString).png"
-            let url = try await FileUploader.shared.uploadImage(path: path, image: data)
-            try await userRepository.updateUser(photoURL: url)
-        }
+    func implement(data: UIImage) async throws {
+        guard let user = userRepository.user else { return }
+        let path = "profilePhoto/\(user.uid)/\(UUID().uuidString).png"
+        let url = try await fileUploader.uploadImage(path: path, image: data)
+        try await userRepository.updateUser(photoURL: url)
         
         Task {
             guard let previousURL = userRepository.user?.photoURL?.absoluteString else { return }
-            try await FileUploader.shared.deleteImage(path: previousURL)
+            try await fileUploader.deleteImage(path: previousURL)
         }
     }
 }

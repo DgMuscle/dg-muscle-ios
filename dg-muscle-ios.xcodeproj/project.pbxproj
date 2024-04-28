@@ -306,6 +306,10 @@
 		70A85A9C2BDE648900537071 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A9B2BDE648900537071 /* ProfileEditView.swift */; };
 		70A85A9E2BDE655800537071 /* ProfileUserSimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A9D2BDE655800537071 /* ProfileUserSimpleView.swift */; };
 		70A85AA02BDE676C00537071 /* DisplayNameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A9F2BDE676C00537071 /* DisplayNameEditView.swift */; };
+		70A85AA22BDE6CDA00537071 /* ProfilePhotoEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85AA12BDE6CDA00537071 /* ProfilePhotoEditViewModel.swift */; };
+		70A85AA42BDE6D8500537071 /* DeleteUserProfileImageUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85AA32BDE6D8500537071 /* DeleteUserProfileImageUsecase.swift */; };
+		70A85AA62BDE6E8600537071 /* GetUserUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85AA52BDE6E8600537071 /* GetUserUsecase.swift */; };
+		70A85AAA2BDE720900537071 /* ProfilePhotoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85AA92BDE720900537071 /* ProfilePhotoEditView.swift */; };
 		70B07AC42BD8D0A200A0E732 /* FunctionsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */; };
 		70B07AC72BD8D0D800A0E732 /* FunctionsURLEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */; };
 		70B07AC82BD8D53B00A0E732 /* FunctionsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */; };
@@ -627,6 +631,10 @@
 		70A85A9B2BDE648900537071 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		70A85A9D2BDE655800537071 /* ProfileUserSimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserSimpleView.swift; sourceTree = "<group>"; };
 		70A85A9F2BDE676C00537071 /* DisplayNameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNameEditView.swift; sourceTree = "<group>"; };
+		70A85AA12BDE6CDA00537071 /* ProfilePhotoEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoEditViewModel.swift; sourceTree = "<group>"; };
+		70A85AA32BDE6D8500537071 /* DeleteUserProfileImageUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserProfileImageUsecase.swift; sourceTree = "<group>"; };
+		70A85AA52BDE6E8600537071 /* GetUserUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserUsecase.swift; sourceTree = "<group>"; };
+		70A85AA92BDE720900537071 /* ProfilePhotoEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoEditView.swift; sourceTree = "<group>"; };
 		70A898BA2B6FA0B1009B16FF /* dg-muscle-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dg-muscle-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURL.swift; sourceTree = "<group>"; };
 		70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURLEnums.swift; sourceTree = "<group>"; };
@@ -812,7 +820,9 @@
 		700526DD2BDDF5C4007838BA /* user */ = {
 			isa = PBXGroup;
 			children = (
+				70A85AA32BDE6D8500537071 /* DeleteUserProfileImageUsecase.swift */,
 				70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */,
+				70A85AA52BDE6E8600537071 /* GetUserUsecase.swift */,
 				70A85A992BDE637700537071 /* PostUserDisplayNameUsecase.swift */,
 				70A85A972BDE625800537071 /* PostUserProfileImageUsecase.swift */,
 				700526DE2BDDF5D9007838BA /* SubscribeUserUsecase.swift */,
@@ -1015,8 +1025,6 @@
 		7044641B2BD0183100CB21F6 /* FileUploader */ = {
 			isa = PBXGroup;
 			children = (
-				7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */,
-				7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */,
 			);
 			path = FileUploader;
 			sourceTree = "<group>";
@@ -1199,7 +1207,7 @@
 				70C144D22AC82558007F0540 /* APIClient.swift */,
 				707B8FD22ABF207F008ADECE /* Authenticator.swift */,
 				707016442BDD31350025C624 /* FileManagerHelperV2.swift */,
-				703CD5E92AC0139600BC76D4 /* FileUploader.swift */,
+				70A85AA72BDE711B00537071 /* fileUploader */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1309,9 +1317,6 @@
 		70756F1D2BCAB8E80035EFF4 /* components */ = {
 			isa = PBXGroup;
 			children = (
-				703A97BC2BCB8514002C0843 /* BannerErrorMessageView.swift */,
-				703A97C32BCB950C002C0843 /* BannerLoadingView.swift */,
-				702448D42BD2BA1C00C79056 /* DGWebView.swift */,
 				70756F0D2BCAA19B0035EFF4 /* UserBoxView.swift */,
 				0208CF492BCCF9FF00FD973D /* WorkoutHeatMap */,
 			);
@@ -1458,6 +1463,9 @@
 		70884DFE2BDD5AFE0059B22A /* view */ = {
 			isa = PBXGroup;
 			children = (
+				703A97BC2BCB8514002C0843 /* BannerErrorMessageView.swift */,
+				703A97C32BCB950C002C0843 /* BannerLoadingView.swift */,
+				702448D42BD2BA1C00C79056 /* DGWebView.swift */,
 				7060BB5F2BDE231E0092B987 /* RoundedGradationText.swift */,
 				700526D62BDDF300007838BA /* UserBoxView2.swift */,
 				7060BB492BDE17DB0092B987 /* exercise */,
@@ -1499,6 +1507,7 @@
 			children = (
 				70884DD72BDD4D6D0059B22A /* model */,
 				700526ED2BDDFC9E007838BA /* navigation */,
+				70A85AA82BDE71E700537071 /* util */,
 				70884DFE2BDD5AFE0059B22A /* view */,
 			);
 			path = presenter;
@@ -1543,8 +1552,27 @@
 				70A85A9B2BDE648900537071 /* ProfileEditView.swift */,
 				70A85A952BDE618100537071 /* ProfileEditViewModel.swift */,
 				70A85A9D2BDE655800537071 /* ProfileUserSimpleView.swift */,
+				70A85AA12BDE6CDA00537071 /* ProfilePhotoEditViewModel.swift */,
+				70A85AA92BDE720900537071 /* ProfilePhotoEditView.swift */,
 			);
 			path = user;
+			sourceTree = "<group>";
+		};
+		70A85AA72BDE711B00537071 /* fileUploader */ = {
+			isa = PBXGroup;
+			children = (
+				7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */,
+			);
+			path = fileUploader;
+			sourceTree = "<group>";
+		};
+		70A85AA82BDE71E700537071 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				703CD5E92AC0139600BC76D4 /* FileUploader.swift */,
+				7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 		70A898BB2B6FA0B1009B16FF /* dg-muscle-iosTests */ = {
@@ -1981,6 +2009,8 @@
 				70756F282BCAC1D60035EFF4 /* ExerciseListV2View.swift in Sources */,
 				02053E342BD24F5A003B8D76 /* MonthlySectionView.swift in Sources */,
 				707BBF1A2AF7D39700A8ABD2 /* BodyMass.swift in Sources */,
+				70A85AA62BDE6E8600537071 /* GetUserUsecase.swift in Sources */,
+				70A85AA22BDE6CDA00537071 /* ProfilePhotoEditViewModel.swift in Sources */,
 				702E21722BCA587700147279 /* HealthRepository.swift in Sources */,
 				7060BB602BDE231E0092B987 /* RoundedGradationText.swift in Sources */,
 				708DB2BB2BDD6F0900195605 /* SubscribeHeatmapUsecase.swift in Sources */,
@@ -2003,6 +2033,7 @@
 				70C144D82AC82807007F0540 /* DefaultResponse.swift in Sources */,
 				700526CE2BDDED90007838BA /* HeatMap.swift in Sources */,
 				70756EFB2BCA6C4B0035EFF4 /* ExerciseRepositoryV2Live.swift in Sources */,
+				70A85AA42BDE6D8500537071 /* DeleteUserProfileImageUsecase.swift in Sources */,
 				703A97AC2BCB6EBF002C0843 /* ExerciseFormStep1View.swift in Sources */,
 				707B0AFD2BD1675100D8250B /* HeatmapColorSelectionView.swift in Sources */,
 				703A97CF2BCBB488002C0843 /* WorkoutFloatingButton.swift in Sources */,
@@ -2056,6 +2087,7 @@
 				70756F202BCAB95F0035EFF4 /* SettingListItemView.swift in Sources */,
 				02053E362BD24F63003B8D76 /* MonthlySectionViewModel.swift in Sources */,
 				703A97B32BCB734D002C0843 /* ExercisePartSelectionItem.swift in Sources */,
+				70A85AAA2BDE720900537071 /* ProfilePhotoEditView.swift in Sources */,
 				70884DF32BDD52AB0059B22A /* SexDomain.swift in Sources */,
 				7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */,
 				70EA5B602BD8F13500DEFB15 /* FriendRepositoryTest.swift in Sources */,
