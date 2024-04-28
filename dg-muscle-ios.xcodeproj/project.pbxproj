@@ -1207,9 +1207,7 @@
 		707016432BDD31220025C624 /* util */ = {
 			isa = PBXGroup;
 			children = (
-				70C144D22AC82558007F0540 /* APIClient.swift */,
-				707B8FD22ABF207F008ADECE /* Authenticator.swift */,
-				70A85AA72BDE711B00537071 /* fileUploader */,
+				7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1559,17 +1557,11 @@
 			path = user;
 			sourceTree = "<group>";
 		};
-		70A85AA72BDE711B00537071 /* fileUploader */ = {
-			isa = PBXGroup;
-			children = (
-				7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */,
-			);
-			path = fileUploader;
-			sourceTree = "<group>";
-		};
 		70A85AAB2BDE749800537071 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				70C144D22AC82558007F0540 /* APIClient.swift */,
+				707B8FD22ABF207F008ADECE /* Authenticator.swift */,
 				707016442BDD31350025C624 /* FileManagerHelperV2.swift */,
 				703CD5E92AC0139600BC76D4 /* FileUploader.swift */,
 				7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */,
