@@ -10,7 +10,7 @@ import Combine
 
 // history 데이터를 월별로 묶어서 2차 배열로 반환해준다
 final class SubscribeGroupedHistoriesUsecase {
-    private let historyRepo: HistoryRepository
+    private let historyRepository: HistoryRepository
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMM"
@@ -21,8 +21,8 @@ final class SubscribeGroupedHistoriesUsecase {
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(historyRepo: HistoryRepository) {
-        self.historyRepo = historyRepo
+    init(historyRepository: HistoryRepository) {
+        self.historyRepository = historyRepository
         bind()
     }
     
@@ -31,7 +31,7 @@ final class SubscribeGroupedHistoriesUsecase {
     }
     
     private func bind() {
-        historyRepo.historiesPublisher
+        historyRepository.historiesPublisher
             .sink { [weak self] histories in
                 guard let self else { return }
                 groupedHistories = group(histories: histories)

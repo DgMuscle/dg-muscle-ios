@@ -40,6 +40,37 @@
 		700526D02BDDEF1E007838BA /* HeatmapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526CF2BDDEF1E007838BA /* HeatmapView.swift */; };
 		700526D12BDDEF92007838BA /* HistoryRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526C12BDDE9AA007838BA /* HistoryRepositoryTest.swift */; };
 		700526D32BDDF163007838BA /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526D22BDDF163007838BA /* HistoryListView.swift */; };
+		700526D72BDDF300007838BA /* UserBoxView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526D62BDDF300007838BA /* UserBoxView2.swift */; };
+		700526D92BDDF3A7007838BA /* UserRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526D82BDDF3A7007838BA /* UserRepositoryTest.swift */; };
+		700526DA2BDDF3BE007838BA /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070164A2BDD3DBC0025C624 /* UserRepository.swift */; };
+		700526DB2BDDF3C2007838BA /* UserRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526D82BDDF3A7007838BA /* UserRepositoryTest.swift */; };
+		700526DC2BDDF589007838BA /* UserDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016482BDD3D570025C624 /* UserDomain.swift */; };
+		700526DF2BDDF5D9007838BA /* SubscribeUserUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526DE2BDDF5D9007838BA /* SubscribeUserUsecase.swift */; };
+		700526E12BDDF772007838BA /* HealthRepositoryTest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526E02BDDF772007838BA /* HealthRepositoryTest2.swift */; };
+		700526E22BDDF78B007838BA /* HealthRepositoryDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DF02BDD52580059B22A /* HealthRepositoryDomain.swift */; };
+		700526E32BDDF791007838BA /* HealthRepositoryTest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526E02BDDF772007838BA /* HealthRepositoryTest2.swift */; };
+		700526E42BDDF827007838BA /* SexDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DF22BDD52AB0059B22A /* SexDomain.swift */; };
+		700526E52BDDF840007838BA /* HistoryMetaDataDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DE32BDD511A0059B22A /* HistoryMetaDataDomain.swift */; };
+		700526E62BDDF845007838BA /* HeightDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DE52BDD51490059B22A /* HeightDomain.swift */; };
+		700526E72BDDF849007838BA /* BodyMassDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DE72BDD51700059B22A /* BodyMassDomain.swift */; };
+		700526E82BDDF84C007838BA /* BloodTypeDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DF62BDD53080059B22A /* BloodTypeDomain.swift */; };
+		700526E92BDDF851007838BA /* ExerciseDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DCF2BDD46BE0059B22A /* ExerciseDomain.swift */; };
+		700526EA2BDDF859007838BA /* HeatmapDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070162C2BDD2C5F0025C624 /* HeatmapDomain.swift */; };
+		700526EC2BDDFB87007838BA /* GetTodayHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526EB2BDDFB87007838BA /* GetTodayHistoryUsecase.swift */; };
+		700526EF2BDDFD38007838BA /* NavigationV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526EE2BDDFD38007838BA /* NavigationV2.swift */; };
+		700526F22BDDFF73007838BA /* MainCoordinatorV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526F12BDDFF73007838BA /* MainCoordinatorV2.swift */; };
+		700526F42BDDFFD8007838BA /* HistoryCoordinatorV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526F32BDDFFD8007838BA /* HistoryCoordinatorV2.swift */; };
+		700526F62BDE0012007838BA /* CoordinatorV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526F52BDE0012007838BA /* CoordinatorV2.swift */; };
+		700526F82BDE01EB007838BA /* HistoryItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526F72BDE01EB007838BA /* HistoryItemViewModel.swift */; };
+		700526FA2BDE0239007838BA /* ExerciseV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526F92BDE0239007838BA /* ExerciseV.swift */; };
+		700526FC2BDE03A8007838BA /* GetDayUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526FB2BDE03A8007838BA /* GetDayUsecase.swift */; };
+		700527002BDE0422007838BA /* GetPartsUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526FF2BDE0422007838BA /* GetPartsUsecase.swift */; };
+		700527022BDE051B007838BA /* GetNaturalDurationUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700527012BDE051B007838BA /* GetNaturalDurationUsecase.swift */; };
+		700527042BDE0685007838BA /* GetKcalUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700527032BDE0685007838BA /* GetKcalUsecase.swift */; };
+		700527062BDE08AB007838BA /* HistoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700527052BDE08AB007838BA /* HistoryItemView.swift */; };
+		700527072BDE09BF007838BA /* ExerciseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DD12BDD471F0059B22A /* ExerciseRepository.swift */; };
+		700527092BDE09C8007838BA /* ExerciseRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700527082BDE09C8007838BA /* ExerciseRepositoryTest.swift */; };
+		7005270A2BDE09D0007838BA /* ExerciseRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700527082BDE09C8007838BA /* ExerciseRepositoryTest.swift */; };
 		7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */; };
 		701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4C52AD2875700852E2E /* FileManagerHelper.swift */; };
 		70226B882AF7765400379ED3 /* WorkoutMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70226B872AF7765400379ED3 /* WorkoutMetaData.swift */; };
@@ -349,6 +380,23 @@
 		700526CD2BDDED90007838BA /* HeatMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatMap.swift; sourceTree = "<group>"; };
 		700526CF2BDDEF1E007838BA /* HeatmapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapView.swift; sourceTree = "<group>"; };
 		700526D22BDDF163007838BA /* HistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListView.swift; sourceTree = "<group>"; };
+		700526D62BDDF300007838BA /* UserBoxView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBoxView2.swift; sourceTree = "<group>"; };
+		700526D82BDDF3A7007838BA /* UserRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryTest.swift; sourceTree = "<group>"; };
+		700526DE2BDDF5D9007838BA /* SubscribeUserUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeUserUsecase.swift; sourceTree = "<group>"; };
+		700526E02BDDF772007838BA /* HealthRepositoryTest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRepositoryTest2.swift; sourceTree = "<group>"; };
+		700526EB2BDDFB87007838BA /* GetTodayHistoryUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTodayHistoryUsecase.swift; sourceTree = "<group>"; };
+		700526EE2BDDFD38007838BA /* NavigationV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationV2.swift; sourceTree = "<group>"; };
+		700526F12BDDFF73007838BA /* MainCoordinatorV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorV2.swift; sourceTree = "<group>"; };
+		700526F32BDDFFD8007838BA /* HistoryCoordinatorV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCoordinatorV2.swift; sourceTree = "<group>"; };
+		700526F52BDE0012007838BA /* CoordinatorV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorV2.swift; sourceTree = "<group>"; };
+		700526F72BDE01EB007838BA /* HistoryItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemViewModel.swift; sourceTree = "<group>"; };
+		700526F92BDE0239007838BA /* ExerciseV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseV.swift; sourceTree = "<group>"; };
+		700526FB2BDE03A8007838BA /* GetDayUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDayUsecase.swift; sourceTree = "<group>"; };
+		700526FF2BDE0422007838BA /* GetPartsUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPartsUsecase.swift; sourceTree = "<group>"; };
+		700527012BDE051B007838BA /* GetNaturalDurationUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNaturalDurationUsecase.swift; sourceTree = "<group>"; };
+		700527032BDE0685007838BA /* GetKcalUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetKcalUsecase.swift; sourceTree = "<group>"; };
+		700527052BDE08AB007838BA /* HistoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemView.swift; sourceTree = "<group>"; };
+		700527082BDE09C8007838BA /* ExerciseRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepositoryTest.swift; sourceTree = "<group>"; };
 		7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSection.swift; sourceTree = "<group>"; };
 		701CC4C52AD2875700852E2E /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
 		70226B872AF7765400379ED3 /* WorkoutMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMetaData.swift; sourceTree = "<group>"; };
@@ -662,7 +710,10 @@
 		700526C02BDDE998007838BA /* repository */ = {
 			isa = PBXGroup;
 			children = (
+				700527082BDE09C8007838BA /* ExerciseRepositoryTest.swift */,
+				700526E02BDDF772007838BA /* HealthRepositoryTest2.swift */,
 				700526C12BDDE9AA007838BA /* HistoryRepositoryTest.swift */,
+				700526D82BDDF3A7007838BA /* UserRepositoryTest.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -676,6 +727,33 @@
 				708DB2B62BDD6D3D00195605 /* HeatmapViewModel.swift */,
 			);
 			path = heatmap;
+			sourceTree = "<group>";
+		};
+		700526DD2BDDF5C4007838BA /* user */ = {
+			isa = PBXGroup;
+			children = (
+				700526DE2BDDF5D9007838BA /* SubscribeUserUsecase.swift */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
+		700526ED2BDDFC9E007838BA /* navigation */ = {
+			isa = PBXGroup;
+			children = (
+				700526F02BDDFF63007838BA /* coordinator */,
+				700526EE2BDDFD38007838BA /* NavigationV2.swift */,
+			);
+			path = navigation;
+			sourceTree = "<group>";
+		};
+		700526F02BDDFF63007838BA /* coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				700526F12BDDFF73007838BA /* MainCoordinatorV2.swift */,
+				700526F32BDDFFD8007838BA /* HistoryCoordinatorV2.swift */,
+				700526F52BDE0012007838BA /* CoordinatorV2.swift */,
+			);
+			path = coordinator;
 			sourceTree = "<group>";
 		};
 		70240BEA2ADC1FF800B87A79 /* dg-muscle-ios-widget */ = {
@@ -872,6 +950,7 @@
 		7070161C2BDD2A3B0025C624 /* legacy */ = {
 			isa = PBXGroup;
 			children = (
+				703A97C02BCB929B002C0843 /* navigation */,
 				702E216C2BCA559500147279 /* repository */,
 				707B8FD12ABF204A008ADECE /* util */,
 				70756F162BCAB5BF0035EFF4 /* app */,
@@ -917,6 +996,8 @@
 		707016202BDD2A7D0025C624 /* history */ = {
 			isa = PBXGroup;
 			children = (
+				700527052BDE08AB007838BA /* HistoryItemView.swift */,
+				700526F72BDE01EB007838BA /* HistoryItemViewModel.swift */,
 				700526D22BDDF163007838BA /* HistoryListView.swift */,
 				70884DFF2BDD5B110059B22A /* HistoryListViewModel.swift */,
 				700526CA2BDDEC94007838BA /* heatmap */,
@@ -1211,6 +1292,7 @@
 		70884DD72BDD4D6D0059B22A /* model */ = {
 			isa = PBXGroup;
 			children = (
+				700526F92BDE0239007838BA /* ExerciseV.swift */,
 				70884DD92BDD4DCA0059B22A /* UserV.swift */,
 				70884DDB2BDD4E1D0059B22A /* history */,
 			);
@@ -1256,6 +1338,7 @@
 		70884DFE2BDD5AFE0059B22A /* view */ = {
 			isa = PBXGroup;
 			children = (
+				700526D62BDDF300007838BA /* UserBoxView2.swift */,
 				707016202BDD2A7D0025C624 /* history */,
 			);
 			path = view;
@@ -1264,6 +1347,7 @@
 		70884E012BDD5F470059B22A /* usecase */ = {
 			isa = PBXGroup;
 			children = (
+				700526DD2BDDF5C4007838BA /* user */,
 				70884E092BDD67270059B22A /* history */,
 			);
 			path = usecase;
@@ -1272,6 +1356,11 @@
 		70884E092BDD67270059B22A /* history */ = {
 			isa = PBXGroup;
 			children = (
+				700526FB2BDE03A8007838BA /* GetDayUsecase.swift */,
+				700527032BDE0685007838BA /* GetKcalUsecase.swift */,
+				700527012BDE051B007838BA /* GetNaturalDurationUsecase.swift */,
+				700526FF2BDE0422007838BA /* GetPartsUsecase.swift */,
+				700526EB2BDDFB87007838BA /* GetTodayHistoryUsecase.swift */,
 				70884E042BDD60170059B22A /* SubscribeGroupedHistoriesUsecase.swift */,
 				708DB2BC2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift */,
 				708DB2BA2BDD6F0900195605 /* SubscribeHeatmapUsecase.swift */,
@@ -1284,7 +1373,7 @@
 			isa = PBXGroup;
 			children = (
 				70884DD72BDD4D6D0059B22A /* model */,
-				703A97C02BCB929B002C0843 /* navigation */,
+				700526ED2BDDFC9E007838BA /* navigation */,
 				70884DFE2BDD5AFE0059B22A /* view */,
 			);
 			path = presenter;
@@ -1502,7 +1591,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1510;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					70240BE42ADC1FF800B87A79 = {
 						CreatedOnToolsVersion = 15.0;
@@ -1615,9 +1704,14 @@
 			files = (
 				700526C22BDDE9AA007838BA /* HistoryRepositoryTest.swift in Sources */,
 				70884E062BDD618C0059B22A /* SubscribeGroupedHistoriesUsecase.swift in Sources */,
+				700526DC2BDDF589007838BA /* UserDomain.swift in Sources */,
+				700526E52BDDF840007838BA /* HistoryMetaDataDomain.swift in Sources */,
 				70756F362BCAC7FC0035EFF4 /* ExerciseListV2ViewModel.swift in Sources */,
+				700526DA2BDDF3BE007838BA /* UserRepository.swift in Sources */,
+				700526E22BDDF78B007838BA /* HealthRepositoryDomain.swift in Sources */,
 				0208CF4E2BCCFCCA00FD973D /* WorkoutHeatMapViewModel.swift in Sources */,
 				707B0AFB2BD1650200D8250B /* HeatmapRepositoryTest.swift in Sources */,
+				700526E92BDDF851007838BA /* ExerciseDomain.swift in Sources */,
 				702E218F2BCA616700147279 /* FileManagerHelper.swift in Sources */,
 				700526C72BDDEA0A007838BA /* RecordDomain.swift in Sources */,
 				70884DCC2BDD44AE0059B22A /* APIClient.swift in Sources */,
@@ -1639,19 +1733,26 @@
 				702E21772BCA5DEF00147279 /* historyTests.swift in Sources */,
 				70756F392BCAC8680035EFF4 /* DGUser.swift in Sources */,
 				702E217D2BCA5E6700147279 /* BodyMass.swift in Sources */,
+				700526E12BDDF772007838BA /* HealthRepositoryTest2.swift in Sources */,
 				702E21892BCA5E9400147279 /* HealthRepository.swift in Sources */,
 				70EA5B632BD8F2F800DEFB15 /* FriendRepositoryTest.swift in Sources */,
 				702E217F2BCA5E6C00147279 /* DefaultResponse.swift in Sources */,
 				702E21802BCA5E7100147279 /* Exercise.swift in Sources */,
+				700526D92BDDF3A7007838BA /* UserRepositoryTest.swift in Sources */,
 				70EA5B5C2BD8EFD500DEFB15 /* Friend.swift in Sources */,
 				70884DCE2BDD44D60059B22A /* FileManagerHelperV2.swift in Sources */,
 				70EA5B622BD8F2F200DEFB15 /* FriendRepository.swift in Sources */,
 				700526C62BDDE9F8007838BA /* HeatmapColorDomain.swift in Sources */,
 				70756F3A2BCAC87A0035EFF4 /* UserRepositoryV2.swift in Sources */,
+				700526EA2BDDF859007838BA /* HeatmapDomain.swift in Sources */,
+				700527072BDE09BF007838BA /* ExerciseRepository.swift in Sources */,
 				70756EF22BCA68730035EFF4 /* HistoryRepositoryV2Test.swift in Sources */,
+				700527092BDE09C8007838BA /* ExerciseRepositoryTest.swift in Sources */,
 				70884DCA2BDD449E0059B22A /* Authenticator.swift in Sources */,
+				700526E82BDDF84C007838BA /* BloodTypeDomain.swift in Sources */,
 				702E21822BCA5E7C00147279 /* Height.swift in Sources */,
 				707B0AF52BD163C700D8250B /* HeatmapColor.swift in Sources */,
+				700526E72BDDF849007838BA /* BodyMassDomain.swift in Sources */,
 				70756F3B2BCAC89B0035EFF4 /* UserRepositoryV2Test.swift in Sources */,
 				702E21932BCA620100147279 /* CustomError.swift in Sources */,
 				702E21862BCA5E8700147279 /* WorkoutMetaData.swift in Sources */,
@@ -1663,7 +1764,9 @@
 				70756F382BCAC8350035EFF4 /* ExerciseRepositoryV2Test.swift in Sources */,
 				702E217E2BCA5E6A00147279 /* CreatedAt.swift in Sources */,
 				707B0AF72BD163CA00D8250B /* HeatmapRepository.swift in Sources */,
+				700526E42BDDF827007838BA /* SexDomain.swift in Sources */,
 				700526C82BDDEA0E007838BA /* ExerciseSetDomain.swift in Sources */,
+				700526E62BDDF845007838BA /* HeightDomain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1672,13 +1775,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				700526D12BDDEF92007838BA /* HistoryRepositoryTest.swift in Sources */,
+				700527022BDE051B007838BA /* GetNaturalDurationUsecase.swift in Sources */,
 				700526CC2BDDECA3007838BA /* HeatmapColumn.swift in Sources */,
 				703A97B92BCB81AB002C0843 /* ExerciseFormStep2ViewModel.swift in Sources */,
 				70756F2A2BCAC2110035EFF4 /* ExerciseListV2ViewModel.swift in Sources */,
 				707016422BDD2F880025C624 /* HistoryRepositoryData.swift in Sources */,
+				700527002BDE0422007838BA /* GetPartsUsecase.swift in Sources */,
 				70884DDA2BDD4DCA0059B22A /* UserV.swift in Sources */,
 				706760BA2BCC074200649BF3 /* SelectExerciseV2View.swift in Sources */,
+				700526DF2BDDF5D9007838BA /* SubscribeUserUsecase.swift in Sources */,
 				703A97CB2BCB98F2002C0843 /* EditExerciseView.swift in Sources */,
+				700526F62BDE0012007838BA /* CoordinatorV2.swift in Sources */,
 				703A97D12BCBB4E9002C0843 /* WorkoutRectangleButton.swift in Sources */,
 				70884DE82BDD51700059B22A /* BodyMassDomain.swift in Sources */,
 				029139852BDB9DB700A82A62 /* FriendSearchUserView.swift in Sources */,
@@ -1696,12 +1803,14 @@
 				70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */,
 				707B0AF92BD163F700D8250B /* HeatmapRepositoryTest.swift in Sources */,
 				708785142BCEC16100930B0D /* MyProfileListItemView.swift in Sources */,
+				700526EC2BDDFB87007838BA /* GetTodayHistoryUsecase.swift in Sources */,
 				70756F282BCAC1D60035EFF4 /* ExerciseListV2View.swift in Sources */,
 				02053E342BD24F5A003B8D76 /* MonthlySectionView.swift in Sources */,
 				707BBF1A2AF7D39700A8ABD2 /* BodyMass.swift in Sources */,
 				702E21722BCA587700147279 /* HealthRepository.swift in Sources */,
 				708DB2BB2BDD6F0900195605 /* SubscribeHeatmapUsecase.swift in Sources */,
 				0247856C2BCFBCC700C9DF4F /* AppleAuthView.swift in Sources */,
+				700526F22BDDFF73007838BA /* MainCoordinatorV2.swift in Sources */,
 				704464162BD00D3300CB21F6 /* EditDisplayNameView.swift in Sources */,
 				703A97B12BCB72EA002C0843 /* ExercisePartsSelectionForm.swift in Sources */,
 				70756F052BCA9E640035EFF4 /* UserRepositoryV2.swift in Sources */,
@@ -1720,6 +1829,7 @@
 				7070164B2BDD3DBC0025C624 /* UserRepository.swift in Sources */,
 				703A97BB2BCB8417002C0843 /* ExerciseFormStep2View.swift in Sources */,
 				70756F1A2BCAB5D40035EFF4 /* SettingV2View.swift in Sources */,
+				700526E32BDDF791007838BA /* HealthRepositoryTest2.swift in Sources */,
 				70756F112BCAA7C80035EFF4 /* ContentViewV2.swift in Sources */,
 				02D212972BCE6D410088F93B /* MyProfileView.swift in Sources */,
 				70756F222BCABBE80035EFF4 /* ExerciseListSectionView.swift in Sources */,
@@ -1732,6 +1842,7 @@
 				70884DDF2BDD4E3C0059B22A /* HistoryV.swift in Sources */,
 				70884DE62BDD51490059B22A /* HeightDomain.swift in Sources */,
 				70CD21D32BCD6881009B72F3 /* WorkoutHeatMapView.swift in Sources */,
+				700526F82BDE01EB007838BA /* HistoryItemViewModel.swift in Sources */,
 				029139872BDBA13100A82A62 /* FriendSearchTextField.swift in Sources */,
 				703A97D92BCBC070002C0843 /* RecordFormSetItem.swift in Sources */,
 				707016452BDD31350025C624 /* FileManagerHelperV2.swift in Sources */,
@@ -1745,7 +1856,9 @@
 				7083E6C62ABF0EC9007D43CE /* AppleAuthCoordinator.swift in Sources */,
 				700309002BD150DB00C6DA26 /* RemoveAccountViewModel.swift in Sources */,
 				703A97C42BCB950C002C0843 /* BannerLoadingView.swift in Sources */,
+				7005270A2BDE09D0007838BA /* ExerciseRepositoryTest.swift in Sources */,
 				707016472BDD38670025C624 /* UserRepositoryData.swift in Sources */,
+				700526FA2BDE0239007838BA /* ExerciseV.swift in Sources */,
 				70756F022BCA75E10035EFF4 /* HistorySectionView.swift in Sources */,
 				70884DF72BDD53080059B22A /* BloodTypeDomain.swift in Sources */,
 				703CD5F02AC015C900BC76D4 /* CustomError.swift in Sources */,
@@ -1761,6 +1874,7 @@
 				703A97BD2BCB8514002C0843 /* BannerErrorMessageView.swift in Sources */,
 				70CA7E842BCD811C00D47674 /* WorkoutHeatMapCommonView.swift in Sources */,
 				70F8389E2AC7FE36009725EF /* CreatedAt.swift in Sources */,
+				700526DB2BDDF3C2007838BA /* UserRepositoryTest.swift in Sources */,
 				70756F2D2BCAC2C70035EFF4 /* ExerciseListItemView.swift in Sources */,
 				701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */,
 				02C95AB62BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift in Sources */,
@@ -1768,6 +1882,7 @@
 				703A97DF2BCBC76E002C0843 /* SetFormV2View.swift in Sources */,
 				702E21702BCA55D600147279 /* HistoryRepositoryV2Impl.swift in Sources */,
 				70C0559B2B79F9F300375526 /* AppDelegate.swift in Sources */,
+				700526D72BDDF300007838BA /* UserBoxView2.swift in Sources */,
 				7070162F2BDD2CAD0025C624 /* HistoryRepository.swift in Sources */,
 				702E216B2BCA541C00147279 /* HistoryViewModel.swift in Sources */,
 				70884E082BDD632E0059B22A /* SubscribeMetaDatasMapUsecase.swift in Sources */,
@@ -1795,6 +1910,8 @@
 				708DB2BD2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift in Sources */,
 				707BBF182AF7D1D800A8ABD2 /* Height.swift in Sources */,
 				7070162A2BDD2B0B0025C624 /* RecordDomain.swift in Sources */,
+				700527042BDE0685007838BA /* GetKcalUsecase.swift in Sources */,
+				700527062BDE08AB007838BA /* HistoryItemView.swift in Sources */,
 				70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */,
 				707B0AEF2BD1622700D8250B /* HeatmapRepositoryImpl.swift in Sources */,
 				70756EF72BCA6C210035EFF4 /* ExerciseRepositoryV2.swift in Sources */,
@@ -1808,6 +1925,8 @@
 				024785652BCFBA9B00C9DF4F /* AppleAuth.swift in Sources */,
 				02BE7C2C2BD26D3E00C6DD5C /* HorizontalVolumeBarChartView.swift in Sources */,
 				702448DA2BD2BBCC00C79056 /* OpenWeb.swift in Sources */,
+				700526FC2BDE03A8007838BA /* GetDayUsecase.swift in Sources */,
+				700526EF2BDDFD38007838BA /* NavigationV2.swift in Sources */,
 				707B0AFF2BD1676700D8250B /* HeatmapColorSelectionViewModel.swift in Sources */,
 				708DB2B72BDD6D3D00195605 /* HeatmapViewModel.swift in Sources */,
 				702D77CE2BD35CC8008AF48F /* MainCoordinator.swift in Sources */,
@@ -1851,6 +1970,7 @@
 				70D9033D2AC5A70A001DDC0B /* Vibration.swift in Sources */,
 				7044641F2BD0187E00CB21F6 /* FileUploaderTest.swift in Sources */,
 				70EA5B5A2BD8EFCE00DEFB15 /* Friend.swift in Sources */,
+				700526F42BDDFFD8007838BA /* HistoryCoordinatorV2.swift in Sources */,
 				703CD5EA2AC0139600BC76D4 /* FileUploader.swift in Sources */,
 				70B07AC42BD8D0A200A0E732 /* FunctionsURL.swift in Sources */,
 			);
@@ -2012,6 +2132,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -2076,6 +2197,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2109,6 +2231,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"dg-muscle-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = YV58Q28W8Z;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2149,6 +2272,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"dg-muscle-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = YV58Q28W8Z;
 				ENABLE_HARDENED_RUNTIME = YES;

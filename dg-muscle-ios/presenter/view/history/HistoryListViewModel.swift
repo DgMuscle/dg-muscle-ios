@@ -10,28 +10,51 @@ import Combine
 
 final class HistoryListViewModel: ObservableObject {
     @Published var sections: [HistorySectionV] = []
+    @Published var user: UserV? = nil
     
-    let getGroupedHistoriesUsecase: SubscribeGroupedHistoriesUsecase
-    let getMetaDatasMapUsecase: SubscribeMetaDatasMapUsecase
+    let subscribeGroupedHistoriesUsecase: SubscribeGroupedHistoriesUsecase
+    let subscribeMetaDatasMapUsecase: SubscribeMetaDatasMapUsecase
+    let subscribeUserUsecase: SubscribeUserUsecase
+    let getTodayHistoryUsecase: GetTodayHistoryUsecase
     
     private var cancellables = Set<AnyCancellable>()
     
     init(
-        getGroupedHistoriesUsecase: SubscribeGroupedHistoriesUsecase,
-        getMetaDatasMapUsecase: SubscribeMetaDatasMapUsecase
+        subscribeGroupedHistoriesUsecase: SubscribeGroupedHistoriesUsecase,
+        subscribeMetaDatasMapUsecase: SubscribeMetaDatasMapUsecase,
+        subscribeUserUsecase: SubscribeUserUsecase,
+        getTodayHistoryUsecase: GetTodayHistoryUsecase
     ) {
-        self.getGroupedHistoriesUsecase = getGroupedHistoriesUsecase
-        self.getMetaDatasMapUsecase = getMetaDatasMapUsecase
+        self.subscribeGroupedHistoriesUsecase = subscribeGroupedHistoriesUsecase
+        self.subscribeMetaDatasMapUsecase = subscribeMetaDatasMapUsecase
+        self.subscribeUserUsecase = subscribeUserUsecase
+        self.getTodayHistoryUsecase = getTodayHistoryUsecase
         bind()
     }
     
+    func todayHistory() -> HistoryV? {
+        guard let todayHistory = getTodayHistoryUsecase.implement() else { return nil }
+        return HistoryV(from: todayHistory)
+    }
+    
     private func bind() {
-        getGroupedHistoriesUsecase.implement()
-            .combineLatest(getMetaDatasMapUsecase.implement())
+        subscribeGroupedHistoriesUsecase.implement()
+            .combineLatest(subscribeMetaDatasMapUsecase.implement())
             .receive(on: DispatchQueue.main)
             .sink { [weak self] groupedHistories, metadatasMap in
                 guard let self else { return }
                 sections = combineHistoriesAndMetaDatas(groupedHistories: groupedHistories, metadatasMap: metadatasMap)
+            }
+            .store(in: &cancellables)
+        
+        subscribeUserUsecase.implement()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] user in
+                if let user {
+                    self?.user = .init(from: user)
+                } else {
+                    self?.user = nil
+                }
             }
             .store(in: &cancellables)
     }
