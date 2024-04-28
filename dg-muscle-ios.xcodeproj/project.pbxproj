@@ -158,6 +158,7 @@
 		7060BB5C2BDE1F7F0092B987 /* DeleteExerciseUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB5B2BDE1F7F0092B987 /* DeleteExerciseUsecase.swift */; };
 		7060BB5E2BDE1FF20092B987 /* ExerciseManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB5D2BDE1FF20092B987 /* ExerciseManageView.swift */; };
 		7060BB602BDE231E0092B987 /* RoundedGradationText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB5F2BDE231E0092B987 /* RoundedGradationText.swift */; };
+		7060BB622BDE23C60092B987 /* ExerciseSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB612BDE23C60092B987 /* ExerciseSelectView.swift */; };
 		706760AE2BCBE37800649BF3 /* HistoryFormV2ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760AD2BCBE37800649BF3 /* HistoryFormV2ViewModel.swift */; };
 		706760B02BCBE54F00649BF3 /* HistoryFormV2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760AF2BCBE54F00649BF3 /* HistoryFormV2View.swift */; };
 		706760B42BCBEB3F00649BF3 /* RecordListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760B32BCBEB3F00649BF3 /* RecordListItemView.swift */; };
@@ -479,6 +480,7 @@
 		7060BB5B2BDE1F7F0092B987 /* DeleteExerciseUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteExerciseUsecase.swift; sourceTree = "<group>"; };
 		7060BB5D2BDE1FF20092B987 /* ExerciseManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseManageView.swift; sourceTree = "<group>"; };
 		7060BB5F2BDE231E0092B987 /* RoundedGradationText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedGradationText.swift; sourceTree = "<group>"; };
+		7060BB612BDE23C60092B987 /* ExerciseSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectView.swift; sourceTree = "<group>"; };
 		706760AD2BCBE37800649BF3 /* HistoryFormV2ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormV2ViewModel.swift; sourceTree = "<group>"; };
 		706760AF2BCBE54F00649BF3 /* HistoryFormV2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormV2View.swift; sourceTree = "<group>"; };
 		706760B32BCBEB3F00649BF3 /* RecordListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListItemView.swift; sourceTree = "<group>"; };
@@ -974,6 +976,7 @@
 				7060BB552BDE1D920092B987 /* ExerciseSectionsView.swift */,
 				7060BB4F2BDE1AF90092B987 /* ExerciseSectionsViewModel.swift */,
 				7060BB532BDE1CB00092B987 /* ExerciseSectionView.swift */,
+				7060BB612BDE23C60092B987 /* ExerciseSelectView.swift */,
 			);
 			path = exercise;
 			sourceTree = "<group>";
@@ -2007,6 +2010,7 @@
 				70884DFD2BDD59620059B22A /* HistoryMetaDataV.swift in Sources */,
 				70D3418F2ACC081E0010EAF9 /* Extension+Sequence.swift in Sources */,
 				703A97DD2BCBC66A002C0843 /* SetFormV2ViewModel.swift in Sources */,
+				7060BB622BDE23C60092B987 /* ExerciseSelectView.swift in Sources */,
 				702E21742BCA588A00147279 /* HealthRepositoryLive.swift in Sources */,
 				707016262BDD2B000025C624 /* ExerciseSetDomain.swift in Sources */,
 				7060BB5E2BDE1FF20092B987 /* ExerciseManageView.swift in Sources */,
