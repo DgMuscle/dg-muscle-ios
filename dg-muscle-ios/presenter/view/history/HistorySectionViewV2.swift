@@ -48,6 +48,17 @@ struct HistorySectionViewV2: View {
                                                      getKcalUsecase: .init(healthRepository: healthRepository),
                                                      getNaturalDurationUsecase: .init())
                     )
+                    .padding(.bottom, 20)
+                    .scrollTransition { effect, phase in
+                        effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
+                    }
+                    .contextMenu {
+                        if let deleteHistory {
+                            Button("DELETE HISTORY") {
+                                deleteHistory(history)
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -40,6 +40,8 @@ struct HistoryItemView: View {
                 .font(.caption2)
                 .padding(.top, 1)
             }
+            .foregroundStyle(Color(uiColor: .label))
+            Spacer()
         }
     }
 }
@@ -50,8 +52,9 @@ struct HistoryItemView: View {
     let historyRepository: HistoryRepository = HistoryRepositoryTest()
     let metaData: HistoryMetaDataDomain = .init(duration: 23872, kcalPerHourKg: 83, startDate: Date(), endDate: nil)
     let history = historyRepository.histories.randomElement()!
-    
-    let viewModel = HistoryItemViewModel(history: .init(from: history),
+    var historyV: HistoryV = .init(from: history)
+    historyV.metaData = .init(from: metaData)
+    let viewModel = HistoryItemViewModel(history: historyV,
                                          getDayUsecase: .init(),
                                          getPartsUsecase: .init(exerciseRepository: exerciseRepository),
                                          getKcalUsecase: .init(healthRepository: healthRepository),

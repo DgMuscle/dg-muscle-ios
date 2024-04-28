@@ -11,6 +11,8 @@ struct HistoryListView: View {
     
     let today: Date
     let historyRepository: HistoryRepository
+    let exerciseRepository: ExerciseRepository
+    let healthRepository: HealthRepositoryDomain
     
     @StateObject var viewModel: HistoryListViewModel
     @EnvironmentObject var coordinator: CoordinatorV2
@@ -22,8 +24,8 @@ struct HistoryListView: View {
             Button {
                 coordinator.main.heatmapColor()
             } label: {
-                HeatmapView(viewModel: .init(subscribeHeatmapUsecase: subscribeHeatmapUsecase,
-                                             subscribeHeatmapColorUsecase: subscribeHeatmapColorUsecase))
+                HeatmapView(viewModel: .init(subscribeHeatmapUsecase: .init(historyRepository: historyRepository, today: today),
+                                             subscribeHeatmapColorUsecase: .init(historyRepository: historyRepository)))
             }
             .scrollTransition { effect, phase in
                 effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
@@ -53,18 +55,27 @@ struct HistoryListView: View {
                 }
             }
             
+            ForEach(viewModel.sections) { section in
+                HistorySectionViewV2(section: section,
+                                     tapHistory: tapHistory,
+                                     deleteHistory: viewModel.delete,
+                                     tapHeader: tapHeader,
+                                     exerciseRepository: exerciseRepository,
+                                     healthRepository: healthRepository)
+            }
+            
         }
         .padding()
         .scrollIndicators(.hidden)
         .ignoresSafeArea()
     }
     
-    var subscribeHeatmapUsecase: SubscribeHeatmapUsecase {
-        .init(historyRepository: historyRepository, today: today)
+    private func tapHistory(history: HistoryV) {
+        print("tap history")
     }
     
-    var subscribeHeatmapColorUsecase: SubscribeHeatmapColorUsecase {
-        .init(historyRepository: historyRepository)
+    private func tapHeader() {
+        
     }
 }
 
@@ -73,6 +84,8 @@ struct HistoryListView: View {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyyMMdd"
     let today = dateFormatter.date(from: "20240415")!
+    
+    let exerciseRepository: ExerciseRepository = ExerciseRepositoryTest()
     
     let historyRepository: HistoryRepository = HistoryRepositoryTest()
     let healthRepository: HealthRepositoryDomain = HealthRepositoryTest2()
@@ -84,7 +97,11 @@ struct HistoryListView: View {
                                                 getTodayHistoryUsecase: .init(historyRepository: historyRepository, today: today), 
                                                 deleteHistoryUsecase: .init(historyRepository: historyRepository))
     
-    return HistoryListView(today: today, historyRepository: historyRepository, viewModel: viewModel)
+    return HistoryListView(today: today, 
+                           historyRepository: historyRepository,
+                           exerciseRepository: exerciseRepository,
+                           healthRepository: healthRepository,
+                           viewModel: viewModel)
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
         .environmentObject(CoordinatorV2(path: .constant(.init())))
 }
