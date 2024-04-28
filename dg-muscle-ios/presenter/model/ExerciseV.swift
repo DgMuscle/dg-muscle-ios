@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExerciseV {
+struct ExerciseV: Equatable, Identifiable {
     let id: String
     var name: String
     var parts: [Part]
@@ -33,7 +33,7 @@ struct ExerciseV {
 }
 
 extension ExerciseV {
-    enum Part: String {
+    enum Part: String, CaseIterable {
         case arm
         case back
         case chest
