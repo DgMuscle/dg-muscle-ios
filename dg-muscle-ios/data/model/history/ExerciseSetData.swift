@@ -28,6 +28,6 @@ struct ExerciseSetData: Codable {
 extension ExerciseSetData {
     enum Unit: String, Codable {
         case kg
-        case lb
+        case lbs
     }
 }

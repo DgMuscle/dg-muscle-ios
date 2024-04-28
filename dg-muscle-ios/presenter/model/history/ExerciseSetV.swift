@@ -32,6 +32,6 @@ struct ExerciseSetV: Equatable {
 extension ExerciseSetV {
     enum Unit: String {
         case kg
-        case lb
+        case lbs
     }
 }
