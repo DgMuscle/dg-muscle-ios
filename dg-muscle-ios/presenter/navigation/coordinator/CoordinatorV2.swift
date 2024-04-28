@@ -26,7 +26,9 @@ final class CoordinatorV2: ObservableObject {
     }
     
     func pop() {
-        path.removeLast()
+        if path.isEmpty == false {
+            path.removeLast()
+        }
     }
     
     private func bind() {
