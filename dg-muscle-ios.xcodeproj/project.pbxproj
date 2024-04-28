@@ -159,6 +159,12 @@
 		7060BB5E2BDE1FF20092B987 /* ExerciseManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB5D2BDE1FF20092B987 /* ExerciseManageView.swift */; };
 		7060BB602BDE231E0092B987 /* RoundedGradationText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB5F2BDE231E0092B987 /* RoundedGradationText.swift */; };
 		7060BB622BDE23C60092B987 /* ExerciseSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB612BDE23C60092B987 /* ExerciseSelectView.swift */; };
+		7060BB642BDE25130092B987 /* ExerciseAdd1ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB632BDE25130092B987 /* ExerciseAdd1ViewModel.swift */; };
+		7060BB662BDE25420092B987 /* ExerciseAdd1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB652BDE25420092B987 /* ExerciseAdd1View.swift */; };
+		7060BB682BDE26650092B987 /* ExercisePartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB672BDE26650092B987 /* ExercisePartItem.swift */; };
+		7060BB6A2BDE26FB0092B987 /* ExercisePartsSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB692BDE26FB0092B987 /* ExercisePartsSectionViewModel.swift */; };
+		7060BB6C2BDE27F50092B987 /* ExercisePartV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB6B2BDE27F50092B987 /* ExercisePartV.swift */; };
+		7060BB6E2BDE288D0092B987 /* ExercisePartsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB6D2BDE288D0092B987 /* ExercisePartsSectionView.swift */; };
 		706760AE2BCBE37800649BF3 /* HistoryFormV2ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760AD2BCBE37800649BF3 /* HistoryFormV2ViewModel.swift */; };
 		706760B02BCBE54F00649BF3 /* HistoryFormV2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760AF2BCBE54F00649BF3 /* HistoryFormV2View.swift */; };
 		706760B42BCBEB3F00649BF3 /* RecordListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760B32BCBEB3F00649BF3 /* RecordListItemView.swift */; };
@@ -481,6 +487,12 @@
 		7060BB5D2BDE1FF20092B987 /* ExerciseManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseManageView.swift; sourceTree = "<group>"; };
 		7060BB5F2BDE231E0092B987 /* RoundedGradationText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedGradationText.swift; sourceTree = "<group>"; };
 		7060BB612BDE23C60092B987 /* ExerciseSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectView.swift; sourceTree = "<group>"; };
+		7060BB632BDE25130092B987 /* ExerciseAdd1ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseAdd1ViewModel.swift; sourceTree = "<group>"; };
+		7060BB652BDE25420092B987 /* ExerciseAdd1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseAdd1View.swift; sourceTree = "<group>"; };
+		7060BB672BDE26650092B987 /* ExercisePartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePartItem.swift; sourceTree = "<group>"; };
+		7060BB692BDE26FB0092B987 /* ExercisePartsSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePartsSectionViewModel.swift; sourceTree = "<group>"; };
+		7060BB6B2BDE27F50092B987 /* ExercisePartV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePartV.swift; sourceTree = "<group>"; };
+		7060BB6D2BDE288D0092B987 /* ExercisePartsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePartsSectionView.swift; sourceTree = "<group>"; };
 		706760AD2BCBE37800649BF3 /* HistoryFormV2ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormV2ViewModel.swift; sourceTree = "<group>"; };
 		706760AF2BCBE54F00649BF3 /* HistoryFormV2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormV2View.swift; sourceTree = "<group>"; };
 		706760B32BCBEB3F00649BF3 /* RecordListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListItemView.swift; sourceTree = "<group>"; };
@@ -977,6 +989,11 @@
 				7060BB4F2BDE1AF90092B987 /* ExerciseSectionsViewModel.swift */,
 				7060BB532BDE1CB00092B987 /* ExerciseSectionView.swift */,
 				7060BB612BDE23C60092B987 /* ExerciseSelectView.swift */,
+				7060BB632BDE25130092B987 /* ExerciseAdd1ViewModel.swift */,
+				7060BB652BDE25420092B987 /* ExerciseAdd1View.swift */,
+				7060BB672BDE26650092B987 /* ExercisePartItem.swift */,
+				7060BB692BDE26FB0092B987 /* ExercisePartsSectionViewModel.swift */,
+				7060BB6D2BDE288D0092B987 /* ExercisePartsSectionView.swift */,
 			);
 			path = exercise;
 			sourceTree = "<group>";
@@ -1345,8 +1362,9 @@
 		70884DD72BDD4D6D0059B22A /* model */ = {
 			isa = PBXGroup;
 			children = (
-				700526F92BDE0239007838BA /* ExerciseV.swift */,
+				7060BB6B2BDE27F50092B987 /* ExercisePartV.swift */,
 				7060BB512BDE1B100092B987 /* ExerciseSectionV.swift */,
+				700526F92BDE0239007838BA /* ExerciseV.swift */,
 				70884DD92BDD4DCA0059B22A /* UserV.swift */,
 				70884DDB2BDD4E1D0059B22A /* history */,
 			);
@@ -1871,11 +1889,13 @@
 				7060BB602BDE231E0092B987 /* RoundedGradationText.swift in Sources */,
 				708DB2BB2BDD6F0900195605 /* SubscribeHeatmapUsecase.swift in Sources */,
 				0247856C2BCFBCC700C9DF4F /* AppleAuthView.swift in Sources */,
+				7060BB682BDE26650092B987 /* ExercisePartItem.swift in Sources */,
 				700526F22BDDFF73007838BA /* MainCoordinatorV2.swift in Sources */,
 				704464162BD00D3300CB21F6 /* EditDisplayNameView.swift in Sources */,
 				703A97B12BCB72EA002C0843 /* ExercisePartsSelectionForm.swift in Sources */,
 				70756F052BCA9E640035EFF4 /* UserRepositoryV2.swift in Sources */,
 				70F838A82AC7FEB6009725EF /* Record.swift in Sources */,
+				7060BB6C2BDE27F50092B987 /* ExercisePartV.swift in Sources */,
 				706760B42BCBEB3F00649BF3 /* RecordListItemView.swift in Sources */,
 				7005270E2BDE1128007838BA /* DeleteHistoryUsecase.swift in Sources */,
 				702D77D02BD35E6D008AF48F /* HistoryCoordinator.swift in Sources */,
@@ -1943,9 +1963,11 @@
 				700526DB2BDDF3C2007838BA /* UserRepositoryTest.swift in Sources */,
 				70756F2D2BCAC2C70035EFF4 /* ExerciseListItemView.swift in Sources */,
 				701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */,
+				7060BB662BDE25420092B987 /* ExerciseAdd1View.swift in Sources */,
 				02C95AB62BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift in Sources */,
 				700526D32BDDF163007838BA /* HistoryListView.swift in Sources */,
 				703A97DF2BCBC76E002C0843 /* SetFormV2View.swift in Sources */,
+				7060BB642BDE25130092B987 /* ExerciseAdd1ViewModel.swift in Sources */,
 				702E21702BCA55D600147279 /* HistoryRepositoryV2Impl.swift in Sources */,
 				70C0559B2B79F9F300375526 /* AppDelegate.swift in Sources */,
 				700526D72BDDF300007838BA /* UserBoxView2.swift in Sources */,
@@ -1997,6 +2019,7 @@
 				700526EF2BDDFD38007838BA /* NavigationV2.swift in Sources */,
 				707B0AFF2BD1676700D8250B /* HeatmapColorSelectionViewModel.swift in Sources */,
 				708DB2B72BDD6D3D00195605 /* HeatmapViewModel.swift in Sources */,
+				7060BB6A2BDE26FB0092B987 /* ExercisePartsSectionViewModel.swift in Sources */,
 				702D77CE2BD35CC8008AF48F /* MainCoordinator.swift in Sources */,
 				70A2BB132BD2BFDC00317BAF /* QuickAction.swift in Sources */,
 				707016232BDD2ACC0025C624 /* HistoryDomain.swift in Sources */,
@@ -2016,6 +2039,7 @@
 				7060BB5E2BDE1FF20092B987 /* ExerciseManageView.swift in Sources */,
 				70884DD22BDD471F0059B22A /* ExerciseRepository.swift in Sources */,
 				70884DE42BDD511A0059B22A /* HistoryMetaDataDomain.swift in Sources */,
+				7060BB6E2BDE288D0092B987 /* ExercisePartsSectionView.swift in Sources */,
 				7060BB522BDE1B100092B987 /* ExerciseSectionV.swift in Sources */,
 				706760BC2BCC0CCD00649BF3 /* PreviousRecordView.swift in Sources */,
 				70C0559F2B79FC0800375526 /* SceneDelegate.swift in Sources */,

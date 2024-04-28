@@ -33,7 +33,7 @@ struct ExerciseV: Equatable, Identifiable {
 }
 
 extension ExerciseV {
-    enum Part: String {
+    enum Part: String, CaseIterable {
         case arm
         case back
         case chest

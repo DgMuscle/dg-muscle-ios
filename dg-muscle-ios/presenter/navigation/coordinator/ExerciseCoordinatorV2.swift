@@ -23,6 +23,10 @@ final class ExerciseCoordinatorV2 {
         path.append(ExerciseNavigationV2(name: .add1))
     }
     
+    func add2(exerciseName: String, exerciseParts: [ExerciseV.Part]) {
+        path.append(ExerciseNavigationV2(exerciseName: exerciseName, exerciseParts: exerciseParts))
+    }
+    
     func edit(exercise: ExerciseV) {
         path.append(ExerciseNavigationV2(edit: exercise))
     }

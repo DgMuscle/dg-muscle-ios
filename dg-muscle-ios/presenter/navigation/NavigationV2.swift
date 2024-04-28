@@ -53,6 +53,8 @@ struct ExerciseNavigationV2: Identifiable, Hashable {
     var id: Int { name.hashValue }
     let name: Name
     var edit: ExerciseV? = nil
+    var exerciseName: String? = nil
+    var exerciseParts: [ExerciseV.Part] = []
     
     init(name: Name) {
         self.name = name
@@ -61,5 +63,11 @@ struct ExerciseNavigationV2: Identifiable, Hashable {
     init(edit: ExerciseV) {
         name = .edit
         self.edit = edit
+    }
+    
+    init(exerciseName: String, exerciseParts: [ExerciseV.Part]) {
+        self.exerciseName = exerciseName
+        self.exerciseParts = exerciseParts
+        name = .add2
     }
 }
