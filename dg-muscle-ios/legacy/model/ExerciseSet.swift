@@ -20,6 +20,6 @@ struct ExerciseSet: Codable, Equatable, Hashable, Identifiable {
 extension ExerciseSet {
     enum Unit: String, Codable {
         case kg
-        case lb
+        case lbs
     }
 }

@@ -12,6 +12,8 @@ struct MainNavigationV2: Identifiable, Hashable {
     enum Name: String {
         case setting
         case heatmapColor
+        case profile
+        case profilePhoto
     }
     
     var id: Int { name.hashValue }

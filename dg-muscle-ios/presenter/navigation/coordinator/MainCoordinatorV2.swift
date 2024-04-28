@@ -22,4 +22,12 @@ final class MainCoordinatorV2 {
     func heatmapColor() {
         path.append(MainNavigationV2(name: .heatmapColor))
     }
+    
+    func profile() {
+        path.append(MainNavigationV2(name: .profile))
+    }
+    
+    func profilePhoto() {
+        path.append(MainNavigationV2(name: .profilePhoto))
+    }
 }

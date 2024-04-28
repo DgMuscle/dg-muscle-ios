@@ -18,7 +18,7 @@ struct SetFormV2View: View {
                     .keyboardType(.decimalPad)
                 
                 Button {
-                    viewModel.unit = viewModel.unit == .kg ? .lb : .kg
+                    viewModel.unit = viewModel.unit == .kg ? .lbs : .kg
                 } label: {
                     Text(viewModel.unit.rawValue)
                 }
