@@ -1114,6 +1114,7 @@
 			children = (
 				707016322BDD2DB10025C624 /* model */,
 				707016402BDD2F650025C624 /* repository */,
+				70A85AAB2BDE749800537071 /* util */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -1206,7 +1207,6 @@
 			children = (
 				70C144D22AC82558007F0540 /* APIClient.swift */,
 				707B8FD22ABF207F008ADECE /* Authenticator.swift */,
-				707016442BDD31350025C624 /* FileManagerHelperV2.swift */,
 				70A85AA72BDE711B00537071 /* fileUploader */,
 			);
 			path = util;
@@ -1565,6 +1565,14 @@
 				7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */,
 			);
 			path = fileUploader;
+			sourceTree = "<group>";
+		};
+		70A85AAB2BDE749800537071 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				707016442BDD31350025C624 /* FileManagerHelperV2.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 		70A898BB2B6FA0B1009B16FF /* dg-muscle-iosTests */ = {
