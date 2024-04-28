@@ -8,15 +8,13 @@
 import Foundation
 
 final class GetKcalUsecase {
-    let metadata: HistoryMetaDataDomain
     let healthRepository: HealthRepositoryDomain
     
-    init(metadata: HistoryMetaDataDomain, healthRepository: HealthRepositoryDomain) {
-        self.metadata = metadata
+    init(healthRepository: HealthRepositoryDomain) {
         self.healthRepository = healthRepository
     }
     
-    func implement() -> Double? {
+    func implement(metadata: HistoryMetaDataDomain) -> Double? {
         guard let bodyMass = healthRepository.bodyMass else { return nil }
         guard let kcalPerHourKg = metadata.kcalPerHourKg else { return nil }
         guard bodyMass.unit == .kg else { return nil }

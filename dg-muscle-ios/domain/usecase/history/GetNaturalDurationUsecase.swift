@@ -8,13 +8,7 @@
 import Foundation
 
 final class GetNaturalDurationUsecase {
-    let metadata: HistoryMetaDataDomain
-    
-    init(metadata: HistoryMetaDataDomain) {
-        self.metadata = metadata
-    }
-    
-    func implement() -> String {
+    func implement(metadata: HistoryMetaDataDomain) -> String {
         let seconds: Int = Int(metadata.duration)
         
         let hours = seconds / 3600

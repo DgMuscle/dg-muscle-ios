@@ -52,9 +52,9 @@ struct HistoryItemView: View {
     let history = historyRepository.histories.randomElement()!
     
     let viewModel = HistoryItemViewModel(history: .init(from: history),
-                                         getDayUsecase: .init(history: history),
-                                         getPartsUsecase: .init(history: history, exerciseRepository: exerciseRepository),
-                                         getKcalUsecase: .init(metadata: metaData, healthRepository: healthRepository),
-                                         getNaturalDurationUsecase: .init(metadata: metaData))
+                                         getDayUsecase: .init(),
+                                         getPartsUsecase: .init(exerciseRepository: exerciseRepository),
+                                         getKcalUsecase: .init(healthRepository: healthRepository),
+                                         getNaturalDurationUsecase: .init())
     return HistoryItemView(viewModel: viewModel).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }

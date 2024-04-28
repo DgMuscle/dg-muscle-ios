@@ -8,15 +8,13 @@
 import Foundation
 
 final class GetPartsUsecase {
-    let history: HistoryDomain
     let exerciseRepository: ExerciseRepository
     
-    init(history: HistoryDomain, exerciseRepository: ExerciseRepository) {
-        self.history = history
+    init(exerciseRepository: ExerciseRepository) {
         self.exerciseRepository = exerciseRepository
     }
     
-    func implement() -> [ExerciseDomain.Part] {
+    func implement(history: HistoryDomain) -> [ExerciseDomain.Part] {
         let exerciseIds = history.records.map { $0.exerciseId }
         let exercises = exerciseRepository.exercises.filter({ exerciseIds.contains($0.id) })
         var parts: [ExerciseDomain.Part] = exercises.flatMap({ $0.parts })

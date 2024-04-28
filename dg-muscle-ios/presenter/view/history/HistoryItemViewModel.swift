@@ -17,15 +17,15 @@ final class HistoryItemViewModel: ObservableObject {
     
     let getDayUsecase: GetDayUsecase
     let getPartsUsecase: GetPartsUsecase
-    let getKcalUsecase: GetKcalUsecase?
-    let getNaturalDurationUsecase: GetNaturalDurationUsecase?
+    let getKcalUsecase: GetKcalUsecase
+    let getNaturalDurationUsecase: GetNaturalDurationUsecase
     
     init(
         history: HistoryV,
         getDayUsecase: GetDayUsecase,
         getPartsUsecase: GetPartsUsecase,
-        getKcalUsecase: GetKcalUsecase?,
-        getNaturalDurationUsecase: GetNaturalDurationUsecase?
+        getKcalUsecase: GetKcalUsecase,
+        getNaturalDurationUsecase: GetNaturalDurationUsecase
     ) {
         self.history = history
         self.getDayUsecase = getDayUsecase
@@ -37,9 +37,11 @@ final class HistoryItemViewModel: ObservableObject {
     }
     
     private func bind() {
-        day = getDayUsecase.implement()
-        parts = getPartsUsecase.implement().compactMap({ .init(rawValue: $0.rawValue) })
-        time = getNaturalDurationUsecase?.implement()
-        kcal = getKcalUsecase?.implement()
+        day = getDayUsecase.implement(history: history.domain)
+        parts = getPartsUsecase.implement(history: history.domain).compactMap({ .init(rawValue: $0.rawValue) })
+        
+        guard let metaData = history.metaData else { return }
+        time = getNaturalDurationUsecase.implement(metadata: metaData.domain)
+        kcal = getKcalUsecase.implement(metadata: metaData.domain)
     }
 }

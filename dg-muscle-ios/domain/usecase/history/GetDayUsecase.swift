@@ -8,13 +8,7 @@
 import Foundation
 
 final class GetDayUsecase {
-    let history: HistoryDomain
-    
-    init(history: HistoryDomain) {
-        self.history = history
-    }
-    
-    func implement() -> String {
+    func implement(history: HistoryDomain) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d"
         return dateFormatter.string(from: history.date)

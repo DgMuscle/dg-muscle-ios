@@ -43,22 +43,13 @@ struct HistorySectionViewV2: View {
                     tapHistory?(history)
                 } label: {
                     HistoryItemView(viewModel: .init(history: history,
-                                                     getDayUsecase: .init(history: history.domain),
-                                                     getPartsUsecase: .init(history: history.domain, exerciseRepository: exerciseRepository),
-                                                     getKcalUsecase: getKcalUsecase(history: history),
-                                                     getNaturalDurationUsecase: getNaturalDurationUsecase(history: history)))
+                                                     getDayUsecase: .init(),
+                                                     getPartsUsecase: .init(exerciseRepository: exerciseRepository),
+                                                     getKcalUsecase: .init(healthRepository: healthRepository),
+                                                     getNaturalDurationUsecase: .init())
+                    )
                 }
             }
         }
-    }
-    
-    func getKcalUsecase(history: HistoryV) -> GetKcalUsecase? {
-        guard let metaData = history.metaData else { return nil }
-        return .init(metadata: metaData.domain, healthRepository: healthRepository)
-    }
-    
-    func getNaturalDurationUsecase(history: HistoryV) -> GetNaturalDurationUsecase? {
-        guard let metaData = history.metaData else { return nil }
-        return .init(metadata: metaData.domain)
     }
 }

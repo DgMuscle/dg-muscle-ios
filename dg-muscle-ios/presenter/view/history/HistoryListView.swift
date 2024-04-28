@@ -81,7 +81,8 @@ struct HistoryListView: View {
     let viewModel: HistoryListViewModel = .init(subscribeGroupedHistoriesUsecase: .init(historyRepository: historyRepository),
                                                 subscribeMetaDatasMapUsecase: .init(healthRepository: healthRepository),
                                                 subscribeUserUsecase: .init(userRepository: userRepository), 
-                                                getTodayHistoryUsecase: .init(historyRepository: historyRepository, today: today))
+                                                getTodayHistoryUsecase: .init(historyRepository: historyRepository, today: today), 
+                                                deleteHistoryUsecase: .init(historyRepository: historyRepository))
     
     return HistoryListView(today: today, historyRepository: historyRepository, viewModel: viewModel)
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)

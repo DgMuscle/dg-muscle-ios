@@ -16,6 +16,7 @@ final class HistoryListViewModel: ObservableObject {
     let subscribeMetaDatasMapUsecase: SubscribeMetaDatasMapUsecase
     let subscribeUserUsecase: SubscribeUserUsecase
     let getTodayHistoryUsecase: GetTodayHistoryUsecase
+    let deleteHistoryUsecase: DeleteHistoryUsecase
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -23,13 +24,19 @@ final class HistoryListViewModel: ObservableObject {
         subscribeGroupedHistoriesUsecase: SubscribeGroupedHistoriesUsecase,
         subscribeMetaDatasMapUsecase: SubscribeMetaDatasMapUsecase,
         subscribeUserUsecase: SubscribeUserUsecase,
-        getTodayHistoryUsecase: GetTodayHistoryUsecase
+        getTodayHistoryUsecase: GetTodayHistoryUsecase,
+        deleteHistoryUsecase: DeleteHistoryUsecase
     ) {
         self.subscribeGroupedHistoriesUsecase = subscribeGroupedHistoriesUsecase
         self.subscribeMetaDatasMapUsecase = subscribeMetaDatasMapUsecase
         self.subscribeUserUsecase = subscribeUserUsecase
         self.getTodayHistoryUsecase = getTodayHistoryUsecase
+        self.deleteHistoryUsecase = deleteHistoryUsecase
         bind()
+    }
+    
+    func delete(history: HistoryV) {
+        deleteHistoryUsecase.implement(history: history.domain)
     }
     
     func todayHistory() -> HistoryV? {
