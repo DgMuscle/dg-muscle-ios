@@ -1,5 +1,5 @@
 //
-//  GetGroupedHistoriesUsecase.swift
+//  SubscribeGroupedHistoriesUsecase.swift
 //  dg-muscle-ios
 //
 //  Created by 신동규 on 4/28/24.
@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 // history 데이터를 월별로 묶어서 2차 배열로 반환해준다
-final class GetGroupedHistoriesUsecase {
-    private let historyRepo: HistoryRepository
+final class SubscribeGroupedHistoriesUsecase {
+    private let historyRepository: HistoryRepository
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMM"
@@ -21,8 +21,8 @@ final class GetGroupedHistoriesUsecase {
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(historyRepo: HistoryRepository) {
-        self.historyRepo = historyRepo
+    init(historyRepository: HistoryRepository) {
+        self.historyRepository = historyRepository
         bind()
     }
     
@@ -31,7 +31,7 @@ final class GetGroupedHistoriesUsecase {
     }
     
     private func bind() {
-        historyRepo.historiesPublisher
+        historyRepository.historiesPublisher
             .sink { [weak self] histories in
                 guard let self else { return }
                 groupedHistories = group(histories: histories)

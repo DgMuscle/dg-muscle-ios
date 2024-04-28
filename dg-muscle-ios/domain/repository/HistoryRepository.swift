@@ -11,8 +11,9 @@ import Combine
 protocol HistoryRepository {
     var histories: [HistoryDomain] { get }
     var historiesPublisher: AnyPublisher<[HistoryDomain], Never> { get }
-    func get() throws -> [HeatmapDomain]
+    var heatmapColor: HeatmapColorDomain { get }
+    var heatmapColorPublisher: AnyPublisher<HeatmapColorDomain, Never> { get }
     func post(data: HistoryDomain) async throws
-    func post(data: [HeatmapDomain]) throws
+    func post(data: HeatmapColorDomain) throws
     func delete(data: HistoryDomain) async throws
 }

@@ -12,4 +12,8 @@ struct HistoryDomain {
     let date: Date
     let memo: String?
     let records: [RecordDomain]
+    
+    var volume: Double {
+        records.map({ $0.volume }).reduce(0, +)
+    }
 }

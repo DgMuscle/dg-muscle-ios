@@ -7,26 +7,24 @@
 
 import Foundation
 import Combine
-import WidgetKit
 
 final class HistoryRepositoryData: HistoryRepository {
     static let shared = HistoryRepositoryData()
+    
     var histories: [HistoryDomain] { _histories }
     var historiesPublisher: AnyPublisher<[HistoryDomain], Never> { $_histories.eraseToAnyPublisher() }
-    
     @Published private var _histories: [HistoryDomain] = []
+    
+    var heatmapColor: HeatmapColorDomain { _heatmapColor }
+    var heatmapColorPublisher: AnyPublisher<HeatmapColorDomain, Never> { $_heatmapColor.eraseToAnyPublisher() }
+    @Published var _heatmapColor: HeatmapColorDomain = .green
     
     private var cancellables = Set<AnyCancellable>()
     
     private init() {
         _histories = getExerciseHistoryFromFile()
+        _heatmapColor = get()
         bind()
-    }
-    
-    func get() throws -> [HeatmapDomain] {
-        let heatmapDatas: [HeatmapData] = try FileManagerHelperV2.shared.load([HeatmapData].self, fromFile: .workoutHeatMapData)
-        let heatmapDomains: [HeatmapDomain] = heatmapDatas.map({ .init(id: $0.id, week: $0.week, volumes: $0.volumes) })
-        return heatmapDomains
     }
     
     func post(data: HistoryDomain) async throws {
@@ -46,12 +44,6 @@ final class HistoryRepositoryData: HistoryRepository {
         )
     }
     
-    func post(data: [HeatmapDomain]) throws {
-        let data: [HeatmapData] = data.map({ .init(from: $0) })
-        try FileManagerHelperV2.shared.save(data, toFile: .workoutHeatMapData)
-        WidgetCenter.shared.reloadAllTimelines()
-    }
-    
     func delete(data: HistoryDomain) async throws {
         struct Body: Codable {
             let id: String
@@ -68,6 +60,17 @@ final class HistoryRepositoryData: HistoryRepository {
         let _: ResponseData = try await APIClient.shared.request(method: .delete,
                                                                  url: FunctionsURL.history(.deletehistory),
                                                                  body: body)
+    }
+    
+    func post(data: HeatmapColorDomain) throws {
+        _heatmapColor = data
+        let data = HeatmapColorData(rawValue: data.rawValue) ?? .green
+        try FileManagerHelperV2.shared.save(data, toFile: .heatmapColor)
+    }
+    
+    private func get() -> HeatmapColorDomain {
+        let data: HeatmapColorData = (try? FileManagerHelperV2.shared.load(HeatmapColorData.self, fromFile: .heatmapColor)) ?? .green
+        return HeatmapColorDomain(rawValue: data.rawValue) ?? .green
     }
     
     private func getExerciseHistoryFromFile() -> [HistoryDomain] {

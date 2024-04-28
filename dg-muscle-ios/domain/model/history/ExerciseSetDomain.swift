@@ -12,6 +12,10 @@ struct ExerciseSetDomain {
     let unit: Unit
     let reps: Int
     let weight: Double
+    
+    var volume: Double {
+        Double(reps) * weight
+    }
 }
 
 extension ExerciseSetDomain {

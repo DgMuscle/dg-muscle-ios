@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HistoryV: Equatable {
+struct HistoryV: Equatable, Identifiable {
     let id: String
     let date: String
     let memo: String?
