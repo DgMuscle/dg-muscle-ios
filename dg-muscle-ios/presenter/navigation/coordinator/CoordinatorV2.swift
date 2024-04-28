@@ -25,6 +25,10 @@ final class CoordinatorV2: ObservableObject {
         bind()
     }
     
+    func pop() {
+        path.removeLast()
+    }
+    
     private func bind() {
         
     }
