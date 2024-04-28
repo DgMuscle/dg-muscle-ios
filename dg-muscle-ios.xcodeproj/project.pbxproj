@@ -71,6 +71,7 @@
 		700527072BDE09BF007838BA /* ExerciseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DD12BDD471F0059B22A /* ExerciseRepository.swift */; };
 		700527092BDE09C8007838BA /* ExerciseRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700527082BDE09C8007838BA /* ExerciseRepositoryTest.swift */; };
 		7005270A2BDE09D0007838BA /* ExerciseRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700527082BDE09C8007838BA /* ExerciseRepositoryTest.swift */; };
+		7005270C2BDE0DE3007838BA /* HistorySectionViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7005270B2BDE0DE3007838BA /* HistorySectionViewV2.swift */; };
 		7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */; };
 		701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4C52AD2875700852E2E /* FileManagerHelper.swift */; };
 		70226B882AF7765400379ED3 /* WorkoutMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70226B872AF7765400379ED3 /* WorkoutMetaData.swift */; };
@@ -397,6 +398,7 @@
 		700527032BDE0685007838BA /* GetKcalUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetKcalUsecase.swift; sourceTree = "<group>"; };
 		700527052BDE08AB007838BA /* HistoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemView.swift; sourceTree = "<group>"; };
 		700527082BDE09C8007838BA /* ExerciseRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepositoryTest.swift; sourceTree = "<group>"; };
+		7005270B2BDE0DE3007838BA /* HistorySectionViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySectionViewV2.swift; sourceTree = "<group>"; };
 		7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSection.swift; sourceTree = "<group>"; };
 		701CC4C52AD2875700852E2E /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
 		70226B872AF7765400379ED3 /* WorkoutMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMetaData.swift; sourceTree = "<group>"; };
@@ -1000,6 +1002,7 @@
 				700526F72BDE01EB007838BA /* HistoryItemViewModel.swift */,
 				700526D22BDDF163007838BA /* HistoryListView.swift */,
 				70884DFF2BDD5B110059B22A /* HistoryListViewModel.swift */,
+				7005270B2BDE0DE3007838BA /* HistorySectionViewV2.swift */,
 				700526CA2BDDEC94007838BA /* heatmap */,
 			);
 			path = history;
@@ -1803,6 +1806,7 @@
 				70F838A62AC7FEA8009725EF /* ExerciseSet.swift in Sources */,
 				707B0AF92BD163F700D8250B /* HeatmapRepositoryTest.swift in Sources */,
 				708785142BCEC16100930B0D /* MyProfileListItemView.swift in Sources */,
+				7005270C2BDE0DE3007838BA /* HistorySectionViewV2.swift in Sources */,
 				700526EC2BDDFB87007838BA /* GetTodayHistoryUsecase.swift in Sources */,
 				70756F282BCAC1D60035EFF4 /* ExerciseListV2View.swift in Sources */,
 				02053E342BD24F5A003B8D76 /* MonthlySectionView.swift in Sources */,

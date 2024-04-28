@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class HistoryItemViewModel: ObservableObject {
-    @Published var history: HistoryV
+    private let history: HistoryV
     @Published var day: String = ""
     @Published var parts: [ExerciseV.Part] = []
     @Published var time: String?
