@@ -10,7 +10,7 @@ import Foundation
 struct RecordV: Equatable {
     let id: String
     let exerciseId: String
-    let sets: [ExerciseSetV]
+    var sets: [ExerciseSetV]
     
     init(from: RecordDomain) {
         id = from.id

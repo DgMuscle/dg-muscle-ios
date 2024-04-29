@@ -20,6 +20,7 @@
 		0247856C2BCFBCC700C9DF4F /* AppleAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247856B2BCFBCC700C9DF4F /* AppleAuthView.swift */; };
 		029139852BDB9DB700A82A62 /* FriendSearchUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029139842BDB9DB700A82A62 /* FriendSearchUserView.swift */; };
 		029139872BDBA13100A82A62 /* FriendSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029139862BDBA13100A82A62 /* FriendSearchTextField.swift */; };
+		0292DC592BDF3C24006295FA /* HistoryFormSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0292DC582BDF3C24006295FA /* HistoryFormSetsViewModel.swift */; };
 		02BE7C2C2BD26D3E00C6DD5C /* HorizontalVolumeBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE7C2B2BD26D3E00C6DD5C /* HorizontalVolumeBarChartView.swift */; };
 		02C95AB62BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C95AB52BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift */; };
 		02CA6D802BCFCD1400A8746B /* ContentViewV2Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA6D7F2BCFCD1400A8746B /* ContentViewV2Model.swift */; };
@@ -415,6 +416,7 @@
 		0247856B2BCFBCC700C9DF4F /* AppleAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthView.swift; sourceTree = "<group>"; };
 		029139842BDB9DB700A82A62 /* FriendSearchUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchUserView.swift; sourceTree = "<group>"; };
 		029139862BDBA13100A82A62 /* FriendSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchTextField.swift; sourceTree = "<group>"; };
+		0292DC582BDF3C24006295FA /* HistoryFormSetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormSetsViewModel.swift; sourceTree = "<group>"; };
 		02BE7C2B2BD26D3E00C6DD5C /* HorizontalVolumeBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalVolumeBarChartView.swift; sourceTree = "<group>"; };
 		02C95AB52BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalVolumeBarGraph.swift; sourceTree = "<group>"; };
 		02CA6D7F2BCFCD1400A8746B /* ContentViewV2Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewV2Model.swift; sourceTree = "<group>"; };
@@ -780,6 +782,14 @@
 			path = components;
 			sourceTree = "<group>";
 		};
+		0292DC572BDF3BD3006295FA /* form */ = {
+			isa = PBXGroup;
+			children = (
+				0292DC582BDF3C24006295FA /* HistoryFormSetsViewModel.swift */,
+			);
+			path = form;
+			sourceTree = "<group>";
+		};
 		700309012BD150E500C6DA26 /* removeAccount */ = {
 			isa = PBXGroup;
 			children = (
@@ -1133,6 +1143,7 @@
 				700526D22BDDF163007838BA /* HistoryListView.swift */,
 				70884DFF2BDD5B110059B22A /* HistoryListViewModel.swift */,
 				7005270B2BDE0DE3007838BA /* HistorySectionViewV2.swift */,
+				0292DC572BDF3BD3006295FA /* form */,
 				700526CA2BDDEC94007838BA /* heatmap */,
 			);
 			path = history;
@@ -2185,6 +2196,7 @@
 				7060BB5E2BDE1FF20092B987 /* ExerciseManageView.swift in Sources */,
 				70884DD22BDD471F0059B22A /* ExerciseRepository.swift in Sources */,
 				70884DE42BDD511A0059B22A /* HistoryMetaDataDomain.swift in Sources */,
+				0292DC592BDF3C24006295FA /* HistoryFormSetsViewModel.swift in Sources */,
 				7060BB6E2BDE288D0092B987 /* ExercisePartsSectionView.swift in Sources */,
 				7060BB522BDE1B100092B987 /* ExerciseSectionV.swift in Sources */,
 				706760BC2BCC0CCD00649BF3 /* PreviousRecordView.swift in Sources */,
