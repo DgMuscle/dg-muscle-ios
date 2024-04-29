@@ -18,6 +18,12 @@ struct RecordV: Equatable {
         sets = from.sets.map({ .init(from: $0) })
     }
     
+    init(id: String, exerciseId: String, sets: [ExerciseSetV]) {
+        self.id = id
+        self.exerciseId = exerciseId
+        self.sets = sets
+    }
+    
     var domain: RecordDomain {
         .init(id: id, exerciseId: exerciseId, sets: sets.map({ $0.domain }))
     }

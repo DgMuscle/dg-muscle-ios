@@ -18,6 +18,8 @@
 		024785652BCFBA9B00C9DF4F /* AppleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024785642BCFBA9B00C9DF4F /* AppleAuth.swift */; };
 		024785682BCFBC5A00C9DF4F /* AppleAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024785672BCFBC5A00C9DF4F /* AppleAuthViewModel.swift */; };
 		0247856C2BCFBCC700C9DF4F /* AppleAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247856B2BCFBCC700C9DF4F /* AppleAuthView.swift */; };
+		025A13442BDF8B060069F293 /* HistoryFormRecordItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025A13432BDF8B060069F293 /* HistoryFormRecordItemView.swift */; };
+		025A13462BDF8B4B0069F293 /* HistoryFormRecordItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025A13452BDF8B4B0069F293 /* HistoryFormRecordItemViewModel.swift */; };
 		029139852BDB9DB700A82A62 /* FriendSearchUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029139842BDB9DB700A82A62 /* FriendSearchUserView.swift */; };
 		029139872BDBA13100A82A62 /* FriendSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029139862BDBA13100A82A62 /* FriendSearchTextField.swift */; };
 		0292DC592BDF3C24006295FA /* HistoryFormSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0292DC582BDF3C24006295FA /* HistoryFormSetsViewModel.swift */; };
@@ -420,6 +422,8 @@
 		024785642BCFBA9B00C9DF4F /* AppleAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuth.swift; sourceTree = "<group>"; };
 		024785672BCFBC5A00C9DF4F /* AppleAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthViewModel.swift; sourceTree = "<group>"; };
 		0247856B2BCFBCC700C9DF4F /* AppleAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthView.swift; sourceTree = "<group>"; };
+		025A13432BDF8B060069F293 /* HistoryFormRecordItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormRecordItemView.swift; sourceTree = "<group>"; };
+		025A13452BDF8B4B0069F293 /* HistoryFormRecordItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormRecordItemViewModel.swift; sourceTree = "<group>"; };
 		029139842BDB9DB700A82A62 /* FriendSearchUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchUserView.swift; sourceTree = "<group>"; };
 		029139862BDBA13100A82A62 /* FriendSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchTextField.swift; sourceTree = "<group>"; };
 		0292DC582BDF3C24006295FA /* HistoryFormSetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormSetsViewModel.swift; sourceTree = "<group>"; };
@@ -797,6 +801,8 @@
 		0292DC572BDF3BD3006295FA /* form */ = {
 			isa = PBXGroup;
 			children = (
+				025A13432BDF8B060069F293 /* HistoryFormRecordItemView.swift */,
+				025A13452BDF8B4B0069F293 /* HistoryFormRecordItemViewModel.swift */,
 				02DBEF5D2BDF5B9A00E11D46 /* HistoryFormRecordsViewModel.swift */,
 				029B47282BDF8851006DC8BD /* HistoryFormSetsView.swift */,
 				0292DC582BDF3C24006295FA /* HistoryFormSetsViewModel.swift */,
@@ -2027,6 +2033,7 @@
 				02070F0A2BCE526B00518744 /* MyProfileViewModel.swift in Sources */,
 				706760C02BCC0F4A00649BF3 /* PreviousRecordListItem.swift in Sources */,
 				7060BB742BDE2C3C0092B987 /* ExerciseAdd2View.swift in Sources */,
+				025A13442BDF8B060069F293 /* HistoryFormRecordItemView.swift in Sources */,
 				70756F0E2BCAA19B0035EFF4 /* UserBoxView.swift in Sources */,
 				70EA5B5E2BD8F10A00DEFB15 /* FriendRepository.swift in Sources */,
 				703A97CD2BCBA7F5002C0843 /* ManageExerciseViewModel.swift in Sources */,
@@ -2169,6 +2176,7 @@
 				70A85A9C2BDE648900537071 /* ProfileEditView.swift in Sources */,
 				704464182BD013EE00CB21F6 /* UpdateProfilePhotoView.swift in Sources */,
 				70884DD62BDD47D10059B22A /* ExerciseData.swift in Sources */,
+				025A13462BDF8B4B0069F293 /* HistoryFormRecordItemViewModel.swift in Sources */,
 				702D77CB2BD35C40008AF48F /* Coordinator.swift in Sources */,
 				702D77D22BD36019008AF48F /* ExerciseCoordinator.swift in Sources */,
 				706760AE2BCBE37800649BF3 /* HistoryFormV2ViewModel.swift in Sources */,
