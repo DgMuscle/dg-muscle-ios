@@ -25,7 +25,11 @@ final class HistoryFormRecordsViewModel: ObservableObject {
     }
     
     func post(record: RecordV) {
-        records.append(record)
+        if let index = records.firstIndex(where: { $0.id == record.id }) {
+            records[index] = record
+        } else {
+            records.append(record)
+        }
     }
     
     private func bind() {

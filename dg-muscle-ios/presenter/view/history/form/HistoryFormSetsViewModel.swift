@@ -36,7 +36,11 @@ final class HistoryFormSetsViewModel: ObservableObject {
     }
     
     func post(set: ExerciseSetV) {
-        sets.append(set)
+        if let index = sets.firstIndex(where: { $0.id == set.id }) {
+            sets[index] = set
+        } else {
+            sets.append(set)
+        }
     }
     
     private func bind() {
