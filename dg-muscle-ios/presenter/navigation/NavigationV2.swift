@@ -23,6 +23,7 @@ struct MainNavigationV2: Identifiable, Hashable {
 struct HistoryNavigationV2: Identifiable, Hashable {
     enum Name: String {
         case historyForm
+        case recordForm
     }
     
     func hash(into hasher: inout Hasher) {
@@ -31,11 +32,20 @@ struct HistoryNavigationV2: Identifiable, Hashable {
     
     var id: Int { name.hashValue }
     let name: Name
-    let historyFormParameter: HistoryV?
+    var historyFormParameter: HistoryV? = nil
+    
+    var recordForForm: RecordV? = nil
+    var historyDateForForm: String? = nil
     
     init(historyForm history: HistoryV?) {
         name = .historyForm
         historyFormParameter = history
+    }
+    
+    init(recordForForm: RecordV, historyDateForForm: String) {
+        name = .recordForm
+        self.recordForForm = recordForForm
+        self.historyDateForForm = historyDateForForm
     }
 }
 

@@ -18,4 +18,8 @@ final class HistoryCoordinatorV2 {
     func historyForm(_ history: HistoryV?) {
         path.append(HistoryNavigationV2(historyForm: history))
     }
+    
+    func recordForm(record: RecordV, historyDateForForm: String) {
+        path.append(HistoryNavigationV2(recordForForm: record, historyDateForForm: historyDateForForm))
+    }
 }
