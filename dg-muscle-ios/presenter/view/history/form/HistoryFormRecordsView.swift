@@ -68,7 +68,7 @@ struct HistoryFormRecordsView: View {
 #Preview {
     let exerciseRepository: ExerciseRepository = ExerciseRepositoryTest()
     let history: HistoryV = .init(from: HistoryRepositoryTest().histories.randomElement()!)
-    let viewModel: HistoryFormRecordsViewModel = .init(history: .constant(history))
+    let viewModel: HistoryFormRecordsViewModel = .init(history: history)
     return HistoryFormRecordsView(viewModel: viewModel,
                                   exerciseRepository: exerciseRepository)
     .preferredColorScheme(.dark)

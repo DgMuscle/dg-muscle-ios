@@ -37,7 +37,7 @@ struct HistoryNavigationV2: Identifiable, Hashable {
     var recordForForm: RecordV? = nil
     var historyDateForForm: String? = nil
     
-    init(historyForm history: HistoryV?) {
+    init(historyForm history: HistoryV) {
         name = .historyForm
         historyFormParameter = history
     }

@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 
 final class HistoryFormRecordsViewModel: ObservableObject {
-    @Binding private var history: HistoryV
+    @Published private var history: HistoryV
     
     @Published var records: [RecordV] = []
     @Published var currentRecordsCount: Int = 0
@@ -22,9 +22,9 @@ final class HistoryFormRecordsViewModel: ObservableObject {
     }
     
     private var cancellables = Set<AnyCancellable>()
-    init(history: Binding<HistoryV>) {
-        _history = history
-        self.records = history.wrappedValue.records
+    init(history: HistoryV) {
+        self.history = history
+        self.records = history.records
         
         configureTitle()
         bind()

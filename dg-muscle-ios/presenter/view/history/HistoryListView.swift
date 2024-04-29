@@ -34,7 +34,7 @@ struct HistoryListView: View {
             
             HStack {
                 Button("start workout".capitalized) {
-                    coordinator.history.historyForm(viewModel.todayHistory())
+                    coordinator.history.historyForm(viewModel.todayHistory() ?? .init())
                 }
                 .fontWeight(.black)
                 Spacer()
