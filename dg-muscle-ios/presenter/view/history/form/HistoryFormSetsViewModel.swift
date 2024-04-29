@@ -44,6 +44,10 @@ final class HistoryFormSetsViewModel: ObservableObject {
         configurePreviousRecord(record: record.wrappedValue)
     }
     
+    func delete(atOffsets: IndexSet) {
+        sets.remove(atOffsets: atOffsets)
+    }
+    
     func post(set: ExerciseSetV) {
         if let index = sets.firstIndex(where: { $0.id == set.id }) {
             sets[index] = set
