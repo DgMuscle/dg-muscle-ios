@@ -20,6 +20,13 @@ struct ExerciseSetV: Equatable {
         weight = from.weight
     }
     
+    init(id: String, reps: Int, weight: Double) {
+        self.id = id
+        self.reps = reps
+        self.weight = weight
+        self.unit = .kg
+    }
+    
     var domain: ExerciseSetDomain {
         .init(id: id, unit: .init(rawValue: unit.rawValue) ?? .kg, reps: reps, weight: weight)
     }
