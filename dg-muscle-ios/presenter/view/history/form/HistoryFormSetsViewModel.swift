@@ -16,8 +16,10 @@ final class HistoryFormSetsViewModel: ObservableObject {
     @Published var currentSetsCount: Int = 0
     @Published var currentRecordVolume: Double = 0
     
-    @Published private var previousRecord: RecordV? = nil
+    @Published var previousRecord: RecordV? = nil
     @Published var previousRecordVolume: Double? = nil
+    
+    @Published var diffWithPrevious: Double?
     
     private let previousDateString: String
     private let getPreviousRecordUsecase: GetPreviousRecordUsecase
@@ -58,6 +60,14 @@ final class HistoryFormSetsViewModel: ObservableObject {
             .compactMap({ $0 })
             .sink { [weak self] record in
                 self?.previousRecordVolume = record.volume
+            }
+            .store(in: &cancellables)
+        
+        $currentRecordVolume
+            .combineLatest($previousRecordVolume.compactMap({ $0 }))
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] current, previous in
+                self?.diffWithPrevious = current - previous
             }
             .store(in: &cancellables)
     }

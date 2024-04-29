@@ -795,8 +795,8 @@
 			children = (
 				02DBEF5D2BDF5B9A00E11D46 /* HistoryFormRecordsViewModel.swift */,
 				0292DC582BDF3C24006295FA /* HistoryFormSetsViewModel.swift */,
-				02DBEF632BDF5EE000E11D46 /* HistoryFormSetViewModel.swift */,
 				029B47262BDF838F006DC8BD /* HistoryFormSetView.swift */,
+				02DBEF632BDF5EE000E11D46 /* HistoryFormSetViewModel.swift */,
 			);
 			path = form;
 			sourceTree = "<group>";
