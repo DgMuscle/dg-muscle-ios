@@ -33,7 +33,7 @@ struct HistoryFormRecordItemView: View {
             .foregroundStyle(.secondary)
             .fontWeight(.medium)
             .font(.caption)
-            .padding(.top, 8)
+            .padding(.top, 0)
         }
     }
 }
@@ -44,7 +44,7 @@ struct HistoryFormRecordItemView: View {
         .init(id: UUID().uuidString, reps: 5, weight: 75),
         .init(id: UUID().uuidString, reps: 7, weight: 60),
     ]
-    let record: RecordV = .init(id: "1", exerciseId: "squa 2t", sets: sets)
+    let record: RecordV = .init(id: "1", exerciseId: "squat", sets: sets)
     let viewModel: HistoryFormRecordItemViewModel = .init(record: record, getExerciseUsecase: getExerciseUsecase)
     return HistoryFormRecordItemView(viewModel: viewModel)
         .preferredColorScheme(.dark)

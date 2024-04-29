@@ -10,6 +10,7 @@ import SwiftUI
 struct HistoryFormSetsView: View {
     
     @StateObject var viewModel: HistoryFormSetsViewModel
+    @EnvironmentObject var coordinator: CoordinatorV2
     
     var body: some View {
         List {
@@ -25,7 +26,7 @@ struct HistoryFormSetsView: View {
                 VStack(alignment: .leading) {
                     if let previousRecord = viewModel.previousRecord {
                         Button {
-                            print("move to previous record page")
+                            print("move to previous record page \(previousRecord)")
                         } label: {
                             HStack {
                                 Text("previous record")
@@ -86,4 +87,5 @@ struct HistoryFormSetsView: View {
                                                     getExerciseUsecase: .init(exerciseRepository: ExerciseRepositoryTest()))
     return HistoryFormSetsView(viewModel: viewModel)
         .preferredColorScheme(.dark)
+        .environmentObject(CoordinatorV2(path: .constant(.init())))
 }
