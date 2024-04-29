@@ -335,6 +335,7 @@
 		70C144D32AC82558007F0540 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
 		70C144D82AC82807007F0540 /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D72AC82807007F0540 /* DefaultResponse.swift */; };
 		70C8C1892BDFF37D00805C49 /* HistoryFormRecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C8C1882BDFF37D00805C49 /* HistoryFormRecordsView.swift */; };
+		70C8C18B2BDFF96B00805C49 /* PostHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C8C18A2BDFF96B00805C49 /* PostHistoryUsecase.swift */; };
 		70CA7E842BCD811C00D47674 /* WorkoutHeatMapCommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA7E832BCD811C00D47674 /* WorkoutHeatMapCommonView.swift */; };
 		70CA7E852BCD818A00D47674 /* WorkoutHeatMapCommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA7E832BCD811C00D47674 /* WorkoutHeatMapCommonView.swift */; };
 		70CD21C72BCD662B009B72F3 /* WorkoutHeatMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208CF4A2BCCFA1500FD973D /* WorkoutHeatMapViewModel.swift */; };
@@ -671,6 +672,7 @@
 		70C144D22AC82558007F0540 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		70C144D72AC82807007F0540 /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
 		70C8C1882BDFF37D00805C49 /* HistoryFormRecordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormRecordsView.swift; sourceTree = "<group>"; };
+		70C8C18A2BDFF96B00805C49 /* PostHistoryUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHistoryUsecase.swift; sourceTree = "<group>"; };
 		70CA7E832BCD811C00D47674 /* WorkoutHeatMapCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeatMapCommonView.swift; sourceTree = "<group>"; };
 		70CD21D02BCD6732009B72F3 /* HeatMapColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatMapColumnView.swift; sourceTree = "<group>"; };
 		70CD21D22BCD6881009B72F3 /* WorkoutHeatMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeatMapView.swift; sourceTree = "<group>"; };
@@ -1540,6 +1542,7 @@
 				700526FF2BDE0422007838BA /* GetPartsUsecase.swift */,
 				0292DC5A2BDF3E21006295FA /* GetPreviousRecordUsecase.swift */,
 				700526EB2BDDFB87007838BA /* GetTodayHistoryUsecase.swift */,
+				70C8C18A2BDFF96B00805C49 /* PostHistoryUsecase.swift */,
 				70884E042BDD60170059B22A /* SubscribeGroupedHistoriesUsecase.swift */,
 				708DB2BC2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift */,
 				708DB2BA2BDD6F0900195605 /* SubscribeHeatmapUsecase.swift */,
@@ -2226,6 +2229,7 @@
 				703A97D52BCBBC3D002C0843 /* RecordFormV2ViewModel.swift in Sources */,
 				70884DFD2BDD59620059B22A /* HistoryMetaDataV.swift in Sources */,
 				70D3418F2ACC081E0010EAF9 /* Extension+Sequence.swift in Sources */,
+				70C8C18B2BDFF96B00805C49 /* PostHistoryUsecase.swift in Sources */,
 				703A97DD2BCBC66A002C0843 /* SetFormV2ViewModel.swift in Sources */,
 				7060BB622BDE23C60092B987 /* ExerciseSelectView.swift in Sources */,
 				702E21742BCA588A00147279 /* HealthRepositoryLive.swift in Sources */,

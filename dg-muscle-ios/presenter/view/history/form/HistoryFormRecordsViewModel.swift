@@ -20,12 +20,12 @@ final class HistoryFormRecordsViewModel: ObservableObject {
     var historyDateString: String {
         history.date
     }
-    
+    private let postHistoryUsecase: PostHistoryUsecase
     private var cancellables = Set<AnyCancellable>()
-    init(history: HistoryV) {
+    init(history: HistoryV, postHistoryUsecase: PostHistoryUsecase) {
         self.history = history
         self.records = history.records
-        
+        self.postHistoryUsecase = postHistoryUsecase
         configureTitle()
         bind()
     }
@@ -49,6 +49,12 @@ final class HistoryFormRecordsViewModel: ObservableObject {
                 self?.history.records = records
                 self?.currentRecordsCount = records.count
                 self?.currentTotalVolume = records.map({ $0.volume }).reduce(0, +)
+            }
+            .store(in: &cancellables)
+        
+        $history
+            .sink { [weak self] history in
+                self?.postHistoryUsecase.implement(data: history.domain)
             }
             .store(in: &cancellables)
     }
