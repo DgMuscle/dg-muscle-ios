@@ -42,7 +42,7 @@ struct HistoryFormRecordsView: View {
         }
         .scrollIndicators(.hidden)
         .navigationTitle(viewModel.title)
-        .sheet(isPresented: $isPresentSelectExercise) {
+        .fullScreenCover(isPresented: $isPresentSelectExercise) {
             ExerciseSelectView(exerciseRepository: exerciseRepository,
                                select: select,
                                moveToExerciseManage: moveToExerciseManage)
