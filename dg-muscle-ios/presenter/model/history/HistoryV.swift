@@ -10,8 +10,8 @@ import Foundation
 struct HistoryV: Equatable, Identifiable {
     let id: String
     let date: String
-    let memo: String?
-    let records: [RecordV]
+    var memo: String?
+    var records: [RecordV]
     var metaData: HistoryMetaDataV?
     
     private let dateBackup: Date
