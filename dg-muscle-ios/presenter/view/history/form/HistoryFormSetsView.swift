@@ -14,12 +14,17 @@ struct HistoryFormSetsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text("Set's count  :\(viewModel.currentSetsCount)")
+                Text("Set's Count  :\(viewModel.currentSetsCount)")
                 Text("Set's Volume :\(viewModel.currentRecordVolume)")
-                
-                
             }
             .padding()
+            
+            List {
+                ForEach(viewModel.sets) { set in
+                    HistoryFormSetItemView(set: set)
+                }
+                .onDelete(perform: viewModel.delete)
+            }
         }
         .scrollIndicators(.hidden)
         .navigationTitle(viewModel.exercise?.name ?? "Error: Can't find exercise".capitalized)
