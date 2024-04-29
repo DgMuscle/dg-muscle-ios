@@ -19,11 +19,13 @@ final class HistoryFormSetsViewModel: ObservableObject {
     @Published private var previousRecord: RecordV? = nil
     @Published var previousRecordVolume: Double? = nil
     
+    private let previousDateString: String
     private var cancellables = Set<AnyCancellable>()
     
-    init(record: Binding<RecordV>) {
+    init(record: Binding<RecordV>,
+         previousDateString: String) {
         _record = record
-        
+        self.previousDateString = previousDateString
         self.sets = self.record.sets
         
         bind()
