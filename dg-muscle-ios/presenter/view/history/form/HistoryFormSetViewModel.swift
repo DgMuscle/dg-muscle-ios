@@ -22,10 +22,10 @@ final class HistoryFormSetViewModel: ObservableObject {
         .init(id: setId, reps: reps, weight: weight)
     }
     
-    init(set: ExerciseSetV?) {
-        weight = set?.weight ?? 0
-        reps = set?.reps ?? 0
-        setId = set?.id ?? UUID().uuidString
+    init(set: ExerciseSetV) {
+        weight = set.weight
+        reps = set.reps
+        setId = set.id
     }
     
     func updateWeight(type: ButtonType) {

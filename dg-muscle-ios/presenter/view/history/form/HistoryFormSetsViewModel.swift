@@ -23,6 +23,9 @@ final class HistoryFormSetsViewModel: ObservableObject {
     
     @Published var exercise: ExerciseV?
     
+    @Published var present: Present = .init()
+    
+    
     private let historyDateString: String
     private let getPreviousRecordUsecase: GetPreviousRecordUsecase
     private let getExerciseUsecase: GetExerciseUsecase
@@ -44,6 +47,15 @@ final class HistoryFormSetsViewModel: ObservableObject {
         configurePreviousRecord(record: record.wrappedValue)
     }
     
+    func tapSet(set: ExerciseSetV) {
+        present = .init(isPresent: true, set: set)
+    }
+    
+    func newSet() {
+        let set: ExerciseSetV = .init(id: UUID().uuidString, reps: sets.last?.reps ?? 0, weight: sets.last?.weight ?? 0)
+        present = .init(isPresent: true, set: set)
+    }
+    
     func delete(atOffsets: IndexSet) {
         sets.remove(atOffsets: atOffsets)
     }
@@ -54,6 +66,7 @@ final class HistoryFormSetsViewModel: ObservableObject {
         } else {
             sets.append(set)
         }
+        present = .init()
     }
     
     private func bind() {
@@ -89,5 +102,12 @@ final class HistoryFormSetsViewModel: ObservableObject {
         guard let date = dateFormatter.date(from: historyDateString) else { return }
         guard let previousRecordDomain = getPreviousRecordUsecase.implement(record: record.domain, date: date) else { return }
         previousRecord = .init(from: previousRecordDomain)
+    }
+}
+
+extension HistoryFormSetsViewModel {
+    struct Present {
+        var isPresent: Bool = false
+        var set: ExerciseSetV?
     }
 }

@@ -27,7 +27,23 @@
     "%@ Record" : {
 
     },
+    "%@ volumes" : {
+
+    },
+    "%@%@ x %lld (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@ x %3$lld (%4$@)"
+          }
+        }
+      }
+    },
     "%lld" : {
+
+    },
+    "%lld sets," : {
 
     },
     "+" : {
@@ -509,6 +525,9 @@
     "Is above information correct?" : {
 
     },
+    "It can be happened if you delete this exercise" : {
+
+    },
     "logout" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -641,6 +660,9 @@
     "SELECT EXERCISE" : {
 
     },
+    "set's count: %lld," : {
+
+    },
     "Sets count is %lld" : {
 
     },
@@ -731,6 +753,9 @@
 
     },
     "Volume" : {
+
+    },
+    "volume is %@" : {
 
     },
     "Weight" : {

@@ -16,10 +16,37 @@ struct HistoryFormSetsView: View {
             Section {
                 ForEach(viewModel.sets) { set in
                     HistoryFormSetItemView(set: set)
+                        .onTapGesture {
+                            viewModel.tapSet(set: set)
+                        }
                 }
                 .onDelete(perform: viewModel.delete)
-            } footer: {
+            } header: {
+                VStack(alignment: .leading) {
+                    if let previousRecord = viewModel.previousRecord {
+                        Button {
+                            print("move to previous record page")
+                        } label: {
+                            HStack {
+                                Text("previous record")
+                                Image(systemName: "doc")
+                            }
+                        }
+                    }
+                    
+                    HStack {
+                        if let previousRecordVolume = viewModel.previousRecordVolume {
+                            Text("\(String(previousRecordVolume)) volumes")
+                        }
+                        
+                        if let diffWithPrevious = viewModel.diffWithPrevious {
+                            Text("\(String(abs(diffWithPrevious)))")
+                                .foregroundStyle(diffWithPrevious >= 0 ? .green : .red)
+                        }
+                    }
+                }
                 
+            } footer: {
                 VStack {
                     HStack {
                         Text("\(viewModel.currentSetsCount) sets,")
@@ -27,14 +54,22 @@ struct HistoryFormSetsView: View {
                         Spacer()
                     }
                     .padding(.bottom)
-                    
-                    RoundedGradationText(text: "NEW SET")
+                    Button {
+                        viewModel.newSet()
+                    } label: {
+                        RoundedGradationText(text: "NEW SET")
+                    }
                 }
             }
         }
         .scrollIndicators(.hidden)
         .navigationTitle(viewModel.exercise?.name ?? "Error: Can't find exercise".capitalized)
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $viewModel.present.isPresent) {
+            let set = viewModel.present.set ?? .init(id: UUID().uuidString, reps: 0, weight: 0)
+            HistoryFormSetView(viewModel: .init(set: set), save: viewModel.post)
+                .presentationDetents([.height(200)])
+        }
     }
 }
 
@@ -50,5 +85,5 @@ struct HistoryFormSetsView: View {
                                                     getPreviousRecordUsecase: .init(historyRepository: HistoryRepositoryTest()),
                                                     getExerciseUsecase: .init(exerciseRepository: ExerciseRepositoryTest()))
     return HistoryFormSetsView(viewModel: viewModel)
-        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+        .preferredColorScheme(.dark)
 }
