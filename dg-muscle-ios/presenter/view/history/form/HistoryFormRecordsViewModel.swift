@@ -24,6 +24,10 @@ final class HistoryFormRecordsViewModel: ObservableObject {
         bind()
     }
     
+    func delete(atOffsets: IndexSet) {
+        records.remove(atOffsets: atOffsets)
+    }
+    
     func post(record: RecordV) {
         if let index = records.firstIndex(where: { $0.id == record.id }) {
             records[index] = record
