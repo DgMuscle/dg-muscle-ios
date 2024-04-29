@@ -31,9 +31,9 @@ final class HistoryFormSetViewModel: ObservableObject {
     func updateWeight(type: ButtonType) {
         switch type {
         case .up:
-            weight += 1
+            weight += 5
         case .down:
-            weight -= 1
+            weight -= 5
         }
     }
     
