@@ -12,18 +12,24 @@ struct HistoryFormSetsView: View {
     @StateObject var viewModel: HistoryFormSetsViewModel
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                Text("Set's Count  :\(viewModel.currentSetsCount)")
-                Text("Set's Volume :\(viewModel.currentRecordVolume)")
-            }
-            .padding()
-            
-            List {
+        List {
+            Section {
                 ForEach(viewModel.sets) { set in
                     HistoryFormSetItemView(set: set)
                 }
                 .onDelete(perform: viewModel.delete)
+            } footer: {
+                
+                VStack {
+                    HStack {
+                        Text("\(viewModel.currentSetsCount) sets,")
+                        Text("\(String(viewModel.currentRecordVolume)) volumes")
+                        Spacer()
+                    }
+                    .padding(.bottom)
+                    
+                    RoundedGradationText(text: "NEW SET")
+                }
             }
         }
         .scrollIndicators(.hidden)
