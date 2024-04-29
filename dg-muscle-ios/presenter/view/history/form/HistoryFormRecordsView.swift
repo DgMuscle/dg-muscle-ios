@@ -13,14 +13,13 @@ struct HistoryFormRecordsView: View {
     @EnvironmentObject var coordinator: CoordinatorV2
     @State private var isPresentSelectExercise: Bool = false
     
-    
     let exerciseRepository: ExerciseRepository
     
     var body: some View {
         List {
             Section {
-                ForEach(viewModel.records) { record in
-                    HistoryFormRecordItemView(viewModel: .init(record: record,
+                ForEach($viewModel.records) { record in
+                    HistoryFormRecordItemView(viewModel: .init(record: record.wrappedValue,
                                                                getExerciseUsecase: .init(exerciseRepository: exerciseRepository)))
                     .onTapGesture {
                         coordinator.history.recordForm(record: record, historyDateForForm: viewModel.historyDateString)
@@ -53,6 +52,8 @@ struct HistoryFormRecordsView: View {
         isPresentSelectExercise.toggle()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             let record: RecordV = .init(id: UUID().uuidString, exerciseId: exercise.id, sets: [])
+            viewModel.records.append(record)
+            guard let record = $viewModel.records.last else { return }
             coordinator.history.recordForm(record: record, historyDateForForm: viewModel.historyDateString)
         }
     }

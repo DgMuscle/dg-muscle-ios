@@ -20,7 +20,11 @@ struct MainNavigationV2: Identifiable, Hashable {
     let name: Name
 }
 
-struct HistoryNavigationV2: Identifiable, Hashable {
+struct HistoryNavigationV2: Identifiable, Hashable, Equatable {
+    static func == (lhs: HistoryNavigationV2, rhs: HistoryNavigationV2) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     enum Name: String {
         case historyForm
         case recordForm
@@ -32,9 +36,10 @@ struct HistoryNavigationV2: Identifiable, Hashable {
     
     var id: Int { name.hashValue }
     let name: Name
+    
     var historyFormParameter: HistoryV? = nil
     
-    var recordForForm: RecordV? = nil
+    var recordForForm: Binding<RecordV>? = nil
     var historyDateForForm: String? = nil
     
     init(historyForm history: HistoryV) {
@@ -42,7 +47,7 @@ struct HistoryNavigationV2: Identifiable, Hashable {
         historyFormParameter = history
     }
     
-    init(recordForForm: RecordV, historyDateForForm: String) {
+    init(recordForForm: Binding<RecordV>, historyDateForForm: String) {
         name = .recordForm
         self.recordForForm = recordForForm
         self.historyDateForForm = historyDateForForm

@@ -34,14 +34,6 @@ final class HistoryFormRecordsViewModel: ObservableObject {
         records.remove(atOffsets: atOffsets)
     }
     
-    func post(record: RecordV) {
-        if let index = records.firstIndex(where: { $0.id == record.id }) {
-            records[index] = record
-        } else {
-            records.append(record)
-        }
-    }
-    
     private func bind() {
         $records
             .receive(on: DispatchQueue.main)
