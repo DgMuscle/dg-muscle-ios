@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "-" : {
+
+    },
     "'Traditional Strength Training'" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -25,6 +28,9 @@
 
     },
     "%lld" : {
+
+    },
+    "+" : {
 
     },
     "1. Lie on your back on a flat bench. Grip a barbell with hands slightly wider than shoulder width. The bar should be directly over the shoulders." : {
