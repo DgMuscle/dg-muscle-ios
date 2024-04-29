@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "-" : {
+
+    },
     "'Traditional Strength Training'" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -24,7 +27,36 @@
     "%@ Record" : {
 
     },
+    "%@ volumes" : {
+
+    },
+    "%@%@ x %lld (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@ x %3$lld (%4$@)"
+          }
+        }
+      }
+    },
     "%lld" : {
+
+    },
+    "%lld Records, %@ Volumes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld Records, %2$@ Volumes"
+          }
+        }
+      }
+    },
+    "%lld sets," : {
+
+    },
+    "+" : {
 
     },
     "1. Lie on your back on a flat bench. Grip a barbell with hands slightly wider than shoulder width. The bar should be directly over the shoulders." : {
@@ -503,6 +535,9 @@
     "Is above information correct?" : {
 
     },
+    "It can be happened if you delete this exercise" : {
+
+    },
     "logout" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -572,6 +607,9 @@
     "PREVIOUS" : {
 
     },
+    "previous record" : {
+
+    },
     "Profile" : {
 
     },
@@ -633,6 +671,9 @@
 
     },
     "SELECT EXERCISE" : {
+
+    },
+    "set's count: %lld," : {
 
     },
     "Sets count is %lld" : {
@@ -725,6 +766,9 @@
 
     },
     "Volume" : {
+
+    },
+    "volume is %@" : {
 
     },
     "Weight" : {

@@ -7,15 +7,21 @@
 
 import Foundation
 
-struct RecordV: Equatable {
+struct RecordV: Equatable, Identifiable {
     let id: String
     let exerciseId: String
-    let sets: [ExerciseSetV]
+    var sets: [ExerciseSetV]
     
     init(from: RecordDomain) {
         id = from.id
         exerciseId = from.exerciseId
         sets = from.sets.map({ .init(from: $0) })
+    }
+    
+    init(id: String, exerciseId: String, sets: [ExerciseSetV]) {
+        self.id = id
+        self.exerciseId = exerciseId
+        self.sets = sets
     }
     
     var domain: RecordDomain {
