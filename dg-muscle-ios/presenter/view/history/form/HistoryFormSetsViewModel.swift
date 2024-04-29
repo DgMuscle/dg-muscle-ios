@@ -23,17 +23,17 @@ final class HistoryFormSetsViewModel: ObservableObject {
     
     @Published var exercise: ExerciseV?
     
-    private let previousDateString: String
+    private let historyDateString: String
     private let getPreviousRecordUsecase: GetPreviousRecordUsecase
     private let getExerciseUsecase: GetExerciseUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(record: Binding<RecordV>,
-         previousDateString: String,
+         historyDateString: String,
          getPreviousRecordUsecase: GetPreviousRecordUsecase,
          getExerciseUsecase: GetExerciseUsecase) {
         _record = record
-        self.previousDateString = previousDateString
+        self.historyDateString = historyDateString
         self.getPreviousRecordUsecase = getPreviousRecordUsecase
         self.getExerciseUsecase = getExerciseUsecase
         self.sets = self.record.sets
@@ -86,7 +86,7 @@ final class HistoryFormSetsViewModel: ObservableObject {
     private func configurePreviousRecord(record: RecordV) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
-        guard let date = dateFormatter.date(from: previousDateString) else { return }
+        guard let date = dateFormatter.date(from: historyDateString) else { return }
         guard let previousRecordDomain = getPreviousRecordUsecase.implement(record: record.domain, date: date) else { return }
         previousRecord = .init(from: previousRecordDomain)
     }

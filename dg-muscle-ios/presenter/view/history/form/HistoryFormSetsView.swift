@@ -31,3 +31,18 @@ struct HistoryFormSetsView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
+
+#Preview {
+    let sets: [ExerciseSetV] = [
+        .init(id: UUID().uuidString, reps: 10, weight: 70),
+        .init(id: UUID().uuidString, reps: 4, weight: 70),
+        .init(id: UUID().uuidString, reps: 8, weight: 60),
+    ]
+    let record: RecordV = .init(id: UUID().uuidString, exerciseId: "squat", sets: sets)
+    let viewModel: HistoryFormSetsViewModel = .init(record: .constant(record),
+                                                    historyDateString: "20240429",
+                                                    getPreviousRecordUsecase: .init(historyRepository: HistoryRepositoryTest()),
+                                                    getExerciseUsecase: .init(exerciseRepository: ExerciseRepositoryTest()))
+    return HistoryFormSetsView(viewModel: viewModel)
+        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+}
