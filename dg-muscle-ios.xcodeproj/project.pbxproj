@@ -1574,6 +1574,8 @@
 			children = (
 				703A97BC2BCB8514002C0843 /* BannerErrorMessageView.swift */,
 				703A97C32BCB950C002C0843 /* BannerLoadingView.swift */,
+				70BC43FB2BE0F7F7001020AD /* ContentView.swift */,
+				70BC43F52BE0F6B9001020AD /* ContentViewModel.swift */,
 				702448D42BD2BA1C00C79056 /* DGWebView.swift */,
 				701764922BE0884A00B501B7 /* ListItemView.swift */,
 				7060BB5F2BDE231E0092B987 /* RoundedGradationText.swift */,
@@ -1582,8 +1584,6 @@
 				707016202BDD2A7D0025C624 /* history */,
 				701764892BE0840E00B501B7 /* setting */,
 				70A85A8C2BDE5A9800537071 /* user */,
-				70BC43F52BE0F6B9001020AD /* ContentViewModel.swift */,
-				70BC43FB2BE0F7F7001020AD /* ContentView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";

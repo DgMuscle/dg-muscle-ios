@@ -22,9 +22,9 @@ struct HistoryItemView: View {
                 .padding(.leading, 2)
                 
                 HStack {
-                    Text("Parts:")
+                    Text("Parts:").fontWeight(.heavy)
                     Text(viewModel.parts.map({ $0.rawValue }).joined(separator: ", "))
-                        .fontWeight(.heavy)
+                        
                 }
                 
                 HStack {
