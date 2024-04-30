@@ -20,7 +20,7 @@ struct HistorySectionV: Identifiable, Equatable {
     
     var header: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM"
+        dateFormatter.dateFormat = "MMM y"
         return dateFormatter.string(from: date)
     }
     

@@ -16,15 +16,13 @@ struct HistoryItemView: View {
             VStack(alignment: .leading) {
                 HStack(spacing: 2) {
                     Image(systemName: "calendar")
-                    Text(viewModel.day).fontWeight(.heavy)
+                    Text(viewModel.day).fontWeight(.medium)
                 }
-                .font(.title3)
                 .padding(.leading, 2)
                 
                 HStack {
-                    Text("Parts:").fontWeight(.heavy)
+                    Text("Parts:").fontWeight(.medium)
                     Text(viewModel.parts.map({ $0.rawValue }).joined(separator: ", "))
-                        
                 }
                 
                 HStack {

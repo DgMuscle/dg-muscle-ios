@@ -19,13 +19,13 @@ struct HistorySectionViewV2: View {
     let healthRepository: HealthRepositoryDomain
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Button {
                 tapHeader?()
             } label: {
                 HStack {
                     Text(section.header)
-                        .font(.largeTitle)
+                        .font(.title2)
                         .fontWeight(.black)
                     Spacer()
                 }
@@ -64,4 +64,21 @@ struct HistorySectionViewV2: View {
             }
         }
     }
+}
+
+#Preview {
+    
+    let historyRepository: HistoryRepository = HistoryRepositoryTest()
+    let histories: [HistoryV] = historyRepository.histories.map({ .init(from: $0) })
+    let section: HistorySectionV = .init(histories: histories[0..<5].map({ $0 }))
+    let exerciseRepository: ExerciseRepository = ExerciseRepositoryTest()
+    let healthRepository: HealthRepositoryDomain = HealthRepositoryTest2()
+    
+    return HistorySectionViewV2(section: section,
+                                tapHistory: nil,
+                                deleteHistory: nil,
+                                tapHeader: nil,
+                                exerciseRepository: exerciseRepository,
+                                healthRepository: healthRepository)
+    .preferredColorScheme(.dark)
 }
