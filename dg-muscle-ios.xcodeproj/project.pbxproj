@@ -88,6 +88,8 @@
 		7017648F2BE0859400B501B7 /* DeleteAccountUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */; };
 		701764912BE0866F00B501B7 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701764902BE0866F00B501B7 /* SettingView.swift */; };
 		701764932BE0884A00B501B7 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701764922BE0884A00B501B7 /* ListItemView.swift */; };
+		701764962BE08EFB00B501B7 /* AuthenticatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701764952BE08EFB00B501B7 /* AuthenticatorTest.swift */; };
+		701764972BE08F1000B501B7 /* AuthenticatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701764952BE08EFB00B501B7 /* AuthenticatorTest.swift */; };
 		7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */; };
 		701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4C52AD2875700852E2E /* FileManagerHelper.swift */; };
 		70226B882AF7765400379ED3 /* WorkoutMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70226B872AF7765400379ED3 /* WorkoutMetaData.swift */; };
@@ -480,6 +482,7 @@
 		7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountUsecase.swift; sourceTree = "<group>"; };
 		701764902BE0866F00B501B7 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		701764922BE0884A00B501B7 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
+		701764952BE08EFB00B501B7 /* AuthenticatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorTest.swift; sourceTree = "<group>"; };
 		7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSection.swift; sourceTree = "<group>"; };
 		701CC4C52AD2875700852E2E /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
 		70226B872AF7765400379ED3 /* WorkoutMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMetaData.swift; sourceTree = "<group>"; };
@@ -915,6 +918,14 @@
 				7017648A2BE084A800B501B7 /* SettingViewModel.swift */,
 			);
 			path = setting;
+			sourceTree = "<group>";
+		};
+		701764942BE08EED00B501B7 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				701764952BE08EFB00B501B7 /* AuthenticatorTest.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 		70240BEA2ADC1FF800B87A79 /* dg-muscle-ios-widget */ = {
@@ -1646,6 +1657,7 @@
 			children = (
 				700526BF2BDDE98E007838BA /* legacy */,
 				700526C02BDDE998007838BA /* repository */,
+				701764942BE08EED00B501B7 /* util */,
 			);
 			path = "dg-muscle-iosTests";
 			sourceTree = "<group>";
@@ -2008,6 +2020,7 @@
 				70884DCE2BDD44D60059B22A /* FileManagerHelperV2.swift in Sources */,
 				70EA5B622BD8F2F200DEFB15 /* FriendRepository.swift in Sources */,
 				700526C62BDDE9F8007838BA /* HeatmapColorDomain.swift in Sources */,
+				701764962BE08EFB00B501B7 /* AuthenticatorTest.swift in Sources */,
 				70756F3A2BCAC87A0035EFF4 /* UserRepositoryV2.swift in Sources */,
 				700526EA2BDDF859007838BA /* HeatmapDomain.swift in Sources */,
 				700527072BDE09BF007838BA /* ExerciseRepository.swift in Sources */,
@@ -2217,6 +2230,7 @@
 				702D77CB2BD35C40008AF48F /* Coordinator.swift in Sources */,
 				702D77D22BD36019008AF48F /* ExerciseCoordinator.swift in Sources */,
 				706760AE2BCBE37800649BF3 /* HistoryFormV2ViewModel.swift in Sources */,
+				701764972BE08F1000B501B7 /* AuthenticatorTest.swift in Sources */,
 				708DB2BD2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift in Sources */,
 				707BBF182AF7D1D800A8ABD2 /* Height.swift in Sources */,
 				7070162A2BDD2B0B0025C624 /* RecordDomain.swift in Sources */,
