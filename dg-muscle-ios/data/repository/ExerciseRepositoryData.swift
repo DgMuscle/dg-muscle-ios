@@ -76,6 +76,7 @@ final class ExerciseRepositoryData: ExerciseRepository {
     private func bind() {
         UserRepositoryData.shared
             .isLoginPublisher
+            .receive(on: DispatchQueue.main)
             .removeDuplicates()
             .sink { login in
                 if login {

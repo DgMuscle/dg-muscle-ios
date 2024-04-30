@@ -89,7 +89,9 @@ final class HistoryRepositoryData: HistoryRepository {
     }
     
     private func bind() {
-        UserRepositoryData.shared.isLoginPublisher
+        UserRepositoryData.shared
+            .isLoginPublisher
+            .receive(on: DispatchQueue.main)
             .removeDuplicates()
             .sink { login in
                 if login {
