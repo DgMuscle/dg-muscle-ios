@@ -351,6 +351,10 @@
 		70B07ACA2BD8D54900A0E732 /* FunctionsURLEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */; };
 		70B07ACB2BD8D54A00A0E732 /* FunctionsURLEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */; };
 		70BB52182B37EC1D00EC606D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 70BB52172B37EC1D00EC606D /* Localizable.xcstrings */; };
+		70BC43F62BE0F6B9001020AD /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43F52BE0F6B9001020AD /* ContentViewModel.swift */; };
+		70BC43F82BE0F700001020AD /* GetIsLoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43F72BE0F700001020AD /* GetIsLoginUsecase.swift */; };
+		70BC43FA2BE0F72C001020AD /* SubscribeIsLoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43F92BE0F72C001020AD /* SubscribeIsLoginUsecase.swift */; };
+		70BC43FC2BE0F7F7001020AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43FB2BE0F7F7001020AD /* ContentView.swift */; };
 		70C0559B2B79F9F300375526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C0559A2B79F9F300375526 /* AppDelegate.swift */; };
 		70C0559F2B79FC0800375526 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C0559E2B79FC0800375526 /* SceneDelegate.swift */; };
 		70C144D32AC82558007F0540 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
@@ -700,6 +704,10 @@
 		70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURL.swift; sourceTree = "<group>"; };
 		70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURLEnums.swift; sourceTree = "<group>"; };
 		70BB52172B37EC1D00EC606D /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		70BC43F52BE0F6B9001020AD /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		70BC43F72BE0F700001020AD /* GetIsLoginUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIsLoginUsecase.swift; sourceTree = "<group>"; };
+		70BC43F92BE0F72C001020AD /* SubscribeIsLoginUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeIsLoginUsecase.swift; sourceTree = "<group>"; };
+		70BC43FB2BE0F7F7001020AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		70C0559A2B79F9F300375526 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70C0559E2B79FC0800375526 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		70C144D22AC82558007F0540 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -901,10 +909,12 @@
 				7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */,
 				70A85AA32BDE6D8500537071 /* DeleteUserProfileImageUsecase.swift */,
 				70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */,
+				70BC43F72BE0F700001020AD /* GetIsLoginUsecase.swift */,
 				70A85AA52BDE6E8600537071 /* GetUserUsecase.swift */,
 				70A85A992BDE637700537071 /* PostUserDisplayNameUsecase.swift */,
 				70A85A972BDE625800537071 /* PostUserProfileImageUsecase.swift */,
 				7017648C2BE0854700B501B7 /* SignOutUsecase.swift */,
+				70BC43F92BE0F72C001020AD /* SubscribeIsLoginUsecase.swift */,
 				700526DE2BDDF5D9007838BA /* SubscribeUserUsecase.swift */,
 			);
 			path = user;
@@ -1569,6 +1579,8 @@
 				707016202BDD2A7D0025C624 /* history */,
 				701764892BE0840E00B501B7 /* setting */,
 				70A85A8C2BDE5A9800537071 /* user */,
+				70BC43F52BE0F6B9001020AD /* ContentViewModel.swift */,
+				70BC43FB2BE0F7F7001020AD /* ContentView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2162,9 +2174,11 @@
 				70756F1A2BCAB5D40035EFF4 /* SettingV2View.swift in Sources */,
 				700526E32BDDF791007838BA /* HealthRepositoryTest2.swift in Sources */,
 				7060BB782BDE2E710092B987 /* ExerciseEditViewModel.swift in Sources */,
+				70BC43FA2BE0F72C001020AD /* SubscribeIsLoginUsecase.swift in Sources */,
 				7060BB582BDE1EF00092B987 /* ExerciseCoordinatorV2.swift in Sources */,
 				70756F112BCAA7C80035EFF4 /* ContentViewV2.swift in Sources */,
 				02D212972BCE6D410088F93B /* MyProfileView.swift in Sources */,
+				70BC43F82BE0F700001020AD /* GetIsLoginUsecase.swift in Sources */,
 				70756F222BCABBE80035EFF4 /* ExerciseListSectionView.swift in Sources */,
 				024785682BCFBC5A00C9DF4F /* AppleAuthViewModel.swift in Sources */,
 				7017648D2BE0854700B501B7 /* SignOutUsecase.swift in Sources */,
@@ -2271,6 +2285,7 @@
 				70756EF72BCA6C210035EFF4 /* ExerciseRepositoryV2.swift in Sources */,
 				70A85A922BDE5CDE00537071 /* HealthInfoView.swift in Sources */,
 				70756F3E2BCACD850035EFF4 /* ManageExerciseView.swift in Sources */,
+				70BC43FC2BE0F7F7001020AD /* ContentView.swift in Sources */,
 				70A85A892BDE589700537071 /* SexV.swift in Sources */,
 				708DB2B32BDD6AD500195605 /* HeatmapColorDomain.swift in Sources */,
 				707016342BDD2DBD0025C624 /* HistoryData.swift in Sources */,
@@ -2310,6 +2325,7 @@
 				7060BB5E2BDE1FF20092B987 /* ExerciseManageView.swift in Sources */,
 				70884DD22BDD471F0059B22A /* ExerciseRepository.swift in Sources */,
 				70884DE42BDD511A0059B22A /* HistoryMetaDataDomain.swift in Sources */,
+				70BC43F62BE0F6B9001020AD /* ContentViewModel.swift in Sources */,
 				0292DC592BDF3C24006295FA /* HistoryFormSetsViewModel.swift in Sources */,
 				7060BB6E2BDE288D0092B987 /* ExercisePartsSectionView.swift in Sources */,
 				7060BB522BDE1B100092B987 /* ExerciseSectionV.swift in Sources */,
