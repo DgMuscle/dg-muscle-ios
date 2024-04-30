@@ -30,4 +30,8 @@ final class MainCoordinatorV2 {
     func profilePhoto() {
         path.append(MainNavigationV2(name: .profilePhoto))
     }
+    
+    func openWeb(url: String) {
+        path.append(MainNavigationV2(openWeb: url))
+    }
 }

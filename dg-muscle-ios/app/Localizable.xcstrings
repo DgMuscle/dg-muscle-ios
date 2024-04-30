@@ -386,6 +386,9 @@
         }
       }
     },
+    "Are you sure you will delete your account?" : {
+
+    },
     "Be careful, removal exercises can affect your previous records" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -588,6 +591,9 @@
 
     },
     "PhotosPicker" : {
+
+    },
+    "Please enter your display name" : {
 
     },
     "Please enter your display name." : {
@@ -815,6 +821,9 @@
       }
     },
     "You can update your health data in Apple Health" : {
+
+    },
+    "Your all data will be deleted" : {
 
     },
     "Your authentication is not perfect. Please use it again after you log out." : {

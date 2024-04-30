@@ -7,6 +7,6 @@
 
 import Foundation
 
-final class AppleAuthTest: AppleAuth {
+final class AppleAuthTest: AppleAuth, AppleAuthCoordinatorInterface {
     func startAppleLogin() { }
 }
