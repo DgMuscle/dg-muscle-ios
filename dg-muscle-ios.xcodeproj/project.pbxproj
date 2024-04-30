@@ -199,6 +199,8 @@
 		706760BC2BCC0CCD00649BF3 /* PreviousRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760BB2BCC0CCD00649BF3 /* PreviousRecordView.swift */; };
 		706760BE2BCC0CE800649BF3 /* PreviousRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760BD2BCC0CE800649BF3 /* PreviousRecordViewModel.swift */; };
 		706760C02BCC0F4A00649BF3 /* PreviousRecordListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760BF2BCC0F4A00649BF3 /* PreviousRecordListItem.swift */; };
+		706D6A6D2BE0DD57000A0324 /* RemoveAccountConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706D6A6C2BE0DD57000A0324 /* RemoveAccountConfirmView.swift */; };
+		706D6A6F2BE0DD87000A0324 /* RemoveAccountConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706D6A6E2BE0DD87000A0324 /* RemoveAccountConfirmViewModel.swift */; };
 		707016232BDD2ACC0025C624 /* HistoryDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016222BDD2ACC0025C624 /* HistoryDomain.swift */; };
 		707016262BDD2B000025C624 /* ExerciseSetDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016252BDD2B000025C624 /* ExerciseSetDomain.swift */; };
 		7070162A2BDD2B0B0025C624 /* RecordDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016292BDD2B0B0025C624 /* RecordDomain.swift */; };
@@ -572,6 +574,8 @@
 		706760BB2BCC0CCD00649BF3 /* PreviousRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousRecordView.swift; sourceTree = "<group>"; };
 		706760BD2BCC0CE800649BF3 /* PreviousRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousRecordViewModel.swift; sourceTree = "<group>"; };
 		706760BF2BCC0F4A00649BF3 /* PreviousRecordListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousRecordListItem.swift; sourceTree = "<group>"; };
+		706D6A6C2BE0DD57000A0324 /* RemoveAccountConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAccountConfirmView.swift; sourceTree = "<group>"; };
+		706D6A6E2BE0DD87000A0324 /* RemoveAccountConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAccountConfirmViewModel.swift; sourceTree = "<group>"; };
 		707016222BDD2ACC0025C624 /* HistoryDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDomain.swift; sourceTree = "<group>"; };
 		707016252BDD2B000025C624 /* ExerciseSetDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSetDomain.swift; sourceTree = "<group>"; };
 		707016292BDD2B0B0025C624 /* RecordDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDomain.swift; sourceTree = "<group>"; };
@@ -914,6 +918,8 @@
 		701764892BE0840E00B501B7 /* setting */ = {
 			isa = PBXGroup;
 			children = (
+				706D6A6C2BE0DD57000A0324 /* RemoveAccountConfirmView.swift */,
+				706D6A6E2BE0DD87000A0324 /* RemoveAccountConfirmViewModel.swift */,
 				701764902BE0866F00B501B7 /* SettingView.swift */,
 				7017648A2BE084A800B501B7 /* SettingViewModel.swift */,
 			);
@@ -2079,6 +2085,7 @@
 				7044641D2BD0185600CB21F6 /* FileUploaderInterface.swift in Sources */,
 				02070F0A2BCE526B00518744 /* MyProfileViewModel.swift in Sources */,
 				706760C02BCC0F4A00649BF3 /* PreviousRecordListItem.swift in Sources */,
+				706D6A6D2BE0DD57000A0324 /* RemoveAccountConfirmView.swift in Sources */,
 				7060BB742BDE2C3C0092B987 /* ExerciseAdd2View.swift in Sources */,
 				025A13442BDF8B060069F293 /* HistoryFormRecordItemView.swift in Sources */,
 				70756F0E2BCAA19B0035EFF4 /* UserBoxView.swift in Sources */,
@@ -2271,6 +2278,7 @@
 				70884DFD2BDD59620059B22A /* HistoryMetaDataV.swift in Sources */,
 				70D3418F2ACC081E0010EAF9 /* Extension+Sequence.swift in Sources */,
 				70C8C18B2BDFF96B00805C49 /* PostHistoryUsecase.swift in Sources */,
+				706D6A6F2BE0DD87000A0324 /* RemoveAccountConfirmViewModel.swift in Sources */,
 				703A97DD2BCBC66A002C0843 /* SetFormV2ViewModel.swift in Sources */,
 				7060BB622BDE23C60092B987 /* ExerciseSelectView.swift in Sources */,
 				702E21742BCA588A00147279 /* HealthRepositoryLive.swift in Sources */,
