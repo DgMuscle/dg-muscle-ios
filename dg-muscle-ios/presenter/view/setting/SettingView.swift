@@ -42,7 +42,12 @@ struct SettingView: View {
                 }
             } footer: {
                 VStack(spacing: 20) {
-                    ListItemView(systemImageName: "figure.run", title: "LOGOUT", color: .green)
+                    Button {
+                        viewModel.signOut()
+                    } label: {
+                        ListItemView(systemImageName: "figure.run", title: "LOGOUT", color: .green)
+                    }
+                    
                     ListItemView(systemImageName: "trash", title: "DELETE ACCOUNT", color: .red)
                 }
                 .padding(.top, 40)
