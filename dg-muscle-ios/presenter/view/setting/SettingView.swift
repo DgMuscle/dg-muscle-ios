@@ -11,6 +11,9 @@ struct SettingView: View {
     
     @StateObject var viewModel: SettingViewModel
     @EnvironmentObject var coordinator: CoordinatorV2
+    @State private var isPresentRemoveAccountView: Bool = false
+    
+    let getUserUsecase: GetUserUsecase
     
     var body: some View {
         List {
@@ -47,14 +50,27 @@ struct SettingView: View {
                     } label: {
                         ListItemView(systemImageName: "figure.run", title: "LOGOUT", color: .green)
                     }
+                    Button {
+                        isPresentRemoveAccountView.toggle()
+                    } label: {
+                        ListItemView(systemImageName: "trash", title: "DELETE ACCOUNT", color: .red)
+                    }
                     
-                    ListItemView(systemImageName: "trash", title: "DELETE ACCOUNT", color: .red)
                 }
                 .padding(.top, 40)
             }
         }
         .navigationTitle("Setting")
         .navigationBarTitleDisplayMode(.large)
+        .sheet(isPresented: $isPresentRemoveAccountView) {
+            RemoveAccountConfirmView(viewModel: .init(getUserUsecase: getUserUsecase)) {
+                isPresentRemoveAccountView.toggle()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    viewModel.deleteAccount()
+                }
+            }
+            .presentationDetents([.height(240)])
+        }
     }
 }
 
@@ -64,7 +80,8 @@ struct SettingView: View {
     let viewModel: SettingViewModel = .init(subscribeUserUsecase: .init(userRepository: userRepository),
                                             signOutUsecase: .init(authenticator: authenticator),
                                             deleteAccountUsecase: .init(authenticator: authenticator))
-    return SettingView(viewModel: viewModel)
+    return SettingView(viewModel: viewModel, 
+                       getUserUsecase: .init(userRepository: userRepository))
         .preferredColorScheme(.dark)
         .environmentObject(CoordinatorV2(path: .constant(.init())))
 }

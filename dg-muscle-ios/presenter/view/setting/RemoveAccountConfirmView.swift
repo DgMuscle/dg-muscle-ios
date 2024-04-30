@@ -36,6 +36,7 @@ struct RemoveAccountConfirmView: View {
                 RoundedGradationText(text: "DELETE ACCOUNT")
             }
         }
+        .padding()
         .animation(.default, value: viewModel.errorMessage)
     }
 }
