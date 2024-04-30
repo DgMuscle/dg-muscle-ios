@@ -65,10 +65,10 @@ final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
         }
         
         try? FileManagerHelper.save(histories, toFile: .history)
-        
-        return try await APIClient.shared.request(method: .post,
-                                                  url: FunctionsURL.history(.posthistory),
-                                                  body: data)
+        return .init(ok: true, message: nil)
+//        return try await APIClient.shared.request(method: .post,
+//                                                  url: FunctionsURL.history(.posthistory),
+//                                                  body: data)
     }
     
     func post(data: [WorkoutHeatMapViewModel.Data]) throws {
@@ -88,9 +88,11 @@ final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
         
         try? FileManagerHelper.save(histories, toFile: .history)
         
-        return try await APIClient.shared.request(method: .delete,
-                                                  url: FunctionsURL.history(.deletehistory),
-                                                  body: data)
+        return .init(ok: true, message: nil)
+        
+//        return try await APIClient.shared.request(method: .delete,
+//                                                  url: FunctionsURL.history(.deletehistory),
+//                                                  body: data)
     }
     
     private func getExerciseHistoryFromFile() -> [ExerciseHistory] {
@@ -105,7 +107,7 @@ final class HistoryRepositoryV2Impl: HistoryRepositoryV2 {
             url = url + "&lastId=\(lastId)"
         }
         
-        let histories: [ExerciseHistory] = try await APIClient.shared.request(url: url)
+        let histories: [ExerciseHistory] = []
         
         try? FileManagerHelper.save(histories, toFile: .history)
         

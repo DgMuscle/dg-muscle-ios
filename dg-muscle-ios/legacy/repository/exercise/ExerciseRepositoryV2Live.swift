@@ -65,7 +65,7 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
         if let index = exercises.firstIndex(where: { $0.id == data.id }) {
             _exercises[index] = data
         } else {
-            throw CustomError.index
+//            throw CustomError.index
         }
         
         try FileManagerHelper.save(exercises, toFile: .exercise)
@@ -76,7 +76,7 @@ final class ExerciseRepositoryV2Live: ExerciseRepositoryV2 {
         if let index = exercises.firstIndex(where: { $0.id == data.id }) {
             _exercises.remove(at: index)
         } else {
-            throw CustomError.index
+//            throw CustomError.index
         }
         
         try FileManagerHelper.save(exercises, toFile: .exercise)

@@ -108,10 +108,10 @@ final class UserRepositoryV2Live: UserRepositoryV2 {
         
         let body: Body = .init(id: id, displayName: displayName ?? "", photoURL: photoURL)
         
-        return try await APIClient.shared.request(method: .post, url: url, body: body)
+        return .init(ok: true, message: nil)
     }
     
     private func getProfiles() async throws -> [DGUser] {
-        return try await APIClient.shared.request(url: FunctionsURL.user(.getprofiles))
+        return []
     }
 }

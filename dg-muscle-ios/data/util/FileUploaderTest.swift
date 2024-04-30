@@ -9,7 +9,7 @@ import UIKit
 
 final class FileUploaderTest: FileUploaderInterface {
     func uploadImage(path: String, image: UIImage) async throws -> URL {
-        throw CustomError.invalidUrl
+        throw ErrorData.invalidUrl
     }
     
     func deleteImage(path: String) async throws {

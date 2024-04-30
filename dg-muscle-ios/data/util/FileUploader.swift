@@ -17,7 +17,7 @@ final class FileUploader: FileUploaderInterface {
     func uploadImage(path: String, image: UIImage) async throws -> URL {
         return try await withCheckedThrowingContinuation { continuation in
             guard let data = image.pngData() else {
-                continuation.resume(throwing: CustomError.unknown)
+                continuation.resume(throwing: ErrorData.unknown)
                 return
             }
             let ref = storage.reference().child(path)
@@ -32,7 +32,7 @@ final class FileUploader: FileUploaderInterface {
                         } else if let error {
                             continuation.resume(throwing: error)
                         } else {
-                            continuation.resume(throwing: CustomError.unknown)
+                            continuation.resume(throwing: ErrorData.unknown)
                         }
                     }
                 }

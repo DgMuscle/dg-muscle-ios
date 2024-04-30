@@ -25,7 +25,7 @@ final class APIClient {
     private init() { }
     
     func request<T: Codable>(method: Method = .get, url: String, body: Codable? = nil, additionalHeaders: [String: String]? = nil) async throws -> T {
-        guard let url = URL(string: url) else { throw CustomError.invalidUrl }
+        guard let url = URL(string: url) else { throw ErrorData.invalidUrl }
         
         var headers = self.defaultHeaders
         
@@ -42,7 +42,7 @@ final class APIClient {
         }
         let (data, response) = try await URLSession.shared.data(for: request)
         
-        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else { throw CustomError.invalidResponse }
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else { throw ErrorData.invalidResponse }
         
         let decodedData = try JSONDecoder().decode(T.self, from: data)
         return decodedData

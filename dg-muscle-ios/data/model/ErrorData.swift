@@ -1,5 +1,5 @@
 //
-//  CustomError.swift
+//  ErrorData.swift
 //  dg-muscle-ios
 //
 //  Created by 신동규 on 2023/09/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CustomError: Error {
+enum ErrorData: Error {
     case authentication
     case invalidUrl
     case invalidResponse
@@ -15,7 +15,7 @@ enum CustomError: Error {
     case index
 }
 
-extension CustomError: LocalizedError {
+extension ErrorData: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .authentication:

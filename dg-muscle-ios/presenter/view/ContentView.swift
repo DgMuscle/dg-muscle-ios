@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var viewModel: ContentViewModel
+    @Environment(\.window) var window: UIWindow?
     
-    let appleAuthCoordinator: AppleAuthCoordinatorInterface
-    
+    let appleAuthCoordinatorGenerator: AppleAuthCoordinatorGenerator
     let today: Date
     let historyRepository: HistoryRepository
     let exerciseRepository: ExerciseRepository
@@ -31,7 +31,7 @@ struct ContentView: View {
                                authenticator: authenticator,
                                fileUploader: fileUploader)
             } else {
-                AppleSignInView(appleSignInUsecase: .init(appleAuthCoordinator: appleAuthCoordinator))
+                AppleSignInView(appleSignInUsecase: .init(appleAuthCoordinator: appleAuthCoordinatorGenerator.generate(window: window)))
             }
         }
         .animation(.default, value: viewModel.isLogin)
