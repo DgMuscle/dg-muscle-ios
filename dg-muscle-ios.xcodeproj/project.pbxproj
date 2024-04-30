@@ -201,6 +201,10 @@
 		706760C02BCC0F4A00649BF3 /* PreviousRecordListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706760BF2BCC0F4A00649BF3 /* PreviousRecordListItem.swift */; };
 		706D6A6D2BE0DD57000A0324 /* RemoveAccountConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706D6A6C2BE0DD57000A0324 /* RemoveAccountConfirmView.swift */; };
 		706D6A6F2BE0DD87000A0324 /* RemoveAccountConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706D6A6E2BE0DD87000A0324 /* RemoveAccountConfirmViewModel.swift */; };
+		706D6A712BE0E2A0000A0324 /* AppleAuthCoordinatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706D6A702BE0E2A0000A0324 /* AppleAuthCoordinatorInterface.swift */; };
+		706D6A722BE0E374000A0324 /* AppleAuthTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA6D812BCFCDEF00A8746B /* AppleAuthTest.swift */; };
+		706D6A742BE0E397000A0324 /* AppleSignInUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706D6A732BE0E397000A0324 /* AppleSignInUsecase.swift */; };
+		706D6A762BE0E3E7000A0324 /* AppleSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706D6A752BE0E3E7000A0324 /* AppleSignInView.swift */; };
 		707016232BDD2ACC0025C624 /* HistoryDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016222BDD2ACC0025C624 /* HistoryDomain.swift */; };
 		707016262BDD2B000025C624 /* ExerciseSetDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016252BDD2B000025C624 /* ExerciseSetDomain.swift */; };
 		7070162A2BDD2B0B0025C624 /* RecordDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016292BDD2B0B0025C624 /* RecordDomain.swift */; };
@@ -576,6 +580,9 @@
 		706760BF2BCC0F4A00649BF3 /* PreviousRecordListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousRecordListItem.swift; sourceTree = "<group>"; };
 		706D6A6C2BE0DD57000A0324 /* RemoveAccountConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAccountConfirmView.swift; sourceTree = "<group>"; };
 		706D6A6E2BE0DD87000A0324 /* RemoveAccountConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAccountConfirmViewModel.swift; sourceTree = "<group>"; };
+		706D6A702BE0E2A0000A0324 /* AppleAuthCoordinatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthCoordinatorInterface.swift; sourceTree = "<group>"; };
+		706D6A732BE0E397000A0324 /* AppleSignInUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInUsecase.swift; sourceTree = "<group>"; };
+		706D6A752BE0E3E7000A0324 /* AppleSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInView.swift; sourceTree = "<group>"; };
 		707016222BDD2ACC0025C624 /* HistoryDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDomain.swift; sourceTree = "<group>"; };
 		707016252BDD2B000025C624 /* ExerciseSetDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSetDomain.swift; sourceTree = "<group>"; };
 		707016292BDD2B0B0025C624 /* RecordDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDomain.swift; sourceTree = "<group>"; };
@@ -797,8 +804,6 @@
 			isa = PBXGroup;
 			children = (
 				024785642BCFBA9B00C9DF4F /* AppleAuth.swift */,
-				7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */,
-				02CA6D812BCFCDEF00A8746B /* AppleAuthTest.swift */,
 			);
 			path = AppleAuth;
 			sourceTree = "<group>";
@@ -883,6 +888,7 @@
 		700526DD2BDDF5C4007838BA /* user */ = {
 			isa = PBXGroup;
 			children = (
+				706D6A732BE0E397000A0324 /* AppleSignInUsecase.swift */,
 				7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */,
 				70A85AA32BDE6D8500537071 /* DeleteUserProfileImageUsecase.swift */,
 				70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */,
@@ -929,6 +935,7 @@
 		701764942BE08EED00B501B7 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				02CA6D812BCFCDEF00A8746B /* AppleAuthTest.swift */,
 				701764952BE08EFB00B501B7 /* AuthenticatorTest.swift */,
 			);
 			path = util;
@@ -1104,13 +1111,6 @@
 				703A97DC2BCBC66A002C0843 /* SetFormV2ViewModel.swift */,
 			);
 			path = set;
-			sourceTree = "<group>";
-		};
-		7044641B2BD0183100CB21F6 /* FileUploader */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FileUploader;
 			sourceTree = "<group>";
 		};
 		7060BB492BDE17DB0092B987 /* exercise */ = {
@@ -1291,6 +1291,8 @@
 		707016432BDD31220025C624 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */,
+				706D6A702BE0E2A0000A0324 /* AppleAuthCoordinatorInterface.swift */,
 				7057B2932BDE789A00A1418D /* AuthenticatorInterface.swift */,
 				7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */,
 			);
@@ -1484,7 +1486,6 @@
 				7086C2F62B924B6700D034B0 /* ImageSaver.swift */,
 				70D9033C2AC5A70A001DDC0B /* Vibration.swift */,
 				024785632BCFBA8800C9DF4F /* AppleAuth */,
-				7044641B2BD0183100CB21F6 /* FileUploader */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1642,6 +1643,7 @@
 				70A85A9D2BDE655800537071 /* ProfileUserSimpleView.swift */,
 				70A85AA12BDE6CDA00537071 /* ProfilePhotoEditViewModel.swift */,
 				70A85AA92BDE720900537071 /* ProfilePhotoEditView.swift */,
+				706D6A752BE0E3E7000A0324 /* AppleSignInView.swift */,
 			);
 			path = user;
 			sourceTree = "<group>";
@@ -1997,6 +1999,7 @@
 				700526C72BDDEA0A007838BA /* RecordDomain.swift in Sources */,
 				70884DCC2BDD44AE0059B22A /* APIClient.swift in Sources */,
 				70EA5B612BD8F2DF00DEFB15 /* FriendsSearchViewModel.swift in Sources */,
+				706D6A722BE0E374000A0324 /* AppleAuthTest.swift in Sources */,
 				70B07ACB2BD8D54A00A0E732 /* FunctionsURLEnums.swift in Sources */,
 				70756F352BCAC7BA0035EFF4 /* exerciseTests.swift in Sources */,
 				702E21882BCA5E8E00147279 /* HistoryRepositoryV2.swift in Sources */,
@@ -2119,6 +2122,7 @@
 				70A85A8B2BDE58C700537071 /* BloodTypeV.swift in Sources */,
 				70756F052BCA9E640035EFF4 /* UserRepositoryV2.swift in Sources */,
 				70F838A82AC7FEB6009725EF /* Record.swift in Sources */,
+				706D6A742BE0E397000A0324 /* AppleSignInUsecase.swift in Sources */,
 				7060BB6C2BDE27F50092B987 /* ExercisePartV.swift in Sources */,
 				706760B42BCBEB3F00649BF3 /* RecordListItemView.swift in Sources */,
 				7005270E2BDE1128007838BA /* DeleteHistoryUsecase.swift in Sources */,
@@ -2231,6 +2235,7 @@
 				70884DD42BDD47510059B22A /* ExerciseRepositoryData.swift in Sources */,
 				706760B62BCBEDE300649BF3 /* HistoryCardView.swift in Sources */,
 				70A85A9C2BDE648900537071 /* ProfileEditView.swift in Sources */,
+				706D6A762BE0E3E7000A0324 /* AppleSignInView.swift in Sources */,
 				704464182BD013EE00CB21F6 /* UpdateProfilePhotoView.swift in Sources */,
 				70884DD62BDD47D10059B22A /* ExerciseData.swift in Sources */,
 				025A13462BDF8B4B0069F293 /* HistoryFormRecordItemViewModel.swift in Sources */,
@@ -2304,6 +2309,7 @@
 				706760B02BCBE54F00649BF3 /* HistoryFormV2View.swift in Sources */,
 				707016372BDD2DE30025C624 /* RecordData.swift in Sources */,
 				702E216E2BCA55C500147279 /* HistoryRepositoryV2.swift in Sources */,
+				706D6A712BE0E2A0000A0324 /* AppleAuthCoordinatorInterface.swift in Sources */,
 				70756EF52BCA68E70035EFF4 /* HistoryListItemView.swift in Sources */,
 				02CA6D802BCFCD1400A8746B /* ContentViewV2Model.swift in Sources */,
 				02CA6D822BCFCDEF00A8746B /* AppleAuthTest.swift in Sources */,
