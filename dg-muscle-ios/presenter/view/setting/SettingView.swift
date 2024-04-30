@@ -54,8 +54,11 @@ struct SettingView: View {
 }
 
 #Preview {
-    let viewModel: SettingViewModel = .init(subscribeUserUsecase: 
-            .init(userRepository: UserRepositoryTest()))
+    let userRepository: UserRepository = UserRepositoryTest()
+    let authenticator: AuthenticatorInterface = AuthenticatorTest()
+    let viewModel: SettingViewModel = .init(subscribeUserUsecase: .init(userRepository: userRepository),
+                                            signOutUsecase: .init(authenticator: authenticator),
+                                            deleteAccountUsecase: .init(authenticator: authenticator))
     return SettingView(viewModel: viewModel)
         .preferredColorScheme(.dark)
         .environmentObject(CoordinatorV2(path: .constant(.init())))
