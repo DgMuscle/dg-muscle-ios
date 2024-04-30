@@ -29,6 +29,7 @@ struct HistorySectionViewV2: View {
                         .fontWeight(.black)
                     Spacer()
                 }
+                .padding(.bottom)
                 .foregroundStyle(LinearGradient(colors: [Color(uiColor: .label),
                                                          Color(uiColor: .label).opacity(0.4)],
                                                 startPoint: .leading,

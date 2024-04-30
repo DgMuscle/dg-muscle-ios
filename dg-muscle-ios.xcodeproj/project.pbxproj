@@ -397,6 +397,7 @@
 		70EA5B622BD8F2F200DEFB15 /* FriendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA5B5D2BD8F10A00DEFB15 /* FriendRepository.swift */; };
 		70EA5B632BD8F2F800DEFB15 /* FriendRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA5B5F2BD8F13500DEFB15 /* FriendRepositoryTest.swift */; };
 		70EA5B652BD8F38100DEFB15 /* friendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA5B642BD8F38100DEFB15 /* friendTests.swift */; };
+		70F71B342BE126420013E616 /* ErrorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5EF2AC015C900BC76D4 /* ErrorData.swift */; };
 		70F8389E2AC7FE36009725EF /* CreatedAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F8389D2AC7FE36009725EF /* CreatedAt.swift */; };
 		70F838A02AC7FE4D009725EF /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F8389F2AC7FE4D009725EF /* Exercise.swift */; };
 		70F838A22AC7FE84009725EF /* ExerciseHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F838A12AC7FE84009725EF /* ExerciseHistory.swift */; };
@@ -2017,6 +2018,7 @@
 				700526DC2BDDF589007838BA /* UserDomain.swift in Sources */,
 				700526E52BDDF840007838BA /* HistoryMetaDataDomain.swift in Sources */,
 				70756F362BCAC7FC0035EFF4 /* ExerciseListV2ViewModel.swift in Sources */,
+				70F71B342BE126420013E616 /* ErrorData.swift in Sources */,
 				700526DA2BDDF3BE007838BA /* UserRepository.swift in Sources */,
 				700526E22BDDF78B007838BA /* HealthRepositoryDomain.swift in Sources */,
 				0208CF4E2BCCFCCA00FD973D /* WorkoutHeatMapViewModel.swift in Sources */,
