@@ -83,6 +83,9 @@
 		7005270A2BDE09D0007838BA /* ExerciseRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700527082BDE09C8007838BA /* ExerciseRepositoryTest.swift */; };
 		7005270C2BDE0DE3007838BA /* HistorySectionViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7005270B2BDE0DE3007838BA /* HistorySectionViewV2.swift */; };
 		7005270E2BDE1128007838BA /* DeleteHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7005270D2BDE1128007838BA /* DeleteHistoryUsecase.swift */; };
+		7017648B2BE084A800B501B7 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648A2BE084A800B501B7 /* SettingViewModel.swift */; };
+		7017648D2BE0854700B501B7 /* SignOutUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648C2BE0854700B501B7 /* SignOutUsecase.swift */; };
+		7017648F2BE0859400B501B7 /* DeleteAccountUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */; };
 		7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */; };
 		701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4C52AD2875700852E2E /* FileManagerHelper.swift */; };
 		70226B882AF7765400379ED3 /* WorkoutMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70226B872AF7765400379ED3 /* WorkoutMetaData.swift */; };
@@ -470,6 +473,9 @@
 		700527082BDE09C8007838BA /* ExerciseRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepositoryTest.swift; sourceTree = "<group>"; };
 		7005270B2BDE0DE3007838BA /* HistorySectionViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySectionViewV2.swift; sourceTree = "<group>"; };
 		7005270D2BDE1128007838BA /* DeleteHistoryUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteHistoryUsecase.swift; sourceTree = "<group>"; };
+		7017648A2BE084A800B501B7 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		7017648C2BE0854700B501B7 /* SignOutUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutUsecase.swift; sourceTree = "<group>"; };
+		7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountUsecase.swift; sourceTree = "<group>"; };
 		7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSection.swift; sourceTree = "<group>"; };
 		701CC4C52AD2875700852E2E /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
 		70226B872AF7765400379ED3 /* WorkoutMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMetaData.swift; sourceTree = "<group>"; };
@@ -866,11 +872,13 @@
 		700526DD2BDDF5C4007838BA /* user */ = {
 			isa = PBXGroup;
 			children = (
+				7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */,
 				70A85AA32BDE6D8500537071 /* DeleteUserProfileImageUsecase.swift */,
 				70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */,
 				70A85AA52BDE6E8600537071 /* GetUserUsecase.swift */,
 				70A85A992BDE637700537071 /* PostUserDisplayNameUsecase.swift */,
 				70A85A972BDE625800537071 /* PostUserProfileImageUsecase.swift */,
+				7017648C2BE0854700B501B7 /* SignOutUsecase.swift */,
 				700526DE2BDDF5D9007838BA /* SubscribeUserUsecase.swift */,
 			);
 			path = user;
@@ -894,6 +902,14 @@
 				700526F12BDDFF73007838BA /* MainCoordinatorV2.swift */,
 			);
 			path = coordinator;
+			sourceTree = "<group>";
+		};
+		701764892BE0840E00B501B7 /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				7017648A2BE084A800B501B7 /* SettingViewModel.swift */,
+			);
+			path = setting;
 			sourceTree = "<group>";
 		};
 		70240BEA2ADC1FF800B87A79 /* dg-muscle-ios-widget */ = {
@@ -1517,6 +1533,7 @@
 				700526D62BDDF300007838BA /* UserBoxView2.swift */,
 				7060BB492BDE17DB0092B987 /* exercise */,
 				707016202BDD2A7D0025C624 /* history */,
+				701764892BE0840E00B501B7 /* setting */,
 				70A85A8C2BDE5A9800537071 /* user */,
 			);
 			path = view;
@@ -2071,6 +2088,7 @@
 				704464162BD00D3300CB21F6 /* EditDisplayNameView.swift in Sources */,
 				703A97B12BCB72EA002C0843 /* ExercisePartsSelectionForm.swift in Sources */,
 				70A85A9E2BDE655800537071 /* ProfileUserSimpleView.swift in Sources */,
+				7017648F2BE0859400B501B7 /* DeleteAccountUsecase.swift in Sources */,
 				70A85A8B2BDE58C700537071 /* BloodTypeV.swift in Sources */,
 				70756F052BCA9E640035EFF4 /* UserRepositoryV2.swift in Sources */,
 				70F838A82AC7FEB6009725EF /* Record.swift in Sources */,
@@ -2100,6 +2118,7 @@
 				02D212972BCE6D410088F93B /* MyProfileView.swift in Sources */,
 				70756F222BCABBE80035EFF4 /* ExerciseListSectionView.swift in Sources */,
 				024785682BCFBC5A00C9DF4F /* AppleAuthViewModel.swift in Sources */,
+				7017648D2BE0854700B501B7 /* SignOutUsecase.swift in Sources */,
 				703A97C92BCB97C6002C0843 /* EditExerciseViewModel.swift in Sources */,
 				70756EF12BCA68700035EFF4 /* HistoryRepositoryV2Test.swift in Sources */,
 				70F838A02AC7FE4D009725EF /* Exercise.swift in Sources */,
@@ -2243,6 +2262,7 @@
 				7060BB522BDE1B100092B987 /* ExerciseSectionV.swift in Sources */,
 				706760BC2BCC0CCD00649BF3 /* PreviousRecordView.swift in Sources */,
 				70C0559F2B79FC0800375526 /* SceneDelegate.swift in Sources */,
+				7017648B2BE084A800B501B7 /* SettingViewModel.swift in Sources */,
 				70884DEF2BDD522D0059B22A /* HistoryMetaDataData.swift in Sources */,
 				70A85A902BDE5B5400537071 /* HealthInfoItemView.swift in Sources */,
 				70884E002BDD5B110059B22A /* HistoryListViewModel.swift in Sources */,
