@@ -86,6 +86,8 @@
 		7017648B2BE084A800B501B7 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648A2BE084A800B501B7 /* SettingViewModel.swift */; };
 		7017648D2BE0854700B501B7 /* SignOutUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648C2BE0854700B501B7 /* SignOutUsecase.swift */; };
 		7017648F2BE0859400B501B7 /* DeleteAccountUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */; };
+		701764912BE0866F00B501B7 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701764902BE0866F00B501B7 /* SettingView.swift */; };
+		701764932BE0884A00B501B7 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701764922BE0884A00B501B7 /* ListItemView.swift */; };
 		7019642F2AD41C4A00ED39BF /* ExerciseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */; };
 		701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701CC4C52AD2875700852E2E /* FileManagerHelper.swift */; };
 		70226B882AF7765400379ED3 /* WorkoutMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70226B872AF7765400379ED3 /* WorkoutMetaData.swift */; };
@@ -476,6 +478,8 @@
 		7017648A2BE084A800B501B7 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7017648C2BE0854700B501B7 /* SignOutUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutUsecase.swift; sourceTree = "<group>"; };
 		7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountUsecase.swift; sourceTree = "<group>"; };
+		701764902BE0866F00B501B7 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		701764922BE0884A00B501B7 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		7019642E2AD41C4A00ED39BF /* ExerciseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSection.swift; sourceTree = "<group>"; };
 		701CC4C52AD2875700852E2E /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
 		70226B872AF7765400379ED3 /* WorkoutMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMetaData.swift; sourceTree = "<group>"; };
@@ -907,6 +911,7 @@
 		701764892BE0840E00B501B7 /* setting */ = {
 			isa = PBXGroup;
 			children = (
+				701764902BE0866F00B501B7 /* SettingView.swift */,
 				7017648A2BE084A800B501B7 /* SettingViewModel.swift */,
 			);
 			path = setting;
@@ -1529,6 +1534,7 @@
 				703A97BC2BCB8514002C0843 /* BannerErrorMessageView.swift */,
 				703A97C32BCB950C002C0843 /* BannerLoadingView.swift */,
 				702448D42BD2BA1C00C79056 /* DGWebView.swift */,
+				701764922BE0884A00B501B7 /* ListItemView.swift */,
 				7060BB5F2BDE231E0092B987 /* RoundedGradationText.swift */,
 				700526D62BDDF300007838BA /* UserBoxView2.swift */,
 				7060BB492BDE17DB0092B987 /* exercise */,
@@ -2055,6 +2061,7 @@
 				029139852BDB9DB700A82A62 /* FriendSearchUserView.swift in Sources */,
 				70884DF92BDD53D50059B22A /* HealthRepositoryData.swift in Sources */,
 				700526D02BDDEF1E007838BA /* HeatmapView.swift in Sources */,
+				701764912BE0866F00B501B7 /* SettingView.swift in Sources */,
 				70884DE12BDD4E410059B22A /* RecordV.swift in Sources */,
 				7044641D2BD0185600CB21F6 /* FileUploaderInterface.swift in Sources */,
 				02070F0A2BCE526B00518744 /* MyProfileViewModel.swift in Sources */,
@@ -2231,6 +2238,7 @@
 				7060BB702BDE2B140092B987 /* PostExerciseUsecase.swift in Sources */,
 				02BE7C2C2BD26D3E00C6DD5C /* HorizontalVolumeBarChartView.swift in Sources */,
 				702448DA2BD2BBCC00C79056 /* OpenWeb.swift in Sources */,
+				701764932BE0884A00B501B7 /* ListItemView.swift in Sources */,
 				700526FC2BDE03A8007838BA /* GetDayUsecase.swift in Sources */,
 				700526EF2BDDFD38007838BA /* NavigationV2.swift in Sources */,
 				707B0AFF2BD1676700D8250B /* HeatmapColorSelectionViewModel.swift in Sources */,
