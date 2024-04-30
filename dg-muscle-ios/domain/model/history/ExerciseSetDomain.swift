@@ -19,7 +19,7 @@ struct ExerciseSetDomain {
 }
 
 extension ExerciseSetDomain {
-    enum Unit: String {
+    enum Unit {
         case kg
         case lbs
     }

@@ -19,7 +19,7 @@ final class GetPartsUsecase {
         let exercises = exerciseRepository.exercises.filter({ exerciseIds.contains($0.id) })
         var parts: [ExerciseDomain.Part] = exercises.flatMap({ $0.parts })
         parts = Array(Set(parts))
-        parts.sort(by: { $0.rawValue < $1.rawValue })
+        parts.sort()
         return parts
     }
 }

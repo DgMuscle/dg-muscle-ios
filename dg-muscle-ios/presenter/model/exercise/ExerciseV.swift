@@ -23,12 +23,46 @@ struct ExerciseV: Equatable, Identifiable {
     init(from: ExerciseDomain) {
         self.id = from.id
         self.name = from.name
-        self.parts = from.parts.compactMap({ .init(rawValue: $0.rawValue) })
+        self.parts = from.parts.map({ Self.convertPart(part: $0) })
         self.favorite = from.favorite
     }
     
     var domain: ExerciseDomain {
-        .init(id: id, name: name, parts: parts.compactMap({ .init(rawValue: $0.rawValue) }), favorite: favorite)
+        .init(id: id, name: name, parts: parts.map({ Self.convertPart(part: $0) }), favorite: favorite)
+    }
+    
+    static func convertPart(part: Part) -> ExerciseDomain.Part {
+        switch part {
+        case .arm:
+            return .arm
+        case .back:
+            return .back
+        case .chest:
+            return .chest
+        case .core:
+            return .core
+        case .leg:
+            return .leg
+        case .shoulder:
+            return .shoulder
+        }
+    }
+ 
+    static func convertPart(part: ExerciseDomain.Part) -> Part {
+        switch part {
+        case .arm:
+            return .arm
+        case .back:
+            return .back
+        case .chest:
+            return .chest
+        case .core:
+            return .core
+        case .leg:
+            return .leg
+        case .shoulder:
+            return .shoulder
+        }
     }
 }
 

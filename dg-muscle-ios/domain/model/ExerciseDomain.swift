@@ -15,7 +15,7 @@ struct ExerciseDomain {
 }
 
 extension ExerciseDomain {
-    enum Part: String {
+    enum Part: Comparable {
         case arm
         case back
         case chest
