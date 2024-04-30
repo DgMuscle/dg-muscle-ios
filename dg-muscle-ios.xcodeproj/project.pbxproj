@@ -209,6 +209,9 @@
 		706D6A782BE0E46A000A0324 /* AppleAuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */; };
 		706D6A792BE0E482000A0324 /* AppleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024785642BCFBA9B00C9DF4F /* AppleAuth.swift */; };
 		706D6A7A2BE0E494000A0324 /* AppleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024785642BCFBA9B00C9DF4F /* AppleAuth.swift */; };
+		706D6A7B2BE0E4C2000A0324 /* AppleAuthTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA6D812BCFCDEF00A8746B /* AppleAuthTest.swift */; };
+		706D6A7C2BE0E4DF000A0324 /* AppleAuthCoordinatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706D6A702BE0E2A0000A0324 /* AppleAuthCoordinatorInterface.swift */; };
+		706D6A7D2BE0E4DF000A0324 /* AppleAuthCoordinatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706D6A702BE0E2A0000A0324 /* AppleAuthCoordinatorInterface.swift */; };
 		707016232BDD2ACC0025C624 /* HistoryDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016222BDD2ACC0025C624 /* HistoryDomain.swift */; };
 		707016262BDD2B000025C624 /* ExerciseSetDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016252BDD2B000025C624 /* ExerciseSetDomain.swift */; };
 		7070162A2BDD2B0B0025C624 /* RecordDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016292BDD2B0B0025C624 /* RecordDomain.swift */; };
@@ -1964,10 +1967,12 @@
 				70CD21D42BCD6E1B009B72F3 /* HeatMapColumnView.swift in Sources */,
 				70240BF02ADC1FF800B87A79 /* dg_muscle_ios_widget.swift in Sources */,
 				70CD21CC2BCD665F009B72F3 /* CreatedAt.swift in Sources */,
+				706D6A7B2BE0E4C2000A0324 /* AppleAuthTest.swift in Sources */,
 				70CD21C82BCD6633009B72F3 /* HistoryRepositoryV2.swift in Sources */,
 				70884DCD2BDD44CF0059B22A /* FileManagerHelperV2.swift in Sources */,
 				707B0AFA2BD1650100D8250B /* HeatmapRepositoryTest.swift in Sources */,
 				70CD21DD2BCD6EB3009B72F3 /* CustomError.swift in Sources */,
+				706D6A7C2BE0E4DF000A0324 /* AppleAuthCoordinatorInterface.swift in Sources */,
 				708AF2B42B36D33C00658D6B /* FileManagerHelper.swift in Sources */,
 				707B0AF62BD163CA00D8250B /* HeatmapRepository.swift in Sources */,
 				70CD21DC2BCD6EA9009B72F3 /* DGUser.swift in Sources */,
@@ -1991,6 +1996,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				706D6A7D2BE0E4DF000A0324 /* AppleAuthCoordinatorInterface.swift in Sources */,
 				700526C22BDDE9AA007838BA /* HistoryRepositoryTest.swift in Sources */,
 				70884E062BDD618C0059B22A /* SubscribeGroupedHistoriesUsecase.swift in Sources */,
 				700526DC2BDDF589007838BA /* UserDomain.swift in Sources */,
