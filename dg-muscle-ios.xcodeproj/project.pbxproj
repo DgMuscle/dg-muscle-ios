@@ -397,6 +397,9 @@
 		70EA5B622BD8F2F200DEFB15 /* FriendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA5B5D2BD8F10A00DEFB15 /* FriendRepository.swift */; };
 		70EA5B632BD8F2F800DEFB15 /* FriendRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA5B5F2BD8F13500DEFB15 /* FriendRepositoryTest.swift */; };
 		70EA5B652BD8F38100DEFB15 /* friendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA5B642BD8F38100DEFB15 /* friendTests.swift */; };
+		70EFAE8D2BE138CC0011132F /* GetVolumesGroupedByPartUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFAE8C2BE138CC0011132F /* GetVolumesGroupedByPartUsecase.swift */; };
+		70EFAE8E2BE139B90011132F /* GetVolumesGroupedByPartUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFAE8C2BE138CC0011132F /* GetVolumesGroupedByPartUsecase.swift */; };
+		70EFAE912BE139ED0011132F /* GetVolumesGroupedByPartUsecaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFAE902BE139ED0011132F /* GetVolumesGroupedByPartUsecaseTests.swift */; };
 		70F71B342BE126420013E616 /* ErrorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5EF2AC015C900BC76D4 /* ErrorData.swift */; };
 		70F8389E2AC7FE36009725EF /* CreatedAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F8389D2AC7FE36009725EF /* CreatedAt.swift */; };
 		70F838A02AC7FE4D009725EF /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F8389F2AC7FE4D009725EF /* Exercise.swift */; };
@@ -732,6 +735,8 @@
 		70EA5B5D2BD8F10A00DEFB15 /* FriendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepository.swift; sourceTree = "<group>"; };
 		70EA5B5F2BD8F13500DEFB15 /* FriendRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepositoryTest.swift; sourceTree = "<group>"; };
 		70EA5B642BD8F38100DEFB15 /* friendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendTests.swift; sourceTree = "<group>"; };
+		70EFAE8C2BE138CC0011132F /* GetVolumesGroupedByPartUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVolumesGroupedByPartUsecase.swift; sourceTree = "<group>"; };
+		70EFAE902BE139ED0011132F /* GetVolumesGroupedByPartUsecaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVolumesGroupedByPartUsecaseTests.swift; sourceTree = "<group>"; };
 		70F8389D2AC7FE36009725EF /* CreatedAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedAt.swift; sourceTree = "<group>"; };
 		70F8389F2AC7FE4D009725EF /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		70F838A12AC7FE84009725EF /* ExerciseHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistory.swift; sourceTree = "<group>"; };
@@ -1608,6 +1613,7 @@
 				700526FF2BDE0422007838BA /* GetPartsUsecase.swift */,
 				0292DC5A2BDF3E21006295FA /* GetPreviousRecordUsecase.swift */,
 				700526EB2BDDFB87007838BA /* GetTodayHistoryUsecase.swift */,
+				70EFAE8C2BE138CC0011132F /* GetVolumesGroupedByPartUsecase.swift */,
 				70C8C18A2BDFF96B00805C49 /* PostHistoryUsecase.swift */,
 				70884E042BDD60170059B22A /* SubscribeGroupedHistoriesUsecase.swift */,
 				708DB2BC2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift */,
@@ -1690,6 +1696,7 @@
 			children = (
 				700526BF2BDDE98E007838BA /* legacy */,
 				700526C02BDDE998007838BA /* repository */,
+				70EFAE8F2BE139CD0011132F /* usecase */,
 				701764942BE08EED00B501B7 /* util */,
 			);
 			path = "dg-muscle-iosTests";
@@ -1794,6 +1801,14 @@
 				70EA5B5F2BD8F13500DEFB15 /* FriendRepositoryTest.swift */,
 			);
 			path = friend;
+			sourceTree = "<group>";
+		};
+		70EFAE8F2BE139CD0011132F /* usecase */ = {
+			isa = PBXGroup;
+			children = (
+				70EFAE902BE139ED0011132F /* GetVolumesGroupedByPartUsecaseTests.swift */,
+			);
+			path = usecase;
 			sourceTree = "<group>";
 		};
 		70F8389C2AC7FE20009725EF /* model */ = {
@@ -2014,6 +2029,7 @@
 			files = (
 				706D6A7D2BE0E4DF000A0324 /* AppleAuthCoordinatorInterface.swift in Sources */,
 				700526C22BDDE9AA007838BA /* HistoryRepositoryTest.swift in Sources */,
+				70EFAE8E2BE139B90011132F /* GetVolumesGroupedByPartUsecase.swift in Sources */,
 				70884E062BDD618C0059B22A /* SubscribeGroupedHistoriesUsecase.swift in Sources */,
 				700526DC2BDDF589007838BA /* UserDomain.swift in Sources */,
 				700526E52BDDF840007838BA /* HistoryMetaDataDomain.swift in Sources */,
@@ -2044,6 +2060,7 @@
 				702E21812BCA5E7700147279 /* ExerciseSection.swift in Sources */,
 				02053E372BD2511C003B8D76 /* MonthlySectionViewModel.swift in Sources */,
 				702E21842BCA5E8100147279 /* Record.swift in Sources */,
+				70EFAE912BE139ED0011132F /* GetVolumesGroupedByPartUsecaseTests.swift in Sources */,
 				702E21772BCA5DEF00147279 /* historyTests.swift in Sources */,
 				70756F392BCAC8680035EFF4 /* DGUser.swift in Sources */,
 				702E217D2BCA5E6700147279 /* BodyMass.swift in Sources */,
@@ -2217,6 +2234,7 @@
 				70884DF72BDD53080059B22A /* BloodTypeDomain.swift in Sources */,
 				7060BB542BDE1CB00092B987 /* ExerciseSectionView.swift in Sources */,
 				703CD5F02AC015C900BC76D4 /* ErrorData.swift in Sources */,
+				70EFAE8D2BE138CC0011132F /* GetVolumesGroupedByPartUsecase.swift in Sources */,
 				70756F152BCAAB8B0035EFF4 /* SplashView.swift in Sources */,
 				70756F202BCAB95F0035EFF4 /* SettingListItemView.swift in Sources */,
 				02053E362BD24F63003B8D76 /* MonthlySectionViewModel.swift in Sources */,

@@ -37,7 +37,7 @@ struct HistoryFormSetsView: View {
                     
                     HStack {
                         if let previousRecordVolume = viewModel.previousRecordVolume {
-                            Text("\(String(previousRecordVolume)) volumes")
+                            Text("\(String(previousRecordVolume)) volume")
                         }
                         
                         if let diffWithPrevious = viewModel.diffWithPrevious {
@@ -51,7 +51,7 @@ struct HistoryFormSetsView: View {
                 VStack {
                     HStack {
                         Text("\(viewModel.currentSetsCount) sets,")
-                        Text("\(String(viewModel.currentRecordVolume)) volumes")
+                        Text("\(String(viewModel.currentRecordVolume)) volume")
                         Spacer()
                     }
                     .padding(.bottom)

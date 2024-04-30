@@ -47,7 +47,8 @@ struct HistorySectionViewV2: View {
                                                      getDayUsecase: .init(),
                                                      getPartsUsecase: .init(exerciseRepository: exerciseRepository),
                                                      getKcalUsecase: .init(healthRepository: healthRepository),
-                                                     getNaturalDurationUsecase: .init())
+                                                     getNaturalDurationUsecase: .init()), 
+                                    exerciseRepository: exerciseRepository
                     )
                     .padding(.bottom, 20)
                     .scrollTransition { effect, phase in

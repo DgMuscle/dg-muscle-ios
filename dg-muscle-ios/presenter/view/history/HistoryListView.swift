@@ -32,13 +32,15 @@ struct HistoryListView: View {
             }
             .padding(.bottom, 20)
             
-            HStack {
-                Button("start workout".capitalized) {
-                    coordinator.history.historyForm(viewModel.todayHistory() ?? .init())
-                }
-                .fontWeight(.black)
-                Spacer()
+            Button {
+                coordinator.history.historyForm(viewModel.todayHistory() ?? .init())
+            } label: {
+                RoundedGradationText(text: "START WORKOUT")
             }
+            .scrollTransition { effect, phase in
+                effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
+            }
+            .padding(.bottom)
             
             if let user = viewModel.user {
                 Button {

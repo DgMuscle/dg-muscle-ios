@@ -10,20 +10,14 @@ import SwiftUI
 struct HistoryItemView: View {
     
     @StateObject var viewModel: HistoryItemViewModel
+    let exerciseRepository: ExerciseRepository
     
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                HStack(spacing: 2) {
-                    Image(systemName: "calendar")
-                    Text(viewModel.day).fontWeight(.medium)
-                }
-                .padding(.leading, 2)
                 
-                HStack {
-                    Text("Parts:").fontWeight(.medium)
-                    Text(viewModel.parts.map({ $0.rawValue }).joined(separator: ", "))
-                }
+                
+                coloredText
                 
                 HStack {
                     if let time = viewModel.time {
@@ -42,6 +36,22 @@ struct HistoryItemView: View {
             Spacer()
         }
     }
+    
+    var coloredText: some View {
+        let partsText: [Text] = viewModel.parts.map { part in
+            Text(part.rawValue.capitalized).fontWeight(.bold)
+        }
+        
+        let combinedPartsText = partsText.reduce(Text(""), { $0 + Text(" and ") + $1 })
+        return VStack {
+            Text("On the \(viewModel.day)th, I worked out my ") +
+            combinedPartsText +
+            Text(" as much as ") +
+            Text("\(viewModel.volume)").fontWeight(.bold) +
+            Text(" volume")
+        }
+        .multilineTextAlignment(.leading)
+    }
 }
 
 #Preview {
@@ -57,5 +67,7 @@ struct HistoryItemView: View {
                                          getPartsUsecase: .init(exerciseRepository: exerciseRepository),
                                          getKcalUsecase: .init(healthRepository: healthRepository),
                                          getNaturalDurationUsecase: .init())
-    return HistoryItemView(viewModel: viewModel).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+    return HistoryItemView(viewModel: viewModel, 
+                           exerciseRepository: exerciseRepository)
+    .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }

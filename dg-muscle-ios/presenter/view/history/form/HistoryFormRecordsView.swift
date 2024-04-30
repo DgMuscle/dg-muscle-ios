@@ -29,7 +29,7 @@ struct HistoryFormRecordsView: View {
                 .onDelete(perform: viewModel.delete)
                 
             } header: {
-                Text("\(viewModel.currentRecordsCount) Records, \(String(viewModel.currentTotalVolume)) Volumes")
+                Text("\(viewModel.currentRecordsCount) Records, \(String(viewModel.currentTotalVolume)) Volume")
             } footer: {
                 Button {
                     isPresentSelectExercise.toggle()
