@@ -31,30 +31,11 @@ extension EnvironmentValues {
 struct dg_muscle_iosApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @State var splash = true
-    @State var path = NavigationPath()
-    
-    let today = Date()
-    let userRepository: UserRepository = UserRepositoryData.shared
-    let appleAuthCoordinatorGenerator: AppleAuthCoordinatorGenerator = AppleAuthCoordinatorGeneratorImpl()
-    let historyRepository: HistoryRepository = HistoryRepositoryData.shared
-    let exerciseRepository: ExerciseRepository = ExerciseRepositoryData.shared
-    let healthRepository: HealthRepositoryDomain = HealthRepositoryData.shared
-    let authenticator: AuthenticatorInterface = Authenticator()
-    let fileUploader: FileUploaderInterface = FileUploader.shared
     
     var body: some Scene {
         WindowGroup {
             ZStack {
-                ContentView(viewModel: .init(subscribeIsLoginUsecase: .init(userRepository: userRepository),
-                                             getIsLoginUsecase: .init(userRepository: userRepository)),
-                            appleAuthCoordinatorGenerator: appleAuthCoordinatorGenerator,
-                            today: today,
-                            historyRepository: historyRepository,
-                            exerciseRepository: exerciseRepository,
-                            healthRepository: healthRepository,
-                            userRepository: userRepository,
-                            authenticator: authenticator,
-                            fileUploader: fileUploader)
+                ContentView()
                 
                 if splash {
                     SplashView()
@@ -67,7 +48,5 @@ struct dg_muscle_iosApp: App {
             }
             .animation(.easeIn, value: splash)
         }
-        .environmentObject(CoordinatorV2(path: $path))
-        
     }
 }

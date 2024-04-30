@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var viewModel: ContentViewModel
     @Environment(\.window) var window: UIWindow?
+    @StateObject var viewModel: ContentViewModel = .init(subscribeIsLoginUsecase: .init(userRepository: UserRepositoryData.shared),
+                                                         getIsLoginUsecase: .init(userRepository: UserRepositoryData.shared))
     
-    let appleAuthCoordinatorGenerator: AppleAuthCoordinatorGenerator
-    let today: Date
-    let historyRepository: HistoryRepository
-    let exerciseRepository: ExerciseRepository
-    let healthRepository: HealthRepositoryDomain
-    let userRepository: UserRepository
-    let authenticator: AuthenticatorInterface
-    let fileUploader: FileUploaderInterface
+    @State var path: NavigationPath = .init()
+    
+    
+    let today = Date()
+    let userRepository: UserRepository = UserRepositoryData.shared
+    let appleAuthCoordinatorGenerator: AppleAuthCoordinatorGenerator = AppleAuthCoordinatorGeneratorImpl()
+    let historyRepository: HistoryRepository = HistoryRepositoryData.shared
+    let exerciseRepository: ExerciseRepository = ExerciseRepositoryData.shared
+    let healthRepository: HealthRepositoryDomain = HealthRepositoryData.shared
+    let authenticator: AuthenticatorInterface = Authenticator()
+    let fileUploader: FileUploaderInterface = FileUploader.shared
     
     var body: some View {
         ZStack {
@@ -34,6 +38,7 @@ struct ContentView: View {
                 AppleSignInView(appleSignInUsecase: .init(appleAuthCoordinator: appleAuthCoordinatorGenerator.generate(window: window)))
             }
         }
+        .environmentObject(CoordinatorV2(path: $path))
         .animation(.default, value: viewModel.isLogin)
     }
 }
