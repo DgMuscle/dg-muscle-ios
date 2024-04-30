@@ -68,7 +68,6 @@ struct HistoryNavigationV2: Identifiable, Hashable, Equatable {
 struct ExerciseNavigationV2: Identifiable, Hashable {
     enum Name: String {
         case manage
-        case select
         case edit
         case add1
         case add2

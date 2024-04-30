@@ -914,8 +914,8 @@
 			isa = PBXGroup;
 			children = (
 				700526EE2BDDFD38007838BA /* NavigationV2.swift */,
-				700526F02BDDFF63007838BA /* coordinator */,
 				709DF4EF2BE0E70200C70390 /* NavigationView.swift */,
+				700526F02BDDFF63007838BA /* coordinator */,
 			);
 			path = navigation;
 			sourceTree = "<group>";
@@ -1130,6 +1130,8 @@
 				7060BB632BDE25130092B987 /* ExerciseAdd1ViewModel.swift */,
 				7060BB732BDE2C3C0092B987 /* ExerciseAdd2View.swift */,
 				7060BB712BDE2BAE0092B987 /* ExerciseAdd2ViewModel.swift */,
+				7060BB792BDE2F4A0092B987 /* ExerciseEditView.swift */,
+				7060BB772BDE2E710092B987 /* ExerciseEditViewModel.swift */,
 				7060BB4D2BDE19F60092B987 /* ExerciseItemView.swift */,
 				7060BB5D2BDE1FF20092B987 /* ExerciseManageView.swift */,
 				7060BB592BDE1F560092B987 /* ExerciseManageViewModel.swift */,
@@ -1140,8 +1142,6 @@
 				7060BB4F2BDE1AF90092B987 /* ExerciseSectionsViewModel.swift */,
 				7060BB532BDE1CB00092B987 /* ExerciseSectionView.swift */,
 				7060BB612BDE23C60092B987 /* ExerciseSelectView.swift */,
-				7060BB772BDE2E710092B987 /* ExerciseEditViewModel.swift */,
-				7060BB792BDE2F4A0092B987 /* ExerciseEditView.swift */,
 			);
 			path = exercise;
 			sourceTree = "<group>";

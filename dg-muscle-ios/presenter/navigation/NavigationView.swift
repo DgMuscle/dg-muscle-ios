@@ -56,6 +56,43 @@ struct NavigationView: View {
                                                  subscribeHeatmapColorUsecase: .init(historyRepository: historyRepository)))
                 }
             }
+            .navigationDestination(for: HistoryNavigationV2.self) { navigation in
+                switch navigation.name {
+                case .historyForm:
+                    if let history = navigation.historyFormParameter {
+                        HistoryFormRecordsView(viewModel: .init(history: history,
+                                                                postHistoryUsecase: .init(historyRepository: historyRepository)),
+                                               exerciseRepository: exerciseRepository)
+                    }
+                case .recordForm:
+                    if let record = navigation.recordForForm, let date = navigation.historyDateForForm {
+                        HistoryFormSetsView(viewModel: .init(record: record,
+                                                             historyDateString: date,
+                                                             getPreviousRecordUsecase: .init(historyRepository: historyRepository),
+                                                             getExerciseUsecase: .init(exerciseRepository: exerciseRepository)))
+                    }
+                }
+            }
+            .navigationDestination(for: ExerciseNavigationV2.self) { navigation in
+                switch navigation.name {
+                case .manage:
+                    ExerciseManageView(exerciseRepository: exerciseRepository,
+                                       viewModel: .init(deleteExerciseUsecase: .init(exerciseRepository: exerciseRepository)))
+                case .edit:
+                    if let exercise = navigation.edit {
+                        ExerciseEditView(viewModel: .init(exercise: exercise,
+                                                          editExerciseUsecase: .init(exerciseRepository: exerciseRepository)))
+                    }
+                case .add1:
+                    ExerciseAdd1View(viewModel: .init())
+                case .add2:
+                    if let name = navigation.exerciseName {
+                        ExerciseAdd2View(viewModel: .init(name: name,
+                                                          parts: navigation.exerciseParts,
+                                                          postExerciseUsecase: .init(exerciseRepository: exerciseRepository)))
+                    }
+                }
+            }
         }
     }
 }
