@@ -13,7 +13,11 @@ final class HistoryRepositoryData: HistoryRepository {
     
     var histories: [HistoryDomain] { _histories }
     var historiesPublisher: AnyPublisher<[HistoryDomain], Never> { $_histories.eraseToAnyPublisher() }
-    @Published private var _histories: [HistoryDomain] = []
+    @Published private var _histories: [HistoryDomain] = [] {
+        didSet {
+            try? FileManagerHelperV2.shared.save(histories.prefix(30).map({ HistoryData(from: $0) }), toFile: .history)
+        }
+    }
     
     var heatmapColor: HeatmapColorDomain { _heatmapColor }
     var heatmapColorPublisher: AnyPublisher<HeatmapColorDomain, Never> { $_heatmapColor.eraseToAnyPublisher() }
@@ -36,8 +40,6 @@ final class HistoryRepositoryData: HistoryRepository {
         
         let historyDatas: [HistoryData] = histories.map({ .init(from: $0) })
         
-        try? FileManagerHelperV2.shared.save(historyDatas, toFile: .history)
-        
         let _: ResponseData = try await APIClient.shared.request(
             method: .post,
             url: FunctionsURL.history(.posthistory),
@@ -56,7 +58,6 @@ final class HistoryRepositoryData: HistoryRepository {
         }
         
         let historyDatas: [HistoryData] = histories.map({ .init(from: $0) })
-        try? FileManagerHelperV2.shared.save(historyDatas, toFile: .history)
         
         let _: ResponseData = try await APIClient.shared.request(method: .delete,
                                                                  url: FunctionsURL.history(.deletehistory),
