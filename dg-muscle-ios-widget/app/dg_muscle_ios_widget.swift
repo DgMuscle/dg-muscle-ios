@@ -40,11 +40,11 @@ struct dg_muscle_ios_widgetEntryView : View {
     var entry: Provider.Entry
     let historyRepository = HistoryRepositoryWidget.shared
     let getHeatmapColorUsecase: GetHeatmapColorUsecase = .init(historyRepository: HistoryRepositoryWidget.shared)
-    let getHeatmapUsecase: GetHeatmapUsecase = .init(historyRepository: HistoryRepositoryWidget.shared, today: Date())
+    let getHeatmapUsecase: GetHeatmapUsecase = .init(today: Date())
     
     var body: some View {
         let domainColor = getHeatmapColorUsecase.implement()
-        let heatmapDomain = getHeatmapUsecase.implement()
+        let heatmapDomain = getHeatmapUsecase.implement(data: historyRepository.histories)
         let color: HeatmapColorV = .init(color: domainColor)
         let data: [HeatmapV] = heatmapDomain.map({ .init(from: $0) })
         HeatMap(datas: data, color: color)

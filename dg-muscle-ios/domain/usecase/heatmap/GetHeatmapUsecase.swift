@@ -8,17 +8,14 @@
 import Foundation
 
 final class GetHeatmapUsecase {
-    let historyRepository: HistoryRepository
     let today: Date
     
-    init(historyRepository: HistoryRepository, today: Date) {
-        self.historyRepository = historyRepository
+    init(today: Date) {
         self.today = today
     }
     
-    func implement() -> [HeatmapDomain] {
-        let histories = historyRepository.histories
-        return configureHeatmap(histories: histories)
+    func implement(data: [HistoryDomain]) -> [HeatmapDomain] {
+        return configureHeatmap(histories: data)
     }
     
     private func configureHeatmap(histories: [HistoryDomain]) -> [HeatmapDomain] {

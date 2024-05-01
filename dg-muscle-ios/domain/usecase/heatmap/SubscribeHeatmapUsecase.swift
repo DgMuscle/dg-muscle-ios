@@ -19,7 +19,7 @@ final class SubscribeHeatmapUsecase {
     init(historyRepository: HistoryRepository, today: Date) {
         self.historyRepository = historyRepository
         self.today = today
-        self.getHeatmapUsecase = .init(historyRepository: historyRepository, today: today)
+        self.getHeatmapUsecase = .init(today: today)
         bind()
     }
     
@@ -33,7 +33,7 @@ final class SubscribeHeatmapUsecase {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] histories in
                 guard let self else { return }
-                heatMaps = getHeatmapUsecase.implement()
+                heatMaps = getHeatmapUsecase.implement(data: histories)
             }
             .store(in: &cancellables)
     }
