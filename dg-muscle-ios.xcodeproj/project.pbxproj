@@ -159,6 +159,7 @@
 		7009E1DF2BE22BFD00D9950D /* AppleAuthCoordinatorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43FF2BE0FD51001020AD /* AppleAuthCoordinatorGenerator.swift */; };
 		7009E1E02BE22C0000D9950D /* AppleAuthCoordinatorGeneratorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43FD2BE0FD48001020AD /* AppleAuthCoordinatorGeneratorImpl.swift */; };
 		7009E1E12BE22C0000D9950D /* AppleAuthCoordinatorGeneratorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43FD2BE0FD48001020AD /* AppleAuthCoordinatorGeneratorImpl.swift */; };
+		7009E1EB2BE22DA400D9950D /* HeatmapW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E1EA2BE22DA400D9950D /* HeatmapW.swift */; };
 		7017648B2BE084A800B501B7 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648A2BE084A800B501B7 /* SettingViewModel.swift */; };
 		7017648D2BE0854700B501B7 /* SignOutUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648C2BE0854700B501B7 /* SignOutUsecase.swift */; };
 		7017648F2BE0859400B501B7 /* DeleteAccountUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */; };
@@ -408,6 +409,7 @@
 		7009E1842BE226E900D9950D /* QuickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
 		7009E1862BE2271E00D9950D /* RemoteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCoordinator.swift; sourceTree = "<group>"; };
 		7009E18E2BE2297B00D9950D /* GetHeatmapUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeatmapUsecase.swift; sourceTree = "<group>"; };
+		7009E1EA2BE22DA400D9950D /* HeatmapW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapW.swift; sourceTree = "<group>"; };
 		7017648A2BE084A800B501B7 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7017648C2BE0854700B501B7 /* SignOutUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutUsecase.swift; sourceTree = "<group>"; };
 		7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountUsecase.swift; sourceTree = "<group>"; };
@@ -737,6 +739,40 @@
 			path = heatmap;
 			sourceTree = "<group>";
 		};
+		7009E1E62BE22D4E00D9950D /* app */ = {
+			isa = PBXGroup;
+			children = (
+				70240BEB2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift */,
+				70240BED2ADC1FF800B87A79 /* dg_muscle_ios_widgetLiveActivity.swift */,
+				70240BEF2ADC1FF800B87A79 /* dg_muscle_ios_widget.swift */,
+				70240BF12ADC1FF800B87A79 /* AppIntent.swift */,
+				70240BF32ADC1FF900B87A79 /* Assets.xcassets */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		7009E1E72BE22D6800D9950D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				7009E1EA2BE22DA400D9950D /* HeatmapW.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		7009E1E82BE22D7B00D9950D /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		7009E1E92BE22D7E00D9950D /* repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
 		701764892BE0840E00B501B7 /* setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -760,12 +796,11 @@
 		70240BEA2ADC1FF800B87A79 /* dg-muscle-ios-widget */ = {
 			isa = PBXGroup;
 			children = (
-				70240BEB2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift */,
-				70240BED2ADC1FF800B87A79 /* dg_muscle_ios_widgetLiveActivity.swift */,
-				70240BEF2ADC1FF800B87A79 /* dg_muscle_ios_widget.swift */,
-				70240BF12ADC1FF800B87A79 /* AppIntent.swift */,
-				70240BF32ADC1FF900B87A79 /* Assets.xcassets */,
 				70240BF52ADC1FF900B87A79 /* Info.plist */,
+				7009E1E62BE22D4E00D9950D /* app */,
+				7009E1E72BE22D6800D9950D /* model */,
+				7009E1E92BE22D7E00D9950D /* repository */,
+				7009E1E82BE22D7B00D9950D /* view */,
 			);
 			path = "dg-muscle-ios-widget";
 			sourceTree = "<group>";
@@ -1626,6 +1661,7 @@
 				70884DD02BDD46BE0059B22A /* ExerciseDomain.swift in Sources */,
 				7060BB702BDE2B140092B987 /* PostExerciseUsecase.swift in Sources */,
 				701764932BE0884A00B501B7 /* ListItemView.swift in Sources */,
+				7009E1EB2BE22DA400D9950D /* HeatmapW.swift in Sources */,
 				700526FC2BDE03A8007838BA /* GetDayUsecase.swift in Sources */,
 				700526EF2BDDFD38007838BA /* NavigationV2.swift in Sources */,
 				7009E1812BE223CD00D9950D /* HeatmapColorView.swift in Sources */,
