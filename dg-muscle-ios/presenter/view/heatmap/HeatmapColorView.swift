@@ -34,9 +34,9 @@ struct HeatmapColorView: View {
 }
 
 #Preview {
-    let historyRepository: HistoryRepository = HistoryRepositoryTest()
-    let viewModel: HeatmapColorViewModel = .init(postHeatmapColorUsecase: .init(historyRepository: historyRepository),
-                                                 subscribeHeatmapColorUsecase: .init(historyRepository: historyRepository),
-                                                 getHeatmapColorUsecase: .init(historyRepository: historyRepository))
+    let heatmapRepository: HeatmapRepository = HeatmapRepositoryTest()
+    let viewModel: HeatmapColorViewModel = .init(postHeatmapColorUsecase: .init(heatmapRepository: heatmapRepository),
+                                                 subscribeHeatmapColorUsecase: .init(heatmapRepository: heatmapRepository),
+                                                 getHeatmapColorUsecase: .init(heatMapRepository: heatmapRepository))
     return HeatmapColorView(viewModel: viewModel).preferredColorScheme(.dark)
 }

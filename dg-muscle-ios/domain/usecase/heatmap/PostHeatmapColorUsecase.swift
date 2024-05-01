@@ -8,13 +8,13 @@
 import Foundation
 
 final class PostHeatmapColorUsecase {
-    let historyRepository: HistoryRepository
+    let heatmapRepository: HeatmapRepository
     
-    init(historyRepository: HistoryRepository) {
-        self.historyRepository = historyRepository
+    init(heatmapRepository: HeatmapRepository) {
+        self.heatmapRepository = heatmapRepository
     }
     
     func implement(data: HeatmapColorDomain) {
-        try? historyRepository.post(data: data)
+        try? heatmapRepository.post(data: data)
     }
 }

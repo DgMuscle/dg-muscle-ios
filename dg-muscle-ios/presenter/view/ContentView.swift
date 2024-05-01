@@ -23,6 +23,7 @@ struct ContentView: View {
     let healthRepository: HealthRepositoryDomain = HealthRepositoryData.shared
     let authenticator: AuthenticatorInterface = Authenticator()
     let fileUploader: FileUploaderInterface = FileUploader.shared
+    let heatmapRepository: HeatmapRepository = HeatmapRepositoryData.shared
     
     var body: some View {
         ZStack {
@@ -33,7 +34,8 @@ struct ContentView: View {
                                healthRepository: healthRepository,
                                userRepository: userRepository,
                                authenticator: authenticator,
-                               fileUploader: fileUploader)
+                               fileUploader: fileUploader, 
+                               heatmapRepository: heatmapRepository)
             } else {
                 AppleSignInView(appleSignInUsecase: .init(appleAuthCoordinator: appleAuthCoordinatorGenerator.generate(window: window)))
             }

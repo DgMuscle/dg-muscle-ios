@@ -21,8 +21,11 @@ struct HeatmapView: View {
     dateFormatter.dateFormat = "yyyyMMdd"
     let date = dateFormatter.date(from: "20240415")!
     let repository = HistoryRepositoryTest()
-    let heatmapUsecase = SubscribeHeatmapUsecase(historyRepository: repository, today: date)
-    let colorUsecase = SubscribeHeatmapColorUsecase(historyRepository: repository)
+    let heatmapRepository: HeatmapRepository = HeatmapRepositoryTest()
+    let heatmapUsecase = SubscribeHeatmapUsecase(historyRepository: repository,
+                                                 today: date,
+                                                 heatmapRepository: heatmapRepository)
+    let colorUsecase = SubscribeHeatmapColorUsecase(heatmapRepository: heatmapRepository)
     
     let viewModel: HeatmapViewModel = .init(subscribeHeatmapUsecase: heatmapUsecase,
                                             subscribeHeatmapColorUsecase: colorUsecase)
