@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import WidgetKit
 
 final class HistoryRepositoryData: HistoryRepository {
     static let shared = HistoryRepositoryData()
@@ -15,6 +16,7 @@ final class HistoryRepositoryData: HistoryRepository {
     var historiesPublisher: AnyPublisher<[HistoryDomain], Never> { $_histories.eraseToAnyPublisher() }
     @Published private var _histories: [HistoryDomain] = [] {
         didSet {
+            WidgetCenter.shared.reloadAllTimelines()
             try? FileManagerHelperV2.shared.save(histories.prefix(150).map({ HistoryData(from: $0) }), toFile: .history)
         }
     }
@@ -64,6 +66,7 @@ final class HistoryRepositoryData: HistoryRepository {
         _heatmapColor = data
         let data: HeatmapColorData = .init(color: data)
         try FileManagerHelperV2.shared.save(data, toFile: .heatmapColor)
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     private func get() -> HeatmapColorDomain {
