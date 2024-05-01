@@ -1,0 +1,106 @@
+//
+//  MainNavigationV2.swift
+//  dg-muscle-ios
+//
+//  Created by 신동규 on 4/28/24.
+//
+
+import Foundation
+import SwiftUI
+
+struct MainNavigationV2: Identifiable, Hashable {
+    enum Name: String {
+        case setting
+        case heatmapColor
+        case profile
+        case profilePhoto
+        case openWeb
+    }
+    
+    var id: Int { name.hashValue }
+    let name: Name
+    var openWebUrl: String? = nil
+    
+    init(name: Name) {
+        self.name = name
+    }
+    
+    init(openWeb: String) {
+        self.name = .openWeb
+        self.openWebUrl = openWeb
+    }
+}
+
+struct HistoryNavigationV2: Identifiable, Hashable, Equatable {
+    static func == (lhs: HistoryNavigationV2, rhs: HistoryNavigationV2) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    enum Name: String {
+        case historyForm
+        case recordForm
+        case previousRecord
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
+    
+    var id: Int { name.hashValue }
+    let name: Name
+    
+    var historyFormParameter: HistoryV? = nil
+    
+    var recordForForm: (Binding<RecordV>, Date)? = nil
+    
+    var previousRecord: (RecordV, Date)? = nil
+    
+    init(historyForm history: HistoryV) {
+        name = .historyForm
+        historyFormParameter = history
+    }
+    
+    init(recordForForm: Binding<RecordV>, historyDateForForm: Date) {
+        self.name = .recordForm
+        self.recordForForm = (recordForForm, historyDateForForm)
+    }
+    
+    init(previousRecord: (RecordV, Date)) {
+        self.previousRecord = previousRecord
+        self.name = .previousRecord
+    }
+}
+
+struct ExerciseNavigationV2: Identifiable, Hashable {
+    enum Name: String {
+        case manage
+        case edit
+        case add1
+        case add2
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
+    
+    var id: Int { name.hashValue }
+    let name: Name
+    var edit: ExerciseV? = nil
+    var exerciseName: String? = nil
+    var exerciseParts: [ExerciseV.Part] = []
+    
+    init(name: Name) {
+        self.name = name
+    }
+    
+    init(edit: ExerciseV) {
+        name = .edit
+        self.edit = edit
+    }
+    
+    init(exerciseName: String, exerciseParts: [ExerciseV.Part]) {
+        self.exerciseName = exerciseName
+        self.exerciseParts = exerciseParts
+        name = .add2
+    }
+}

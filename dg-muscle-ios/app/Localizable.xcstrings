@@ -1,0 +1,762 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    " and " : {
+
+    },
+    " as much as " : {
+
+    },
+    " volume" : {
+
+    },
+    "-" : {
+
+    },
+    "'Traditional Strength Training'" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "'근력 강화 운동'"
+          }
+        }
+      }
+    },
+    "(%lld kcal)" : {
+
+    },
+    "(%lld)" : {
+
+    },
+    "%@" : {
+
+    },
+    "%@ volume" : {
+
+    },
+    "%@, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      }
+    },
+    "%@%@ x %lld (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@ x %3$lld (%4$@)"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "%lld Records, %@ Volume" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld Records, %2$@ Volume"
+          }
+        }
+      }
+    },
+    "%lld sets," : {
+
+    },
+    "%lld sets, %lld volume" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld sets, %2$lld volume"
+          }
+        }
+      }
+    },
+    "%lld%@ x %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld%2$@ x %3$lld"
+          }
+        }
+      }
+    },
+    "+" : {
+
+    },
+    "1. Lie on your back on a flat bench. Grip a barbell with hands slightly wider than shoulder width. The bar should be directly over the shoulders." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. 벤치에 똑바로 눕습니다. 바벨을 가볍게 움켜쥐고 너비는 어깨보다 살짝 넓게 쥐어줍니다. 바를 어깨의 일직선 위에 오게 하세요."
+          }
+        }
+      }
+    },
+    "1. stand in a relaxed manner. Open your feet shoulder-width apart and attach your arms lightly to your body." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. 편안한 자세로 서 있습니다. 발을 어깨 너비로 벌리고 팔을 몸에 가볍게 붙입니다."
+          }
+        }
+      }
+    },
+    "1. Start with the feet shoulder width apart (foot stance may vary depending on variation). Feet are under the bar with the bar close to the shins" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. 발을 어깨너비로 벌리고 시작합니다(발자세는 변화에 따라 다를 수 있습니다). 발은 바가 정강이에 가까운 바 아래에 있습니다"
+          }
+        }
+      }
+    },
+    "1. Turn on apple watch's workout app" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. 애플워치의 운동 앱을 켭니다"
+          }
+        }
+      }
+    },
+    "2. As you balance and breathe in, bend your knees and lower your upper body above your waist. Never raise your heels at this time. Keep the upper body as upright as possible so that the back of the waist stays arched. A bend in the waist causes injury." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 균형을 잡고 숨을 들이마실 때 무릎을 굽히고 상체를 허리 위로 숙입니다. 이때 발뒤꿈치를 절대로 들지 마세요. 허리 뒤쪽이 아치형으로 유지될 수 있도록 상체를 가능한 한 똑바로 유지하세요. 허리가 구부러지면 부상을 유발합니다."
+          }
+        }
+      }
+    },
+    "2. Lower the torso to the bar by pushing the buttocks back and hinging at the waist. Then grasp the bar in your hands." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 엉덩이를 뒤로 밀어서 허리에 매달아서 몸통을 바로 내리고, 그리고 나서 바를 손에 잡습니다."
+          }
+        }
+      }
+    },
+    "2. Press your feet firmly into the ground and keep your hips on the bench throughout the entire movement." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 발을 땅에 단단히 누르고 전체 동작 동안 엉덩이를 벤치에 유지합니다."
+          }
+        }
+      }
+    },
+    "2. Select " : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 선택하십시오"
+          }
+        }
+      }
+    },
+    "3. Keep your core engaged and maintain a neutral spine position throughout the movement. Avoid arching your back." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. 중심부를 계속 잡고 움직임 내내 중립적인 척추 자세를 유지합니다. 등을 아치형으로 만드는 것을 피합니다."
+          }
+        }
+      }
+    },
+    "3. Lower your waist until your thighs and bottom are parallel. And stay in parallel for about a second if possible. As you breathe out, raise your waist while standing up your knees and back." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. 허벅지와 바닥이 평행이 될 때까지 허리를 내리세요. 그리고 가능하면 1초 정도 평행을 유지하세요. 숨을 내쉬면서 무릎과 등을 세운 상태에서 허리를 올립니다."
+          }
+        }
+      }
+    },
+    "3. Squeeze the shoulder blades together to engage the lats, followed by engaging the core musculature. Make sure to keep the hips lower than the shoulders and the head/neck in a neutral position." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. 어깨뼈를 맞대어 래트를 맞물리게 한 다음 코어 근육을 맞물리게 합니다. 엉덩이를 어깨보다 낮게 유지하고 머리/목은 중립 자세로 유지합니다."
+          }
+        }
+      }
+    },
+    "3. Start recording at the beginning of the exercise, and stop recording at the end of the exercise." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. 운동을 시작할 때는 녹음을 시작하고, 운동이 끝나면 녹음을 중단합니다."
+          }
+        }
+      }
+    },
+    "4. Push through the feet and pull the weight up. Think about pushing the floor away, rather than lifting the weight up. The bar should stay relatively close to the shins. Squeeze the glutes to lock the top of the lift." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. 발을 밀어서 무게를 위로 끌어 올리세요. 무게를 위로 올리는 것보다 바닥을 밀어내는 것에 대해 생각해 보세요. 바는 정강이에 비교적 가까이 있어야 합니다. 글루테를 짜서 리프트 상단을 잠급니다."
+          }
+        }
+      }
+    },
+    "4. Repeat 1 to 3." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. 1~3을 반복합니다."
+          }
+        }
+      }
+    },
+    "4. Slowly lift the bar or dumbbells off the rack, if using. Lower the bar to the chest, about nipple level, allowing elbows to bend out to the side, about 45 degrees away from the body." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. 사용하는 경우 바 또는 아령을 천천히 랙에서 들어 올립니다. 팔꿈치가 몸에서 약 45도 떨어진 측면으로 구부릴 수 있도록 약 젖꼭지 높이의 바를 가슴까지 낮춥니다."
+          }
+        }
+      }
+    },
+    "5. Lower to the floor the the reverse manner." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. 반대로 바닥으로 내려갑니다."
+          }
+        }
+      }
+    },
+    "5. Stop lowering when your elbows are just below the bench. Press feet into the floor as you push the bar back up to return to starting position." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. 팔꿈치가 벤치 바로 아래에 있을 때는 아래로 내리는 것을 멈추세요. 시작 위치로 돌아가려면 막대를 다시 위로 밀어 올리면서 발을 바닥으로 누르세요."
+          }
+        }
+      }
+    },
+    "6. Perform 5 to 10 reps, depending on weight used. Perform up to 3 sets." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6. 사용 중량에 따라 5~10회 반복하며 최대 3세트까지 수행합니다."
+          }
+        }
+      }
+    },
+    "A pull-up is an upper-body strength exercise. The pull-up is a closed-chain movement where the body is suspended by the hands, gripping a bar or other implement at a distance typically wider than shoulder-width, and pulled up. As this happens, the elbows flex and the shoulders adduct and extend to bring the elbows to the torso.\n\nPull-ups build up several muscles of the upper body, including the latissimus dorsi, trapezius, and biceps brachii. A pull-up may be performed with overhand (pronated), underhand (supinated)—sometimes referred to as a chin-up—neutral, or rotating hand position." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "풀업(pull-up)은 상체의 근력 운동입니다. 풀업은 몸이 손으로 매달려 있고, 어깨 너비보다 넓은 거리에서 바(bar)나 다른 도구들을 잡고, 끌어올리는 닫힌 사슬 움직임입니다. 이렇게 팔꿈치는 휘어지고, 어깨는 팔꿈치를 몸통으로 가져가기 위해 굽히고 뻗어 나갑니다.\n\n풀업은 등허리, 사다리꼴, 이두근 등을 포함한 상체의 여러 근육을 형성합니다. 풀업은 때때로 턱걸이-중립적인 또는 회전하는 손 자세라고 지칭되는 오버핸드, 언더핸드로 수행될 수 있습니다."
+          }
+        }
+      }
+    },
+    "A squat is a strength exercise in which the trainee lowers their hips from a standing position and then stands back up. During the descent, the hip and knee joints flex while the ankle joint dorsiflexes; conversely the hip and knee joints extend and the ankle joint plantarflexes when standing up. Squats also help the hip muscles." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "스쿼트는 훈련생이 서 있는 자세에서 엉덩이를 내린 다음 다시 일어서는 근력 운동입니다. 하강하는 동안, 발목 관절이 뒤로 젖혀지는 동안 고관절과 무릎 관절은 휘어지고, 반대로 고관절과 무릎 관절은 펴지고 서 있을 때 발목 관절의 발바닥은 휘어집니다. 스쿼트는 또한 고관절 근육을 돕습니다."
+          }
+        }
+      }
+    },
+    "account" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계정"
+          }
+        }
+      }
+    },
+    "add" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "추가"
+          }
+        }
+      }
+    },
+    "Add" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "추가"
+          }
+        }
+      }
+    },
+    "agree_remove_account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure want to remove your account?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정말 계정을 삭제 하시겠습니까?"
+          }
+        }
+      }
+    },
+    "agree_remove_account2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can't undo this behavior"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 행동은 되돌릴 수 없습니다"
+          }
+        }
+      }
+    },
+    "agree_remove_account3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you don't have display name, just press continue"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "만약 display name이 없다면 계속하기 버튼을 눌러주세요"
+          }
+        }
+      }
+    },
+    "App Guide" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 사용 설명서"
+          }
+        }
+      }
+    },
+    "Are you sure you will delete your account?" : {
+
+    },
+    "Be careful, removal exercises can affect your previous records" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "운동종목을 지우는 것은 당신의 이전 기록들에 영향을 끼칠 수 있으니 주의하세요"
+          }
+        }
+      }
+    },
+    "continue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "continue"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속하기"
+          }
+        }
+      }
+    },
+    "Continue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속하기"
+          }
+        }
+      }
+    },
+    "Data is unreadable due to absence of exercise data" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "운동 데이터의 부재로 인해 기록 데이터를 읽을 수 없습니다."
+          }
+        }
+      }
+    },
+    "delete" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "삭제"
+          }
+        }
+      }
+    },
+    "DELETE" : {
+
+    },
+    "DELETE HISTORY" : {
+
+    },
+    "Delete Item" : {
+
+    },
+    "DG" : {
+
+    },
+    "Display Name" : {
+
+    },
+    "Duration: %@" : {
+
+    },
+    "Exercise Name" : {
+
+    },
+    "Fail to make image file." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미지 파일 생성 실패"
+          }
+        }
+      }
+    },
+    "Favorite" : {
+
+    },
+    "Introduce" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "소개"
+          }
+        }
+      }
+    },
+    "Is above information correct?" : {
+
+    },
+    "It can be happened if you delete this exercise" : {
+
+    },
+    "logout" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로그아웃"
+          }
+        }
+      }
+    },
+    "Make use of apple watch" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "애플워치 활용하기"
+          }
+        }
+      }
+    },
+    "Manage Exercise" : {
+
+    },
+    "Next" : {
+
+    },
+    "On the %@th, I worked out" : {
+
+    },
+    "On the %@th, I worked out my " : {
+
+    },
+    "One moment, please." : {
+
+    },
+    "PhotosPicker" : {
+
+    },
+    "Please enter your display name" : {
+
+    },
+    "Please try again" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잠시후 다시 시도해주세요"
+          }
+        }
+      }
+    },
+    "previous record" : {
+
+    },
+    "Profile" : {
+
+    },
+    "remove account" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계정삭제"
+          }
+        }
+      }
+    },
+    "save" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "save"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저장하기"
+          }
+        }
+      }
+    },
+    "Save" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저장하기"
+          }
+        }
+      }
+    },
+    "SAVE" : {
+
+    },
+    "set's count: %lld," : {
+
+    },
+    "Setting" : {
+
+    },
+    "Share" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공유하기"
+          }
+        }
+      }
+    },
+    "Shared image" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미지 공유하기"
+          }
+        }
+      }
+    },
+    "Sign in with apple ID" : {
+
+    },
+    "Sorry for inconvenience. Error code is 2" : {
+      "comment" : "invalidUrl"
+    },
+    "Sorry for inconvenience. Error code is 3" : {
+      "comment" : "invalidResponse"
+    },
+    "Sorry for inconvenience. Error code is 4" : {
+      "comment" : "unknown"
+    },
+    "Squat" : {
+
+    },
+    "Target parts are" : {
+
+    },
+    "The bench press, or chest press, is a weight training exercise where a person presses a weight upwards while lying horizontally on a weight training bench. Although the bench press is a full-body exercise, the muscles primarily used are the pectoralis major, the anterior deltoids, and the triceps, among other stabilizing muscles. A barbell is generally used to hold the weight, but a pair of dumbbells can also be used." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "벤치 프레스는 사람이 웨이트 트레이닝 벤치에 수평으로 누운 상태에서 체중을 위쪽으로 누르는 웨이트 트레이닝 운동입니다. 벤치 프레스는 전신 운동이지만, 주로 사용되는 근육은 다른 안정화 근육들 중에서도 가슴골 대퇴골, 앞족제비, 삼두근입니다. 바벨은 일반적으로 체중을 견디기 위해 사용되지만 아령 한 쌍도 사용될 수 있습니다."
+          }
+        }
+      }
+    },
+    "The deadlift exercise is a relatively simple exercise to perform, a weight is lifted from a resting position on the floor to an upright position. The deadlift exercise utilizes multiple muscle groups to perform but has been used to strength the hips, thighs, and back musculature." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "데드리프트 운동은 비교적 간단하게 수행할 수 있는 운동으로, 바닥에 있는 휴식 자세에서 직립 자세로 체중을 들어올립니다. 데드리프트 운동은 여러 근육 그룹을 활용하여 수행하지만 엉덩이, 허벅지, 등 근육을 강화하는 데 사용되었습니다."
+          }
+        }
+      }
+    },
+    "There is index error." : {
+      "comment" : "index"
+    },
+    "Update" : {
+
+    },
+    "volume is %@" : {
+
+    },
+    "What are the target parts of this exercise?" : {
+
+    },
+    "What's the name of the exercise?" : {
+
+    },
+    "yes" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네"
+          }
+        }
+      }
+    },
+    "YES" : {
+
+    },
+    "You can see your exercise duration, kcal consumed, intensity." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "운동 시간, 칼로리 소모량, 운동 강도 등을 볼 수 있습니다."
+          }
+        }
+      }
+    },
+    "Your all data will be deleted" : {
+
+    },
+    "Your authentication is not perfect. Please use it again after you log out." : {
+      "comment" : "authentication"
+    }
+  },
+  "version" : "1.0"
+}
