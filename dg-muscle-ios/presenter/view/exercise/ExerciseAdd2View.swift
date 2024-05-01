@@ -42,7 +42,7 @@ struct ExerciseAdd2View: View {
             
             Button {
                 viewModel.save()
-                coordinator.pop()
+                coordinator.pop(k: 2)
             } label: {
                 Text("YES").fontWeight(.black).foregroundStyle(Color(uiColor: .label))
             }
