@@ -17,29 +17,11 @@ struct ExerciseSetData: Codable {
         id = from.id
         weight = from.weight
         reps = from.reps
-        unit = Self.convert(unit: from.unit)
+        unit = .init(unit: from.unit)
     }
     
     var domain: ExerciseSetDomain {
-        .init(id: id, unit: Self.convert(unit: unit), reps: reps, weight: weight)
-    }
-    
-    static func convert(unit: ExerciseSetDomain.Unit) -> Unit {
-        switch unit {
-        case .kg:
-            return .kg
-        case .lbs:
-            return .lbs
-        }
-    }
-    
-    static func convert(unit: Unit) -> ExerciseSetDomain.Unit {
-        switch unit {
-        case .kg:
-            return .kg
-        case .lbs:
-            return .lbs
-        }
+        .init(id: id, unit: unit.domain, reps: reps, weight: weight)
     }
 }
 
@@ -47,5 +29,23 @@ extension ExerciseSetData {
     enum Unit: String, Codable {
         case kg
         case lbs
+        
+        init(unit: ExerciseSetDomain.Unit) {
+            switch unit {
+            case .kg:
+                self = .kg
+            case .lbs:
+                self = .lbs
+            }
+        }
+        
+        var domain: ExerciseSetDomain.Unit {
+            switch self {
+            case .kg:
+                return .kg
+            case .lbs:
+                return .lbs
+            }
+        }
     }
 }
