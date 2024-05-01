@@ -78,6 +78,87 @@
 		7009E18C2BE228A900D9950D /* HeatmapColorDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708DB2B22BDD6AD500195605 /* HeatmapColorDomain.swift */; };
 		7009E18D2BE228B800D9950D /* HeatmapDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070162C2BDD2C5F0025C624 /* HeatmapDomain.swift */; };
 		7009E18F2BE2297B00D9950D /* GetHeatmapUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E18E2BE2297B00D9950D /* GetHeatmapUsecase.swift */; };
+		7009E1902BE22ACF00D9950D /* GetHeatmapUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E18E2BE2297B00D9950D /* GetHeatmapUsecase.swift */; };
+		7009E1912BE22AD400D9950D /* GetHeatmapColorUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E17E2BE222CD00D9950D /* GetHeatmapColorUsecase.swift */; };
+		7009E1922BE22AD700D9950D /* GetHeatmapColorUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E17E2BE222CD00D9950D /* GetHeatmapColorUsecase.swift */; };
+		7009E1932BE22ADA00D9950D /* GetHeatmapUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E18E2BE2297B00D9950D /* GetHeatmapUsecase.swift */; };
+		7009E1942BE22ADD00D9950D /* PostHeatmapColorUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E17C2BE2225700D9950D /* PostHeatmapColorUsecase.swift */; };
+		7009E1952BE22ADE00D9950D /* PostHeatmapColorUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E17C2BE2225700D9950D /* PostHeatmapColorUsecase.swift */; };
+		7009E1962BE22AE200D9950D /* SubscribeHeatmapColorUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708DB2BC2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift */; };
+		7009E1972BE22AE300D9950D /* SubscribeHeatmapColorUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708DB2BC2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift */; };
+		7009E1982BE22AE600D9950D /* SubscribeHeatmapUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708DB2BA2BDD6F0900195605 /* SubscribeHeatmapUsecase.swift */; };
+		7009E1992BE22AE700D9950D /* SubscribeHeatmapUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708DB2BA2BDD6F0900195605 /* SubscribeHeatmapUsecase.swift */; };
+		7009E19B2BE22B3600D9950D /* HistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070162E2BDD2CAD0025C624 /* HistoryRepository.swift */; };
+		7009E19C2BE22B3A00D9950D /* ExerciseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DD12BDD471F0059B22A /* ExerciseRepository.swift */; };
+		7009E19D2BE22B3E00D9950D /* HealthRepositoryDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DF02BDD52580059B22A /* HealthRepositoryDomain.swift */; };
+		7009E19E2BE22B4200D9950D /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070164A2BDD3DBC0025C624 /* UserRepository.swift */; };
+		7009E19F2BE22B4E00D9950D /* UserDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016482BDD3D570025C624 /* UserDomain.swift */; };
+		7009E1A02BE22B5500D9950D /* ExerciseDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DCF2BDD46BE0059B22A /* ExerciseDomain.swift */; };
+		7009E1A12BE22B5800D9950D /* ExerciseSetDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016252BDD2B000025C624 /* ExerciseSetDomain.swift */; };
+		7009E1A22BE22B5D00D9950D /* BloodTypeDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DF62BDD53080059B22A /* BloodTypeDomain.swift */; };
+		7009E1A32BE22B5F00D9950D /* BodyMassDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DE72BDD51700059B22A /* BodyMassDomain.swift */; };
+		7009E1A42BE22B6200D9950D /* HeightDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DE52BDD51490059B22A /* HeightDomain.swift */; };
+		7009E1A52BE22B6400D9950D /* HistoryMetaDataDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DE32BDD511A0059B22A /* HistoryMetaDataDomain.swift */; };
+		7009E1A62BE22B6700D9950D /* SexDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DF22BDD52AB0059B22A /* SexDomain.swift */; };
+		7009E1A72BE22B6B00D9950D /* HistoryDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016222BDD2ACC0025C624 /* HistoryDomain.swift */; };
+		7009E1A82BE22B6E00D9950D /* RecordDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016292BDD2B0B0025C624 /* RecordDomain.swift */; };
+		7009E1A92BE22B7800D9950D /* DeleteExerciseUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB5B2BDE1F7F0092B987 /* DeleteExerciseUsecase.swift */; };
+		7009E1AA2BE22B7900D9950D /* DeleteExerciseUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB5B2BDE1F7F0092B987 /* DeleteExerciseUsecase.swift */; };
+		7009E1AB2BE22B7C00D9950D /* EditExerciseUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB752BDE2E370092B987 /* EditExerciseUsecase.swift */; };
+		7009E1AC2BE22B7D00D9950D /* EditExerciseUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB752BDE2E370092B987 /* EditExerciseUsecase.swift */; };
+		7009E1AD2BE22B8000D9950D /* GetExerciseUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029B472A2BDF88AC006DC8BD /* GetExerciseUsecase.swift */; };
+		7009E1AE2BE22B8100D9950D /* GetExerciseUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029B472A2BDF88AC006DC8BD /* GetExerciseUsecase.swift */; };
+		7009E1AF2BE22B8400D9950D /* PostExerciseUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB6F2BDE2B140092B987 /* PostExerciseUsecase.swift */; };
+		7009E1B02BE22B8500D9950D /* PostExerciseUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB6F2BDE2B140092B987 /* PostExerciseUsecase.swift */; };
+		7009E1B12BE22B8800D9950D /* SubscribeGroupedExercisesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB4B2BDE18160092B987 /* SubscribeGroupedExercisesUsecase.swift */; };
+		7009E1B22BE22B8800D9950D /* SubscribeGroupedExercisesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060BB4B2BDE18160092B987 /* SubscribeGroupedExercisesUsecase.swift */; };
+		7009E1B32BE22B9300D9950D /* DeleteHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7005270D2BDE1128007838BA /* DeleteHistoryUsecase.swift */; };
+		7009E1B42BE22B9400D9950D /* DeleteHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7005270D2BDE1128007838BA /* DeleteHistoryUsecase.swift */; };
+		7009E1B52BE22B9600D9950D /* GetDayUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526FB2BDE03A8007838BA /* GetDayUsecase.swift */; };
+		7009E1B62BE22B9600D9950D /* GetDayUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526FB2BDE03A8007838BA /* GetDayUsecase.swift */; };
+		7009E1B72BE22B9900D9950D /* GetKcalUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700527032BDE0685007838BA /* GetKcalUsecase.swift */; };
+		7009E1B82BE22B9900D9950D /* GetKcalUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700527032BDE0685007838BA /* GetKcalUsecase.swift */; };
+		7009E1B92BE22B9C00D9950D /* GetNaturalDurationUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700527012BDE051B007838BA /* GetNaturalDurationUsecase.swift */; };
+		7009E1BA2BE22B9D00D9950D /* GetNaturalDurationUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700527012BDE051B007838BA /* GetNaturalDurationUsecase.swift */; };
+		7009E1BB2BE22BA000D9950D /* GetPartsUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526FF2BDE0422007838BA /* GetPartsUsecase.swift */; };
+		7009E1BC2BE22BA000D9950D /* GetPartsUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526FF2BDE0422007838BA /* GetPartsUsecase.swift */; };
+		7009E1BD2BE22BA300D9950D /* GetPreviousRecordUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0292DC5A2BDF3E21006295FA /* GetPreviousRecordUsecase.swift */; };
+		7009E1BE2BE22BA400D9950D /* GetPreviousRecordUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0292DC5A2BDF3E21006295FA /* GetPreviousRecordUsecase.swift */; };
+		7009E1BF2BE22BA600D9950D /* GetTodayHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526EB2BDDFB87007838BA /* GetTodayHistoryUsecase.swift */; };
+		7009E1C02BE22BA700D9950D /* GetTodayHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526EB2BDDFB87007838BA /* GetTodayHistoryUsecase.swift */; };
+		7009E1C12BE22BAB00D9950D /* GetVolumesGroupedByPartUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFAE8C2BE138CC0011132F /* GetVolumesGroupedByPartUsecase.swift */; };
+		7009E1C22BE22BAF00D9950D /* PostHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C8C18A2BDFF96B00805C49 /* PostHistoryUsecase.swift */; };
+		7009E1C32BE22BAF00D9950D /* PostHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C8C18A2BDFF96B00805C49 /* PostHistoryUsecase.swift */; };
+		7009E1C42BE22BB200D9950D /* SubscribeGroupedHistoriesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884E042BDD60170059B22A /* SubscribeGroupedHistoriesUsecase.swift */; };
+		7009E1C52BE22BB400D9950D /* SubscribeMetaDatasMapUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884E072BDD632E0059B22A /* SubscribeMetaDatasMapUsecase.swift */; };
+		7009E1C62BE22BB500D9950D /* SubscribeMetaDatasMapUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884E072BDD632E0059B22A /* SubscribeMetaDatasMapUsecase.swift */; };
+		7009E1C72BE22BB900D9950D /* AppleSignInUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706D6A732BE0E397000A0324 /* AppleSignInUsecase.swift */; };
+		7009E1C82BE22BB900D9950D /* AppleSignInUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706D6A732BE0E397000A0324 /* AppleSignInUsecase.swift */; };
+		7009E1C92BE22BBC00D9950D /* DeleteAccountUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */; };
+		7009E1CA2BE22BBD00D9950D /* DeleteAccountUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */; };
+		7009E1CB2BE22BC000D9950D /* DeleteUserProfileImageUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85AA32BDE6D8500537071 /* DeleteUserProfileImageUsecase.swift */; };
+		7009E1CC2BE22BC100D9950D /* DeleteUserProfileImageUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85AA32BDE6D8500537071 /* DeleteUserProfileImageUsecase.swift */; };
+		7009E1CD2BE22BC300D9950D /* GetHealthInfoUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */; };
+		7009E1CE2BE22BC400D9950D /* GetHealthInfoUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */; };
+		7009E1CF2BE22BC700D9950D /* GetIsLoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43F72BE0F700001020AD /* GetIsLoginUsecase.swift */; };
+		7009E1D02BE22BC800D9950D /* GetIsLoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43F72BE0F700001020AD /* GetIsLoginUsecase.swift */; };
+		7009E1D12BE22BCB00D9950D /* GetUserUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85AA52BDE6E8600537071 /* GetUserUsecase.swift */; };
+		7009E1D22BE22BCB00D9950D /* GetUserUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85AA52BDE6E8600537071 /* GetUserUsecase.swift */; };
+		7009E1D32BE22BCE00D9950D /* PostUserDisplayNameUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A992BDE637700537071 /* PostUserDisplayNameUsecase.swift */; };
+		7009E1D42BE22BCE00D9950D /* PostUserDisplayNameUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A992BDE637700537071 /* PostUserDisplayNameUsecase.swift */; };
+		7009E1D52BE22BD100D9950D /* PostUserProfileImageUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A972BDE625800537071 /* PostUserProfileImageUsecase.swift */; };
+		7009E1D62BE22BD200D9950D /* PostUserProfileImageUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A972BDE625800537071 /* PostUserProfileImageUsecase.swift */; };
+		7009E1D72BE22BD500D9950D /* SignOutUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648C2BE0854700B501B7 /* SignOutUsecase.swift */; };
+		7009E1D82BE22BD500D9950D /* SignOutUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648C2BE0854700B501B7 /* SignOutUsecase.swift */; };
+		7009E1D92BE22BD800D9950D /* SubscribeIsLoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43F92BE0F72C001020AD /* SubscribeIsLoginUsecase.swift */; };
+		7009E1DA2BE22BD900D9950D /* SubscribeIsLoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43F92BE0F72C001020AD /* SubscribeIsLoginUsecase.swift */; };
+		7009E1DB2BE22BDB00D9950D /* SubscribeUserUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526DE2BDDF5D9007838BA /* SubscribeUserUsecase.swift */; };
+		7009E1DC2BE22BDC00D9950D /* SubscribeUserUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526DE2BDDF5D9007838BA /* SubscribeUserUsecase.swift */; };
+		7009E1DD2BE22BF400D9950D /* FileUploaderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */; };
+		7009E1DE2BE22BFC00D9950D /* AppleAuthCoordinatorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43FF2BE0FD51001020AD /* AppleAuthCoordinatorGenerator.swift */; };
+		7009E1DF2BE22BFD00D9950D /* AppleAuthCoordinatorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43FF2BE0FD51001020AD /* AppleAuthCoordinatorGenerator.swift */; };
+		7009E1E02BE22C0000D9950D /* AppleAuthCoordinatorGeneratorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43FD2BE0FD48001020AD /* AppleAuthCoordinatorGeneratorImpl.swift */; };
+		7009E1E12BE22C0000D9950D /* AppleAuthCoordinatorGeneratorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43FD2BE0FD48001020AD /* AppleAuthCoordinatorGeneratorImpl.swift */; };
 		7017648B2BE084A800B501B7 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648A2BE084A800B501B7 /* SettingViewModel.swift */; };
 		7017648D2BE0854700B501B7 /* SignOutUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648C2BE0854700B501B7 /* SignOutUsecase.swift */; };
 		7017648F2BE0859400B501B7 /* DeleteAccountUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */; };
@@ -169,10 +250,6 @@
 		7083E6BF2ABF06B7007D43CE /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6BE2ABF06B7007D43CE /* FirebaseAppCheck */; };
 		7083E6C62ABF0EC9007D43CE /* AppleAuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */; };
 		7083E6C92ABF0F45007D43CE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6C82ABF0F45007D43CE /* FirebaseAuth */; };
-		70884DC92BDD449E0059B22A /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
-		70884DCA2BDD449E0059B22A /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
-		70884DCD2BDD44CF0059B22A /* FileManagerHelperV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016442BDD31350025C624 /* FileManagerHelperV2.swift */; };
-		70884DCE2BDD44D60059B22A /* FileManagerHelperV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016442BDD31350025C624 /* FileManagerHelperV2.swift */; };
 		70884DD02BDD46BE0059B22A /* ExerciseDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DCF2BDD46BE0059B22A /* ExerciseDomain.swift */; };
 		70884DD22BDD471F0059B22A /* ExerciseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DD12BDD471F0059B22A /* ExerciseRepository.swift */; };
 		70884DD42BDD47510059B22A /* ExerciseRepositoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DD32BDD47510059B22A /* ExerciseRepositoryData.swift */; };
@@ -225,10 +302,6 @@
 		70A85AAA2BDE720900537071 /* ProfilePhotoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85AA92BDE720900537071 /* ProfilePhotoEditView.swift */; };
 		70B07AC42BD8D0A200A0E732 /* FunctionsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */; };
 		70B07AC72BD8D0D800A0E732 /* FunctionsURLEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */; };
-		70B07AC82BD8D53B00A0E732 /* FunctionsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */; };
-		70B07AC92BD8D53B00A0E732 /* FunctionsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */; };
-		70B07ACA2BD8D54900A0E732 /* FunctionsURLEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */; };
-		70B07ACB2BD8D54A00A0E732 /* FunctionsURLEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */; };
 		70BB52182B37EC1D00EC606D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 70BB52172B37EC1D00EC606D /* Localizable.xcstrings */; };
 		70BC43F62BE0F6B9001020AD /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43F52BE0F6B9001020AD /* ContentViewModel.swift */; };
 		70BC43F82BE0F700001020AD /* GetIsLoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43F72BE0F700001020AD /* GetIsLoginUsecase.swift */; };
@@ -1280,24 +1353,69 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70884DC92BDD449E0059B22A /* Authenticator.swift in Sources */,
+				7009E1C52BE22BB400D9950D /* SubscribeMetaDatasMapUsecase.swift in Sources */,
+				7009E1A32BE22B5F00D9950D /* BodyMassDomain.swift in Sources */,
+				7009E1A72BE22B6B00D9950D /* HistoryDomain.swift in Sources */,
+				7009E1BB2BE22BA000D9950D /* GetPartsUsecase.swift in Sources */,
+				7009E1BD2BE22BA300D9950D /* GetPreviousRecordUsecase.swift in Sources */,
 				7057B2972BDE78E300A1418D /* AuthenticatorInterface.swift in Sources */,
+				7009E19B2BE22B3600D9950D /* HistoryRepository.swift in Sources */,
 				70240BEE2ADC1FF800B87A79 /* dg_muscle_ios_widgetLiveActivity.swift in Sources */,
+				7009E1942BE22ADD00D9950D /* PostHeatmapColorUsecase.swift in Sources */,
+				7009E1CD2BE22BC300D9950D /* GetHealthInfoUsecase.swift in Sources */,
+				7009E1DD2BE22BF400D9950D /* FileUploaderInterface.swift in Sources */,
+				7009E1B92BE22B9C00D9950D /* GetNaturalDurationUsecase.swift in Sources */,
+				7009E1B32BE22B9300D9950D /* DeleteHistoryUsecase.swift in Sources */,
+				7009E1C72BE22BB900D9950D /* AppleSignInUsecase.swift in Sources */,
+				7009E1D72BE22BD500D9950D /* SignOutUsecase.swift in Sources */,
+				7009E1A52BE22B6400D9950D /* HistoryMetaDataDomain.swift in Sources */,
+				7009E1C22BE22BAF00D9950D /* PostHistoryUsecase.swift in Sources */,
+				7009E1A42BE22B6200D9950D /* HeightDomain.swift in Sources */,
 				7009E1892BE2288D00D9950D /* HeatmapV.swift in Sources */,
+				7009E1962BE22AE200D9950D /* SubscribeHeatmapColorUsecase.swift in Sources */,
+				7009E1AB2BE22B7C00D9950D /* EditExerciseUsecase.swift in Sources */,
 				70240BF22ADC1FF800B87A79 /* AppIntent.swift in Sources */,
+				7009E1BF2BE22BA600D9950D /* GetTodayHistoryUsecase.swift in Sources */,
+				7009E1C42BE22BB200D9950D /* SubscribeGroupedHistoriesUsecase.swift in Sources */,
+				7009E1D92BE22BD800D9950D /* SubscribeIsLoginUsecase.swift in Sources */,
 				70240BF02ADC1FF800B87A79 /* dg_muscle_ios_widget.swift in Sources */,
+				7009E1A12BE22B5800D9950D /* ExerciseSetDomain.swift in Sources */,
+				7009E1A82BE22B6E00D9950D /* RecordDomain.swift in Sources */,
+				7009E19C2BE22B3A00D9950D /* ExerciseRepository.swift in Sources */,
+				7009E1CB2BE22BC000D9950D /* DeleteUserProfileImageUsecase.swift in Sources */,
+				7009E19E2BE22B4200D9950D /* UserRepository.swift in Sources */,
 				7009E18D2BE228B800D9950D /* HeatmapDomain.swift in Sources */,
 				7009E18A2BE2289200D9950D /* HeatmapColorV.swift in Sources */,
+				7009E1902BE22ACF00D9950D /* GetHeatmapUsecase.swift in Sources */,
+				7009E1AD2BE22B8000D9950D /* GetExerciseUsecase.swift in Sources */,
+				7009E1D32BE22BCE00D9950D /* PostUserDisplayNameUsecase.swift in Sources */,
 				706D6A7B2BE0E4C2000A0324 /* AppleAuthTest.swift in Sources */,
+				7009E1DE2BE22BFC00D9950D /* AppleAuthCoordinatorGenerator.swift in Sources */,
+				7009E1B52BE22B9600D9950D /* GetDayUsecase.swift in Sources */,
 				7009E18C2BE228A900D9950D /* HeatmapColorDomain.swift in Sources */,
-				70884DCD2BDD44CF0059B22A /* FileManagerHelperV2.swift in Sources */,
+				7009E19F2BE22B4E00D9950D /* UserDomain.swift in Sources */,
+				7009E1E02BE22C0000D9950D /* AppleAuthCoordinatorGeneratorImpl.swift in Sources */,
+				7009E1A62BE22B6700D9950D /* SexDomain.swift in Sources */,
 				706D6A7C2BE0E4DF000A0324 /* AppleAuthCoordinatorInterface.swift in Sources */,
+				7009E19D2BE22B3E00D9950D /* HealthRepositoryDomain.swift in Sources */,
+				7009E1B72BE22B9900D9950D /* GetKcalUsecase.swift in Sources */,
 				70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */,
-				70B07ACA2BD8D54900A0E732 /* FunctionsURLEnums.swift in Sources */,
+				7009E1CF2BE22BC700D9950D /* GetIsLoginUsecase.swift in Sources */,
 				7009E18B2BE2289F00D9950D /* HeatmapColumn.swift in Sources */,
+				7009E1D52BE22BD100D9950D /* PostUserProfileImageUsecase.swift in Sources */,
+				7009E1AF2BE22B8400D9950D /* PostExerciseUsecase.swift in Sources */,
+				7009E1DB2BE22BDB00D9950D /* SubscribeUserUsecase.swift in Sources */,
 				706D6A772BE0E46A000A0324 /* AppleAuthCoordinator.swift in Sources */,
+				7009E1A22BE22B5D00D9950D /* BloodTypeDomain.swift in Sources */,
 				7009E1882BE2287F00D9950D /* HeatMap.swift in Sources */,
-				70B07AC82BD8D53B00A0E732 /* FunctionsURL.swift in Sources */,
+				7009E1D12BE22BCB00D9950D /* GetUserUsecase.swift in Sources */,
+				7009E1B12BE22B8800D9950D /* SubscribeGroupedExercisesUsecase.swift in Sources */,
+				7009E1A92BE22B7800D9950D /* DeleteExerciseUsecase.swift in Sources */,
+				7009E1982BE22AE600D9950D /* SubscribeHeatmapUsecase.swift in Sources */,
+				7009E1912BE22AD400D9950D /* GetHeatmapColorUsecase.swift in Sources */,
+				7009E1C12BE22BAB00D9950D /* GetVolumesGroupedByPartUsecase.swift in Sources */,
+				7009E1C92BE22BBC00D9950D /* DeleteAccountUsecase.swift in Sources */,
+				7009E1A02BE22B5500D9950D /* ExerciseDomain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1307,41 +1425,69 @@
 			files = (
 				706D6A7D2BE0E4DF000A0324 /* AppleAuthCoordinatorInterface.swift in Sources */,
 				700526C22BDDE9AA007838BA /* HistoryRepositoryTest.swift in Sources */,
+				7009E1C82BE22BB900D9950D /* AppleSignInUsecase.swift in Sources */,
 				70EFAE8E2BE139B90011132F /* GetVolumesGroupedByPartUsecase.swift in Sources */,
+				7009E1CE2BE22BC400D9950D /* GetHealthInfoUsecase.swift in Sources */,
+				7009E1D82BE22BD500D9950D /* SignOutUsecase.swift in Sources */,
 				70884E062BDD618C0059B22A /* SubscribeGroupedHistoriesUsecase.swift in Sources */,
 				700526DC2BDDF589007838BA /* UserDomain.swift in Sources */,
+				7009E1B82BE22B9900D9950D /* GetKcalUsecase.swift in Sources */,
+				7009E1952BE22ADE00D9950D /* PostHeatmapColorUsecase.swift in Sources */,
+				7009E1932BE22ADA00D9950D /* GetHeatmapUsecase.swift in Sources */,
+				7009E1D62BE22BD200D9950D /* PostUserProfileImageUsecase.swift in Sources */,
 				700526E52BDDF840007838BA /* HistoryMetaDataDomain.swift in Sources */,
 				70F71B342BE126420013E616 /* ErrorData.swift in Sources */,
+				7009E1B62BE22B9600D9950D /* GetDayUsecase.swift in Sources */,
+				7009E1DA2BE22BD900D9950D /* SubscribeIsLoginUsecase.swift in Sources */,
+				7009E1CA2BE22BBD00D9950D /* DeleteAccountUsecase.swift in Sources */,
 				700526DA2BDDF3BE007838BA /* UserRepository.swift in Sources */,
 				700526E22BDDF78B007838BA /* HealthRepositoryDomain.swift in Sources */,
+				7009E1D02BE22BC800D9950D /* GetIsLoginUsecase.swift in Sources */,
+				7009E1AC2BE22B7D00D9950D /* EditExerciseUsecase.swift in Sources */,
 				700526E92BDDF851007838BA /* ExerciseDomain.swift in Sources */,
 				700526C72BDDEA0A007838BA /* RecordDomain.swift in Sources */,
+				7009E1C32BE22BAF00D9950D /* PostHistoryUsecase.swift in Sources */,
+				7009E1D22BE22BCB00D9950D /* GetUserUsecase.swift in Sources */,
 				706D6A782BE0E46A000A0324 /* AppleAuthCoordinator.swift in Sources */,
 				706D6A722BE0E374000A0324 /* AppleAuthTest.swift in Sources */,
-				70B07ACB2BD8D54A00A0E732 /* FunctionsURLEnums.swift in Sources */,
+				7009E1DC2BE22BDC00D9950D /* SubscribeUserUsecase.swift in Sources */,
 				70756F352BCAC7BA0035EFF4 /* exerciseTests.swift in Sources */,
 				70FF689C2BDE756E000B21E2 /* FileUploaderTest.swift in Sources */,
 				02053E392BD25181003B8D76 /* monthlySectionTests.swift in Sources */,
-				70B07AC92BD8D53B00A0E732 /* FunctionsURL.swift in Sources */,
 				700526C32BDDE9C2007838BA /* HistoryRepository.swift in Sources */,
 				70EFAE912BE139ED0011132F /* GetVolumesGroupedByPartUsecaseTests.swift in Sources */,
+				7009E1992BE22AE700D9950D /* SubscribeHeatmapUsecase.swift in Sources */,
 				702E21772BCA5DEF00147279 /* historyTests.swift in Sources */,
 				700526E12BDDF772007838BA /* HealthRepositoryTest2.swift in Sources */,
+				7009E1CC2BE22BC100D9950D /* DeleteUserProfileImageUsecase.swift in Sources */,
 				700526D92BDDF3A7007838BA /* UserRepositoryTest.swift in Sources */,
 				7057B2962BDE78D200A1418D /* AuthenticatorInterface.swift in Sources */,
-				70884DCE2BDD44D60059B22A /* FileManagerHelperV2.swift in Sources */,
+				7009E1972BE22AE300D9950D /* SubscribeHeatmapColorUsecase.swift in Sources */,
 				700526C62BDDE9F8007838BA /* HeatmapColorDomain.swift in Sources */,
+				7009E1D42BE22BCE00D9950D /* PostUserDisplayNameUsecase.swift in Sources */,
+				7009E1B22BE22B8800D9950D /* SubscribeGroupedExercisesUsecase.swift in Sources */,
 				701764962BE08EFB00B501B7 /* AuthenticatorTest.swift in Sources */,
 				700526EA2BDDF859007838BA /* HeatmapDomain.swift in Sources */,
+				7009E1B02BE22B8500D9950D /* PostExerciseUsecase.swift in Sources */,
 				700527072BDE09BF007838BA /* ExerciseRepository.swift in Sources */,
 				700527092BDE09C8007838BA /* ExerciseRepositoryTest.swift in Sources */,
-				70884DCA2BDD449E0059B22A /* Authenticator.swift in Sources */,
+				7009E1C02BE22BA700D9950D /* GetTodayHistoryUsecase.swift in Sources */,
+				7009E1AE2BE22B8100D9950D /* GetExerciseUsecase.swift in Sources */,
 				700526E82BDDF84C007838BA /* BloodTypeDomain.swift in Sources */,
+				7009E1BC2BE22BA000D9950D /* GetPartsUsecase.swift in Sources */,
+				7009E1BA2BE22B9D00D9950D /* GetNaturalDurationUsecase.swift in Sources */,
+				7009E1C62BE22BB500D9950D /* SubscribeMetaDatasMapUsecase.swift in Sources */,
 				700526E72BDDF849007838BA /* BodyMassDomain.swift in Sources */,
 				700526C52BDDE9E0007838BA /* HistoryDomain.swift in Sources */,
+				7009E1BE2BE22BA400D9950D /* GetPreviousRecordUsecase.swift in Sources */,
 				70EA5B652BD8F38100DEFB15 /* friendTests.swift in Sources */,
+				7009E1B42BE22B9400D9950D /* DeleteHistoryUsecase.swift in Sources */,
+				7009E1922BE22AD700D9950D /* GetHeatmapColorUsecase.swift in Sources */,
+				7009E1AA2BE22B7900D9950D /* DeleteExerciseUsecase.swift in Sources */,
 				0208CF4D2BCCFC9D00FD973D /* heatMapTests.swift in Sources */,
 				70FF689D2BDE75B2000B21E2 /* FileUploaderInterface.swift in Sources */,
+				7009E1E12BE22C0000D9950D /* AppleAuthCoordinatorGeneratorImpl.swift in Sources */,
+				7009E1DF2BE22BFD00D9950D /* AppleAuthCoordinatorGenerator.swift in Sources */,
 				700526E42BDDF827007838BA /* SexDomain.swift in Sources */,
 				700526C82BDDEA0E007838BA /* ExerciseSetDomain.swift in Sources */,
 				700526E62BDDF845007838BA /* HeightDomain.swift in Sources */,
