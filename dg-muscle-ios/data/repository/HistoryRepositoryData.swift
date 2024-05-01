@@ -17,9 +17,6 @@ final class HistoryRepositoryData: HistoryRepository {
     @Published private var _histories: [HistoryDomain] = [] {
         didSet {
             try? FileManagerHelperV2.shared.save(histories.prefix(150).map({ HistoryData(from: $0) }), toFile: .history)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                WidgetCenter.shared.reloadAllTimelines()
-            }
         }
     }
     
@@ -49,6 +46,12 @@ final class HistoryRepositoryData: HistoryRepository {
         )
     }
     
+    func post(data: [HeatmapDomain]) throws {
+        let heatmapData: [HeatmapData] = data.map({ .init(from: $0) })
+        try FileManagerHelperV2.shared.save(heatmapData, toFile: .heatmap)
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
     func delete(data: HistoryDomain) async throws {
         struct Body: Codable {
             let id: String
@@ -68,9 +71,7 @@ final class HistoryRepositoryData: HistoryRepository {
         _heatmapColor = data
         let data: HeatmapColorData = .init(color: data)
         try FileManagerHelperV2.shared.save(data, toFile: .heatmapColor)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     private func get() -> HeatmapColorDomain {

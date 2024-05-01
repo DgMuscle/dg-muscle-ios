@@ -317,7 +317,7 @@
 		70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E555FF2ABF010C006D4DA0 /* dg_muscle_iosApp.swift */; };
 		70E556042ABF010D006D4DA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70E556032ABF010D006D4DA0 /* Assets.xcassets */; };
 		70E556072ABF010D006D4DA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70E556062ABF010D006D4DA0 /* Preview Assets.xcassets */; };
-		70EC67512BE230040049E98F /* HistoryRepositoryWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EC67502BE230040049E98F /* HistoryRepositoryWidget.swift */; };
+		70EACEC92BE2482D00DA3246 /* HeatmapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070163C2BDD2F230025C624 /* HeatmapData.swift */; };
 		70EC67532BE230820049E98F /* FileManagerHelperV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016442BDD31350025C624 /* FileManagerHelperV2.swift */; };
 		70EC67542BE230CF0049E98F /* ExerciseSetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016382BDD2DE90025C624 /* ExerciseSetData.swift */; };
 		70EC67552BE230D30049E98F /* RecordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016362BDD2DE30025C624 /* RecordData.swift */; };
@@ -552,7 +552,6 @@
 		70E556032ABF010D006D4DA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70E556062ABF010D006D4DA0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		70E556082ABF010D006D4DA0 /* dg_muscle_ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dg_muscle_ios.entitlements; sourceTree = "<group>"; };
-		70EC67502BE230040049E98F /* HistoryRepositoryWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRepositoryWidget.swift; sourceTree = "<group>"; };
 		70EFAE8C2BE138CC0011132F /* GetVolumesGroupedByPartUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVolumesGroupedByPartUsecase.swift; sourceTree = "<group>"; };
 		70EFAE902BE139ED0011132F /* GetVolumesGroupedByPartUsecaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVolumesGroupedByPartUsecaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -747,7 +746,6 @@
 			children = (
 				70240BF52ADC1FF900B87A79 /* Info.plist */,
 				70EC67522BE2300A0049E98F /* app */,
-				70EC674F2BE22FE40049E98F /* repository */,
 			);
 			path = "dg-muscle-ios-widget";
 			sourceTree = "<group>";
@@ -1173,14 +1171,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		70EC674F2BE22FE40049E98F /* repository */ = {
-			isa = PBXGroup;
-			children = (
-				70EC67502BE230040049E98F /* HistoryRepositoryWidget.swift */,
-			);
-			path = repository;
-			sourceTree = "<group>";
-		};
 		70EC67522BE2300A0049E98F /* app */ = {
 			isa = PBXGroup;
 			children = (
@@ -1354,6 +1344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70EACEC92BE2482D00DA3246 /* HeatmapData.swift in Sources */,
 				7009E1C52BE22BB400D9950D /* SubscribeMetaDatasMapUsecase.swift in Sources */,
 				7009E1A32BE22B5F00D9950D /* BodyMassDomain.swift in Sources */,
 				70EC67552BE230D30049E98F /* RecordData.swift in Sources */,
@@ -1369,7 +1360,6 @@
 				7009E1B92BE22B9C00D9950D /* GetNaturalDurationUsecase.swift in Sources */,
 				7009E1B32BE22B9300D9950D /* DeleteHistoryUsecase.swift in Sources */,
 				7009E1C72BE22BB900D9950D /* AppleSignInUsecase.swift in Sources */,
-				70EC67512BE230040049E98F /* HistoryRepositoryWidget.swift in Sources */,
 				7009E1D72BE22BD500D9950D /* SignOutUsecase.swift in Sources */,
 				7009E1A52BE22B6400D9950D /* HistoryMetaDataDomain.swift in Sources */,
 				7009E1C22BE22BAF00D9950D /* PostHistoryUsecase.swift in Sources */,

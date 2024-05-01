@@ -15,5 +15,6 @@ protocol HistoryRepository {
     var heatmapColorPublisher: AnyPublisher<HeatmapColorDomain, Never> { get }
     func post(data: HistoryDomain) async throws
     func post(data: HeatmapColorDomain) throws
+    func post(data: [HeatmapDomain]) throws
     func delete(data: HistoryDomain) async throws
 }
