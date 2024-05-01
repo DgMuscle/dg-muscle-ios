@@ -62,7 +62,7 @@ struct HistoryFormSetView: View {
                 Spacer()
             }
             
-            TextField(label, value: value, formatter: NumberFormatter())
+            TextField(label, value: value, formatter: NumberFormatter()).keyboardType(.numberPad)
             Divider()
         }
     }
