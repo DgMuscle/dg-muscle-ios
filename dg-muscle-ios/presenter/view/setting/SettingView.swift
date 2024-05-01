@@ -39,11 +39,12 @@ struct SettingView: View {
                     .buttonStyle(.borderless)
                 }
             } header: {
-                VStack {
-                    if let user = viewModel.user {
-                        UserBoxView2(user: user, descriptionLabel: "Configure Your Profile")
-                            .padding(.bottom)
-                    }
+                if let user = viewModel.user {
+                    UserBoxView2(user: user, descriptionLabel: "Configure Your Profile")
+                        .padding(.bottom)
+                        .onTapGesture {
+                            coordinator.main.profile()
+                        }
                 }
             } footer: {
                 VStack(spacing: 20) {

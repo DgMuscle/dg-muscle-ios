@@ -19,7 +19,7 @@ final class DeleteUserProfileImageUsecase {
     
     func implement() async throws {
         if let url = userRepository.user?.photoURL {
-            try await fileUploader.deleteImage(path: url.absoluteString)
+            try? await fileUploader.deleteImage(path: url.absoluteString)
         }
         try await userRepository.updateUser(photoURL: nil)
     }

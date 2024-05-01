@@ -383,6 +383,7 @@
 		70D3418F2ACC081E0010EAF9 /* Extension+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D3418E2ACC081E0010EAF9 /* Extension+Sequence.swift */; };
 		70D4D2802BE1E17700B87654 /* PreviousRecordHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D4D27F2BE1E17700B87654 /* PreviousRecordHistoryViewModel.swift */; };
 		70D4D2822BE1E7D800B87654 /* PreviousRecordHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D4D2812BE1E7D800B87654 /* PreviousRecordHistoryView.swift */; };
+		70D4D2842BE1EEF900B87654 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D4D2832BE1EEF900B87654 /* WebView.swift */; };
 		70D9033D2AC5A70A001DDC0B /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D9033C2AC5A70A001DDC0B /* Vibration.swift */; };
 		70E556002ABF010C006D4DA0 /* dg_muscle_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E555FF2ABF010C006D4DA0 /* dg_muscle_iosApp.swift */; };
 		70E556042ABF010D006D4DA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70E556032ABF010D006D4DA0 /* Assets.xcassets */; };
@@ -726,6 +727,7 @@
 		70D3418E2ACC081E0010EAF9 /* Extension+Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Sequence.swift"; sourceTree = "<group>"; };
 		70D4D27F2BE1E17700B87654 /* PreviousRecordHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousRecordHistoryViewModel.swift; sourceTree = "<group>"; };
 		70D4D2812BE1E7D800B87654 /* PreviousRecordHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousRecordHistoryView.swift; sourceTree = "<group>"; };
+		70D4D2832BE1EEF900B87654 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		70D9033C2AC5A70A001DDC0B /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
 		70E555FC2ABF010C006D4DA0 /* dg-muscle-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dg-muscle-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70E555FF2ABF010C006D4DA0 /* dg_muscle_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dg_muscle_iosApp.swift; sourceTree = "<group>"; };
@@ -1590,6 +1592,7 @@
 				701764922BE0884A00B501B7 /* ListItemView.swift */,
 				7060BB5F2BDE231E0092B987 /* RoundedGradationText.swift */,
 				700526D62BDDF300007838BA /* UserBoxView2.swift */,
+				70D4D2832BE1EEF900B87654 /* WebView.swift */,
 				7060BB492BDE17DB0092B987 /* exercise */,
 				707016202BDD2A7D0025C624 /* history */,
 				701764892BE0840E00B501B7 /* setting */,
@@ -2269,6 +2272,7 @@
 				701CC4C62AD2875700852E2E /* FileManagerHelper.swift in Sources */,
 				7060BB662BDE25420092B987 /* ExerciseAdd1View.swift in Sources */,
 				02C95AB62BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift in Sources */,
+				70D4D2842BE1EEF900B87654 /* WebView.swift in Sources */,
 				700526D32BDDF163007838BA /* HistoryListView.swift in Sources */,
 				703A97DF2BCBC76E002C0843 /* SetFormV2View.swift in Sources */,
 				7060BB642BDE25130092B987 /* ExerciseAdd1ViewModel.swift in Sources */,

@@ -48,7 +48,7 @@ struct NavigationView: View {
                                                           getUserUsecase: .init(userRepository: userRepository)))
                 case .openWeb:
                     if let url = navigation.openWebUrl {
-                        DGWebViewPresenter(url: url)
+                        WebView(url: url)
                     }
                 case .heatmapColor:
                     HeatmapView(viewModel: .init(subscribeHeatmapUsecase: .init(historyRepository: historyRepository,
