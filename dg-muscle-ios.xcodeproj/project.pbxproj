@@ -750,6 +750,15 @@
 			path = "dg-muscle-ios-widget";
 			sourceTree = "<group>";
 		};
+		704E5C7B2BE268D500365AB3 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */,
+				70BC43FD2BE0FD48001020AD /* AppleAuthCoordinatorGeneratorImpl.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		7060BB492BDE17DB0092B987 /* exercise */ = {
 			isa = PBXGroup;
 			children = (
@@ -903,9 +912,7 @@
 		707016432BDD31220025C624 /* util */ = {
 			isa = PBXGroup;
 			children = (
-				7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */,
 				70BC43FF2BE0FD51001020AD /* AppleAuthCoordinatorGenerator.swift */,
-				70BC43FD2BE0FD48001020AD /* AppleAuthCoordinatorGeneratorImpl.swift */,
 				706D6A702BE0E2A0000A0324 /* AppleAuthCoordinatorInterface.swift */,
 				7057B2932BDE789A00A1418D /* AuthenticatorInterface.swift */,
 				7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */,
@@ -1025,6 +1032,7 @@
 			children = (
 				70884DD72BDD4D6D0059B22A /* model */,
 				700526ED2BDDFC9E007838BA /* navigation */,
+				704E5C7B2BE268D500365AB3 /* util */,
 				70884DFE2BDD5AFE0059B22A /* view */,
 			);
 			path = presenter;
