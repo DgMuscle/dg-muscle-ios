@@ -18,7 +18,7 @@ final class GetPreviousRecordUsecase {
         var histories = historyRepository.histories
         let calendar = Calendar.current
         histories = histories
-            .filter({ calendar.isDate(date, inSameDayAs: $0.date) })
+            .filter({ !calendar.isDate(date, inSameDayAs: $0.date) })
             .sorted(by: { $0.date > $1.date })
         
         var result: RecordDomain?
