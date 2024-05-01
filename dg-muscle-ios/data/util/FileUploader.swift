@@ -41,7 +41,20 @@ final class FileUploader: FileUploaderInterface {
     }
     
     func deleteImage(path: String) async throws {
-        let ref = storage.reference().child(path)
-        try await ref.delete()
+        if let url = URL(string: path) {
+            let pathComponents = url.pathComponents
+            
+            // 필요한 경로 부분만 추출합니다. "o" 다음 부분부터 마지막까지의 경로를 가져옵니다.
+            if let startIndex = pathComponents.firstIndex(of: "o") {
+                let relevantPathComponents = pathComponents[(startIndex + 1)...]  // "o" 다음부터 모든 요소
+                let formattedPath = relevantPathComponents.joined(separator: "/")  // 배열을 문자열로 합칩니다.
+                let ref = storage.reference().child(formattedPath)
+                try await ref.delete()
+            }
+            
+        } else {
+            let ref = storage.reference().child(path)
+            try await ref.delete()
+        }
     }
 }

@@ -20,13 +20,13 @@ final class PostUserProfileImageUsecase {
     
     func implement(data: UIImage) async throws {
         guard let user = userRepository.user else { return }
+        
+        if let previousURL = userRepository.user?.photoURL?.absoluteString {
+            try await fileUploader.deleteImage(path: previousURL)
+        }
+        
         let path = "profilePhoto/\(user.uid)/\(UUID().uuidString).png"
         let url = try await fileUploader.uploadImage(path: path, image: data)
         try await userRepository.updateUser(photoURL: url)
-        
-        Task {
-            guard let previousURL = userRepository.user?.photoURL?.absoluteString else { return }
-            try? await fileUploader.deleteImage(path: previousURL)
-        }
     }
 }
