@@ -183,6 +183,12 @@
 		703CD5F02AC015C900BC76D4 /* ErrorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5EF2AC015C900BC76D4 /* ErrorData.swift */; };
 		7044641D2BD0185600CB21F6 /* FileUploaderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */; };
 		7044641F2BD0187E00CB21F6 /* FileUploaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */; };
+		704E5C7D2BE2693800365AB3 /* HeatmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E5C7C2BE2693800365AB3 /* HeatmapRepository.swift */; };
+		704E5C7F2BE2697700365AB3 /* HeatmapRepositoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E5C7E2BE2697700365AB3 /* HeatmapRepositoryData.swift */; };
+		704E5C802BE26A9200365AB3 /* HeatmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E5C7C2BE2693800365AB3 /* HeatmapRepository.swift */; };
+		704E5C812BE26A9200365AB3 /* HeatmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E5C7C2BE2693800365AB3 /* HeatmapRepository.swift */; };
+		704E5C832BE26B2900365AB3 /* HeatmapRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E5C822BE26B2900365AB3 /* HeatmapRepositoryTest.swift */; };
+		704E5C842BE26B3A00365AB3 /* HeatmapRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E5C822BE26B2900365AB3 /* HeatmapRepositoryTest.swift */; };
 		7057B2942BDE789A00A1418D /* AuthenticatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7057B2932BDE789A00A1418D /* AuthenticatorInterface.swift */; };
 		7057B2962BDE78D200A1418D /* AuthenticatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7057B2932BDE789A00A1418D /* AuthenticatorInterface.swift */; };
 		7057B2972BDE78E300A1418D /* AuthenticatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7057B2932BDE789A00A1418D /* AuthenticatorInterface.swift */; };
@@ -430,6 +436,9 @@
 		703CD5EF2AC015C900BC76D4 /* ErrorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorData.swift; sourceTree = "<group>"; };
 		7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploaderInterface.swift; sourceTree = "<group>"; };
 		7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploaderTest.swift; sourceTree = "<group>"; };
+		704E5C7C2BE2693800365AB3 /* HeatmapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapRepository.swift; sourceTree = "<group>"; };
+		704E5C7E2BE2697700365AB3 /* HeatmapRepositoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapRepositoryData.swift; sourceTree = "<group>"; };
+		704E5C822BE26B2900365AB3 /* HeatmapRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapRepositoryTest.swift; sourceTree = "<group>"; };
 		7057B2932BDE789A00A1418D /* AuthenticatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorInterface.swift; sourceTree = "<group>"; };
 		7060BB4B2BDE18160092B987 /* SubscribeGroupedExercisesUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeGroupedExercisesUsecase.swift; sourceTree = "<group>"; };
 		7060BB4D2BDE19F60092B987 /* ExerciseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseItemView.swift; sourceTree = "<group>"; };
@@ -615,6 +624,7 @@
 			children = (
 				700527082BDE09C8007838BA /* ExerciseRepositoryTest.swift */,
 				700526E02BDDF772007838BA /* HealthRepositoryTest2.swift */,
+				704E5C822BE26B2900365AB3 /* HeatmapRepositoryTest.swift */,
 				700526C12BDDE9AA007838BA /* HistoryRepositoryTest.swift */,
 				700526D82BDDF3A7007838BA /* UserRepositoryTest.swift */,
 			);
@@ -866,6 +876,7 @@
 			children = (
 				70884DD12BDD471F0059B22A /* ExerciseRepository.swift */,
 				70884DF02BDD52580059B22A /* HealthRepositoryDomain.swift */,
+				704E5C7C2BE2693800365AB3 /* HeatmapRepository.swift */,
 				7070162E2BDD2CAD0025C624 /* HistoryRepository.swift */,
 				7070164A2BDD3DBC0025C624 /* UserRepository.swift */,
 			);
@@ -903,6 +914,7 @@
 			children = (
 				70884DD32BDD47510059B22A /* ExerciseRepositoryData.swift */,
 				70884DF82BDD53D50059B22A /* HealthRepositoryData.swift */,
+				704E5C7E2BE2697700365AB3 /* HeatmapRepositoryData.swift */,
 				707016412BDD2F880025C624 /* HistoryRepositoryData.swift */,
 				707016462BDD38670025C624 /* UserRepositoryData.swift */,
 			);
@@ -1406,6 +1418,7 @@
 				7009E1CF2BE22BC700D9950D /* GetIsLoginUsecase.swift in Sources */,
 				7009E18B2BE2289F00D9950D /* HeatmapColumn.swift in Sources */,
 				7009E1D52BE22BD100D9950D /* PostUserProfileImageUsecase.swift in Sources */,
+				704E5C802BE26A9200365AB3 /* HeatmapRepository.swift in Sources */,
 				7009E1AF2BE22B8400D9950D /* PostExerciseUsecase.swift in Sources */,
 				7009E1DB2BE22BDB00D9950D /* SubscribeUserUsecase.swift in Sources */,
 				706D6A772BE0E46A000A0324 /* AppleAuthCoordinator.swift in Sources */,
@@ -1478,6 +1491,7 @@
 				700526E82BDDF84C007838BA /* BloodTypeDomain.swift in Sources */,
 				7009E1BC2BE22BA000D9950D /* GetPartsUsecase.swift in Sources */,
 				7009E1BA2BE22B9D00D9950D /* GetNaturalDurationUsecase.swift in Sources */,
+				704E5C812BE26A9200365AB3 /* HeatmapRepository.swift in Sources */,
 				7009E1C62BE22BB500D9950D /* SubscribeMetaDatasMapUsecase.swift in Sources */,
 				700526E72BDDF849007838BA /* BodyMassDomain.swift in Sources */,
 				700526C52BDDE9E0007838BA /* HistoryDomain.swift in Sources */,
@@ -1490,6 +1504,7 @@
 				7009E1DF2BE22BFD00D9950D /* AppleAuthCoordinatorGenerator.swift in Sources */,
 				700526E42BDDF827007838BA /* SexDomain.swift in Sources */,
 				700526C82BDDEA0E007838BA /* ExerciseSetDomain.swift in Sources */,
+				704E5C832BE26B2900365AB3 /* HeatmapRepositoryTest.swift in Sources */,
 				700526E62BDDF845007838BA /* HeightDomain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1516,11 +1531,13 @@
 				700526D02BDDEF1E007838BA /* HeatmapView.swift in Sources */,
 				701764912BE0866F00B501B7 /* SettingView.swift in Sources */,
 				70884DE12BDD4E410059B22A /* RecordV.swift in Sources */,
+				704E5C842BE26B3A00365AB3 /* HeatmapRepositoryTest.swift in Sources */,
 				7044641D2BD0185600CB21F6 /* FileUploaderInterface.swift in Sources */,
 				706D6A6D2BE0DD57000A0324 /* RemoveAccountConfirmView.swift in Sources */,
 				7060BB742BDE2C3C0092B987 /* ExerciseAdd2View.swift in Sources */,
 				025A13442BDF8B060069F293 /* HistoryFormRecordItemView.swift in Sources */,
 				7060BB5A2BDE1F560092B987 /* ExerciseManageViewModel.swift in Sources */,
+				704E5C7F2BE2697700365AB3 /* HeatmapRepositoryData.swift in Sources */,
 				7005270C2BDE0DE3007838BA /* HistorySectionViewV2.swift in Sources */,
 				700526EC2BDDFB87007838BA /* GetTodayHistoryUsecase.swift in Sources */,
 				029B47292BDF8851006DC8BD /* HistoryFormSetsView.swift in Sources */,
@@ -1528,6 +1545,7 @@
 				70A85AA22BDE6CDA00537071 /* ProfilePhotoEditViewModel.swift in Sources */,
 				7060BB602BDE231E0092B987 /* RoundedGradationText.swift in Sources */,
 				708DB2BB2BDD6F0900195605 /* SubscribeHeatmapUsecase.swift in Sources */,
+				704E5C7D2BE2693800365AB3 /* HeatmapRepository.swift in Sources */,
 				7060BB682BDE26650092B987 /* ExercisePartItem.swift in Sources */,
 				700526F22BDDFF73007838BA /* MainCoordinatorV2.swift in Sources */,
 				70A85A962BDE618100537071 /* ProfileEditViewModel.swift in Sources */,

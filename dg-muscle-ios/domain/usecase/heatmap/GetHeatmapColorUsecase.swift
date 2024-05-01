@@ -8,13 +8,13 @@
 import Foundation
 
 final class GetHeatmapColorUsecase {
-    let historyRepository: HistoryRepository
+    let heatMapRepository: HeatmapRepository
     
-    init(historyRepository: HistoryRepository) {
-        self.historyRepository = historyRepository
+    init(heatMapRepository: HeatmapRepository) {
+        self.heatMapRepository = heatMapRepository
     }
     
     func implement() -> HeatmapColorDomain {
-        historyRepository.heatmapColor
+        heatMapRepository.heatmapColor
     }
 }

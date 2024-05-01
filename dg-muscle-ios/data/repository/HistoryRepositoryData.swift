@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import WidgetKit
 
 final class HistoryRepositoryData: HistoryRepository {
     static let shared = HistoryRepositoryData()
@@ -20,15 +19,10 @@ final class HistoryRepositoryData: HistoryRepository {
         }
     }
     
-    var heatmapColor: HeatmapColorDomain { _heatmapColor }
-    var heatmapColorPublisher: AnyPublisher<HeatmapColorDomain, Never> { $_heatmapColor.eraseToAnyPublisher() }
-    @Published var _heatmapColor: HeatmapColorDomain = .green
-    
     private var cancellables = Set<AnyCancellable>()
     
     private init() {
         _histories = getExerciseHistoryFromFile()
-        _heatmapColor = get()
         bind()
     }
     
@@ -46,12 +40,6 @@ final class HistoryRepositoryData: HistoryRepository {
         )
     }
     
-    func post(data: [HeatmapDomain]) throws {
-        let heatmapData: [HeatmapData] = data.map({ .init(from: $0) })
-        try FileManagerHelperV2.shared.save(heatmapData, toFile: .heatmap)
-        WidgetCenter.shared.reloadAllTimelines()
-    }
-    
     func delete(data: HistoryDomain) async throws {
         struct Body: Codable {
             let id: String
@@ -65,18 +53,6 @@ final class HistoryRepositoryData: HistoryRepository {
         let _: ResponseData = try await APIClient.shared.request(method: .delete,
                                                                  url: FunctionsURL.history(.deletehistory),
                                                                  body: body)
-    }
-    
-    func post(data: HeatmapColorDomain) throws {
-        _heatmapColor = data
-        let data: HeatmapColorData = .init(color: data)
-        try FileManagerHelperV2.shared.save(data, toFile: .heatmapColor)
-        WidgetCenter.shared.reloadAllTimelines()
-    }
-    
-    private func get() -> HeatmapColorDomain {
-        let data: HeatmapColorData = (try? FileManagerHelperV2.shared.load(HeatmapColorData.self, fromFile: .heatmapColor)) ?? .green
-        return data.domain
     }
     
     private func getExerciseHistoryFromFile() -> [HistoryDomain] {

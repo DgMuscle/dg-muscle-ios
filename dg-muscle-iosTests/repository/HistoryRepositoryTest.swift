@@ -13,24 +13,12 @@ final class HistoryRepositoryTest: HistoryRepository {
     var historiesPublisher: AnyPublisher<[HistoryDomain], Never> { $_histories.eraseToAnyPublisher() }
     @Published private var _histories: [HistoryDomain] = []
     
-    var heatmapColor: HeatmapColorDomain { _heatmapColor }
-    var heatmapColorPublisher: AnyPublisher<HeatmapColorDomain, Never> { $_heatmapColor.eraseToAnyPublisher() }
-    @Published private var _heatmapColor: HeatmapColorDomain = .green
-    
     init() {
         prepareMockData()
     }
     
     func post(data: HistoryDomain) async throws {
         _histories.insert(data, at: 0)
-    }
-    
-    func post(data: [HeatmapDomain]) throws {
-        
-    }
-    
-    func post(data: HeatmapColorDomain) throws {
-        _heatmapColor = data
     }
     
     func delete(data: HistoryDomain) async throws {

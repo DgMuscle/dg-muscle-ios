@@ -12,14 +12,18 @@ final class SubscribeHeatmapUsecase {
     private let historyRepository: HistoryRepository
     private let today: Date
     private let getHeatmapUsecase: GetHeatmapUsecase
+    private let heatmapRepository: HeatmapRepository
     
     @Published private var heatMaps: [HeatmapDomain] = []
     
     private var cancellables = Set<AnyCancellable>()
-    init(historyRepository: HistoryRepository, today: Date) {
+    init(historyRepository: HistoryRepository, 
+         today: Date,
+         heatmapRepository: HeatmapRepository) {
         self.historyRepository = historyRepository
         self.today = today
         self.getHeatmapUsecase = .init(today: today)
+        self.heatmapRepository = heatmapRepository
         bind()
     }
     
@@ -34,7 +38,7 @@ final class SubscribeHeatmapUsecase {
             .sink { [weak self] histories in
                 guard let self else { return }
                 heatMaps = getHeatmapUsecase.implement(data: histories)
-                try? historyRepository.post(data: heatMaps)
+                try? heatmapRepository.post(data: heatMaps)
             }
             .store(in: &cancellables)
     }

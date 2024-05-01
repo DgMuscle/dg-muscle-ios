@@ -9,13 +9,13 @@ import Foundation
 import Combine
 
 final class SubscribeHeatmapColorUsecase {
-    private let historyRepository: HistoryRepository
+    private let heatmapRepository: HeatmapRepository
     
-    init(historyRepository: HistoryRepository) {
-        self.historyRepository = historyRepository
+    init(heatmapRepository: HeatmapRepository) {
+        self.heatmapRepository = heatmapRepository
     }
     
     func implement() -> AnyPublisher<HeatmapColorDomain, Never> {
-        historyRepository.heatmapColorPublisher
+        heatmapRepository.heatmapColorPublisher
     }
 }

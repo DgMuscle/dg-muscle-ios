@@ -17,20 +17,22 @@ struct NavigationView: View {
     let userRepository: UserRepository
     let authenticator: AuthenticatorInterface
     let fileUploader: FileUploaderInterface
+    let heatmapRepository: HeatmapRepository
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             HistoryListView(today: today,
                             historyRepository: historyRepository,
                             exerciseRepository: exerciseRepository,
-                            healthRepository: healthRepository,
+                            healthRepository: healthRepository, 
+                            heatmapRepository: heatmapRepository,
                             viewModel: .init(subscribeGroupedHistoriesUsecase: .init(historyRepository: historyRepository),
                                              subscribeMetaDatasMapUsecase: .init(healthRepository: healthRepository),
                                              subscribeUserUsecase: .init(userRepository: userRepository),
                                              getTodayHistoryUsecase: .init(historyRepository: historyRepository, today: today),
                                              deleteHistoryUsecase: .init(historyRepository: historyRepository),
-                                             getHeatmapColorUsecase: .init(historyRepository: historyRepository),
-                                             subscribeHeatmapColorUsecase: .init(historyRepository: historyRepository)
+                                             getHeatmapColorUsecase: .init(heatMapRepository: heatmapRepository),
+                                             subscribeHeatmapColorUsecase: .init(heatmapRepository: heatmapRepository)
                                             ))
             .navigationDestination(for: MainNavigationV2.self) { navigation in
                 switch navigation.name {
@@ -54,9 +56,9 @@ struct NavigationView: View {
                         WebView(url: url)
                     }
                 case .heatmapColor:
-                    HeatmapColorView(viewModel: .init(postHeatmapColorUsecase: .init(historyRepository: historyRepository),
-                                                      subscribeHeatmapColorUsecase: .init(historyRepository: historyRepository),
-                                                      getHeatmapColorUsecase: .init(historyRepository: historyRepository)))
+                    HeatmapColorView(viewModel: .init(postHeatmapColorUsecase: .init(heatmapRepository: heatmapRepository),
+                                                      subscribeHeatmapColorUsecase: .init(heatmapRepository: heatmapRepository),
+                                                      getHeatmapColorUsecase: .init(heatMapRepository: heatmapRepository)))
                 }
             }
             .navigationDestination(for: HistoryNavigationV2.self) { navigation in
