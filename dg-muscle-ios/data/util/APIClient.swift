@@ -54,5 +54,6 @@ extension APIClient {
         case get = "GET"
         case post = "POST"
         case delete = "DELETE"
+        case edit = "EDIT"
     }
 }

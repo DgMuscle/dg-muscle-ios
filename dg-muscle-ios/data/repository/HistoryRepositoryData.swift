@@ -39,6 +39,7 @@ final class HistoryRepositoryData: HistoryRepository {
         try? FileManagerHelperV2.shared.save(historyDatas, toFile: .history)
         
         let _: ResponseData = try await APIClient.shared.request(
+            method: .post,
             url: FunctionsURL.history(.posthistory),
             body: HistoryData(from: data)
         )

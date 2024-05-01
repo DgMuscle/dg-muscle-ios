@@ -26,7 +26,7 @@ final class ExerciseRepositoryData: ExerciseRepository {
         _exercises.append(data)
         let datas: [ExerciseData] = exercises.map({ .init(from: $0) })
         try FileManagerHelperV2.shared.save(datas, toFile: .exercise)
-        let _: ResponseData = try await APIClient.shared.request(url: FunctionsURL.exercise(.postexercise),
+        let _: ResponseData = try await APIClient.shared.request(method: .post, url: FunctionsURL.exercise(.postexercise),
                                                                  body: ExerciseData(from: data))
     }
     
@@ -38,7 +38,7 @@ final class ExerciseRepositoryData: ExerciseRepository {
         let datas: [ExerciseData] = exercises.map({ .init(from: $0) })
         
         try FileManagerHelperV2.shared.save(datas, toFile: .exercise)
-        let _: ResponseData = try await APIClient.shared.request(url: FunctionsURL.exercise(.postexercise),
+        let _: ResponseData = try await APIClient.shared.request(method: .edit, url: FunctionsURL.exercise(.postexercise),
                                                                  body: ExerciseData(from: data))
     }
     
@@ -54,8 +54,9 @@ final class ExerciseRepositoryData: ExerciseRepository {
         }
         
         let body = Body(id: data.id)
-        
-        let _: ResponseData = try await APIClient.shared.request(url: FunctionsURL.exercise(.deleteexercise), body: body)
+        let _: ResponseData = try await APIClient.shared.request(method: .delete, 
+                                                                 url: FunctionsURL.exercise(.deleteexercise),
+                                                                 body: body)
     }
     
     func get(exerciseId: String) -> ExerciseDomain? {
