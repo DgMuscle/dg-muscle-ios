@@ -40,7 +40,7 @@ struct dg_muscle_iosApp: App {
                 if splash {
                     SplashView()
                         .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                 splash.toggle()
                             }
                         }
