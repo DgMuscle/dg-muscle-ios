@@ -39,7 +39,7 @@ struct HistoryItemView: View {
     
     var coloredText: some View {
         let partsText: [Text] = viewModel.parts.map { part in
-            Text(part.rawValue.capitalized).fontWeight(.bold)
+            Text(part.rawValue.capitalized).fontWeight(.bold).foregroundStyle(.orange)
         }
         
         if partsText.isEmpty {
