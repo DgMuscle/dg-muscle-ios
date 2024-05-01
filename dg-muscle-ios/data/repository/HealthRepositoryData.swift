@@ -17,7 +17,7 @@ final class HealthRepositoryData: HealthRepositoryDomain {
     var historyMetaDatasPublisher: AnyPublisher<[HistoryMetaDataDomain], Never> { $_historyMetaDatas.eraseToAnyPublisher() }
     @Published private var _historyMetaDatas: [HistoryMetaDataDomain] = [] {
         didSet {
-            try? FileManagerHelperV2.shared.save(historyMetaDatas.prefix(100).map({ HistoryMetaDataData(from: $0) }), toFile: .historyMetaData)
+            try? FileManagerHelperV2.shared.save(historyMetaDatas.prefix(50).map({ HistoryMetaDataData(from: $0) }), toFile: .historyMetaData)
         }
     }
     
