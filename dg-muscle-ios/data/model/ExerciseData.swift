@@ -16,12 +16,46 @@ struct ExerciseData: Codable {
     init(from: ExerciseDomain) {
         id = from.id
         name = from.name
-        parts = from.parts.compactMap({ .init(rawValue: $0.rawValue) })
         favorite = from.favorite
+        parts = from.parts.map({ Self.convertPart(part: $0) })
     }
     
     var domain: ExerciseDomain {
-        .init(id: id, name: name, parts: parts.compactMap({ .init(rawValue: $0.rawValue) }), favorite: favorite)
+        .init(id: id, name: name, parts: parts.map({ Self.convertPart(part: $0) }), favorite: favorite)
+    }
+    
+    static func convertPart(part: Part) -> ExerciseDomain.Part {
+        switch part {
+        case .arm:
+            return .arm
+        case .back:
+            return .back
+        case .chest:
+            return .chest
+        case .core:
+            return .core
+        case .leg:
+            return .leg
+        case .shoulder:
+            return .shoulder
+        }
+    }
+ 
+    static func convertPart(part: ExerciseDomain.Part) -> Part {
+        switch part {
+        case .arm:
+            return .arm
+        case .back:
+            return .back
+        case .chest:
+            return .chest
+        case .core:
+            return .core
+        case .leg:
+            return .leg
+        case .shoulder:
+            return .shoulder
+        }
     }
 }
 

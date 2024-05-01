@@ -9,9 +9,10 @@ import Foundation
 import Combine
 
 final class HistoryItemViewModel: ObservableObject {
-    private let history: HistoryV
+    let history: HistoryV
     @Published var day: String = ""
     @Published var parts: [ExerciseV.Part] = []
+    @Published var volume: Int = 0
     @Published var time: String?
     @Published var kcal: Double?
     
@@ -38,8 +39,8 @@ final class HistoryItemViewModel: ObservableObject {
     
     private func bind() {
         day = getDayUsecase.implement(history: history.domain)
-        parts = getPartsUsecase.implement(history: history.domain).compactMap({ .init(rawValue: $0.rawValue) })
-        
+        parts = getPartsUsecase.implement(history: history.domain).map({ .init(part: $0) })
+        volume = Int(history.volume)
         guard let metaData = history.metaData else { return }
         time = getNaturalDurationUsecase.implement(metadata: metaData.domain)
         kcal = getKcalUsecase.implement(metadata: metaData.domain)

@@ -32,12 +32,16 @@ final class FileManagerHelperV2 {
         try FileManager.default.removeItem(at: filePath)
     }
     
+    func deleteAll() throws {
+        for file in File.allCases {
+            let filePath = documentsDirectory.appendingPathComponent(file.rawValue)
+            try FileManager.default.removeItem(at: filePath)
+        }
+    }
 }
 
 extension FileManagerHelperV2 {
     enum File: String, CaseIterable {
-        case user
-        case dguser
         case history
         case exercise
         case historyMetaData

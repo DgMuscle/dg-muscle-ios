@@ -10,16 +10,13 @@ import Combine
 import SwiftUI
 
 final class HistoryFormRecordsViewModel: ObservableObject {
-    @Published private var history: HistoryV
+    @Published var history: HistoryV
     
     @Published var records: [RecordV] = []
     @Published var currentRecordsCount: Int = 0
     @Published var currentTotalVolume: Double = 0
     @Published var title: String = ""
     
-    var historyDateString: String {
-        history.date
-    }
     private let postHistoryUsecase: PostHistoryUsecase
     private var cancellables = Set<AnyCancellable>()
     init(history: HistoryV, postHistoryUsecase: PostHistoryUsecase) {
@@ -58,9 +55,7 @@ final class HistoryFormRecordsViewModel: ObservableObject {
     
     private func configureTitle() {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd"
-        guard let date = dateFormatter.date(from: history.date) else { return }
         dateFormatter.dateFormat = "d MMM y"
-        title = dateFormatter.string(from: date)
+        title = dateFormatter.string(from: history.date)
     }
 }

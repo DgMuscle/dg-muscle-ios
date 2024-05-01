@@ -15,7 +15,11 @@ final class HealthRepositoryData: HealthRepositoryDomain {
     
     var historyMetaDatas: [HistoryMetaDataDomain] { _historyMetaDatas }
     var historyMetaDatasPublisher: AnyPublisher<[HistoryMetaDataDomain], Never> { $_historyMetaDatas.eraseToAnyPublisher() }
-    @Published private var _historyMetaDatas: [HistoryMetaDataDomain] = []
+    @Published private var _historyMetaDatas: [HistoryMetaDataDomain] = [] {
+        didSet {
+            try? FileManagerHelperV2.shared.save(historyMetaDatas.prefix(50).map({ HistoryMetaDataData(from: $0) }), toFile: .historyMetaData)
+        }
+    }
     
     var bodyMass: BodyMassDomain? { _bodyMasses.sorted(by: { $0.startDate > $1.startDate }).first }
     private var _bodyMasses: [BodyMassDomain] = []
@@ -88,7 +92,7 @@ final class HealthRepositoryData: HealthRepositoryDomain {
         }
     }
     
-    private func fetchHistoryMetaDatasFromFile() -> [HistoryMetaDataDomain] {
+    private func fetchHistoryMetaDatasFromFile() -> [HistoryMetaDataDomain] {        
         let data: [HistoryMetaDataData] = (try? FileManagerHelperV2.shared.load([HistoryMetaDataData].self, fromFile: .historyMetaData)) ?? []
         return data.map { $0.domain }
     }
@@ -111,10 +115,6 @@ final class HealthRepositoryData: HealthRepositoryDomain {
             
             return .init(duration: duration, kcalPerHourKg: kcalPerHourKg, startDate: startDate, endDate: endDate)
         })
-        
-        do {
-            try? FileManagerHelper.save(historyMetaDataDatas, toFile: .workoutMetaData)
-        }
         
         return historyMetaDataDatas.map { $0.domain }
     }

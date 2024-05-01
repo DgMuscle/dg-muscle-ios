@@ -15,7 +15,7 @@ struct ExerciseSetV: Equatable, Identifiable {
     
     init(from: ExerciseSetDomain) {
         id = from.id
-        unit = .init(rawValue: from.unit.rawValue) ?? .kg
+        unit = .init(unit: from.unit)
         reps = from.reps
         weight = from.weight
     }
@@ -28,7 +28,7 @@ struct ExerciseSetV: Equatable, Identifiable {
     }
     
     var domain: ExerciseSetDomain {
-        .init(id: id, unit: .init(rawValue: unit.rawValue) ?? .kg, reps: reps, weight: weight)
+        .init(id: id, unit: unit.domain, reps: reps, weight: weight)
     }
     
     var volume: Double {
@@ -40,5 +40,23 @@ extension ExerciseSetV {
     enum Unit: String {
         case kg
         case lbs
+        
+        init(unit: ExerciseSetDomain.Unit) {
+            switch unit {
+            case .kg:
+                self = .kg
+            case .lbs:
+                self = .lbs
+            }
+        }
+        
+        var domain: ExerciseSetDomain.Unit {
+            switch self {
+            case .kg:
+                return .kg
+            case .lbs:
+                return .lbs
+            }
+        }
     }
 }

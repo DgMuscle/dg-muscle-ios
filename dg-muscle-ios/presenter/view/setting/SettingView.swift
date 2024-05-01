@@ -18,7 +18,7 @@ struct SettingView: View {
     var body: some View {
         List {
             Section {
-                VStack {
+                VStack(spacing: 20) {
                     Button {
                         coordinator.main.openWeb(url: "https://judicious-hoof-33e.notion.site/dgmuscle-ios-a7162152c1594a09902d7d6c07da8bdd")
                     } label: {
@@ -26,6 +26,7 @@ struct SettingView: View {
                                      title: "DgMuscle Introduce",
                                      color: .purple)
                     }
+                    .buttonStyle(.borderless)
                     
                     Button {
                         coordinator.exercise.manage()
@@ -35,13 +36,15 @@ struct SettingView: View {
                                      description: "Manage your exercise list",
                                      color: .blue)
                     }
+                    .buttonStyle(.borderless)
                 }
             } header: {
-                VStack {
-                    if let user = viewModel.user {
-                        UserBoxView2(user: user, descriptionLabel: "Configure Your Profile")
-                            .padding(.bottom)
-                    }
+                if let user = viewModel.user {
+                    UserBoxView2(user: user, descriptionLabel: "Configure Your Profile")
+                        .padding(.bottom)
+                        .onTapGesture {
+                            coordinator.main.profile()
+                        }
                 }
             } footer: {
                 VStack(spacing: 20) {

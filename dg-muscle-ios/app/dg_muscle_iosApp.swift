@@ -30,37 +30,23 @@ extension EnvironmentValues {
 @main
 struct dg_muscle_iosApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @Environment(\.window) var window: UIWindow?
     @State var splash = true
-    @State var path = NavigationPath()
     
     var body: some Scene {
         WindowGroup {
             ZStack {
-                ContentViewV2(path: $path,
-                              viewModel: .init(userRepository: UserRepositoryV2Live.shared),
-                              historyViewModel: .init(historyRepository: HistoryRepositoryV2Impl.shared,
-                                                      healthRepository: HealthRepositoryLive.shared,
-                                                      userRepository: UserRepositoryV2Live.shared),
-                              exerciseRepository: ExerciseRepositoryV2Live.shared,
-                              healthRepository: HealthRepositoryLive.shared,
-                              userRepository: UserRepositoryV2Live.shared,
-                              historyRepository: HistoryRepositoryV2Impl.shared,
-                              today: Date(),
-                              appleAuth: AppleAuthCoordinator(window: window), 
-                              fileUploader: FileUploader.shared, 
-                              heatmapRepository: HeatmapRepositoryImpl.shared)
+                ContentView()
                 
-                SplashView()
-                    .opacity(splash ? 1 : 0)
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            splash = false
+                if splash {
+                    SplashView()
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                splash.toggle()
+                            }
                         }
-                    }
+                }
             }
             .animation(.default, value: splash)
-            .environmentObject(Coordinator(path: $path))
         }
     }
 }

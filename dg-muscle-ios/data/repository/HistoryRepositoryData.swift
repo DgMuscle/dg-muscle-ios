@@ -7,13 +7,21 @@
 
 import Foundation
 import Combine
+import WidgetKit
 
 final class HistoryRepositoryData: HistoryRepository {
     static let shared = HistoryRepositoryData()
     
     var histories: [HistoryDomain] { _histories }
     var historiesPublisher: AnyPublisher<[HistoryDomain], Never> { $_histories.eraseToAnyPublisher() }
-    @Published private var _histories: [HistoryDomain] = []
+    @Published private var _histories: [HistoryDomain] = [] {
+        didSet {
+            try? FileManagerHelperV2.shared.save(histories.prefix(150).map({ HistoryData(from: $0) }), toFile: .history)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+        }
+    }
     
     var heatmapColor: HeatmapColorDomain { _heatmapColor }
     var heatmapColorPublisher: AnyPublisher<HeatmapColorDomain, Never> { $_heatmapColor.eraseToAnyPublisher() }
@@ -34,11 +42,8 @@ final class HistoryRepositoryData: HistoryRepository {
             _histories.insert(data, at: 0)
         }
         
-        let historyDatas: [HistoryData] = histories.map({ .init(from: $0) })
-        
-        try? FileManagerHelperV2.shared.save(historyDatas, toFile: .history)
-        
         let _: ResponseData = try await APIClient.shared.request(
+            method: .post,
             url: FunctionsURL.history(.posthistory),
             body: HistoryData(from: data)
         )
@@ -54,9 +59,6 @@ final class HistoryRepositoryData: HistoryRepository {
             _histories.remove(at: index)
         }
         
-        let historyDatas: [HistoryData] = histories.map({ .init(from: $0) })
-        try? FileManagerHelperV2.shared.save(historyDatas, toFile: .history)
-        
         let _: ResponseData = try await APIClient.shared.request(method: .delete,
                                                                  url: FunctionsURL.history(.deletehistory),
                                                                  body: body)
@@ -64,13 +66,16 @@ final class HistoryRepositoryData: HistoryRepository {
     
     func post(data: HeatmapColorDomain) throws {
         _heatmapColor = data
-        let data = HeatmapColorData(rawValue: data.rawValue) ?? .green
+        let data: HeatmapColorData = .init(color: data)
         try FileManagerHelperV2.shared.save(data, toFile: .heatmapColor)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
     }
     
     private func get() -> HeatmapColorDomain {
         let data: HeatmapColorData = (try? FileManagerHelperV2.shared.load(HeatmapColorData.self, fromFile: .heatmapColor)) ?? .green
-        return HeatmapColorDomain(rawValue: data.rawValue) ?? .green
+        return data.domain
     }
     
     private func getExerciseHistoryFromFile() -> [HistoryDomain] {
@@ -84,12 +89,13 @@ final class HistoryRepositoryData: HistoryRepository {
             url = url + "&lastId=\(lastId)"
         }
         let historyDatas: [HistoryData] = try await APIClient.shared.request(url: url)
-        try? FileManagerHelper.save(historyDatas, toFile: .history)
         return historyDatas.map { $0.domain }
     }
     
     private func bind() {
-        UserRepositoryData.shared.isLoginPublisher
+        UserRepositoryData.shared
+            .isLoginPublisher
+            .receive(on: DispatchQueue.main)
             .removeDuplicates()
             .sink { login in
                 if login {

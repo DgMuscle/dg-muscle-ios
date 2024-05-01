@@ -24,9 +24,9 @@ struct HistoryFormSetsView: View {
                 .onDelete(perform: viewModel.delete)
             } header: {
                 VStack(alignment: .leading) {
-                    if let previousRecord = viewModel.previousRecord {
+                    if let previousRecord = viewModel.previousRecord, let date = viewModel.previousRecordDate {
                         Button {
-                            print("move to previous record page \(previousRecord)")
+                            coordinator.history.previousRecord(record: previousRecord, date: date)
                         } label: {
                             HStack {
                                 Text("previous record")
@@ -37,7 +37,7 @@ struct HistoryFormSetsView: View {
                     
                     HStack {
                         if let previousRecordVolume = viewModel.previousRecordVolume {
-                            Text("\(String(previousRecordVolume)) volumes")
+                            Text("\(String(previousRecordVolume)) volume")
                         }
                         
                         if let diffWithPrevious = viewModel.diffWithPrevious {
@@ -51,7 +51,7 @@ struct HistoryFormSetsView: View {
                 VStack {
                     HStack {
                         Text("\(viewModel.currentSetsCount) sets,")
-                        Text("\(String(viewModel.currentRecordVolume)) volumes")
+                        Text("\(String(viewModel.currentRecordVolume)) volume")
                         Spacer()
                     }
                     .padding(.bottom)
@@ -81,8 +81,10 @@ struct HistoryFormSetsView: View {
         .init(id: UUID().uuidString, reps: 8, weight: 60),
     ]
     let record: RecordV = .init(id: UUID().uuidString, exerciseId: "squat", sets: sets)
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyyMMdd"
     let viewModel: HistoryFormSetsViewModel = .init(record: .constant(record),
-                                                    historyDateString: "20240429",
+                                                    historyDate: dateFormatter.date(from: "20240429")!,
                                                     getPreviousRecordUsecase: .init(historyRepository: HistoryRepositoryTest()),
                                                     getExerciseUsecase: .init(exerciseRepository: ExerciseRepositoryTest()))
     return HistoryFormSetsView(viewModel: viewModel)

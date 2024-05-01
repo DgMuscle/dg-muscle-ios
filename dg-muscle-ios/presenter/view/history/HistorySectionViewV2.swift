@@ -19,16 +19,17 @@ struct HistorySectionViewV2: View {
     let healthRepository: HealthRepositoryDomain
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Button {
                 tapHeader?()
             } label: {
                 HStack {
                     Text(section.header)
-                        .font(.largeTitle)
+                        .font(.title2)
                         .fontWeight(.black)
                     Spacer()
                 }
+                .padding(.bottom)
                 .foregroundStyle(LinearGradient(colors: [Color(uiColor: .label),
                                                          Color(uiColor: .label).opacity(0.4)],
                                                 startPoint: .leading,
@@ -46,7 +47,8 @@ struct HistorySectionViewV2: View {
                                                      getDayUsecase: .init(),
                                                      getPartsUsecase: .init(exerciseRepository: exerciseRepository),
                                                      getKcalUsecase: .init(healthRepository: healthRepository),
-                                                     getNaturalDurationUsecase: .init())
+                                                     getNaturalDurationUsecase: .init()), 
+                                    exerciseRepository: exerciseRepository
                     )
                     .padding(.bottom, 20)
                     .scrollTransition { effect, phase in
@@ -63,4 +65,21 @@ struct HistorySectionViewV2: View {
             }
         }
     }
+}
+
+#Preview {
+    
+    let historyRepository: HistoryRepository = HistoryRepositoryTest()
+    let histories: [HistoryV] = historyRepository.histories.map({ .init(from: $0) })
+    let section: HistorySectionV = .init(histories: histories[0..<5].map({ $0 }))
+    let exerciseRepository: ExerciseRepository = ExerciseRepositoryTest()
+    let healthRepository: HealthRepositoryDomain = HealthRepositoryTest2()
+    
+    return HistorySectionViewV2(section: section,
+                                tapHistory: nil,
+                                deleteHistory: nil,
+                                tapHeader: nil,
+                                exerciseRepository: exerciseRepository,
+                                healthRepository: healthRepository)
+    .preferredColorScheme(.dark)
 }

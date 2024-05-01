@@ -25,9 +25,9 @@ final class CoordinatorV2: ObservableObject {
         bind()
     }
     
-    func pop() {
-        if path.isEmpty == false {
-            path.removeLast()
+    func pop(k: Int = 1) {
+        if path.count >= k {
+            path.removeLast(k)
         }
     }
     

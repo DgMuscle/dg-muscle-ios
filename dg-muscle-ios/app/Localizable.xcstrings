@@ -1,6 +1,18 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
+    " and " : {
+
+    },
+    " as much as " : {
+
+    },
+    " volume" : {
+
+    },
     "-" : {
 
     },
@@ -24,11 +36,18 @@
     "%@" : {
 
     },
-    "%@ Record" : {
+    "%@ volume" : {
 
     },
-    "%@ volumes" : {
-
+    "%@, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      }
     },
     "%@%@ x %lld (%@)" : {
       "localizations" : {
@@ -43,18 +62,38 @@
     "%lld" : {
 
     },
-    "%lld Records, %@ Volumes" : {
+    "%lld Records, %@ Volume" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "%1$lld Records, %2$@ Volumes"
+            "value" : "%1$lld Records, %2$@ Volume"
           }
         }
       }
     },
     "%lld sets," : {
 
+    },
+    "%lld sets, %lld volume" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld sets, %2$lld volume"
+          }
+        }
+      }
+    },
+    "%lld%@ x %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld%2$@ x %3$lld"
+          }
+        }
+      }
     },
     "+" : {
 
@@ -312,18 +351,6 @@
         }
       }
     },
-    "ADD" : {
-
-    },
-    "ADD EXERCISE" : {
-
-    },
-    "ADD NEW SET" : {
-
-    },
-    "ADD RECORD" : {
-
-    },
     "agree_remove_account" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -400,15 +427,6 @@
         }
       }
     },
-    "Can't find user info" : {
-
-    },
-    "Configure Your\nFirst Exercise!" : {
-
-    },
-    "Consume %lld kcal" : {
-
-    },
     "continue" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -443,18 +461,6 @@
         }
       }
     },
-    "Current sets count is %lld" : {
-
-    },
-    "Current Sets: %lld" : {
-
-    },
-    "Current Volume: %lld" : {
-
-    },
-    "Current workout volume are %lld" : {
-
-    },
     "Data is unreadable due to absence of exercise data" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -480,9 +486,6 @@
     "DELETE" : {
 
     },
-    "DELETE ACCOUNT" : {
-
-    },
     "DELETE HISTORY" : {
 
     },
@@ -498,16 +501,7 @@
     "Duration: %@" : {
 
     },
-    "EXERCISE DIARY" : {
-
-    },
     "Exercise Name" : {
-
-    },
-    "Exercise Part" : {
-
-    },
-    "Exercise Volume" : {
 
     },
     "Fail to make image file." : {
@@ -566,37 +560,22 @@
     "Manage Exercise" : {
 
     },
-    "Move to Exercise Manager" : {
-
-    },
     "Next" : {
 
     },
-    "No DisplayName" : {
+    "On the %@th, I worked out" : {
 
     },
-    "No user" : {
-
-    },
-    "Once deleted, the account cannot be restored." : {
+    "On the %@th, I worked out my " : {
 
     },
     "One moment, please." : {
-
-    },
-    "OPEN" : {
-
-    },
-    "Parts:" : {
 
     },
     "PhotosPicker" : {
 
     },
     "Please enter your display name" : {
-
-    },
-    "Please enter your display name." : {
 
     },
     "Please try again" : {
@@ -609,9 +588,6 @@
           }
         }
       }
-    },
-    "PREVIOUS" : {
-
     },
     "previous record" : {
 
@@ -629,12 +605,6 @@
           }
         }
       }
-    },
-    "reps" : {
-
-    },
-    "Reps" : {
-
     },
     "save" : {
       "extractionState" : "manual",
@@ -673,16 +643,7 @@
     "SAVE" : {
 
     },
-    "Search by display name" : {
-
-    },
-    "SELECT EXERCISE" : {
-
-    },
     "set's count: %lld," : {
-
-    },
-    "Sets count is %lld" : {
 
     },
     "Setting" : {
@@ -725,9 +686,6 @@
     "Squat" : {
 
     },
-    "Tap to continue" : {
-
-    },
     "Target parts are" : {
 
     },
@@ -753,46 +711,19 @@
         }
       }
     },
-    "The least common exercise" : {
-
-    },
-    "The least common part" : {
-
-    },
-    "The most common exercise" : {
-
-    },
-    "The most common part" : {
-
-    },
     "There is index error." : {
       "comment" : "index"
     },
     "Update" : {
 
     },
-    "Volume" : {
-
-    },
     "volume is %@" : {
-
-    },
-    "Weight" : {
-
-    },
-    "Weight is" : {
 
     },
     "What are the target parts of this exercise?" : {
 
     },
     "What's the name of the exercise?" : {
-
-    },
-    "WORKOUT" : {
-
-    },
-    "Workout volume are %lld" : {
 
     },
     "yes" : {
@@ -820,17 +751,11 @@
         }
       }
     },
-    "You can update your health data in Apple Health" : {
-
-    },
     "Your all data will be deleted" : {
 
     },
     "Your authentication is not perfect. Please use it again after you log out." : {
       "comment" : "authentication"
-    },
-    "Your last '%@' record like below" : {
-
     }
   },
   "version" : "1.0"

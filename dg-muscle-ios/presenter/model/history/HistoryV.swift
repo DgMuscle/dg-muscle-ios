@@ -9,33 +9,25 @@ import Foundation
 
 struct HistoryV: Equatable, Identifiable {
     let id: String
-    let date: String
+    let date: Date
     var memo: String? = nil
     var records: [RecordV] = []
     var metaData: HistoryMetaDataV? = nil
     
-    private let dateBackup: Date
-    
     init() {
         id = UUID().uuidString
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd"
-        date = dateFormatter.string(from: Date())
-        dateBackup = Date()
+        date = Date()
     }
     
     init(from: HistoryDomain) {
         id = from.id
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd"
-        date = dateFormatter.string(from: from.date)
-        dateBackup = from.date
+        date = from.date
         memo = from.memo
         records = from.records.map({ .init(from: $0) })
     }
     
     var domain: HistoryDomain {
-        .init(id: id, date: dateBackup, memo: memo, records: records.map({ $0.domain }))
+        .init(id: id, date: date, memo: memo, records: records.map({ $0.domain }))
     }
     
     var volume: Double {

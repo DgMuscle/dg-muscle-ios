@@ -33,6 +33,7 @@ final class ProfilePhotoEditViewModel: ObservableObject {
         bind()
     }
     
+    @MainActor
     func save() {
         Task {
             errorMessage = nil
@@ -48,6 +49,7 @@ final class ProfilePhotoEditViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func delete() {
         Task {
             errorMessage = nil

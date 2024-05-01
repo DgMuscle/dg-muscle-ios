@@ -22,14 +22,14 @@ struct HistoryFormRecordsView: View {
                     HistoryFormRecordItemView(viewModel: .init(record: record.wrappedValue,
                                                                getExerciseUsecase: .init(exerciseRepository: exerciseRepository)))
                     .onTapGesture {
-                        coordinator.history.recordForm(record: record, historyDateForForm: viewModel.historyDateString)
+                        coordinator.history.recordForm(record: record, historyDateForForm: viewModel.history.date)
                     }
                     
                 }
                 .onDelete(perform: viewModel.delete)
                 
             } header: {
-                Text("\(viewModel.currentRecordsCount) Records, \(String(viewModel.currentTotalVolume)) Volumes")
+                Text("\(viewModel.currentRecordsCount) Records, \(String(viewModel.currentTotalVolume)) Volume")
             } footer: {
                 Button {
                     isPresentSelectExercise.toggle()
@@ -54,7 +54,7 @@ struct HistoryFormRecordsView: View {
             let record: RecordV = .init(id: UUID().uuidString, exerciseId: exercise.id, sets: [])
             viewModel.records.append(record)
             guard let record = $viewModel.records.last else { return }
-            coordinator.history.recordForm(record: record, historyDateForForm: viewModel.historyDateString)
+            coordinator.history.recordForm(record: record, historyDateForForm: viewModel.history.date)
         }
     }
     

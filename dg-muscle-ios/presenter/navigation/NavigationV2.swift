@@ -39,6 +39,7 @@ struct HistoryNavigationV2: Identifiable, Hashable, Equatable {
     enum Name: String {
         case historyForm
         case recordForm
+        case previousRecord
     }
     
     func hash(into hasher: inout Hasher) {
@@ -50,25 +51,29 @@ struct HistoryNavigationV2: Identifiable, Hashable, Equatable {
     
     var historyFormParameter: HistoryV? = nil
     
-    var recordForForm: Binding<RecordV>? = nil
-    var historyDateForForm: String? = nil
+    var recordForForm: (Binding<RecordV>, Date)? = nil
+    
+    var previousRecord: (RecordV, Date)? = nil
     
     init(historyForm history: HistoryV) {
         name = .historyForm
         historyFormParameter = history
     }
     
-    init(recordForForm: Binding<RecordV>, historyDateForForm: String) {
-        name = .recordForm
-        self.recordForForm = recordForForm
-        self.historyDateForForm = historyDateForForm
+    init(recordForForm: Binding<RecordV>, historyDateForForm: Date) {
+        self.name = .recordForm
+        self.recordForForm = (recordForForm, historyDateForForm)
+    }
+    
+    init(previousRecord: (RecordV, Date)) {
+        self.previousRecord = previousRecord
+        self.name = .previousRecord
     }
 }
 
 struct ExerciseNavigationV2: Identifiable, Hashable {
     enum Name: String {
         case manage
-        case select
         case edit
         case add1
         case add2
