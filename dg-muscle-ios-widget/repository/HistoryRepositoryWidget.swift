@@ -12,15 +12,15 @@ final class HistoryRepositoryWidget: HistoryRepository {
     static let shared = HistoryRepositoryWidget()
     var histories: [HistoryDomain] { _histories }
     var historiesPublisher: AnyPublisher<[HistoryDomain], Never> { $_histories.eraseToAnyPublisher() }
-    @Published private var _histories: [HistoryDomain] = []
+    @Published private var _histories: [HistoryDomain]
     
     var heatmapColor: HeatmapColorDomain { _heatmapColor }
     var heatmapColorPublisher: AnyPublisher<HeatmapColorDomain, Never> { $_heatmapColor.eraseToAnyPublisher() }
-    @Published private var _heatmapColor: HeatmapColorDomain = .green
+    @Published private var _heatmapColor: HeatmapColorDomain
     
     private init() {
-        _histories = getHistoriesFromFile()
-        _heatmapColor = getColorFromFile()
+        _histories = Self.getHistoriesFromFile()
+        _heatmapColor = Self.getColorFromFile()
     }
     
     func post(data: HistoryDomain) async throws {
@@ -35,14 +35,13 @@ final class HistoryRepositoryWidget: HistoryRepository {
         
     }
     
-    private func getHistoriesFromFile() -> [HistoryDomain] {
+    static private func getHistoriesFromFile() -> [HistoryDomain] {
         let historyDatas: [HistoryData] = (try? FileManagerHelperV2.shared.load([HistoryData].self, fromFile: .history)) ?? []
         return historyDatas.map { $0.domain }
     }
     
-    private func getColorFromFile() -> HeatmapColorDomain {
+    static private func getColorFromFile() -> HeatmapColorDomain {
         let data: HeatmapColorData = (try? FileManagerHelperV2.shared.load(HeatmapColorData.self, fromFile: .heatmapColor)) ?? .green
         return data.domain
     }
-    
 }
