@@ -17,6 +17,7 @@ struct HistorySectionViewV2: View {
     
     let exerciseRepository: ExerciseRepository
     let healthRepository: HealthRepositoryDomain
+    let historyRepository: HistoryRepository
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -47,7 +48,10 @@ struct HistorySectionViewV2: View {
                                                      getDayUsecase: .init(),
                                                      getPartsUsecase: .init(exerciseRepository: exerciseRepository),
                                                      getKcalUsecase: .init(healthRepository: healthRepository),
-                                                     getNaturalDurationUsecase: .init()), 
+                                                     getNaturalDurationUsecase: .init(),
+                                                     getHeatmapColorUsecase: .init(historyRepository: historyRepository),
+                                                     subscribeHeatmapColorUsecase: .init(historyRepository: historyRepository)
+                                                    ),
                                     exerciseRepository: exerciseRepository
                     )
                     .padding(.bottom, 20)
@@ -80,6 +84,7 @@ struct HistorySectionViewV2: View {
                                 deleteHistory: nil,
                                 tapHeader: nil,
                                 exerciseRepository: exerciseRepository,
-                                healthRepository: healthRepository)
+                                healthRepository: healthRepository, 
+                                historyRepository: historyRepository)
     .preferredColorScheme(.dark)
 }

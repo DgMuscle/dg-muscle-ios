@@ -63,7 +63,8 @@ struct HistoryListView: View {
                                      deleteHistory: viewModel.delete,
                                      tapHeader: tapHeader,
                                      exerciseRepository: exerciseRepository,
-                                     healthRepository: healthRepository)
+                                     healthRepository: healthRepository, 
+                                     historyRepository: historyRepository)
             }
             
         }

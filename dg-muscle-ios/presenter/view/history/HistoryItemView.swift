@@ -15,8 +15,6 @@ struct HistoryItemView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                
-                
                 coloredText
                 
                 HStack {
@@ -39,7 +37,7 @@ struct HistoryItemView: View {
     
     var coloredText: some View {
         let partsText: [Text] = viewModel.parts.map { part in
-            Text(part.rawValue.capitalized).fontWeight(.bold).foregroundStyle(.orange)
+            Text(part.rawValue.capitalized).fontWeight(.bold).foregroundStyle(viewModel.heatmapColor.color)
         }
         
         if partsText.isEmpty {
@@ -51,7 +49,7 @@ struct HistoryItemView: View {
             }
             .multilineTextAlignment(.leading)
         } else {
-            var combinedPartsText = partsText.reduce(Text(""), { $0 + Text(" and ") + $1 })
+            var combinedPartsText = partsText.reduce(partsText[0], { $0 + Text(" and ") + $1 })
             if partsText.count == 1 {
                 combinedPartsText = partsText[0]
             }
@@ -79,8 +77,11 @@ struct HistoryItemView: View {
                                          getDayUsecase: .init(),
                                          getPartsUsecase: .init(exerciseRepository: exerciseRepository),
                                          getKcalUsecase: .init(healthRepository: healthRepository),
-                                         getNaturalDurationUsecase: .init())
-    return HistoryItemView(viewModel: viewModel, 
+                                         getNaturalDurationUsecase: .init(),
+                                         getHeatmapColorUsecase: .init(historyRepository: historyRepository),
+                                         subscribeHeatmapColorUsecase: .init(historyRepository: historyRepository)
+    )
+    return HistoryItemView(viewModel: viewModel,
                            exerciseRepository: exerciseRepository)
-    .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+    .preferredColorScheme(.dark)
 }
