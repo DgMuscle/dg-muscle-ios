@@ -16,8 +16,10 @@ final class HistoryRepositoryData: HistoryRepository {
     var historiesPublisher: AnyPublisher<[HistoryDomain], Never> { $_histories.eraseToAnyPublisher() }
     @Published private var _histories: [HistoryDomain] = [] {
         didSet {
-            WidgetCenter.shared.reloadAllTimelines()
             try? FileManagerHelperV2.shared.save(histories.prefix(150).map({ HistoryData(from: $0) }), toFile: .history)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                WidgetCenter.shared.reloadAllTimelines()
+            }
         }
     }
     
@@ -66,7 +68,9 @@ final class HistoryRepositoryData: HistoryRepository {
         _heatmapColor = data
         let data: HeatmapColorData = .init(color: data)
         try FileManagerHelperV2.shared.save(data, toFile: .heatmapColor)
-        WidgetCenter.shared.reloadAllTimelines()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
     }
     
     private func get() -> HeatmapColorDomain {
