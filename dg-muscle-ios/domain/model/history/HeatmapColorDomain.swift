@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum HeatmapColorDomain: String {
+enum HeatmapColorDomain {
     case green
     case blue
     case red

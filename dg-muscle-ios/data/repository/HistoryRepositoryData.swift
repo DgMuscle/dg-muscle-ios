@@ -62,13 +62,13 @@ final class HistoryRepositoryData: HistoryRepository {
     
     func post(data: HeatmapColorDomain) throws {
         _heatmapColor = data
-        let data = HeatmapColorData(rawValue: data.rawValue) ?? .green
+        let data: HeatmapColorData = .init(color: data)
         try FileManagerHelperV2.shared.save(data, toFile: .heatmapColor)
     }
     
     private func get() -> HeatmapColorDomain {
         let data: HeatmapColorData = (try? FileManagerHelperV2.shared.load(HeatmapColorData.self, fromFile: .heatmapColor)) ?? .green
-        return HeatmapColorDomain(rawValue: data.rawValue) ?? .green
+        return data.domain
     }
     
     private func getExerciseHistoryFromFile() -> [HistoryDomain] {

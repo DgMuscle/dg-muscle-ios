@@ -24,7 +24,7 @@ final class ExerciseSectionsViewModel: ObservableObject {
         var sections: [ExerciseSectionV] = []
         
         for (key, value) in grouped {
-            let part: ExerciseV.Part = ExerciseV.convertPart(part: key)
+            let part: ExerciseV.Part = .init(part: key)
             let exercises: [ExerciseV] = value.map({ .init(from: $0) })
             sections.append(.init(part: part, exercises: exercises))
         }

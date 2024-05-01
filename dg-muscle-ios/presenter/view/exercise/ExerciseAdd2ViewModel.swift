@@ -24,6 +24,6 @@ final class ExerciseAdd2ViewModel: ObservableObject {
     }
     
     func save() {
-        postExerciseUsecase.implement(name: name, parts: parts.map({ ExerciseV.convertPart(part: $0) }) , isFavorite: favorite)
+        postExerciseUsecase.implement(name: name, parts: parts.map({ $0.domain }) , isFavorite: favorite)
     }
 }

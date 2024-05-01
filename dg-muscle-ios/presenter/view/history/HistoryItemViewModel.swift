@@ -39,7 +39,7 @@ final class HistoryItemViewModel: ObservableObject {
     
     private func bind() {
         day = getDayUsecase.implement(history: history.domain)
-        parts = getPartsUsecase.implement(history: history.domain).map({ ExerciseV.convertPart(part: $0) })
+        parts = getPartsUsecase.implement(history: history.domain).map({ .init(part: $0) })
         volume = Int(history.volume)
         guard let metaData = history.metaData else { return }
         time = getNaturalDurationUsecase.implement(metadata: metaData.domain)

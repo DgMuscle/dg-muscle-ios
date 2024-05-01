@@ -36,7 +36,7 @@ final class HeatmapViewModel: ObservableObject {
         subscribeHeatmapColorUsecase.implement()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] color in
-                self?.color = .init(rawValue: color.rawValue) ?? .green
+                self?.color = .init(color: color)
             }
             .store(in: &cancellables)
     }
