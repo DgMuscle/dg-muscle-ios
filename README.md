@@ -16,12 +16,7 @@
 
 ![RPReplay_Final1713610744-ezgif com-resize](https://github.com/donggyushin/dg-muscle-ios/assets/34573243/5067705b-f234-47f5-8ca8-df15cbf625ca)
 
-## Architecture
 
-<img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/8c511068-167f-44b9-9506-058b4a6e54e3" width=500 />
-
-UI, Framework, 데이터베이스 등 외부 요소로부터 코어 로직의 독립성을 유지. <br />
-특히 protocol을 활용한 Repository 구현으로 Data Access Logic 과 앱의 Core Logic의 결합도의 느슨함을 유지함.
 
 ## Main Model
 
