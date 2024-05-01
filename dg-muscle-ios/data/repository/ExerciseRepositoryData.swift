@@ -13,7 +13,11 @@ final class ExerciseRepositoryData: ExerciseRepository {
     
     var exercises: [ExerciseDomain] { _exercises }
     var exercisesPublisher: AnyPublisher<[ExerciseDomain], Never> { $_exercises.eraseToAnyPublisher() }
-    @Published private var _exercises: [ExerciseDomain] = []
+    @Published private var _exercises: [ExerciseDomain] = [] {
+        didSet {
+            try? FileManagerHelperV2.shared.save(exercises.prefix(30).map({ ExerciseData(from: $0) }), toFile: .exercise)
+        }
+    }
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -25,7 +29,6 @@ final class ExerciseRepositoryData: ExerciseRepository {
     func post(data: ExerciseDomain) async throws {
         _exercises.append(data)
         let datas: [ExerciseData] = exercises.map({ .init(from: $0) })
-        try FileManagerHelperV2.shared.save(datas, toFile: .exercise)
         let _: ResponseData = try await APIClient.shared.request(method: .post, url: FunctionsURL.exercise(.postexercise),
                                                                  body: ExerciseData(from: data))
     }
@@ -37,7 +40,6 @@ final class ExerciseRepositoryData: ExerciseRepository {
         
         let datas: [ExerciseData] = exercises.map({ .init(from: $0) })
         
-        try FileManagerHelperV2.shared.save(datas, toFile: .exercise)
         let _: ResponseData = try await APIClient.shared.request(method: .edit, url: FunctionsURL.exercise(.postexercise),
                                                                  body: ExerciseData(from: data))
     }
@@ -47,7 +49,6 @@ final class ExerciseRepositoryData: ExerciseRepository {
             _exercises.remove(at: index)
         }
         let datas: [ExerciseData] = exercises.map({ .init(from: $0) })
-        try FileManagerHelperV2.shared.save(datas, toFile: .exercise)
         
         struct Body: Codable {
             let id: String
@@ -70,7 +71,6 @@ final class ExerciseRepositoryData: ExerciseRepository {
     
     private func fetchExerciseDataFromServer() async throws -> [ExerciseDomain] {
         let exerciseDatas: [ExerciseData] = try await APIClient.shared.request(url: FunctionsURL.exercise(.getexercises))
-        try FileManagerHelperV2.shared.save(exerciseDatas, toFile: .exercise)
         return exerciseDatas.map { $0.domain }
     }
     
