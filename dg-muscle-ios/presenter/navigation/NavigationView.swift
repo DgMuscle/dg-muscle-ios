@@ -51,9 +51,9 @@ struct NavigationView: View {
                         WebView(url: url)
                     }
                 case .heatmapColor:
-                    HeatmapView(viewModel: .init(subscribeHeatmapUsecase: .init(historyRepository: historyRepository,
-                                                                                today: today),
-                                                 subscribeHeatmapColorUsecase: .init(historyRepository: historyRepository)))
+                    HeatmapColorView(viewModel: .init(postHeatmapColorUsecase: .init(historyRepository: historyRepository),
+                                                      subscribeHeatmapColorUsecase: .init(historyRepository: historyRepository),
+                                                      getHeatmapColorUsecase: .init(historyRepository: historyRepository)))
                 }
             }
             .navigationDestination(for: HistoryNavigationV2.self) { navigation in

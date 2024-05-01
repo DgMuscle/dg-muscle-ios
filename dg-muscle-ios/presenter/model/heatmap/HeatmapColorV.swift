@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum HeatmapColorV {
+enum HeatmapColorV: CaseIterable {
     case green
     case blue
     case red

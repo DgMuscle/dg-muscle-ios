@@ -83,6 +83,10 @@
 		7005270A2BDE09D0007838BA /* ExerciseRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700527082BDE09C8007838BA /* ExerciseRepositoryTest.swift */; };
 		7005270C2BDE0DE3007838BA /* HistorySectionViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7005270B2BDE0DE3007838BA /* HistorySectionViewV2.swift */; };
 		7005270E2BDE1128007838BA /* DeleteHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7005270D2BDE1128007838BA /* DeleteHistoryUsecase.swift */; };
+		7009E1752BE2210A00D9950D /* HeatmapColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E1742BE2210A00D9950D /* HeatmapColorViewModel.swift */; };
+		7009E17D2BE2225700D9950D /* PostHeatmapColorUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E17C2BE2225700D9950D /* PostHeatmapColorUsecase.swift */; };
+		7009E17F2BE222CD00D9950D /* GetHeatmapColorUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E17E2BE222CD00D9950D /* GetHeatmapColorUsecase.swift */; };
+		7009E1812BE223CD00D9950D /* HeatmapColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E1802BE223CD00D9950D /* HeatmapColorView.swift */; };
 		7017648B2BE084A800B501B7 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648A2BE084A800B501B7 /* SettingViewModel.swift */; };
 		7017648D2BE0854700B501B7 /* SignOutUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648C2BE0854700B501B7 /* SignOutUsecase.swift */; };
 		7017648F2BE0859400B501B7 /* DeleteAccountUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */; };
@@ -500,6 +504,10 @@
 		700527082BDE09C8007838BA /* ExerciseRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepositoryTest.swift; sourceTree = "<group>"; };
 		7005270B2BDE0DE3007838BA /* HistorySectionViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySectionViewV2.swift; sourceTree = "<group>"; };
 		7005270D2BDE1128007838BA /* DeleteHistoryUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteHistoryUsecase.swift; sourceTree = "<group>"; };
+		7009E1742BE2210A00D9950D /* HeatmapColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapColorViewModel.swift; sourceTree = "<group>"; };
+		7009E17C2BE2225700D9950D /* PostHeatmapColorUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeatmapColorUsecase.swift; sourceTree = "<group>"; };
+		7009E17E2BE222CD00D9950D /* GetHeatmapColorUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeatmapColorUsecase.swift; sourceTree = "<group>"; };
+		7009E1802BE223CD00D9950D /* HeatmapColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapColorView.swift; sourceTree = "<group>"; };
 		7017648A2BE084A800B501B7 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7017648C2BE0854700B501B7 /* SignOutUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutUsecase.swift; sourceTree = "<group>"; };
 		7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountUsecase.swift; sourceTree = "<group>"; };
@@ -903,17 +911,6 @@
 			path = repository;
 			sourceTree = "<group>";
 		};
-		700526CA2BDDEC94007838BA /* heatmap */ = {
-			isa = PBXGroup;
-			children = (
-				700526CD2BDDED90007838BA /* HeatMap.swift */,
-				700526CB2BDDECA3007838BA /* HeatmapColumn.swift */,
-				700526CF2BDDEF1E007838BA /* HeatmapView.swift */,
-				708DB2B62BDD6D3D00195605 /* HeatmapViewModel.swift */,
-			);
-			path = heatmap;
-			sourceTree = "<group>";
-		};
 		700526DD2BDDF5C4007838BA /* user */ = {
 			isa = PBXGroup;
 			children = (
@@ -951,6 +948,65 @@
 				700526F12BDDFF73007838BA /* MainCoordinatorV2.swift */,
 			);
 			path = coordinator;
+			sourceTree = "<group>";
+		};
+		7009E1732BE220EF00D9950D /* heatmap */ = {
+			isa = PBXGroup;
+			children = (
+				700526CD2BDDED90007838BA /* HeatMap.swift */,
+				7009E1802BE223CD00D9950D /* HeatmapColorView.swift */,
+				7009E1742BE2210A00D9950D /* HeatmapColorViewModel.swift */,
+				700526CB2BDDECA3007838BA /* HeatmapColumn.swift */,
+				700526CF2BDDEF1E007838BA /* HeatmapView.swift */,
+				708DB2B62BDD6D3D00195605 /* HeatmapViewModel.swift */,
+			);
+			path = heatmap;
+			sourceTree = "<group>";
+		};
+		7009E1762BE2218200D9950D /* heatmap */ = {
+			isa = PBXGroup;
+			children = (
+				708DB2BE2BDD731F00195605 /* HeatmapColorV.swift */,
+				708DB2B82BDD6DDD00195605 /* HeatmapV.swift */,
+			);
+			path = heatmap;
+			sourceTree = "<group>";
+		};
+		7009E1772BE2219900D9950D /* exercise */ = {
+			isa = PBXGroup;
+			children = (
+				70884DCF2BDD46BE0059B22A /* ExerciseDomain.swift */,
+				707016252BDD2B000025C624 /* ExerciseSetDomain.swift */,
+			);
+			path = exercise;
+			sourceTree = "<group>";
+		};
+		7009E1792BE221A800D9950D /* heatmap */ = {
+			isa = PBXGroup;
+			children = (
+				708DB2B22BDD6AD500195605 /* HeatmapColorDomain.swift */,
+				7070162C2BDD2C5F0025C624 /* HeatmapDomain.swift */,
+			);
+			path = heatmap;
+			sourceTree = "<group>";
+		};
+		7009E17A2BE221AE00D9950D /* user */ = {
+			isa = PBXGroup;
+			children = (
+				707016482BDD3D570025C624 /* UserDomain.swift */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
+		7009E17B2BE2223200D9950D /* heatmap */ = {
+			isa = PBXGroup;
+			children = (
+				7009E17E2BE222CD00D9950D /* GetHeatmapColorUsecase.swift */,
+				7009E17C2BE2225700D9950D /* PostHeatmapColorUsecase.swift */,
+				708DB2BC2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift */,
+				708DB2BA2BDD6F0900195605 /* SubscribeHeatmapUsecase.swift */,
+			);
+			path = heatmap;
 			sourceTree = "<group>";
 		};
 		701764892BE0840E00B501B7 /* setting */ = {
@@ -1244,7 +1300,6 @@
 				70884DFF2BDD5B110059B22A /* HistoryListViewModel.swift */,
 				7005270B2BDE0DE3007838BA /* HistorySectionViewV2.swift */,
 				0292DC572BDF3BD3006295FA /* form */,
-				700526CA2BDDEC94007838BA /* heatmap */,
 				70D4D27E2BE1E06C00B87654 /* previousRecord */,
 			);
 			path = history;
@@ -1253,8 +1308,9 @@
 		707016212BDD2AAC0025C624 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				70884DCF2BDD46BE0059B22A /* ExerciseDomain.swift */,
-				707016482BDD3D570025C624 /* UserDomain.swift */,
+				7009E17A2BE221AE00D9950D /* user */,
+				7009E1792BE221A800D9950D /* heatmap */,
+				7009E1772BE2219900D9950D /* exercise */,
 				70884DE22BDD504D0059B22A /* health */,
 				707016242BDD2AD80025C624 /* history */,
 			);
@@ -1264,9 +1320,6 @@
 		707016242BDD2AD80025C624 /* history */ = {
 			isa = PBXGroup;
 			children = (
-				707016252BDD2B000025C624 /* ExerciseSetDomain.swift */,
-				708DB2B22BDD6AD500195605 /* HeatmapColorDomain.swift */,
-				7070162C2BDD2C5F0025C624 /* HeatmapDomain.swift */,
 				707016222BDD2ACC0025C624 /* HistoryDomain.swift */,
 				707016292BDD2B0B0025C624 /* RecordDomain.swift */,
 			);
@@ -1539,6 +1592,7 @@
 			children = (
 				70A85A832BDE57B600537071 /* exercise */,
 				70A85A872BDE587E00537071 /* health */,
+				7009E1762BE2218200D9950D /* heatmap */,
 				70884DDB2BDD4E1D0059B22A /* history */,
 				70A85A842BDE57BE00537071 /* user */,
 			);
@@ -1549,8 +1603,6 @@
 			isa = PBXGroup;
 			children = (
 				70884DDC2BDD4E340059B22A /* ExerciseSetV.swift */,
-				708DB2BE2BDD731F00195605 /* HeatmapColorV.swift */,
-				708DB2B82BDD6DDD00195605 /* HeatmapV.swift */,
 				70884DFC2BDD59620059B22A /* HistoryMetaDataV.swift */,
 				70884DFA2BDD58800059B22A /* HistorySectionV.swift */,
 				70884DDE2BDD4E3C0059B22A /* HistoryV.swift */,
@@ -1594,6 +1646,7 @@
 				700526D62BDDF300007838BA /* UserBoxView2.swift */,
 				70D4D2832BE1EEF900B87654 /* WebView.swift */,
 				7060BB492BDE17DB0092B987 /* exercise */,
+				7009E1732BE220EF00D9950D /* heatmap */,
 				707016202BDD2A7D0025C624 /* history */,
 				701764892BE0840E00B501B7 /* setting */,
 				70A85A8C2BDE5A9800537071 /* user */,
@@ -1605,8 +1658,9 @@
 			isa = PBXGroup;
 			children = (
 				7060BB4A2BDE17FD0092B987 /* exercise */,
-				700526DD2BDDF5C4007838BA /* user */,
+				7009E17B2BE2223200D9950D /* heatmap */,
 				70884E092BDD67270059B22A /* history */,
+				700526DD2BDDF5C4007838BA /* user */,
 			);
 			path = usecase;
 			sourceTree = "<group>";
@@ -1624,8 +1678,6 @@
 				70EFAE8C2BE138CC0011132F /* GetVolumesGroupedByPartUsecase.swift */,
 				70C8C18A2BDFF96B00805C49 /* PostHistoryUsecase.swift */,
 				70884E042BDD60170059B22A /* SubscribeGroupedHistoriesUsecase.swift */,
-				708DB2BC2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift */,
-				708DB2BA2BDD6F0900195605 /* SubscribeHeatmapUsecase.swift */,
 				70884E072BDD632E0059B22A /* SubscribeMetaDatasMapUsecase.swift */,
 			);
 			path = history;
@@ -2228,6 +2280,7 @@
 				7060BB4C2BDE18160092B987 /* SubscribeGroupedExercisesUsecase.swift in Sources */,
 				70CD21D32BCD6881009B72F3 /* WorkoutHeatMapView.swift in Sources */,
 				700526F82BDE01EB007838BA /* HistoryItemViewModel.swift in Sources */,
+				7009E17F2BE222CD00D9950D /* GetHeatmapColorUsecase.swift in Sources */,
 				029B472B2BDF88AC006DC8BD /* GetExerciseUsecase.swift in Sources */,
 				029139872BDBA13100A82A62 /* FriendSearchTextField.swift in Sources */,
 				703A97D92BCBC070002C0843 /* RecordFormSetItem.swift in Sources */,
@@ -2273,7 +2326,9 @@
 				7060BB662BDE25420092B987 /* ExerciseAdd1View.swift in Sources */,
 				02C95AB62BD2686200D0CA17 /* HorizontalVolumeBarGraph.swift in Sources */,
 				70D4D2842BE1EEF900B87654 /* WebView.swift in Sources */,
+				7009E1752BE2210A00D9950D /* HeatmapColorViewModel.swift in Sources */,
 				700526D32BDDF163007838BA /* HistoryListView.swift in Sources */,
+				7009E17D2BE2225700D9950D /* PostHeatmapColorUsecase.swift in Sources */,
 				703A97DF2BCBC76E002C0843 /* SetFormV2View.swift in Sources */,
 				7060BB642BDE25130092B987 /* ExerciseAdd1ViewModel.swift in Sources */,
 				702E21702BCA55D600147279 /* HistoryRepositoryV2Impl.swift in Sources */,
@@ -2339,6 +2394,7 @@
 				700526FC2BDE03A8007838BA /* GetDayUsecase.swift in Sources */,
 				700526EF2BDDFD38007838BA /* NavigationV2.swift in Sources */,
 				707B0AFF2BD1676700D8250B /* HeatmapColorSelectionViewModel.swift in Sources */,
+				7009E1812BE223CD00D9950D /* HeatmapColorView.swift in Sources */,
 				708DB2B72BDD6D3D00195605 /* HeatmapViewModel.swift in Sources */,
 				7060BB6A2BDE26FB0092B987 /* ExercisePartsSectionViewModel.swift in Sources */,
 				702D77CE2BD35CC8008AF48F /* MainCoordinator.swift in Sources */,
