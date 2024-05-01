@@ -19,7 +19,7 @@ final class HistoryCoordinatorV2 {
         path.append(HistoryNavigationV2(historyForm: history))
     }
     
-    func recordForm(record: Binding<RecordV>, historyDateForForm: String) {
+    func recordForm(record: Binding<RecordV>, historyDateForForm: Date) {
         path.append(HistoryNavigationV2(recordForForm: record, historyDateForForm: historyDateForForm))
     }
 }

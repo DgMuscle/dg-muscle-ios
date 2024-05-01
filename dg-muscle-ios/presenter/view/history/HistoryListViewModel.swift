@@ -69,6 +69,8 @@ final class HistoryListViewModel: ObservableObject {
     private func combineHistoriesAndMetaDatas(groupedHistories: [[HistoryDomain]], metadatasMap: [String: HistoryMetaDataDomain]) -> [HistorySectionV] {
         let groupedHistories: [[HistoryV]] = groupedHistories.map({ $0.map({ .init(from: $0) }) })
         var hashMap: [String: HistoryMetaDataV] = [:]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
         
         for (key, value) in metadatasMap {
             hashMap[key] = .init(from: value)
@@ -80,7 +82,7 @@ final class HistoryListViewModel: ObservableObject {
             var converted: [HistoryV] = []
             for history in histories {
                 var history = history
-                if let metadata = hashMap[history.date] {
+                if let metadata = hashMap[dateFormatter.string(from: history.date)] {
                     history.metaData = metadata
                 }
                 converted.append(history)

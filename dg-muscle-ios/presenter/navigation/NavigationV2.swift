@@ -51,14 +51,14 @@ struct HistoryNavigationV2: Identifiable, Hashable, Equatable {
     var historyFormParameter: HistoryV? = nil
     
     var recordForForm: Binding<RecordV>? = nil
-    var historyDateForForm: String? = nil
+    var historyDateForForm: Date? = nil
     
     init(historyForm history: HistoryV) {
         name = .historyForm
         historyFormParameter = history
     }
     
-    init(recordForForm: Binding<RecordV>, historyDateForForm: String) {
+    init(recordForForm: Binding<RecordV>, historyDateForForm: Date) {
         name = .recordForm
         self.recordForForm = recordForForm
         self.historyDateForForm = historyDateForForm

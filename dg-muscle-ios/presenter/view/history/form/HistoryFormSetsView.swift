@@ -81,8 +81,10 @@ struct HistoryFormSetsView: View {
         .init(id: UUID().uuidString, reps: 8, weight: 60),
     ]
     let record: RecordV = .init(id: UUID().uuidString, exerciseId: "squat", sets: sets)
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyyMMdd"
     let viewModel: HistoryFormSetsViewModel = .init(record: .constant(record),
-                                                    historyDateString: "20240429",
+                                                    historyDate: dateFormatter.date(from: "20240429")!,
                                                     getPreviousRecordUsecase: .init(historyRepository: HistoryRepositoryTest()),
                                                     getExerciseUsecase: .init(exerciseRepository: ExerciseRepositoryTest()))
     return HistoryFormSetsView(viewModel: viewModel)

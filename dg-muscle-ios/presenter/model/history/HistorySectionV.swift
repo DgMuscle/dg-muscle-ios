@@ -12,10 +12,7 @@ struct HistorySectionV: Identifiable, Equatable {
     var histories: [HistoryV]
     
     var date: Date {
-        let dateString = histories.first?.date ?? ""
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd"
-        return dateFormatter.date(from: dateString) ?? Date()
+        histories.first?.date ?? Date()
     }
     
     var header: String {
