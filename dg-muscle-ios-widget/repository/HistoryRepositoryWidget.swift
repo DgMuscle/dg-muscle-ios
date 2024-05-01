@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 final class HistoryRepositoryWidget: HistoryRepository {
+    static let shared = HistoryRepositoryWidget()
     var histories: [HistoryDomain] { _histories }
     var historiesPublisher: AnyPublisher<[HistoryDomain], Never> { $_histories.eraseToAnyPublisher() }
     @Published private var _histories: [HistoryDomain] = []
@@ -17,7 +18,7 @@ final class HistoryRepositoryWidget: HistoryRepository {
     var heatmapColorPublisher: AnyPublisher<HeatmapColorDomain, Never> { $_heatmapColor.eraseToAnyPublisher() }
     @Published private var _heatmapColor: HeatmapColorDomain = .green
     
-    init() {
+    private init() {
         _histories = getHistoriesFromFile()
         _heatmapColor = getColorFromFile()
     }
