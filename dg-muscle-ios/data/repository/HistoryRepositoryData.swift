@@ -15,7 +15,7 @@ final class HistoryRepositoryData: HistoryRepository {
     var historiesPublisher: AnyPublisher<[HistoryDomain], Never> { $_histories.eraseToAnyPublisher() }
     @Published private var _histories: [HistoryDomain] = [] {
         didSet {
-            try? FileManagerHelperV2.shared.save(histories.prefix(30).map({ HistoryData(from: $0) }), toFile: .history)
+            try? FileManagerHelperV2.shared.save(histories.prefix(150).map({ HistoryData(from: $0) }), toFile: .history)
         }
     }
     
@@ -38,8 +38,6 @@ final class HistoryRepositoryData: HistoryRepository {
             _histories.insert(data, at: 0)
         }
         
-        let historyDatas: [HistoryData] = histories.map({ .init(from: $0) })
-        
         let _: ResponseData = try await APIClient.shared.request(
             method: .post,
             url: FunctionsURL.history(.posthistory),
@@ -56,8 +54,6 @@ final class HistoryRepositoryData: HistoryRepository {
         if let index = _histories.firstIndex(where: { $0.id == data.id }) {
             _histories.remove(at: index)
         }
-        
-        let historyDatas: [HistoryData] = histories.map({ .init(from: $0) })
         
         let _: ResponseData = try await APIClient.shared.request(method: .delete,
                                                                  url: FunctionsURL.history(.deletehistory),

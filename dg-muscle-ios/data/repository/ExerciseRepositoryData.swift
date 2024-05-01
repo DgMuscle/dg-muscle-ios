@@ -28,7 +28,6 @@ final class ExerciseRepositoryData: ExerciseRepository {
     
     func post(data: ExerciseDomain) async throws {
         _exercises.append(data)
-        let datas: [ExerciseData] = exercises.map({ .init(from: $0) })
         let _: ResponseData = try await APIClient.shared.request(method: .post, url: FunctionsURL.exercise(.postexercise),
                                                                  body: ExerciseData(from: data))
     }
@@ -38,8 +37,6 @@ final class ExerciseRepositoryData: ExerciseRepository {
             _exercises[index] = data
         }
         
-        let datas: [ExerciseData] = exercises.map({ .init(from: $0) })
-        
         let _: ResponseData = try await APIClient.shared.request(method: .edit, url: FunctionsURL.exercise(.postexercise),
                                                                  body: ExerciseData(from: data))
     }
@@ -48,7 +45,6 @@ final class ExerciseRepositoryData: ExerciseRepository {
         if let index = exercises.firstIndex(where: { $0.id == data.id }) {
             _exercises.remove(at: index)
         }
-        let datas: [ExerciseData] = exercises.map({ .init(from: $0) })
         
         struct Body: Codable {
             let id: String
