@@ -1,6 +1,18 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
+    " and " : {
+
+    },
+    " as much as " : {
+
+    },
+    " volume" : {
+
+    },
     "-" : {
 
     },
@@ -27,7 +39,7 @@
     "%@ Record" : {
 
     },
-    "%@ volumes" : {
+    "%@ volume" : {
 
     },
     "%@%@ x %lld (%@)" : {
@@ -43,12 +55,12 @@
     "%lld" : {
 
     },
-    "%lld Records, %@ Volumes" : {
+    "%lld Records, %@ Volume" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "%1$lld Records, %2$@ Volumes"
+            "value" : "%1$lld Records, %2$@ Volume"
           }
         }
       }
@@ -576,6 +588,9 @@
 
     },
     "No user" : {
+
+    },
+    "On the %@th, I worked out my " : {
 
     },
     "Once deleted, the account cannot be restored." : {

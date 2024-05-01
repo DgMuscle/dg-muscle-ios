@@ -73,7 +73,7 @@ struct HistoryListView: View {
     }
     
     private func tapHistory(history: HistoryV) {
-        print("tap history")
+        coordinator.history.historyForm(history)
     }
     
     private func tapHeader() {
