@@ -30,6 +30,7 @@ struct ExerciseEditView: View {
                     .padding(.bottom, 80)
                 
                 Button {
+                    coordinator.pop()
                     viewModel.update()
                 } label: {
                     VStack {
