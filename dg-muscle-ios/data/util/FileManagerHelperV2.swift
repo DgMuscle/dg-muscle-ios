@@ -31,6 +31,13 @@ final class FileManagerHelperV2 {
         let filePath = documentsDirectory.appendingPathComponent(fileName.rawValue)
         try FileManager.default.removeItem(at: filePath)
     }
+    
+    func deleteAll() throws {
+        for file in File.allCases {
+            let filePath = documentsDirectory.appendingPathComponent(file.rawValue)
+            try FileManager.default.removeItem(at: filePath)
+        }
+    }
 }
 
 extension FileManagerHelperV2 {

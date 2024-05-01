@@ -87,6 +87,7 @@ final class UserRepositoryData: UserRepository {
             guard let user else {
                 self._user = nil
                 self._isLogin = false
+                try? FileManagerHelperV2.shared.deleteAll()
                 return
             }
             self._user = .init(uid: user.uid, displayName: user.displayName, photoURL: user.photoURL)
