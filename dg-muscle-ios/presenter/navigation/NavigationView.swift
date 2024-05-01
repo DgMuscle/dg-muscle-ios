@@ -65,11 +65,17 @@ struct NavigationView: View {
                                                exerciseRepository: exerciseRepository)
                     }
                 case .recordForm:
-                    if let record = navigation.recordForForm, let date = navigation.historyDateForForm {
+                    if let record = navigation.recordForForm?.0, let date = navigation.recordForForm?.1 {
                         HistoryFormSetsView(viewModel: .init(record: record,
                                                              historyDate: date,
                                                              getPreviousRecordUsecase: .init(historyRepository: historyRepository),
                                                              getExerciseUsecase: .init(exerciseRepository: exerciseRepository)))
+                    }
+                case .previousRecord:
+                    if let parameter = navigation.previousRecord {
+                        PreviousRecordHistoryView(viewModel: .init(record: parameter.0,
+                                                                   date: parameter.1,
+                                                                   getExerciseUsecase: .init(exerciseRepository: exerciseRepository)))
                     }
                 }
             }

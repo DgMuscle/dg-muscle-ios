@@ -1736,8 +1736,8 @@
 		70D4D27E2BE1E06C00B87654 /* previousRecord */ = {
 			isa = PBXGroup;
 			children = (
-				70D4D27F2BE1E17700B87654 /* PreviousRecordHistoryViewModel.swift */,
 				70D4D2812BE1E7D800B87654 /* PreviousRecordHistoryView.swift */,
+				70D4D27F2BE1E17700B87654 /* PreviousRecordHistoryViewModel.swift */,
 			);
 			path = previousRecord;
 			sourceTree = "<group>";

@@ -14,9 +14,15 @@ final class GetPreviousRecordUsecase {
         self.historyRepository = historyRepository
     }
     
-    func implement(record: RecordDomain, date: Date) -> RecordDomain? {
-        let histories = historyRepository.histories
+    func implement(record: RecordDomain, date: Date) -> (RecordDomain, Date)? {
+        var histories = historyRepository.histories
+        let calendar = Calendar.current
+        histories = histories
+            .filter({ calendar.isDate(date, inSameDayAs: $0.date) })
+            .sorted(by: { $0.date > $1.date })
+        
         var result: RecordDomain?
+        var resultDate: Date?
         
         var stop = false
         
@@ -26,12 +32,17 @@ final class GetPreviousRecordUsecase {
             for previousRecord in history.records {
                 if previousRecord.exerciseId == record.exerciseId {
                     result = previousRecord
+                    resultDate = history.date
                     stop = true
                     break
                 }
             }
         }
         
-        return result
+        if let result, let resultDate {
+            return (result, resultDate)
+        } else {
+            return nil
+        }
     }
 }

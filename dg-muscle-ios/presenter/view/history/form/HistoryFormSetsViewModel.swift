@@ -17,6 +17,7 @@ final class HistoryFormSetsViewModel: ObservableObject {
     @Published var currentRecordVolume: Double = 0
     
     @Published var previousRecord: RecordV? = nil
+    @Published var previousRecordDate: Date? = nil
     @Published var previousRecordVolume: Double? = nil
     
     @Published var diffWithPrevious: Double?
@@ -97,8 +98,9 @@ final class HistoryFormSetsViewModel: ObservableObject {
     }
     
     private func configurePreviousRecord(record: RecordV) {
-        guard let previousRecordDomain = getPreviousRecordUsecase.implement(record: record.domain, date: historyDate) else { return }
-        previousRecord = .init(from: previousRecordDomain)
+        guard let previous = getPreviousRecordUsecase.implement(record: record.domain, date: historyDate) else { return }
+        previousRecord = .init(from: previous.0)
+        previousRecordDate = previous.1
     }
 }
 

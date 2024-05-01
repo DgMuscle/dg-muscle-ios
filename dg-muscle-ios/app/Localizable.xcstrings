@@ -42,6 +42,16 @@
     "%@ volume" : {
 
     },
+    "%@, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      }
+    },
     "%@%@ x %lld (%@)" : {
       "localizations" : {
         "en" : {
@@ -67,6 +77,26 @@
     },
     "%lld sets," : {
 
+    },
+    "%lld sets, %lld volume" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld sets, %2$lld volume"
+          }
+        }
+      }
+    },
+    "%lld%@ x %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld%2$@ x %3$lld"
+          }
+        }
+      }
     },
     "+" : {
 

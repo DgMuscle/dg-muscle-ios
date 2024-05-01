@@ -24,9 +24,9 @@ struct HistoryFormSetsView: View {
                 .onDelete(perform: viewModel.delete)
             } header: {
                 VStack(alignment: .leading) {
-                    if let previousRecord = viewModel.previousRecord {
+                    if let previousRecord = viewModel.previousRecord, let date = viewModel.previousRecordDate {
                         Button {
-                            print("move to previous record page \(previousRecord)")
+                            coordinator.history.previousRecord(record: previousRecord, date: date)
                         } label: {
                             HStack {
                                 Text("previous record")
