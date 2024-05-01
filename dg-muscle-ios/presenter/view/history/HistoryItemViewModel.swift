@@ -16,11 +16,12 @@ final class HistoryItemViewModel: ObservableObject {
     @Published var time: String?
     @Published var kcal: Double?
     
-    let getDayUsecase: GetDayUsecase
-    let getPartsUsecase: GetPartsUsecase
-    let getKcalUsecase: GetKcalUsecase
-    let getNaturalDurationUsecase: GetNaturalDurationUsecase
+    private let getDayUsecase: GetDayUsecase
+    private let getPartsUsecase: GetPartsUsecase
+    private let getKcalUsecase: GetKcalUsecase
+    private let getNaturalDurationUsecase: GetNaturalDurationUsecase
     
+    private var cancellables = Set<AnyCancellable>()
     init(
         history: HistoryV,
         getDayUsecase: GetDayUsecase,

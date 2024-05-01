@@ -11,12 +11,15 @@ import Combine
 final class HistoryListViewModel: ObservableObject {
     @Published var sections: [HistorySectionV] = []
     @Published var user: UserV? = nil
+    @Published var heatmapColor: HeatmapColorV
     
     let subscribeGroupedHistoriesUsecase: SubscribeGroupedHistoriesUsecase
     let subscribeMetaDatasMapUsecase: SubscribeMetaDatasMapUsecase
     let subscribeUserUsecase: SubscribeUserUsecase
     let getTodayHistoryUsecase: GetTodayHistoryUsecase
     let deleteHistoryUsecase: DeleteHistoryUsecase
+    let getHeatmapColorUsecase: GetHeatmapColorUsecase
+    let subscribeHeatmapColorUsecase: SubscribeHeatmapColorUsecase
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -25,13 +28,19 @@ final class HistoryListViewModel: ObservableObject {
         subscribeMetaDatasMapUsecase: SubscribeMetaDatasMapUsecase,
         subscribeUserUsecase: SubscribeUserUsecase,
         getTodayHistoryUsecase: GetTodayHistoryUsecase,
-        deleteHistoryUsecase: DeleteHistoryUsecase
+        deleteHistoryUsecase: DeleteHistoryUsecase,
+        getHeatmapColorUsecase: GetHeatmapColorUsecase,
+        subscribeHeatmapColorUsecase: SubscribeHeatmapColorUsecase
     ) {
         self.subscribeGroupedHistoriesUsecase = subscribeGroupedHistoriesUsecase
         self.subscribeMetaDatasMapUsecase = subscribeMetaDatasMapUsecase
         self.subscribeUserUsecase = subscribeUserUsecase
         self.getTodayHistoryUsecase = getTodayHistoryUsecase
         self.deleteHistoryUsecase = deleteHistoryUsecase
+        self.getHeatmapColorUsecase = getHeatmapColorUsecase
+        self.subscribeHeatmapColorUsecase = subscribeHeatmapColorUsecase
+        
+        heatmapColor = .init(color: getHeatmapColorUsecase.implement())
         bind()
     }
     
@@ -62,6 +71,14 @@ final class HistoryListViewModel: ObservableObject {
                 } else {
                     self?.user = nil
                 }
+            }
+            .store(in: &cancellables)
+        
+        subscribeHeatmapColorUsecase
+            .implement()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] color in
+                self?.heatmapColor = .init(color: color)
             }
             .store(in: &cancellables)
     }

@@ -28,7 +28,10 @@ struct NavigationView: View {
                                              subscribeMetaDatasMapUsecase: .init(healthRepository: healthRepository),
                                              subscribeUserUsecase: .init(userRepository: userRepository),
                                              getTodayHistoryUsecase: .init(historyRepository: historyRepository, today: today),
-                                             deleteHistoryUsecase: .init(historyRepository: historyRepository)))
+                                             deleteHistoryUsecase: .init(historyRepository: historyRepository),
+                                             getHeatmapColorUsecase: .init(historyRepository: historyRepository),
+                                             subscribeHeatmapColorUsecase: .init(historyRepository: historyRepository)
+                                            ))
             .navigationDestination(for: MainNavigationV2.self) { navigation in
                 switch navigation.name {
                 case .setting:

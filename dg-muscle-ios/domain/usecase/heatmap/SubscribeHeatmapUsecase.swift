@@ -34,6 +34,7 @@ final class SubscribeHeatmapUsecase {
             .sink { [weak self] histories in
                 guard let self else { return }
                 heatMaps = getHeatmapUsecase.implement(data: histories)
+                try? historyRepository.post(data: heatMaps)
             }
             .store(in: &cancellables)
     }

@@ -46,5 +46,6 @@ extension FileManagerHelperV2 {
         case exercise
         case historyMetaData
         case heatmapColor
+        case heatmap
     }
 }

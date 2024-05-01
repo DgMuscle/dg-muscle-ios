@@ -46,6 +46,7 @@ struct HistoryFormSetsView: View {
                         }
                     }
                 }
+                .padding(.bottom)
                 
             } footer: {
                 VStack {

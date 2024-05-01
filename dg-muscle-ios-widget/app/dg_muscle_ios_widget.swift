@@ -38,15 +38,12 @@ struct SimpleEntry: TimelineEntry {
 
 struct dg_muscle_ios_widgetEntryView : View {
     var entry: Provider.Entry
-    let historyRepository = HistoryRepositoryWidget.shared
-    let getHeatmapColorUsecase: GetHeatmapColorUsecase = .init(historyRepository: HistoryRepositoryWidget.shared)
-    let getHeatmapUsecase: GetHeatmapUsecase = .init(today: Date())
+    let data: [HeatmapV] = (try? FileManagerHelperV2.shared.load([HeatmapData].self, fromFile: .heatmap)
+        .map({ $0.domain }).map({ .init(from: $0) })) ?? []
+    
+    let color: HeatmapColorV = .init(color: (try? FileManagerHelperV2.shared.load(HeatmapColorData.self, fromFile: .heatmapColor))?.domain ?? .green)
     
     var body: some View {
-        let domainColor = getHeatmapColorUsecase.implement()
-        let heatmapDomain = getHeatmapUsecase.implement(data: historyRepository.histories)
-        let color: HeatmapColorV = .init(color: domainColor)
-        let data: [HeatmapV] = heatmapDomain.map({ .init(from: $0) })
         HeatMap(datas: data, color: color)
     }
 }

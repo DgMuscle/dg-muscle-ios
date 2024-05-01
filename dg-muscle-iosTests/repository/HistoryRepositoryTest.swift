@@ -25,6 +25,10 @@ final class HistoryRepositoryTest: HistoryRepository {
         _histories.insert(data, at: 0)
     }
     
+    func post(data: [HeatmapDomain]) throws {
+        
+    }
+    
     func post(data: HeatmapColorDomain) throws {
         _heatmapColor = data
     }

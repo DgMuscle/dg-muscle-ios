@@ -63,7 +63,8 @@ struct HistoryListView: View {
                                      deleteHistory: viewModel.delete,
                                      tapHeader: tapHeader,
                                      exerciseRepository: exerciseRepository,
-                                     healthRepository: healthRepository)
+                                     healthRepository: healthRepository,
+                                     color: viewModel.heatmapColor)
             }
             
         }
@@ -97,7 +98,10 @@ struct HistoryListView: View {
                                                 subscribeMetaDatasMapUsecase: .init(healthRepository: healthRepository),
                                                 subscribeUserUsecase: .init(userRepository: userRepository), 
                                                 getTodayHistoryUsecase: .init(historyRepository: historyRepository, today: today), 
-                                                deleteHistoryUsecase: .init(historyRepository: historyRepository))
+                                                deleteHistoryUsecase: .init(historyRepository: historyRepository),
+                                                getHeatmapColorUsecase: .init(historyRepository: historyRepository),
+                                                subscribeHeatmapColorUsecase: .init(historyRepository: historyRepository)
+    )
     
     return HistoryListView(today: today, 
                            historyRepository: historyRepository,
