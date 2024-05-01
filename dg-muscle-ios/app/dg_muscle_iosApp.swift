@@ -46,7 +46,7 @@ struct dg_muscle_iosApp: App {
                         }
                 }
             }
-            .animation(.easeIn, value: splash)
+            .animation(.default, value: splash)
         }
     }
 }
