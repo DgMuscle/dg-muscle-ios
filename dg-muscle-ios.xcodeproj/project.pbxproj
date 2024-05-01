@@ -71,6 +71,12 @@
 		7009E1832BE2269B00D9950D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E1822BE2269B00D9950D /* SplashView.swift */; };
 		7009E1852BE226E900D9950D /* QuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E1842BE226E900D9950D /* QuickAction.swift */; };
 		7009E1872BE2271E00D9950D /* RemoteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E1862BE2271E00D9950D /* RemoteCoordinator.swift */; };
+		7009E1882BE2287F00D9950D /* HeatMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526CD2BDDED90007838BA /* HeatMap.swift */; };
+		7009E1892BE2288D00D9950D /* HeatmapV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708DB2B82BDD6DDD00195605 /* HeatmapV.swift */; };
+		7009E18A2BE2289200D9950D /* HeatmapColorV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708DB2BE2BDD731F00195605 /* HeatmapColorV.swift */; };
+		7009E18B2BE2289F00D9950D /* HeatmapColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526CB2BDDECA3007838BA /* HeatmapColumn.swift */; };
+		7009E18C2BE228A900D9950D /* HeatmapColorDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708DB2B22BDD6AD500195605 /* HeatmapColorDomain.swift */; };
+		7009E18D2BE228B800D9950D /* HeatmapDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070162C2BDD2C5F0025C624 /* HeatmapDomain.swift */; };
 		7017648B2BE084A800B501B7 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648A2BE084A800B501B7 /* SettingViewModel.swift */; };
 		7017648D2BE0854700B501B7 /* SignOutUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648C2BE0854700B501B7 /* SignOutUsecase.swift */; };
 		7017648F2BE0859400B501B7 /* DeleteAccountUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */; };
@@ -1274,14 +1280,20 @@
 				70884DC92BDD449E0059B22A /* Authenticator.swift in Sources */,
 				7057B2972BDE78E300A1418D /* AuthenticatorInterface.swift in Sources */,
 				70240BEE2ADC1FF800B87A79 /* dg_muscle_ios_widgetLiveActivity.swift in Sources */,
+				7009E1892BE2288D00D9950D /* HeatmapV.swift in Sources */,
 				70240BF22ADC1FF800B87A79 /* AppIntent.swift in Sources */,
 				70240BF02ADC1FF800B87A79 /* dg_muscle_ios_widget.swift in Sources */,
+				7009E18D2BE228B800D9950D /* HeatmapDomain.swift in Sources */,
+				7009E18A2BE2289200D9950D /* HeatmapColorV.swift in Sources */,
 				706D6A7B2BE0E4C2000A0324 /* AppleAuthTest.swift in Sources */,
+				7009E18C2BE228A900D9950D /* HeatmapColorDomain.swift in Sources */,
 				70884DCD2BDD44CF0059B22A /* FileManagerHelperV2.swift in Sources */,
 				706D6A7C2BE0E4DF000A0324 /* AppleAuthCoordinatorInterface.swift in Sources */,
 				70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */,
 				70B07ACA2BD8D54900A0E732 /* FunctionsURLEnums.swift in Sources */,
+				7009E18B2BE2289F00D9950D /* HeatmapColumn.swift in Sources */,
 				706D6A772BE0E46A000A0324 /* AppleAuthCoordinator.swift in Sources */,
+				7009E1882BE2287F00D9950D /* HeatMap.swift in Sources */,
 				70B07AC82BD8D53B00A0E732 /* FunctionsURL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
