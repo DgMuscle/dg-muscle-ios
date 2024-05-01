@@ -26,7 +26,7 @@ final class PostUserProfileImageUsecase {
         
         Task {
             guard let previousURL = userRepository.user?.photoURL?.absoluteString else { return }
-            try await fileUploader.deleteImage(path: previousURL)
+            try? await fileUploader.deleteImage(path: previousURL)
         }
     }
 }
