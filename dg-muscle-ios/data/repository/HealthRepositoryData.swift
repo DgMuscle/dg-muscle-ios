@@ -88,7 +88,7 @@ final class HealthRepositoryData: HealthRepositoryDomain {
         }
     }
     
-    private func fetchHistoryMetaDatasFromFile() -> [HistoryMetaDataDomain] {
+    private func fetchHistoryMetaDatasFromFile() -> [HistoryMetaDataDomain] {        
         let data: [HistoryMetaDataData] = (try? FileManagerHelperV2.shared.load([HistoryMetaDataData].self, fromFile: .historyMetaData)) ?? []
         return data.map { $0.domain }
     }

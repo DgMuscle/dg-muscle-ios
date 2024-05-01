@@ -31,13 +31,10 @@ final class FileManagerHelperV2 {
         let filePath = documentsDirectory.appendingPathComponent(fileName.rawValue)
         try FileManager.default.removeItem(at: filePath)
     }
-    
 }
 
 extension FileManagerHelperV2 {
     enum File: String, CaseIterable {
-        case user
-        case dguser
         case history
         case exercise
         case historyMetaData
