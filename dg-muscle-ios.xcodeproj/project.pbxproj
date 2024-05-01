@@ -77,6 +77,7 @@
 		7009E18B2BE2289F00D9950D /* HeatmapColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526CB2BDDECA3007838BA /* HeatmapColumn.swift */; };
 		7009E18C2BE228A900D9950D /* HeatmapColorDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708DB2B22BDD6AD500195605 /* HeatmapColorDomain.swift */; };
 		7009E18D2BE228B800D9950D /* HeatmapDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070162C2BDD2C5F0025C624 /* HeatmapDomain.swift */; };
+		7009E18F2BE2297B00D9950D /* GetHeatmapUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E18E2BE2297B00D9950D /* GetHeatmapUsecase.swift */; };
 		7017648B2BE084A800B501B7 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648A2BE084A800B501B7 /* SettingViewModel.swift */; };
 		7017648D2BE0854700B501B7 /* SignOutUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648C2BE0854700B501B7 /* SignOutUsecase.swift */; };
 		7017648F2BE0859400B501B7 /* DeleteAccountUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */; };
@@ -333,6 +334,7 @@
 		7009E1822BE2269B00D9950D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		7009E1842BE226E900D9950D /* QuickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
 		7009E1862BE2271E00D9950D /* RemoteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCoordinator.swift; sourceTree = "<group>"; };
+		7009E18E2BE2297B00D9950D /* GetHeatmapUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeatmapUsecase.swift; sourceTree = "<group>"; };
 		7017648A2BE084A800B501B7 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7017648C2BE0854700B501B7 /* SignOutUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutUsecase.swift; sourceTree = "<group>"; };
 		7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountUsecase.swift; sourceTree = "<group>"; };
@@ -654,6 +656,7 @@
 			isa = PBXGroup;
 			children = (
 				7009E17E2BE222CD00D9950D /* GetHeatmapColorUsecase.swift */,
+				7009E18E2BE2297B00D9950D /* GetHeatmapUsecase.swift */,
 				7009E17C2BE2225700D9950D /* PostHeatmapColorUsecase.swift */,
 				708DB2BC2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift */,
 				708DB2BA2BDD6F0900195605 /* SubscribeHeatmapUsecase.swift */,
@@ -1357,6 +1360,7 @@
 				70A85A862BDE57D300537071 /* HealthInfoV.swift in Sources */,
 				70A85A8E2BDE5AB100537071 /* HealthInfoViewModel.swift in Sources */,
 				707016422BDD2F880025C624 /* HistoryRepositoryData.swift in Sources */,
+				7009E18F2BE2297B00D9950D /* GetHeatmapUsecase.swift in Sources */,
 				700527002BDE0422007838BA /* GetPartsUsecase.swift in Sources */,
 				70884DDA2BDD4DCA0059B22A /* UserV.swift in Sources */,
 				700526DF2BDDF5D9007838BA /* SubscribeUserUsecase.swift in Sources */,
