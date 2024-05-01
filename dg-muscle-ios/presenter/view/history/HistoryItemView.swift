@@ -11,6 +11,7 @@ struct HistoryItemView: View {
     
     @StateObject var viewModel: HistoryItemViewModel
     let exerciseRepository: ExerciseRepository
+    let color: HeatmapColorV
     
     var body: some View {
         HStack {
@@ -37,7 +38,7 @@ struct HistoryItemView: View {
     
     var coloredText: some View {
         let partsText: [Text] = viewModel.parts.map { part in
-            Text(part.rawValue.capitalized).fontWeight(.bold).foregroundStyle(viewModel.heatmapColor.color)
+            Text(part.rawValue.capitalized).fontWeight(.bold).foregroundStyle(color.color)
         }
         
         if partsText.isEmpty {
@@ -77,11 +78,10 @@ struct HistoryItemView: View {
                                          getDayUsecase: .init(),
                                          getPartsUsecase: .init(exerciseRepository: exerciseRepository),
                                          getKcalUsecase: .init(healthRepository: healthRepository),
-                                         getNaturalDurationUsecase: .init(),
-                                         getHeatmapColorUsecase: .init(historyRepository: historyRepository),
-                                         subscribeHeatmapColorUsecase: .init(historyRepository: historyRepository)
+                                         getNaturalDurationUsecase: .init()
     )
     return HistoryItemView(viewModel: viewModel,
-                           exerciseRepository: exerciseRepository)
+                           exerciseRepository: exerciseRepository,
+                           color: .mint)
     .preferredColorScheme(.dark)
 }

@@ -17,7 +17,8 @@ struct HistorySectionViewV2: View {
     
     let exerciseRepository: ExerciseRepository
     let healthRepository: HealthRepositoryDomain
-    let historyRepository: HistoryRepository
+    
+    let color: HeatmapColorV
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -48,11 +49,10 @@ struct HistorySectionViewV2: View {
                                                      getDayUsecase: .init(),
                                                      getPartsUsecase: .init(exerciseRepository: exerciseRepository),
                                                      getKcalUsecase: .init(healthRepository: healthRepository),
-                                                     getNaturalDurationUsecase: .init(),
-                                                     getHeatmapColorUsecase: .init(historyRepository: historyRepository),
-                                                     subscribeHeatmapColorUsecase: .init(historyRepository: historyRepository)
+                                                     getNaturalDurationUsecase: .init()
                                                     ),
-                                    exerciseRepository: exerciseRepository
+                                    exerciseRepository: exerciseRepository,
+                                    color: color
                     )
                     .padding(.bottom, 20)
                     .scrollTransition { effect, phase in
@@ -84,7 +84,7 @@ struct HistorySectionViewV2: View {
                                 deleteHistory: nil,
                                 tapHeader: nil,
                                 exerciseRepository: exerciseRepository,
-                                healthRepository: healthRepository, 
-                                historyRepository: historyRepository)
+                                healthRepository: healthRepository,
+                                color: .mint)
     .preferredColorScheme(.dark)
 }
