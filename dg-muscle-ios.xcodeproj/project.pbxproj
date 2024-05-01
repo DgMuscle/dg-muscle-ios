@@ -75,11 +75,8 @@
 		7009E18B2BE2289F00D9950D /* HeatmapColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526CB2BDDECA3007838BA /* HeatmapColumn.swift */; };
 		7009E18C2BE228A900D9950D /* HeatmapColorDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708DB2B22BDD6AD500195605 /* HeatmapColorDomain.swift */; };
 		7009E18D2BE228B800D9950D /* HeatmapDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070162C2BDD2C5F0025C624 /* HeatmapDomain.swift */; };
-		7009E18F2BE2297B00D9950D /* GetHeatmapUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E18E2BE2297B00D9950D /* GetHeatmapUsecase.swift */; };
-		7009E1902BE22ACF00D9950D /* GetHeatmapUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E18E2BE2297B00D9950D /* GetHeatmapUsecase.swift */; };
 		7009E1912BE22AD400D9950D /* GetHeatmapColorUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E17E2BE222CD00D9950D /* GetHeatmapColorUsecase.swift */; };
 		7009E1922BE22AD700D9950D /* GetHeatmapColorUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E17E2BE222CD00D9950D /* GetHeatmapColorUsecase.swift */; };
-		7009E1932BE22ADA00D9950D /* GetHeatmapUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E18E2BE2297B00D9950D /* GetHeatmapUsecase.swift */; };
 		7009E1942BE22ADD00D9950D /* PostHeatmapColorUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E17C2BE2225700D9950D /* PostHeatmapColorUsecase.swift */; };
 		7009E1952BE22ADE00D9950D /* PostHeatmapColorUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009E17C2BE2225700D9950D /* PostHeatmapColorUsecase.swift */; };
 		7009E1962BE22AE200D9950D /* SubscribeHeatmapColorUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708DB2BC2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift */; };
@@ -412,7 +409,6 @@
 		7009E1822BE2269B00D9950D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		7009E1842BE226E900D9950D /* QuickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
 		7009E1862BE2271E00D9950D /* RemoteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCoordinator.swift; sourceTree = "<group>"; };
-		7009E18E2BE2297B00D9950D /* GetHeatmapUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeatmapUsecase.swift; sourceTree = "<group>"; };
 		7017648A2BE084A800B501B7 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7017648C2BE0854700B501B7 /* SignOutUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutUsecase.swift; sourceTree = "<group>"; };
 		7017648E2BE0859400B501B7 /* DeleteAccountUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountUsecase.swift; sourceTree = "<group>"; };
@@ -723,7 +719,6 @@
 			isa = PBXGroup;
 			children = (
 				7009E17E2BE222CD00D9950D /* GetHeatmapColorUsecase.swift */,
-				7009E18E2BE2297B00D9950D /* GetHeatmapUsecase.swift */,
 				7009E17C2BE2225700D9950D /* PostHeatmapColorUsecase.swift */,
 				708DB2BC2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift */,
 				708DB2BA2BDD6F0900195605 /* SubscribeHeatmapUsecase.swift */,
@@ -1399,7 +1394,6 @@
 				7009E19E2BE22B4200D9950D /* UserRepository.swift in Sources */,
 				7009E18D2BE228B800D9950D /* HeatmapDomain.swift in Sources */,
 				7009E18A2BE2289200D9950D /* HeatmapColorV.swift in Sources */,
-				7009E1902BE22ACF00D9950D /* GetHeatmapUsecase.swift in Sources */,
 				7009E1AD2BE22B8000D9950D /* GetExerciseUsecase.swift in Sources */,
 				70EC67532BE230820049E98F /* FileManagerHelperV2.swift in Sources */,
 				7009E1D32BE22BCE00D9950D /* PostUserDisplayNameUsecase.swift in Sources */,
@@ -1451,7 +1445,6 @@
 				700526DC2BDDF589007838BA /* UserDomain.swift in Sources */,
 				7009E1B82BE22B9900D9950D /* GetKcalUsecase.swift in Sources */,
 				7009E1952BE22ADE00D9950D /* PostHeatmapColorUsecase.swift in Sources */,
-				7009E1932BE22ADA00D9950D /* GetHeatmapUsecase.swift in Sources */,
 				7009E1D62BE22BD200D9950D /* PostUserProfileImageUsecase.swift in Sources */,
 				700526E52BDDF840007838BA /* HistoryMetaDataDomain.swift in Sources */,
 				70F71B342BE126420013E616 /* ErrorData.swift in Sources */,
@@ -1521,7 +1514,6 @@
 				70A85A862BDE57D300537071 /* HealthInfoV.swift in Sources */,
 				70A85A8E2BDE5AB100537071 /* HealthInfoViewModel.swift in Sources */,
 				707016422BDD2F880025C624 /* HistoryRepositoryData.swift in Sources */,
-				7009E18F2BE2297B00D9950D /* GetHeatmapUsecase.swift in Sources */,
 				700527002BDE0422007838BA /* GetPartsUsecase.swift in Sources */,
 				70884DDA2BDD4DCA0059B22A /* UserV.swift in Sources */,
 				700526DF2BDDF5D9007838BA /* SubscribeUserUsecase.swift in Sources */,
