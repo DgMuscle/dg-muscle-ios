@@ -42,15 +42,28 @@ struct HistoryItemView: View {
             Text(part.rawValue.capitalized).fontWeight(.bold)
         }
         
-        let combinedPartsText = partsText.reduce(Text(""), { $0 + Text(" and ") + $1 })
-        return VStack {
-            Text("On the \(viewModel.day)th, I worked out my ") +
-            combinedPartsText +
-            Text(" as much as ") +
-            Text("\(viewModel.volume)").fontWeight(.bold) +
-            Text(" volume")
+        if partsText.isEmpty {
+            return VStack {
+                Text("On the \(viewModel.day)th, I worked out") +
+                Text(" as much as ") +
+                Text("\(viewModel.volume)").fontWeight(.bold) +
+                Text(" volume")
+            }
+            .multilineTextAlignment(.leading)
+        } else {
+            var combinedPartsText = partsText.reduce(Text(""), { $0 + Text(" and ") + $1 })
+            if partsText.count == 1 {
+                combinedPartsText = partsText[0]
+            }
+            return VStack {
+                Text("On the \(viewModel.day)th, I worked out my ") +
+                combinedPartsText +
+                Text(" as much as ") +
+                Text("\(viewModel.volume)").fontWeight(.bold) +
+                Text(" volume")
+            }
+            .multilineTextAlignment(.leading)
         }
-        .multilineTextAlignment(.leading)
     }
 }
 
