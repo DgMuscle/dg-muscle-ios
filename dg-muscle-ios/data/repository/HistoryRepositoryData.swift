@@ -82,7 +82,6 @@ final class HistoryRepositoryData: HistoryRepository {
             url = url + "&lastId=\(lastId)"
         }
         let historyDatas: [HistoryData] = try await APIClient.shared.request(url: url)
-        try? FileManagerHelper.save(historyDatas, toFile: .history)
         return historyDatas.map { $0.domain }
     }
     

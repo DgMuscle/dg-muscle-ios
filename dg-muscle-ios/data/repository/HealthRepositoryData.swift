@@ -112,10 +112,6 @@ final class HealthRepositoryData: HealthRepositoryDomain {
             return .init(duration: duration, kcalPerHourKg: kcalPerHourKg, startDate: startDate, endDate: endDate)
         })
         
-        do {
-            try? FileManagerHelper.save(historyMetaDataDatas, toFile: .workoutMetaData)
-        }
-        
         return historyMetaDataDatas.map { $0.domain }
     }
     

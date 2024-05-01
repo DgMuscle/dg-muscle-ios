@@ -37,14 +37,10 @@ struct SimpleEntry: TimelineEntry {
 }
 
 struct dg_muscle_ios_widgetEntryView : View {
-    
     var entry: Provider.Entry
-    let datas: [WorkoutHeatMapViewModel.Data] = (try? FileManagerHelper.load([WorkoutHeatMapViewModel.Data].self, fromFile: .workoutHeatMapData)) ?? []
-    let heatColor = (try? FileManagerHelper.load(HeatmapColor.self, fromFile: .heatmapColor)) ?? .green
-
+    
     var body: some View {
-        WorkoutHeatMapCommonView(datas: datas,
-                                 heatColor: heatColor)
+        Text("Widget")
     }
 }
 
