@@ -17,45 +17,11 @@ struct ExerciseData: Codable {
         id = from.id
         name = from.name
         favorite = from.favorite
-        parts = from.parts.map({ Self.convertPart(part: $0) })
+        parts = from.parts.map({ .init(part: $0) })
     }
     
     var domain: ExerciseDomain {
-        .init(id: id, name: name, parts: parts.map({ Self.convertPart(part: $0) }), favorite: favorite)
-    }
-    
-    static func convertPart(part: Part) -> ExerciseDomain.Part {
-        switch part {
-        case .arm:
-            return .arm
-        case .back:
-            return .back
-        case .chest:
-            return .chest
-        case .core:
-            return .core
-        case .leg:
-            return .leg
-        case .shoulder:
-            return .shoulder
-        }
-    }
- 
-    static func convertPart(part: ExerciseDomain.Part) -> Part {
-        switch part {
-        case .arm:
-            return .arm
-        case .back:
-            return .back
-        case .chest:
-            return .chest
-        case .core:
-            return .core
-        case .leg:
-            return .leg
-        case .shoulder:
-            return .shoulder
-        }
+        .init(id: id, name: name, parts: parts.map({ $0.domain }), favorite: favorite)
     }
 }
 
@@ -67,5 +33,39 @@ extension ExerciseData {
         case core
         case leg
         case shoulder
+        
+        var domain: ExerciseDomain.Part {
+            switch self {
+            case .arm:
+                return .arm
+            case .back:
+                return .back
+            case .chest:
+                return .chest
+            case .core:
+                return .core
+            case .leg:
+                return .leg
+            case .shoulder:
+                return .shoulder
+            }
+        }
+        
+        init(part: ExerciseDomain.Part) {
+            switch part {
+            case .arm:
+                self = .arm
+            case .back:
+                self = .back
+            case .chest:
+                self = .chest
+            case .core:
+                self = .core
+            case .leg:
+                self = .leg
+            case .shoulder:
+                self = .shoulder
+            }
+        }
     }
 }
