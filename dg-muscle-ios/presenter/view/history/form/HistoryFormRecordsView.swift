@@ -18,7 +18,7 @@ struct HistoryFormRecordsView: View {
     var body: some View {
         List {
             Section {
-                ForEach($viewModel.records) { record in
+                ForEach($viewModel.records, id: \.self) { record in
                     HistoryFormRecordItemView(viewModel: .init(record: record.wrappedValue,
                                                                getExerciseUsecase: .init(exerciseRepository: exerciseRepository)))
                     .onTapGesture {
