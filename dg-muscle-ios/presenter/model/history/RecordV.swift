@@ -7,10 +7,16 @@
 
 import Foundation
 
-struct RecordV: Equatable, Identifiable {
+struct RecordV: Equatable, Identifiable, Hashable {
     let id: String
     let exerciseId: String
     var sets: [ExerciseSetV]
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(exerciseId)
+        hasher.combine(sets)
+    }
     
     init(from: RecordDomain) {
         id = from.id

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExerciseSetV: Equatable, Identifiable {
+struct ExerciseSetV: Equatable, Identifiable, Hashable {
     let id: String
     let unit: Unit
     let reps: Int
