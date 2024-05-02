@@ -11,7 +11,6 @@ import Combine
 final class SubscribeHeatmapUsecase {
     private let historyRepository: HistoryRepository
     private let today: Date
-    private let getHeatmapUsecase: GetHeatmapUsecase
     private let heatmapRepository: HeatmapRepository
     
     @Published private var heatMaps: [HeatmapDomain] = []
@@ -22,7 +21,6 @@ final class SubscribeHeatmapUsecase {
          heatmapRepository: HeatmapRepository) {
         self.historyRepository = historyRepository
         self.today = today
-        self.getHeatmapUsecase = .init(today: today)
         self.heatmapRepository = heatmapRepository
         bind()
     }
@@ -37,9 +35,67 @@ final class SubscribeHeatmapUsecase {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] histories in
                 guard let self else { return }
-                heatMaps = getHeatmapUsecase.implement(data: histories)
+                heatMaps = configureHeatmap(histories: histories)
                 try? heatmapRepository.post(data: heatMaps)
             }
             .store(in: &cancellables)
+    }
+    
+    private func configureHeatmap(histories: [HistoryDomain]) -> [HeatmapDomain] {
+        /// 오늘을 n번째 주라고 할 때, (n-16 ~ n) 번째 주까지 구한다.
+        /// 예) 2024년 16번째 주: hashMap["202416"] = [0, 0, 0, 0, 0, 0, 0]
+        
+        var hashMap: [String: [Double]] = [:]
+        let calendar = Calendar(identifier: .gregorian)
+        var date = today
+        // date의 year, weeks 를 구한다.
+        
+        var count: Int = 17
+        
+        while count > 0 {
+            let year = calendar.component(.year, from: date)
+            let weekOfYear = calendar.component(.weekOfYear, from: date)
+            var defaultValues: [Double] = [0,0,0,0,0,0,0]
+            
+            if count == 17 {
+                let weekdayNumber = calendar.component(.weekday, from: date)
+                /// [1: 일, 2: 월, 3: 화, 4: 수, 5: 목, 6: 금, 7: 토]
+                /// [-6, -5, -4, -3, -2, -1, 0]
+                defaultValues.removeLast(7 - weekdayNumber)
+            }
+            
+            var key: String = "\(year)\(weekOfYear)"
+            if weekOfYear < 10 {
+                key = "\(year)0\(weekOfYear)"
+            }
+            
+            hashMap[key, default: []].append(contentsOf: defaultValues)
+            
+            if let newDate = calendar.date(byAdding: .day, value: -7, to: date) {
+                date = newDate
+            }
+            
+            count -= 1
+        }
+        
+        for history in histories {
+            let date = history.date
+            let year = calendar.component(.year, from: date)
+            let weekOfYear = calendar.component(.weekOfYear, from: date)
+            let weekdayNumber = calendar.component(.weekday, from: date)
+            
+            var key: String = "\(year)\(weekOfYear)"
+            if weekOfYear < 10 {
+                key = "\(year)0\(weekOfYear)"
+            }
+            
+            hashMap[key]?[weekdayNumber - 1] = history.volume
+        }
+        
+        let heatmaps: [HeatmapDomain] = hashMap
+            .map({ .init(id: UUID().uuidString, week: $0.key, volumes: $0.value.map({ $0 })) })
+            .sorted(by: { $0.week < $1.week })
+        
+        return heatmaps
     }
 }
