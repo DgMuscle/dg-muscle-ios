@@ -324,6 +324,8 @@
 		70C8C1892BDFF37D00805C49 /* HistoryFormRecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C8C1882BDFF37D00805C49 /* HistoryFormRecordsView.swift */; };
 		70C8C18B2BDFF96B00805C49 /* PostHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C8C18A2BDFF96B00805C49 /* PostHistoryUsecase.swift */; };
 		70C9619F2BE6275300C143E9 /* UsersSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9619E2BE6275300C143E9 /* UsersSearchView.swift */; };
+		70C961A12BE62E3600C143E9 /* PostFriendRequestUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C961A02BE62E3600C143E9 /* PostFriendRequestUsecase.swift */; };
+		70C961A32BE62F5300C143E9 /* BannerSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C961A22BE62F5300C143E9 /* BannerSuccessView.swift */; };
 		70CD21DF2BCD6ED6009B72F3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 70CD21DE2BCD6ED6009B72F3 /* FirebaseAuth */; };
 		70D4D2802BE1E17700B87654 /* PreviousRecordHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D4D27F2BE1E17700B87654 /* PreviousRecordHistoryViewModel.swift */; };
 		70D4D2822BE1E7D800B87654 /* PreviousRecordHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D4D2812BE1E7D800B87654 /* PreviousRecordHistoryView.swift */; };
@@ -568,6 +570,8 @@
 		70C8C1882BDFF37D00805C49 /* HistoryFormRecordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormRecordsView.swift; sourceTree = "<group>"; };
 		70C8C18A2BDFF96B00805C49 /* PostHistoryUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHistoryUsecase.swift; sourceTree = "<group>"; };
 		70C9619E2BE6275300C143E9 /* UsersSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersSearchView.swift; sourceTree = "<group>"; };
+		70C961A02BE62E3600C143E9 /* PostFriendRequestUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFriendRequestUsecase.swift; sourceTree = "<group>"; };
+		70C961A22BE62F5300C143E9 /* BannerSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerSuccessView.swift; sourceTree = "<group>"; };
 		70D4D27F2BE1E17700B87654 /* PreviousRecordHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousRecordHistoryViewModel.swift; sourceTree = "<group>"; };
 		70D4D2812BE1E7D800B87654 /* PreviousRecordHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousRecordHistoryView.swift; sourceTree = "<group>"; };
 		70D4D2832BE1EEF900B87654 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -1012,6 +1016,7 @@
 			children = (
 				703A97BC2BCB8514002C0843 /* BannerErrorMessageView.swift */,
 				703A97C32BCB950C002C0843 /* BannerLoadingView.swift */,
+				70C961A22BE62F5300C143E9 /* BannerSuccessView.swift */,
 				70BC43FB2BE0F7F7001020AD /* ContentView.swift */,
 				70BC43F52BE0F6B9001020AD /* ContentViewModel.swift */,
 				702448D42BD2BA1C00C79056 /* DGWebView.swift */,
@@ -1177,6 +1182,7 @@
 			isa = PBXGroup;
 			children = (
 				70B5588B2BE61A0F009DB8CC /* GetMyFriendsUsecase.swift */,
+				70C961A02BE62E3600C143E9 /* PostFriendRequestUsecase.swift */,
 			);
 			path = friend;
 			sourceTree = "<group>";
@@ -1681,6 +1687,7 @@
 				70B558842BE61892009DB8CC /* FriendRepositoryTest.swift in Sources */,
 				70884DFB2BDD58800059B22A /* HistorySectionV.swift in Sources */,
 				7060BB4E2BDE19F60092B987 /* ExerciseItemView.swift in Sources */,
+				70C961A12BE62E3600C143E9 /* PostFriendRequestUsecase.swift in Sources */,
 				7060BB7A2BDE2F4A0092B987 /* ExerciseEditView.swift in Sources */,
 				70884DD42BDD47510059B22A /* ExerciseRepositoryData.swift in Sources */,
 				70A85A9C2BDE648900537071 /* ProfileEditView.swift in Sources */,
@@ -1699,6 +1706,7 @@
 				708DB2B32BDD6AD500195605 /* HeatmapColorDomain.swift in Sources */,
 				707016342BDD2DBD0025C624 /* HistoryData.swift in Sources */,
 				7070163D2BDD2F230025C624 /* HeatmapData.swift in Sources */,
+				70C961A32BE62F5300C143E9 /* BannerSuccessView.swift in Sources */,
 				7009E1852BE226E900D9950D /* QuickAction.swift in Sources */,
 				707016492BDD3D570025C624 /* UserDomain.swift in Sources */,
 				70884DD02BDD46BE0059B22A /* ExerciseDomain.swift in Sources */,

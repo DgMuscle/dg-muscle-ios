@@ -11,19 +11,40 @@ import Combine
 final class UsersSearchViewModel: ObservableObject {
     @Published var query: String = ""
     @Published var searchedUsers: [UserV] = []
-    
+    @Published var loading: Bool = false
+    @Published var success: Bool = false
+    @Published var errorMessage: String?
+     
     private let searchUsersByDisplayNameUsecase: SearchUsersByDisplayNameUsecase
     private let getMyFriendsUsecase: GetMyFriendsUsecase
     private let getUserUsecase: GetUserUsecase
+    private let postFriendRequestUsecase: PostFriendRequestUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(searchUsersByDisplayNameUsecase: SearchUsersByDisplayNameUsecase,
          getMyFriendsUsecase: GetMyFriendsUsecase,
-         getUserUsecase: GetUserUsecase) {
+         getUserUsecase: GetUserUsecase,
+         postFriendRequestUsecase: PostFriendRequestUsecase) {
         self.searchUsersByDisplayNameUsecase = searchUsersByDisplayNameUsecase
         self.getMyFriendsUsecase = getMyFriendsUsecase
         self.getUserUsecase = getUserUsecase
+        self.postFriendRequestUsecase = postFriendRequestUsecase
         bind()
+    }
+    
+    @MainActor
+    func sendRequest(user: UserV) {
+        Task {
+            guard loading == false else { return }
+            loading = true
+            do {
+                try await postFriendRequestUsecase.implement(userId: user.uid)
+                success.toggle()
+            } catch {
+                errorMessage = error.localizedDescription
+            }
+            loading = false
+        }
     }
     
     func removeQuery() {

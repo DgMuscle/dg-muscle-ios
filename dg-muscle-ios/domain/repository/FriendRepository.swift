@@ -11,4 +11,6 @@ import Combine
 protocol FriendRepository {
     var friends: [UserDomain] { get }
     var friendsPublisher: AnyPublisher<[UserDomain], Never> { get }
+    
+    func postRequest(userId: String) async throws
 }

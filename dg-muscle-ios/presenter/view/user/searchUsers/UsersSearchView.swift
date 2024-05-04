@@ -6,11 +6,30 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct UsersSearchView: View {
     @StateObject var viewModel: UsersSearchViewModel
     var body: some View {
         VStack {
+            
+            if viewModel.loading {
+                BannerLoadingView(loading: $viewModel.loading)
+            }
+            
+            if let errorMessage = viewModel.errorMessage {
+                BannerErrorMessageView(errorMessage: errorMessage)
+            }
+            
+            if viewModel.success {
+                BannerSuccessView(message: "Request Completed")
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            viewModel.success.toggle()
+                        }
+                    }
+            }
+            
             HStack {
                 TextField("Search user by display name", text: $viewModel.query)
                     .padding(.horizontal)
@@ -47,12 +66,25 @@ struct UsersSearchView: View {
                     ForEach(viewModel.searchedUsers, id: \.self) { user in
                         
                         HStack {
+                            let size: CGFloat = 30
+                            if let url = user.photoURL {
+                                KFImage(url)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .clipShape(Circle())
+                                    .frame(width: size)
+                            } else {
+                                Rectangle()
+                                    .fill(.clear)
+                                    .frame(width:0, height: size)
+                            }
+                            
                             Text(user.displayName ?? "no display name")
                             Spacer()
                             
                             if user.isMyFriend == false {
                                 Button {
-                                    print("send friend request")
+                                    viewModel.sendRequest(user: user)
                                 } label: {
                                     HStack(spacing: 3) {
                                         Text("SEND")
@@ -61,7 +93,7 @@ struct UsersSearchView: View {
                                 }
                             }
                         }
-                        .padding(12)
+                        .padding(.horizontal, 12)
                         .background(
                             RoundedRectangle(cornerRadius: 8).fill(user.isMyFriend ?
                                                                    LinearGradient(colors: [.yellow.opacity(0.1), .yellow.opacity(0.4)],
@@ -77,6 +109,9 @@ struct UsersSearchView: View {
         }
         .padding()
         .animation(.default, value: viewModel.searchedUsers.isEmpty)
+        .animation(.default, value: viewModel.loading)
+        .animation(.default, value: viewModel.errorMessage)
+        .animation(.default, value: viewModel.success)
     }
 }
 
@@ -85,8 +120,9 @@ struct UsersSearchView: View {
     let friendRepository: FriendRepository = FriendRepositoryTest()
     var viewModel: UsersSearchViewModel = .init(searchUsersByDisplayNameUsecase: .init(userRepository: userRepository),
                                                 getMyFriendsUsecase: .init(friendRepository: friendRepository), 
-                                                getUserUsecase: .init(userRepository: userRepository))
-    viewModel.query = "Hui"
+                                                getUserUsecase: .init(userRepository: userRepository), 
+                                                postFriendRequestUsecase: .init(friendRepository: friendRepository))
+    viewModel.query = "낙"
     return UsersSearchView(viewModel: viewModel)
     .preferredColorScheme(.dark)
 }
