@@ -46,7 +46,6 @@
 		700526E92BDDF851007838BA /* ExerciseDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70884DCF2BDD46BE0059B22A /* ExerciseDomain.swift */; };
 		700526EA2BDDF859007838BA /* HeatmapDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070162C2BDD2C5F0025C624 /* HeatmapDomain.swift */; };
 		700526EC2BDDFB87007838BA /* GetTodayHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526EB2BDDFB87007838BA /* GetTodayHistoryUsecase.swift */; };
-		700526EF2BDDFD38007838BA /* NavigationV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526EE2BDDFD38007838BA /* NavigationV2.swift */; };
 		700526F22BDDFF73007838BA /* MainCoordinatorV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526F12BDDFF73007838BA /* MainCoordinatorV2.swift */; };
 		700526F42BDDFFD8007838BA /* HistoryCoordinatorV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526F32BDDFFD8007838BA /* HistoryCoordinatorV2.swift */; };
 		700526F62BDE0012007838BA /* CoordinatorV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700526F52BDE0012007838BA /* CoordinatorV2.swift */; };
@@ -243,6 +242,11 @@
 		7070164D2BDD3DEE0025C624 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070164C2BDD3DEE0025C624 /* UserData.swift */; };
 		707672D92BE6494D002D3FCC /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707672D82BE6494D002D3FCC /* FriendListViewModel.swift */; };
 		707672DB2BE649C4002D3FCC /* FriendListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707672DA2BE649C4002D3FCC /* FriendListView.swift */; };
+		707672DD2BE64CC2002D3FCC /* MainNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707672DC2BE64CC2002D3FCC /* MainNavigation.swift */; };
+		707672DF2BE64CE9002D3FCC /* HistoryNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707672DE2BE64CE9002D3FCC /* HistoryNavigation.swift */; };
+		707672E12BE64CF7002D3FCC /* ExerciseNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707672E02BE64CF7002D3FCC /* ExerciseNavigation.swift */; };
+		707672E32BE64D09002D3FCC /* FriendNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707672E22BE64D09002D3FCC /* FriendNavigation.swift */; };
+		707672E52BE64D20002D3FCC /* FriendCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707672E42BE64D20002D3FCC /* FriendCoordinator.swift */; };
 		707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
 		7083E6B42ABF065F007D43CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */; };
 		7083E6B72ABF06B7007D43CE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6B62ABF06B7007D43CE /* FirebaseAnalytics */; };
@@ -403,7 +407,6 @@
 		700526DE2BDDF5D9007838BA /* SubscribeUserUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeUserUsecase.swift; sourceTree = "<group>"; };
 		700526E02BDDF772007838BA /* HealthRepositoryTest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRepositoryTest2.swift; sourceTree = "<group>"; };
 		700526EB2BDDFB87007838BA /* GetTodayHistoryUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTodayHistoryUsecase.swift; sourceTree = "<group>"; };
-		700526EE2BDDFD38007838BA /* NavigationV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationV2.swift; sourceTree = "<group>"; };
 		700526F12BDDFF73007838BA /* MainCoordinatorV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorV2.swift; sourceTree = "<group>"; };
 		700526F32BDDFFD8007838BA /* HistoryCoordinatorV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCoordinatorV2.swift; sourceTree = "<group>"; };
 		700526F52BDE0012007838BA /* CoordinatorV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorV2.swift; sourceTree = "<group>"; };
@@ -499,6 +502,11 @@
 		7070164C2BDD3DEE0025C624 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		707672D82BE6494D002D3FCC /* FriendListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewModel.swift; sourceTree = "<group>"; };
 		707672DA2BE649C4002D3FCC /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListView.swift; sourceTree = "<group>"; };
+		707672DC2BE64CC2002D3FCC /* MainNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigation.swift; sourceTree = "<group>"; };
+		707672DE2BE64CE9002D3FCC /* HistoryNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryNavigation.swift; sourceTree = "<group>"; };
+		707672E02BE64CF7002D3FCC /* ExerciseNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseNavigation.swift; sourceTree = "<group>"; };
+		707672E22BE64D09002D3FCC /* FriendNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendNavigation.swift; sourceTree = "<group>"; };
+		707672E42BE64D20002D3FCC /* FriendCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCoordinator.swift; sourceTree = "<group>"; };
 		707B8FD22ABF207F008ADECE /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthCoordinator.swift; sourceTree = "<group>"; };
@@ -677,7 +685,10 @@
 		700526ED2BDDFC9E007838BA /* navigation */ = {
 			isa = PBXGroup;
 			children = (
-				700526EE2BDDFD38007838BA /* NavigationV2.swift */,
+				707672E02BE64CF7002D3FCC /* ExerciseNavigation.swift */,
+				707672E22BE64D09002D3FCC /* FriendNavigation.swift */,
+				707672DE2BE64CE9002D3FCC /* HistoryNavigation.swift */,
+				707672DC2BE64CC2002D3FCC /* MainNavigation.swift */,
 				709DF4EF2BE0E70200C70390 /* NavigationView.swift */,
 				700526F02BDDFF63007838BA /* coordinator */,
 			);
@@ -689,6 +700,7 @@
 			children = (
 				700526F52BDE0012007838BA /* CoordinatorV2.swift */,
 				7060BB572BDE1EF00092B987 /* ExerciseCoordinatorV2.swift */,
+				707672E42BE64D20002D3FCC /* FriendCoordinator.swift */,
 				700526F32BDDFFD8007838BA /* HistoryCoordinatorV2.swift */,
 				700526F12BDDFF73007838BA /* MainCoordinatorV2.swift */,
 				7009E1862BE2271E00D9950D /* RemoteCoordinator.swift */,
@@ -1660,6 +1672,7 @@
 				70B07AC72BD8D0D800A0E732 /* FunctionsURLEnums.swift in Sources */,
 				7070163F2BDD2F380025C624 /* ResponseData.swift in Sources */,
 				7083E6C62ABF0EC9007D43CE /* AppleAuthCoordinator.swift in Sources */,
+				707672DF2BE64CE9002D3FCC /* HistoryNavigation.swift in Sources */,
 				703A97C42BCB950C002C0843 /* BannerLoadingView.swift in Sources */,
 				7005270A2BDE09D0007838BA /* ExerciseRepositoryTest.swift in Sources */,
 				7060BB722BDE2BAF0092B987 /* ExerciseAdd2ViewModel.swift in Sources */,
@@ -1684,6 +1697,7 @@
 				707672D92BE6494D002D3FCC /* FriendListViewModel.swift in Sources */,
 				7009E1752BE2210A00D9950D /* HeatmapColorViewModel.swift in Sources */,
 				700526D32BDDF163007838BA /* HistoryListView.swift in Sources */,
+				707672DD2BE64CC2002D3FCC /* MainNavigation.swift in Sources */,
 				7009E17D2BE2225700D9950D /* PostHeatmapColorUsecase.swift in Sources */,
 				7060BB642BDE25130092B987 /* ExerciseAdd1ViewModel.swift in Sources */,
 				70C0559B2B79F9F300375526 /* AppDelegate.swift in Sources */,
@@ -1729,7 +1743,6 @@
 				7060BB702BDE2B140092B987 /* PostExerciseUsecase.swift in Sources */,
 				701764932BE0884A00B501B7 /* ListItemView.swift in Sources */,
 				700526FC2BDE03A8007838BA /* GetDayUsecase.swift in Sources */,
-				700526EF2BDDFD38007838BA /* NavigationV2.swift in Sources */,
 				7009E1812BE223CD00D9950D /* HeatmapColorView.swift in Sources */,
 				708DB2B72BDD6D3D00195605 /* HeatmapViewModel.swift in Sources */,
 				7060BB6A2BDE26FB0092B987 /* ExercisePartsSectionViewModel.swift in Sources */,
@@ -1745,6 +1758,7 @@
 				706D6A6F2BE0DD87000A0324 /* RemoveAccountConfirmViewModel.swift in Sources */,
 				7060BB622BDE23C60092B987 /* ExerciseSelectView.swift in Sources */,
 				70A85A942BDE5D7D00537071 /* HealthItemV.swift in Sources */,
+				707672E12BE64CF7002D3FCC /* ExerciseNavigation.swift in Sources */,
 				707016262BDD2B000025C624 /* ExerciseSetDomain.swift in Sources */,
 				7060BB5E2BDE1FF20092B987 /* ExerciseManageView.swift in Sources */,
 				70B5588C2BE61A0F009DB8CC /* GetMyFriendsUsecase.swift in Sources */,
@@ -1766,11 +1780,13 @@
 				02CA6D822BCFCDEF00A8746B /* AppleAuthTest.swift in Sources */,
 				70884E052BDD60170059B22A /* SubscribeGroupedHistoriesUsecase.swift in Sources */,
 				702448D52BD2BA1C00C79056 /* DGWebView.swift in Sources */,
+				707672E52BE64D20002D3FCC /* FriendCoordinator.swift in Sources */,
 				7044641F2BD0187E00CB21F6 /* FileUploaderTest.swift in Sources */,
 				7009E1872BE2271E00D9950D /* RemoteCoordinator.swift in Sources */,
 				029B47272BDF838F006DC8BD /* HistoryFormSetView.swift in Sources */,
 				0292DC5B2BDF3E21006295FA /* GetPreviousRecordUsecase.swift in Sources */,
 				700526F42BDDFFD8007838BA /* HistoryCoordinatorV2.swift in Sources */,
+				707672E32BE64D09002D3FCC /* FriendNavigation.swift in Sources */,
 				703CD5EA2AC0139600BC76D4 /* FileUploader.swift in Sources */,
 				70B07AC42BD8D0A200A0E732 /* FunctionsURL.swift in Sources */,
 			);

@@ -39,7 +39,7 @@ struct SettingView: View {
                     .buttonStyle(.borderless)
                     
                     Button {
-                        print("dg: navigate to friend page")
+                        coordinator.friend.list()
                     } label: {
                         ListItemView(systemImageName: "figure.2.arms.open",
                                      title: "Friend",

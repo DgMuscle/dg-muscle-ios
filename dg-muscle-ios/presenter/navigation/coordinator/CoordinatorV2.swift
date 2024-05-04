@@ -14,6 +14,7 @@ final class CoordinatorV2: ObservableObject {
     @Binding var path: NavigationPath
     
     lazy var exercise = ExerciseCoordinatorV2(path: $path)
+    lazy var friend = FriendCoordinator(path: $path)
     lazy var history = HistoryCoordinatorV2(path: $path)
     lazy var main = MainCoordinatorV2(path: $path)
     
