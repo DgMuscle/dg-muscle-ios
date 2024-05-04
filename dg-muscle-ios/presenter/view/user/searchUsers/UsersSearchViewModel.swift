@@ -14,12 +14,15 @@ final class UsersSearchViewModel: ObservableObject {
     
     private let searchUsersByDisplayNameUsecase: SearchUsersByDisplayNameUsecase
     private let getMyFriendsUsecase: GetMyFriendsUsecase
+    private let getUserUsecase: GetUserUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(searchUsersByDisplayNameUsecase: SearchUsersByDisplayNameUsecase,
-         getMyFriendsUsecase: GetMyFriendsUsecase) {
+         getMyFriendsUsecase: GetMyFriendsUsecase,
+         getUserUsecase: GetUserUsecase) {
         self.searchUsersByDisplayNameUsecase = searchUsersByDisplayNameUsecase
         self.getMyFriendsUsecase = getMyFriendsUsecase
+        self.getUserUsecase = getUserUsecase
         bind()
     }
     
@@ -39,9 +42,11 @@ final class UsersSearchViewModel: ObservableObject {
     }
     
     private func configureSearchedUsers(query: String) -> [UserV] {
+        let me = getUserUsecase.implement()
         var searchedUsers: [UserV] = searchUsersByDisplayNameUsecase
             .implement(displayName: query)
             .map({ .init(from: $0) })
+            .filter({ $0.uid != me?.uid })
         
         let myFriends = getMyFriendsUsecase.implement()
         

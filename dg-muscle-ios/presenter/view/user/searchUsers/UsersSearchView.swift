@@ -84,7 +84,8 @@ struct UsersSearchView: View {
     let userRepository: UserRepository = UserRepositoryTest()
     let friendRepository: FriendRepository = FriendRepositoryTest()
     var viewModel: UsersSearchViewModel = .init(searchUsersByDisplayNameUsecase: .init(userRepository: userRepository),
-                                                getMyFriendsUsecase: .init(friendRepository: friendRepository))
+                                                getMyFriendsUsecase: .init(friendRepository: friendRepository), 
+                                                getUserUsecase: .init(userRepository: userRepository))
     viewModel.query = "Hui"
     return UsersSearchView(viewModel: viewModel)
     .preferredColorScheme(.dark)
