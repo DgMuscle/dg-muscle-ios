@@ -71,11 +71,6 @@ final class UserRepositoryData: UserRepository {
         let _: ResponseData = try await APIClient.shared.request(method: .post, url: url, body: body)
     }
     
-    private func getUsers() async throws -> [UserDomain] {
-        let users: [UserData] = try await APIClient.shared.request(url: FunctionsURL.user(.getprofiles))
-        return users.map { $0.domain }
-    }
-    
     private func bind() {
         $_user
             .compactMap({ $0 })
