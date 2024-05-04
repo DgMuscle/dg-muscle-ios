@@ -62,6 +62,19 @@ struct FriendListView: View {
         }
         .navigationTitle("Friends")
         .scrollIndicators(.hidden)
+        .overlay {
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    FriendListOptionsView(hasRequest: false) {
+                        print("move to request page")
+                    } searchAction: {
+                        print("move to search page")
+                    }
+                }
+            }
+        }
     }
 }
 
