@@ -302,6 +302,8 @@
 		70A85AAA2BDE720900537071 /* ProfilePhotoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85AA92BDE720900537071 /* ProfilePhotoEditView.swift */; };
 		70B07AC42BD8D0A200A0E732 /* FunctionsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */; };
 		70B07AC72BD8D0D800A0E732 /* FunctionsURLEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */; };
+		70B5587A2BE61509009DB8CC /* FriendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B558792BE61509009DB8CC /* FriendRepository.swift */; };
+		70B5587C2BE61559009DB8CC /* FriendRepositoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5587B2BE61559009DB8CC /* FriendRepositoryData.swift */; };
 		70BB52182B37EC1D00EC606D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 70BB52172B37EC1D00EC606D /* Localizable.xcstrings */; };
 		70BC43F62BE0F6B9001020AD /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43F52BE0F6B9001020AD /* ContentViewModel.swift */; };
 		70BC43F82BE0F700001020AD /* GetIsLoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43F72BE0F700001020AD /* GetIsLoginUsecase.swift */; };
@@ -539,6 +541,8 @@
 		70A898BA2B6FA0B1009B16FF /* dg-muscle-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dg-muscle-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURL.swift; sourceTree = "<group>"; };
 		70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURLEnums.swift; sourceTree = "<group>"; };
+		70B558792BE61509009DB8CC /* FriendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepository.swift; sourceTree = "<group>"; };
+		70B5587B2BE61559009DB8CC /* FriendRepositoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepositoryData.swift; sourceTree = "<group>"; };
 		70BB52172B37EC1D00EC606D /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		70BC43F52BE0F6B9001020AD /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		70BC43F72BE0F700001020AD /* GetIsLoginUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIsLoginUsecase.swift; sourceTree = "<group>"; };
@@ -873,6 +877,7 @@
 			isa = PBXGroup;
 			children = (
 				70884DD12BDD471F0059B22A /* ExerciseRepository.swift */,
+				70B558792BE61509009DB8CC /* FriendRepository.swift */,
 				70884DF02BDD52580059B22A /* HealthRepositoryDomain.swift */,
 				704E5C7C2BE2693800365AB3 /* HeatmapRepository.swift */,
 				7070162E2BDD2CAD0025C624 /* HistoryRepository.swift */,
@@ -911,6 +916,7 @@
 			isa = PBXGroup;
 			children = (
 				70884DD32BDD47510059B22A /* ExerciseRepositoryData.swift */,
+				70B5587B2BE61559009DB8CC /* FriendRepositoryData.swift */,
 				70884DF82BDD53D50059B22A /* HealthRepositoryData.swift */,
 				704E5C7E2BE2697700365AB3 /* HeatmapRepositoryData.swift */,
 				707016412BDD2F880025C624 /* HistoryRepositoryData.swift */,
@@ -1564,6 +1570,7 @@
 				700526E32BDDF791007838BA /* HealthRepositoryTest2.swift in Sources */,
 				7060BB782BDE2E710092B987 /* ExerciseEditViewModel.swift in Sources */,
 				70BC43FA2BE0F72C001020AD /* SubscribeIsLoginUsecase.swift in Sources */,
+				70B5587C2BE61559009DB8CC /* FriendRepositoryData.swift in Sources */,
 				7060BB582BDE1EF00092B987 /* ExerciseCoordinatorV2.swift in Sources */,
 				70BC43F82BE0F700001020AD /* GetIsLoginUsecase.swift in Sources */,
 				7017648D2BE0854700B501B7 /* SignOutUsecase.swift in Sources */,
@@ -1672,6 +1679,7 @@
 				70884E002BDD5B110059B22A /* HistoryListViewModel.swift in Sources */,
 				7057B2942BDE789A00A1418D /* AuthenticatorInterface.swift in Sources */,
 				707016372BDD2DE30025C624 /* RecordData.swift in Sources */,
+				70B5587A2BE61509009DB8CC /* FriendRepository.swift in Sources */,
 				706D6A712BE0E2A0000A0324 /* AppleAuthCoordinatorInterface.swift in Sources */,
 				02CA6D822BCFCDEF00A8746B /* AppleAuthTest.swift in Sources */,
 				70884E052BDD60170059B22A /* SubscribeGroupedHistoriesUsecase.swift in Sources */,
