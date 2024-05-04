@@ -37,6 +37,16 @@ struct SettingView: View {
                                      color: .blue)
                     }
                     .buttonStyle(.borderless)
+                    
+                    Button {
+                        print("dg: navigate to friend page")
+                    } label: {
+                        ListItemView(systemImageName: "figure.2.arms.open",
+                                     title: "Friend",
+                                     description: "Together with your friend",
+                                     color: .mint)
+                    }
+                    .buttonStyle(.borderless)
                 }
             } header: {
                 if let user = viewModel.user {
