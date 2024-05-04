@@ -12,6 +12,7 @@ final class HistoryListViewModel: ObservableObject {
     @Published var sections: [HistorySectionV] = []
     @Published var user: UserV? = nil
     @Published var heatmapColor: HeatmapColorV
+    @Published var isPresentNavigateToExerciseManage: Bool = false
     
     let subscribeGroupedHistoriesUsecase: SubscribeGroupedHistoriesUsecase
     let subscribeMetaDatasMapUsecase: SubscribeMetaDatasMapUsecase
@@ -20,6 +21,7 @@ final class HistoryListViewModel: ObservableObject {
     let deleteHistoryUsecase: DeleteHistoryUsecase
     let getHeatmapColorUsecase: GetHeatmapColorUsecase
     let subscribeHeatmapColorUsecase: SubscribeHeatmapColorUsecase
+    let getExercisesUsecase: GetExercisesUsecase
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -30,7 +32,8 @@ final class HistoryListViewModel: ObservableObject {
         getTodayHistoryUsecase: GetTodayHistoryUsecase,
         deleteHistoryUsecase: DeleteHistoryUsecase,
         getHeatmapColorUsecase: GetHeatmapColorUsecase,
-        subscribeHeatmapColorUsecase: SubscribeHeatmapColorUsecase
+        subscribeHeatmapColorUsecase: SubscribeHeatmapColorUsecase,
+        getExercisesUsecase: GetExercisesUsecase
     ) {
         self.subscribeGroupedHistoriesUsecase = subscribeGroupedHistoriesUsecase
         self.subscribeMetaDatasMapUsecase = subscribeMetaDatasMapUsecase
@@ -39,9 +42,14 @@ final class HistoryListViewModel: ObservableObject {
         self.deleteHistoryUsecase = deleteHistoryUsecase
         self.getHeatmapColorUsecase = getHeatmapColorUsecase
         self.subscribeHeatmapColorUsecase = subscribeHeatmapColorUsecase
-        
+        self.getExercisesUsecase = getExercisesUsecase
         heatmapColor = .init(color: getHeatmapColorUsecase.implement())
         bind()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            guard let self else { return }
+            isPresentNavigateToExerciseManage = getExercisesUsecase.implement().isEmpty
+        }
     }
     
     func delete(history: HistoryV) {

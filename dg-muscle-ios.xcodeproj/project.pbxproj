@@ -180,6 +180,7 @@
 		703CD5F02AC015C900BC76D4 /* ErrorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5EF2AC015C900BC76D4 /* ErrorData.swift */; };
 		7044641D2BD0185600CB21F6 /* FileUploaderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */; };
 		7044641F2BD0187E00CB21F6 /* FileUploaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */; };
+		704CE5372BE5FD7700B0FF45 /* GetExercisesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704CE5362BE5FD7700B0FF45 /* GetExercisesUsecase.swift */; };
 		704E5C7D2BE2693800365AB3 /* HeatmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E5C7C2BE2693800365AB3 /* HeatmapRepository.swift */; };
 		704E5C7F2BE2697700365AB3 /* HeatmapRepositoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E5C7E2BE2697700365AB3 /* HeatmapRepositoryData.swift */; };
 		704E5C802BE26A9200365AB3 /* HeatmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E5C7C2BE2693800365AB3 /* HeatmapRepository.swift */; };
@@ -432,6 +433,7 @@
 		703CD5EF2AC015C900BC76D4 /* ErrorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorData.swift; sourceTree = "<group>"; };
 		7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploaderInterface.swift; sourceTree = "<group>"; };
 		7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploaderTest.swift; sourceTree = "<group>"; };
+		704CE5362BE5FD7700B0FF45 /* GetExercisesUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExercisesUsecase.swift; sourceTree = "<group>"; };
 		704E5C7C2BE2693800365AB3 /* HeatmapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapRepository.swift; sourceTree = "<group>"; };
 		704E5C7E2BE2697700365AB3 /* HeatmapRepositoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapRepositoryData.swift; sourceTree = "<group>"; };
 		704E5C822BE26B2900365AB3 /* HeatmapRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapRepositoryTest.swift; sourceTree = "<group>"; };
@@ -792,6 +794,7 @@
 			children = (
 				7060BB5B2BDE1F7F0092B987 /* DeleteExerciseUsecase.swift */,
 				7060BB752BDE2E370092B987 /* EditExerciseUsecase.swift */,
+				704CE5362BE5FD7700B0FF45 /* GetExercisesUsecase.swift */,
 				029B472A2BDF88AC006DC8BD /* GetExerciseUsecase.swift */,
 				7060BB6F2BDE2B140092B987 /* PostExerciseUsecase.swift */,
 				7060BB4B2BDE18160092B987 /* SubscribeGroupedExercisesUsecase.swift */,
@@ -1554,6 +1557,7 @@
 				70A85AA42BDE6D8500537071 /* DeleteUserProfileImageUsecase.swift in Sources */,
 				707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */,
 				70C8C1892BDFF37D00805C49 /* HistoryFormRecordsView.swift in Sources */,
+				704CE5372BE5FD7700B0FF45 /* GetExercisesUsecase.swift in Sources */,
 				70D4D2802BE1E17700B87654 /* PreviousRecordHistoryViewModel.swift in Sources */,
 				7070164B2BDD3DBC0025C624 /* UserRepository.swift in Sources */,
 				7060BB762BDE2E370092B987 /* EditExerciseUsecase.swift in Sources */,

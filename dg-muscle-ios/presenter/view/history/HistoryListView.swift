@@ -71,6 +71,14 @@ struct HistoryListView: View {
             }
             
         }
+        .alert("You don't have any exercises yet. You need exercise to record your workout.\n\nHow about move to exercise manager?", isPresented: $viewModel.isPresentNavigateToExerciseManage, actions: {
+            Button("OK") {
+                coordinator.exercise.manage()
+            }
+            Button("NO", role: .cancel) {
+                viewModel.isPresentNavigateToExerciseManage.toggle()
+            }
+        })
         .padding()
         .scrollIndicators(.hidden)
         .ignoresSafeArea()
@@ -103,7 +111,8 @@ struct HistoryListView: View {
                                                 getTodayHistoryUsecase: .init(historyRepository: historyRepository, today: today), 
                                                 deleteHistoryUsecase: .init(historyRepository: historyRepository),
                                                 getHeatmapColorUsecase: .init(heatMapRepository: heatmapRepository),
-                                                subscribeHeatmapColorUsecase: .init(heatmapRepository: heatmapRepository))
+                                                subscribeHeatmapColorUsecase: .init(heatmapRepository: heatmapRepository), 
+                                                getExercisesUsecase: .init(exerciseRepository: exerciseRepository))
     
     return HistoryListView(today: today, 
                            historyRepository: historyRepository,
