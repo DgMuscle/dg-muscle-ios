@@ -317,6 +317,7 @@
 		70B105452BE6816600F01BFC /* FriendRequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B105442BE6816600F01BFC /* FriendRequestData.swift */; };
 		70B105472BE681EC00F01BFC /* CreatedAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B105462BE681EC00F01BFC /* CreatedAt.swift */; };
 		70B105492BE6846E00F01BFC /* SubscribeFriendRequestsUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B105482BE6846E00F01BFC /* SubscribeFriendRequestsUsecase.swift */; };
+		70B1054B2BE684C300F01BFC /* AcceptFriendUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1054A2BE684C300F01BFC /* AcceptFriendUsecase.swift */; };
 		70B5587A2BE61509009DB8CC /* FriendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B558792BE61509009DB8CC /* FriendRepository.swift */; };
 		70B5587C2BE61559009DB8CC /* FriendRepositoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5587B2BE61559009DB8CC /* FriendRepositoryData.swift */; };
 		70B5587F2BE61782009DB8CC /* SearchUsersByDisplayNameUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5587E2BE61782009DB8CC /* SearchUsersByDisplayNameUsecase.swift */; };
@@ -578,6 +579,7 @@
 		70B105442BE6816600F01BFC /* FriendRequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestData.swift; sourceTree = "<group>"; };
 		70B105462BE681EC00F01BFC /* CreatedAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedAt.swift; sourceTree = "<group>"; };
 		70B105482BE6846E00F01BFC /* SubscribeFriendRequestsUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeFriendRequestsUsecase.swift; sourceTree = "<group>"; };
+		70B1054A2BE684C300F01BFC /* AcceptFriendUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptFriendUsecase.swift; sourceTree = "<group>"; };
 		70B558792BE61509009DB8CC /* FriendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepository.swift; sourceTree = "<group>"; };
 		70B5587B2BE61559009DB8CC /* FriendRepositoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepositoryData.swift; sourceTree = "<group>"; };
 		70B5587E2BE61782009DB8CC /* SearchUsersByDisplayNameUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersByDisplayNameUsecase.swift; sourceTree = "<group>"; };
@@ -1252,6 +1254,7 @@
 		70B5588A2BE619FC009DB8CC /* friend */ = {
 			isa = PBXGroup;
 			children = (
+				70B1054A2BE684C300F01BFC /* AcceptFriendUsecase.swift */,
 				70B5588B2BE61A0F009DB8CC /* GetMyFriendsUsecase.swift */,
 				70C961A02BE62E3600C143E9 /* PostFriendRequestUsecase.swift */,
 				70B105482BE6846E00F01BFC /* SubscribeFriendRequestsUsecase.swift */,
@@ -1702,6 +1705,7 @@
 				70D4D2802BE1E17700B87654 /* PreviousRecordHistoryViewModel.swift in Sources */,
 				7070164B2BDD3DBC0025C624 /* UserRepository.swift in Sources */,
 				7060BB762BDE2E370092B987 /* EditExerciseUsecase.swift in Sources */,
+				70B1054B2BE684C300F01BFC /* AcceptFriendUsecase.swift in Sources */,
 				700526E32BDDF791007838BA /* HealthRepositoryTest2.swift in Sources */,
 				7060BB782BDE2E710092B987 /* ExerciseEditViewModel.swift in Sources */,
 				70BC43FA2BE0F72C001020AD /* SubscribeIsLoginUsecase.swift in Sources */,
