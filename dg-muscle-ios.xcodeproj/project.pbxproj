@@ -1143,7 +1143,7 @@
 			children = (
 				706D6A752BE0E3E7000A0324 /* AppleSignInView.swift */,
 				70B558872BE6195A009DB8CC /* profile */,
-				70B558852BE6193F009DB8CC /* searchUsers */,
+				70B558852BE6193F009DB8CC /* search */,
 			);
 			path = user;
 			sourceTree = "<group>";
@@ -1179,13 +1179,13 @@
 			path = functionsURL;
 			sourceTree = "<group>";
 		};
-		70B558852BE6193F009DB8CC /* searchUsers */ = {
+		70B558852BE6193F009DB8CC /* search */ = {
 			isa = PBXGroup;
 			children = (
 				70C9619E2BE6275300C143E9 /* UsersSearchView.swift */,
 				70B558882BE61994009DB8CC /* UsersSearchViewModel.swift */,
 			);
-			path = searchUsers;
+			path = search;
 			sourceTree = "<group>";
 		};
 		70B558862BE61954009DB8CC /* healthInfo */ = {

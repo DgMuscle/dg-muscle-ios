@@ -108,6 +108,7 @@ struct UsersSearchView: View {
             .scrollIndicators(.hidden)
         }
         .padding()
+        .navigationBarTitleDisplayMode(.inline)
         .animation(.default, value: viewModel.searchedUsers.isEmpty)
         .animation(.default, value: viewModel.loading)
         .animation(.default, value: viewModel.errorMessage)

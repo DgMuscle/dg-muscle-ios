@@ -110,6 +110,11 @@ struct NavigationView: View {
                 switch navigation.name {
                 case .list:
                     FriendListView(viewModel: .init(getMyFriendsUsecase: .init(friendRepository: friendRepository)))
+                case .search:
+                    UsersSearchView(viewModel: .init(searchUsersByDisplayNameUsecase: .init(userRepository: userRepository),
+                                                     getMyFriendsUsecase: .init(friendRepository: friendRepository),
+                                                     getUserUsecase: .init(userRepository: userRepository),
+                                                     postFriendRequestUsecase: .init(friendRepository: friendRepository)))
                 }
             }
         }

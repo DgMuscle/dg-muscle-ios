@@ -10,6 +10,7 @@ import Kingfisher
 
 struct FriendListView: View {
     @StateObject var viewModel: FriendListViewModel
+    @EnvironmentObject var coordinator: CoordinatorV2
     var body: some View {
         List {
             Section {
@@ -43,7 +44,7 @@ struct FriendListView: View {
             } header: {
                 VStack {
                     Button {
-                        print("dg: move to search friend view")
+                        coordinator.friend.search()
                     } label: {
                         HStack {
                             Image(systemName: "plus.magnifyingglass")

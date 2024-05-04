@@ -10,6 +10,7 @@ import Foundation
 struct FriendNavigation: Identifiable, Hashable {
     enum Name: String {
         case list
+        case search
     }
     
     var id: Int { name.hashValue }

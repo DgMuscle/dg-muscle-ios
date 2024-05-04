@@ -18,4 +18,8 @@ final class FriendCoordinator {
     func list() {
         path.append(FriendNavigation(name: .list))
     }
+    
+    func search() {
+        path.append(FriendNavigation(name: .search))
+    }
 }
