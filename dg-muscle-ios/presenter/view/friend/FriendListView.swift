@@ -41,23 +41,6 @@ struct FriendListView: View {
                         .foregroundStyle(.white)
                     }
                 }
-            } header: {
-                VStack {
-                    Button {
-                        coordinator.friend.search()
-                    } label: {
-                        HStack {
-                            Image(systemName: "plus.magnifyingglass")
-                            Text("Search")
-                        }
-                        .padding(8)
-                        .foregroundStyle(.white)
-                        .background(
-                            Capsule().fill(.blue)
-                        )
-                    }
-                }
-                .padding(.bottom)
             }
         }
         .navigationTitle("Friends")
