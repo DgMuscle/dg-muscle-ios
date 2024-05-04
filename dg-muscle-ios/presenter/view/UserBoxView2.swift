@@ -13,7 +13,7 @@ struct UserBoxView2: View {
     
     let user: UserV
     let descriptionLabel: String
-    private let circleSize: CGFloat = 60
+    private let circleSize: CGFloat = 45
     
     
     var body: some View {
