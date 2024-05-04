@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct UserV {
+struct UserV: Hashable {
     let uid: String
     var displayName: String?
     var photoURL: URL?
+    var isMyFriend: Bool = false
     
     init(from: UserDomain) {
         uid = from.uid

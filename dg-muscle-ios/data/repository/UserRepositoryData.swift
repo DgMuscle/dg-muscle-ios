@@ -24,9 +24,17 @@ final class UserRepositoryData: UserRepository {
     var usersPublisher: AnyPublisher<[UserDomain], Never> { $_users.eraseToAnyPublisher() }
     @Published private var _users: [UserDomain] = []
     
+    @Published private var _fcmtoken: String? = nil
     private var cancellables = Set<AnyCancellable>()
     private init() {
         bind()
+        Task {
+            _users = try await getUsersFromServer()
+        }
+    }
+    
+    func set(fcmtoken: String) {
+        self._fcmtoken = fcmtoken
     }
     
     func signOut() throws {
@@ -57,28 +65,28 @@ final class UserRepositoryData: UserRepository {
         await Authenticator().withDrawal()
     }
     
-    private func postProfile(id: String, displayName: String?, photoURL: String?) async throws {
+    private func postProfile(id: String, displayName: String?, photoURL: String?, fcmtoken: String?) async throws {
         let url = FunctionsURL.user(.postprofile)
         struct Body: Codable {
             let id: String
             let displayName: String
             let photoURL: String?
+            let fcmtoken: String?
         }
-        let body: Body = .init(id: id, displayName: displayName ?? "", photoURL: photoURL)
+        let body: Body = .init(id: id, displayName: displayName ?? "", photoURL: photoURL, fcmtoken: fcmtoken)
         let _: ResponseData = try await APIClient.shared.request(method: .post, url: url, body: body)
     }
     
-    private func getUsers() async throws -> [UserDomain] {
-        let users: [UserData] = try await APIClient.shared.request(url: FunctionsURL.user(.getprofiles))
-        return users.map { $0.domain }
-    }
-    
     private func bind() {
-        $_user
-            .compactMap({ $0 })
-            .sink { user in
+        $_user.compactMap({ $0 })
+            .combineLatest($_fcmtoken)
+            .receive(on: DispatchQueue.main)
+            .sink { user, token in
                 Task {
-                    try await self.postProfile(id: user.uid, displayName: user.displayName, photoURL: user.photoURL?.absoluteString)
+                    try await self.postProfile(id: user.uid,
+                                               displayName: user.displayName,
+                                               photoURL: user.photoURL?.absoluteString,
+                                               fcmtoken: token)
                 }
             }
             .store(in: &cancellables)
@@ -93,5 +101,11 @@ final class UserRepositoryData: UserRepository {
             self._user = .init(uid: user.uid, displayName: user.displayName, photoURL: user.photoURL)
             self._isLogin = true
         }
+    }
+    
+    private func getUsersFromServer() async throws -> [UserDomain] {
+        let data: [UserData] = try await APIClient.shared.request(method: .get, url: FunctionsURL.user(.getprofiles))
+        let users: [UserDomain] = data.map({ $0.domain })
+        return users
     }
 }

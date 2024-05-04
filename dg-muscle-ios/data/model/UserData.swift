@@ -8,17 +8,17 @@
 import Foundation
 
 struct UserData: Codable {
-    let uid: String
+    let id: String
     var displayName: String?
     var photoURL: URL?
     
     init(from: UserDomain) {
-        uid = from.uid
+        id = from.uid
         displayName = from.displayName
         photoURL = from.photoURL
     }
     
     var domain: UserDomain {
-        .init(uid: uid, displayName: displayName, photoURL: photoURL)
+        .init(uid: id, displayName: displayName, photoURL: photoURL)
     }
 }

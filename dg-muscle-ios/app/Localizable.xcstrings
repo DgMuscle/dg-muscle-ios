@@ -518,6 +518,9 @@
     "Favorite" : {
 
     },
+    "Friends" : {
+
+    },
     "Introduce" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -647,6 +650,15 @@
       }
     },
     "SAVE" : {
+
+    },
+    "Search user by display name" : {
+
+    },
+    "Searched Users" : {
+
+    },
+    "SEND" : {
 
     },
     "set's count: %lld," : {
