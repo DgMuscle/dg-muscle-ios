@@ -32,6 +32,7 @@ struct UsersSearchView: View {
             
             HStack {
                 TextField("Search user by display name", text: $viewModel.query)
+                    .autocorrectionDisabled()
                     .padding(.horizontal)
                 if viewModel.query.isEmpty == false {
                     Button {
