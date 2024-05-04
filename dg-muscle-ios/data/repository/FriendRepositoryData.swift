@@ -9,10 +9,18 @@ import Foundation
 import Combine
 
 final class FriendRepositoryData: FriendRepository {
+    
+    
+    
+    
     static let shared = FriendRepositoryData()
     var friends: [UserDomain] { _friends }
     var friendsPublisher: AnyPublisher<[UserDomain], Never> { $_friends.eraseToAnyPublisher() }
     @Published private var _friends: [UserDomain] = []
+    
+    var requests: [FriendRequestDomain] { _requests }
+    var requestsPublisher: AnyPublisher<[FriendRequestDomain], Never> { $_requests.eraseToAnyPublisher() }
+    @Published private var _requests: [FriendRequestDomain] = []
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -30,6 +38,13 @@ final class FriendRepositoryData: FriendRepository {
         let _: ResponseData = try await APIClient.shared.request(method: .post,
                                                                  url: FunctionsURL.friend(.postrequest),
                                                                  body: body)
+    }
+    
+    func updateRequests() {
+        // Update friend requests when push notification arrived
+        Task {
+            
+        }
     }
     
     private func bind() {

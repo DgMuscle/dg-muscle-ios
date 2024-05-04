@@ -311,6 +311,9 @@
 		70B07AC42BD8D0A200A0E732 /* FunctionsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */; };
 		70B07AC72BD8D0D800A0E732 /* FunctionsURLEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */; };
 		70B1053D2BE67A9900F01BFC /* FriendListOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1053C2BE67A9900F01BFC /* FriendListOptionsView.swift */; };
+		70B105402BE67F8F00F01BFC /* FriendRequestDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1053F2BE67F8F00F01BFC /* FriendRequestDomain.swift */; };
+		70B105412BE67FDB00F01BFC /* FriendRequestDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1053F2BE67F8F00F01BFC /* FriendRequestDomain.swift */; };
+		70B105422BE67FDC00F01BFC /* FriendRequestDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1053F2BE67F8F00F01BFC /* FriendRequestDomain.swift */; };
 		70B5587A2BE61509009DB8CC /* FriendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B558792BE61509009DB8CC /* FriendRepository.swift */; };
 		70B5587C2BE61559009DB8CC /* FriendRepositoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5587B2BE61559009DB8CC /* FriendRepositoryData.swift */; };
 		70B5587F2BE61782009DB8CC /* SearchUsersByDisplayNameUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5587E2BE61782009DB8CC /* SearchUsersByDisplayNameUsecase.swift */; };
@@ -568,6 +571,7 @@
 		70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURL.swift; sourceTree = "<group>"; };
 		70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURLEnums.swift; sourceTree = "<group>"; };
 		70B1053C2BE67A9900F01BFC /* FriendListOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListOptionsView.swift; sourceTree = "<group>"; };
+		70B1053F2BE67F8F00F01BFC /* FriendRequestDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestDomain.swift; sourceTree = "<group>"; };
 		70B558792BE61509009DB8CC /* FriendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepository.swift; sourceTree = "<group>"; };
 		70B5587B2BE61559009DB8CC /* FriendRepositoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepositoryData.swift; sourceTree = "<group>"; };
 		70B5587E2BE61782009DB8CC /* SearchUsersByDisplayNameUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersByDisplayNameUsecase.swift; sourceTree = "<group>"; };
@@ -897,11 +901,12 @@
 		707016212BDD2AAC0025C624 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				7009E17A2BE221AE00D9950D /* user */,
-				7009E1792BE221A800D9950D /* heatmap */,
 				7009E1772BE2219900D9950D /* exercise */,
+				70B1053E2BE67F8400F01BFC /* friend */,
 				70884DE22BDD504D0059B22A /* health */,
+				7009E1792BE221A800D9950D /* heatmap */,
 				707016242BDD2AD80025C624 /* history */,
+				7009E17A2BE221AE00D9950D /* user */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1185,6 +1190,14 @@
 				70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */,
 			);
 			path = functionsURL;
+			sourceTree = "<group>";
+		};
+		70B1053E2BE67F8400F01BFC /* friend */ = {
+			isa = PBXGroup;
+			children = (
+				70B1053F2BE67F8F00F01BFC /* FriendRequestDomain.swift */,
+			);
+			path = friend;
 			sourceTree = "<group>";
 		};
 		70B558852BE6193F009DB8CC /* search */ = {
@@ -1532,6 +1545,7 @@
 				7009E1A92BE22B7800D9950D /* DeleteExerciseUsecase.swift in Sources */,
 				7009E1982BE22AE600D9950D /* SubscribeHeatmapUsecase.swift in Sources */,
 				7009E1912BE22AD400D9950D /* GetHeatmapColorUsecase.swift in Sources */,
+				70B105412BE67FDB00F01BFC /* FriendRequestDomain.swift in Sources */,
 				7009E1C12BE22BAB00D9950D /* GetVolumesGroupedByPartUsecase.swift in Sources */,
 				7009E1C92BE22BBC00D9950D /* DeleteAccountUsecase.swift in Sources */,
 				70EC67542BE230CF0049E98F /* ExerciseSetData.swift in Sources */,
@@ -1589,6 +1603,7 @@
 				700526EA2BDDF859007838BA /* HeatmapDomain.swift in Sources */,
 				7009E1B02BE22B8500D9950D /* PostExerciseUsecase.swift in Sources */,
 				700527072BDE09BF007838BA /* ExerciseRepository.swift in Sources */,
+				70B105422BE67FDC00F01BFC /* FriendRequestDomain.swift in Sources */,
 				700527092BDE09C8007838BA /* ExerciseRepositoryTest.swift in Sources */,
 				7009E1C02BE22BA700D9950D /* GetTodayHistoryUsecase.swift in Sources */,
 				7009E1AE2BE22B8100D9950D /* GetExerciseUsecase.swift in Sources */,
@@ -1758,6 +1773,7 @@
 				7009E1852BE226E900D9950D /* QuickAction.swift in Sources */,
 				707016492BDD3D570025C624 /* UserDomain.swift in Sources */,
 				70884DD02BDD46BE0059B22A /* ExerciseDomain.swift in Sources */,
+				70B105402BE67F8F00F01BFC /* FriendRequestDomain.swift in Sources */,
 				7060BB702BDE2B140092B987 /* PostExerciseUsecase.swift in Sources */,
 				701764932BE0884A00B501B7 /* ListItemView.swift in Sources */,
 				700526FC2BDE03A8007838BA /* GetDayUsecase.swift in Sources */,
