@@ -28,7 +28,7 @@ final class UserRepositoryData: UserRepository {
     private init() {
         bind()
         Task {
-            try await getUsersFromServer()
+            _users = try await getUsersFromServer()
         }
     }
     
