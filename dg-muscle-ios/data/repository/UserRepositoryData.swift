@@ -27,6 +27,9 @@ final class UserRepositoryData: UserRepository {
     private var cancellables = Set<AnyCancellable>()
     private init() {
         bind()
+        Task {
+            try await getUsersFromServer()
+        }
     }
     
     func signOut() throws {
@@ -93,5 +96,11 @@ final class UserRepositoryData: UserRepository {
             self._user = .init(uid: user.uid, displayName: user.displayName, photoURL: user.photoURL)
             self._isLogin = true
         }
+    }
+    
+    private func getUsersFromServer() async throws -> [UserDomain] {
+        let data: [UserData] = try await APIClient.shared.request(method: .get, url: FunctionsURL.user(.getprofiles))
+        let users: [UserDomain] = data.map({ $0.domain })
+        return users
     }
 }
