@@ -310,6 +310,7 @@
 		70A85AAA2BDE720900537071 /* ProfilePhotoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85AA92BDE720900537071 /* ProfilePhotoEditView.swift */; };
 		70B07AC42BD8D0A200A0E732 /* FunctionsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */; };
 		70B07AC72BD8D0D800A0E732 /* FunctionsURLEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */; };
+		70B1053D2BE67A9900F01BFC /* FriendListOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1053C2BE67A9900F01BFC /* FriendListOptionsView.swift */; };
 		70B5587A2BE61509009DB8CC /* FriendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B558792BE61509009DB8CC /* FriendRepository.swift */; };
 		70B5587C2BE61559009DB8CC /* FriendRepositoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5587B2BE61559009DB8CC /* FriendRepositoryData.swift */; };
 		70B5587F2BE61782009DB8CC /* SearchUsersByDisplayNameUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5587E2BE61782009DB8CC /* SearchUsersByDisplayNameUsecase.swift */; };
@@ -566,6 +567,7 @@
 		70A898BA2B6FA0B1009B16FF /* dg-muscle-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dg-muscle-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70B07AC32BD8D0A200A0E732 /* FunctionsURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURL.swift; sourceTree = "<group>"; };
 		70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURLEnums.swift; sourceTree = "<group>"; };
+		70B1053C2BE67A9900F01BFC /* FriendListOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListOptionsView.swift; sourceTree = "<group>"; };
 		70B558792BE61509009DB8CC /* FriendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepository.swift; sourceTree = "<group>"; };
 		70B5587B2BE61559009DB8CC /* FriendRepositoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepositoryData.swift; sourceTree = "<group>"; };
 		70B5587E2BE61782009DB8CC /* SearchUsersByDisplayNameUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersByDisplayNameUsecase.swift; sourceTree = "<group>"; };
@@ -979,6 +981,7 @@
 		707672D72BE64936002D3FCC /* friend */ = {
 			isa = PBXGroup;
 			children = (
+				70B1053C2BE67A9900F01BFC /* FriendListOptionsView.swift */,
 				707672DA2BE649C4002D3FCC /* FriendListView.swift */,
 				707672D82BE6494D002D3FCC /* FriendListViewModel.swift */,
 			);
@@ -1801,6 +1804,7 @@
 				029B47272BDF838F006DC8BD /* HistoryFormSetView.swift in Sources */,
 				0292DC5B2BDF3E21006295FA /* GetPreviousRecordUsecase.swift in Sources */,
 				700526F42BDDFFD8007838BA /* HistoryCoordinatorV2.swift in Sources */,
+				70B1053D2BE67A9900F01BFC /* FriendListOptionsView.swift in Sources */,
 				707672E32BE64D09002D3FCC /* FriendNavigation.swift in Sources */,
 				703CD5EA2AC0139600BC76D4 /* FileUploader.swift in Sources */,
 				70B07AC42BD8D0A200A0E732 /* FunctionsURL.swift in Sources */,
