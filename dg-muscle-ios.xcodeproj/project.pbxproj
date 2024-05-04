@@ -241,6 +241,8 @@
 		707016492BDD3D570025C624 /* UserDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707016482BDD3D570025C624 /* UserDomain.swift */; };
 		7070164B2BDD3DBC0025C624 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070164A2BDD3DBC0025C624 /* UserRepository.swift */; };
 		7070164D2BDD3DEE0025C624 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070164C2BDD3DEE0025C624 /* UserData.swift */; };
+		707672D92BE6494D002D3FCC /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707672D82BE6494D002D3FCC /* FriendListViewModel.swift */; };
+		707672DB2BE649C4002D3FCC /* FriendListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707672DA2BE649C4002D3FCC /* FriendListView.swift */; };
 		707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
 		7083E6B42ABF065F007D43CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */; };
 		7083E6B72ABF06B7007D43CE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6B62ABF06B7007D43CE /* FirebaseAnalytics */; };
@@ -495,6 +497,8 @@
 		707016482BDD3D570025C624 /* UserDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDomain.swift; sourceTree = "<group>"; };
 		7070164A2BDD3DBC0025C624 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		7070164C2BDD3DEE0025C624 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		707672D82BE6494D002D3FCC /* FriendListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewModel.swift; sourceTree = "<group>"; };
+		707672DA2BE649C4002D3FCC /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListView.swift; sourceTree = "<group>"; };
 		707B8FD22ABF207F008ADECE /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthCoordinator.swift; sourceTree = "<group>"; };
@@ -955,6 +959,15 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		707672D72BE64936002D3FCC /* friend */ = {
+			isa = PBXGroup;
+			children = (
+				707672DA2BE649C4002D3FCC /* FriendListView.swift */,
+				707672D82BE6494D002D3FCC /* FriendListViewModel.swift */,
+			);
+			path = friend;
+			sourceTree = "<group>";
+		};
 		7083E6C72ABF0F45007D43CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1026,6 +1039,7 @@
 				700526D62BDDF300007838BA /* UserBoxView2.swift */,
 				70D4D2832BE1EEF900B87654 /* WebView.swift */,
 				7060BB492BDE17DB0092B987 /* exercise */,
+				707672D72BE64936002D3FCC /* friend */,
 				7009E1732BE220EF00D9950D /* heatmap */,
 				707016202BDD2A7D0025C624 /* history */,
 				701764892BE0840E00B501B7 /* setting */,
@@ -1658,6 +1672,7 @@
 				7060BB542BDE1CB00092B987 /* ExerciseSectionView.swift in Sources */,
 				703CD5F02AC015C900BC76D4 /* ErrorData.swift in Sources */,
 				70EFAE8D2BE138CC0011132F /* GetVolumesGroupedByPartUsecase.swift in Sources */,
+				707672DB2BE649C4002D3FCC /* FriendListView.swift in Sources */,
 				70A85AAA2BDE720900537071 /* ProfilePhotoEditView.swift in Sources */,
 				70884DF32BDD52AB0059B22A /* SexDomain.swift in Sources */,
 				70C144D32AC82558007F0540 /* APIClient.swift in Sources */,
@@ -1666,6 +1681,7 @@
 				700526DB2BDDF3C2007838BA /* UserRepositoryTest.swift in Sources */,
 				7060BB662BDE25420092B987 /* ExerciseAdd1View.swift in Sources */,
 				70D4D2842BE1EEF900B87654 /* WebView.swift in Sources */,
+				707672D92BE6494D002D3FCC /* FriendListViewModel.swift in Sources */,
 				7009E1752BE2210A00D9950D /* HeatmapColorViewModel.swift in Sources */,
 				700526D32BDDF163007838BA /* HistoryListView.swift in Sources */,
 				7009E17D2BE2225700D9950D /* PostHeatmapColorUsecase.swift in Sources */,
