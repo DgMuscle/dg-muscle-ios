@@ -71,7 +71,7 @@ struct HistoryListView: View {
             }
             
         }
-        .alert("You don't have any exercises yet. You need exercise to record your workout. How about move to exercise manager?", isPresented: $viewModel.isPresentNavigateToExerciseManage, actions: {
+        .alert("You don't have any exercises yet. You need exercise to record your workout.\n\nHow about move to exercise manager?", isPresented: $viewModel.isPresentNavigateToExerciseManage, actions: {
             Button("OK") {
                 coordinator.exercise.manage()
             }

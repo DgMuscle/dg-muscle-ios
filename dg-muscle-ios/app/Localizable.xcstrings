@@ -563,6 +563,12 @@
     "Next" : {
 
     },
+    "NO" : {
+
+    },
+    "OK" : {
+
+    },
     "On the %@th, I worked out" : {
 
     },
@@ -750,6 +756,9 @@
           }
         }
       }
+    },
+    "You don't have any exercises yet. You need exercise to record your workout.\n\nHow about move to exercise manager?" : {
+
     },
     "Your all data will be deleted" : {
 
