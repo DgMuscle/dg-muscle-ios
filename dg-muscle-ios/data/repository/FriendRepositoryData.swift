@@ -41,13 +41,33 @@ final class FriendRepositoryData: FriendRepository {
     }
     
     func updateRequests() {
-        // Update friend requests when push notification arrived
+        // TODO: Update friend requests when push notification arrived
         Task {
             let data: [FriendRequestData] = try await APIClient.shared.request(method: .get,
                                                                                url: FunctionsURL.friend(.getrequests))
             
             self._requests = data.map({ $0.domain })
         }
+    }
+    
+    func accept(request: FriendRequestDomain) async throws {
+        struct Body: Codable {
+            let friendId: String
+        }
+        
+        let _: ResponseData = try await APIClient.shared.request(method: .post,
+                                                                 url: FunctionsURL.friend(.post),
+                                                                 body: Body(friendId: request.fromId))
+    }
+    
+    func refuse(request: FriendRequestDomain) async throws {
+        struct Body: Codable {
+            let deleteId: String
+        }
+        
+        let _: ResponseData = try await APIClient.shared.request(method: .delete,
+                                                                 url: FunctionsURL.friend(.deleterequest),
+                                                                 body: Body(deleteId: request.fromId))
     }
     
     private func bind() {
