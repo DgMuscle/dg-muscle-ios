@@ -323,6 +323,7 @@
 		70C144D32AC82558007F0540 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C144D22AC82558007F0540 /* APIClient.swift */; };
 		70C8C1892BDFF37D00805C49 /* HistoryFormRecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C8C1882BDFF37D00805C49 /* HistoryFormRecordsView.swift */; };
 		70C8C18B2BDFF96B00805C49 /* PostHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C8C18A2BDFF96B00805C49 /* PostHistoryUsecase.swift */; };
+		70C9619F2BE6275300C143E9 /* UsersSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9619E2BE6275300C143E9 /* UsersSearchView.swift */; };
 		70CD21DF2BCD6ED6009B72F3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 70CD21DE2BCD6ED6009B72F3 /* FirebaseAuth */; };
 		70D4D2802BE1E17700B87654 /* PreviousRecordHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D4D27F2BE1E17700B87654 /* PreviousRecordHistoryViewModel.swift */; };
 		70D4D2822BE1E7D800B87654 /* PreviousRecordHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D4D2812BE1E7D800B87654 /* PreviousRecordHistoryView.swift */; };
@@ -566,6 +567,7 @@
 		70C144D22AC82558007F0540 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		70C8C1882BDFF37D00805C49 /* HistoryFormRecordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFormRecordsView.swift; sourceTree = "<group>"; };
 		70C8C18A2BDFF96B00805C49 /* PostHistoryUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHistoryUsecase.swift; sourceTree = "<group>"; };
+		70C9619E2BE6275300C143E9 /* UsersSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersSearchView.swift; sourceTree = "<group>"; };
 		70D4D27F2BE1E17700B87654 /* PreviousRecordHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousRecordHistoryViewModel.swift; sourceTree = "<group>"; };
 		70D4D2812BE1E7D800B87654 /* PreviousRecordHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousRecordHistoryView.swift; sourceTree = "<group>"; };
 		70D4D2832BE1EEF900B87654 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -1141,6 +1143,7 @@
 		70B558852BE6193F009DB8CC /* searchUsers */ = {
 			isa = PBXGroup;
 			children = (
+				70C9619E2BE6275300C143E9 /* UsersSearchView.swift */,
 				70B558882BE61994009DB8CC /* UsersSearchViewModel.swift */,
 			);
 			path = searchUsers;
@@ -1604,6 +1607,7 @@
 				7017648F2BE0859400B501B7 /* DeleteAccountUsecase.swift in Sources */,
 				70A85A8B2BDE58C700537071 /* BloodTypeV.swift in Sources */,
 				706D6A742BE0E397000A0324 /* AppleSignInUsecase.swift in Sources */,
+				70C9619F2BE6275300C143E9 /* UsersSearchView.swift in Sources */,
 				7060BB6C2BDE27F50092B987 /* ExercisePartV.swift in Sources */,
 				7005270E2BDE1128007838BA /* DeleteHistoryUsecase.swift in Sources */,
 				7070164D2BDD3DEE0025C624 /* UserData.swift in Sources */,

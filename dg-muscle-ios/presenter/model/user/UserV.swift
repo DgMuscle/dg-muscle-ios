@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserV {
+struct UserV: Hashable {
     let uid: String
     var displayName: String?
     var photoURL: URL?
