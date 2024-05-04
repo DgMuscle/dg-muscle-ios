@@ -7,12 +7,22 @@
 
 import UIKit
 import FirebaseCore
+import FirebaseMessaging
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
         setShortCutItems()
+        
+        // 원격알림 등록: 알람 허용
+        UNUserNotificationCenter.current().delegate = self
+        
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { _, _ in }
+        application.registerForRemoteNotifications()
+        
+        Messaging.messaging().delegate = self
         return true
     }
     
@@ -30,5 +40,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     private func generateShortCutItem(action: QuickAction, icon: UIApplicationShortcutIcon?) -> UIApplicationShortcutItem {
         return .init(type: action.type.rawValue, localizedTitle: action.title, localizedSubtitle: action.subTitle, icon: icon)
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate { }
+
+extension AppDelegate: MessagingDelegate {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        if let fcmToken {
+            print("dg: fcmToken is \(fcmToken)")
+        }
     }
 }

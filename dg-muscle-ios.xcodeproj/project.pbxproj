@@ -177,6 +177,7 @@
 		703CD5EC2AC013D300BC76D4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 703CD5EB2AC013D300BC76D4 /* FirebaseFirestore */; };
 		703CD5EE2AC0148800BC76D4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 703CD5ED2AC0148800BC76D4 /* FirebaseStorage */; };
 		703CD5F02AC015C900BC76D4 /* ErrorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5EF2AC015C900BC76D4 /* ErrorData.swift */; };
+		703E54BC2BE65C340041D262 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 703E54BB2BE65C340041D262 /* FirebaseMessaging */; };
 		7044641D2BD0185600CB21F6 /* FileUploaderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */; };
 		7044641F2BD0187E00CB21F6 /* FileUploaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */; };
 		704CE5372BE5FD7700B0FF45 /* GetExercisesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704CE5362BE5FD7700B0FF45 /* GetExercisesUsecase.swift */; };
@@ -627,6 +628,7 @@
 				703CD5EC2AC013D300BC76D4 /* FirebaseFirestore in Frameworks */,
 				7083E6BF2ABF06B7007D43CE /* FirebaseAppCheck in Frameworks */,
 				7083E6BD2ABF06B7007D43CE /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				703E54BC2BE65C340041D262 /* FirebaseMessaging in Frameworks */,
 				702448D82BD2BAB400C79056 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1372,6 +1374,7 @@
 				703CD5EB2AC013D300BC76D4 /* FirebaseFirestore */,
 				703CD5ED2AC0148800BC76D4 /* FirebaseStorage */,
 				702448D72BD2BAB400C79056 /* SnapKit */,
+				703E54BB2BE65C340041D262 /* FirebaseMessaging */,
 			);
 			productName = "dg-muscle-ios";
 			productReference = 70E555FC2ABF010C006D4DA0 /* dg-muscle-ios.app */;
@@ -2214,6 +2217,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7083E6B52ABF06B7007D43CE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		703E54BB2BE65C340041D262 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7083E6B52ABF06B7007D43CE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		7083E6B62ABF06B7007D43CE /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
