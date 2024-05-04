@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 final class FriendRepositoryData: FriendRepository {
+    static let shared = FriendRepositoryData()
     var friends: [UserDomain] { _friends }
     var friendsPublisher: AnyPublisher<[UserDomain], Never> { $_friends.eraseToAnyPublisher() }
     @Published private var _friends: [UserDomain] = []

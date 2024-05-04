@@ -689,8 +689,8 @@
 				707672E22BE64D09002D3FCC /* FriendNavigation.swift */,
 				707672DE2BE64CE9002D3FCC /* HistoryNavigation.swift */,
 				707672DC2BE64CC2002D3FCC /* MainNavigation.swift */,
-				709DF4EF2BE0E70200C70390 /* NavigationView.swift */,
 				700526F02BDDFF63007838BA /* coordinator */,
+				707672E62BE64DFF002D3FCC /* view */,
 			);
 			path = navigation;
 			sourceTree = "<group>";
@@ -978,6 +978,14 @@
 				707672D82BE6494D002D3FCC /* FriendListViewModel.swift */,
 			);
 			path = friend;
+			sourceTree = "<group>";
+		};
+		707672E62BE64DFF002D3FCC /* view */ = {
+			isa = PBXGroup;
+			children = (
+				709DF4EF2BE0E70200C70390 /* NavigationView.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		7083E6C72ABF0F45007D43CE /* Frameworks */ = {

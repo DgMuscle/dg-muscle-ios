@@ -24,6 +24,7 @@ struct ContentView: View {
     let authenticator: AuthenticatorInterface = Authenticator()
     let fileUploader: FileUploaderInterface = FileUploader.shared
     let heatmapRepository: HeatmapRepository = HeatmapRepositoryData.shared
+    let friendRepository: FriendRepository = FriendRepositoryData.shared
     
     var body: some View {
         ZStack {
@@ -35,7 +36,8 @@ struct ContentView: View {
                                userRepository: userRepository,
                                authenticator: authenticator,
                                fileUploader: fileUploader, 
-                               heatmapRepository: heatmapRepository)
+                               heatmapRepository: heatmapRepository, 
+                               friendRepository: friendRepository)
             } else {
                 AppleSignInView(appleSignInUsecase: .init(appleAuthCoordinator: appleAuthCoordinatorGenerator.generate(window: window)))
             }

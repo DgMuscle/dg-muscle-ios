@@ -18,6 +18,7 @@ struct NavigationView: View {
     let authenticator: AuthenticatorInterface
     let fileUploader: FileUploaderInterface
     let heatmapRepository: HeatmapRepository
+    let friendRepository: FriendRepository
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
@@ -103,6 +104,12 @@ struct NavigationView: View {
                                                           parts: navigation.exerciseParts,
                                                           postExerciseUsecase: .init(exerciseRepository: exerciseRepository)))
                     }
+                }
+            }
+            .navigationDestination(for: FriendNavigation.self) { navigation in
+                switch navigation.name {
+                case .list:
+                    FriendListView(viewModel: .init(getMyFriendsUsecase: .init(friendRepository: friendRepository)))
                 }
             }
         }
