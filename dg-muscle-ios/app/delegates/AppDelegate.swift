@@ -59,7 +59,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         if let fcmToken {
-            print("dg: fcmToken is \(fcmToken)")
+            UserRepositoryData.shared.set(fcmtoken: fcmToken)
         }
     }
 }

@@ -27,6 +27,10 @@ final class UserRepositoryTest: UserRepository {
         bind()
     }
     
+    func set(fcmtoken: String) {
+        
+    }
+    
     func signOut() throws {
         _user = nil
     }
