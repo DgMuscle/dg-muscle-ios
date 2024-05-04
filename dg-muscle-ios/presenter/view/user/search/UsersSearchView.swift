@@ -73,14 +73,14 @@ struct UsersSearchView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .clipShape(Circle())
-                                    .frame(width: size)
+                                    .frame(width: size, height: size)
                             } else {
                                 Rectangle()
                                     .fill(.clear)
                                     .frame(width:0, height: size)
                             }
                             
-                            Text(user.displayName ?? "no display name")
+                            Text(user.displayName ?? user.uid)
                             Spacer()
                             
                             if user.isMyFriend == false {
@@ -95,9 +95,10 @@ struct UsersSearchView: View {
                             }
                         }
                         .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
                         .background(
                             RoundedRectangle(cornerRadius: 8).fill(user.isMyFriend ?
-                                                                   LinearGradient(colors: [.yellow.opacity(0.1), .yellow.opacity(0.4)],
+                                                                   LinearGradient(colors: [.blue.opacity(0.1), .blue.opacity(0.4)],
                                                                                   startPoint: .leading,
                                                                                   endPoint: .trailing) :
                                                                     LinearGradient(colors: [Color(uiColor: .secondarySystemGroupedBackground)], startPoint: .leading, endPoint: .trailing)
