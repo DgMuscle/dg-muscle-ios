@@ -178,6 +178,7 @@
 		703CD5EE2AC0148800BC76D4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 703CD5ED2AC0148800BC76D4 /* FirebaseStorage */; };
 		703CD5F02AC015C900BC76D4 /* ErrorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CD5EF2AC015C900BC76D4 /* ErrorData.swift */; };
 		703E54BC2BE65C340041D262 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 703E54BB2BE65C340041D262 /* FirebaseMessaging */; };
+		703E54BE2BE66C700041D262 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703E54BD2BE66C700041D262 /* Destination.swift */; };
 		7044641D2BD0185600CB21F6 /* FileUploaderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */; };
 		7044641F2BD0187E00CB21F6 /* FileUploaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */; };
 		704CE5372BE5FD7700B0FF45 /* GetExercisesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704CE5362BE5FD7700B0FF45 /* GetExercisesUsecase.swift */; };
@@ -449,6 +450,7 @@
 		703A97C32BCB950C002C0843 /* BannerLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerLoadingView.swift; sourceTree = "<group>"; };
 		703CD5E92AC0139600BC76D4 /* FileUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
 		703CD5EF2AC015C900BC76D4 /* ErrorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorData.swift; sourceTree = "<group>"; };
+		703E54BD2BE66C700041D262 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		7044641C2BD0185600CB21F6 /* FileUploaderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploaderInterface.swift; sourceTree = "<group>"; };
 		7044641E2BD0187E00CB21F6 /* FileUploaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploaderTest.swift; sourceTree = "<group>"; };
 		704CE5362BE5FD7700B0FF45 /* GetExercisesUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExercisesUsecase.swift; sourceTree = "<group>"; };
@@ -687,6 +689,7 @@
 		700526ED2BDDFC9E007838BA /* navigation */ = {
 			isa = PBXGroup;
 			children = (
+				703E54BD2BE66C700041D262 /* Destination.swift */,
 				707672E02BE64CF7002D3FCC /* ExerciseNavigation.swift */,
 				707672E22BE64D09002D3FCC /* FriendNavigation.swift */,
 				707672DE2BE64CE9002D3FCC /* HistoryNavigation.swift */,
@@ -1733,6 +1736,7 @@
 				70884DD42BDD47510059B22A /* ExerciseRepositoryData.swift in Sources */,
 				70A85A9C2BDE648900537071 /* ProfileEditView.swift in Sources */,
 				706D6A762BE0E3E7000A0324 /* AppleSignInView.swift in Sources */,
+				703E54BE2BE66C700041D262 /* Destination.swift in Sources */,
 				70884DD62BDD47D10059B22A /* ExerciseData.swift in Sources */,
 				025A13462BDF8B4B0069F293 /* HistoryFormRecordItemViewModel.swift in Sources */,
 				701764972BE08F1000B501B7 /* AuthenticatorTest.swift in Sources */,
