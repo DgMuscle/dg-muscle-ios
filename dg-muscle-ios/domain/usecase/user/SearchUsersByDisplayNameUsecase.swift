@@ -17,6 +17,9 @@ final class SearchUsersByDisplayNameUsecase {
     func implement(displayName: String) -> [UserDomain] {
         var users = userRepository.users
         let searchQuery = displayName.filter({ !$0.isWhitespace }).lowercased()
+        if searchQuery.isEmpty {
+            return []
+        }
         
         users = users.filter({
             guard var displayName = $0.displayName else { return false }

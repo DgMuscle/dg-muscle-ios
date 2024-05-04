@@ -11,6 +11,7 @@ struct UserV {
     let uid: String
     var displayName: String?
     var photoURL: URL?
+    var isMyFriend: Bool = false
     
     init(from: UserDomain) {
         uid = from.uid

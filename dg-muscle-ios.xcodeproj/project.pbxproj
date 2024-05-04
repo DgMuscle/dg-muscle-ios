@@ -309,6 +309,8 @@
 		70B558812BE6187A009DB8CC /* FriendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B558792BE61509009DB8CC /* FriendRepository.swift */; };
 		70B558832BE6188D009DB8CC /* FriendRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B558822BE6188D009DB8CC /* FriendRepositoryTest.swift */; };
 		70B558842BE61892009DB8CC /* FriendRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B558822BE6188D009DB8CC /* FriendRepositoryTest.swift */; };
+		70B558892BE61994009DB8CC /* UsersSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B558882BE61994009DB8CC /* UsersSearchViewModel.swift */; };
+		70B5588C2BE61A0F009DB8CC /* GetMyFriendsUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5588B2BE61A0F009DB8CC /* GetMyFriendsUsecase.swift */; };
 		70BB52182B37EC1D00EC606D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 70BB52172B37EC1D00EC606D /* Localizable.xcstrings */; };
 		70BC43F62BE0F6B9001020AD /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43F52BE0F6B9001020AD /* ContentViewModel.swift */; };
 		70BC43F82BE0F700001020AD /* GetIsLoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC43F72BE0F700001020AD /* GetIsLoginUsecase.swift */; };
@@ -550,6 +552,8 @@
 		70B5587B2BE61559009DB8CC /* FriendRepositoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepositoryData.swift; sourceTree = "<group>"; };
 		70B5587E2BE61782009DB8CC /* SearchUsersByDisplayNameUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersByDisplayNameUsecase.swift; sourceTree = "<group>"; };
 		70B558822BE6188D009DB8CC /* FriendRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepositoryTest.swift; sourceTree = "<group>"; };
+		70B558882BE61994009DB8CC /* UsersSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersSearchViewModel.swift; sourceTree = "<group>"; };
+		70B5588B2BE61A0F009DB8CC /* GetMyFriendsUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyFriendsUsecase.swift; sourceTree = "<group>"; };
 		70BB52172B37EC1D00EC606D /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		70BC43F52BE0F6B9001020AD /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		70BC43F72BE0F700001020AD /* GetIsLoginUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIsLoginUsecase.swift; sourceTree = "<group>"; };
@@ -1027,6 +1031,7 @@
 			isa = PBXGroup;
 			children = (
 				7060BB4A2BDE17FD0092B987 /* exercise */,
+				70B5588A2BE619FC009DB8CC /* friend */,
 				7009E17B2BE2223200D9950D /* heatmap */,
 				70884E092BDD67270059B22A /* history */,
 				700526DD2BDDF5C4007838BA /* user */,
@@ -1095,16 +1100,9 @@
 		70A85A8C2BDE5A9800537071 /* user */ = {
 			isa = PBXGroup;
 			children = (
-				70A85A9F2BDE676C00537071 /* DisplayNameEditView.swift */,
-				70A85A8F2BDE5B5400537071 /* HealthInfoItemView.swift */,
-				70A85A912BDE5CDE00537071 /* HealthInfoView.swift */,
-				70A85A8D2BDE5AB100537071 /* HealthInfoViewModel.swift */,
-				70A85A9B2BDE648900537071 /* ProfileEditView.swift */,
-				70A85A952BDE618100537071 /* ProfileEditViewModel.swift */,
-				70A85A9D2BDE655800537071 /* ProfileUserSimpleView.swift */,
-				70A85AA12BDE6CDA00537071 /* ProfilePhotoEditViewModel.swift */,
-				70A85AA92BDE720900537071 /* ProfilePhotoEditView.swift */,
 				706D6A752BE0E3E7000A0324 /* AppleSignInView.swift */,
+				70B558872BE6195A009DB8CC /* profile */,
+				70B558852BE6193F009DB8CC /* searchUsers */,
 			);
 			path = user;
 			sourceTree = "<group>";
@@ -1138,6 +1136,46 @@
 				70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */,
 			);
 			path = functionsURL;
+			sourceTree = "<group>";
+		};
+		70B558852BE6193F009DB8CC /* searchUsers */ = {
+			isa = PBXGroup;
+			children = (
+				70B558882BE61994009DB8CC /* UsersSearchViewModel.swift */,
+			);
+			path = searchUsers;
+			sourceTree = "<group>";
+		};
+		70B558862BE61954009DB8CC /* healthInfo */ = {
+			isa = PBXGroup;
+			children = (
+				70A85A8F2BDE5B5400537071 /* HealthInfoItemView.swift */,
+				70A85A912BDE5CDE00537071 /* HealthInfoView.swift */,
+				70A85A8D2BDE5AB100537071 /* HealthInfoViewModel.swift */,
+			);
+			path = healthInfo;
+			sourceTree = "<group>";
+		};
+		70B558872BE6195A009DB8CC /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				70A85A9F2BDE676C00537071 /* DisplayNameEditView.swift */,
+				70A85A9B2BDE648900537071 /* ProfileEditView.swift */,
+				70A85A952BDE618100537071 /* ProfileEditViewModel.swift */,
+				70A85AA92BDE720900537071 /* ProfilePhotoEditView.swift */,
+				70A85AA12BDE6CDA00537071 /* ProfilePhotoEditViewModel.swift */,
+				70A85A9D2BDE655800537071 /* ProfileUserSimpleView.swift */,
+				70B558862BE61954009DB8CC /* healthInfo */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
+		70B5588A2BE619FC009DB8CC /* friend */ = {
+			isa = PBXGroup;
+			children = (
+				70B5588B2BE61A0F009DB8CC /* GetMyFriendsUsecase.swift */,
+			);
+			path = friend;
 			sourceTree = "<group>";
 		};
 		70C055A02B79FCAA00375526 /* delegates */ = {
@@ -1649,6 +1687,7 @@
 				708DB2BD2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift in Sources */,
 				7070162A2BDD2B0B0025C624 /* RecordDomain.swift in Sources */,
 				700527042BDE0685007838BA /* GetKcalUsecase.swift in Sources */,
+				70B558892BE61994009DB8CC /* UsersSearchViewModel.swift in Sources */,
 				700527062BDE08AB007838BA /* HistoryItemView.swift in Sources */,
 				70A85A922BDE5CDE00537071 /* HealthInfoView.swift in Sources */,
 				70BC43FC2BE0F7F7001020AD /* ContentView.swift in Sources */,
@@ -1680,6 +1719,7 @@
 				70A85A942BDE5D7D00537071 /* HealthItemV.swift in Sources */,
 				707016262BDD2B000025C624 /* ExerciseSetDomain.swift in Sources */,
 				7060BB5E2BDE1FF20092B987 /* ExerciseManageView.swift in Sources */,
+				70B5588C2BE61A0F009DB8CC /* GetMyFriendsUsecase.swift in Sources */,
 				70884DD22BDD471F0059B22A /* ExerciseRepository.swift in Sources */,
 				70884DE42BDD511A0059B22A /* HistoryMetaDataDomain.swift in Sources */,
 				70BC43F62BE0F6B9001020AD /* ContentViewModel.swift in Sources */,
