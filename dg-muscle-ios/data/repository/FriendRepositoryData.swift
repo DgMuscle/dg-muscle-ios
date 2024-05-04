@@ -21,8 +21,15 @@ final class FriendRepositoryData: FriendRepository {
     }
     
     func postRequest(userId: String) async throws {
+        struct Body: Codable {
+            let toId: String
+        }
+        
+        let body = Body(toId: userId)
+        
         let _: ResponseData = try await APIClient.shared.request(method: .post,
-                                           url: FunctionsURL.friend(.postrequest))
+                                                                 url: FunctionsURL.friend(.postrequest),
+                                                                 body: body)
     }
     
     private func bind() {
