@@ -43,7 +43,10 @@ final class FriendRepositoryData: FriendRepository {
     func updateRequests() {
         // Update friend requests when push notification arrived
         Task {
+            let data: [FriendRequestData] = try await APIClient.shared.request(method: .get,
+                                                                               url: FunctionsURL.friend(.getrequests))
             
+            self._requests = data.map({ $0.domain })
         }
     }
     
@@ -58,8 +61,11 @@ final class FriendRepositoryData: FriendRepository {
                     Task {
                         self._friends = try await self.getFriendsFromServer()
                     }
+                    
+                    self.updateRequests()
                 } else {
                     self._friends = []
+                    self._requests = []
                 }
             }
             .store(in: &cancellables)

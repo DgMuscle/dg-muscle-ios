@@ -314,6 +314,8 @@
 		70B105402BE67F8F00F01BFC /* FriendRequestDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1053F2BE67F8F00F01BFC /* FriendRequestDomain.swift */; };
 		70B105412BE67FDB00F01BFC /* FriendRequestDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1053F2BE67F8F00F01BFC /* FriendRequestDomain.swift */; };
 		70B105422BE67FDC00F01BFC /* FriendRequestDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1053F2BE67F8F00F01BFC /* FriendRequestDomain.swift */; };
+		70B105452BE6816600F01BFC /* FriendRequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B105442BE6816600F01BFC /* FriendRequestData.swift */; };
+		70B105472BE681EC00F01BFC /* CreatedAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B105462BE681EC00F01BFC /* CreatedAt.swift */; };
 		70B5587A2BE61509009DB8CC /* FriendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B558792BE61509009DB8CC /* FriendRepository.swift */; };
 		70B5587C2BE61559009DB8CC /* FriendRepositoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5587B2BE61559009DB8CC /* FriendRepositoryData.swift */; };
 		70B5587F2BE61782009DB8CC /* SearchUsersByDisplayNameUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5587E2BE61782009DB8CC /* SearchUsersByDisplayNameUsecase.swift */; };
@@ -572,6 +574,8 @@
 		70B07AC62BD8D0D800A0E732 /* FunctionsURLEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsURLEnums.swift; sourceTree = "<group>"; };
 		70B1053C2BE67A9900F01BFC /* FriendListOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListOptionsView.swift; sourceTree = "<group>"; };
 		70B1053F2BE67F8F00F01BFC /* FriendRequestDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestDomain.swift; sourceTree = "<group>"; };
+		70B105442BE6816600F01BFC /* FriendRequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestData.swift; sourceTree = "<group>"; };
+		70B105462BE681EC00F01BFC /* CreatedAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedAt.swift; sourceTree = "<group>"; };
 		70B558792BE61509009DB8CC /* FriendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepository.swift; sourceTree = "<group>"; };
 		70B5587B2BE61559009DB8CC /* FriendRepositoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepositoryData.swift; sourceTree = "<group>"; };
 		70B5587E2BE61782009DB8CC /* SearchUsersByDisplayNameUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersByDisplayNameUsecase.swift; sourceTree = "<group>"; };
@@ -936,10 +940,12 @@
 		707016322BDD2DB10025C624 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				70B105462BE681EC00F01BFC /* CreatedAt.swift */,
 				703CD5EF2AC015C900BC76D4 /* ErrorData.swift */,
 				70884DD52BDD47D10059B22A /* ExerciseData.swift */,
 				7070163E2BDD2F380025C624 /* ResponseData.swift */,
 				7070164C2BDD3DEE0025C624 /* UserData.swift */,
+				70B105432BE6815100F01BFC /* friend */,
 				70B07AC52BD8D0B800A0E732 /* functionsURL */,
 				70884DE92BDD51BF0059B22A /* health */,
 				707016352BDD2DCA0025C624 /* history */,
@@ -1196,6 +1202,14 @@
 			isa = PBXGroup;
 			children = (
 				70B1053F2BE67F8F00F01BFC /* FriendRequestDomain.swift */,
+			);
+			path = friend;
+			sourceTree = "<group>";
+		};
+		70B105432BE6815100F01BFC /* friend */ = {
+			isa = PBXGroup;
+			children = (
+				70B105442BE6816600F01BFC /* FriendRequestData.swift */,
 			);
 			path = friend;
 			sourceTree = "<group>";
@@ -1715,6 +1729,8 @@
 				70A85A822BDE56CB00537071 /* GetHealthInfoUsecase.swift in Sources */,
 				70884DF72BDD53080059B22A /* BloodTypeDomain.swift in Sources */,
 				7060BB542BDE1CB00092B987 /* ExerciseSectionView.swift in Sources */,
+				70B105472BE681EC00F01BFC /* CreatedAt.swift in Sources */,
+				70B105452BE6816600F01BFC /* FriendRequestData.swift in Sources */,
 				703CD5F02AC015C900BC76D4 /* ErrorData.swift in Sources */,
 				70EFAE8D2BE138CC0011132F /* GetVolumesGroupedByPartUsecase.swift in Sources */,
 				707672DB2BE649C4002D3FCC /* FriendListView.swift in Sources */,
