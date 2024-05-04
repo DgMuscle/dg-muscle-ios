@@ -53,7 +53,7 @@ struct FriendListView: View {
                     FriendListOptionsView(hasRequest: false) {
                         print("move to request page")
                     } searchAction: {
-                        print("move to search page")
+                        coordinator.friend.search()
                     }
                 }
             }
