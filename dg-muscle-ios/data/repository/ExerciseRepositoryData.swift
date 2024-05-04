@@ -13,7 +13,7 @@ final class ExerciseRepositoryData: ExerciseRepository {
     
     var exercises: [ExerciseDomain] { _exercises }
     var exercisesPublisher: AnyPublisher<[ExerciseDomain], Never> { $_exercises.eraseToAnyPublisher() }
-    @Published private var _exercises: [ExerciseDomain] = [] {
+    @Published private var _exercises: [ExerciseDomain] = ExerciseRepositoryData.fetchExerciseDataFromFile() {
         didSet {
             try? FileManagerHelperV2.shared.save(exercises.prefix(30).map({ ExerciseData(from: $0) }), toFile: .exercise)
         }
@@ -22,7 +22,6 @@ final class ExerciseRepositoryData: ExerciseRepository {
     private var cancellables = Set<AnyCancellable>()
     
     private init() {
-        _exercises = fetchExerciseDataFromFile()
         bind()
     }
     
@@ -60,7 +59,7 @@ final class ExerciseRepositoryData: ExerciseRepository {
         exercises.first(where: { $0.id == exerciseId })
     }
     
-    private func fetchExerciseDataFromFile() -> [ExerciseDomain] {
+    static private func fetchExerciseDataFromFile() -> [ExerciseDomain] {
         let datas = (try? FileManagerHelperV2.shared.load([ExerciseData].self, fromFile: .exercise)) ?? []
         return datas.map({ $0.domain })
     }

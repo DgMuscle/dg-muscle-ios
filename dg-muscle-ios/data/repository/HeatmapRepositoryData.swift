@@ -13,12 +13,9 @@ final class HeatmapRepositoryData: HeatmapRepository {
     static let shared = HeatmapRepositoryData()
     var heatmapColor: HeatmapColorDomain { _heatmapColor }
     var heatmapColorPublisher: AnyPublisher<HeatmapColorDomain, Never> { $_heatmapColor.eraseToAnyPublisher() }
-    @Published private var _heatmapColor: HeatmapColorDomain
+    @Published private var _heatmapColor: HeatmapColorDomain = HeatmapRepositoryData.getHeatmapColorFromDevice()
     
-    private init() {
-        let heatmapColorData = (try? FileManagerHelperV2.shared.load(HeatmapColorData.self, fromFile: .heatmapColor)) ?? .green
-        _heatmapColor = heatmapColorData.domain
-    }
+    private init() { }
     
     func post(data: HeatmapColorDomain) throws {
         _heatmapColor = data
@@ -31,5 +28,10 @@ final class HeatmapRepositoryData: HeatmapRepository {
         let heatmapData: [HeatmapData] = data.map({ .init(from: $0) })
         try FileManagerHelperV2.shared.save(heatmapData, toFile: .heatmap)
         WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    static private func getHeatmapColorFromDevice() -> HeatmapColorDomain {
+        let data = (try? FileManagerHelperV2.shared.load(HeatmapColorData.self, fromFile: .heatmapColor)) ?? .green
+        return data.domain
     }
 }

@@ -32,7 +32,8 @@ struct NavigationView: View {
                                              getTodayHistoryUsecase: .init(historyRepository: historyRepository, today: today),
                                              deleteHistoryUsecase: .init(historyRepository: historyRepository),
                                              getHeatmapColorUsecase: .init(heatMapRepository: heatmapRepository),
-                                             subscribeHeatmapColorUsecase: .init(heatmapRepository: heatmapRepository)
+                                             subscribeHeatmapColorUsecase: .init(heatmapRepository: heatmapRepository),
+                                             getExercisesUsecase: .init(exerciseRepository: exerciseRepository)
                                             ))
             .navigationDestination(for: MainNavigationV2.self) { navigation in
                 switch navigation.name {

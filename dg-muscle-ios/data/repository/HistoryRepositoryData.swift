@@ -13,7 +13,7 @@ final class HistoryRepositoryData: HistoryRepository {
     
     var histories: [HistoryDomain] { _histories }
     var historiesPublisher: AnyPublisher<[HistoryDomain], Never> { $_histories.eraseToAnyPublisher() }
-    @Published private var _histories: [HistoryDomain] = [] {
+    @Published private var _histories: [HistoryDomain] = HistoryRepositoryData.getExerciseHistoryFromFile() {
         didSet {
             try? FileManagerHelperV2.shared.save(histories.prefix(150).map({ HistoryData(from: $0) }), toFile: .history)
         }
@@ -22,7 +22,6 @@ final class HistoryRepositoryData: HistoryRepository {
     private var cancellables = Set<AnyCancellable>()
     
     private init() {
-        _histories = getExerciseHistoryFromFile()
         bind()
     }
     
@@ -55,7 +54,7 @@ final class HistoryRepositoryData: HistoryRepository {
                                                                  body: body)
     }
     
-    private func getExerciseHistoryFromFile() -> [HistoryDomain] {
+    static private func getExerciseHistoryFromFile() -> [HistoryDomain] {
         let historyDatas: [HistoryData] = (try? FileManagerHelperV2.shared.load([HistoryData].self, fromFile: .history)) ?? []
         return historyDatas.map { $0.domain }
     }
