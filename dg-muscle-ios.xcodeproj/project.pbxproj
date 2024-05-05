@@ -252,6 +252,9 @@
 		707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
 		707FF1F62BE74729004FA7C9 /* FriendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FF1F52BE74729004FA7C9 /* FriendData.swift */; };
 		707FF1F92BE74C0A004FA7C9 /* FriendHistoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FF1F82BE74C0A004FA7C9 /* FriendHistoryListViewModel.swift */; };
+		707FF1FB2BE74D38004FA7C9 /* GetGroupedHistoriesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FF1FA2BE74D38004FA7C9 /* GetGroupedHistoriesUsecase.swift */; };
+		707FF1FC2BE74D93004FA7C9 /* GetGroupedHistoriesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FF1FA2BE74D38004FA7C9 /* GetGroupedHistoriesUsecase.swift */; };
+		707FF1FD2BE74D94004FA7C9 /* GetGroupedHistoriesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FF1FA2BE74D38004FA7C9 /* GetGroupedHistoriesUsecase.swift */; };
 		7083E6B42ABF065F007D43CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */; };
 		7083E6B72ABF06B7007D43CE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6B62ABF06B7007D43CE /* FirebaseAnalytics */; };
 		7083E6B92ABF06B7007D43CE /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6B82ABF06B7007D43CE /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -531,6 +534,7 @@
 		707B8FD22ABF207F008ADECE /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		707FF1F52BE74729004FA7C9 /* FriendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendData.swift; sourceTree = "<group>"; };
 		707FF1F82BE74C0A004FA7C9 /* FriendHistoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendHistoryListViewModel.swift; sourceTree = "<group>"; };
+		707FF1FA2BE74D38004FA7C9 /* GetGroupedHistoriesUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupedHistoriesUsecase.swift; sourceTree = "<group>"; };
 		7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthCoordinator.swift; sourceTree = "<group>"; };
 		708508C22AF625EE0035BB9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -1140,6 +1144,7 @@
 			children = (
 				7005270D2BDE1128007838BA /* DeleteHistoryUsecase.swift */,
 				700526FB2BDE03A8007838BA /* GetDayUsecase.swift */,
+				707FF1FA2BE74D38004FA7C9 /* GetGroupedHistoriesUsecase.swift */,
 				700527032BDE0685007838BA /* GetKcalUsecase.swift */,
 				700527012BDE051B007838BA /* GetNaturalDurationUsecase.swift */,
 				700526FF2BDE0422007838BA /* GetPartsUsecase.swift */,
@@ -1600,6 +1605,7 @@
 				7009E1E02BE22C0000D9950D /* AppleAuthCoordinatorGeneratorImpl.swift in Sources */,
 				7009E1A62BE22B6700D9950D /* SexDomain.swift in Sources */,
 				706D6A7C2BE0E4DF000A0324 /* AppleAuthCoordinatorInterface.swift in Sources */,
+				707FF1FC2BE74D93004FA7C9 /* GetGroupedHistoriesUsecase.swift in Sources */,
 				7009E19D2BE22B3E00D9950D /* HealthRepositoryDomain.swift in Sources */,
 				7009E1B72BE22B9900D9950D /* GetKcalUsecase.swift in Sources */,
 				70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */,
@@ -1663,6 +1669,7 @@
 				700526C32BDDE9C2007838BA /* HistoryRepository.swift in Sources */,
 				70EFAE912BE139ED0011132F /* GetVolumesGroupedByPartUsecaseTests.swift in Sources */,
 				7009E1992BE22AE700D9950D /* SubscribeHeatmapUsecase.swift in Sources */,
+				707FF1FD2BE74D94004FA7C9 /* GetGroupedHistoriesUsecase.swift in Sources */,
 				700526E12BDDF772007838BA /* HealthRepositoryTest2.swift in Sources */,
 				7009E1CC2BE22BC100D9950D /* DeleteUserProfileImageUsecase.swift in Sources */,
 				700526D92BDDF3A7007838BA /* UserRepositoryTest.swift in Sources */,
@@ -1841,6 +1848,7 @@
 				70884DD62BDD47D10059B22A /* ExerciseData.swift in Sources */,
 				025A13462BDF8B4B0069F293 /* HistoryFormRecordItemViewModel.swift in Sources */,
 				701764972BE08F1000B501B7 /* AuthenticatorTest.swift in Sources */,
+				707FF1FB2BE74D38004FA7C9 /* GetGroupedHistoriesUsecase.swift in Sources */,
 				708DB2BD2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift in Sources */,
 				7070162A2BDD2B0B0025C624 /* RecordDomain.swift in Sources */,
 				700527042BDE0685007838BA /* GetKcalUsecase.swift in Sources */,
