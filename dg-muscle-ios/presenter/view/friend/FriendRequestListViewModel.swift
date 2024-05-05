@@ -69,14 +69,15 @@ final class FriendRequestListViewModel: ObservableObject {
             .sink { [weak self] requests in
                 guard let self else { return }
                 self.requests = requests.sorted(by: { $0.createdAt > $1.createdAt }).map({ .init(from: $0) })
-                fetchUsers(requests: self.requests)
+                fetchUsers()
             }
             .store(in: &cancellables)
     }
     
-    private func fetchUsers(requests: [FriendRequestV]) {
+    private func fetchUsers() {
         for (index, request) in requests.enumerated() {
             Task {
+                guard request.sender == nil else { return }
                 let user = try await getUserFromUserIdUsecase.implement(uid: request.fromId)
                 DispatchQueue.main.async { [weak self] in
                     self?.requests[index].sender = .init(from: user)

@@ -55,6 +55,10 @@ final class FriendRepositoryData: FriendRepository {
             let friendId: String
         }
         
+        if let index = self.requests.firstIndex(where: { $0.fromId == request.fromId }) {
+            self._requests.remove(at: index)
+        }
+        
         let _: ResponseData = try await APIClient.shared.request(method: .post,
                                                                  url: FunctionsURL.friend(.post),
                                                                  body: Body(friendId: request.fromId))
@@ -63,6 +67,10 @@ final class FriendRepositoryData: FriendRepository {
     func refuse(request: FriendRequestDomain) async throws {
         struct Body: Codable {
             let deleteId: String
+        }
+        
+        if let index = self.requests.firstIndex(where: { $0.fromId == request.fromId }) {
+            self._requests.remove(at: index)
         }
         
         let _: ResponseData = try await APIClient.shared.request(method: .delete,

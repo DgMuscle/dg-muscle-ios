@@ -28,17 +28,21 @@ struct FriendRequestListView: View {
                             
                             Text(request.sender?.displayName ?? "Don't have display name")
                             
+                            Spacer()
+                            
                             Button {
                                 viewModel.accept(request: request)
                             } label: {
                                 Text("Accept")
                             }
+                            .buttonStyle(.borderless)
                             
                             Button {
                                 viewModel.refuse(request: request)
                             } label: {
                                 Text("Refuse")
                             }
+                            .buttonStyle(.borderless)
                         }
                         
                         HStack {
