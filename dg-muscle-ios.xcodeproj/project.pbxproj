@@ -251,6 +251,7 @@
 		707672E52BE64D20002D3FCC /* FriendCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707672E42BE64D20002D3FCC /* FriendCoordinator.swift */; };
 		707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
 		707FF1F62BE74729004FA7C9 /* FriendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FF1F52BE74729004FA7C9 /* FriendData.swift */; };
+		707FF1F92BE74C0A004FA7C9 /* FriendHistoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FF1F82BE74C0A004FA7C9 /* FriendHistoryListViewModel.swift */; };
 		7083E6B42ABF065F007D43CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */; };
 		7083E6B72ABF06B7007D43CE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6B62ABF06B7007D43CE /* FirebaseAnalytics */; };
 		7083E6B92ABF06B7007D43CE /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6B82ABF06B7007D43CE /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -529,6 +530,7 @@
 		707672E42BE64D20002D3FCC /* FriendCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCoordinator.swift; sourceTree = "<group>"; };
 		707B8FD22ABF207F008ADECE /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		707FF1F52BE74729004FA7C9 /* FriendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendData.swift; sourceTree = "<group>"; };
+		707FF1F82BE74C0A004FA7C9 /* FriendHistoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendHistoryListViewModel.swift; sourceTree = "<group>"; };
 		7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthCoordinator.swift; sourceTree = "<group>"; };
 		708508C22AF625EE0035BB9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -1019,6 +1021,7 @@
 				707672D82BE6494D002D3FCC /* FriendListViewModel.swift */,
 				70A171AD2BE7330E007D625A /* FriendRequestListView.swift */,
 				70A171AB2BE730A4007D625A /* FriendRequestListViewModel.swift */,
+				707FF1F72BE74BF5004FA7C9 /* history */,
 			);
 			path = friend;
 			sourceTree = "<group>";
@@ -1029,6 +1032,14 @@
 				709DF4EF2BE0E70200C70390 /* NavigationView.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		707FF1F72BE74BF5004FA7C9 /* history */ = {
+			isa = PBXGroup;
+			children = (
+				707FF1F82BE74C0A004FA7C9 /* FriendHistoryListViewModel.swift */,
+			);
+			path = history;
 			sourceTree = "<group>";
 		};
 		7083E6C72ABF0F45007D43CE /* Frameworks */ = {
@@ -1733,6 +1744,7 @@
 				70A85A9E2BDE655800537071 /* ProfileUserSimpleView.swift in Sources */,
 				7017648F2BE0859400B501B7 /* DeleteAccountUsecase.swift in Sources */,
 				70A85A8B2BDE58C700537071 /* BloodTypeV.swift in Sources */,
+				707FF1F92BE74C0A004FA7C9 /* FriendHistoryListViewModel.swift in Sources */,
 				706D6A742BE0E397000A0324 /* AppleSignInUsecase.swift in Sources */,
 				70C9619F2BE6275300C143E9 /* UsersSearchView.swift in Sources */,
 				7060BB6C2BDE27F50092B987 /* ExercisePartV.swift in Sources */,
