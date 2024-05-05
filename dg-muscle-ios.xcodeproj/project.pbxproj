@@ -250,6 +250,7 @@
 		707672E32BE64D09002D3FCC /* FriendNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707672E22BE64D09002D3FCC /* FriendNavigation.swift */; };
 		707672E52BE64D20002D3FCC /* FriendCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707672E42BE64D20002D3FCC /* FriendCoordinator.swift */; };
 		707B8FD32ABF207F008ADECE /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B8FD22ABF207F008ADECE /* Authenticator.swift */; };
+		707FF1F62BE74729004FA7C9 /* FriendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FF1F52BE74729004FA7C9 /* FriendData.swift */; };
 		7083E6B42ABF065F007D43CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */; };
 		7083E6B72ABF06B7007D43CE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6B62ABF06B7007D43CE /* FirebaseAnalytics */; };
 		7083E6B92ABF06B7007D43CE /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 7083E6B82ABF06B7007D43CE /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -527,6 +528,7 @@
 		707672E22BE64D09002D3FCC /* FriendNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendNavigation.swift; sourceTree = "<group>"; };
 		707672E42BE64D20002D3FCC /* FriendCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCoordinator.swift; sourceTree = "<group>"; };
 		707B8FD22ABF207F008ADECE /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
+		707FF1F52BE74729004FA7C9 /* FriendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendData.swift; sourceTree = "<group>"; };
 		7083E6B32ABF065F007D43CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7083E6C52ABF0EC9007D43CE /* AppleAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthCoordinator.swift; sourceTree = "<group>"; };
 		708508C22AF625EE0035BB9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -1249,6 +1251,7 @@
 		70B105432BE6815100F01BFC /* friend */ = {
 			isa = PBXGroup;
 			children = (
+				707FF1F52BE74729004FA7C9 /* FriendData.swift */,
 				70B105442BE6816600F01BFC /* FriendRequestData.swift */,
 			);
 			path = friend;
@@ -1716,6 +1719,7 @@
 				7060BB5A2BDE1F560092B987 /* ExerciseManageViewModel.swift in Sources */,
 				704E5C7F2BE2697700365AB3 /* HeatmapRepositoryData.swift in Sources */,
 				7005270C2BDE0DE3007838BA /* HistorySectionViewV2.swift in Sources */,
+				707FF1F62BE74729004FA7C9 /* FriendData.swift in Sources */,
 				700526EC2BDDFB87007838BA /* GetTodayHistoryUsecase.swift in Sources */,
 				029B47292BDF8851006DC8BD /* HistoryFormSetsView.swift in Sources */,
 				70A85AA62BDE6E8600537071 /* GetUserUsecase.swift in Sources */,

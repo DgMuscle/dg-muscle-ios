@@ -47,7 +47,8 @@ final class FriendRepositoryData: FriendRepository {
     
     func updateFriends() {
         Task {
-            self._friends = try await getFriendsFromServer()
+            let users = UserRepositoryData.shared.users
+            self._friends = try await getFriendsFromServer(users: users)
         }
     }
     
@@ -87,10 +88,6 @@ final class FriendRepositoryData: FriendRepository {
             .removeDuplicates()
             .sink { isLogin in
                 if isLogin {
-                    Task {
-                        self._friends = try await self.getFriendsFromServer()
-                    }
-                    
                     self.updateRequests()
                 } else {
                     self._friends = []
@@ -98,11 +95,26 @@ final class FriendRepositoryData: FriendRepository {
                 }
             }
             .store(in: &cancellables)
+        
+        UserRepositoryData
+            .shared
+            .isLoginPublisher.filter({ $0 })
+            .combineLatest(UserRepositoryData.shared.usersPublisher)
+            .receive(on: DispatchQueue.main)
+            .sink { _, users in
+                Task {
+                    let friends = try await self.getFriendsFromServer(users: users)
+                    self._friends = friends
+                }
+            }
+            .store(in: &cancellables)
     }
     
-    private func getFriendsFromServer() async throws -> [UserDomain] {
-        let data: [UserData] = try await APIClient.shared.request(method: .get, url: FunctionsURL.friend(.getfriends))
-        let friends: [UserDomain] = data.map({ $0.domain })
+    private func getFriendsFromServer(users: [UserDomain]) async throws -> [UserDomain] {
+        let data: [FriendData] = try await APIClient.shared.request(method: .get, url: FunctionsURL.friend(.getfriends))
+        let ids: [String] = data.map({ $0.uid })
+        var friends = users
+        friends = friends.filter({ ids.contains($0.uid) })
         return friends
     }
 }
