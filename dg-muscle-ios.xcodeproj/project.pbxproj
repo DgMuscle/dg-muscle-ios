@@ -290,6 +290,8 @@
 		708DB2BD2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708DB2BC2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift */; };
 		708DB2BF2BDD731F00195605 /* HeatmapColorV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708DB2BE2BDD731F00195605 /* HeatmapColorV.swift */; };
 		709DF4F02BE0E70200C70390 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709DF4EF2BE0E70200C70390 /* NavigationView.swift */; };
+		70A171AA2BE73049007D625A /* FriendRequestV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171A92BE73049007D625A /* FriendRequestV.swift */; };
+		70A171AC2BE730A4007D625A /* FriendRequestListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171AB2BE730A4007D625A /* FriendRequestListViewModel.swift */; };
 		70A85A822BDE56CB00537071 /* GetHealthInfoUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */; };
 		70A85A862BDE57D300537071 /* HealthInfoV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A852BDE57D300537071 /* HealthInfoV.swift */; };
 		70A85A892BDE589700537071 /* SexV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A882BDE589700537071 /* SexV.swift */; };
@@ -554,6 +556,8 @@
 		708DB2BC2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeHeatmapColorUsecase.swift; sourceTree = "<group>"; };
 		708DB2BE2BDD731F00195605 /* HeatmapColorV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapColorV.swift; sourceTree = "<group>"; };
 		709DF4EF2BE0E70200C70390 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		70A171A92BE73049007D625A /* FriendRequestV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestV.swift; sourceTree = "<group>"; };
+		70A171AB2BE730A4007D625A /* FriendRequestListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestListViewModel.swift; sourceTree = "<group>"; };
 		70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHealthInfoUsecase.swift; sourceTree = "<group>"; };
 		70A85A852BDE57D300537071 /* HealthInfoV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInfoV.swift; sourceTree = "<group>"; };
 		70A85A882BDE589700537071 /* SexV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexV.swift; sourceTree = "<group>"; };
@@ -1001,6 +1005,7 @@
 				70B1053C2BE67A9900F01BFC /* FriendListOptionsView.swift */,
 				707672DA2BE649C4002D3FCC /* FriendListView.swift */,
 				707672D82BE6494D002D3FCC /* FriendListViewModel.swift */,
+				70A171AB2BE730A4007D625A /* FriendRequestListViewModel.swift */,
 			);
 			path = friend;
 			sourceTree = "<group>";
@@ -1025,12 +1030,13 @@
 		70884DD72BDD4D6D0059B22A /* model */ = {
 			isa = PBXGroup;
 			children = (
+				7009E1842BE226E900D9950D /* QuickAction.swift */,
 				70A85A832BDE57B600537071 /* exercise */,
+				70A171A82BE7303A007D625A /* friend */,
 				70A85A872BDE587E00537071 /* health */,
 				7009E1762BE2218200D9950D /* heatmap */,
 				70884DDB2BDD4E1D0059B22A /* history */,
 				70A85A842BDE57BE00537071 /* user */,
-				7009E1842BE226E900D9950D /* QuickAction.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1132,6 +1138,14 @@
 				70884DFE2BDD5AFE0059B22A /* view */,
 			);
 			path = presenter;
+			sourceTree = "<group>";
+		};
+		70A171A82BE7303A007D625A /* friend */ = {
+			isa = PBXGroup;
+			children = (
+				70A171A92BE73049007D625A /* FriendRequestV.swift */,
+			);
+			path = friend;
 			sourceTree = "<group>";
 		};
 		70A85A832BDE57B600537071 /* exercise */ = {
@@ -1812,6 +1826,7 @@
 				7060BB502BDE1AF90092B987 /* ExerciseSectionsViewModel.swift in Sources */,
 				70884DF12BDD52580059B22A /* HealthRepositoryDomain.swift in Sources */,
 				70884DED2BDD52000059B22A /* HeightData.swift in Sources */,
+				70A171AC2BE730A4007D625A /* FriendRequestListViewModel.swift in Sources */,
 				70D4D2822BE1E7D800B87654 /* PreviousRecordHistoryView.swift in Sources */,
 				707016392BDD2DE90025C624 /* ExerciseSetData.swift in Sources */,
 				70884DFD2BDD59620059B22A /* HistoryMetaDataV.swift in Sources */,
@@ -1827,6 +1842,7 @@
 				70884DD22BDD471F0059B22A /* ExerciseRepository.swift in Sources */,
 				70884DE42BDD511A0059B22A /* HistoryMetaDataDomain.swift in Sources */,
 				70BC43F62BE0F6B9001020AD /* ContentViewModel.swift in Sources */,
+				70A171AA2BE73049007D625A /* FriendRequestV.swift in Sources */,
 				0292DC592BDF3C24006295FA /* HistoryFormSetsViewModel.swift in Sources */,
 				7060BB6E2BDE288D0092B987 /* ExercisePartsSectionView.swift in Sources */,
 				7060BB522BDE1B100092B987 /* ExerciseSectionV.swift in Sources */,
