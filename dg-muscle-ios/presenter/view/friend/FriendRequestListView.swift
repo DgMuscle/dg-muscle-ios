@@ -12,48 +12,73 @@ struct FriendRequestListView: View {
     @StateObject var viewModel: FriendRequestListViewModel
     
     var body: some View {
-        List {
-            Section("Requests") {
-                ForEach(viewModel.requests, id: \.self) { request in
-                    VStack {
-                        HStack {
-                            if let profileUrl = request.sender?.photoURL {
-                                let size: CGFloat = 45
-                                KFImage(profileUrl)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .clipShape(Circle())
-                                    .frame(width: size, height: size)
+        VStack {
+            VStack {
+                if let successMessage = viewModel.successMessage {
+                    BannerSuccessView(message: successMessage)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                viewModel.successMessage = nil
+                            }
+                        }
+                }
+                
+                if let errorMessage = viewModel.errorMessage {
+                    BannerErrorMessageView(errorMessage: errorMessage)
+                }
+                
+                if viewModel.loading {
+                    BannerLoadingView(loading: $viewModel.loading)
+                }
+            }.padding(.horizontal)
+            
+            List {
+                Section("Requests") {
+                    ForEach(viewModel.requests, id: \.self) { request in
+                        VStack {
+                            HStack {
+                                if let profileUrl = request.sender?.photoURL {
+                                    let size: CGFloat = 40
+                                    KFImage(profileUrl)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .clipShape(Circle())
+                                        .frame(width: size, height: size)
+                                }
+                                
+                                Text(request.sender?.displayName ?? "Don't have display name")
+                                    .font(.callout)
+                                
+                                Spacer()
+                                
+                                Button {
+                                    viewModel.accept(request: request)
+                                } label: {
+                                    Text("Accept").fontWeight(.bold)
+                                }
+                                .buttonStyle(.borderless)
+                                
+                                Button {
+                                    viewModel.refuse(request: request)
+                                } label: {
+                                    Text("Refuse").foregroundStyle(.secondary)
+                                }
+                                .buttonStyle(.borderless)
                             }
                             
-                            Text(request.sender?.displayName ?? "Don't have display name")
-                            
-                            Spacer()
-                            
-                            Button {
-                                viewModel.accept(request: request)
-                            } label: {
-                                Text("Accept")
+                            HStack {
+                                Spacer()
+                                Text(request.createdAtString).foregroundStyle(.secondary).font(.caption)
                             }
-                            .buttonStyle(.borderless)
-                            
-                            Button {
-                                viewModel.refuse(request: request)
-                            } label: {
-                                Text("Refuse")
-                            }
-                            .buttonStyle(.borderless)
                         }
                         
-                        HStack {
-                            Spacer()
-                            Text(request.createdAtString)
-                        }
                     }
-                    
                 }
             }
         }
+        .animation(.default, value: viewModel.successMessage)
+        .animation(.default, value: viewModel.errorMessage)
+        .animation(.default, value: viewModel.loading)
         .scrollIndicators(.hidden)
     }
 }

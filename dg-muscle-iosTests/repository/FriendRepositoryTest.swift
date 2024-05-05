@@ -52,7 +52,8 @@ final class FriendRepositoryTest: FriendRepository {
         
         _requests = [
             .init(fromId: "56mGcK9Nm5cVcUk8vxW5h9jIQcA2", createdAt: date1),
-            .init(fromId: "5cLTF5EVsMdtOgYpl6RQKi9xVCE3", createdAt: date2)
+            .init(fromId: "5cLTF5EVsMdtOgYpl6RQKi9xVCE3", createdAt: date2),
+            .init(fromId: "uid", createdAt: date2),
         ]
     }
     
