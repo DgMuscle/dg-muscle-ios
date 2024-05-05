@@ -11,6 +11,11 @@ struct FriendRequestV: Hashable {
     let fromId: String
     let createdAt: Date
     var sender: UserV? = nil
+    var createdAtString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d MMM y"
+        return dateFormatter.string(from: createdAt)
+    }
     
     init(from: FriendRequestDomain) {
         fromId = from.fromId
