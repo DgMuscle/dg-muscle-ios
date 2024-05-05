@@ -54,7 +54,11 @@ final class UserRepositoryTest: UserRepository {
     }
     
     func get(id: String) async throws -> UserDomain {
-        throw ErrorData.unknown
+        if let user = users.first(where: { $0.uid == id }) {
+            return user
+        } else {
+            throw ErrorTest()
+        }
     }
     
     private func bind() {

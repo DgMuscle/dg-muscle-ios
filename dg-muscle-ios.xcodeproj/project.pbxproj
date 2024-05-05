@@ -294,6 +294,8 @@
 		70A171AC2BE730A4007D625A /* FriendRequestListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171AB2BE730A4007D625A /* FriendRequestListViewModel.swift */; };
 		70A171AE2BE7330E007D625A /* FriendRequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171AD2BE7330E007D625A /* FriendRequestListView.swift */; };
 		70A171B02BE733D6007D625A /* GetUserFromUserIdUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171AF2BE733D6007D625A /* GetUserFromUserIdUsecase.swift */; };
+		70A171B32BE739B4007D625A /* ErrorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171B22BE739B4007D625A /* ErrorTest.swift */; };
+		70A171B42BE739DA007D625A /* ErrorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171B22BE739B4007D625A /* ErrorTest.swift */; };
 		70A85A822BDE56CB00537071 /* GetHealthInfoUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */; };
 		70A85A862BDE57D300537071 /* HealthInfoV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A852BDE57D300537071 /* HealthInfoV.swift */; };
 		70A85A892BDE589700537071 /* SexV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A882BDE589700537071 /* SexV.swift */; };
@@ -562,6 +564,7 @@
 		70A171AB2BE730A4007D625A /* FriendRequestListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestListViewModel.swift; sourceTree = "<group>"; };
 		70A171AD2BE7330E007D625A /* FriendRequestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestListView.swift; sourceTree = "<group>"; };
 		70A171AF2BE733D6007D625A /* GetUserFromUserIdUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserFromUserIdUsecase.swift; sourceTree = "<group>"; };
+		70A171B22BE739B4007D625A /* ErrorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTest.swift; sourceTree = "<group>"; };
 		70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHealthInfoUsecase.swift; sourceTree = "<group>"; };
 		70A85A852BDE57D300537071 /* HealthInfoV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInfoV.swift; sourceTree = "<group>"; };
 		70A85A882BDE589700537071 /* SexV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexV.swift; sourceTree = "<group>"; };
@@ -1154,6 +1157,14 @@
 			path = friend;
 			sourceTree = "<group>";
 		};
+		70A171B12BE739AF007D625A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				70A171B22BE739B4007D625A /* ErrorTest.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		70A85A832BDE57B600537071 /* exercise */ = {
 			isa = PBXGroup;
 			children = (
@@ -1208,6 +1219,7 @@
 		70A898BB2B6FA0B1009B16FF /* dg-muscle-iosTests */ = {
 			isa = PBXGroup;
 			children = (
+				70A171B12BE739AF007D625A /* model */,
 				700526C02BDDE998007838BA /* repository */,
 				70EFAE8F2BE139CD0011132F /* usecase */,
 				701764942BE08EED00B501B7 /* util */,
@@ -1605,6 +1617,7 @@
 				700526C22BDDE9AA007838BA /* HistoryRepositoryTest.swift in Sources */,
 				7009E1C82BE22BB900D9950D /* AppleSignInUsecase.swift in Sources */,
 				70EFAE8E2BE139B90011132F /* GetVolumesGroupedByPartUsecase.swift in Sources */,
+				70A171B32BE739B4007D625A /* ErrorTest.swift in Sources */,
 				7009E1CE2BE22BC400D9950D /* GetHealthInfoUsecase.swift in Sources */,
 				7009E1D82BE22BD500D9950D /* SignOutUsecase.swift in Sources */,
 				70884E062BDD618C0059B22A /* SubscribeGroupedHistoriesUsecase.swift in Sources */,
@@ -1785,6 +1798,7 @@
 				70B105492BE6846E00F01BFC /* SubscribeFriendRequestsUsecase.swift in Sources */,
 				7060BB5C2BDE1F7F0092B987 /* DeleteExerciseUsecase.swift in Sources */,
 				7070162F2BDD2CAD0025C624 /* HistoryRepository.swift in Sources */,
+				70A171B42BE739DA007D625A /* ErrorTest.swift in Sources */,
 				70BC43FE2BE0FD48001020AD /* AppleAuthCoordinatorGeneratorImpl.swift in Sources */,
 				70884E082BDD632E0059B22A /* SubscribeMetaDatasMapUsecase.swift in Sources */,
 				708DB2B52BDD6B0100195605 /* HeatmapColorData.swift in Sources */,

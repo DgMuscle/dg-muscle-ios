@@ -66,8 +66,12 @@ final class UserRepositoryData: UserRepository {
     }
     
     func get(id: String) async throws -> UserDomain {
-        let data: UserData = try await APIClient.shared.request(url: FunctionsURL.user(.getprofilefromuid) + "?uid=\(id)")
-        return data.domain
+        if let user = self.users.first(where: { $0.uid == id }) {
+            return user
+        } else {
+            let data: UserData = try await APIClient.shared.request(url: FunctionsURL.user(.getprofilefromuid) + "?uid=\(id)")
+            return data.domain
+        }
     }
     
     private func postProfile(id: String, displayName: String?, photoURL: String?, fcmtoken: String?) async throws {
