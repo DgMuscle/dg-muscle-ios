@@ -11,6 +11,8 @@ import Combine
 protocol HistoryRepository {
     var histories: [HistoryDomain] { get }
     var historiesPublisher: AnyPublisher<[HistoryDomain], Never> { get }
+    
     func post(data: HistoryDomain) async throws
     func delete(data: HistoryDomain) async throws
+    func get(uid: String) async throws -> [HistoryDomain]
 }
