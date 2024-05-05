@@ -318,6 +318,9 @@
         }
       }
     },
+    "Accept" : {
+
+    },
     "account" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -518,9 +521,6 @@
     "Favorite" : {
 
     },
-    "Friend Request List View" : {
-
-    },
     "Friends" : {
 
     },
@@ -607,6 +607,9 @@
     "Profile" : {
 
     },
+    "Refuse" : {
+
+    },
     "remove account" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -617,6 +620,9 @@
           }
         }
       }
+    },
+    "Requests" : {
+
     },
     "save" : {
       "extractionState" : "manual",

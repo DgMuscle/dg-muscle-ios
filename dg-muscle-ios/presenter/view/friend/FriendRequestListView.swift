@@ -89,6 +89,7 @@ struct FriendRequestListView: View {
     return FriendRequestListView(viewModel: .init(subscribeFriendRequestsUsecase: .init(friendRepository: friendRepository),
                                                   acceptFriendUsecase: .init(friendRepository: friendRepository),
                                                   refuseFriendUsecase: .init(friendRepository: friendRepository),
-                                                  getUserFromUserIdUsecase: .init(userRepository: userRepository)))
+                                                  getUserFromUserIdUsecase: .init(userRepository: userRepository), 
+                                                  updateFriendsUsecase: .init(friendRepository: friendRepository)))
     .preferredColorScheme(.dark)
 }
