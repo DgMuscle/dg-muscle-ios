@@ -11,9 +11,10 @@ import Combine
 final class FriendHistoryListViewModel: ObservableObject {
     
     @Published var sections: [HistorySectionV] = []
-    
+    private let getFriendGroupedHistoriesUsecase: GetFriendGroupedHistoriesUsecase
     private var cancellables = Set<AnyCancellable>()
-    init() {
+    init(getFriendGroupedHistoriesUsecase: GetFriendGroupedHistoriesUsecase) {
+        self.getFriendGroupedHistoriesUsecase = getFriendGroupedHistoriesUsecase
         bind()
     }
     
