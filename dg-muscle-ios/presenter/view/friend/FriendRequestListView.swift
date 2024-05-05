@@ -80,6 +80,7 @@ struct FriendRequestListView: View {
         .animation(.default, value: viewModel.errorMessage)
         .animation(.default, value: viewModel.loading)
         .scrollIndicators(.hidden)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
