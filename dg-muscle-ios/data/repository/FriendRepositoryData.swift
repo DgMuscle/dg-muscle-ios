@@ -41,7 +41,6 @@ final class FriendRepositoryData: FriendRepository {
     }
     
     func updateRequests() {
-        // TODO: Update friend requests when push notification arrived
         Task {
             let data: [FriendRequestData] = try await APIClient.shared.request(method: .get,
                                                                                url: FunctionsURL.friend(.getrequests))
