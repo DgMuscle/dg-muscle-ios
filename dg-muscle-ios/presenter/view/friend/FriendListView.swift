@@ -51,7 +51,7 @@ struct FriendListView: View {
                 HStack {
                     Spacer()
                     FriendListOptionsView(hasRequest: viewModel.hasRequest) {
-                        print("move to request page")
+                        coordinator.friend.requestList()
                     } searchAction: {
                         coordinator.friend.search()
                     }

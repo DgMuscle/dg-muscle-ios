@@ -116,6 +116,12 @@ struct NavigationView: View {
                                                      getMyFriendsUsecase: .init(friendRepository: friendRepository),
                                                      getUserUsecase: .init(userRepository: userRepository),
                                                      postFriendRequestUsecase: .init(friendRepository: friendRepository)))
+                case .requestList:
+                    FriendRequestListView(viewModel: .init(subscribeFriendRequestsUsecase: .init(friendRepository: friendRepository),
+                                                           acceptFriendUsecase: .init(friendRepository: friendRepository),
+                                                           refuseFriendUsecase: .init(friendRepository: friendRepository),
+                                                           getUserFromUserIdUsecase: .init(userRepository: userRepository),
+                                                           updateFriendsUsecase: .init(friendRepository: friendRepository)))
                 }
             }
         }
