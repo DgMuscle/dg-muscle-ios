@@ -14,7 +14,9 @@ final class GetFriendGroupedHistoriesUsecase {
         self.historyRepository = historyRepository
     }
     
-    func implement() {
-        
+    func implement(friendId: String) async throws -> [[HistoryDomain]] {
+        let histories = try await historyRepository.get(uid: friendId)
+        let grouped = GetGroupedHistoriesUsecase().implement(histories: histories)
+        return grouped
     }
 }
