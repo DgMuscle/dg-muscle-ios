@@ -53,6 +53,14 @@ final class UserRepositoryTest: UserRepository {
         return nil
     }
     
+    func get(id: String) async throws -> UserDomain {
+        if let user = users.first(where: { $0.uid == id }) {
+            return user
+        } else {
+            throw ErrorTest()
+        }
+    }
+    
     private func bind() {
         $_user
             .sink { user in

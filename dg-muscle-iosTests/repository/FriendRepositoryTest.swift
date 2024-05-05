@@ -25,8 +25,19 @@ final class FriendRepositoryTest: FriendRepository {
     
     func updateRequests() { }
     
-    func accept(request: FriendRequestDomain) async throws { }
-    func refuse(request: FriendRequestDomain) async throws { }
+    func updateFriends() { }
+    
+    func accept(request: FriendRequestDomain) async throws {
+        if let index = requests.firstIndex(where: { $0.fromId == request.fromId }) {
+            self._requests.remove(at: index)
+        }
+    }
+    
+    func refuse(request: FriendRequestDomain) async throws {
+        if let index = requests.firstIndex(where: { $0.fromId == request.fromId }) {
+            self._requests.remove(at: index)
+        }
+    }
     
     private func prepareMockData() {
         _friends = [
@@ -42,8 +53,9 @@ final class FriendRepositoryTest: FriendRepository {
         let date2 = dateFormatter.date(from: "20240502")!
         
         _requests = [
-            .init(fromId: "1", createdAt: date1),
-            .init(fromId: "2", createdAt: date2)
+            .init(fromId: "56mGcK9Nm5cVcUk8vxW5h9jIQcA2", createdAt: date1),
+            .init(fromId: "5cLTF5EVsMdtOgYpl6RQKi9xVCE3", createdAt: date2),
+            .init(fromId: "uid", createdAt: date2),
         ]
     }
     

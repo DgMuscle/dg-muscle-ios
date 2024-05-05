@@ -50,8 +50,8 @@ struct FriendListView: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    FriendListOptionsView(hasRequest: false) {
-                        print("move to request page")
+                    FriendListOptionsView(hasRequest: viewModel.hasRequest) {
+                        coordinator.friend.requestList()
                     } searchAction: {
                         coordinator.friend.search()
                     }
@@ -63,7 +63,10 @@ struct FriendListView: View {
 
 #Preview {
     let friendRepository: FriendRepository = FriendRepositoryTest()
-    var viewModel: FriendListViewModel = .init(getMyFriendsUsecase: .init(friendRepository: friendRepository))
+    var viewModel: FriendListViewModel = .init(getMyFriendsUsecase: 
+            .init(friendRepository: friendRepository),
+                                               subscribeFriendRequestsUsecase:
+            .init(friendRepository: friendRepository))
     return FriendListView(viewModel: viewModel).preferredColorScheme(.dark)
         .environmentObject(CoordinatorV2(path: .constant(.init())))
 }

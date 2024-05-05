@@ -290,6 +290,13 @@
 		708DB2BD2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708DB2BC2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift */; };
 		708DB2BF2BDD731F00195605 /* HeatmapColorV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708DB2BE2BDD731F00195605 /* HeatmapColorV.swift */; };
 		709DF4F02BE0E70200C70390 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709DF4EF2BE0E70200C70390 /* NavigationView.swift */; };
+		70A171AA2BE73049007D625A /* FriendRequestV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171A92BE73049007D625A /* FriendRequestV.swift */; };
+		70A171AC2BE730A4007D625A /* FriendRequestListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171AB2BE730A4007D625A /* FriendRequestListViewModel.swift */; };
+		70A171AE2BE7330E007D625A /* FriendRequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171AD2BE7330E007D625A /* FriendRequestListView.swift */; };
+		70A171B02BE733D6007D625A /* GetUserFromUserIdUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171AF2BE733D6007D625A /* GetUserFromUserIdUsecase.swift */; };
+		70A171B32BE739B4007D625A /* ErrorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171B22BE739B4007D625A /* ErrorTest.swift */; };
+		70A171B42BE739DA007D625A /* ErrorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171B22BE739B4007D625A /* ErrorTest.swift */; };
+		70A171B62BE74089007D625A /* UpdateFriendsUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171B52BE74089007D625A /* UpdateFriendsUsecase.swift */; };
 		70A85A822BDE56CB00537071 /* GetHealthInfoUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */; };
 		70A85A862BDE57D300537071 /* HealthInfoV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A852BDE57D300537071 /* HealthInfoV.swift */; };
 		70A85A892BDE589700537071 /* SexV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A882BDE589700537071 /* SexV.swift */; };
@@ -554,6 +561,12 @@
 		708DB2BC2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeHeatmapColorUsecase.swift; sourceTree = "<group>"; };
 		708DB2BE2BDD731F00195605 /* HeatmapColorV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapColorV.swift; sourceTree = "<group>"; };
 		709DF4EF2BE0E70200C70390 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		70A171A92BE73049007D625A /* FriendRequestV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestV.swift; sourceTree = "<group>"; };
+		70A171AB2BE730A4007D625A /* FriendRequestListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestListViewModel.swift; sourceTree = "<group>"; };
+		70A171AD2BE7330E007D625A /* FriendRequestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestListView.swift; sourceTree = "<group>"; };
+		70A171AF2BE733D6007D625A /* GetUserFromUserIdUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserFromUserIdUsecase.swift; sourceTree = "<group>"; };
+		70A171B22BE739B4007D625A /* ErrorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTest.swift; sourceTree = "<group>"; };
+		70A171B52BE74089007D625A /* UpdateFriendsUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFriendsUsecase.swift; sourceTree = "<group>"; };
 		70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHealthInfoUsecase.swift; sourceTree = "<group>"; };
 		70A85A852BDE57D300537071 /* HealthInfoV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInfoV.swift; sourceTree = "<group>"; };
 		70A85A882BDE589700537071 /* SexV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexV.swift; sourceTree = "<group>"; };
@@ -691,6 +704,7 @@
 				70A85AA32BDE6D8500537071 /* DeleteUserProfileImageUsecase.swift */,
 				70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */,
 				70BC43F72BE0F700001020AD /* GetIsLoginUsecase.swift */,
+				70A171AF2BE733D6007D625A /* GetUserFromUserIdUsecase.swift */,
 				70A85AA52BDE6E8600537071 /* GetUserUsecase.swift */,
 				70A85A992BDE637700537071 /* PostUserDisplayNameUsecase.swift */,
 				70A85A972BDE625800537071 /* PostUserProfileImageUsecase.swift */,
@@ -1001,6 +1015,8 @@
 				70B1053C2BE67A9900F01BFC /* FriendListOptionsView.swift */,
 				707672DA2BE649C4002D3FCC /* FriendListView.swift */,
 				707672D82BE6494D002D3FCC /* FriendListViewModel.swift */,
+				70A171AD2BE7330E007D625A /* FriendRequestListView.swift */,
+				70A171AB2BE730A4007D625A /* FriendRequestListViewModel.swift */,
 			);
 			path = friend;
 			sourceTree = "<group>";
@@ -1025,12 +1041,13 @@
 		70884DD72BDD4D6D0059B22A /* model */ = {
 			isa = PBXGroup;
 			children = (
+				7009E1842BE226E900D9950D /* QuickAction.swift */,
 				70A85A832BDE57B600537071 /* exercise */,
+				70A171A82BE7303A007D625A /* friend */,
 				70A85A872BDE587E00537071 /* health */,
 				7009E1762BE2218200D9950D /* heatmap */,
 				70884DDB2BDD4E1D0059B22A /* history */,
 				70A85A842BDE57BE00537071 /* user */,
-				7009E1842BE226E900D9950D /* QuickAction.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1134,6 +1151,22 @@
 			path = presenter;
 			sourceTree = "<group>";
 		};
+		70A171A82BE7303A007D625A /* friend */ = {
+			isa = PBXGroup;
+			children = (
+				70A171A92BE73049007D625A /* FriendRequestV.swift */,
+			);
+			path = friend;
+			sourceTree = "<group>";
+		};
+		70A171B12BE739AF007D625A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				70A171B22BE739B4007D625A /* ErrorTest.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		70A85A832BDE57B600537071 /* exercise */ = {
 			isa = PBXGroup;
 			children = (
@@ -1188,6 +1221,7 @@
 		70A898BB2B6FA0B1009B16FF /* dg-muscle-iosTests */ = {
 			isa = PBXGroup;
 			children = (
+				70A171B12BE739AF007D625A /* model */,
 				700526C02BDDE998007838BA /* repository */,
 				70EFAE8F2BE139CD0011132F /* usecase */,
 				701764942BE08EED00B501B7 /* util */,
@@ -1261,6 +1295,7 @@
 				70C961A02BE62E3600C143E9 /* PostFriendRequestUsecase.swift */,
 				70B1054C2BE6851800F01BFC /* RefuseFriendUsecase.swift */,
 				70B105482BE6846E00F01BFC /* SubscribeFriendRequestsUsecase.swift */,
+				70A171B52BE74089007D625A /* UpdateFriendsUsecase.swift */,
 			);
 			path = friend;
 			sourceTree = "<group>";
@@ -1585,6 +1620,7 @@
 				700526C22BDDE9AA007838BA /* HistoryRepositoryTest.swift in Sources */,
 				7009E1C82BE22BB900D9950D /* AppleSignInUsecase.swift in Sources */,
 				70EFAE8E2BE139B90011132F /* GetVolumesGroupedByPartUsecase.swift in Sources */,
+				70A171B32BE739B4007D625A /* ErrorTest.swift in Sources */,
 				7009E1CE2BE22BC400D9950D /* GetHealthInfoUsecase.swift in Sources */,
 				7009E1D82BE22BD500D9950D /* SignOutUsecase.swift in Sources */,
 				70884E062BDD618C0059B22A /* SubscribeGroupedHistoriesUsecase.swift in Sources */,
@@ -1710,6 +1746,7 @@
 				7060BB762BDE2E370092B987 /* EditExerciseUsecase.swift in Sources */,
 				70B1054B2BE684C300F01BFC /* AcceptFriendUsecase.swift in Sources */,
 				700526E32BDDF791007838BA /* HealthRepositoryTest2.swift in Sources */,
+				70A171B02BE733D6007D625A /* GetUserFromUserIdUsecase.swift in Sources */,
 				7060BB782BDE2E710092B987 /* ExerciseEditViewModel.swift in Sources */,
 				70BC43FA2BE0F72C001020AD /* SubscribeIsLoginUsecase.swift in Sources */,
 				70B5587C2BE61559009DB8CC /* FriendRepositoryData.swift in Sources */,
@@ -1751,6 +1788,7 @@
 				703A97BD2BCB8514002C0843 /* BannerErrorMessageView.swift in Sources */,
 				02DBEF642BDF5EE000E11D46 /* HistoryFormSetViewModel.swift in Sources */,
 				700526DB2BDDF3C2007838BA /* UserRepositoryTest.swift in Sources */,
+				70A171B62BE74089007D625A /* UpdateFriendsUsecase.swift in Sources */,
 				7060BB662BDE25420092B987 /* ExerciseAdd1View.swift in Sources */,
 				70D4D2842BE1EEF900B87654 /* WebView.swift in Sources */,
 				707672D92BE6494D002D3FCC /* FriendListViewModel.swift in Sources */,
@@ -1764,6 +1802,7 @@
 				70B105492BE6846E00F01BFC /* SubscribeFriendRequestsUsecase.swift in Sources */,
 				7060BB5C2BDE1F7F0092B987 /* DeleteExerciseUsecase.swift in Sources */,
 				7070162F2BDD2CAD0025C624 /* HistoryRepository.swift in Sources */,
+				70A171B42BE739DA007D625A /* ErrorTest.swift in Sources */,
 				70BC43FE2BE0FD48001020AD /* AppleAuthCoordinatorGeneratorImpl.swift in Sources */,
 				70884E082BDD632E0059B22A /* SubscribeMetaDatasMapUsecase.swift in Sources */,
 				708DB2B52BDD6B0100195605 /* HeatmapColorData.swift in Sources */,
@@ -1789,6 +1828,7 @@
 				708DB2BD2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift in Sources */,
 				7070162A2BDD2B0B0025C624 /* RecordDomain.swift in Sources */,
 				700527042BDE0685007838BA /* GetKcalUsecase.swift in Sources */,
+				70A171AE2BE7330E007D625A /* FriendRequestListView.swift in Sources */,
 				70B558892BE61994009DB8CC /* UsersSearchViewModel.swift in Sources */,
 				700527062BDE08AB007838BA /* HistoryItemView.swift in Sources */,
 				70A85A922BDE5CDE00537071 /* HealthInfoView.swift in Sources */,
@@ -1812,6 +1852,7 @@
 				7060BB502BDE1AF90092B987 /* ExerciseSectionsViewModel.swift in Sources */,
 				70884DF12BDD52580059B22A /* HealthRepositoryDomain.swift in Sources */,
 				70884DED2BDD52000059B22A /* HeightData.swift in Sources */,
+				70A171AC2BE730A4007D625A /* FriendRequestListViewModel.swift in Sources */,
 				70D4D2822BE1E7D800B87654 /* PreviousRecordHistoryView.swift in Sources */,
 				707016392BDD2DE90025C624 /* ExerciseSetData.swift in Sources */,
 				70884DFD2BDD59620059B22A /* HistoryMetaDataV.swift in Sources */,
@@ -1827,6 +1868,7 @@
 				70884DD22BDD471F0059B22A /* ExerciseRepository.swift in Sources */,
 				70884DE42BDD511A0059B22A /* HistoryMetaDataDomain.swift in Sources */,
 				70BC43F62BE0F6B9001020AD /* ContentViewModel.swift in Sources */,
+				70A171AA2BE73049007D625A /* FriendRequestV.swift in Sources */,
 				0292DC592BDF3C24006295FA /* HistoryFormSetsViewModel.swift in Sources */,
 				7060BB6E2BDE288D0092B987 /* ExercisePartsSectionView.swift in Sources */,
 				7060BB522BDE1B100092B987 /* ExerciseSectionV.swift in Sources */,

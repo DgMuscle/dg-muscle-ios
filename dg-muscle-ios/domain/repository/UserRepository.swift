@@ -22,4 +22,5 @@ protocol UserRepository {
     func updateUser(photoURL: URL?) async throws
     func withDrawal() async -> Error?
     func set(fcmtoken: String)
+    func get(id: String) async throws -> UserDomain
 }

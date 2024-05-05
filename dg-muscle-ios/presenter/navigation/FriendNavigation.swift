@@ -11,6 +11,7 @@ struct FriendNavigation: Identifiable, Hashable {
     enum Name: String {
         case list
         case search
+        case requestList
     }
     
     var id: Int { name.hashValue }
