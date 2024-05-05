@@ -293,6 +293,7 @@
 		70A171AA2BE73049007D625A /* FriendRequestV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171A92BE73049007D625A /* FriendRequestV.swift */; };
 		70A171AC2BE730A4007D625A /* FriendRequestListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171AB2BE730A4007D625A /* FriendRequestListViewModel.swift */; };
 		70A171AE2BE7330E007D625A /* FriendRequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171AD2BE7330E007D625A /* FriendRequestListView.swift */; };
+		70A171B02BE733D6007D625A /* GetUserFromUserIdUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171AF2BE733D6007D625A /* GetUserFromUserIdUsecase.swift */; };
 		70A85A822BDE56CB00537071 /* GetHealthInfoUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */; };
 		70A85A862BDE57D300537071 /* HealthInfoV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A852BDE57D300537071 /* HealthInfoV.swift */; };
 		70A85A892BDE589700537071 /* SexV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A882BDE589700537071 /* SexV.swift */; };
@@ -560,6 +561,7 @@
 		70A171A92BE73049007D625A /* FriendRequestV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestV.swift; sourceTree = "<group>"; };
 		70A171AB2BE730A4007D625A /* FriendRequestListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestListViewModel.swift; sourceTree = "<group>"; };
 		70A171AD2BE7330E007D625A /* FriendRequestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestListView.swift; sourceTree = "<group>"; };
+		70A171AF2BE733D6007D625A /* GetUserFromUserIdUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserFromUserIdUsecase.swift; sourceTree = "<group>"; };
 		70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHealthInfoUsecase.swift; sourceTree = "<group>"; };
 		70A85A852BDE57D300537071 /* HealthInfoV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInfoV.swift; sourceTree = "<group>"; };
 		70A85A882BDE589700537071 /* SexV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexV.swift; sourceTree = "<group>"; };
@@ -697,6 +699,7 @@
 				70A85AA32BDE6D8500537071 /* DeleteUserProfileImageUsecase.swift */,
 				70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */,
 				70BC43F72BE0F700001020AD /* GetIsLoginUsecase.swift */,
+				70A171AF2BE733D6007D625A /* GetUserFromUserIdUsecase.swift */,
 				70A85AA52BDE6E8600537071 /* GetUserUsecase.swift */,
 				70A85A992BDE637700537071 /* PostUserDisplayNameUsecase.swift */,
 				70A85A972BDE625800537071 /* PostUserProfileImageUsecase.swift */,
@@ -1727,6 +1730,7 @@
 				7060BB762BDE2E370092B987 /* EditExerciseUsecase.swift in Sources */,
 				70B1054B2BE684C300F01BFC /* AcceptFriendUsecase.swift in Sources */,
 				700526E32BDDF791007838BA /* HealthRepositoryTest2.swift in Sources */,
+				70A171B02BE733D6007D625A /* GetUserFromUserIdUsecase.swift in Sources */,
 				7060BB782BDE2E710092B987 /* ExerciseEditViewModel.swift in Sources */,
 				70BC43FA2BE0F72C001020AD /* SubscribeIsLoginUsecase.swift in Sources */,
 				70B5587C2BE61559009DB8CC /* FriendRepositoryData.swift in Sources */,

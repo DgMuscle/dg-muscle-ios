@@ -18,14 +18,17 @@ final class FriendRequestListViewModel: ObservableObject {
     private let subscribeFriendRequestsUsecase: SubscribeFriendRequestsUsecase
     private let acceptFriendUsecase: AcceptFriendUsecase
     private let refuseFriendUsecase: RefuseFriendUsecase
+    private let getUserFromUserIdUsecase: GetUserFromUserIdUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(subscribeFriendRequestsUsecase: SubscribeFriendRequestsUsecase,
          acceptFriendUsecase: AcceptFriendUsecase,
-         refuseFriendUsecase: RefuseFriendUsecase) {
+         refuseFriendUsecase: RefuseFriendUsecase,
+         getUserFromUserIdUsecase: GetUserFromUserIdUsecase) {
         self.subscribeFriendRequestsUsecase = subscribeFriendRequestsUsecase
         self.acceptFriendUsecase = acceptFriendUsecase
         self.refuseFriendUsecase = refuseFriendUsecase
+        self.getUserFromUserIdUsecase = getUserFromUserIdUsecase
         bind()
     }
     
@@ -66,7 +69,19 @@ final class FriendRequestListViewModel: ObservableObject {
             .sink { [weak self] requests in
                 guard let self else { return }
                 self.requests = requests.sorted(by: { $0.createdAt > $1.createdAt }).map({ .init(from: $0) })
+                fetchUsers(requests: self.requests)
             }
             .store(in: &cancellables)
+    }
+    
+    private func fetchUsers(requests: [FriendRequestV]) {
+        for (index, request) in requests.enumerated() {
+            Task {
+                let user = try await getUserFromUserIdUsecase.implement(uid: request.fromId)
+                DispatchQueue.main.async { [weak self] in
+                    self?.requests[index].sender = .init(from: user)
+                }
+            }
+        }
     }
 }

@@ -53,6 +53,10 @@ final class UserRepositoryTest: UserRepository {
         return nil
     }
     
+    func get(id: String) async throws -> UserDomain {
+        throw ErrorData.unknown
+    }
+    
     private func bind() {
         $_user
             .sink { user in

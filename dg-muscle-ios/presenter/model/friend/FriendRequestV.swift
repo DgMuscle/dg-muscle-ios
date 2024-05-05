@@ -10,6 +10,7 @@ import Foundation
 struct FriendRequestV: Hashable {
     let fromId: String
     let createdAt: Date
+    var sender: UserV? = nil
     
     init(from: FriendRequestDomain) {
         fromId = from.fromId

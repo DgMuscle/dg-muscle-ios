@@ -65,6 +65,11 @@ final class UserRepositoryData: UserRepository {
         await Authenticator().withDrawal()
     }
     
+    func get(id: String) async throws -> UserDomain {
+        let data: UserData = try await APIClient.shared.request(url: FunctionsURL.user(.getprofilefromuid) + "?uid=\(id)")
+        return data.domain
+    }
+    
     private func postProfile(id: String, displayName: String?, photoURL: String?, fcmtoken: String?) async throws {
         let url = FunctionsURL.user(.postprofile)
         struct Body: Codable {

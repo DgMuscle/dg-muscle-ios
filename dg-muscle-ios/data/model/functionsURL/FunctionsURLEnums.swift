@@ -25,6 +25,7 @@ extension FunctionsURL {
         case getprofiles
         case getprofile
         case postprofile
+        case getprofilefromuid
         
         var value: String {
             return "v4user-\(self.rawValue)"
