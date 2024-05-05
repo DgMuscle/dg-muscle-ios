@@ -292,6 +292,7 @@
 		709DF4F02BE0E70200C70390 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709DF4EF2BE0E70200C70390 /* NavigationView.swift */; };
 		70A171AA2BE73049007D625A /* FriendRequestV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171A92BE73049007D625A /* FriendRequestV.swift */; };
 		70A171AC2BE730A4007D625A /* FriendRequestListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171AB2BE730A4007D625A /* FriendRequestListViewModel.swift */; };
+		70A171AE2BE7330E007D625A /* FriendRequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A171AD2BE7330E007D625A /* FriendRequestListView.swift */; };
 		70A85A822BDE56CB00537071 /* GetHealthInfoUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */; };
 		70A85A862BDE57D300537071 /* HealthInfoV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A852BDE57D300537071 /* HealthInfoV.swift */; };
 		70A85A892BDE589700537071 /* SexV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A85A882BDE589700537071 /* SexV.swift */; };
@@ -558,6 +559,7 @@
 		709DF4EF2BE0E70200C70390 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		70A171A92BE73049007D625A /* FriendRequestV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestV.swift; sourceTree = "<group>"; };
 		70A171AB2BE730A4007D625A /* FriendRequestListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestListViewModel.swift; sourceTree = "<group>"; };
+		70A171AD2BE7330E007D625A /* FriendRequestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestListView.swift; sourceTree = "<group>"; };
 		70A85A812BDE56CB00537071 /* GetHealthInfoUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHealthInfoUsecase.swift; sourceTree = "<group>"; };
 		70A85A852BDE57D300537071 /* HealthInfoV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInfoV.swift; sourceTree = "<group>"; };
 		70A85A882BDE589700537071 /* SexV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexV.swift; sourceTree = "<group>"; };
@@ -1005,6 +1007,7 @@
 				70B1053C2BE67A9900F01BFC /* FriendListOptionsView.swift */,
 				707672DA2BE649C4002D3FCC /* FriendListView.swift */,
 				707672D82BE6494D002D3FCC /* FriendListViewModel.swift */,
+				70A171AD2BE7330E007D625A /* FriendRequestListView.swift */,
 				70A171AB2BE730A4007D625A /* FriendRequestListViewModel.swift */,
 			);
 			path = friend;
@@ -1803,6 +1806,7 @@
 				708DB2BD2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift in Sources */,
 				7070162A2BDD2B0B0025C624 /* RecordDomain.swift in Sources */,
 				700527042BDE0685007838BA /* GetKcalUsecase.swift in Sources */,
+				70A171AE2BE7330E007D625A /* FriendRequestListView.swift in Sources */,
 				70B558892BE61994009DB8CC /* UsersSearchViewModel.swift in Sources */,
 				700527062BDE08AB007838BA /* HistoryItemView.swift in Sources */,
 				70A85A922BDE5CDE00537071 /* HealthInfoView.swift in Sources */,
