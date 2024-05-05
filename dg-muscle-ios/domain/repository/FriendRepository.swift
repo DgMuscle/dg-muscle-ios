@@ -16,6 +16,7 @@ protocol FriendRepository {
     
     func postRequest(userId: String) async throws
     func updateRequests()
+    func updateFriends()
     func accept(request: FriendRequestDomain) async throws
     func refuse(request: FriendRequestDomain) async throws
 }

@@ -9,10 +9,6 @@ import Foundation
 import Combine
 
 final class FriendRepositoryData: FriendRepository {
-    
-    
-    
-    
     static let shared = FriendRepositoryData()
     var friends: [UserDomain] { _friends }
     var friendsPublisher: AnyPublisher<[UserDomain], Never> { $_friends.eraseToAnyPublisher() }
@@ -46,6 +42,12 @@ final class FriendRepositoryData: FriendRepository {
                                                                                url: FunctionsURL.friend(.getrequests))
             
             self._requests = data.map({ $0.domain })
+        }
+    }
+    
+    func updateFriends() {
+        Task {
+            self._friends = try await getFriendsFromServer()
         }
     }
     

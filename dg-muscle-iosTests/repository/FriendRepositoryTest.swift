@@ -25,6 +25,8 @@ final class FriendRepositoryTest: FriendRepository {
     
     func updateRequests() { }
     
+    func updateFriends() { }
+    
     func accept(request: FriendRequestDomain) async throws {
         if let index = requests.firstIndex(where: { $0.fromId == request.fromId }) {
             self._requests.remove(at: index)
