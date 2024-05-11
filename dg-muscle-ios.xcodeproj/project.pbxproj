@@ -163,6 +163,9 @@
 		702375542BEF8E960069DD57 /* GenerateHeatmapFromHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375532BEF8E960069DD57 /* GenerateHeatmapFromHistoryUsecase.swift */; };
 		702375552BEF8F200069DD57 /* GenerateHeatmapFromHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375532BEF8E960069DD57 /* GenerateHeatmapFromHistoryUsecase.swift */; };
 		702375562BEF8F210069DD57 /* GenerateHeatmapFromHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375532BEF8E960069DD57 /* GenerateHeatmapFromHistoryUsecase.swift */; };
+		702375582BEF8FD10069DD57 /* GetHistoriesFromUidUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375572BEF8FD10069DD57 /* GetHistoriesFromUidUsecase.swift */; };
+		702375592BEF90080069DD57 /* GetHistoriesFromUidUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375572BEF8FD10069DD57 /* GetHistoriesFromUidUsecase.swift */; };
+		7023755A2BEF90090069DD57 /* GetHistoriesFromUidUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375572BEF8FD10069DD57 /* GetHistoriesFromUidUsecase.swift */; };
 		70240BE72ADC1FF800B87A79 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70240BE62ADC1FF800B87A79 /* WidgetKit.framework */; };
 		70240BE92ADC1FF800B87A79 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70240BE82ADC1FF800B87A79 /* SwiftUI.framework */; };
 		70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70240BEB2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift */; };
@@ -463,6 +466,7 @@
 		701764922BE0884A00B501B7 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		701764952BE08EFB00B501B7 /* AuthenticatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorTest.swift; sourceTree = "<group>"; };
 		702375532BEF8E960069DD57 /* GenerateHeatmapFromHistoryUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateHeatmapFromHistoryUsecase.swift; sourceTree = "<group>"; };
+		702375572BEF8FD10069DD57 /* GetHistoriesFromUidUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHistoriesFromUidUsecase.swift; sourceTree = "<group>"; };
 		70240BE52ADC1FF800B87A79 /* dg-muscle-ios-widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "dg-muscle-ios-widgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70240BE62ADC1FF800B87A79 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		70240BE82ADC1FF800B87A79 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -1155,6 +1159,7 @@
 				700526FB2BDE03A8007838BA /* GetDayUsecase.swift */,
 				707FF1FE2BE74DE1004FA7C9 /* GetFriendGroupedHistoriesUsecase.swift */,
 				707FF1FA2BE74D38004FA7C9 /* GetGroupedHistoriesUsecase.swift */,
+				702375572BEF8FD10069DD57 /* GetHistoriesFromUidUsecase.swift */,
 				700527032BDE0685007838BA /* GetKcalUsecase.swift */,
 				700527012BDE051B007838BA /* GetNaturalDurationUsecase.swift */,
 				700526FF2BDE0422007838BA /* GetPartsUsecase.swift */,
@@ -1573,6 +1578,7 @@
 				70EC67552BE230D30049E98F /* RecordData.swift in Sources */,
 				7009E1A72BE22B6B00D9950D /* HistoryDomain.swift in Sources */,
 				7009E1BB2BE22BA000D9950D /* GetPartsUsecase.swift in Sources */,
+				702375592BEF90080069DD57 /* GetHistoriesFromUidUsecase.swift in Sources */,
 				7009E1BD2BE22BA300D9950D /* GetPreviousRecordUsecase.swift in Sources */,
 				7057B2972BDE78E300A1418D /* AuthenticatorInterface.swift in Sources */,
 				7009E19B2BE22B3600D9950D /* HistoryRepository.swift in Sources */,
@@ -1648,6 +1654,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7023755A2BEF90090069DD57 /* GetHistoriesFromUidUsecase.swift in Sources */,
 				706D6A7D2BE0E4DF000A0324 /* AppleAuthCoordinatorInterface.swift in Sources */,
 				700526C22BDDE9AA007838BA /* HistoryRepositoryTest.swift in Sources */,
 				7009E1C82BE22BB900D9950D /* AppleSignInUsecase.swift in Sources */,
@@ -1771,6 +1778,7 @@
 				70C9619F2BE6275300C143E9 /* UsersSearchView.swift in Sources */,
 				7060BB6C2BDE27F50092B987 /* ExercisePartV.swift in Sources */,
 				7005270E2BDE1128007838BA /* DeleteHistoryUsecase.swift in Sources */,
+				702375582BEF8FD10069DD57 /* GetHistoriesFromUidUsecase.swift in Sources */,
 				7070164D2BDD3DEE0025C624 /* UserData.swift in Sources */,
 				700526CE2BDDED90007838BA /* HeatMap.swift in Sources */,
 				709DF4F02BE0E70200C70390 /* NavigationView.swift in Sources */,
