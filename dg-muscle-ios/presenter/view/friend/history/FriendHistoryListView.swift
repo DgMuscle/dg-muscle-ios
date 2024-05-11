@@ -60,7 +60,7 @@ struct FriendHistoryListView: View {
     let date = dateFormatter.date(from: "20240415")!
     
     return FriendHistoryListView(viewModel: .init(friend: friend,
-                                                  getFriendGroupedHistoriesUsecase: .init(historyRepository: historyRepository),
+                                                  getFriendGroupedHistoriesUsecase: .init(friendRepository: friendRepository),
                                                   getHistoriesFromUidUsecase: .init(friendRepository: friendRepository),
                                                   generateHeatmapFromHistoryUsecase: .init(today: date),
                                                   getFriendExercisesUsecase: .init(friendRepository: friendRepository)))

@@ -126,7 +126,7 @@ struct NavigationView: View {
                 case .historyList:
                     if let historyList = navigation.historyList {
                         FriendHistoryListView(viewModel: .init(friend: historyList.0,
-                                                               getFriendGroupedHistoriesUsecase: .init(historyRepository: historyRepository),
+                                                               getFriendGroupedHistoriesUsecase: .init(friendRepository: friendRepository),
                                                                getHistoriesFromUidUsecase: .init(friendRepository: friendRepository),
                                                                generateHeatmapFromHistoryUsecase: .init(today: historyList.1),
                                                                getFriendExercisesUsecase: .init(friendRepository: friendRepository)))
