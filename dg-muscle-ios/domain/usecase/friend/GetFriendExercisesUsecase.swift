@@ -8,13 +8,13 @@
 import Foundation
 
 final class GetFriendExercisesUsecase {
-    let exerciseRepository: ExerciseRepository
+    let friendRepository: FriendRepository
     
-    init(exerciseRepository: ExerciseRepository) {
-        self.exerciseRepository = exerciseRepository
+    init(friendRepository: FriendRepository) {
+        self.friendRepository = friendRepository
     }
     
     func implement(friendId: String) async throws -> [ExerciseDomain] {
-        try await exerciseRepository.get(uid: friendId)
+        try await friendRepository.get(uid: friendId)
     }
 }

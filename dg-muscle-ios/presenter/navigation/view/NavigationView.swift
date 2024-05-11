@@ -128,7 +128,7 @@ struct NavigationView: View {
                                                                getFriendGroupedHistoriesUsecase: .init(historyRepository: historyRepository),
                                                                getHistoriesFromUidUsecase: .init(friendRepository: friendRepository),
                                                                generateHeatmapFromHistoryUsecase: .init(today: historyList.1),
-                                                               getFriendExercisesUsecase: .init(exerciseRepository: exerciseRepository)))
+                                                               getFriendExercisesUsecase: .init(friendRepository: friendRepository)))
                     }
                 }
             }

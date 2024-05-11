@@ -53,6 +53,7 @@ struct FriendHistoryListView: View {
 #Preview {
     let historyRepository: HistoryRepository = HistoryRepositoryTest()
     let exerciseRepository: ExerciseRepository = ExerciseRepositoryTest()
+    let friendRepository = FriendRepositoryTest()
     let friend: UserV = .init(from: FriendRepositoryTest().friends[0])
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyyMMdd"
@@ -60,8 +61,8 @@ struct FriendHistoryListView: View {
     
     return FriendHistoryListView(viewModel: .init(friend: friend,
                                                   getFriendGroupedHistoriesUsecase: .init(historyRepository: historyRepository),
-                                                  getHistoriesFromUidUsecase: .init(friendRepository: FriendRepositoryTest()),
+                                                  getHistoriesFromUidUsecase: .init(friendRepository: friendRepository),
                                                   generateHeatmapFromHistoryUsecase: .init(today: date),
-                                                  getFriendExercisesUsecase: .init(exerciseRepository: exerciseRepository)))
+                                                  getFriendExercisesUsecase: .init(friendRepository: friendRepository)))
     .preferredColorScheme(.dark)
 }
