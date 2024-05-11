@@ -48,13 +48,6 @@ final class FriendRepositoryData: FriendRepository {
         }
     }
     
-    func updateFriends() {
-        Task {
-            let users = UserRepositoryData.shared.users
-            self._friends = try await getFriendsFromServer(users: users)
-        }
-    }
-    
     func accept(request: FriendRequestDomain) async throws {
         struct Body: Codable {
             let friendId: String
@@ -101,6 +94,12 @@ final class FriendRepositoryData: FriendRepository {
         let histories = try await HistoryRepositoryData.shared.get(uid: uid)
         self.histories[uid] = histories
         return histories
+    }
+    
+    func appendFriend(uid: String) {
+        if let user = UserRepositoryData.shared.users.first(where: { $0.uid == uid }) {
+            self._friends.append(user)
+        }
     }
     
     private func bind() {

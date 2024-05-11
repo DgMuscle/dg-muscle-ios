@@ -121,7 +121,8 @@ struct NavigationView: View {
                                                            acceptFriendUsecase: .init(friendRepository: friendRepository),
                                                            refuseFriendUsecase: .init(friendRepository: friendRepository),
                                                            getUserFromUserIdUsecase: .init(userRepository: userRepository),
-                                                           updateFriendsUsecase: .init(friendRepository: friendRepository)))
+                                                           appendFriendUsecase: .init(friendRepository: friendRepository)
+                                                          ))
                 case .historyList:
                     if let historyList = navigation.historyList {
                         FriendHistoryListView(viewModel: .init(friend: historyList.0,
