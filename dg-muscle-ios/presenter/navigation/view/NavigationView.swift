@@ -109,7 +109,7 @@ struct NavigationView: View {
             .navigationDestination(for: FriendNavigation.self) { navigation in
                 switch navigation.name {
                 case .list:
-                    FriendListView(viewModel: .init(getMyFriendsUsecase: .init(friendRepository: friendRepository), 
+                    FriendListView(viewModel: .init(subscribeMyFriendsUsecase: .init(friendRepository: friendRepository),
                                                     subscribeFriendRequestsUsecase: .init(friendRepository: friendRepository)))
                 case .search:
                     UsersSearchView(viewModel: .init(searchUsersByDisplayNameUsecase: .init(userRepository: userRepository),

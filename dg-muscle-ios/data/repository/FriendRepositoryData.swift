@@ -127,6 +127,7 @@ final class FriendRepositoryData: FriendRepository {
         let data: [FriendData] = try await APIClient.shared.request(method: .get, url: FunctionsURL.friend(.getfriends))
         let ids: [String] = data.map({ $0.uid })
         var friends = users
+        
         friends = friends.filter({ ids.contains($0.uid) })
         return friends
     }

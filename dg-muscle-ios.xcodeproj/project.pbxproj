@@ -173,6 +173,7 @@
 		702375642BEF9CE70069DD57 /* FriendHistorySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375632BEF9CE70069DD57 /* FriendHistorySectionView.swift */; };
 		702375662BEF9DF10069DD57 /* GetFriendExercisesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375652BEF9DF00069DD57 /* GetFriendExercisesUsecase.swift */; };
 		702375682BEFADBD0069DD57 /* AppendFriendUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375672BEFADBD0069DD57 /* AppendFriendUsecase.swift */; };
+		7023756A2BEFB0550069DD57 /* SubscribeMyFriendsUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375692BEFB0550069DD57 /* SubscribeMyFriendsUsecase.swift */; };
 		70240BE72ADC1FF800B87A79 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70240BE62ADC1FF800B87A79 /* WidgetKit.framework */; };
 		70240BE92ADC1FF800B87A79 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70240BE82ADC1FF800B87A79 /* SwiftUI.framework */; };
 		70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70240BEB2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift */; };
@@ -480,6 +481,7 @@
 		702375632BEF9CE70069DD57 /* FriendHistorySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendHistorySectionView.swift; sourceTree = "<group>"; };
 		702375652BEF9DF00069DD57 /* GetFriendExercisesUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFriendExercisesUsecase.swift; sourceTree = "<group>"; };
 		702375672BEFADBD0069DD57 /* AppendFriendUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppendFriendUsecase.swift; sourceTree = "<group>"; };
+		702375692BEFB0550069DD57 /* SubscribeMyFriendsUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeMyFriendsUsecase.swift; sourceTree = "<group>"; };
 		70240BE52ADC1FF800B87A79 /* dg-muscle-ios-widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "dg-muscle-ios-widgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70240BE62ADC1FF800B87A79 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		70240BE82ADC1FF800B87A79 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -1348,6 +1350,7 @@
 				70C961A02BE62E3600C143E9 /* PostFriendRequestUsecase.swift */,
 				70B1054C2BE6851800F01BFC /* RefuseFriendUsecase.swift */,
 				70B105482BE6846E00F01BFC /* SubscribeFriendRequestsUsecase.swift */,
+				702375692BEFB0550069DD57 /* SubscribeMyFriendsUsecase.swift */,
 			);
 			path = friend;
 			sourceTree = "<group>";
@@ -1829,6 +1832,7 @@
 				700526F82BDE01EB007838BA /* HistoryItemViewModel.swift in Sources */,
 				7009E17F2BE222CD00D9950D /* GetHeatmapColorUsecase.swift in Sources */,
 				029B472B2BDF88AC006DC8BD /* GetExerciseUsecase.swift in Sources */,
+				7023756A2BEFB0550069DD57 /* SubscribeMyFriendsUsecase.swift in Sources */,
 				707016452BDD31350025C624 /* FileManagerHelperV2.swift in Sources */,
 				70B07AC72BD8D0D800A0E732 /* FunctionsURLEnums.swift in Sources */,
 				7070163F2BDD2F380025C624 /* ResponseData.swift in Sources */,

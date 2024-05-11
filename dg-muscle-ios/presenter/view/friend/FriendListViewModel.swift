@@ -12,14 +12,13 @@ final class FriendListViewModel: ObservableObject {
     @Published var friends: [UserV] = [] 
     @Published var hasRequest: Bool = false
     
-    private let getMyFriendsUsecase: GetMyFriendsUsecase
+    private let subscribeMyFriendsUsecase: SubscribeMyFriendsUsecase
     private let subscribeFriendRequestsUsecase: SubscribeFriendRequestsUsecase
     private var cancellables = Set<AnyCancellable>()
-    init(getMyFriendsUsecase: GetMyFriendsUsecase,
+    init(subscribeMyFriendsUsecase: SubscribeMyFriendsUsecase,
          subscribeFriendRequestsUsecase: SubscribeFriendRequestsUsecase) {
-        self.getMyFriendsUsecase = getMyFriendsUsecase
+        self.subscribeMyFriendsUsecase = subscribeMyFriendsUsecase
         self.subscribeFriendRequestsUsecase = subscribeFriendRequestsUsecase
-        friends = getMyFriendsUsecase.implement().map({ .init(from: $0) })
         
         bind()
     }
@@ -31,6 +30,14 @@ final class FriendListViewModel: ObservableObject {
             .sink { [weak self] requests in
                 guard let self else { return }
                 hasRequest = !requests.isEmpty
+            }
+            .store(in: &cancellables)
+        
+        subscribeMyFriendsUsecase
+            .implement()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] friends in
+                self?.friends = friends.map({ .init(from: $0) })
             }
             .store(in: &cancellables)
     }
