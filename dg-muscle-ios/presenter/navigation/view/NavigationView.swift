@@ -18,6 +18,7 @@ struct NavigationView: View {
     let authenticator: AuthenticatorInterface
     let fileUploader: FileUploaderInterface
     let heatmapRepository: HeatmapRepository
+    let friendRepository: FriendRepository
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
@@ -102,6 +103,33 @@ struct NavigationView: View {
                         ExerciseAdd2View(viewModel: .init(name: name,
                                                           parts: navigation.exerciseParts,
                                                           postExerciseUsecase: .init(exerciseRepository: exerciseRepository)))
+                    }
+                }
+            }
+            .navigationDestination(for: FriendNavigation.self) { navigation in
+                switch navigation.name {
+                case .list:
+                    FriendListView(viewModel: .init(subscribeMyFriendsUsecase: .init(friendRepository: friendRepository),
+                                                    subscribeFriendRequestsUsecase: .init(friendRepository: friendRepository)))
+                case .search:
+                    UsersSearchView(viewModel: .init(searchUsersByDisplayNameUsecase: .init(userRepository: userRepository),
+                                                     getMyFriendsUsecase: .init(friendRepository: friendRepository),
+                                                     getUserUsecase: .init(userRepository: userRepository),
+                                                     postFriendRequestUsecase: .init(friendRepository: friendRepository)))
+                case .requestList:
+                    FriendRequestListView(viewModel: .init(subscribeFriendRequestsUsecase: .init(friendRepository: friendRepository),
+                                                           acceptFriendUsecase: .init(friendRepository: friendRepository),
+                                                           refuseFriendUsecase: .init(friendRepository: friendRepository),
+                                                           getUserFromUserIdUsecase: .init(userRepository: userRepository),
+                                                           appendFriendUsecase: .init(friendRepository: friendRepository)
+                                                          ))
+                case .historyList:
+                    if let historyList = navigation.historyList {
+                        FriendHistoryListView(viewModel: .init(friend: historyList.0,
+                                                               getFriendGroupedHistoriesUsecase: .init(historyRepository: historyRepository),
+                                                               getHistoriesFromUidUsecase: .init(friendRepository: friendRepository),
+                                                               generateHeatmapFromHistoryUsecase: .init(today: historyList.1),
+                                                               getFriendExercisesUsecase: .init(friendRepository: friendRepository)))
                     }
                 }
             }

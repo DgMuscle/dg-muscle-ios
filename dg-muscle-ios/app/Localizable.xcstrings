@@ -49,6 +49,9 @@
         }
       }
     },
+    "%@'s data" : {
+
+    },
     "%@%@ x %lld (%@)" : {
       "localizations" : {
         "en" : {
@@ -318,6 +321,9 @@
         }
       }
     },
+    "Accept" : {
+
+    },
     "account" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -461,6 +467,9 @@
         }
       }
     },
+    "Currently you are seeing" : {
+
+    },
     "Data is unreadable due to absence of exercise data" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -518,6 +527,9 @@
     "Favorite" : {
 
     },
+    "Friends" : {
+
+    },
     "Introduce" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -569,6 +581,16 @@
     "OK" : {
 
     },
+    "On the %@th, %@ worked out" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "On the %1$@th, %2$@ worked out"
+          }
+        }
+      }
+    },
     "On the %@th, I worked out" : {
 
     },
@@ -601,6 +623,9 @@
     "Profile" : {
 
     },
+    "Refuse" : {
+
+    },
     "remove account" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -611,6 +636,9 @@
           }
         }
       }
+    },
+    "Requests" : {
+
     },
     "save" : {
       "extractionState" : "manual",
@@ -647,6 +675,15 @@
       }
     },
     "SAVE" : {
+
+    },
+    "Search user by display name" : {
+
+    },
+    "Searched Users" : {
+
+    },
+    "SEND" : {
 
     },
     "set's count: %lld," : {

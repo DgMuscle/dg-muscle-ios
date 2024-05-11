@@ -59,6 +59,12 @@ final class ExerciseRepositoryData: ExerciseRepository {
         exercises.first(where: { $0.id == exerciseId })
     }
     
+    func get(uid: String) async throws -> [ExerciseDomain] {
+        let url = "\(FunctionsURL.exercise(.getexercisesfromuid))?uid=\(uid)"
+        let datas: [ExerciseData] = try await APIClient.shared.request(url: url)
+        return datas.map { $0.domain }
+    }
+    
     static private func fetchExerciseDataFromFile() -> [ExerciseDomain] {
         let datas = (try? FileManagerHelperV2.shared.load([ExerciseData].self, fromFile: .exercise)) ?? []
         return datas.map({ $0.domain })

@@ -27,6 +27,10 @@ final class HistoryRepositoryTest: HistoryRepository {
         }
     }
     
+    func get(uid: String) async throws -> [HistoryDomain] {
+        histories
+    }
+    
     private func prepareMockData() {
         
         let sets: [ExerciseSetDomain] = [

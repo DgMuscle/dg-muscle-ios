@@ -14,6 +14,7 @@ final class CoordinatorV2: ObservableObject {
     @Binding var path: NavigationPath
     
     lazy var exercise = ExerciseCoordinatorV2(path: $path)
+    lazy var friend = FriendCoordinator(path: $path)
     lazy var history = HistoryCoordinatorV2(path: $path)
     lazy var main = MainCoordinatorV2(path: $path)
     
@@ -35,26 +36,37 @@ final class CoordinatorV2: ObservableObject {
     }
     
     private func bind() {
-        if Self.instanceCount == 2 {
-            remoteCoordinator.$quickAction
-                .receive(on: DispatchQueue.main)
-                .compactMap({ $0 })
-                .sink { [weak self] quickaction in
-                    guard let self else { return }
-                    let history: HistoryV
-                    
-                    if let domain = getTodayHistoryUsecase.implement() {
-                        history = .init(from: domain)
-                    } else {
-                        history = .init()
-                    }
-                    
-                    switch quickaction.type {
-                    case .record:
-                        self.history.historyForm(history)
-                    }
+        guard Self.instanceCount == 2 else { return }
+        remoteCoordinator.$quickAction
+            .receive(on: DispatchQueue.main)
+            .compactMap({ $0 })
+            .sink { quickaction in
+                let history: HistoryV
+                
+                if let domain = self.getTodayHistoryUsecase.implement() {
+                    history = .init(from: domain)
+                } else {
+                    history = .init()
                 }
-                .store(in: &cancellables)
-        }
+                
+                switch quickaction.type {
+                case .record:
+                    self.history.historyForm(history)
+                }
+            }
+            .store(in: &cancellables)
+        
+        remoteCoordinator.$destionation
+            .receive(on: DispatchQueue.main)
+            .compactMap({ $0 })
+            .sink { destination in
+                switch destination.value {
+                case .friendRequest:
+                    self.friend.requestList()
+                case .friendList:
+                    self.friend.list()
+                }
+            }
+            .store(in: &cancellables)
     }
 }
