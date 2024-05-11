@@ -24,7 +24,7 @@ struct FriendHistoryListItemView: View {
         
         if partsText.isEmpty {
             return VStack {
-                Text("On the \(viewModel.day)th, I worked out") +
+                Text("On the \(viewModel.day)th, \(viewModel.friend.displayName ?? viewModel.friend.uid) worked out") +
                 Text(" as much as ") +
                 Text("\(viewModel.volume)").fontWeight(.bold) +
                 Text(" volume")

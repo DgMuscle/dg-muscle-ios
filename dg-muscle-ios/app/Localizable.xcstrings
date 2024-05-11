@@ -49,6 +49,9 @@
         }
       }
     },
+    "%@'s data" : {
+
+    },
     "%@%@ x %lld (%@)" : {
       "localizations" : {
         "en" : {
@@ -464,6 +467,9 @@
         }
       }
     },
+    "Currently you are seeing" : {
+
+    },
     "Data is unreadable due to absence of exercise data" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -574,6 +580,16 @@
     },
     "OK" : {
 
+    },
+    "On the %@th, %@ worked out" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "On the %1$@th, %2$@ worked out"
+          }
+        }
+      }
     },
     "On the %@th, I worked out" : {
 
@@ -765,9 +781,6 @@
       }
     },
     "YES" : {
-
-    },
-    "You are now seeing other's data" : {
 
     },
     "You can see your exercise duration, kcal consumed, intensity." : {

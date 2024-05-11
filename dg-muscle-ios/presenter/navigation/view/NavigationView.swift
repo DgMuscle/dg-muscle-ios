@@ -122,6 +122,14 @@ struct NavigationView: View {
                                                            refuseFriendUsecase: .init(friendRepository: friendRepository),
                                                            getUserFromUserIdUsecase: .init(userRepository: userRepository),
                                                            updateFriendsUsecase: .init(friendRepository: friendRepository)))
+                case .historyList:
+                    if let historyList = navigation.historyList {
+                        FriendHistoryListView(viewModel: .init(friend: historyList.0,
+                                                               getFriendGroupedHistoriesUsecase: .init(historyRepository: historyRepository),
+                                                               getHistoriesFromUidUsecase: .init(historyRepository: historyRepository),
+                                                               generateHeatmapFromHistoryUsecase: .init(today: historyList.1),
+                                                               getFriendExercisesUsecase: .init(exerciseRepository: exerciseRepository)))
+                    }
                 }
             }
         }

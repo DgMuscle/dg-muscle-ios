@@ -16,7 +16,7 @@ struct FriendListView: View {
             Section {
                 ForEach(viewModel.friends, id: \.self) { friend in
                     Button {
-                        print("tap friend")
+                        coordinator.friend.historyList(friend: friend, today: Date())
                     } label: {
                         HStack {
                             let height: CGFloat = 45
