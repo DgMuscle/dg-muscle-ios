@@ -27,7 +27,6 @@ struct HistorySectionViewV2: View {
             } label: {
                 HStack {
                     Text(section.header)
-                        .font(.title2)
                         .fontWeight(.black)
                     Spacer()
                 }

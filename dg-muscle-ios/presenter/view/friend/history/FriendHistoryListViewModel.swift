@@ -12,6 +12,7 @@ final class FriendHistoryListViewModel: ObservableObject {
     
     @Published var sections: [HistorySectionV] = []
     @Published var heatmap: [HeatmapV] = []
+    @Published var heatmapColor: HeatmapColorV = .green
     private let friendId: String
     private let getFriendGroupedHistoriesUsecase: GetFriendGroupedHistoriesUsecase
     private let getHistoriesFromUidUsecase: GetHistoriesFromUidUsecase
@@ -34,7 +35,7 @@ final class FriendHistoryListViewModel: ObservableObject {
             let histories = try await getHistoriesFromUidUsecase.implement(uid: friendId)
             let heatmapDomain = generateHeatmapFromHistoryUsecase.implement(histories: histories)
             let heatmap: [HeatmapV] = heatmapDomain.map({ .init(from: $0) })
-            DispatchQueue.main.async { [weak self] in 
+            DispatchQueue.main.async { [weak self] in
                 self?.heatmap = heatmap
             }
         }
