@@ -170,6 +170,8 @@
 		7023755E2BEF949B0069DD57 /* FriendHistoryListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7023755D2BEF949B0069DD57 /* FriendHistoryListItemViewModel.swift */; };
 		702375602BEF9A770069DD57 /* GetPartsFromFriendsHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7023755F2BEF9A770069DD57 /* GetPartsFromFriendsHistoryUsecase.swift */; };
 		702375622BEF9B9D0069DD57 /* FriendHistoryListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375612BEF9B9D0069DD57 /* FriendHistoryListItemView.swift */; };
+		702375642BEF9CE70069DD57 /* FriendHistorySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375632BEF9CE70069DD57 /* FriendHistorySectionView.swift */; };
+		702375662BEF9DF10069DD57 /* GetFriendExercisesUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375652BEF9DF00069DD57 /* GetFriendExercisesUsecase.swift */; };
 		70240BE72ADC1FF800B87A79 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70240BE62ADC1FF800B87A79 /* WidgetKit.framework */; };
 		70240BE92ADC1FF800B87A79 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70240BE82ADC1FF800B87A79 /* SwiftUI.framework */; };
 		70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70240BEB2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift */; };
@@ -475,6 +477,8 @@
 		7023755D2BEF949B0069DD57 /* FriendHistoryListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendHistoryListItemViewModel.swift; sourceTree = "<group>"; };
 		7023755F2BEF9A770069DD57 /* GetPartsFromFriendsHistoryUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPartsFromFriendsHistoryUsecase.swift; sourceTree = "<group>"; };
 		702375612BEF9B9D0069DD57 /* FriendHistoryListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendHistoryListItemView.swift; sourceTree = "<group>"; };
+		702375632BEF9CE70069DD57 /* FriendHistorySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendHistorySectionView.swift; sourceTree = "<group>"; };
+		702375652BEF9DF00069DD57 /* GetFriendExercisesUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFriendExercisesUsecase.swift; sourceTree = "<group>"; };
 		70240BE52ADC1FF800B87A79 /* dg-muscle-ios-widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "dg-muscle-ios-widgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70240BE62ADC1FF800B87A79 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		70240BE82ADC1FF800B87A79 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -1066,6 +1070,7 @@
 				7023755D2BEF949B0069DD57 /* FriendHistoryListItemViewModel.swift */,
 				7023755B2BEF92660069DD57 /* FriendHistoryListView.swift */,
 				707FF1F82BE74C0A004FA7C9 /* FriendHistoryListViewModel.swift */,
+				702375632BEF9CE70069DD57 /* FriendHistorySectionView.swift */,
 			);
 			path = history;
 			sourceTree = "<group>";
@@ -1173,7 +1178,6 @@
 				702375572BEF8FD10069DD57 /* GetHistoriesFromUidUsecase.swift */,
 				700527032BDE0685007838BA /* GetKcalUsecase.swift */,
 				700527012BDE051B007838BA /* GetNaturalDurationUsecase.swift */,
-				7023755F2BEF9A770069DD57 /* GetPartsFromFriendsHistoryUsecase.swift */,
 				700526FF2BDE0422007838BA /* GetPartsUsecase.swift */,
 				0292DC5A2BDF3E21006295FA /* GetPreviousRecordUsecase.swift */,
 				700526EB2BDDFB87007838BA /* GetTodayHistoryUsecase.swift */,
@@ -1337,7 +1341,9 @@
 			isa = PBXGroup;
 			children = (
 				70B1054A2BE684C300F01BFC /* AcceptFriendUsecase.swift */,
+				702375652BEF9DF00069DD57 /* GetFriendExercisesUsecase.swift */,
 				70B5588B2BE61A0F009DB8CC /* GetMyFriendsUsecase.swift */,
+				7023755F2BEF9A770069DD57 /* GetPartsFromFriendsHistoryUsecase.swift */,
 				70C961A02BE62E3600C143E9 /* PostFriendRequestUsecase.swift */,
 				70B1054C2BE6851800F01BFC /* RefuseFriendUsecase.swift */,
 				70B105482BE6846E00F01BFC /* SubscribeFriendRequestsUsecase.swift */,
@@ -1811,6 +1817,7 @@
 				70BC43FA2BE0F72C001020AD /* SubscribeIsLoginUsecase.swift in Sources */,
 				70B5587C2BE61559009DB8CC /* FriendRepositoryData.swift in Sources */,
 				7060BB582BDE1EF00092B987 /* ExerciseCoordinatorV2.swift in Sources */,
+				702375662BEF9DF10069DD57 /* GetFriendExercisesUsecase.swift in Sources */,
 				70BC43F82BE0F700001020AD /* GetIsLoginUsecase.swift in Sources */,
 				7017648D2BE0854700B501B7 /* SignOutUsecase.swift in Sources */,
 				70884DEB2BDD51CF0059B22A /* BodyMassData.swift in Sources */,
@@ -1956,6 +1963,7 @@
 				700526F42BDDFFD8007838BA /* HistoryCoordinatorV2.swift in Sources */,
 				70B1053D2BE67A9900F01BFC /* FriendListOptionsView.swift in Sources */,
 				707672E32BE64D09002D3FCC /* FriendNavigation.swift in Sources */,
+				702375642BEF9CE70069DD57 /* FriendHistorySectionView.swift in Sources */,
 				703CD5EA2AC0139600BC76D4 /* FileUploader.swift in Sources */,
 				70B07AC42BD8D0A200A0E732 /* FunctionsURL.swift in Sources */,
 			);

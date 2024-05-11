@@ -14,6 +14,7 @@ struct FriendHistoryListItemView: View {
             coloredText
             Spacer()
         }
+        .foregroundStyle(Color(uiColor: .label))
     }
     
     var coloredText: some View {

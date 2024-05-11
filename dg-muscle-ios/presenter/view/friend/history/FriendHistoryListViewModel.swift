@@ -13,21 +13,33 @@ final class FriendHistoryListViewModel: ObservableObject {
     @Published var sections: [HistorySectionV] = []
     @Published var heatmap: [HeatmapV] = []
     @Published var heatmapColor: HeatmapColorV = .green
+    @Published var exercises: [ExerciseV] = []
     let friend: UserV
     private let getFriendGroupedHistoriesUsecase: GetFriendGroupedHistoriesUsecase
     private let getHistoriesFromUidUsecase: GetHistoriesFromUidUsecase
     private let generateHeatmapFromHistoryUsecase: GenerateHeatmapFromHistoryUsecase
+    private let getFriendExercisesUsecase: GetFriendExercisesUsecase
     private var cancellables = Set<AnyCancellable>()
     init(friend: UserV,
          getFriendGroupedHistoriesUsecase: GetFriendGroupedHistoriesUsecase,
          getHistoriesFromUidUsecase: GetHistoriesFromUidUsecase,
-         generateHeatmapFromHistoryUsecase: GenerateHeatmapFromHistoryUsecase) {
+         generateHeatmapFromHistoryUsecase: GenerateHeatmapFromHistoryUsecase,
+         getFriendExercisesUsecase: GetFriendExercisesUsecase) {
         self.friend = friend
         self.getFriendGroupedHistoriesUsecase = getFriendGroupedHistoriesUsecase
         self.getHistoriesFromUidUsecase = getHistoriesFromUidUsecase
         self.generateHeatmapFromHistoryUsecase = generateHeatmapFromHistoryUsecase
+        self.getFriendExercisesUsecase = getFriendExercisesUsecase
         configureSections()
         configureHeatmap()
+        configureExercises()
+    }
+    
+    private func configureExercises() {
+        Task {
+            let exercises = try await getFriendExercisesUsecase.implement(friendId: friend.uid)
+            self.exercises = exercises.map({ .init(from: $0) })
+        }
     }
     
     private func configureHeatmap() {

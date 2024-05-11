@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct FriendHistoryListView: View {
     
@@ -13,14 +14,53 @@ struct FriendHistoryListView: View {
     
     var body: some View {
         VStack {
-            Text("You are now seeing other's data")
+            HStack {
+                Text("Currently you are seeing")
+                if let url = viewModel.friend.photoURL {
+                    KFImage(url).resizable().clipShape(Circle())
+                        .frame(width: 30, height: 30)
+                }
+                Text("\(viewModel.friend.displayName ?? viewModel.friend.uid)'s data")
+                Spacer()
+            }
+            .font(.caption2)
+            .padding(8)
+            .background(
+                RoundedRectangle(cornerRadius: 8).fill(Color(uiColor: .secondarySystemGroupedBackground))
+            )
+            
             ScrollView {
                 HeatMap(datas: viewModel.heatmap, color: viewModel.heatmapColor)
+                    .padding(.bottom)
+                    .scrollTransition { effect, phase in
+                        effect.scaleEffect(phase.isIdentity ? 1 : 0.75)
+                    }
                 
-                
+                ForEach(viewModel.sections) { section in
+                    FriendHistorySectionView(section: section,
+                                             friend: viewModel.friend,
+                                             exercises: viewModel.exercises,
+                                             color: viewModel.heatmapColor)
+                }
             }
             .scrollIndicators(.hidden)
         }
         .padding()
     }
+}
+
+#Preview {
+    let historyRepository: HistoryRepository = HistoryRepositoryTest()
+    let exerciseRepository: ExerciseRepository = ExerciseRepositoryTest()
+    let friend: UserV = .init(from: FriendRepositoryTest().friends[0])
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyyMMdd"
+    let date = dateFormatter.date(from: "20240415")!
+    
+    return FriendHistoryListView(viewModel: .init(friend: friend,
+                                                  getFriendGroupedHistoriesUsecase: .init(historyRepository: historyRepository),
+                                                  getHistoriesFromUidUsecase: .init(historyRepository: historyRepository),
+                                                  generateHeatmapFromHistoryUsecase: .init(today: date),
+                                                  getFriendExercisesUsecase: .init(exerciseRepository: exerciseRepository)))
+    .preferredColorScheme(.dark)
 }
