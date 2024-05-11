@@ -14,6 +14,7 @@ final class FriendHistoryListViewModel: ObservableObject {
     @Published var heatmap: [HeatmapV] = []
     @Published var heatmapColor: HeatmapColorV = .green
     @Published var exercises: [ExerciseV] = []
+    
     let friend: UserV
     private let getFriendGroupedHistoriesUsecase: GetFriendGroupedHistoriesUsecase
     private let getHistoriesFromUidUsecase: GetHistoriesFromUidUsecase
@@ -30,6 +31,7 @@ final class FriendHistoryListViewModel: ObservableObject {
         self.getHistoriesFromUidUsecase = getHistoriesFromUidUsecase
         self.generateHeatmapFromHistoryUsecase = generateHeatmapFromHistoryUsecase
         self.getFriendExercisesUsecase = getFriendExercisesUsecase
+        
         configureSections()
         configureHeatmap()
         configureExercises()
@@ -38,7 +40,9 @@ final class FriendHistoryListViewModel: ObservableObject {
     private func configureExercises() {
         Task {
             let exercises = try await getFriendExercisesUsecase.implement(friendId: friend.uid)
-            self.exercises = exercises.map({ .init(from: $0) })
+            DispatchQueue.main.async { [weak self] in
+                self?.exercises = exercises.map({ .init(from: $0) })
+            }
         }
     }
     

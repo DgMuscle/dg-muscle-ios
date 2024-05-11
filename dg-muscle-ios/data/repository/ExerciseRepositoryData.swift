@@ -61,7 +61,7 @@ final class ExerciseRepositoryData: ExerciseRepository {
     
     func get(uid: String) async throws -> [ExerciseDomain] {
         let url = "\(FunctionsURL.exercise(.getexercisesfromuid))?uid=\(uid)"
-        let datas: [ExerciseData] = try await APIClient.shared.request(url: FunctionsURL.exercise(.getexercisesfromuid))
+        let datas: [ExerciseData] = try await APIClient.shared.request(url: url)
         return datas.map { $0.domain }
     }
     
