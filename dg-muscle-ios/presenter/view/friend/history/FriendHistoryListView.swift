@@ -46,6 +46,7 @@ struct FriendHistoryListView: View {
             .scrollIndicators(.hidden)
         }
         .padding()
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
