@@ -26,4 +26,8 @@ final class FriendCoordinator {
     func requestList() {
         path.append(FriendNavigation(name: .requestList))
     }
+    
+    func historyList(friend: UserV, today: Date) {
+        path.append(FriendNavigation(friend: friend, today: today))
+    }
 }

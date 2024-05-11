@@ -25,8 +25,6 @@ final class FriendRepositoryTest: FriendRepository {
     
     func updateRequests() { }
     
-    func updateFriends() { }
-    
     func accept(request: FriendRequestDomain) async throws {
         if let index = requests.firstIndex(where: { $0.fromId == request.fromId }) {
             self._requests.remove(at: index)
@@ -37,6 +35,22 @@ final class FriendRepositoryTest: FriendRepository {
         if let index = requests.firstIndex(where: { $0.fromId == request.fromId }) {
             self._requests.remove(at: index)
         }
+    }
+    
+    func appendFriend(uid: String) { }
+    
+    func get(uid: String) async throws -> [ExerciseDomain] {
+        [
+            .init(id: "squat", name: "squat", parts: [.leg], favorite: true),
+            .init(id: "bench press", name: "bench press", parts: [.chest, .arm], favorite: true),
+            .init(id: "leg press", name: "leg press", parts: [.leg], favorite: false),
+            .init(id: "pull up", name: "pull up", parts: [.back], favorite: true),
+            .init(id: "arm curl", name: "arm curl", parts: [.arm], favorite: false)
+        ]
+    }
+    
+    func get(uid: String) async throws -> [HistoryDomain] {
+        HistoryRepositoryTest().histories
     }
     
     private func prepareMockData() {

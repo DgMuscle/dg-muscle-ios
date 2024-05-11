@@ -53,6 +53,7 @@ extension FunctionsURL {
         case deleteexercise
         case getexercises
         case postexercise
+        case getexercisesfromuid
         
         var value: String {
             return "v4exercise-\(self.rawValue)"

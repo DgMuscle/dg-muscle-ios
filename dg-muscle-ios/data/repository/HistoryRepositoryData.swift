@@ -54,6 +54,12 @@ final class HistoryRepositoryData: HistoryRepository {
                                                                  body: body)
     }
     
+    func get(uid: String) async throws -> [HistoryDomain] {
+        let url = FunctionsURL.history(.getfriendhistories) + "?friendId=\(uid)"
+        let data: [HistoryData] = try await APIClient.shared.request(url: url)
+        return data.map { $0.domain }
+    }
+    
     static private func getExerciseHistoryFromFile() -> [HistoryDomain] {
         let historyDatas: [HistoryData] = (try? FileManagerHelperV2.shared.load([HistoryData].self, fromFile: .history)) ?? []
         return historyDatas.map { $0.domain }

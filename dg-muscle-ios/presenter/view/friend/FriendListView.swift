@@ -16,7 +16,7 @@ struct FriendListView: View {
             Section {
                 ForEach(viewModel.friends, id: \.self) { friend in
                     Button {
-                        print("tap friend")
+                        coordinator.friend.historyList(friend: friend, today: Date())
                     } label: {
                         HStack {
                             let height: CGFloat = 45
@@ -63,10 +63,8 @@ struct FriendListView: View {
 
 #Preview {
     let friendRepository: FriendRepository = FriendRepositoryTest()
-    var viewModel: FriendListViewModel = .init(getMyFriendsUsecase: 
-            .init(friendRepository: friendRepository),
-                                               subscribeFriendRequestsUsecase:
-            .init(friendRepository: friendRepository))
+    var viewModel: FriendListViewModel = .init(subscribeMyFriendsUsecase: .init(friendRepository: friendRepository),
+                                               subscribeFriendRequestsUsecase: .init(friendRepository: friendRepository))
     return FriendListView(viewModel: viewModel).preferredColorScheme(.dark)
         .environmentObject(CoordinatorV2(path: .constant(.init())))
 }

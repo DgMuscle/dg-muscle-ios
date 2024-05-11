@@ -109,7 +109,7 @@ struct NavigationView: View {
             .navigationDestination(for: FriendNavigation.self) { navigation in
                 switch navigation.name {
                 case .list:
-                    FriendListView(viewModel: .init(getMyFriendsUsecase: .init(friendRepository: friendRepository), 
+                    FriendListView(viewModel: .init(subscribeMyFriendsUsecase: .init(friendRepository: friendRepository),
                                                     subscribeFriendRequestsUsecase: .init(friendRepository: friendRepository)))
                 case .search:
                     UsersSearchView(viewModel: .init(searchUsersByDisplayNameUsecase: .init(userRepository: userRepository),
@@ -121,7 +121,16 @@ struct NavigationView: View {
                                                            acceptFriendUsecase: .init(friendRepository: friendRepository),
                                                            refuseFriendUsecase: .init(friendRepository: friendRepository),
                                                            getUserFromUserIdUsecase: .init(userRepository: userRepository),
-                                                           updateFriendsUsecase: .init(friendRepository: friendRepository)))
+                                                           appendFriendUsecase: .init(friendRepository: friendRepository)
+                                                          ))
+                case .historyList:
+                    if let historyList = navigation.historyList {
+                        FriendHistoryListView(viewModel: .init(friend: historyList.0,
+                                                               getFriendGroupedHistoriesUsecase: .init(historyRepository: historyRepository),
+                                                               getHistoriesFromUidUsecase: .init(friendRepository: friendRepository),
+                                                               generateHeatmapFromHistoryUsecase: .init(today: historyList.1),
+                                                               getFriendExercisesUsecase: .init(friendRepository: friendRepository)))
+                    }
                 }
             }
         }

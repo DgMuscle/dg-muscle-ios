@@ -62,7 +62,9 @@ final class CoordinatorV2: ObservableObject {
             .sink { destination in
                 switch destination.value {
                 case .friendRequest:
-                    print("dg: move to friend request page")
+                    self.friend.requestList()
+                case .friendList:
+                    self.friend.list()
                 }
             }
             .store(in: &cancellables)

@@ -18,5 +18,6 @@ struct Destination {
 extension Destination {
     enum Value: String {
         case friendRequest = "friend_request"
+        case friendList = "friend_list"
     }
 }

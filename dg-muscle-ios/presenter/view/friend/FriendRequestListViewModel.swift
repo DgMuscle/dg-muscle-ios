@@ -19,19 +19,19 @@ final class FriendRequestListViewModel: ObservableObject {
     private let acceptFriendUsecase: AcceptFriendUsecase
     private let refuseFriendUsecase: RefuseFriendUsecase
     private let getUserFromUserIdUsecase: GetUserFromUserIdUsecase
-    private let updateFriendsUsecase: UpdateFriendsUsecase
+    private let appendFriendUsecase: AppendFriendUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(subscribeFriendRequestsUsecase: SubscribeFriendRequestsUsecase,
          acceptFriendUsecase: AcceptFriendUsecase,
          refuseFriendUsecase: RefuseFriendUsecase,
          getUserFromUserIdUsecase: GetUserFromUserIdUsecase,
-         updateFriendsUsecase: UpdateFriendsUsecase) {
+         appendFriendUsecase: AppendFriendUsecase) {
         self.subscribeFriendRequestsUsecase = subscribeFriendRequestsUsecase
         self.acceptFriendUsecase = acceptFriendUsecase
         self.refuseFriendUsecase = refuseFriendUsecase
         self.getUserFromUserIdUsecase = getUserFromUserIdUsecase
-        self.updateFriendsUsecase = updateFriendsUsecase
+        self.appendFriendUsecase = appendFriendUsecase
         bind()
     }
     
@@ -39,7 +39,7 @@ final class FriendRequestListViewModel: ObservableObject {
     func accept(request: FriendRequestV) {
         loadingHandler { [weak self] in
             try await self?.acceptFriendUsecase.implement(request: request.domain)
-            self?.updateFriendsUsecase.implement()
+            self?.appendFriendUsecase.implement(friendId: request.fromId)
         }
     }
     
