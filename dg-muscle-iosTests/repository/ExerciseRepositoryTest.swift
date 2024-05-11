@@ -37,6 +37,10 @@ final class ExerciseRepositoryTest: ExerciseRepository {
         return exercises.first(where: { $0.id == exerciseId })
     }
     
+    func get(uid: String) async throws -> [ExerciseDomain] {
+        exercises
+    }
+    
     private func prepareMockData() {
         _exercises = [
             .init(id: "squat", name: "squat", parts: [.leg], favorite: true),

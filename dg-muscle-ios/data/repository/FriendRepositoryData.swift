@@ -18,6 +18,8 @@ final class FriendRepositoryData: FriendRepository {
     var requestsPublisher: AnyPublisher<[FriendRequestDomain], Never> { $_requests.eraseToAnyPublisher() }
     @Published private var _requests: [FriendRequestDomain] = []
     
+    private var exercises: [String: [ExerciseDomain]] = [:]
+    
     private var cancellables = Set<AnyCancellable>()
     
     private init() {
@@ -78,6 +80,16 @@ final class FriendRepositoryData: FriendRepository {
         let _: ResponseData = try await APIClient.shared.request(method: .delete,
                                                                  url: FunctionsURL.friend(.deleterequest),
                                                                  body: Body(deleteId: request.fromId))
+    }
+    
+    func get(uid: String) async throws -> [ExerciseDomain] {
+        if let exercises = self.exercises[uid] {
+            return exercises
+        }
+        
+        let exercises = try await ExerciseRepositoryData.shared.get(uid: uid)
+        self.exercises[uid] = exercises
+        return exercises
     }
     
     private func bind() {

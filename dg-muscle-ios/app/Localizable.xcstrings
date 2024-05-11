@@ -767,6 +767,9 @@
     "YES" : {
 
     },
+    "You are now seeing other's data" : {
+
+    },
     "You can see your exercise duration, kcal consumed, intensity." : {
       "extractionState" : "stale",
       "localizations" : {

@@ -13,16 +13,16 @@ final class FriendHistoryListViewModel: ObservableObject {
     @Published var sections: [HistorySectionV] = []
     @Published var heatmap: [HeatmapV] = []
     @Published var heatmapColor: HeatmapColorV = .green
-    private let friendId: String
+    let friend: UserV
     private let getFriendGroupedHistoriesUsecase: GetFriendGroupedHistoriesUsecase
     private let getHistoriesFromUidUsecase: GetHistoriesFromUidUsecase
     private let generateHeatmapFromHistoryUsecase: GenerateHeatmapFromHistoryUsecase
     private var cancellables = Set<AnyCancellable>()
-    init(friendId: String,
+    init(friend: UserV,
          getFriendGroupedHistoriesUsecase: GetFriendGroupedHistoriesUsecase,
          getHistoriesFromUidUsecase: GetHistoriesFromUidUsecase,
          generateHeatmapFromHistoryUsecase: GenerateHeatmapFromHistoryUsecase) {
-        self.friendId = friendId
+        self.friend = friend
         self.getFriendGroupedHistoriesUsecase = getFriendGroupedHistoriesUsecase
         self.getHistoriesFromUidUsecase = getHistoriesFromUidUsecase
         self.generateHeatmapFromHistoryUsecase = generateHeatmapFromHistoryUsecase
@@ -32,7 +32,7 @@ final class FriendHistoryListViewModel: ObservableObject {
     
     private func configureHeatmap() {
         Task {
-            let histories = try await getHistoriesFromUidUsecase.implement(uid: friendId)
+            let histories = try await getHistoriesFromUidUsecase.implement(uid: friend.uid)
             let heatmapDomain = generateHeatmapFromHistoryUsecase.implement(histories: histories)
             let heatmap: [HeatmapV] = heatmapDomain.map({ .init(from: $0) })
             DispatchQueue.main.async { [weak self] in
@@ -43,7 +43,7 @@ final class FriendHistoryListViewModel: ObservableObject {
     
     private func configureSections() {
         Task {
-            let historiesDomain: [[HistoryDomain]] = try await getFriendGroupedHistoriesUsecase.implement(friendId: friendId)
+            let historiesDomain: [[HistoryDomain]] = try await getFriendGroupedHistoriesUsecase.implement(friendId: friend.uid)
             let historiesV: [[HistoryV]] = historiesDomain.map({ $0.map({ HistoryV(from: $0) }) })
             let sections: [HistorySectionV] = historiesV.map({ .init(histories: $0) })
             DispatchQueue.main.async { [weak self] in

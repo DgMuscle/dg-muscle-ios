@@ -15,4 +15,5 @@ protocol ExerciseRepository {
     func edit(data: ExerciseDomain) async throws
     func delete(data: ExerciseDomain) async throws 
     func get(exerciseId: String) -> ExerciseDomain?
+    func get(uid: String) async throws -> [ExerciseDomain]
 }

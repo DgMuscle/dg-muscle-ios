@@ -168,6 +168,8 @@
 		7023755A2BEF90090069DD57 /* GetHistoriesFromUidUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375572BEF8FD10069DD57 /* GetHistoriesFromUidUsecase.swift */; };
 		7023755C2BEF92660069DD57 /* FriendHistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7023755B2BEF92660069DD57 /* FriendHistoryListView.swift */; };
 		7023755E2BEF949B0069DD57 /* FriendHistoryListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7023755D2BEF949B0069DD57 /* FriendHistoryListItemViewModel.swift */; };
+		702375602BEF9A770069DD57 /* GetPartsFromFriendsHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7023755F2BEF9A770069DD57 /* GetPartsFromFriendsHistoryUsecase.swift */; };
+		702375622BEF9B9D0069DD57 /* FriendHistoryListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375612BEF9B9D0069DD57 /* FriendHistoryListItemView.swift */; };
 		70240BE72ADC1FF800B87A79 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70240BE62ADC1FF800B87A79 /* WidgetKit.framework */; };
 		70240BE92ADC1FF800B87A79 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70240BE82ADC1FF800B87A79 /* SwiftUI.framework */; };
 		70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70240BEB2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift */; };
@@ -471,6 +473,8 @@
 		702375572BEF8FD10069DD57 /* GetHistoriesFromUidUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHistoriesFromUidUsecase.swift; sourceTree = "<group>"; };
 		7023755B2BEF92660069DD57 /* FriendHistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendHistoryListView.swift; sourceTree = "<group>"; };
 		7023755D2BEF949B0069DD57 /* FriendHistoryListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendHistoryListItemViewModel.swift; sourceTree = "<group>"; };
+		7023755F2BEF9A770069DD57 /* GetPartsFromFriendsHistoryUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPartsFromFriendsHistoryUsecase.swift; sourceTree = "<group>"; };
+		702375612BEF9B9D0069DD57 /* FriendHistoryListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendHistoryListItemView.swift; sourceTree = "<group>"; };
 		70240BE52ADC1FF800B87A79 /* dg-muscle-ios-widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "dg-muscle-ios-widgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70240BE62ADC1FF800B87A79 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		70240BE82ADC1FF800B87A79 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -1058,6 +1062,7 @@
 		707FF1F72BE74BF5004FA7C9 /* history */ = {
 			isa = PBXGroup;
 			children = (
+				702375612BEF9B9D0069DD57 /* FriendHistoryListItemView.swift */,
 				7023755D2BEF949B0069DD57 /* FriendHistoryListItemViewModel.swift */,
 				7023755B2BEF92660069DD57 /* FriendHistoryListView.swift */,
 				707FF1F82BE74C0A004FA7C9 /* FriendHistoryListViewModel.swift */,
@@ -1168,6 +1173,7 @@
 				702375572BEF8FD10069DD57 /* GetHistoriesFromUidUsecase.swift */,
 				700527032BDE0685007838BA /* GetKcalUsecase.swift */,
 				700527012BDE051B007838BA /* GetNaturalDurationUsecase.swift */,
+				7023755F2BEF9A770069DD57 /* GetPartsFromFriendsHistoryUsecase.swift */,
 				700526FF2BDE0422007838BA /* GetPartsUsecase.swift */,
 				0292DC5A2BDF3E21006295FA /* GetPreviousRecordUsecase.swift */,
 				700526EB2BDDFB87007838BA /* GetTodayHistoryUsecase.swift */,
@@ -1756,6 +1762,7 @@
 				700526D02BDDEF1E007838BA /* HeatmapView.swift in Sources */,
 				701764912BE0866F00B501B7 /* SettingView.swift in Sources */,
 				70884DE12BDD4E410059B22A /* RecordV.swift in Sources */,
+				702375622BEF9B9D0069DD57 /* FriendHistoryListItemView.swift in Sources */,
 				704E5C842BE26B3A00365AB3 /* HeatmapRepositoryTest.swift in Sources */,
 				7044641D2BD0185600CB21F6 /* FileUploaderInterface.swift in Sources */,
 				706D6A6D2BE0DD57000A0324 /* RemoveAccountConfirmView.swift in Sources */,
@@ -1797,6 +1804,7 @@
 				7070164B2BDD3DBC0025C624 /* UserRepository.swift in Sources */,
 				7060BB762BDE2E370092B987 /* EditExerciseUsecase.swift in Sources */,
 				70B1054B2BE684C300F01BFC /* AcceptFriendUsecase.swift in Sources */,
+				702375602BEF9A770069DD57 /* GetPartsFromFriendsHistoryUsecase.swift in Sources */,
 				700526E32BDDF791007838BA /* HealthRepositoryTest2.swift in Sources */,
 				70A171B02BE733D6007D625A /* GetUserFromUserIdUsecase.swift in Sources */,
 				7060BB782BDE2E710092B987 /* ExerciseEditViewModel.swift in Sources */,
