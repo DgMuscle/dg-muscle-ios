@@ -60,7 +60,7 @@ struct FriendHistoryListView: View {
     
     return FriendHistoryListView(viewModel: .init(friend: friend,
                                                   getFriendGroupedHistoriesUsecase: .init(historyRepository: historyRepository),
-                                                  getHistoriesFromUidUsecase: .init(historyRepository: historyRepository),
+                                                  getHistoriesFromUidUsecase: .init(friendRepository: FriendRepositoryTest()),
                                                   generateHeatmapFromHistoryUsecase: .init(today: date),
                                                   getFriendExercisesUsecase: .init(exerciseRepository: exerciseRepository)))
     .preferredColorScheme(.dark)

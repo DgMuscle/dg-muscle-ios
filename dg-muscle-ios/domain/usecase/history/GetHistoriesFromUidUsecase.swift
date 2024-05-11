@@ -8,13 +8,13 @@
 import Foundation
 
 final class GetHistoriesFromUidUsecase {
-    let historyRepository: HistoryRepository
+    let friendRepository: FriendRepository
     
-    init(historyRepository: HistoryRepository) {
-        self.historyRepository = historyRepository
+    init(friendRepository: FriendRepository) {
+        self.friendRepository = friendRepository
     }
     
     func implement(uid: String) async throws -> [HistoryDomain] {
-        try await historyRepository.get(uid: uid)
+        try await friendRepository.get(uid: uid)
     }
 }

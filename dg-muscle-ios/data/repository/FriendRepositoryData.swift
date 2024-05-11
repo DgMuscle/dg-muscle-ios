@@ -19,6 +19,7 @@ final class FriendRepositoryData: FriendRepository {
     @Published private var _requests: [FriendRequestDomain] = []
     
     private var exercises: [String: [ExerciseDomain]] = [:]
+    private var histories: [String: [HistoryDomain]] = [:]
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -90,6 +91,16 @@ final class FriendRepositoryData: FriendRepository {
         let exercises = try await ExerciseRepositoryData.shared.get(uid: uid)
         self.exercises[uid] = exercises
         return exercises
+    }
+    
+    func get(uid: String) async throws -> [HistoryDomain] {
+        if let histories = self.histories[uid] {
+            return histories
+        }
+        
+        let histories = try await HistoryRepositoryData.shared.get(uid: uid)
+        self.histories[uid] = histories
+        return histories
     }
     
     private func bind() {

@@ -20,4 +20,5 @@ protocol FriendRepository {
     func accept(request: FriendRequestDomain) async throws
     func refuse(request: FriendRequestDomain) async throws
     func get(uid: String) async throws -> [ExerciseDomain]
+    func get(uid: String) async throws -> [HistoryDomain]
 }
