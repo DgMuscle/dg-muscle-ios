@@ -160,6 +160,9 @@
 		701764932BE0884A00B501B7 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701764922BE0884A00B501B7 /* ListItemView.swift */; };
 		701764962BE08EFB00B501B7 /* AuthenticatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701764952BE08EFB00B501B7 /* AuthenticatorTest.swift */; };
 		701764972BE08F1000B501B7 /* AuthenticatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701764952BE08EFB00B501B7 /* AuthenticatorTest.swift */; };
+		702375542BEF8E960069DD57 /* GenerateHeatmapFromHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375532BEF8E960069DD57 /* GenerateHeatmapFromHistoryUsecase.swift */; };
+		702375552BEF8F200069DD57 /* GenerateHeatmapFromHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375532BEF8E960069DD57 /* GenerateHeatmapFromHistoryUsecase.swift */; };
+		702375562BEF8F210069DD57 /* GenerateHeatmapFromHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702375532BEF8E960069DD57 /* GenerateHeatmapFromHistoryUsecase.swift */; };
 		70240BE72ADC1FF800B87A79 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70240BE62ADC1FF800B87A79 /* WidgetKit.framework */; };
 		70240BE92ADC1FF800B87A79 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70240BE82ADC1FF800B87A79 /* SwiftUI.framework */; };
 		70240BEC2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70240BEB2ADC1FF800B87A79 /* dg_muscle_ios_widgetBundle.swift */; };
@@ -459,6 +462,7 @@
 		701764902BE0866F00B501B7 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		701764922BE0884A00B501B7 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		701764952BE08EFB00B501B7 /* AuthenticatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorTest.swift; sourceTree = "<group>"; };
+		702375532BEF8E960069DD57 /* GenerateHeatmapFromHistoryUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateHeatmapFromHistoryUsecase.swift; sourceTree = "<group>"; };
 		70240BE52ADC1FF800B87A79 /* dg-muscle-ios-widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "dg-muscle-ios-widgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70240BE62ADC1FF800B87A79 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		70240BE82ADC1FF800B87A79 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -806,6 +810,7 @@
 		7009E17B2BE2223200D9950D /* heatmap */ = {
 			isa = PBXGroup;
 			children = (
+				702375532BEF8E960069DD57 /* GenerateHeatmapFromHistoryUsecase.swift */,
 				7009E17E2BE222CD00D9950D /* GetHeatmapColorUsecase.swift */,
 				7009E17C2BE2225700D9950D /* PostHeatmapColorUsecase.swift */,
 				708DB2BC2BDD72C300195605 /* SubscribeHeatmapColorUsecase.swift */,
@@ -1588,6 +1593,7 @@
 				70B558802BE6187A009DB8CC /* FriendRepository.swift in Sources */,
 				70240BF22ADC1FF800B87A79 /* AppIntent.swift in Sources */,
 				7009E1BF2BE22BA600D9950D /* GetTodayHistoryUsecase.swift in Sources */,
+				702375552BEF8F200069DD57 /* GenerateHeatmapFromHistoryUsecase.swift in Sources */,
 				7009E1C42BE22BB200D9950D /* SubscribeGroupedHistoriesUsecase.swift in Sources */,
 				7009E1D92BE22BD800D9950D /* SubscribeIsLoginUsecase.swift in Sources */,
 				70240BF02ADC1FF800B87A79 /* dg_muscle_ios_widget.swift in Sources */,
@@ -1700,6 +1706,7 @@
 				7009E1C62BE22BB500D9950D /* SubscribeMetaDatasMapUsecase.swift in Sources */,
 				700526E72BDDF849007838BA /* BodyMassDomain.swift in Sources */,
 				700526C52BDDE9E0007838BA /* HistoryDomain.swift in Sources */,
+				702375562BEF8F210069DD57 /* GenerateHeatmapFromHistoryUsecase.swift in Sources */,
 				7009E1BE2BE22BA400D9950D /* GetPreviousRecordUsecase.swift in Sources */,
 				7009E1B42BE22B9400D9950D /* DeleteHistoryUsecase.swift in Sources */,
 				707FF2012BE74DEA004FA7C9 /* GetFriendGroupedHistoriesUsecase.swift in Sources */,
@@ -1747,6 +1754,7 @@
 				707FF1F62BE74729004FA7C9 /* FriendData.swift in Sources */,
 				700526EC2BDDFB87007838BA /* GetTodayHistoryUsecase.swift in Sources */,
 				029B47292BDF8851006DC8BD /* HistoryFormSetsView.swift in Sources */,
+				702375542BEF8E960069DD57 /* GenerateHeatmapFromHistoryUsecase.swift in Sources */,
 				70A85AA62BDE6E8600537071 /* GetUserUsecase.swift in Sources */,
 				70A85AA22BDE6CDA00537071 /* ProfilePhotoEditViewModel.swift in Sources */,
 				7060BB602BDE231E0092B987 /* RoundedGradationText.swift in Sources */,
