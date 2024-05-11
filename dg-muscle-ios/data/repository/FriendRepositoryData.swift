@@ -106,28 +106,19 @@ final class FriendRepositoryData: FriendRepository {
     private func bind() {
         UserRepositoryData
             .shared
-            .isLoginPublisher
-            .receive(on: DispatchQueue.main)
-            .removeDuplicates()
-            .sink { isLogin in
-                if isLogin {
-                    self.updateRequests()
-                } else {
-                    self._friends = []
-                    self._requests = []
-                }
-            }
-            .store(in: &cancellables)
-        
-        UserRepositoryData
-            .shared
             .isLoginPublisher.filter({ $0 })
             .combineLatest(UserRepositoryData.shared.usersPublisher)
             .receive(on: DispatchQueue.main)
-            .sink { _, users in
+            .sink { isLogin, users in
                 Task {
-                    let friends = try await self.getFriendsFromServer(users: users)
-                    self._friends = friends
+                    if isLogin {
+                        let friends = try await self.getFriendsFromServer(users: users)
+                        self._friends = friends
+                        self.updateRequests()
+                    } else {
+                        self._friends = []
+                        self._requests = []
+                    }
                 }
             }
             .store(in: &cancellables)
