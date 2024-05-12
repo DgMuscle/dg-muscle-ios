@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum HeatmapColorData: Codable {
+enum HeatmapColorData: String, Codable {
     case green
     case blue
     case red

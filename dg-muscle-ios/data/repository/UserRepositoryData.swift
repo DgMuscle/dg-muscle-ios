@@ -74,29 +74,35 @@ final class UserRepositoryData: UserRepository {
         }
     }
     
-    private func postProfile(id: String, displayName: String?, photoURL: String?, fcmtoken: String?) async throws {
+    private func postProfile(id: String, displayName: String?, photoURL: String?, fcmtoken: String?, heatmapColor: HeatmapColorDomain) async throws {
         let url = FunctionsURL.user(.postprofile)
         struct Body: Codable {
             let id: String
             let displayName: String
             let photoURL: String?
             let fcmtoken: String?
+            let heatmapColor: String
         }
-        let body: Body = .init(id: id, displayName: displayName ?? "", photoURL: photoURL, fcmtoken: fcmtoken)
+        
+        let heatmapColor: HeatmapColorData = .init(color: heatmapColor)
+        
+        
+        let body: Body = .init(id: id, displayName: displayName ?? "", photoURL: photoURL, fcmtoken: fcmtoken, heatmapColor: heatmapColor.rawValue)
         let _: ResponseData = try await APIClient.shared.request(method: .post, url: url, body: body)
     }
     
     private func bind() {
         $_user.compactMap({ $0 })
-            .combineLatest($_fcmtoken)
+            .combineLatest($_fcmtoken, HeatmapRepositoryData.shared.heatmapColorPublisher)
             .debounce(for: 1, scheduler: DispatchQueue.main)
             .receive(on: DispatchQueue.main)
-            .sink { user, token in
+            .sink { user, token, heatmapColor in
                 Task {
                     try await self.postProfile(id: user.uid,
                                                displayName: user.displayName,
                                                photoURL: user.photoURL?.absoluteString,
-                                               fcmtoken: token)
+                                               fcmtoken: token, 
+                                               heatmapColor: heatmapColor)
                 }
             }
             .store(in: &cancellables)
