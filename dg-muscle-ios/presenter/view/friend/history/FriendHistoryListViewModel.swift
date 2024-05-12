@@ -50,8 +50,12 @@ final class FriendHistoryListViewModel: ObservableObject {
     
     private func configureSections() {
         Task {
-            let exercises = try await getFriendExercisesUsecase.implement(friendId: friend.uid)
-            let historiesDomain: [[HistoryDomain]] = try await getFriendGroupedHistoriesUsecase.implement(friendId: friend.uid)
+            async let exercisesResult = try getFriendExercisesUsecase.implement(friendId: friend.uid)
+            async let historiesDomainResult = try getFriendGroupedHistoriesUsecase.implement(friendId: friend.uid)
+            
+            let exercises = try await exercisesResult
+            let historiesDomain = try await historiesDomainResult
+            
             let historiesV: [[HistoryV]] = historiesDomain.map({ $0.map({ HistoryV(from: $0) }) })
             let sections: [HistorySectionV] = historiesV.map({ .init(histories: $0) })
             DispatchQueue.main.async { [weak self] in
