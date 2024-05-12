@@ -86,7 +86,6 @@ final class UserRepositoryData: UserRepository {
         
         let heatmapColor: HeatmapColorData = .init(color: heatmapColor)
         
-        
         let body: Body = .init(id: id, displayName: displayName ?? "", photoURL: photoURL, fcmtoken: fcmtoken, heatmapColor: heatmapColor.rawValue)
         let _: ResponseData = try await APIClient.shared.request(method: .post, url: url, body: body)
     }

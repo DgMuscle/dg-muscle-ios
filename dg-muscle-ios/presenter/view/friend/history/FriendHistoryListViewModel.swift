@@ -12,7 +12,7 @@ final class FriendHistoryListViewModel: ObservableObject {
     
     @Published var sections: [HistorySectionV] = []
     @Published var heatmap: [HeatmapV] = []
-    @Published var heatmapColor: HeatmapColorV = .green
+    @Published var heatmapColor: HeatmapColorV
     @Published var exercises: [ExerciseV] = []
     
     let friend: UserV
@@ -27,6 +27,7 @@ final class FriendHistoryListViewModel: ObservableObject {
          generateHeatmapFromHistoryUsecase: GenerateHeatmapFromHistoryUsecase,
          getFriendExercisesUsecase: GetFriendExercisesUsecase) {
         self.friend = friend
+        self.heatmapColor = friend.heatmapColor
         self.getFriendGroupedHistoriesUsecase = getFriendGroupedHistoriesUsecase
         self.getHistoriesFromUidUsecase = getHistoriesFromUidUsecase
         self.generateHeatmapFromHistoryUsecase = generateHeatmapFromHistoryUsecase
