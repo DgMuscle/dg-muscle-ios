@@ -15,22 +15,25 @@ struct FriendHistoryListView: View {
     var body: some View {
         VStack {
             HStack {
-                if viewModel.loading {
-                    ProgressView()
-                }
                 Text("Currently you are seeing")
                 if let url = viewModel.friend.photoURL {
                     KFImage(url).resizable().clipShape(Circle())
                         .frame(width: 30, height: 30)
                 }
                 Text("\(viewModel.friend.displayName ?? viewModel.friend.uid)'s data")
+                
                 Spacer()
+                
+                if viewModel.loading {
+                    ProgressView()
+                }
             }
             .font(.caption2)
             .padding(8)
             .background(
                 RoundedRectangle(cornerRadius: 8).fill(Color(uiColor: .secondarySystemGroupedBackground))
             )
+            .animation(.default, value: viewModel.loading)
             
             ScrollView {
                 HeatMap(datas: viewModel.heatmap, color: viewModel.heatmapColor)
