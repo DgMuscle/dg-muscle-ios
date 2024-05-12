@@ -15,6 +15,9 @@ struct FriendHistoryListView: View {
     var body: some View {
         VStack {
             HStack {
+                if viewModel.loading {
+                    ProgressView()
+                }
                 Text("Currently you are seeing")
                 if let url = viewModel.friend.photoURL {
                     KFImage(url).resizable().clipShape(Circle())
