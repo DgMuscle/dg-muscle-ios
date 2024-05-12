@@ -108,6 +108,7 @@ final class FriendRepositoryData: FriendRepository {
             .isLoginPublisher.filter({ $0 })
             .combineLatest(UserRepositoryData.shared.usersPublisher)
             .receive(on: DispatchQueue.main)
+            .delay(for: 0.5, scheduler: DispatchQueue.main)
             .sink { isLogin, users in
                 Task {
                     if isLogin {

@@ -79,6 +79,7 @@ final class ExerciseRepositoryData: ExerciseRepository {
         UserRepositoryData.shared
             .isLoginPublisher
             .receive(on: DispatchQueue.main)
+            .delay(for: 0.5, scheduler: DispatchQueue.main)
             .removeDuplicates()
             .sink { login in
                 if login {
