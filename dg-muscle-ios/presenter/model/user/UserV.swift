@@ -12,14 +12,16 @@ struct UserV: Hashable {
     var displayName: String?
     var photoURL: URL?
     var isMyFriend: Bool = false
+    var heatmapColor: HeatmapColorV
     
     init(from: UserDomain) {
         uid = from.uid
         displayName = from.displayName
         photoURL = from.photoURL
+        heatmapColor = .init(color: from.heatmapColor)
     }
     
     var domain: UserDomain {
-        .init(uid: uid, displayName: displayName, photoURL: photoURL)
+        .init(uid: uid, displayName: displayName, photoURL: photoURL, heatmapColor: heatmapColor.domain)
     }
 }

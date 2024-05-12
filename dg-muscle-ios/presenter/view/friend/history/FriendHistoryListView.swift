@@ -21,13 +21,19 @@ struct FriendHistoryListView: View {
                         .frame(width: 30, height: 30)
                 }
                 Text("\(viewModel.friend.displayName ?? viewModel.friend.uid)'s data")
+                
                 Spacer()
+                
+                if viewModel.loading {
+                    ProgressView()
+                }
             }
             .font(.caption2)
             .padding(8)
             .background(
                 RoundedRectangle(cornerRadius: 8).fill(Color(uiColor: .secondarySystemGroupedBackground))
             )
+            .animation(.default, value: viewModel.loading)
             
             ScrollView {
                 HeatMap(datas: viewModel.heatmap, color: viewModel.heatmapColor)
@@ -60,7 +66,7 @@ struct FriendHistoryListView: View {
     let date = dateFormatter.date(from: "20240415")!
     
     return FriendHistoryListView(viewModel: .init(friend: friend,
-                                                  getFriendGroupedHistoriesUsecase: .init(historyRepository: historyRepository),
+                                                  getFriendGroupedHistoriesUsecase: .init(friendRepository: friendRepository),
                                                   getHistoriesFromUidUsecase: .init(friendRepository: friendRepository),
                                                   generateHeatmapFromHistoryUsecase: .init(today: date),
                                                   getFriendExercisesUsecase: .init(friendRepository: friendRepository)))

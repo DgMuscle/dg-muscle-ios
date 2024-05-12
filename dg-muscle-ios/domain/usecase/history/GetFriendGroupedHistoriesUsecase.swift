@@ -8,14 +8,14 @@
 import Foundation
 
 final class GetFriendGroupedHistoriesUsecase {
-    let historyRepository: HistoryRepository
+    let friendRepository: FriendRepository
     
-    init(historyRepository: HistoryRepository) {
-        self.historyRepository = historyRepository
+    init(friendRepository: FriendRepository) {
+        self.friendRepository = friendRepository
     }
     
     func implement(friendId: String) async throws -> [[HistoryDomain]] {
-        let histories = try await historyRepository.get(uid: friendId)
+        let histories: [HistoryDomain] = try await friendRepository.get(uid: friendId)
         let grouped = GetGroupedHistoriesUsecase().implement(histories: histories)
         return grouped
     }
