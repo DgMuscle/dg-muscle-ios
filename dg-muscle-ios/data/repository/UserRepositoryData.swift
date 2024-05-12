@@ -89,6 +89,7 @@ final class UserRepositoryData: UserRepository {
     private func bind() {
         $_user.compactMap({ $0 })
             .combineLatest($_fcmtoken)
+            .debounce(for: 1, scheduler: DispatchQueue.main)
             .receive(on: DispatchQueue.main)
             .sink { user, token in
                 Task {
@@ -107,7 +108,10 @@ final class UserRepositoryData: UserRepository {
                 try? FileManagerHelperV2.shared.deleteAll()
                 return
             }
-            self._user = .init(uid: user.uid, displayName: user.displayName, photoURL: user.photoURL)
+            self._user = .init(uid: user.uid, 
+                               displayName: user.displayName,
+                               photoURL: user.photoURL,
+                               heatmapColor: .green)
             self._isLogin = true
         }
     }

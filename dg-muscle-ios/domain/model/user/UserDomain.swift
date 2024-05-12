@@ -11,4 +11,5 @@ struct UserDomain {
     let uid: String
     var displayName: String?
     var photoURL: URL?
+    var heatmapColor: HeatmapColorDomain
 }
