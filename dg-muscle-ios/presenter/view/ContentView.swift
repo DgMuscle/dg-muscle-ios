@@ -27,6 +27,7 @@ struct ContentView: View {
     let friendRepository: FriendRepository = FriendRepositoryData.shared
     
     var body: some View {
+        
         ZStack {
             if viewModel.isLogin {
                 NavigationView(today: today,
