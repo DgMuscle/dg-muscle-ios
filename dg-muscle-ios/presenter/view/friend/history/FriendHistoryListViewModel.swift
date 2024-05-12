@@ -36,8 +36,6 @@ final class FriendHistoryListViewModel: ObservableObject {
         
         configureSections()
         configureHeatmap()
-        configureExercises()
-        
         bind()
     }
     
@@ -50,11 +48,15 @@ final class FriendHistoryListViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    private func configureExercises() {
+    private func configureSections() {
         Task {
             let exercises = try await getFriendExercisesUsecase.implement(friendId: friend.uid)
+            let historiesDomain: [[HistoryDomain]] = try await getFriendGroupedHistoriesUsecase.implement(friendId: friend.uid)
+            let historiesV: [[HistoryV]] = historiesDomain.map({ $0.map({ HistoryV(from: $0) }) })
+            let sections: [HistorySectionV] = historiesV.map({ .init(histories: $0) })
             DispatchQueue.main.async { [weak self] in
                 self?.exercises = exercises.map({ .init(from: $0) })
+                self?.sections = sections
             }
         }
     }
@@ -66,17 +68,6 @@ final class FriendHistoryListViewModel: ObservableObject {
             let heatmap: [HeatmapV] = heatmapDomain.map({ .init(from: $0) })
             DispatchQueue.main.async { [weak self] in
                 self?.heatmap = heatmap
-            }
-        }
-    }
-    
-    private func configureSections() {
-        Task {
-            let historiesDomain: [[HistoryDomain]] = try await getFriendGroupedHistoriesUsecase.implement(friendId: friend.uid)
-            let historiesV: [[HistoryV]] = historiesDomain.map({ $0.map({ HistoryV(from: $0) }) })
-            let sections: [HistorySectionV] = historiesV.map({ .init(histories: $0) })
-            DispatchQueue.main.async { [weak self] in
-                self?.sections = sections
             }
         }
     }
