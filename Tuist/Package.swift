@@ -6,18 +6,14 @@ let projectName = "dg-muscle-ios"
     import ProjectDescription
 
     let packageSettings = PackageSettings(
-        // Customize the product types for specific package product
-        // Default is .staticFramework
-        // productTypes: ["Alamofire": .framework,] 
-        productTypes: [:]
+//        productTypes: ["Firebase": .framework]
     )
 #endif
 
 let package = Package(
     name: projectName,
     dependencies: [
-        // Add your own dependencies here:
-        // .package(url: "https://github.com/Alamofire/Alamofire", from: "5.0.0"),
         // You can read more about dependencies here: https://docs.tuist.io/documentation/tuist/dependencies
+//        .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "10.15.0")
     ]
 )
