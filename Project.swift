@@ -29,7 +29,7 @@ let project = Project(
             sources: ["\(projectName)/sources/app/**"],
             resources: ["\(projectName)/resources/**"],
             dependencies: [
-                .package(product: "FirebaseAuth", type: .runtime, condition: nil)
+                .package(product: "FirebaseMessaging", type: .runtime, condition: nil)
             ],
             settings: .settings(configurations: [
                 .debug(name: "debug", xcconfig: "\(projectName)/configs/app.xcconfig"),
