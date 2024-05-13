@@ -1,0 +1,34 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=YES
+ASSETCATALOG_COMPILER_APPICON_NAME=AppIcon
+ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME=AccentColor
+CODE_SIGN_ENTITLEMENTS=dg-muscle-ios/dg_muscle_ios.entitlements
+CODE_SIGN_IDENTITY=Apple Development
+CODE_SIGN_STYLE=Automatic
+COMBINE_HIDPI_IMAGES=YES
+CURRENT_PROJECT_VERSION=1
+DEAD_CODE_STRIPPING=YES
+DEVELOPMENT_ASSET_PATHS="dg-muscle-ios/resources/Preview Content"
+DEVELOPMENT_TEAM=YV58Q28W8Z
+ENABLE_HARDENED_RUNTIME=YES
+ENABLE_PREVIEWS=YES
+GENERATE_INFOPLIST_FILE=YES
+INFOPLIST_FILE=dg-muscle-ios/Info.plist
+INFOPLIST_KEY_CFBundleDisplayName=DgMuscle
+INFOPLIST_KEY_LSApplicationCategoryType=public.app-category.healthcare-fitness
+INFOPLIST_KEY_NSHealthShareUsageDescription=Need to use health data
+INFOPLIST_KEY_NSHealthUpdateUsageDescription=Need to fetch health data
+INFOPLIST_KEY_NSHumanReadableCopyright=
+INFOPLIST_KEY_NSPhotoLibraryUsageDescription=We need access to your photo library to let you save, pick pictures.
+INFOPLIST_KEY_UILaunchStoryboardName=launchfile
+MARKETING_VERSION=1.8
+PRODUCT_BUNDLE_IDENTIFIER=com.donggyu.dg-muscle-ios
+PRODUCT_NAME=$(TARGET_NAME)
+PROVISIONING_PROFILE_SPECIFIER=
+SUPPORTED_PLATFORMS=iphoneos iphonesimulator
+SUPPORTS_MACCATALYST=NO
+SWIFT_EMIT_LOC_STRINGS=YES
+SWIFT_VERSION=5.0
+TARGETED_DEVICE_FAMILY=1
+
+LD_RUNPATH_SEARCH_PATHS[config=Debug]=$(inherited) @executable_path/../Frameworks
+LD_RUNPATH_SEARCH_PATHS[config=Release]=$(inherited) @executable_path/../Frameworks
