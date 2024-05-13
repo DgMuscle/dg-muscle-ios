@@ -63,9 +63,9 @@
 		109DCAF8716B9D0FB35CF14A /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				684D0536F535ADECFCB37EB6 /* GoogleService-Info.plist */,
-				527CF277CCF5826D258EB939 /* Assets.xcassets */,
 				84777CEB2E76EF297F4A0AF7 /* Preview Content */,
+				527CF277CCF5826D258EB939 /* Assets.xcassets */,
+				684D0536F535ADECFCB37EB6 /* GoogleService-Info.plist */,
 			);
 			path = resources;
 			sourceTree = "<group>";
