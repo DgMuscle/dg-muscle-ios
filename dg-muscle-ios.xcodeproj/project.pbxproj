@@ -12,11 +12,11 @@
 		65A38CCE5BB4773C7972398A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 684D0536F535ADECFCB37EB6 /* GoogleService-Info.plist */; };
 		90D291819716C1451BDF6FF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB7ADA3C25571902AD5E0FB2 /* Preview Assets.xcassets */; };
 		94927C64BC6E0543F615D64E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B036071DC04E65EE405EE803 /* SceneDelegate.swift */; };
-		99F787E67CCA93B6B8F3DA79 /* dg_muscle_ios.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 712B0B5A31D7BD5D772A54BA /* dg_muscle_ios.entitlements */; };
 		B31411AF2A223F92010E9B7C /* dg_muscle_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6B86320C39258EDC97BC69 /* dg_muscle_iosApp.swift */; };
 		BD2DDFE7FB6D4133253C2B30 /* TuistPlists+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72AB976B3D060CAEA3570E5 /* TuistPlists+App.swift */; };
 		D5624E6FBA9F510AA6882C7D /* TuistAssets+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF675748AEE10A57C94D1AD /* TuistAssets+App.swift */; };
 		D6D3C06E46D26F45A4734116 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5675569E379E4D39DCDAC34 /* ContentView.swift */; };
+		EEAA647A6FB7BCF6678DE389 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527CF277CCF5826D258EB939 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,8 +37,8 @@
 		3EF675748AEE10A57C94D1AD /* TuistAssets+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+App.swift"; sourceTree = "<group>"; };
 		4CF5DB28CA1C7FCE37F97441 /* TuistBundle+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+App.swift"; sourceTree = "<group>"; };
 		51D2BE9C77494CC9728786C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		527CF277CCF5826D258EB939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		684D0536F535ADECFCB37EB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		712B0B5A31D7BD5D772A54BA /* dg_muscle_ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dg_muscle_ios.entitlements; sourceTree = "<group>"; };
 		9F6B86320C39258EDC97BC69 /* dg_muscle_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dg_muscle_iosApp.swift; sourceTree = "<group>"; };
 		B036071DC04E65EE405EE803 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B10DD93B1479D755BE831AD2 /* project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
@@ -63,8 +63,9 @@
 		109DCAF8716B9D0FB35CF14A /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				84777CEB2E76EF297F4A0AF7 /* Preview Content */,
 				684D0536F535ADECFCB37EB6 /* GoogleService-Info.plist */,
+				527CF277CCF5826D258EB939 /* Assets.xcassets */,
+				84777CEB2E76EF297F4A0AF7 /* Preview Content */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -133,7 +134,6 @@
 		AFE5F89F27DDCAB5436D2F41 /* dg-muscle-ios */ = {
 			isa = PBXGroup;
 			children = (
-				712B0B5A31D7BD5D772A54BA /* dg_muscle_ios.entitlements */,
 				4A6A5410D22BEF8C19AE7C09 /* configs */,
 				109DCAF8716B9D0FB35CF14A /* resources */,
 				7526278EF540AF40AD93B6E0 /* sources */,
@@ -220,9 +220,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEAA647A6FB7BCF6678DE389 /* Assets.xcassets in Resources */,
 				65A38CCE5BB4773C7972398A /* GoogleService-Info.plist in Resources */,
 				90D291819716C1451BDF6FF0 /* Preview Assets.xcassets in Resources */,
-				99F787E67CCA93B6B8F3DA79 /* dg_muscle_ios.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
