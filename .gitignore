@@ -92,3 +92,6 @@ iOSInjectionProject/
 # In Notion
 AuthKey_LPRRPF9RMN.p8
 DS_Store
+
+*.xcodeproj
+*.xcworkspace
