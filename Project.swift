@@ -18,6 +18,9 @@ let project = Project(
             infoPlist: .extendingDefault(
                 with: [
                     "UILaunchStoryboardName": "LaunchScreen.storyboard",
+                    "UIBackgroundModes": [
+                        "remote-notification"
+                    ]
                 ]
             ),
             sources: ["\(projectName)/sources/app/**"],
