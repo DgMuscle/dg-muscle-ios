@@ -1,21 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
-    },
-    " and " : {
-
-    },
-    " as much as " : {
-
-    },
-    " volume" : {
-
-    },
-    "-" : {
-
-    },
     "'Traditional Strength Training'" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -26,80 +11,6 @@
           }
         }
       }
-    },
-    "(%lld kcal)" : {
-
-    },
-    "(%lld)" : {
-
-    },
-    "%@" : {
-
-    },
-    "%@ volume" : {
-
-    },
-    "%@, %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@, %2$@"
-          }
-        }
-      }
-    },
-    "%@'s data" : {
-
-    },
-    "%@%@ x %lld (%@)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@%2$@ x %3$lld (%4$@)"
-          }
-        }
-      }
-    },
-    "%lld" : {
-
-    },
-    "%lld Records, %@ Volume" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld Records, %2$@ Volume"
-          }
-        }
-      }
-    },
-    "%lld sets," : {
-
-    },
-    "%lld sets, %lld volume" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld sets, %2$lld volume"
-          }
-        }
-      }
-    },
-    "%lld%@ x %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld%2$@ x %3$lld"
-          }
-        }
-      }
-    },
-    "+" : {
-
     },
     "1. Lie on your back on a flat bench. Grip a barbell with hands slightly wider than shoulder width. The bar should be directly over the shoulders." : {
       "extractionState" : "stale",
@@ -321,9 +232,6 @@
         }
       }
     },
-    "Accept" : {
-
-    },
     "account" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -419,9 +327,6 @@
         }
       }
     },
-    "Are you sure you will delete your account?" : {
-
-    },
     "Be careful, removal exercises can affect your previous records" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -467,9 +372,6 @@
         }
       }
     },
-    "Currently you are seeing" : {
-
-    },
     "Data is unreadable due to absence of exercise data" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -492,27 +394,6 @@
         }
       }
     },
-    "DELETE" : {
-
-    },
-    "DELETE HISTORY" : {
-
-    },
-    "Delete Item" : {
-
-    },
-    "DG" : {
-
-    },
-    "Display Name" : {
-
-    },
-    "Duration: %@" : {
-
-    },
-    "Exercise Name" : {
-
-    },
     "Fail to make image file." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -524,10 +405,7 @@
         }
       }
     },
-    "Favorite" : {
-
-    },
-    "Friends" : {
+    "Hello DgMuscle!" : {
 
     },
     "Introduce" : {
@@ -540,12 +418,6 @@
           }
         }
       }
-    },
-    "Is above information correct?" : {
-
-    },
-    "It can be happened if you delete this exercise" : {
-
     },
     "logout" : {
       "extractionState" : "stale",
@@ -569,43 +441,6 @@
         }
       }
     },
-    "Manage Exercise" : {
-
-    },
-    "Next" : {
-
-    },
-    "NO" : {
-
-    },
-    "OK" : {
-
-    },
-    "On the %@th, %@ worked out" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "On the %1$@th, %2$@ worked out"
-          }
-        }
-      }
-    },
-    "On the %@th, I worked out" : {
-
-    },
-    "On the %@th, I worked out my " : {
-
-    },
-    "One moment, please." : {
-
-    },
-    "PhotosPicker" : {
-
-    },
-    "Please enter your display name" : {
-
-    },
     "Please try again" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -617,15 +452,6 @@
         }
       }
     },
-    "previous record" : {
-
-    },
-    "Profile" : {
-
-    },
-    "Refuse" : {
-
-    },
     "remove account" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -636,9 +462,6 @@
           }
         }
       }
-    },
-    "Requests" : {
-
     },
     "save" : {
       "extractionState" : "manual",
@@ -674,24 +497,6 @@
         }
       }
     },
-    "SAVE" : {
-
-    },
-    "Search user by display name" : {
-
-    },
-    "Searched Users" : {
-
-    },
-    "SEND" : {
-
-    },
-    "set's count: %lld," : {
-
-    },
-    "Setting" : {
-
-    },
     "Share" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -713,24 +518,6 @@
           }
         }
       }
-    },
-    "Sign in with apple ID" : {
-
-    },
-    "Sorry for inconvenience. Error code is 2" : {
-      "comment" : "invalidUrl"
-    },
-    "Sorry for inconvenience. Error code is 3" : {
-      "comment" : "invalidResponse"
-    },
-    "Sorry for inconvenience. Error code is 4" : {
-      "comment" : "unknown"
-    },
-    "Squat" : {
-
-    },
-    "Target parts are" : {
-
     },
     "The bench press, or chest press, is a weight training exercise where a person presses a weight upwards while lying horizontally on a weight training bench. Although the bench press is a full-body exercise, the muscles primarily used are the pectoralis major, the anterior deltoids, and the triceps, among other stabilizing muscles. A barbell is generally used to hold the weight, but a pair of dumbbells can also be used." : {
       "extractionState" : "stale",
@@ -754,21 +541,6 @@
         }
       }
     },
-    "There is index error." : {
-      "comment" : "index"
-    },
-    "Update" : {
-
-    },
-    "volume is %@" : {
-
-    },
-    "What are the target parts of this exercise?" : {
-
-    },
-    "What's the name of the exercise?" : {
-
-    },
     "yes" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -780,9 +552,6 @@
         }
       }
     },
-    "YES" : {
-
-    },
     "You can see your exercise duration, kcal consumed, intensity." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -793,15 +562,6 @@
           }
         }
       }
-    },
-    "You don't have any exercises yet. You need exercise to record your workout.\n\nHow about move to exercise manager?" : {
-
-    },
-    "Your all data will be deleted" : {
-
-    },
-    "Your authentication is not perfect. Please use it again after you log out." : {
-      "comment" : "authentication"
     }
   },
   "version" : "1.0"

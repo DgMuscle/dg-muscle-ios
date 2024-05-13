@@ -11,20 +11,12 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let shortcutItem = connectionOptions.shortcutItem {
-            handleUIApplicationShortCutItem(item: shortcutItem)
+            print("dg: shortcutItem is \(shortcutItem)")
         }
     }
     
     func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        handleUIApplicationShortCutItem(item: shortcutItem)
+        print("dg: shortcutItem is \(shortcutItem)")
         completionHandler(true)
-    }
-    
-    private func handleUIApplicationShortCutItem(item: UIApplicationShortcutItem) {
-        switch item.type {
-        case QuickAction.Actiontype.record.rawValue:
-            RemoteCoordinator.shared.quickAction(quickAction: .init(type: .record))
-        default: break
-        }
     }
 }

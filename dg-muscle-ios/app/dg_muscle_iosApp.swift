@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FirebaseCore
 
 struct WindowKey: EnvironmentKey {
     struct Value {
@@ -30,23 +29,10 @@ extension EnvironmentValues {
 @main
 struct dg_muscle_iosApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @State var splash = true
     
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                ContentView()
-                
-                if splash {
-                    SplashView()
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                splash.toggle()
-                            }
-                        }
-                }
-            }
-            .animation(.default, value: splash)
+            ContentView()
         }
     }
 }
