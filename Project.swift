@@ -29,6 +29,7 @@ let project = Project(
             sources: ["\(projectName)/sources/App/**"],
             resources: ["\(projectName)/resources/**"],
             dependencies: [
+                .target(name: "Data", condition: nil),
                 .target(name: "Domain", condition: nil),
                 .package(product: "FirebaseMessaging", type: .runtime, condition: nil)
             ],
@@ -65,7 +66,7 @@ let project = Project(
             bundleId: bundleId + ".test",
             sources: ["\(projectName)/sources/Test/**"],
             dependencies: [
-                .target(name: "App")
+                .target(name: "Domain", condition: nil)
             ],
             settings: .settings(configurations: [
                 .debug(name: "debug", xcconfig: "\(projectName)/configs/test.xcconfig"),
