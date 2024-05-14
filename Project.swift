@@ -39,6 +39,17 @@ let project = Project(
             environmentVariables: ["IDEPreferLogStreaming":"YES"]
         ),
         .target(
+            name: "Data",
+            destinations: .iOS,
+            product: .framework,
+            bundleId: bundleId + ".data",
+            sources: ["\(projectName)/sources/Data/**"],
+            resources: ["\(projectName)/resources/**"],
+            dependencies: [
+                .target(name: "Domain", condition: nil)
+            ]
+        ),
+        .target(
             name: "Domain",
             destinations: .iOS,
             product: .framework,
