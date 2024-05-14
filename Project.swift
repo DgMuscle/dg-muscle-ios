@@ -23,18 +23,55 @@ let project = Project(
                     "UILaunchStoryboardName": "LaunchScreen.storyboard",
                     "UIBackgroundModes": [
                         "remote-notification"
-                    ]
+                    ],
+                    "FirebaseAppDelegateProxyEnabled": false,
+                    "CFBundleShortVersionString": "2.0.0"
                 ]
             ),
             sources: ["\(projectName)/sources/App/**"],
             resources: ["\(projectName)/resources/**"],
             dependencies: [
-                .package(product: "FirebaseMessaging", type: .runtime, condition: nil)
+                .target(name: "Data", condition: nil),
+                .target(name: "Domain", condition: nil),
+                .target(name: "Auth", condition: nil)
             ],
             settings: .settings(configurations: [
                 .debug(name: "debug", xcconfig: "\(projectName)/configs/app.xcconfig"),
                 .release(name: "release", xcconfig: "\(projectName)/configs/app.xcconfig"),
-            ])
+            ]),
+            environmentVariables: ["IDEPreferLogStreaming":"YES"]
+        ),
+        .target(
+            name: "Data",
+            destinations: .iOS,
+            product: .framework,
+            bundleId: bundleId + ".data",
+            sources: ["\(projectName)/sources/Data/**"],
+            resources: ["\(projectName)/resources/**"],
+            dependencies: [
+                .target(name: "Domain", condition: nil),
+                .package(product: "FirebaseAuth", type: .runtime, condition: nil),
+                .package(product: "FirebaseMessaging", type: .runtime, condition: nil)
+            ]
+        ),
+        .target(
+            name: "Domain",
+            destinations: .iOS,
+            product: .framework,
+            bundleId: bundleId + ".domain",
+            sources: ["\(projectName)/sources/Domain/**"],
+            resources: ["\(projectName)/resources/**"]
+        ),
+        .target(
+            name: "Auth",
+            destinations: .iOS,
+            product: .framework,
+            bundleId: bundleId + ".presentation.auth",
+            sources: ["\(projectName)/sources/Presentation/Auth/**"],
+            resources: ["\(projectName)/resources/**"],
+            dependencies: [
+                .target(name: "Data", condition: nil)
+            ]
         ),
         .target(
             name: "Test",
@@ -43,7 +80,7 @@ let project = Project(
             bundleId: bundleId + ".test",
             sources: ["\(projectName)/sources/Test/**"],
             dependencies: [
-                .target(name: "App")
+                .target(name: "Domain", condition: nil)
             ],
             settings: .settings(configurations: [
                 .debug(name: "debug", xcconfig: "\(projectName)/configs/test.xcconfig"),
