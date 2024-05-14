@@ -31,8 +31,7 @@ let project = Project(
             dependencies: [
                 .target(name: "Data", condition: nil),
                 .target(name: "Domain", condition: nil),
-                .target(name: "Auth", condition: nil),
-                .package(product: "FirebaseMessaging", type: .runtime, condition: nil)
+                .target(name: "Auth", condition: nil)
             ],
             settings: .settings(configurations: [
                 .debug(name: "debug", xcconfig: "\(projectName)/configs/app.xcconfig"),
@@ -49,7 +48,8 @@ let project = Project(
             resources: ["\(projectName)/resources/**"],
             dependencies: [
                 .target(name: "Domain", condition: nil),
-                .package(product: "FirebaseAuth", type: .runtime, condition: nil)
+                .package(product: "FirebaseAuth", type: .runtime, condition: nil),
+                .package(product: "FirebaseMessaging", type: .runtime, condition: nil)
             ]
         ),
         .target(

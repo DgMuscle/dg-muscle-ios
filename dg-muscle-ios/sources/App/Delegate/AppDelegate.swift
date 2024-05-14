@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseMessaging
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
@@ -17,6 +18,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { _, _ in }
         application.registerForRemoteNotifications()
+        Messaging.messaging().delegate = self
         return true
     }
     
@@ -29,7 +31,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
 func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//        Messaging.messaging().setAPNSToken(deviceToken, type: .unknown)
+        Messaging.messaging().setAPNSToken(deviceToken, type: .unknown)
     }
     
     // Foreground(앱 켜진 상태)에서도 알림 오는 설정
@@ -45,10 +47,10 @@ func application(_ application: UIApplication, didRegisterForRemoteNotifications
     }
 }
 
-//extension AppDelegate: MessagingDelegate {
-//    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-//        if let fcmToken {
-//            print("dg: fcmToken is \(fcmToken)")
-//        }
-//    }
-//}
+extension AppDelegate: MessagingDelegate {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        if let fcmToken {
+            print("dg: fcmToken is \(fcmToken)")
+        }
+    }
+}
