@@ -29,12 +29,21 @@ let project = Project(
             sources: ["\(projectName)/sources/App/**"],
             resources: ["\(projectName)/resources/**"],
             dependencies: [
-                .package(product: "FirebaseMessaging", type: .runtime, condition: nil)
+                .package(product: "FirebaseMessaging", type: .runtime, condition: nil),
+                .target(name: "Domain", condition: nil)
             ],
             settings: .settings(configurations: [
                 .debug(name: "debug", xcconfig: "\(projectName)/configs/app.xcconfig"),
                 .release(name: "release", xcconfig: "\(projectName)/configs/app.xcconfig"),
             ])
+        ),
+        .target(
+            name: "Domain",
+            destinations: .iOS,
+            product: .framework,
+            bundleId: bundleId + ".domain",
+            sources: ["\(projectName)/sources/Domain/**"],
+            resources: ["\(projectName)/resources/**"]
         ),
         .target(
             name: "Test",
