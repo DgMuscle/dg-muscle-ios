@@ -23,9 +23,6 @@ public enum AppAsset {
   public enum Assets {
   public static let accentColor = AppColors(name: "AccentColor")
     public static let splash = AppImages(name: "Splash")
-    public static let exerciseHistoryItemWithMetadata = AppImages(name: "exercise history item with metadata")
-    public static let watchHome = AppImages(name: "watch home")
-    public static let workoutApp = AppImages(name: "workout app")
   }
   public enum PreviewAssets {
   }
