@@ -60,6 +60,14 @@ let project = Project(
             resources: ["\(projectName)/resources/**"]
         ),
         .target(
+            name: "Auth",
+            destinations: .iOS,
+            product: .framework,
+            bundleId: bundleId + ".presentation.auth",
+            sources: ["\(projectName)/sources/Presentation/Auth/**"],
+            resources: ["\(projectName)/resources/**"]
+        ),
+        .target(
             name: "Test",
             destinations: .iOS,
             product: .unitTests,
