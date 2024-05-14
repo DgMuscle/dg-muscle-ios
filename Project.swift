@@ -35,7 +35,8 @@ let project = Project(
             settings: .settings(configurations: [
                 .debug(name: "debug", xcconfig: "\(projectName)/configs/app.xcconfig"),
                 .release(name: "release", xcconfig: "\(projectName)/configs/app.xcconfig"),
-            ])
+            ]),
+            environmentVariables: ["IDEPreferLogStreaming":"YES"]
         ),
         .target(
             name: "Domain",
