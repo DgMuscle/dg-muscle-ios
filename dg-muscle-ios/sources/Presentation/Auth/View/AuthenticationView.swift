@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct AuthenticationView: View {
+public struct AuthenticationView: View {
     
     private var window: UIWindow?
     
-    init(window: UIWindow?) {
+    public init(window: UIWindow?) {
         self.window = window
     }
     
-    var body: some View {
+    public var body: some View {
         Button {
             AppleAuthCoordinator(window: window).startAppleLogin()
         } label: {

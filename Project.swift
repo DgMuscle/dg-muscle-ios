@@ -31,6 +31,7 @@ let project = Project(
             dependencies: [
                 .target(name: "Data", condition: nil),
                 .target(name: "Domain", condition: nil),
+                .target(name: "Auth", condition: nil),
                 .package(product: "FirebaseMessaging", type: .runtime, condition: nil)
             ],
             settings: .settings(configurations: [
@@ -67,7 +68,7 @@ let project = Project(
             sources: ["\(projectName)/sources/Presentation/Auth/**"],
             resources: ["\(projectName)/resources/**"],
             dependencies: [
-                .package(product: "FirebaseAuth", type: .runtime, condition: nil)
+                .target(name: "Data", condition: nil)
             ]
         ),
         .target(
