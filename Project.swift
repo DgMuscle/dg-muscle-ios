@@ -24,7 +24,8 @@ let project = Project(
                     "UIBackgroundModes": [
                         "remote-notification"
                     ],
-                    "FirebaseAppDelegateProxyEnabled": false
+                    "FirebaseAppDelegateProxyEnabled": false,
+                    "CFBundleShortVersionString": "2.0.0"
                 ]
             ),
             sources: ["\(projectName)/sources/App/**"],
