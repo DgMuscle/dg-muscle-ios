@@ -6,18 +6,19 @@
 //
 
 import SwiftUI
+import Domain
 
 public struct AuthenticationView: View {
     
-    private var window: UIWindow?
+    private let startAppleLoginUsecase: StartAppleLoginUsecase
     
-    public init(window: UIWindow?) {
-        self.window = window
+    public init(startAppleLoginUsecase: StartAppleLoginUsecase) {
+        self.startAppleLoginUsecase = startAppleLoginUsecase
     }
     
     public var body: some View {
         Button {
-            AppleAuthCoordinator(window: window).startAppleLogin()
+            startAppleLoginUsecase.implement()
         } label: {
             HStack {
                 Image(systemName: "apple.logo")
@@ -29,5 +30,12 @@ public struct AuthenticationView: View {
 }
 
 #Preview {
-    AuthenticationView(window: nil).preferredColorScheme(.dark)
+    
+    class AppleAuthCoordinatorTest: AppleAuthCoordinator {
+        func startAppleLogin() {
+            print("startAppleLogin")
+        }
+    }
+    
+    return AuthenticationView(startAppleLoginUsecase: .init(appleAuthCoordinator: AppleAuthCoordinatorTest())).preferredColorScheme(.dark)
 }

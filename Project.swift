@@ -86,13 +86,13 @@ let project = Project(
     ]),
     targets: [
         createApp(),
+        createLayer(layerName: "Domain", dependencies: []),
         createLayer(layerName: "Data", dependencies: [
             .target(name: "Domain", condition: nil),
             .package(product: "FirebaseAuth", type: .runtime, condition: nil),
             .package(product: "FirebaseMessaging", type: .runtime, condition: nil)
         ]),
-        createLayer(layerName: "Domain", dependencies: []),
-        createPresentation(name: "Auth", dependencies: [.target(name: "Data", condition: nil)]),
+        createPresentation(name: "Auth", dependencies: [.target(name: "Domain", condition: nil)]),
         createTest()
     ]
 )

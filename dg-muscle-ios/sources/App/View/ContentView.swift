@@ -11,12 +11,14 @@ import Domain
 import Auth
 
 struct ContentView: View {
+    typealias FoundationData = Data
     @Environment(\.window) var window: UIWindow?
     @StateObject var viewModel: ContentViewModel
     @State var splash: Bool = true
     
     init() {
         self._viewModel = .init(wrappedValue: .init(userRepository: UserRepositoryImpl.shared))
+        
     }
     
     var body: some View {
@@ -24,7 +26,11 @@ struct ContentView: View {
             if viewModel.isLogin {
                 Text("Logged In")
             } else {
-                AuthenticationView(window: window)
+                AuthenticationView(
+                    startAppleLoginUsecase: .init(
+                        appleAuthCoordinator: AppleAuthCoordinatorImpl(window: window)
+                    )
+                )
             }
             SplashView().opacity(splash ? 1 : 0)
         }
