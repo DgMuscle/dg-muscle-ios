@@ -92,7 +92,9 @@ let project = Project(
             .package(product: "FirebaseAuth", type: .runtime, condition: nil),
             .package(product: "FirebaseMessaging", type: .runtime, condition: nil)
         ]),
-        createPresentation(name: "Auth", dependencies: [.target(name: "Domain", condition: nil)]),
+        createPresentation(name: "Auth", dependencies: [
+            .target(name: "Domain", condition: nil)
+        ]),
         createTest()
     ]
 )
