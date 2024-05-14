@@ -65,7 +65,10 @@ let project = Project(
             product: .framework,
             bundleId: bundleId + ".presentation.auth",
             sources: ["\(projectName)/sources/Presentation/Auth/**"],
-            resources: ["\(projectName)/resources/**"]
+            resources: ["\(projectName)/resources/**"],
+            dependencies: [
+                .package(product: "FirebaseAuth", type: .runtime, condition: nil)
+            ]
         ),
         .target(
             name: "Test",
