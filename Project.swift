@@ -23,7 +23,8 @@ let project = Project(
                     "UILaunchStoryboardName": "LaunchScreen.storyboard",
                     "UIBackgroundModes": [
                         "remote-notification"
-                    ]
+                    ],
+                    "FirebaseAppDelegateProxyEnabled": false
                 ]
             ),
             sources: ["\(projectName)/sources/App/**"],

@@ -13,6 +13,7 @@ import Auth
 struct ContentView: View {
     @Environment(\.window) var window: UIWindow?
     @StateObject var viewModel: ContentViewModel
+    @State var splash: Bool = true
     
     init() {
         self._viewModel = .init(wrappedValue: .init(userRepository: UserRepositoryImpl.shared))
@@ -24,6 +25,13 @@ struct ContentView: View {
                 Text("Logged In")
             } else {
                 AuthenticationView(window: window)
+            }
+            SplashView().opacity(splash ? 1 : 0)
+        }
+        .animation(.default, value: splash)
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                splash.toggle()
             }
         }
     }
