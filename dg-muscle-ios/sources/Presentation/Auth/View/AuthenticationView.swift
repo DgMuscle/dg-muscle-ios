@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct AuthenticationView: View {
+    
+    private var window: UIWindow?
+    
+    init(window: UIWindow?) {
+        self.window = window
+    }
+    
     var body: some View {
         Button {
-            
+            AppleAuthCoordinator(window: window).startAppleLogin()
         } label: {
             HStack {
                 Image(systemName: "apple.logo")
@@ -22,5 +29,5 @@ struct AuthenticationView: View {
 }
 
 #Preview {
-    AuthenticationView().preferredColorScheme(.dark)
+    AuthenticationView(window: nil).preferredColorScheme(.dark)
 }
