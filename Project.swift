@@ -42,7 +42,9 @@ let project = Project(
             product: .unitTests,
             bundleId: bundleId + ".test",
             sources: ["\(projectName)/sources/Test/**"],
-            dependencies: [],
+            dependencies: [
+                .target(name: "App")
+            ],
             settings: .settings(configurations: [
                 .debug(name: "debug", xcconfig: "\(projectName)/configs/test.xcconfig"),
                 .release(name: "release", xcconfig: "\(projectName)/configs/test.xcconfig"),
