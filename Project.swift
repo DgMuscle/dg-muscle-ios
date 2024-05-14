@@ -14,7 +14,7 @@ let project = Project(
     ]),
     targets: [
         .target(
-            name: "app",
+            name: "App",
             destinations: .iOS,
             product: .app,
             bundleId: bundleName,
@@ -26,7 +26,7 @@ let project = Project(
                     ]
                 ]
             ),
-            sources: ["\(projectName)/sources/app/**"],
+            sources: ["\(projectName)/sources/App/**"],
             resources: ["\(projectName)/resources/**"],
             dependencies: [
                 .package(product: "FirebaseMessaging", type: .runtime, condition: nil)
