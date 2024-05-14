@@ -19,13 +19,13 @@ struct UserData: Codable {
         self.photoURL = photoURL
     }
     
-    init(domain: UserDomain) {
+    init(domain: Domain.User) {
         self.uid = domain.uid
         self.displayName = domain.displayName
         self.photoURL = domain.photoURL?.absoluteString
     }
     
-    var domain: UserDomain {
+    var domain: Domain.User {
         .init(
             uid: uid,
             displayName: displayName,

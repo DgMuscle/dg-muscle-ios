@@ -14,7 +14,7 @@ public final class SubscribeUserUsecase {
         self.userRepository = userRepository
     }
     
-    public func implement() -> AnyPublisher<UserDomain?, Never> {
+    public func implement() -> AnyPublisher<User?, Never> {
         userRepository.user
     }
 }

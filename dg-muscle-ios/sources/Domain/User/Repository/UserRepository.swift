@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 public protocol UserRepository {
-    var user: AnyPublisher<UserDomain?, Never> { get }
+    var user: AnyPublisher<User?, Never> { get }
 }

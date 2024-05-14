@@ -10,6 +10,6 @@ import Combine
 import Domain
 
 final class UserRepositoryImpl: UserRepository {
-    var user: AnyPublisher<UserDomain?, Never> { $_user.eraseToAnyPublisher() }
-    @Published private var _user: UserDomain? = nil
+    var user: AnyPublisher<Domain.User?, Never> { $_user.eraseToAnyPublisher() }
+    @Published private var _user: Domain.User? = nil
 }
