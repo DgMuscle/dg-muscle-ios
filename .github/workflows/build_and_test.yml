@@ -25,7 +25,7 @@ jobs:
       - name: Use Tuist
         run: mise use -g tuist
       - name: Tuist Fetch
-        run: tuist fetch
+        run: tuist install
       - name: Tuist Generate
         run: tuist generate
       - name: Set Default Scheme
