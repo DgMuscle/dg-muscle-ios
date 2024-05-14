@@ -20,6 +20,10 @@ jobs:
           xcode-version: 15.3
       - name: Mise
         uses: jdx/mise-action@v2
+      - name: Install Tuist
+        run: mise install tuist
+      - name: Use Tuist
+        run: mise use -g tuist
       - name: Tuist Fetch
         run: tuist fetch
       - name: Tuist Generate
