@@ -18,13 +18,11 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: 15.3
-      - name: Install Tuist CLI
-        run: bash <(curl -Ls https://install.tuist.io)
-      - name: Tuist Clean Command
-        run: tuist clean
-      - name: Tuist Fetch Command
+      - name: Mise
+        uses: jdx/mise-action@v2
+      - name: Tuist Fetch
         run: tuist fetch
-      - name: Tuist Generate Command
+      - name: Tuist Generate
         run: tuist generate
       - name: Set Default Scheme
         run: |
