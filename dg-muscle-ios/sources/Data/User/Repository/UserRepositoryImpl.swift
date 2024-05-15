@@ -12,9 +12,11 @@ import FirebaseAuth
 
 public final class UserRepositoryImpl: UserRepository {
     public static let shared = UserRepositoryImpl()
-    
     public var user: AnyPublisher<Domain.User?, Never> { $_user.eraseToAnyPublisher() }
+    private var cancellables = Set<AnyCancellable>()
+    
     @Published var _user: Domain.User? = nil
+    @Published var isLogin: Bool = false
     
     private init() {
         bind()
@@ -28,5 +30,11 @@ public final class UserRepositoryImpl: UserRepository {
             }
             self._user = .init(uid: user.uid, displayName: user.displayName, photoURL: user.photoURL)
         }
+        
+        $_user
+            .sink { user in
+                self.isLogin = user != nil
+            }
+            .store(in: &cancellables)
     }
 }
