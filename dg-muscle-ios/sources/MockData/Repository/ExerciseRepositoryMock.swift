@@ -1,5 +1,5 @@
 //
-//  ExerciseRepository.swift
+//  ExerciseRepositoryMock.swift
 //  MockData
 //
 //  Created by 신동규 on 5/15/24.

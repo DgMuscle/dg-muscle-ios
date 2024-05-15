@@ -14,6 +14,8 @@ enum Presentation: String, CaseIterable {
     case Auth
     case HeatMap
     case History
+    case Library
+    case My
 }
 
 func createApp() -> Target {
@@ -148,6 +150,14 @@ func createPresentations() -> [Target] {
             return createPresentation($0, dependencies: [
                 .target(name: Presentation.HeatMap.rawValue, condition: nil)
             ])
+        case .Library:
+            return createPresentation($0, dependencies: [
+                .package(product: "Kingfisher", type: .runtime, condition: nil)
+            ])
+        case .My:
+            return createPresentation($0, dependencies: [
+                .target(name: Presentation.Library.rawValue, condition: nil)
+            ])
         }
     })
 }
@@ -164,7 +174,8 @@ var targets: [Target] {
 let project = Project(
     name: projectName,
     packages: [
-        .remote(url: "https://github.com/firebase/firebase-ios-sdk", requirement: .upToNextMajor(from: "10.15.0"))
+        .remote(url: "https://github.com/firebase/firebase-ios-sdk", requirement: .upToNextMajor(from: "10.15.0")),
+        .remote(url: "https://github.com/onevcat/Kingfisher.git", requirement: .upToNextMajor(from: "7.11.0"))
     ],
     settings: .settings(configurations: [
         .debug(name: "debug", xcconfig: "\(projectName)/configs/project.xcconfig"),
