@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct History: Hashable {
+    let id: String
+    let date: Date
+    let parts: [String]
+    let volume: Double
+}
