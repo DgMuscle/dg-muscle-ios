@@ -7,13 +7,20 @@
 
 import Foundation
 
-struct History {
-    let id: String
-    let date: Date
-    let memo: String?
-    let records: [Record]
+public struct History {
+    public let id: String
+    public let date: Date
+    public let memo: String?
+    public let records: [Record]
     
-    var volume: Double {
+    public init(id: String, date: Date, memo: String?, records: [Record]) {
+        self.id = id
+        self.date = date
+        self.memo = memo
+        self.records = records
+    }
+    
+    public var volume: Double {
         records.reduce(0, { $0 + $1.volume })
     }
 }

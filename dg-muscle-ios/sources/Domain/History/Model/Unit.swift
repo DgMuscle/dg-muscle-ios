@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Unit {
+public enum Unit {
     case kb
     case lbs
 }

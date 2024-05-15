@@ -7,13 +7,20 @@
 
 import Foundation
 
-struct ExerciseSet {
-    let id: String
-    let unit: Unit
-    let reps: Int
-    let weight: Double
+public struct ExerciseSet {
+    public let id: String
+    public let unit: Unit
+    public let reps: Int
+    public let weight: Double
     
-    var volume: Double {
+    public init(id: String, unit: Unit, reps: Int, weight: Double) {
+        self.id = id
+        self.unit = unit
+        self.reps = reps
+        self.weight = weight
+    }
+    
+    public var volume: Double {
         weight * Double(reps)
     }
 }
