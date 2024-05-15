@@ -9,8 +9,8 @@ import Foundation
 
 public struct User {
     public let uid: String
-    public var displayName: String?
-    public var photoURL: URL?
+    public let displayName: String?
+    public let photoURL: URL?
     
     public init(uid: String, displayName: String? = nil, photoURL: URL? = nil) {
         self.uid = uid
