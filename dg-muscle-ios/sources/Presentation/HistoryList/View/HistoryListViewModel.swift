@@ -9,8 +9,8 @@ import Foundation
 import Combine
 import Domain
 
-final class HistoryListViewModel {
-    @Published var historiesGroupedByMonth: [String: [History]] = [:]
+final class HistoryListViewModel: ObservableObject {
+    @Published var historiesGroupedByMonth: [HistorySection] = []
     
     let subscribeExercisesUsecase: SubscribeExercisesUsecase
     let subscribeHistoriesGroupedByMonthUsecase: SubscribeHistoriesGroupedByMonthUsecase
@@ -35,11 +35,20 @@ final class HistoryListViewModel {
     }
     
     private func configureData(grouped: [String: [Domain.History]], exercises: [Domain.Exercise]) {
-        var data: [String: [History]] = [:]
+        var data: [HistorySection] = []
+        
+        let dateFormatter = DateFormatter()
+        
         
         for (month, histories) in grouped {
             let historyList: [History] = histories.map({ convert(history: $0, exercises: exercises) })
-            data[month] = historyList
+            dateFormatter.dateFormat = "yyyyMM"
+            let date = dateFormatter.date(from: month) ?? Date()
+            dateFormatter.dateFormat = "MMM y"
+            
+            data.append(.init(id: UUID().uuidString,
+                              yearMonth: dateFormatter.string(from: date),
+                              histories: historyList))
         }
         
         self.historiesGroupedByMonth = data
