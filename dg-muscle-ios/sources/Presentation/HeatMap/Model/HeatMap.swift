@@ -12,12 +12,12 @@ public struct HeatMap: Hashable {
     public let week: String
     public let volume: [Volume]
     
-    public init(domain: Domain.HeatMapData) {
+    public init(domain: Domain.HeatMapModel) {
         self.week = domain.week
         self.volume = domain.volume.map({ .init(value: $0) })
     }
     
-    public var domain: Domain.HeatMapData {
+    public var domain: Domain.HeatMapModel {
         .init(week: week, volume: volume.map({ $0.value }))
     }
 }

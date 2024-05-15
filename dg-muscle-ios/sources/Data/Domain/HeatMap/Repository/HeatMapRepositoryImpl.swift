@@ -13,12 +13,12 @@ public final class HeatMapRepositoryImpl: HeatMapRepository {
     
     private init() { }
     
-    public func get() -> [Domain.HeatMapData] {
+    public func get() -> [Domain.HeatMapModel] {
         let heatMap: [HeatMap] = (try? FileManagerHelper.shared.load([HeatMap].self, fromFile: .heatmap)) ?? []
         return heatMap.map({ $0.domain })
     }
     
-    public func post(heatMap: [Domain.HeatMapData]) {
+    public func post(heatMap: [Domain.HeatMapModel]) {
         let heatMap: [HeatMap] = heatMap.map({ .init(domain: $0) })
         DispatchQueue.global(qos: .background).async {
             try? FileManagerHelper.shared.save(heatMap, toFile: .heatmap)
