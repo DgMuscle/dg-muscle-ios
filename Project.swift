@@ -75,8 +75,7 @@ func createLayers() -> [Target] {
                 destinations: .iOS,
                 product: .framework,
                 bundleId: bundleId + ".\($0.rawValue)".lowercased(),
-                sources: ["\(projectName)/sources/\($0.rawValue)/**"],
-                resources: ["\(projectName)/resources/**"]
+                sources: ["\(projectName)/sources/\($0.rawValue)/**"]
             )
         case .Data:
             var dependencies: [TargetDependency] = [
@@ -94,7 +93,6 @@ func createLayers() -> [Target] {
                 product: .framework,
                 bundleId: bundleId + ".\($0.rawValue)".lowercased(),
                 sources: ["\(projectName)/sources/\($0.rawValue)/**"],
-                resources: ["\(projectName)/resources/**"],
                 dependencies: dependencies
             )
         case .MockData:
@@ -104,6 +102,7 @@ func createLayers() -> [Target] {
                 product: .framework,
                 bundleId: bundleId + ".\($0.rawValue)".lowercased(),
                 sources: ["\(projectName)/sources/\($0.rawValue)/**"],
+                resources: ["\(projectName)/resources/**"],
                 dependencies: [.target(name: Layer.Domain.rawValue, condition: nil)]
             )
             
@@ -137,7 +136,6 @@ func createPresentations() -> [Target] {
             product: .framework,
             bundleId: bundleId + ".\(Layer.Presentation.rawValue).\(presentation.rawValue)".lowercased(),
             sources: ["\(projectName)/sources/\(Layer.Presentation.rawValue)/\(presentation.rawValue)/**"],
-            resources: ["\(projectName)/resources/**"],
             dependencies: dependencies
         )
     }

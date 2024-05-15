@@ -32,6 +32,8 @@ struct MyView: View {
                     }
                     
                     Text(viewModel.user?.displayName ?? "Display Name")
+                        .foregroundStyle(Color(uiColor: .label))
+                        .fontWeight(.black)
                     
                     Spacer()
                 }
