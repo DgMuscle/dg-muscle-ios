@@ -46,8 +46,6 @@ __의존성 방향__
 
 ## Main Model
 
-<img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/4bd3b634-8100-4719-8ae7-e1c32389dc38" />
-
 ### Exercise
 
 유저가 직접 등록하는 운동 모델. 이름과 운동을 통하여 발전시키고자 하는 타겟 부위를 담고 있음
