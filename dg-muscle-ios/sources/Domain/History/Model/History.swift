@@ -11,9 +11,9 @@ public struct History {
     public let id: String
     public let date: Date
     public let memo: String?
-    public let records: [Record]
+    public let records: [ExerciseRecord]
     
-    public init(id: String, date: Date, memo: String?, records: [Record]) {
+    public init(id: String, date: Date, memo: String?, records: [ExerciseRecord]) {
         self.id = id
         self.date = date
         self.memo = memo

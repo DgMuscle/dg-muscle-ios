@@ -10,8 +10,8 @@ import Domain
 import Foundation
 
 final class UserRepositoryTest: UserRepository {
-    public var user: AnyPublisher<Domain.User?, Never> { $_user.eraseToAnyPublisher() }
-    @Published private var _user: Domain.User?
+    public var user: AnyPublisher<User?, Never> { $_user.eraseToAnyPublisher() }
+    @Published private var _user: User?
     
     init() {
         _user = .init(
