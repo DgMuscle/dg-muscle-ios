@@ -152,7 +152,8 @@ func createPresentations() -> [Target] {
             ])
         case .Library:
             return createPresentation($0, dependencies: [
-                .package(product: "Kingfisher", type: .runtime, condition: nil)
+                .package(product: "Kingfisher", type: .runtime, condition: nil),
+                .package(product: "SnapKit", type: .runtime, condition: nil)
             ])
         case .My:
             return createPresentation($0, dependencies: [
@@ -175,7 +176,8 @@ let project = Project(
     name: projectName,
     packages: [
         .remote(url: "https://github.com/firebase/firebase-ios-sdk", requirement: .upToNextMajor(from: "10.15.0")),
-        .remote(url: "https://github.com/onevcat/Kingfisher.git", requirement: .upToNextMajor(from: "7.11.0"))
+        .remote(url: "https://github.com/onevcat/Kingfisher.git", requirement: .upToNextMajor(from: "7.11.0")),
+        .remote(url: "https://github.com/SnapKit/SnapKit.git", requirement: .upToNextMajor(from: "5.7.1"))
     ],
     settings: .settings(configurations: [
         .debug(name: "debug", xcconfig: "\(projectName)/configs/project.xcconfig"),
