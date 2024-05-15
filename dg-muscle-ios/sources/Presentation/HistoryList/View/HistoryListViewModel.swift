@@ -39,7 +39,6 @@ final class HistoryListViewModel: ObservableObject {
         
         let dateFormatter = DateFormatter()
         
-        
         for (month, histories) in grouped {
             let historyList: [History] = histories.map({ convert(history: $0, exercises: exercises) })
             dateFormatter.dateFormat = "yyyyMM"
@@ -50,6 +49,8 @@ final class HistoryListViewModel: ObservableObject {
                               yearMonth: dateFormatter.string(from: date),
                               histories: historyList))
         }
+        
+        data.sort(by: { $0.yearMonth > $1.yearMonth })
         
         self.historiesGroupedByMonth = data
     }

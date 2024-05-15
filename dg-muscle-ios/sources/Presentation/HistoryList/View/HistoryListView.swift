@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Domain
-import Combine
+import MockData
 
 public struct HistoryListView: View {
     @StateObject var viewModel: HistoryListViewModel
@@ -21,16 +21,33 @@ public struct HistoryListView: View {
     public var body: some View {
         ScrollView {
             VStack {
+                Spacer(minLength: 150)
                 ForEach(viewModel.historiesGroupedByMonth, id: \.self) { section in
-                    Section(section.yearMonth) {
-                        ForEach(section.histories, id: \.self) { history in
-                            HistoryItemView(history: history)
+                    Section {
+                        VStack {
+                            ForEach(section.histories, id: \.self) { history in
+                                HistoryItemView(history: history)
+                            }
                         }
+                        .padding(.bottom)
+                    } header: {
+                        HStack {
+                            Text(section.yearMonth).fontWeight(.black)
+                            Spacer()
+                        }
+                        .padding(.bottom)
                     }
                 }
             }
+            .padding()
         }
         .ignoresSafeArea()
         .scrollIndicators(.hidden)
     }
+}
+
+#Preview {
+    HistoryListView(historyRepository: HistoryRepositoryMock(),
+                    exerciseRepository: ExerciseRepositoryMock())
+    .preferredColorScheme(.dark)
 }
