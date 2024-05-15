@@ -6,10 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct History: Hashable {
     let id: String
     let date: Date
     let parts: [String]
     let volume: Double
+    let color: Color
+    let time: Double?
+    let kcal: Double?
 }
