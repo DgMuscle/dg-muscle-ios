@@ -14,7 +14,7 @@ public final class UserRepositoryImpl: UserRepository {
     public static let shared = UserRepositoryImpl()
     
     public var user: AnyPublisher<Domain.User?, Never> { $_user.eraseToAnyPublisher() }
-    @Published private var _user: Domain.User? = nil
+    @Published var _user: Domain.User? = nil
     
     private init() {
         bind()
