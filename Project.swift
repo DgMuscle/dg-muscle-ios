@@ -31,7 +31,10 @@ func createApp() -> Target {
         ),
         sources: ["\(projectName)/sources/App/**"],
         resources: ["\(projectName)/resources/**"],
-        dependencies:  Layer.allCases.map({ .target(name: $0.rawValue, condition: nil) }) ,
+        dependencies:  Layer
+            .allCases
+            .filter({ $0 != .Domain })
+            .map({ .target(name: $0.rawValue, condition: nil) }) ,
         settings: .settings(configurations: [
             .debug(name: "debug", xcconfig: "\(projectName)/configs/app.xcconfig"),
             .release(name: "release", xcconfig: "\(projectName)/configs/app.xcconfig"),
@@ -58,7 +61,6 @@ func createTest() -> Target {
 }
 
 func createLayers() -> [Target] {
-    let commonDependency: TargetDependency = .target(name: Layer.Domain.rawValue, condition: nil)
     
     return Layer.allCases.map({
         switch $0 {
@@ -72,7 +74,9 @@ func createLayers() -> [Target] {
                 resources: ["\(projectName)/resources/**"]
             )
         case .Data:
-            var dependencies: [TargetDependency] = [commonDependency]
+            var dependencies: [TargetDependency] = [
+                .target(name: Layer.Domain.rawValue, condition: nil)
+            ]
             
             dependencies.append(contentsOf: [
                 .package(product: "FirebaseAuth", type: .runtime, condition: nil),
@@ -89,7 +93,7 @@ func createLayers() -> [Target] {
                 dependencies: dependencies
             )
         case .Presentation:
-            var dependencies: [TargetDependency] = [commonDependency]
+            var dependencies: [TargetDependency] = []
             
             Presentation.allCases.forEach({
                 dependencies.append(.target(name: $0.rawValue, condition: nil))
