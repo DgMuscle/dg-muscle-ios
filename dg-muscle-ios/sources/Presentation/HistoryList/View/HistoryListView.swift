@@ -13,16 +13,21 @@ import HeatMap
 public struct HistoryListView: View {
     @StateObject var viewModel: HistoryListViewModel
     
+    let tapHistory: ((_ historyId: String) -> ())?
+    
     public init(today: Date,
                 historyRepository: any HistoryRepository,
                 exerciseRepository: any ExerciseRepository,
-                heatMapRepository: any HeatMapRepository) {
+                heatMapRepository: any HeatMapRepository,
+                tapHistory: ((_ historyId: String) -> ())?) {
         _viewModel = .init(wrappedValue: .init(
             today: today,
             historyRepository: historyRepository,
             exerciseRepository: exerciseRepository,
             heatMapRepository: heatMapRepository)
         )
+        
+        self.tapHistory = tapHistory
     }
     
     public var body: some View {
@@ -37,7 +42,12 @@ public struct HistoryListView: View {
                     Section {
                         VStack {
                             ForEach(section.histories, id: \.self) { history in
-                                HistoryItemView(history: history)
+                                
+                                Button {
+                                    tapHistory?(history.id)
+                                } label: {
+                                    HistoryItemView(history: history)
+                                }
                             }
                         }
                         .padding(.bottom)
@@ -64,8 +74,9 @@ public struct HistoryListView: View {
     let date = dateFormatter.date(from: "20240515")!
     
     return HistoryListView(today: date,
-                    historyRepository: HistoryRepositoryMock(),
-                    exerciseRepository: ExerciseRepositoryMock(),
-                    heatMapRepository: HeatMapRepositoryMock())
+                           historyRepository: HistoryRepositoryMock(),
+                           exerciseRepository: ExerciseRepositoryMock(),
+                           heatMapRepository: HeatMapRepositoryMock(),
+                           tapHistory: nil)
     .preferredColorScheme(.dark)
 }
