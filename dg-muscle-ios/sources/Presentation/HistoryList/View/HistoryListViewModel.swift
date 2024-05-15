@@ -20,10 +20,10 @@ final class HistoryListViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     init(today: Date,
-        historyRepository: any HistoryRepository,
+         historyRepository: any HistoryRepository,
          exerciseRepository: any ExerciseRepository,
          heatMapRepository: any HeatMapRepository
-         ) {
+    ) {
         subscribeHeatMapUsecase = .init(today: today, historyRepository: historyRepository, heatMapRepository: heatMapRepository)
         subscribeExercisesUsecase = .init(exerciseRepository: exerciseRepository)
         subscribeHistoriesGroupedByMonthUsecase = .init(historyRepository: historyRepository)
