@@ -12,6 +12,13 @@ public struct Exercise {
     public let name: String
     public let parts: [Part]
     public let favorite: Bool
+    
+    public init(id: String, name: String, parts: [Part], favorite: Bool) {
+        self.id = id
+        self.name = name
+        self.parts = parts
+        self.favorite = favorite
+    }
 }
 
 extension Exercise {
