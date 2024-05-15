@@ -19,10 +19,10 @@
 // MARK: - Asset Catalogs
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
-public enum HistoryListAsset {
+public enum HeatMapAsset {
   public enum Assets {
-  public static let accentColor = HistoryListColors(name: "AccentColor")
-    public static let splash = HistoryListImages(name: "Splash")
+  public static let accentColor = HeatMapColors(name: "AccentColor")
+    public static let splash = HeatMapImages(name: "Splash")
   }
   public enum PreviewAssets {
   }
@@ -31,7 +31,7 @@ public enum HistoryListAsset {
 
 // MARK: - Implementation Details
 
-public final class HistoryListColors {
+public final class HeatMapColors {
   public fileprivate(set) var name: String
 
   #if os(macOS)
@@ -70,9 +70,9 @@ public final class HistoryListColors {
   }
 }
 
-public extension HistoryListColors.Color {
+public extension HeatMapColors.Color {
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, visionOS 1.0, *)
-  convenience init?(asset: HistoryListColors) {
+  convenience init?(asset: HeatMapColors) {
     let bundle = Bundle.module
     #if os(iOS) || os(tvOS) || os(visionOS)
     self.init(named: asset.name, in: bundle, compatibleWith: nil)
@@ -87,14 +87,14 @@ public extension HistoryListColors.Color {
 #if canImport(SwiftUI)
 @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
 public extension SwiftUI.Color {
-  init(asset: HistoryListColors) {
+  init(asset: HeatMapColors) {
     let bundle = Bundle.module
     self.init(asset.name, bundle: bundle)
   }
 }
 #endif
 
-public struct HistoryListImages {
+public struct HeatMapImages {
   public fileprivate(set) var name: String
 
   #if os(macOS)
@@ -129,17 +129,17 @@ public struct HistoryListImages {
 #if canImport(SwiftUI)
 @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
 public extension SwiftUI.Image {
-  init(asset: HistoryListImages) {
+  init(asset: HeatMapImages) {
     let bundle = Bundle.module
     self.init(asset.name, bundle: bundle)
   }
 
-  init(asset: HistoryListImages, label: Text) {
+  init(asset: HeatMapImages, label: Text) {
     let bundle = Bundle.module
     self.init(asset.name, bundle: bundle, label: label)
   }
 
-  init(decorative asset: HistoryListImages) {
+  init(decorative asset: HeatMapImages) {
     let bundle = Bundle.module
     self.init(decorative: asset.name, bundle: bundle)
   }

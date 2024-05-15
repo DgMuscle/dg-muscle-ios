@@ -1,5 +1,5 @@
 //
-//  GroupByMonthHistoriesUsecaseTests.swift
+//  GroupByMonthHistoriesUsecaseTest.swift
 //  Test
 //
 //  Created by 신동규 on 5/15/24.
@@ -10,8 +10,8 @@ import XCTest
 import MockData
 import Domain
 
-final class GroupByMonthHistoriesUsecaseTests: XCTestCase {
-    func test() {
+final class GroupByMonthHistoriesUsecaseTest: XCTestCase {
+    func testImplement() {
         let usecase = GroupByMonthHistoriesUsecase()
         let groupedByMonthHistories = usecase.implement(histories: [
             HISTORY_1, HISTORY_2, HISTORY_3

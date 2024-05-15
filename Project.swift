@@ -12,7 +12,8 @@ enum Layer: String, CaseIterable {
 
 enum Presentation: String, CaseIterable {
     case Auth
-    case HistoryList
+    case HeatMap
+    case History
 }
 
 func createApp() -> Target {
@@ -123,21 +124,30 @@ func createLayers() -> [Target] {
 }
 
 func createPresentations() -> [Target] {
-    
-    let commonDependency: TargetDependency = .target(name: Layer.MockData.rawValue, condition: nil)
+    func createPresentation(_ presentation: Presentation, dependencies: [TargetDependency]) -> Target {
+        let commonDependency: TargetDependency = .target(name: Layer.MockData.rawValue, condition: nil)
+        var dependencies = dependencies
+        dependencies.append(commonDependency)
+        
+        return .target(
+            name: presentation.rawValue,
+            destinations: .iOS,
+            product: .framework,
+            bundleId: bundleId + ".\(Layer.Presentation.rawValue).\(presentation.rawValue)".lowercased(),
+            sources: ["\(projectName)/sources/\(Layer.Presentation.rawValue)/\(presentation.rawValue)/**"],
+            resources: ["\(projectName)/resources/**"],
+            dependencies: dependencies
+        )
+    }
     
     return Presentation.allCases.map({
         switch $0 {
-        case .Auth, .HistoryList:
-            return .target(
-                name: $0.rawValue,
-                destinations: .iOS,
-                product: .framework,
-                bundleId: bundleId + ".\(Layer.Presentation.rawValue).\($0.rawValue)".lowercased(),
-                sources: ["\(projectName)/sources/\(Layer.Presentation.rawValue)/\($0.rawValue)/**"],
-                resources: ["\(projectName)/resources/**"],
-                dependencies: [commonDependency]
-            )
+        case .Auth, .HeatMap:
+            return createPresentation($0, dependencies: [])
+        case .History:
+            return createPresentation($0, dependencies: [
+                .target(name: Presentation.HeatMap.rawValue, condition: nil)
+            ])
         }
     })
 }

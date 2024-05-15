@@ -8,15 +8,25 @@
 import Foundation
 import Combine
 import Domain
+import HeatMap
+import SwiftUI
 
 final class HistoryListViewModel: ObservableObject {
+    @Published var heatMap: [HeatMap] = []
     @Published var historiesGroupedByMonth: [HistorySection] = []
+    @Published var color: Color = .green
     
+    let subscribeHeatMapUsecase: SubscribeHeatMapUsecase
     let subscribeExercisesUsecase: SubscribeExercisesUsecase
     let subscribeHistoriesGroupedByMonthUsecase: SubscribeHistoriesGroupedByMonthUsecase
+    
     private var cancellables = Set<AnyCancellable>()
-    init(historyRepository: any HistoryRepository,
-         exerciseRepository: any ExerciseRepository) {
+    init(today: Date,
+         historyRepository: any HistoryRepository,
+         exerciseRepository: any ExerciseRepository,
+         heatMapRepository: any HeatMapRepository
+    ) {
+        subscribeHeatMapUsecase = .init(today: today, historyRepository: historyRepository, heatMapRepository: heatMapRepository)
         subscribeExercisesUsecase = .init(exerciseRepository: exerciseRepository)
         subscribeHistoriesGroupedByMonthUsecase = .init(historyRepository: historyRepository)
         
@@ -26,21 +36,32 @@ final class HistoryListViewModel: ObservableObject {
     private func bind() {
         subscribeHistoriesGroupedByMonthUsecase
             .implement()
-            .combineLatest(subscribeExercisesUsecase.implement())
+            .combineLatest(
+                subscribeExercisesUsecase.implement(),
+                $color
+            )
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] grouped, exercises in
-                self?.configureData(grouped: grouped, exercises: exercises)
+            .sink { [weak self] grouped, exercises, color in
+                self?.configureData(grouped: grouped, exercises: exercises, color: color)
+            }
+            .store(in: &cancellables)
+        
+        subscribeHeatMapUsecase
+            .implement()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] heatMap in
+                self?.heatMap = heatMap.map({ .init(domain: $0) })
             }
             .store(in: &cancellables)
     }
     
-    private func configureData(grouped: [String: [Domain.History]], exercises: [Domain.Exercise]) {
+    private func configureData(grouped: [String: [Domain.History]], exercises: [Domain.Exercise], color: Color) {
         var data: [HistorySection] = []
         
         let dateFormatter = DateFormatter()
         
         for (month, histories) in grouped {
-            let historyList: [History] = histories.map({ convert(history: $0, exercises: exercises) })
+            let historyList: [History] = histories.map({ convert(history: $0, exercises: exercises, color: color) })
             dateFormatter.dateFormat = "yyyyMM"
             let date = dateFormatter.date(from: month) ?? Date()
             dateFormatter.dateFormat = "MMM y"
@@ -55,7 +76,7 @@ final class HistoryListViewModel: ObservableObject {
         self.historiesGroupedByMonth = data
     }
     
-    private func convert(history: Domain.History, exercises: [Domain.Exercise]) -> History {
+    private func convert(history: Domain.History, exercises: [Domain.Exercise], color: Color) -> History {
         
         var parts = Set<Domain.Exercise.Part>()
         let exerciseIdList: [String] = history.records.map({ $0.exerciseId })
@@ -71,7 +92,7 @@ final class HistoryListViewModel: ObservableObject {
                      date: history.date,
                      parts: parts.map({ convert(part: $0) }).sorted(),
                      volume: history.volume,
-                     color: .green,
+                     color: color,
                      time: nil,
                      kcal: nil)
     }
