@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct HeatMap {
+public struct HeatMapData {
     public let week: String
     public let volume: [Double]
     

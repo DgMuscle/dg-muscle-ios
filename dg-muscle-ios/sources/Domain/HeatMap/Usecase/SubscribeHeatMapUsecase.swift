@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 public final class SubscribeHeatMapUsecase {
-    @Published var heatMap: [HeatMap] = []
+    @Published var heatMap: [HeatMapData] = []
     
     let today: Date
     let historyRepository: HistoryRepository
@@ -23,7 +23,7 @@ public final class SubscribeHeatMapUsecase {
         self.heatMapRepository = heatMapRepository
         bind()
     }
-    public func implement() -> AnyPublisher<[HeatMap], Never> {
+    public func implement() -> AnyPublisher<[HeatMapData], Never> {
         $heatMap.eraseToAnyPublisher()
     }
     
