@@ -7,15 +7,17 @@
 
 import Foundation
 
-final class GroupByMonthHistoriesUsecase {
+public final class GroupByMonthHistoriesUsecase {
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMM"
         return dateFormatter
     }()
     
+    public init() { }
+    
     /// O(n)
-    func implement(histories: [History]) -> [String: [History]] {
+    public func implement(histories: [History]) -> [String: [History]] {
         /// sort
         /// O(n)
         let histories = histories.sorted(by: { $0.date > $1.date })
