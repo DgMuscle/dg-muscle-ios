@@ -12,6 +12,7 @@ enum Layer: String, CaseIterable {
 
 enum Presentation: String, CaseIterable {
     case Auth
+    case Exercise
     case HeatMap
     case History
     case Library
@@ -143,7 +144,7 @@ func createPresentations() -> [Target] {
     
     return Presentation.allCases.map({
         switch $0 {
-        case .Auth, .HeatMap:
+        case .Auth, .HeatMap, .Exercise:
             return createPresentation($0, dependencies: [])
         case .History:
             return createPresentation($0, dependencies: [
