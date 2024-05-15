@@ -3,6 +3,16 @@ import ProjectDescription
 let projectName = "dg-muscle-ios"
 let bundleId = "com.donggyu.dg-muscle-ios"
 
+enum Layer: String, CaseIterable {
+    case Domain
+    case Data
+    case Presentation
+}
+
+enum Presentation: String, CaseIterable {
+    case Auth
+}
+
 func createApp() -> Target {
     .target(
         name: "App",
@@ -21,11 +31,7 @@ func createApp() -> Target {
         ),
         sources: ["\(projectName)/sources/App/**"],
         resources: ["\(projectName)/resources/**"],
-        dependencies: [
-            .target(name: "Data", condition: nil),
-            .target(name: "Domain", condition: nil),
-            .target(name: "Auth", condition: nil)
-        ],
+        dependencies:  Layer.allCases.map({ .target(name: $0.rawValue, condition: nil) }) ,
         settings: .settings(configurations: [
             .debug(name: "debug", xcconfig: "\(projectName)/configs/app.xcconfig"),
             .release(name: "release", xcconfig: "\(projectName)/configs/app.xcconfig"),
@@ -42,7 +48,7 @@ func createTest() -> Target {
         bundleId: bundleId + ".test",
         sources: ["\(projectName)/sources/Test/**"],
         dependencies: [
-            .target(name: "Domain", condition: nil)
+            .target(name: Layer.Domain.rawValue, condition: nil)
         ],
         settings: .settings(configurations: [
             .debug(name: "debug", xcconfig: "\(projectName)/configs/test.xcconfig"),
@@ -51,28 +57,82 @@ func createTest() -> Target {
     )
 }
 
-func createLayer(layerName: String, dependencies: [TargetDependency]) -> Target {
-    .target(
-        name: layerName,
-        destinations: .iOS,
-        product: .framework,
-        bundleId: bundleId + ".\(layerName)".lowercased(),
-        sources: ["\(projectName)/sources/\(layerName)/**"],
-        resources: ["\(projectName)/resources/**"],
-        dependencies: dependencies
-    )
+func createLayers() -> [Target] {
+    let commonDependency: TargetDependency = .target(name: Layer.Domain.rawValue, condition: nil)
+    
+    return Layer.allCases.map({
+        switch $0 {
+        case .Domain:
+            return Target.target(
+                name: $0.rawValue,
+                destinations: .iOS,
+                product: .framework,
+                bundleId: bundleId + ".\($0.rawValue)".lowercased(),
+                sources: ["\(projectName)/sources/\($0.rawValue)/**"],
+                resources: ["\(projectName)/resources/**"]
+            )
+        case .Data:
+            var dependencies: [TargetDependency] = [commonDependency]
+            
+            dependencies.append(contentsOf: [
+                .package(product: "FirebaseAuth", type: .runtime, condition: nil),
+                .package(product: "FirebaseMessaging", type: .runtime, condition: nil)
+            ])
+            
+            return Target.target(
+                name: $0.rawValue,
+                destinations: .iOS,
+                product: .framework,
+                bundleId: bundleId + ".\($0.rawValue)".lowercased(),
+                sources: ["\(projectName)/sources/\($0.rawValue)/**"],
+                resources: ["\(projectName)/resources/**"],
+                dependencies: dependencies
+            )
+        case .Presentation:
+            var dependencies: [TargetDependency] = [commonDependency]
+            
+            Presentation.allCases.forEach({
+                dependencies.append(.target(name: $0.rawValue, condition: nil))
+            })
+            
+            return Target.target(
+                name: $0.rawValue,
+                destinations: .iOS,
+                product: .framework,
+                bundleId: bundleId + ".\($0.rawValue)".lowercased(),
+                dependencies: dependencies
+            )
+        }
+    })
 }
 
-func createPresentation(name: String, dependencies: [TargetDependency]) -> Target {
-    .target(
-        name: "\(name)",
-        destinations: .iOS,
-        product: .framework,
-        bundleId: bundleId + ".presentation.\(name.lowercased())",
-        sources: ["\(projectName)/sources/Presentation/\(name)/**"],
-        resources: ["\(projectName)/resources/**"],
-        dependencies: dependencies
-    )
+func createPresentations() -> [Target] {
+    
+    let commonDependency: TargetDependency = .target(name: Layer.Domain.rawValue, condition: nil)
+    
+    return Presentation.allCases.map({
+        switch $0 {
+        case .Auth:
+            return .target(
+                name: $0.rawValue,
+                destinations: .iOS,
+                product: .framework,
+                bundleId: bundleId + ".\(Layer.Presentation.rawValue).\($0.rawValue)".lowercased(),
+                sources: ["\(projectName)/sources/\(Layer.Presentation.rawValue)/\($0.rawValue)/**"],
+                resources: ["\(projectName)/resources/**"],
+                dependencies: [commonDependency]
+            )
+        }
+    })
+}
+
+var targets: [Target] {
+    var targets: [Target] = []
+    targets.append(createApp())
+    targets.append(contentsOf: createLayers())
+    targets.append(contentsOf: createPresentations())
+    targets.append(createTest())
+    return targets
 }
 
 let project = Project(
@@ -84,17 +144,5 @@ let project = Project(
         .debug(name: "debug", xcconfig: "\(projectName)/configs/project.xcconfig"),
         .release(name: "release", xcconfig: "\(projectName)/configs/project.xcconfig")
     ]),
-    targets: [
-        createApp(),
-        createLayer(layerName: "Domain", dependencies: []),
-        createLayer(layerName: "Data", dependencies: [
-            .target(name: "Domain", condition: nil),
-            .package(product: "FirebaseAuth", type: .runtime, condition: nil),
-            .package(product: "FirebaseMessaging", type: .runtime, condition: nil)
-        ]),
-        createPresentation(name: "Auth", dependencies: [
-            .target(name: "Domain", condition: nil)
-        ]),
-        createTest()
-    ]
+    targets: targets
 )

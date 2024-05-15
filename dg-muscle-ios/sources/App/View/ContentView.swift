@@ -18,7 +18,6 @@ struct ContentView: View {
     
     init() {
         self._viewModel = .init(wrappedValue: .init(userRepository: UserRepositoryImpl.shared))
-        
     }
     
     var body: some View {
