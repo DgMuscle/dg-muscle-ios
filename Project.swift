@@ -118,6 +118,7 @@ func createLayers() -> [Target] {
                 destinations: .iOS,
                 product: .framework,
                 bundleId: bundleId + ".\($0.rawValue)".lowercased(),
+                sources: ["\(projectName)/sources/\($0.rawValue)/Parent/**"],
                 dependencies: dependencies
             )
         }

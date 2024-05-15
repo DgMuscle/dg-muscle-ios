@@ -33,7 +33,6 @@ public struct HistoryListView: View {
     public var body: some View {
         ScrollView {
             VStack {
-                Spacer(minLength: 50)
                 
                 HeatMapView(heatMap: viewModel.heatMap, color: .green)
                     .padding(.bottom)
@@ -62,7 +61,6 @@ public struct HistoryListView: View {
             }
             .padding()
         }
-        .ignoresSafeArea()
         .scrollIndicators(.hidden)
     }
 }

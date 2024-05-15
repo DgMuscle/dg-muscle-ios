@@ -10,14 +10,14 @@ import Domain
 import MockData
 import Kingfisher
 
-struct MyView: View {
+public struct MyView: View {
     @StateObject var viewModel: MyViewModel
     
-    init(userRepository: any UserRepository) {
+    public init(userRepository: any UserRepository) {
         _viewModel = .init(wrappedValue: .init(userRepository: userRepository))
     }
     
-    var body: some View {
+    public var body: some View {
         List {
             Section {
                 Text("My")
