@@ -13,7 +13,11 @@ public final class HistoryRepository: Domain.HistoryRepository {
     public static let shared = HistoryRepository()
     public var histories: AnyPublisher<[Domain.History], Never> { $_histories.eraseToAnyPublisher() }
     private var cancellables = Set<AnyCancellable>()
-    @Published var _histories: [Domain.History] = []
+    @Published var _histories: [Domain.History] = [] {
+        didSet {
+            postMyHistoriesToFileManager(histories: _histories)
+        }
+    }
     
     private init() {
         bind()
