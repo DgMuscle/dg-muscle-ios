@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Volume: Hashable {
-    let id: String = UUID().uuidString
-    let value: Double
+public struct Volume: Hashable {
+    public let id: String = UUID().uuidString
+    public let value: Double
 }

@@ -8,16 +8,16 @@
 import Foundation
 import Domain
 
-struct HeatMap: Hashable {
-    let week: String
-    let volume: [Volume]
+public struct HeatMap: Hashable {
+    public let week: String
+    public let volume: [Volume]
     
-    init(domain: Domain.HeatMap) {
+    public init(domain: Domain.HeatMap) {
         self.week = domain.week
         self.volume = domain.volume.map({ .init(value: $0) })
     }
     
-    var domain: Domain.HeatMap {
+    public var domain: Domain.HeatMap {
         .init(week: week, volume: volume.map({ $0.value }))
     }
 }
