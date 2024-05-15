@@ -8,20 +8,31 @@
 import SwiftUI
 import Domain
 import MockData
+import HeatMap
 
 public struct HistoryListView: View {
     @StateObject var viewModel: HistoryListViewModel
     
-    public init(historyRepository: any HistoryRepository, 
-                exerciseRepository: any ExerciseRepository) {
-        _viewModel = .init(wrappedValue: .init(historyRepository: historyRepository,
-                                               exerciseRepository: exerciseRepository))
+    public init(today: Date,
+                historyRepository: any HistoryRepository,
+                exerciseRepository: any ExerciseRepository,
+                heatMapRepository: any HeatMapRepository) {
+        _viewModel = .init(wrappedValue: .init(
+            today: today,
+            historyRepository: historyRepository,
+            exerciseRepository: exerciseRepository,
+            heatMapRepository: heatMapRepository)
+        )
     }
     
     public var body: some View {
         ScrollView {
             VStack {
-                Spacer(minLength: 150)
+                Spacer(minLength: 50)
+                
+                HeatMapView(heatMap: viewModel.heatMap, color: .green)
+                    .padding(.bottom)
+                
                 ForEach(viewModel.historiesGroupedByMonth, id: \.self) { section in
                     Section {
                         VStack {
@@ -47,7 +58,14 @@ public struct HistoryListView: View {
 }
 
 #Preview {
-    HistoryListView(historyRepository: HistoryRepositoryMock(),
-                    exerciseRepository: ExerciseRepositoryMock())
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyyMMdd"
+    let date = dateFormatter.date(from: "20240515")!
+    
+    return HistoryListView(today: date,
+                    historyRepository: HistoryRepositoryMock(),
+                    exerciseRepository: ExerciseRepositoryMock(),
+                    heatMapRepository: HeatMapRepositoryMock())
     .preferredColorScheme(.dark)
 }

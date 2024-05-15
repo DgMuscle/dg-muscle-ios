@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ColumnView: View {
     
-    let heatMap: HeatMapData
+    let heatMap: HeatMap
     let maxVolume: Double
     let color: Color
     

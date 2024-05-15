@@ -1,5 +1,5 @@
 //
-//  HeatMapData.swift
+//  HeatMap.swift
 //  Presentation
 //
 //  Created by 신동규 on 5/15/24.
@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-public struct HeatMapData: Hashable {
+public struct HeatMap: Hashable {
     public let week: String
     public let volume: [Volume]
     

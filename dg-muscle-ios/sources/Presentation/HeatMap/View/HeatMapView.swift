@@ -8,11 +8,11 @@
 import SwiftUI
 
 public struct HeatMapView: View {
-    let heatMap: [HeatMapData]
+    let heatMap: [HeatMap]
     let color: Color
     let maxVolume: Double
     
-    public init(heatMap: [HeatMapData], color: Color) {
+    public init(heatMap: [HeatMap], color: Color) {
         self.heatMap = heatMap
         self.color = color
         self.maxVolume = heatMap.flatMap({ $0.volume }).map({ $0.value }).max() ?? 0

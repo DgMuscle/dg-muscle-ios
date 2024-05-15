@@ -8,15 +8,23 @@
 import Foundation
 import Combine
 import Domain
+import HeatMap
 
 final class HistoryListViewModel: ObservableObject {
+    @Published var heatMap: [HeatMap] = []
     @Published var historiesGroupedByMonth: [HistorySection] = []
     
+    let subscribeHeatMapUsecase: SubscribeHeatMapUsecase
     let subscribeExercisesUsecase: SubscribeExercisesUsecase
     let subscribeHistoriesGroupedByMonthUsecase: SubscribeHistoriesGroupedByMonthUsecase
+    
     private var cancellables = Set<AnyCancellable>()
-    init(historyRepository: any HistoryRepository,
-         exerciseRepository: any ExerciseRepository) {
+    init(today: Date,
+        historyRepository: any HistoryRepository,
+         exerciseRepository: any ExerciseRepository,
+         heatMapRepository: any HeatMapRepository
+         ) {
+        subscribeHeatMapUsecase = .init(today: today, historyRepository: historyRepository, heatMapRepository: heatMapRepository)
         subscribeExercisesUsecase = .init(exerciseRepository: exerciseRepository)
         subscribeHistoriesGroupedByMonthUsecase = .init(historyRepository: historyRepository)
         
@@ -30,6 +38,14 @@ final class HistoryListViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] grouped, exercises in
                 self?.configureData(grouped: grouped, exercises: exercises)
+            }
+            .store(in: &cancellables)
+        
+        subscribeHeatMapUsecase
+            .implement()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] heatMap in
+                self?.heatMap = heatMap.map({ .init(domain: $0) })
             }
             .store(in: &cancellables)
     }
