@@ -24,10 +24,11 @@ public final class HistoryRepository: Domain.HistoryRepository {
             .shared
             .$isLogin
             .removeDuplicates()
-            .debounce(for: 0.5, scheduler: DispatchQueue.global())
+            .debounce(for: 0.5, scheduler: DispatchQueue.global(qos: .background))
             .sink { isLogin in
                 if isLogin {
                     Task {
+                        self._histories = await self.getMyHistoriesFromFilemanager()
                         self._histories = try await self.getMyHistoriesFromServer(lastId: nil, limit: 365)
                     }
                 } else {
@@ -45,5 +46,21 @@ public final class HistoryRepository: Domain.HistoryRepository {
         }
         let histories: [History] = try await APIClient.shared.request(url: url)
         return histories.map({ $0.domain })
+    }
+    
+    private func getMyHistoriesFromFilemanager() async -> [Domain.History] {
+        return await withCheckedContinuation { continuation in
+            DispatchQueue.global(qos: .background).async {
+                let histories: [History] = (try? FileManagerHelper.shared.load([History].self, fromFile: .history)) ?? []
+                continuation.resume(returning: histories.map({ $0.domain }))
+            }
+        }
+    }
+    
+    private func postMyHistoriesToFileManager(histories: [Domain.History]) {
+        DispatchQueue.global(qos: .background).async {
+            let histories: [History] = histories.map({ .init(domain: $0) })
+            try? FileManagerHelper.shared.save(histories, toFile: .history)
+        }
     }
 }
