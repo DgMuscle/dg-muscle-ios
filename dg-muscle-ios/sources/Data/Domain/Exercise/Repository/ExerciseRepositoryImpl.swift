@@ -1,5 +1,5 @@
 //
-//  ExerciseRepository.swift
+//  ExerciseRepositoryImpl.swift
 //  Data
 //
 //  Created by 신동규 on 5/15/24.
@@ -9,8 +9,8 @@ import Foundation
 import Combine
 import Domain
 
-final class ExerciseRepository: Domain.ExerciseRepository {
-    public static let shared = ExerciseRepository()
+final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
+    public static let shared = ExerciseRepositoryImpl()
     
     var exercises: AnyPublisher<[Domain.Exercise], Never> { $_exercises.eraseToAnyPublisher() }
     private var cancellables = Set<AnyCancellable>()

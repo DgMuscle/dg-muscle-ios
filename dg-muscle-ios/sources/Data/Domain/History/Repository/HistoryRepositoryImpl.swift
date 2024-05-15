@@ -1,5 +1,5 @@
 //
-//  HistoryRepository.swift
+//  HistoryRepositoryImpl.swift
 //  Data
 //
 //  Created by 신동규 on 5/15/24.
@@ -9,8 +9,8 @@ import Foundation
 import Combine
 import Domain
 
-public final class HistoryRepository: Domain.HistoryRepository {
-    public static let shared = HistoryRepository()
+public final class HistoryRepositoryImpl: Domain.HistoryRepository {
+    public static let shared = HistoryRepositoryImpl()
     public var histories: AnyPublisher<[Domain.History], Never> { $_histories.eraseToAnyPublisher() }
     private var cancellables = Set<AnyCancellable>()
     @Published var _histories: [Domain.History] = [] {
