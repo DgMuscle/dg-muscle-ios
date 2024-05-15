@@ -13,7 +13,7 @@ enum Layer: String, CaseIterable {
 enum Presentation: String, CaseIterable {
     case Auth
     case HeatMap
-    case HistoryList
+    case History
 }
 
 func createApp() -> Target {
@@ -144,7 +144,7 @@ func createPresentations() -> [Target] {
         switch $0 {
         case .Auth, .HeatMap:
             return createPresentation($0, dependencies: [])
-        case .HistoryList:
+        case .History:
             return createPresentation($0, dependencies: [
                 .target(name: Presentation.HeatMap.rawValue, condition: nil)
             ])

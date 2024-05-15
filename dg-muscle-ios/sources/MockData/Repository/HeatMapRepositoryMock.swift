@@ -9,6 +9,7 @@ import Foundation
 import Domain
 
 public final class HeatMapRepositoryMock: HeatMapRepository {
+    public init() { }
     public func get() -> [Domain.HeatMapData] {
         []
     }

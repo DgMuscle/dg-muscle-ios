@@ -12,12 +12,12 @@ struct HeatMap: Codable {
     let week: String
     let volume: [Double]
     
-    init(domain: Domain.HeatMap) {
+    init(domain: Domain.HeatMapData) {
         self.week = domain.week
         self.volume = domain.volume
     }
     
-    var domain: Domain.HeatMap {
+    var domain: Domain.HeatMapData {
         .init(week: week, volume: volume)
     }
 }
