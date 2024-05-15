@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+public protocol HeatMapRepository {
+    func post(heatMap: [HeatMap])
+}
