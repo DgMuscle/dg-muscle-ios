@@ -7,10 +7,12 @@ enum Layer: String, CaseIterable {
     case Domain
     case Data
     case Presentation
+    case MockData
 }
 
 enum Presentation: String, CaseIterable {
     case Auth
+    case HistoryList
 }
 
 func createApp() -> Target {
@@ -33,7 +35,7 @@ func createApp() -> Target {
         resources: ["\(projectName)/resources/**"],
         dependencies:  Layer
             .allCases
-            .filter({ $0 != .Domain })
+            .filter({ $0 != .Domain && $0 != .MockData })
             .map({ .target(name: $0.rawValue, condition: nil) }) ,
         settings: .settings(configurations: [
             .debug(name: "debug", xcconfig: "\(projectName)/configs/app.xcconfig"),
@@ -51,7 +53,7 @@ func createTest() -> Target {
         bundleId: bundleId + ".test",
         sources: ["\(projectName)/sources/Test/**"],
         dependencies: [
-            .target(name: Layer.Domain.rawValue, condition: nil)
+            .target(name: Layer.MockData.rawValue, condition: nil)
         ],
         settings: .settings(configurations: [
             .debug(name: "debug", xcconfig: "\(projectName)/configs/test.xcconfig"),
@@ -92,6 +94,16 @@ func createLayers() -> [Target] {
                 resources: ["\(projectName)/resources/**"],
                 dependencies: dependencies
             )
+        case .MockData:
+            return Target.target(
+                name: $0.rawValue,
+                destinations: .iOS,
+                product: .framework,
+                bundleId: bundleId + ".\($0.rawValue)".lowercased(),
+                sources: ["\(projectName)/sources/\($0.rawValue)/**"],
+                dependencies: [.target(name: Layer.Domain.rawValue, condition: nil)]
+            )
+            
         case .Presentation:
             var dependencies: [TargetDependency] = []
             
@@ -112,11 +124,11 @@ func createLayers() -> [Target] {
 
 func createPresentations() -> [Target] {
     
-    let commonDependency: TargetDependency = .target(name: Layer.Domain.rawValue, condition: nil)
+    let commonDependency: TargetDependency = .target(name: Layer.MockData.rawValue, condition: nil)
     
     return Presentation.allCases.map({
         switch $0 {
-        case .Auth:
+        case .Auth, .HistoryList:
             return .target(
                 name: $0.rawValue,
                 destinations: .iOS,
