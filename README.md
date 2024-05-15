@@ -3,7 +3,7 @@
 효율적으로 비교하고 기록하여 점진적 과부하를 이루고 근 성장을 이루자는 목적의 프로젝트. 
 
 ### [Introduction](https://judicious-hoof-33e.notion.site/dgmuscle-ios-a7162152c1594a09902d7d6c07da8bdd?pvs=74)
-
+<!-- 
 <div>
   <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/45eff686-131d-4a7f-80e3-f0a3af518df5" width=200 />
   <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/90a1b76b-81d5-40bd-842e-c0e8c856cf4c" width=200 />
@@ -13,12 +13,12 @@
   <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/24bf0696-f755-4be1-817b-6ee0356ab227" width=200 />
 </div>
 
-
-
 ![RPReplay_Final1713610744-ezgif com-resize](https://github.com/donggyushin/dg-muscle-ios/assets/34573243/5067705b-f234-47f5-8ca8-df15cbf625ca)
-
+-->
 
 ![image](https://github.com/DgMuscle/dg-muscle-ios/assets/34573243/a127df42-9f0c-41e5-b151-aebb86533973)
+
+![graph](https://github.com/DgMuscle/dg-muscle-ios/assets/34573243/9330f322-97ec-4739-97f8-38210b3ce9fd)
 
 __프레젠테이션 계층__ 
 - 뷰(View)와 뷰모델(ViewModel) 구성요소를 포함합니다.
