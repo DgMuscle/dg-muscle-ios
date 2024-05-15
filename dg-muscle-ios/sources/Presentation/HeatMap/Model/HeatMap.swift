@@ -10,14 +10,14 @@ import Domain
 
 struct HeatMap: Hashable {
     let week: String
-    let volume: [Double]
+    let volume: [Volume]
     
     init(domain: Domain.HeatMap) {
         self.week = domain.week
-        self.volume = domain.volume
+        self.volume = domain.volume.map({ .init(value: $0) })
     }
     
     var domain: Domain.HeatMap {
-        .init(week: week, volume: volume)
+        .init(week: week, volume: volume.map({ $0.value }))
     }
 }
