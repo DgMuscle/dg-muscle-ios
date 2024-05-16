@@ -22,6 +22,18 @@ public final class UserRepositoryImpl: UserRepository {
         bind()
     }
     
+    public func signOut() throws {
+        try AuthManager().signOut()
+    }
+    
+    public func updateUser(displayName: String?, photoURL: URL?) async throws {
+        try await AuthManager().updateUser(displayName: displayName, photoURL: photoURL)
+    }
+    
+    public func withDrawal() async -> (any Error)? {
+        await AuthManager().withDrawal()
+    }
+    
     private func bind() {
         Auth.auth().addStateDidChangeListener { _, user in
             guard let user else {
