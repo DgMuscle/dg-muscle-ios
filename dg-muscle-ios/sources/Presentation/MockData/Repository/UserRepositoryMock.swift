@@ -16,4 +16,16 @@ public final class UserRepositoryMock: UserRepository {
     public init() {
         
     }
+    
+    public func signOut() throws {
+        
+    }
+    
+    public func updateUser(displayName: String?, photoURL: URL?) async throws {
+        
+    }
+    
+    public func withDrawal() async -> (any Error)? {
+        nil
+    }
 }
