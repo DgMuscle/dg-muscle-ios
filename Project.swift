@@ -5,7 +5,7 @@ let bundleId = "com.donggyu.dg-muscle-ios"
 
 enum Layer: String, CaseIterable {
     case Domain
-    case Data
+    case DataLayer
     case Presentation
 }
 
@@ -78,7 +78,7 @@ func createLayers() -> [Target] {
                 bundleId: bundleId + ".\($0.rawValue)".lowercased(),
                 sources: ["\(projectName)/sources/\($0.rawValue)/**"]
             )
-        case .Data:
+        case .DataLayer:
             var dependencies: [TargetDependency] = [
                 .target(name: Layer.Domain.rawValue, condition: nil)
             ]
