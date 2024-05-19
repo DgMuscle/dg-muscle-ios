@@ -71,15 +71,20 @@ public struct ExerciseListView: View {
                 }
                 .buttonStyle(.borderless)
             }
+            .toolbar {
+                EditButton()
+            }
             .animation(.default, value: viewModel.deletedExercises.isEmpty)
         }
     }
 }
 
 #Preview {
-    return ExerciseListView(
-        exerciseRepository: ExerciseRepositoryMock(),
-        addExerciseAction: nil
-    )
-    .preferredColorScheme(.dark)
+    return NavigationStack {
+        ExerciseListView(
+            exerciseRepository: ExerciseRepositoryMock(),
+            addExerciseAction: nil
+        )
+        .preferredColorScheme(.dark)
+    }
 }
