@@ -10,9 +10,9 @@ import Domain
 
 public final class HeatMapRepositoryMock: HeatMapRepository {
     public init() { }
-    public func get() -> [Domain.HeatMapModel] {
+    public func get() -> [Domain.HeatMap] {
         []
     }
     
-    public func post(heatMap: [Domain.HeatMapModel]) { }
+    public func post(heatMap: [Domain.HeatMap]) { }
 }

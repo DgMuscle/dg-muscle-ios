@@ -8,7 +8,7 @@
 import SwiftUI
 import Domain
 import MockData
-import HeatMap
+import HistoryHeatMap
 
 public struct HistoryListView: View {
     @StateObject var viewModel: HistoryListViewModel

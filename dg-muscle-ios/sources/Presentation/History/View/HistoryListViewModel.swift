@@ -8,12 +8,12 @@
 import Foundation
 import Combine
 import Domain
-import HeatMap
+import HistoryHeatMap
 import SwiftUI
 import Common
 
 final class HistoryListViewModel: ObservableObject {
-    @Published var heatMap: [HeatMap] = []
+    @Published var heatMap: [HistoryHeatMap.HeatMap] = []
     @Published var historiesGroupedByMonth: [HistorySection] = []
     @Published var color: Color = .green
     

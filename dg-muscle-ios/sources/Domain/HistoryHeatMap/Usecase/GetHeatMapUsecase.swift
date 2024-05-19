@@ -14,7 +14,7 @@ public final class GetHeatMapUsecase {
         self.today = today
     }
     
-    public func implement(histories: [History]) -> [HeatMapModel] {
+    public func implement(histories: [History]) -> [HeatMap] {
         /// 오늘을 n번째 주라고 할 때, (n-16 ~ n) 번째 주까지 구한다.
         /// 예) 2024년 16번째 주: hashMap["202416"] = [0, 0, 0, 0, 0, 0, 0]
         
@@ -65,7 +65,7 @@ public final class GetHeatMapUsecase {
             hashMap[key]?[weekdayNumber - 1] = history.volume
         }
         
-        let heatmaps: [HeatMapModel] = hashMap
+        let heatmaps: [HeatMap] = hashMap
             .map({ .init(week: $0.key, volume: $0.value.map({ $0 })) })
             .sorted(by: { $0.week < $1.week })
         
