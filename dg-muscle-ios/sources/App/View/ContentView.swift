@@ -9,6 +9,7 @@ import SwiftUI
 import DataLayer
 import Domain
 import Auth
+import Presentation
 
 struct ContentView: View {
     typealias FoundationData = Data
@@ -23,7 +24,13 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if viewModel.isLogin {
-                Text("Logged In")
+                Presentation.NavigationView(
+                    today: Date(),
+                    historyRepository: HistoryRepositoryImpl.shared,
+                    exerciseRepository: ExerciseRepositoryImpl.shared,
+                    heatMapRepository: HeatMapRepositoryImpl.shared,
+                    userRepository: UserRepositoryImpl.shared
+                )
             } else {
                 AuthenticationView(
                     startAppleLoginUsecase: .init(

@@ -9,10 +9,10 @@ import Foundation
 import Combine
 import Domain
 
-final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
+public final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
     public static let shared = ExerciseRepositoryImpl()
     
-    var exercises: AnyPublisher<[Domain.Exercise], Never> { $_exercises.eraseToAnyPublisher() }
+    public var exercises: AnyPublisher<[Domain.Exercise], Never> { $_exercises.eraseToAnyPublisher() }
     private var cancellables = Set<AnyCancellable>()
     @Published var _exercises: [Domain.Exercise] = [] {
         didSet {
@@ -39,7 +39,7 @@ final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
             .store(in: &cancellables)
     }
     
-    func post(_ exercise: Domain.Exercise) async throws {
+    public func post(_ exercise: Domain.Exercise) async throws {
         if let index = _exercises.firstIndex(where: { $0.id == exercise.id }) {
             _exercises[index] = exercise
         } else {
@@ -55,7 +55,7 @@ final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
         )
     }
     
-    func delete(_ exercise: Domain.Exercise) async throws {
+    public func delete(_ exercise: Domain.Exercise) async throws {
         if let index = _exercises.firstIndex(where: { $0.id == exercise.id }) {
             _exercises.remove(at: index)
         }
