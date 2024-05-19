@@ -12,14 +12,28 @@ import Common
 
 final class MyViewModel: ObservableObject {
     @Published var user: Common.User? = nil
+    @Published var errorMessage: String? = nil
     
     private let subscribeUserUsecase: SubscribeUserUsecase
+    private let signOutUsecase: SignOutUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(userRepository: any UserRepository) {
         subscribeUserUsecase = .init(userRepository: userRepository)
-        
+        signOutUsecase = .init(userRepository: userRepository)
         bind()
+    }
+    
+    @MainActor
+    func signOut() {
+        Task {
+            do {
+                errorMessage = nil
+                try signOutUsecase.implement()
+            } catch {
+                errorMessage = error.localizedDescription
+            }
+        }
     }
     
     private func bind() {

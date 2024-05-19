@@ -41,7 +41,13 @@ public struct HomeView: View {
                 print("historyId(\(historyId) is tapped")
             }
             
-            MyView(userRepository: userRepository)
+            MyView(
+                userRepository: userRepository) {
+                    print("tap exercise")
+                } tapProfileListItem: {
+                    print("tap profile")
+                }
+
         }
         .ignoresSafeArea()
         .tabViewStyle(.page(indexDisplayMode: .always))

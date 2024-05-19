@@ -13,17 +13,51 @@ import Kingfisher
 public struct MyView: View {
     @StateObject var viewModel: MyViewModel
     
-    public init(userRepository: any UserRepository) {
-        _viewModel = .init(wrappedValue: .init(userRepository: userRepository))
+    private let tapExerciseListItem: (() -> ())?
+    private let tapProfileListItem: (() -> ())?
+    
+    public init(
+        userRepository: any UserRepository,
+        tapExerciseListItem: (() -> ())?,
+        tapProfileListItem: (() -> ())?
+    ) {
+        _viewModel = .init(
+            wrappedValue: .init(userRepository: userRepository)
+        )
+        self.tapExerciseListItem = tapExerciseListItem
+        self.tapProfileListItem = tapProfileListItem
     }
     
     public var body: some View {
         List {
             Section {
-                Text("My")
+                VStack(spacing: 20) {
+                    Button {
+                        tapProfileListItem?()
+                    } label: {
+                        ListItemView(systemName: "person", text: "Profile", color: .red)
+                    }
+                    .buttonStyle(.borderless)
+                    
+                    Button {
+                        tapExerciseListItem?()
+                    } label: {
+                        ListItemView(systemName: "dumbbell", text: "Exercise", color: .purple)
+                    }
+                    .buttonStyle(.borderless)
+                }
             } header: {
                 if let user = viewModel.user {
                     UserItemView(user: user)
+                        .padding(.bottom)
+                }
+            }
+            
+            Section {
+                Button {
+                    viewModel.signOut()
+                } label: {
+                    Text("Sign Out")
                 }
             }
         }
@@ -32,6 +66,10 @@ public struct MyView: View {
 }
 
 #Preview {
-    return MyView(userRepository: UserRepositoryMock())
+    return MyView(
+        userRepository: UserRepositoryMock(),
+        tapExerciseListItem: nil,
+        tapProfileListItem: nil
+    )
         .preferredColorScheme(.dark)
 }
