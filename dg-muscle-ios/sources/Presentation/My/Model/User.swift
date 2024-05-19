@@ -13,12 +13,14 @@ struct User {
     let displayName: String?
     let photoURL: URL?
     let heatMapColor: HeatMapColor
+    let fcmToken: String?
     
     init(domain: Domain.User) {
         self.uid = domain.uid
         self.displayName = domain.displayName
         self.photoURL = domain.photoURL
         self.heatMapColor = .init(domain: domain.heatMapColor)
+        self.fcmToken = domain.fcmToken
     }
     
     var domain: Domain.User {
@@ -26,7 +28,8 @@ struct User {
             uid: uid,
             displayName: displayName,
             photoURL: photoURL,
-            heatMapColor: heatMapColor.domain
+            heatMapColor: heatMapColor.domain,
+            fcmToken: fcmToken
         )
     }
 }

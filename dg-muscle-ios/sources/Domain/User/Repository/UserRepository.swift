@@ -15,4 +15,5 @@ public protocol UserRepository {
     func updateUser(displayName: String?, photoURL: URL?) async throws
     func withDrawal() async -> Error?
     func post(_ heatMapColor: HeatMapColor) throws
+    func post(fcmToken: String)
 }

@@ -45,6 +45,10 @@ public final class UserRepositoryImpl: UserRepository {
         return data.domain
     }
     
+    public func post(fcmToken: String) {
+        _user?.fcmToken = fcmToken
+    }
+    
     private func bind() {
         Auth.auth().addStateDidChangeListener { _, user in
             guard let user else {
@@ -58,18 +62,24 @@ public final class UserRepositoryImpl: UserRepository {
                 uid: user.uid,
                 displayName: user.displayName,
                 photoURL: user.photoURL,
-                heatMapColor: heatMapColor ?? .green
+                heatMapColor: heatMapColor ?? .green, 
+                fcmToken: nil
             )
         }
         
         $_user
             .sink { user in
                 self.isLogin = user != nil
+                Task {
+                    if let user {
+                        try await self.postUserProfileToServer(user: user)
+                    }
+                }
             }
             .store(in: &cancellables)
     }
     
-    private func postUserProfileToServer(user: Domain.User, fcmToken: String?) async throws {
+    private func postUserProfileToServer(user: Domain.User) async throws {
         let url = FunctionsURL.user(.postprofile)
         
         struct Body: Codable {
@@ -86,7 +96,7 @@ public final class UserRepositoryImpl: UserRepository {
             id: user.uid,
             displayName: user.displayName ?? "",
             photoURL: user.photoURL,
-            fcmtoken: fcmToken,
+            fcmtoken: user.fcmToken,
             heatmapColor: user.heatMapColor?.rawValue ?? "green"
         )
         

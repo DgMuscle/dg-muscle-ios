@@ -18,14 +18,23 @@ public final class UserRepositoryMock: UserRepository {
     }
     
     public func signOut() throws {
-        
+        _user = nil 
     }
     
     public func updateUser(displayName: String?, photoURL: URL?) async throws {
-        
+        _user?.displayName = displayName
+        _user?.photoURL = photoURL
     }
     
     public func withDrawal() async -> (any Error)? {
         nil
+    }
+    
+    public func post(_ heatMapColor: Domain.HeatMapColor) throws {
+        _user?.heatMapColor = heatMapColor
+    }
+    
+    public func post(fcmToken: String) {
+        _user?.fcmToken = fcmToken
     }
 }
