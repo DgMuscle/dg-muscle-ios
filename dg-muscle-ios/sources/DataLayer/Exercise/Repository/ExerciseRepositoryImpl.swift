@@ -39,6 +39,40 @@ final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
             .store(in: &cancellables)
     }
     
+    func post(_ exercise: Domain.Exercise) async throws {
+        if let index = _exercises.firstIndex(where: { $0.id == exercise.id }) {
+            _exercises[index] = exercise
+        } else {
+            _exercises.append(exercise)
+        }
+        
+        let url = FunctionsURL.exercise(.postexercise)
+        let data: Exercise = .init(domain: exercise)
+        let _: DataResponse = try await APIClient.shared.request(
+            method: .post,
+            url: url,
+            body: data
+        )
+    }
+    
+    func delete(_ exercise: Domain.Exercise) async throws {
+        if let index = _exercises.firstIndex(where: { $0.id == exercise.id }) {
+            _exercises.remove(at: index)
+        }
+        
+        struct Body: Codable {
+            let id: String
+        }
+        
+        let url = FunctionsURL.exercise(.deleteexercise)
+        let body: Body = .init(id: exercise.id)
+        let _: DataResponse = try await APIClient.shared.request(
+            method: .delete,
+            url: url,
+            body: body
+        )
+    }
+    
     private func getMyExercisesFromServer() async throws -> [Domain.Exercise] {
         let url = FunctionsURL.exercise(.getexercises)
         let exercises: [Exercise] = try await APIClient.shared.request(url: url)

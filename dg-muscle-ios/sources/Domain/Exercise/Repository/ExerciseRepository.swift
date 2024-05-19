@@ -10,4 +10,7 @@ import Combine
 
 public protocol ExerciseRepository {
     var exercises: AnyPublisher<[Exercise], Never> { get }
+    
+    func post(_ exercise: Exercise) async throws
+    func delete(_ exercise: Exercise) async throws
 }
