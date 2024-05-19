@@ -39,7 +39,7 @@ public struct HistoryListView: View {
     public var body: some View {
         ScrollView {
             VStack {
-                
+                Spacer(minLength: 50)
                 HeatMapView(
                     heatMap: viewModel.heatMap,
                     color: viewModel.color
@@ -48,9 +48,8 @@ public struct HistoryListView: View {
                 
                 ForEach(viewModel.historiesGroupedByMonth, id: \.self) { section in
                     Section {
-                        VStack {
+                        VStack(spacing: 12) {
                             ForEach(section.histories, id: \.self) { history in
-                                
                                 Button {
                                     tapHistory?(history.id)
                                 } label: {
@@ -61,7 +60,9 @@ public struct HistoryListView: View {
                         .padding(.bottom)
                     } header: {
                         HStack {
-                            Text(section.yearMonth).fontWeight(.black)
+                            Text(section.yearMonth)
+                                .font(.system(size: 20))
+                                .fontWeight(.black)
                             Spacer()
                         }
                         .padding(.bottom)

@@ -17,10 +17,10 @@ struct ListItemView: View {
         HStack {
             Image(systemName: systemName).foregroundStyle(color)
                 .frame(width: 40)
+                .fontWeight(.heavy)
             Text(text)
             Spacer()
         }
-        .fontWeight(.heavy)
         .foregroundStyle(Color(uiColor: .label))
     }
 }
