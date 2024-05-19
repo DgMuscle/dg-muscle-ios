@@ -33,7 +33,7 @@ func createWidget() -> Target {
         ]),
         sources: "\(widgetName)/Sources/**",
         resources: "\(widgetName)/Resources/**",
-        entitlements: nil,
+        entitlements: "\(widgetName)/\(widgetName).entitlements",
         dependencies: [
             .target(name: Layer.DataLayer.rawValue, condition: nil),
             .target(name: Presentation.HistoryHeatMap.rawValue, condition: nil)
