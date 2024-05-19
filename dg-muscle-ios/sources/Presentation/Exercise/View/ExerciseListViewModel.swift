@@ -8,19 +8,36 @@
 import Foundation
 import Combine
 import Domain
+import Common
 
 final class ExerciseListViewModel: ObservableObject {
     
     @Published var exerciseSections: [ExerciseSection] = []
+    @Published var status: Common.StatusView.Status? = nil
     
     private let subscribeExercisesGroupedByPartUsecase: SubscribeExercisesGroupedByPartUsecase
+    private let deleteExerciseUsecase: DeleteExerciseUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
         exerciseRepository: any ExerciseRepository
     ) {
         subscribeExercisesGroupedByPartUsecase = .init(exerciseRepository: exerciseRepository)
+        deleteExerciseUsecase = .init(exerciseRepository: exerciseRepository)
         bind()
+    }
+    
+    private func delete(exercise: Exercise) {
+        Task {
+            let exercise: Domain.Exercise = exercise.domain
+            status = .loading
+            do {
+                try await deleteExerciseUsecase.implement(exercise: exercise)
+                status = nil
+            } catch {
+                status = .error(error.localizedDescription)
+            }
+        }
     }
     
     private func bind() {
