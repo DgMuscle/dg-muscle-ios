@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Exercise {
+public struct Exercise: Hashable {
     public let id: String
     public let name: String
     public let parts: [Part]
@@ -22,7 +22,7 @@ public struct Exercise {
 }
 
 extension Exercise {
-    public enum Part {
+    public enum Part: CaseIterable {
         case arm
         case back
         case chest
