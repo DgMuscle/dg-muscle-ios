@@ -68,4 +68,32 @@ public final class UserRepositoryImpl: UserRepository {
             }
             .store(in: &cancellables)
     }
+    
+    private func postUserProfileToServer(user: Domain.User, fcmToken: String?) async throws {
+        let url = FunctionsURL.user(.postprofile)
+        
+        struct Body: Codable {
+            let id: String
+            let displayName: String
+            let photoURL: String?
+            let fcmtoken: String?
+            let heatmapColor: String
+        }
+        
+        let user: UserData = .init(domain: user)
+        
+        let body: Body = .init(
+            id: user.uid,
+            displayName: user.displayName ?? "",
+            photoURL: user.photoURL,
+            fcmtoken: fcmToken,
+            heatmapColor: user.heatMapColor?.rawValue ?? "green"
+        )
+        
+        let _: DataResponse = try await APIClient.shared.request(
+            method: .post,
+            url: url,
+            body: body
+        )
+    }
 }
