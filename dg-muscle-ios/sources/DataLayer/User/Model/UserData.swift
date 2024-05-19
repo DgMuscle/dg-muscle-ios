@@ -12,24 +12,21 @@ struct UserData: Codable {
     let uid: String
     var displayName: String?
     var photoURL: String?
-    
-    init(uid: String, displayName: String? = nil, photoURL: String? = nil) {
-        self.uid = uid
-        self.displayName = displayName
-        self.photoURL = photoURL
-    }
+    var heatMapColor: HeatMapColor?
     
     init(domain: Domain.User) {
         self.uid = domain.uid
         self.displayName = domain.displayName
         self.photoURL = domain.photoURL?.absoluteString
+        self.heatMapColor = .init(domain: domain.heatMapColor)
     }
     
     var domain: Domain.User {
         .init(
             uid: uid,
             displayName: displayName,
-            photoURL: .init(string: photoURL ?? "")
+            photoURL: .init(string: photoURL ?? ""),
+            heatMapColor: heatMapColor?.domain ?? .green
         )
     }
 }

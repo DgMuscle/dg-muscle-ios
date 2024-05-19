@@ -40,7 +40,13 @@ public final class UserRepositoryImpl: UserRepository {
                 self._user = nil
                 return
             }
-            self._user = .init(uid: user.uid, displayName: user.displayName, photoURL: user.photoURL)
+            
+            self._user = .init(
+                uid: user.uid,
+                displayName: user.displayName,
+                photoURL: user.photoURL,
+                heatMapColor: .green
+            )
         }
         
         $_user
