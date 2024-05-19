@@ -40,8 +40,11 @@ public struct HistoryListView: View {
         ScrollView {
             VStack {
                 
-                HeatMapView(heatMap: viewModel.heatMap, color: .green)
-                    .padding(.bottom)
+                HeatMapView(
+                    heatMap: viewModel.heatMap,
+                    color: viewModel.color
+                )
+                .padding(.bottom)
                 
                 ForEach(viewModel.historiesGroupedByMonth, id: \.self) { section in
                     Section {
