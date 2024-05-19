@@ -20,31 +20,6 @@ enum Presentation: String, CaseIterable {
     case My
 }
 
-func createWidget() -> Target {
-    .target(
-        name: widgetName,
-        destinations: .iOS,
-        product: .appExtension,
-        bundleId: "\(bundleId).\(widgetName.lowercased())",
-        infoPlist: .extendingDefault(with: [
-            "NSExtension": .dictionary([
-                "NSExtensionPointIdentifier": "com.apple.widgetkit-extension"
-            ])
-        ]),
-        sources: "\(widgetName)/Sources/**",
-        resources: "\(widgetName)/Resources/**",
-        entitlements: "\(widgetName)/\(widgetName).entitlements",
-        dependencies: [
-            .target(name: Layer.DataLayer.rawValue, condition: nil),
-            .target(name: Presentation.HistoryHeatMap.rawValue, condition: nil)
-        ],
-        settings: .settings(configurations: [
-            .debug(name: "debug", xcconfig: "\(widgetName)/Configs/widget.xcconfig"),
-            .release(name: "release", xcconfig: "\(widgetName)/Configs/widget.xcconfig")
-        ])
-    )
-}
-
 func createApp() -> Target {
     .target(
         name: "App",
@@ -58,7 +33,6 @@ func createApp() -> Target {
                     "remote-notification"
                 ],
                 "FirebaseAppDelegateProxyEnabled": false,
-                "CFBundleShortVersionString": "2.0.0",
                 "CFBundleURLTypes": [
                     .dictionary([
                         "CFBundleTypeRole": "Editor",
@@ -98,6 +72,31 @@ func createTest() -> Target {
         settings: .settings(configurations: [
             .debug(name: "debug", xcconfig: "\(projectName)/configs/test.xcconfig"),
             .release(name: "release", xcconfig: "\(projectName)/configs/test.xcconfig"),
+        ])
+    )
+}
+
+func createWidget() -> Target {
+    .target(
+        name: widgetName,
+        destinations: .iOS,
+        product: .appExtension,
+        bundleId: "\(bundleId).\(widgetName.lowercased())",
+        infoPlist: .extendingDefault(with: [
+            "NSExtension": .dictionary([
+                "NSExtensionPointIdentifier": "com.apple.widgetkit-extension"
+            ])
+        ]),
+        sources: "\(widgetName)/Sources/**",
+        resources: "\(widgetName)/Resources/**",
+        entitlements: "\(widgetName)/\(widgetName).entitlements",
+        dependencies: [
+            .target(name: Layer.DataLayer.rawValue, condition: nil),
+            .target(name: Presentation.HistoryHeatMap.rawValue, condition: nil)
+        ],
+        settings: .settings(configurations: [
+            .debug(name: "debug", xcconfig: "\(widgetName)/Configs/widget.xcconfig"),
+            .release(name: "release", xcconfig: "\(widgetName)/Configs/widget.xcconfig")
         ])
     )
 }
