@@ -6,19 +6,43 @@
 //
 
 import SwiftUI
+import Domain
+import MockData
 
 public struct ExerciseManagerView: View {
     
-    public init() {
+    @StateObject var viewModel: ExerciseManagerViewModel
+    private let addExerciseAction: ((Exercise?) -> ())?
+    
+    public init(
+        exerciseRepository: any ExerciseRepository,
+        addExerciseAction: ((Exercise?) -> ())?
+    ) {
+        _viewModel = .init(wrappedValue:
+                .init(
+                    exerciseRepository: exerciseRepository
+                )
+        )
         
+        self.addExerciseAction = addExerciseAction
     }
     
     public var body: some View {
-        Text("ExerciseManagerView")
+        if viewModel.exerciseSections.isEmpty {
+            ExerciseEmptyView {
+                addExerciseAction?(nil)
+            }
+            .padding(.horizontal)
+        } else {
+            Text("Not Empty")
+        }
     }
 }
 
 #Preview {
-    return ExerciseManagerView()
-        .preferredColorScheme(.dark)
+    return ExerciseManagerView(
+        exerciseRepository: ExerciseRepositoryMock(),
+        addExerciseAction: nil
+    )
+    .preferredColorScheme(.dark)
 }
