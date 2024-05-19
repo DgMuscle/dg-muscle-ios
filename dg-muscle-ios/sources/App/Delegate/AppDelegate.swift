@@ -30,6 +30,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 }
 
+// Push Notification Center
 extension AppDelegate: UNUserNotificationCenterDelegate {
 func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().setAPNSToken(deviceToken, type: .unknown)

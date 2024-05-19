@@ -32,7 +32,16 @@ func createApp() -> Target {
                     "remote-notification"
                 ],
                 "FirebaseAppDelegateProxyEnabled": false,
-                "CFBundleShortVersionString": "2.0.0"
+                "CFBundleShortVersionString": "2.0.0",
+                "CFBundleURLTypes": [
+                    .dictionary([
+                        "CFBundleTypeRole": "Editor",
+                        "CFBundleURLName": "com.donggyu.dg-muscle-ios",
+                        "CFBundleURLSchemes": [
+                            "dgmuscle"
+                        ]
+                    ])
+                ]
             ]
         ),
         sources: ["\(projectName)/sources/App/**"],
