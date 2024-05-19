@@ -8,14 +8,14 @@
 import Foundation
 import Domain
 
-struct User {
-    let uid: String
-    let displayName: String?
-    let photoURL: URL?
-    let heatMapColor: HeatMapColor
-    let fcmToken: String?
+public struct User {
+    public let uid: String
+    public let displayName: String?
+    public let photoURL: URL?
+    public let heatMapColor: HeatMapColor
+    public let fcmToken: String?
     
-    init(domain: Domain.User) {
+    public init(domain: Domain.User) {
         self.uid = domain.uid
         self.displayName = domain.displayName
         self.photoURL = domain.photoURL
@@ -23,7 +23,7 @@ struct User {
         self.fcmToken = domain.fcmToken
     }
     
-    var domain: Domain.User {
+    public var domain: Domain.User {
         .init(
             uid: uid,
             displayName: displayName,

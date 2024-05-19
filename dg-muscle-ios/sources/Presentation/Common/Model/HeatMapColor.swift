@@ -9,7 +9,7 @@ import Foundation
 import Domain
 import SwiftUI
 
-enum HeatMapColor {
+public enum HeatMapColor {
     case green
     case blue
     case red
@@ -21,7 +21,7 @@ enum HeatMapColor {
     case cyan
     case mint
     
-    var color: Color {
+    public var color: Color {
         switch self {
         case .green:
             return .green
@@ -46,7 +46,7 @@ enum HeatMapColor {
         }
     }
     
-    init(domain: Domain.HeatMapColor) {
+    public init(domain: Domain.HeatMapColor) {
         switch domain {
         case .green:
             self = .green
@@ -71,7 +71,7 @@ enum HeatMapColor {
         }
     }
     
-    var domain: Domain.HeatMapColor {
+    public var domain: Domain.HeatMapColor {
         switch self {
         case .green:
             return .green
