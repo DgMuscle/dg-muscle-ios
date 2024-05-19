@@ -33,6 +33,7 @@ func createApp() -> Target {
                 "UIBackgroundModes": [
                     "remote-notification"
                 ],
+                "CFBundleShortVersionString": "2.0.0",
                 "CFBundleURLTypes": [
                     .dictionary([
                         "CFBundleTypeRole": "Editor",
