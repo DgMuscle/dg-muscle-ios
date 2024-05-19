@@ -29,10 +29,10 @@ func createApp() -> Target {
         infoPlist: .extendingDefault(
             with: [
                 "UILaunchStoryboardName": "LaunchScreen.storyboard",
+                "FirebaseAppDelegateProxyEnabled": false,
                 "UIBackgroundModes": [
                     "remote-notification"
                 ],
-                "FirebaseAppDelegateProxyEnabled": false,
                 "CFBundleURLTypes": [
                     .dictionary([
                         "CFBundleTypeRole": "Editor",
@@ -46,6 +46,7 @@ func createApp() -> Target {
         ),
         sources: ["\(projectName)/sources/App/**"],
         resources: ["\(projectName)/resources/**"],
+        entitlements: "\(projectName)/dg_muscle_ios.entitlements",
         dependencies: [
             .target(name: Layer.Presentation.rawValue, condition: nil),
             .target(name: Layer.DataLayer.rawValue, condition: nil),
