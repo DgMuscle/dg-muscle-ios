@@ -34,6 +34,17 @@ public final class UserRepositoryImpl: UserRepository {
         await AuthManager().withDrawal()
     }
     
+    public func post(_ heatMapColor: Domain.HeatMapColor) throws {
+        _user?.heatMapColor = heatMapColor
+        let heatMapColor: HeatMapColor = .init(domain: heatMapColor)
+        try FileManagerHelper.shared.save(heatMapColor, toFile: .heatmapColor)
+    }
+    
+    private func get() throws -> Domain.HeatMapColor {
+        let data = try FileManagerHelper.shared.load(HeatMapColor.self, fromFile: .heatmapColor)
+        return data.domain
+    }
+    
     private func bind() {
         Auth.auth().addStateDidChangeListener { _, user in
             guard let user else {
@@ -41,11 +52,13 @@ public final class UserRepositoryImpl: UserRepository {
                 return
             }
             
+            let heatMapColor: Domain.HeatMapColor? = try? self.get()
+            
             self._user = .init(
                 uid: user.uid,
                 displayName: user.displayName,
                 photoURL: user.photoURL,
-                heatMapColor: .green
+                heatMapColor: heatMapColor ?? .green
             )
         }
         

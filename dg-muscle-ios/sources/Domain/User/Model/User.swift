@@ -11,7 +11,7 @@ public struct User {
     public let uid: String
     public let displayName: String?
     public let photoURL: URL?
-    public let heatMapColor: HeatMapColor
+    public var heatMapColor: HeatMapColor
     
     public init(uid: String, displayName: String? = nil, photoURL: URL? = nil, heatMapColor: HeatMapColor) {
         self.uid = uid
