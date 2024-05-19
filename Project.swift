@@ -1,6 +1,7 @@
 import ProjectDescription
 
 let projectName = "dg-muscle-ios"
+let widgetName = "DgWidget"
 let bundleId = "com.donggyu.dg-muscle-ios"
 
 enum Layer: String, CaseIterable {
@@ -17,6 +18,26 @@ enum Presentation: String, CaseIterable {
     case History
     case MockData
     case My
+}
+
+func createWidget() -> Target {
+    .target(
+        name: widgetName,
+        destinations: .iOS,
+        product: .appExtension,
+        bundleId: "\(bundleId).\(widgetName.lowercased())",
+        infoPlist: "\(widgetName)/info.plist",
+        sources: "\(widgetName)/Sources/**",
+        resources: "\(widgetName)/Resources/**",
+        entitlements: nil,
+        dependencies: [
+            .target(name: "SwiftUI", condition: nil),
+            .target(name: "WidgetKit", condition: nil),
+            .target(name: Layer.DataLayer.rawValue, condition: nil),
+            .target(name: Presentation.HistoryHeatMap.rawValue, condition: nil)
+        ],
+        settings: nil
+    )
 }
 
 func createApp() -> Target {
@@ -46,10 +67,12 @@ func createApp() -> Target {
         ),
         sources: ["\(projectName)/sources/App/**"],
         resources: ["\(projectName)/resources/**"],
-        dependencies:  Layer
-            .allCases
-            .filter({ $0 != .Domain })
-            .map({ .target(name: $0.rawValue, condition: nil) }) ,
+        entitlements: "\(projectName)/\(projectName).entitlements",
+        dependencies: [
+            .target(name: Layer.Presentation.rawValue, condition: nil),
+            .target(name: Layer.DataLayer.rawValue, condition: nil),
+            .target(name: widgetName, condition: nil)
+        ],
         settings: .settings(configurations: [
             .debug(name: "debug", xcconfig: "\(projectName)/configs/app.xcconfig"),
             .release(name: "release", xcconfig: "\(projectName)/configs/app.xcconfig"),
@@ -183,6 +206,7 @@ var targets: [Target] {
     targets.append(contentsOf: createLayers())
     targets.append(contentsOf: createPresentations())
     targets.append(createTest())
+    targets.append(createWidget())
     return targets
 }
 
