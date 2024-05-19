@@ -3,6 +3,7 @@ import ProjectDescription
 let projectName = "dg-muscle-ios"
 let widgetName = "DgWidget"
 let bundleId = "com.donggyu.dg-muscle-ios"
+let appVersion: String = "2.0.0"
 
 enum Layer: String, CaseIterable {
     case Domain
@@ -33,7 +34,7 @@ func createApp() -> Target {
                 "UIBackgroundModes": [
                     "remote-notification"
                 ],
-                "CFBundleShortVersionString": "2.0.0",
+                "CFBundleShortVersionString": "\(appVersion)",
                 "CFBundleURLTypes": [
                     .dictionary([
                         "CFBundleTypeRole": "Editor",
@@ -88,7 +89,8 @@ func createWidget() -> Target {
         infoPlist: .extendingDefault(with: [
             "NSExtension": .dictionary([
                 "NSExtensionPointIdentifier": "com.apple.widgetkit-extension"
-            ])
+            ]),
+            "CFBundleShortVersionString": "\(appVersion)"
         ]),
         sources: "\(widgetName)/Sources/**",
         resources: "\(widgetName)/Resources/**",
