@@ -8,6 +8,6 @@
 import Foundation
 
 public enum Unit {
-    case kb
+    case kg
     case lbs
 }

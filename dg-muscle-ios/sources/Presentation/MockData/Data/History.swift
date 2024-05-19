@@ -16,19 +16,19 @@ private func createHistory(date: String, memo: String?, records: [ExerciseRecord
 }
 
 public let SETS_1: [ExerciseSet] = [
-    .init(id: UUID().uuidString, unit: .kb, reps: 12, weight: 60),
-    .init(id: UUID().uuidString, unit: .kb, reps: 12, weight: 60),
-    .init(id: UUID().uuidString, unit: .kb, reps: 12, weight: 60),
-    .init(id: UUID().uuidString, unit: .kb, reps: 12, weight: 60),
-    .init(id: UUID().uuidString, unit: .kb, reps: 12, weight: 60)
+    .init(id: UUID().uuidString, unit: .kg, reps: 12, weight: 60),
+    .init(id: UUID().uuidString, unit: .kg, reps: 12, weight: 60),
+    .init(id: UUID().uuidString, unit: .kg, reps: 12, weight: 60),
+    .init(id: UUID().uuidString, unit: .kg, reps: 12, weight: 60),
+    .init(id: UUID().uuidString, unit: .kg, reps: 12, weight: 60)
 ]
 
 public let SETS_2: [ExerciseSet] = [
-    .init(id: UUID().uuidString, unit: .kb, reps: 12, weight: 40),
-    .init(id: UUID().uuidString, unit: .kb, reps: 12, weight: 40),
-    .init(id: UUID().uuidString, unit: .kb, reps: 12, weight: 40),
-    .init(id: UUID().uuidString, unit: .kb, reps: 12, weight: 40),
-    .init(id: UUID().uuidString, unit: .kb, reps: 12, weight: 40)
+    .init(id: UUID().uuidString, unit: .kg, reps: 12, weight: 40),
+    .init(id: UUID().uuidString, unit: .kg, reps: 12, weight: 40),
+    .init(id: UUID().uuidString, unit: .kg, reps: 12, weight: 40),
+    .init(id: UUID().uuidString, unit: .kg, reps: 12, weight: 40),
+    .init(id: UUID().uuidString, unit: .kg, reps: 12, weight: 40)
 ]
 
 public let RECORD_1: ExerciseRecord = .init(id: UUID().uuidString, exerciseId: "squat", sets: SETS_1)
