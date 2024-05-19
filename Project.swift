@@ -26,13 +26,15 @@ func createWidget() -> Target {
         destinations: .iOS,
         product: .appExtension,
         bundleId: "\(bundleId).\(widgetName.lowercased())",
-        infoPlist: "\(widgetName)/info.plist",
+        infoPlist: .extendingDefault(with: [
+            "NSExtension": .dictionary([
+                "NSExtensionPointIdentifier": "com.apple.widgetkit-extension"
+            ])
+        ]),
         sources: "\(widgetName)/Sources/**",
         resources: "\(widgetName)/Resources/**",
         entitlements: nil,
         dependencies: [
-            .target(name: "SwiftUI", condition: nil),
-            .target(name: "WidgetKit", condition: nil),
             .target(name: Layer.DataLayer.rawValue, condition: nil),
             .target(name: Presentation.HistoryHeatMap.rawValue, condition: nil)
         ],
@@ -67,7 +69,6 @@ func createApp() -> Target {
         ),
         sources: ["\(projectName)/sources/App/**"],
         resources: ["\(projectName)/resources/**"],
-        entitlements: "\(projectName)/\(projectName).entitlements",
         dependencies: [
             .target(name: Layer.Presentation.rawValue, condition: nil),
             .target(name: Layer.DataLayer.rawValue, condition: nil),

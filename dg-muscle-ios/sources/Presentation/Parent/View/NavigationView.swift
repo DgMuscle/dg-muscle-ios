@@ -42,14 +42,14 @@ public struct NavigationView: View {
                 heatMapRepository: heatMapRepository,
                 userRepository: userRepository
             )
-        }
-        .navigationDestination(for: ExerciseNavigation.self) { navigation in
-            switch navigation.name {
-            case .manage:
-                ExerciseListView(
-                    exerciseRepository: exerciseRepository) { exercise in
-                        print("dg: add exercise!")
-                    }
+            .navigationDestination(for: ExerciseNavigation.self) { navigation in
+                switch navigation.name {
+                case .manage:
+                    ExerciseListView(
+                        exerciseRepository: exerciseRepository) { exercise in
+                            print("dg: add exercise!")
+                        }
+                }
             }
         }
     }
