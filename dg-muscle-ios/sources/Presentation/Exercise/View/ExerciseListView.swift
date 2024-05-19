@@ -28,7 +28,7 @@ public struct ExerciseListView: View {
     }
     
     public var body: some View {
-        if viewModel.exerciseSections.isEmpty {
+        if viewModel.exerciseSections.isEmpty && viewModel.deletedExercises.isEmpty {
             ExerciseEmptyView {
                 addExerciseAction?(nil)
             }
@@ -38,6 +38,25 @@ public struct ExerciseListView: View {
                 ForEach(viewModel.exerciseSections, id: \.self) { section in
                     ExerciseSectionView(exerciseSection: section) { exercise in
                         addExerciseAction?(exercise)
+                    } deleteExercise: { part, indexSet in
+                        viewModel.delete(part: part, indexSet: indexSet)
+                    }
+                }
+                
+                if viewModel.deletedExercises.isEmpty == false {
+                    Section {
+                        ForEach(viewModel.deletedExercises, id: \.self) { exercise in
+                            Button {
+                                viewModel.rollBack(exercise)
+                            } label: {
+                                Text(exercise.name)
+                            }
+                            .buttonStyle(.borderless)
+                        }
+                    } header: {
+                        Text("deleted exercises")
+                    } footer: {
+                        Text("tap to rollback")
                     }
                 }
                 
@@ -52,6 +71,7 @@ public struct ExerciseListView: View {
                 }
                 .buttonStyle(.borderless)
             }
+            .animation(.default, value: viewModel.deletedExercises.isEmpty)
         }
     }
 }

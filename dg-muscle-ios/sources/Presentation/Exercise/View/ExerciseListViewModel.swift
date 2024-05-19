@@ -14,9 +14,11 @@ final class ExerciseListViewModel: ObservableObject {
     
     @Published var exerciseSections: [ExerciseSection] = []
     @Published var status: Common.StatusView.Status? = nil
+    @Published var deletedExercises: [Exercise] = []
     
     private let subscribeExercisesGroupedByPartUsecase: SubscribeExercisesGroupedByPartUsecase
     private let deleteExerciseUsecase: DeleteExerciseUsecase
+    private let postExerciseUsecase: PostExerciseUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
@@ -24,19 +26,39 @@ final class ExerciseListViewModel: ObservableObject {
     ) {
         subscribeExercisesGroupedByPartUsecase = .init(exerciseRepository: exerciseRepository)
         deleteExerciseUsecase = .init(exerciseRepository: exerciseRepository)
+        postExerciseUsecase = .init(exerciseRepository: exerciseRepository)
         bind()
     }
     
-    private func delete(exercise: Exercise) {
+    @MainActor
+    func delete(part: Exercise.Part, indexSet: IndexSet) {
         Task {
-            let exercise: Domain.Exercise = exercise.domain
-            status = .loading
-            do {
-                try await deleteExerciseUsecase.implement(exercise: exercise)
-                status = nil
-            } catch {
-                status = .error(error.localizedDescription)
+            guard let index = exerciseSections.firstIndex(where: { $0.part == part }) else { return }
+            
+            let section = exerciseSections[index]
+            let exercises = section.exercises
+            var exercisesToDelete: [Exercise] = []
+            
+            for index in indexSet {
+                exercisesToDelete.append(exercises[index])
             }
+            
+            deletedExercises.append(contentsOf: exercisesToDelete)
+            
+            exerciseSections[index].exercises.remove(atOffsets: indexSet)
+            
+            for exercise in exercisesToDelete {
+                try await deleteExerciseUsecase.implement(exercise: exercise.domain)
+            }
+        }
+    }
+    
+    @MainActor
+    func rollBack(_ exercise: Exercise) {
+        Task {
+            guard let index = deletedExercises.firstIndex(where: { $0.id == exercise.id }) else { return }
+            deletedExercises.remove(at: index)
+            try await postExerciseUsecase.implement(exercise: exercise.domain)
         }
     }
     

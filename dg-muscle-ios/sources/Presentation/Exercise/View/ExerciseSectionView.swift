@@ -12,18 +12,16 @@ struct ExerciseSectionView: View {
     
     let exerciseSection: ExerciseSection
     let tapExercise: ((Exercise) -> ())?
+    let deleteExercise: ((Exercise.Part, IndexSet) -> ())?
     
     init(
         exerciseSection: ExerciseSection,
-        tapExercise: ((Exercise) -> ())?
+        tapExercise: ((Exercise) -> ())?,
+        deleteExercise: ((Exercise.Part, IndexSet) -> ())?
     ) {
-        var exerciseSection = exerciseSection
-        exerciseSection.exercises = exerciseSection.exercises
-            .sorted(by: { exercise1, _ in
-                return exercise1.favorite
-            })
         self.exerciseSection = exerciseSection
         self.tapExercise = tapExercise
+        self.deleteExercise = deleteExercise
     }
     
     var body: some View {
@@ -41,7 +39,12 @@ struct ExerciseSectionView: View {
                 .buttonStyle(.borderless)
                 .listRowBackground(exercise.favorite ? Color.yellow.opacity(0.2) : nil)
             }
+            .onDelete(perform: delete)
         }
+    }
+    
+    private func delete(indexSet: IndexSet) {
+        deleteExercise?(exerciseSection.part, indexSet)
     }
 }
 
@@ -57,7 +60,8 @@ struct ExerciseSectionView: View {
     return List {
         ExerciseSectionView(
             exerciseSection: section,
-            tapExercise: nil
+            tapExercise: nil,
+            deleteExercise: nil
         )
     }
     .preferredColorScheme(.dark)
