@@ -36,7 +36,7 @@ public struct HomeView: View {
             HistoryListView(today: today,
                             historyRepository: historyRepository,
                             exerciseRepository: exerciseRepository,
-                            heatMapRepository: heatMapRepository, 
+                            heatMapRepository: heatMapRepository,
                             userRepository: userRepository) { historyId in
                 print("historyId(\(historyId) is tapped")
             }

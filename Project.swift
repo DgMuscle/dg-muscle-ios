@@ -13,7 +13,7 @@ enum Presentation: String, CaseIterable {
     case Auth
     case Common
     case Exercise
-    case HeatMap
+    case HistoryHeatMap
     case History
     case MockData
     case My
@@ -32,7 +32,16 @@ func createApp() -> Target {
                     "remote-notification"
                 ],
                 "FirebaseAppDelegateProxyEnabled": false,
-                "CFBundleShortVersionString": "2.0.0"
+                "CFBundleShortVersionString": "2.0.0",
+                "CFBundleURLTypes": [
+                    .dictionary([
+                        "CFBundleTypeRole": "Editor",
+                        "CFBundleURLName": "com.donggyu.dg-muscle-ios",
+                        "CFBundleURLSchemes": [
+                            "dgmuscle"
+                        ]
+                    ])
+                ]
             ]
         ),
         sources: ["\(projectName)/sources/App/**"],
@@ -133,11 +142,11 @@ func createPresentations() -> [Target] {
     
     return Presentation.allCases.map({
         switch $0 {
-        case .Auth, .HeatMap, .Exercise, .My:
+        case .Auth, .HistoryHeatMap, .Exercise, .My:
             return createPresentation($0, dependencies: [])
         case .History:
             return createPresentation($0, dependencies: [
-                .target(name: Presentation.HeatMap.rawValue, condition: nil)
+                .target(name: Presentation.HistoryHeatMap.rawValue, condition: nil)
             ])
         case .MockData:
             return .target(

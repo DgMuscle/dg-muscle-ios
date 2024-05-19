@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseMessaging
+import DataLayer
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
@@ -29,6 +30,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 }
 
+// Push Notification Center
 extension AppDelegate: UNUserNotificationCenterDelegate {
 func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().setAPNSToken(deviceToken, type: .unknown)
@@ -50,7 +52,7 @@ func application(_ application: UIApplication, didRegisterForRemoteNotifications
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         if let fcmToken {
-            print("dg: fcmToken is \(fcmToken)")
+            UserRepositoryImpl.shared.post(fcmToken: fcmToken)
         }
     }
 }

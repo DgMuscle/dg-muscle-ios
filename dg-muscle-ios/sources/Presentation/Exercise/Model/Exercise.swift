@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-struct Exercise {
+struct Exercise: Hashable {
     let id: String
     let name: String
     let parts: [Part]
@@ -28,7 +28,7 @@ struct Exercise {
 }
 
 extension Exercise {
-    enum Part {
+    enum Part: String {
         case arm
         case back
         case chest

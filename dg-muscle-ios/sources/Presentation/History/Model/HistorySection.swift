@@ -11,4 +11,5 @@ struct HistorySection: Hashable {
     let id: String
     let yearMonth: String
     let histories: [History]
+    let yyyyMM: String
 }

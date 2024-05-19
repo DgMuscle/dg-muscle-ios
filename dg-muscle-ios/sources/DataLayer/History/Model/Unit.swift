@@ -9,20 +9,20 @@ import Foundation
 import Domain
 
 enum Unit: String, Codable {
-    case kb
+    case kg
     case lbs
     
     var domain: Domain.Unit {
         switch self {
-        case .kb: return .kb
+        case .kg: return .kg
         case .lbs: return .lbs
         }
     }
     
     init(domain: Domain.Unit) {
         switch domain {
-        case .kb:
-            self = .kb
+        case .kg:
+            self = .kg
         case .lbs:
             self = .lbs
         }

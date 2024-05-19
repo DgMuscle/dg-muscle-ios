@@ -9,10 +9,10 @@ import Foundation
 import Combine
 import Domain
 
-final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
+public final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
     public static let shared = ExerciseRepositoryImpl()
     
-    var exercises: AnyPublisher<[Domain.Exercise], Never> { $_exercises.eraseToAnyPublisher() }
+    public var exercises: AnyPublisher<[Domain.Exercise], Never> { $_exercises.eraseToAnyPublisher() }
     private var cancellables = Set<AnyCancellable>()
     @Published var _exercises: [Domain.Exercise] = [] {
         didSet {
@@ -37,6 +37,40 @@ final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
                 }
             }
             .store(in: &cancellables)
+    }
+    
+    public func post(_ exercise: Domain.Exercise) async throws {
+        if let index = _exercises.firstIndex(where: { $0.id == exercise.id }) {
+            _exercises[index] = exercise
+        } else {
+            _exercises.append(exercise)
+        }
+        
+        let url = FunctionsURL.exercise(.postexercise)
+        let data: Exercise = .init(domain: exercise)
+        let _: DataResponse = try await APIClient.shared.request(
+            method: .post,
+            url: url,
+            body: data
+        )
+    }
+    
+    public func delete(_ exercise: Domain.Exercise) async throws {
+        if let index = _exercises.firstIndex(where: { $0.id == exercise.id }) {
+            _exercises.remove(at: index)
+        }
+        
+        struct Body: Codable {
+            let id: String
+        }
+        
+        let url = FunctionsURL.exercise(.deleteexercise)
+        let body: Body = .init(id: exercise.id)
+        let _: DataResponse = try await APIClient.shared.request(
+            method: .delete,
+            url: url,
+            body: body
+        )
     }
     
     private func getMyExercisesFromServer() async throws -> [Domain.Exercise] {

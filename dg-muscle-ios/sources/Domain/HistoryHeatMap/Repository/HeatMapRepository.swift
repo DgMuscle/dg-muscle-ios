@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol HeatMapRepository {
-    func get() -> [HeatMapModel]
-    func post(heatMap: [HeatMapModel])
+    func get() -> [HeatMap]
+    func post(heatMap: [HeatMap])
 }
