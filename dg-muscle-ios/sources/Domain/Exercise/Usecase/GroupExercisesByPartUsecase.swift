@@ -21,7 +21,7 @@ public final class GroupExercisesByPartUsecase {
         var result: [Exercise.Part: [Exercise]] = [:]
         
         for (part, exercises) in hashMap {
-            result[part, default: []].append(contentsOf: Array(exercises))
+            result[part, default: []].append(contentsOf: Array(exercises.sorted(by: { $0.name < $1.name }) ))
         }
         
         return result
