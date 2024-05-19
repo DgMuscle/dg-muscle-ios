@@ -78,12 +78,17 @@ final class HistoryListViewModel: ObservableObject {
             let date = dateFormatter.date(from: month) ?? Date()
             dateFormatter.dateFormat = "MMM y"
             
-            data.append(.init(id: UUID().uuidString,
-                              yearMonth: dateFormatter.string(from: date),
-                              histories: historyList))
+            data.append(
+                .init(
+                    id: UUID().uuidString,
+                    yearMonth: dateFormatter.string(from: date),
+                    histories: historyList,
+                    yyyyMM: month
+                )
+            )
         }
         
-        data.sort(by: { $0.yearMonth > $1.yearMonth })
+        data.sort(by: { $0.yyyyMM > $1.yyyyMM })
         
         self.historiesGroupedByMonth = data
     }
