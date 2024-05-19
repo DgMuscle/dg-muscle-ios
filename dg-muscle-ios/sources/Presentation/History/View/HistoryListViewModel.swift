@@ -10,6 +10,7 @@ import Combine
 import Domain
 import HeatMap
 import SwiftUI
+import Common
 
 final class HistoryListViewModel: ObservableObject {
     @Published var heatMap: [HeatMap] = []
@@ -19,16 +20,19 @@ final class HistoryListViewModel: ObservableObject {
     let subscribeHeatMapUsecase: SubscribeHeatMapUsecase
     let subscribeExercisesUsecase: SubscribeExercisesUsecase
     let subscribeHistoriesGroupedByMonthUsecase: SubscribeHistoriesGroupedByMonthUsecase
+    let subscribeHeatMapColorUsecase: SubscribeHeatMapColorUsecase
     
     private var cancellables = Set<AnyCancellable>()
     init(today: Date,
          historyRepository: any HistoryRepository,
          exerciseRepository: any ExerciseRepository,
-         heatMapRepository: any HeatMapRepository
+         heatMapRepository: any HeatMapRepository,
+         userRepository: any UserRepository
     ) {
         subscribeHeatMapUsecase = .init(today: today, historyRepository: historyRepository, heatMapRepository: heatMapRepository)
         subscribeExercisesUsecase = .init(exerciseRepository: exerciseRepository)
         subscribeHistoriesGroupedByMonthUsecase = .init(historyRepository: historyRepository)
+        subscribeHeatMapColorUsecase = .init(userRepository: userRepository)
         
         bind()
     }
@@ -48,10 +52,18 @@ final class HistoryListViewModel: ObservableObject {
         
         subscribeHeatMapUsecase
             .implement()
+            .map({ $0.map({ HeatMap(domain: $0) }) })
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] heatMap in
-                self?.heatMap = heatMap.map({ .init(domain: $0) })
-            }
+            .assign(to: \.heatMap, on: self)
+            .store(in: &cancellables)
+        
+        subscribeHeatMapColorUsecase
+            .implement()
+            .compactMap({ $0 })
+            .map({ Common.HeatMapColor(domain: $0) })
+            .map({ $0.color })
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.color, on: self)
             .store(in: &cancellables)
     }
     

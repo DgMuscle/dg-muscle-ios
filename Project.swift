@@ -5,15 +5,18 @@ let bundleId = "com.donggyu.dg-muscle-ios"
 
 enum Layer: String, CaseIterable {
     case Domain
-    case Data
+    case DataLayer
     case Presentation
-    case MockData
 }
 
 enum Presentation: String, CaseIterable {
     case Auth
+    case Common
+    case Exercise
     case HeatMap
     case History
+    case MockData
+    case My
 }
 
 func createApp() -> Target {
@@ -36,7 +39,7 @@ func createApp() -> Target {
         resources: ["\(projectName)/resources/**"],
         dependencies:  Layer
             .allCases
-            .filter({ $0 != .Domain && $0 != .MockData })
+            .filter({ $0 != .Domain })
             .map({ .target(name: $0.rawValue, condition: nil) }) ,
         settings: .settings(configurations: [
             .debug(name: "debug", xcconfig: "\(projectName)/configs/app.xcconfig"),
@@ -54,7 +57,7 @@ func createTest() -> Target {
         bundleId: bundleId + ".test",
         sources: ["\(projectName)/sources/Test/**"],
         dependencies: [
-            .target(name: Layer.MockData.rawValue, condition: nil)
+            .target(name: Presentation.Common.rawValue, condition: nil)
         ],
         settings: .settings(configurations: [
             .debug(name: "debug", xcconfig: "\(projectName)/configs/test.xcconfig"),
@@ -73,10 +76,9 @@ func createLayers() -> [Target] {
                 destinations: .iOS,
                 product: .framework,
                 bundleId: bundleId + ".\($0.rawValue)".lowercased(),
-                sources: ["\(projectName)/sources/\($0.rawValue)/**"],
-                resources: ["\(projectName)/resources/**"]
+                sources: ["\(projectName)/sources/\($0.rawValue)/**"]
             )
-        case .Data:
+        case .DataLayer:
             var dependencies: [TargetDependency] = [
                 .target(name: Layer.Domain.rawValue, condition: nil)
             ]
@@ -92,19 +94,8 @@ func createLayers() -> [Target] {
                 product: .framework,
                 bundleId: bundleId + ".\($0.rawValue)".lowercased(),
                 sources: ["\(projectName)/sources/\($0.rawValue)/**"],
-                resources: ["\(projectName)/resources/**"],
                 dependencies: dependencies
             )
-        case .MockData:
-            return Target.target(
-                name: $0.rawValue,
-                destinations: .iOS,
-                product: .framework,
-                bundleId: bundleId + ".\($0.rawValue)".lowercased(),
-                sources: ["\(projectName)/sources/\($0.rawValue)/**"],
-                dependencies: [.target(name: Layer.Domain.rawValue, condition: nil)]
-            )
-            
         case .Presentation:
             var dependencies: [TargetDependency] = []
             
@@ -117,6 +108,7 @@ func createLayers() -> [Target] {
                 destinations: .iOS,
                 product: .framework,
                 bundleId: bundleId + ".\($0.rawValue)".lowercased(),
+                sources: ["\(projectName)/sources/\($0.rawValue)/Parent/**"],
                 dependencies: dependencies
             )
         }
@@ -125,7 +117,7 @@ func createLayers() -> [Target] {
 
 func createPresentations() -> [Target] {
     func createPresentation(_ presentation: Presentation, dependencies: [TargetDependency]) -> Target {
-        let commonDependency: TargetDependency = .target(name: Layer.MockData.rawValue, condition: nil)
+        let commonDependency: TargetDependency = .target(name: Presentation.Common.rawValue, condition: nil)
         var dependencies = dependencies
         dependencies.append(commonDependency)
         
@@ -135,19 +127,43 @@ func createPresentations() -> [Target] {
             product: .framework,
             bundleId: bundleId + ".\(Layer.Presentation.rawValue).\(presentation.rawValue)".lowercased(),
             sources: ["\(projectName)/sources/\(Layer.Presentation.rawValue)/\(presentation.rawValue)/**"],
-            resources: ["\(projectName)/resources/**"],
             dependencies: dependencies
         )
     }
     
     return Presentation.allCases.map({
         switch $0 {
-        case .Auth, .HeatMap:
+        case .Auth, .HeatMap, .Exercise, .My:
             return createPresentation($0, dependencies: [])
         case .History:
             return createPresentation($0, dependencies: [
                 .target(name: Presentation.HeatMap.rawValue, condition: nil)
             ])
+        case .MockData:
+            return .target(
+                name: $0.rawValue,
+                destinations: .iOS,
+                product: .framework,
+                bundleId: bundleId + ".\(Layer.Presentation.rawValue).\($0.rawValue)".lowercased(),
+                sources: ["\(projectName)/sources/\(Layer.Presentation.rawValue)/\($0.rawValue)/**"],
+                dependencies: [
+                    .target(name: Layer.Domain.rawValue, condition: nil)
+                ]
+            )
+        case .Common:
+            return .target(
+                name: $0.rawValue,
+                destinations: .iOS,
+                product: .framework,
+                bundleId: bundleId + ".\(Layer.Presentation.rawValue).\($0.rawValue)".lowercased(),
+                sources: ["\(projectName)/sources/\(Layer.Presentation.rawValue)/\($0.rawValue)/**"],
+                dependencies: [
+                    .target(name: Presentation.MockData.rawValue, condition: nil),
+                    .target(name: Layer.Domain.rawValue, condition: nil),
+                    .package(product: "Kingfisher", type: .runtime, condition: nil),
+                    .package(product: "SnapKit", type: .runtime, condition: nil)
+                ]
+            )
         }
     })
 }
@@ -164,7 +180,9 @@ var targets: [Target] {
 let project = Project(
     name: projectName,
     packages: [
-        .remote(url: "https://github.com/firebase/firebase-ios-sdk", requirement: .upToNextMajor(from: "10.15.0"))
+        .remote(url: "https://github.com/firebase/firebase-ios-sdk", requirement: .upToNextMajor(from: "10.15.0")),
+        .remote(url: "https://github.com/onevcat/Kingfisher.git", requirement: .upToNextMajor(from: "7.11.0")),
+        .remote(url: "https://github.com/SnapKit/SnapKit.git", requirement: .upToNextMajor(from: "5.7.1"))
     ],
     settings: .settings(configurations: [
         .debug(name: "debug", xcconfig: "\(projectName)/configs/project.xcconfig"),
