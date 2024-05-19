@@ -1,5 +1,5 @@
 //
-//  ExerciseManagerViewModel.swift
+//  ExerciseListViewModel.swift
 //  Exercise
 //
 //  Created by 신동규 on 5/19/24.
@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import Domain
 
-final class ExerciseManagerViewModel: ObservableObject {
+final class ExerciseListViewModel: ObservableObject {
     
     @Published var exerciseSections: [ExerciseSection] = []
     

@@ -1,5 +1,5 @@
 //
-//  ExerciseManagerView.swift
+//  ExerciseListView.swift
 //  Exercise
 //
 //  Created by 신동규 on 5/19/24.
@@ -9,9 +9,9 @@ import SwiftUI
 import Domain
 import MockData
 
-public struct ExerciseManagerView: View {
+public struct ExerciseListView: View {
     
-    @StateObject var viewModel: ExerciseManagerViewModel
+    @StateObject var viewModel: ExerciseListViewModel
     private let addExerciseAction: ((Exercise?) -> ())?
     
     public init(
@@ -40,7 +40,7 @@ public struct ExerciseManagerView: View {
 }
 
 #Preview {
-    return ExerciseManagerView(
+    return ExerciseListView(
         exerciseRepository: ExerciseRepositoryMock(),
         addExerciseAction: nil
     )
