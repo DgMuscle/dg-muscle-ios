@@ -17,7 +17,7 @@
 -->
 
 ![image](https://github.com/DgMuscle/dg-muscle-ios/assets/34573243/a127df42-9f0c-41e5-b151-aebb86533973)
-<img width=750 src="https://github.com/DgMuscle/dg-muscle-ios/assets/34573243/90588ca7-a793-4dac-8d9a-ee1b41b09b0a" />
+<img width=750 src="https://github.com/DgMuscle/dg-muscle-ios/assets/34573243/21fdd32e-3df3-4bf8-ab63-f0870897bc58" />
 
 __프레젠테이션 계층__ 
 - 뷰(View)와 뷰모델(ViewModel) 구성요소를 포함합니다.
