@@ -8,9 +8,10 @@
 import Foundation
 import Domain
 import Combine
+import Common
 
 final class MyViewModel: ObservableObject {
-    @Published var user: User? = nil
+    @Published var user: Common.User? = nil
     
     private let subscribeUserUsecase: SubscribeUserUsecase
     private var cancellables = Set<AnyCancellable>()

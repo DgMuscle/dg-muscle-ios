@@ -15,16 +15,22 @@ public struct HistoryListView: View {
     
     let tapHistory: ((_ historyId: String) -> ())?
     
-    public init(today: Date,
-                historyRepository: any HistoryRepository,
-                exerciseRepository: any ExerciseRepository,
-                heatMapRepository: any HeatMapRepository,
-                tapHistory: ((_ historyId: String) -> ())?) {
-        _viewModel = .init(wrappedValue: .init(
-            today: today,
-            historyRepository: historyRepository,
-            exerciseRepository: exerciseRepository,
-            heatMapRepository: heatMapRepository)
+    public init(
+        today: Date,
+        historyRepository: any HistoryRepository,
+        exerciseRepository: any ExerciseRepository,
+        heatMapRepository: any HeatMapRepository,
+        userRepository: any UserRepository,
+        tapHistory: ((_ historyId: String) -> ())?
+    ) {
+        _viewModel = .init(wrappedValue:
+                .init(
+                    today: today,
+                    historyRepository: historyRepository,
+                    exerciseRepository: exerciseRepository,
+                    heatMapRepository: heatMapRepository,
+                    userRepository: userRepository
+                )
         )
         
         self.tapHistory = tapHistory
@@ -74,7 +80,8 @@ public struct HistoryListView: View {
     return HistoryListView(today: date,
                            historyRepository: HistoryRepositoryMock(),
                            exerciseRepository: ExerciseRepositoryMock(),
-                           heatMapRepository: HeatMapRepositoryMock(),
+                           heatMapRepository: HeatMapRepositoryMock(), 
+                           userRepository: UserRepositoryMock(),
                            tapHistory: nil)
     .preferredColorScheme(.dark)
 }
