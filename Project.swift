@@ -38,7 +38,10 @@ func createWidget() -> Target {
             .target(name: Layer.DataLayer.rawValue, condition: nil),
             .target(name: Presentation.HistoryHeatMap.rawValue, condition: nil)
         ],
-        settings: nil
+        settings: .settings(configurations: [
+            .debug(name: "debug", xcconfig: "\(widgetName)/Configs/widget.xcconfig"),
+            .release(name: "release", xcconfig: "\(widgetName)/Configs/widget.xcconfig")
+        ])
     )
 }
 
