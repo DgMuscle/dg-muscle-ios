@@ -62,13 +62,14 @@ func createApp() -> Target {
 
 func createTest() -> Target {
     .target(
-        name: "Test",
+        name: "AppTests",
         destinations: .iOS,
         product: .unitTests,
-        bundleId: bundleId + ".test",
-        sources: ["\(projectName)/sources/Test/**"],
+        bundleId: bundleId + "Tests",
+        infoPlist: .default,
+        sources: ["\(projectName)/Tests/**"],
         dependencies: [
-            .target(name: Presentation.Common.rawValue, condition: nil)
+            .target(name: "App", condition: nil)
         ],
         settings: .settings(configurations: [
             .debug(name: "debug", xcconfig: "\(projectName)/configs/test.xcconfig"),
