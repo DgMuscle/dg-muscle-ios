@@ -34,7 +34,24 @@ public struct ExerciseListView: View {
             }
             .padding(.horizontal)
         } else {
-            Text("Not Empty")
+            List {
+                ForEach(viewModel.exerciseSections, id: \.self) { section in
+                    ExerciseSectionView(exerciseSection: section) { exercise in
+                        addExerciseAction?(exercise)
+                    }
+                }
+                
+                Button {
+                    addExerciseAction?(nil)
+                } label: {
+                    HStack {
+                        Spacer()
+                        Text("ADD")
+                        Spacer()
+                    }
+                }
+                .buttonStyle(.borderless)
+            }
         }
     }
 }
