@@ -22,20 +22,8 @@ public struct MyView: View {
             Section {
                 Text("My")
             } header: {
-                HStack {
-                    if let url = viewModel.user?.photoURL {
-                        KFImage(url)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 35, height: 35)
-                            .clipShape(Circle())
-                    }
-                    
-                    Text(viewModel.user?.displayName ?? "Display Name")
-                        .foregroundStyle(Color(uiColor: .label))
-                        .fontWeight(.black)
-                    
-                    Spacer()
+                if let user = viewModel.user {
+                    UserItemView(user: user)
                 }
             }
         }
