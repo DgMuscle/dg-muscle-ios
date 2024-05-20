@@ -12,6 +12,9 @@ import Common
 
 final class HeatMapColorSelectViewModel: ObservableObject {
     @Published var selectedColor: Common.HeatMapColor
+    
+    let colors: [Common.HeatMapColor] = Common.HeatMapColor.allCases
+    
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
     private let postHeatMapColorUsecase: PostHeatMapColorUsecase
     private let subscribeHeatMapColorUsecase: SubscribeHeatMapColorUsecase
