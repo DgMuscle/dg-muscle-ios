@@ -7,16 +7,20 @@
 
 import Foundation
 
-struct ExerciseNavigation: Hashable {
-    func hash(into hasher: inout Hasher) {
+public struct ExerciseNavigation: Hashable {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(name.rawValue.hashValue)
+    }
+    
+    public init(name: Name) {
+        self.name = name
     }
     
     let name: Name
 }
 
 extension ExerciseNavigation {
-    enum Name: String {
+    public enum Name: String {
         case manage
     }
 }
