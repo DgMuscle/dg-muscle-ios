@@ -8,11 +8,11 @@
 import SwiftUI
 import Domain
 import Exercise
+import History
 
 public struct NavigationView: View {
     
-    @State var path = NavigationPath()
-    
+    @Binding var path: NavigationPath
     let today: Date
     let historyRepository: HistoryRepository
     let exerciseRepository: ExerciseRepository
@@ -20,17 +20,21 @@ public struct NavigationView: View {
     let userRepository: UserRepository
     
     public init(
+        path: Binding<NavigationPath>,
         today: Date,
         historyRepository: HistoryRepository,
         exerciseRepository: ExerciseRepository,
         heatMapRepository: HeatMapRepository,
         userRepository: UserRepository
     ) {
+        self._path = path
         self.today = today
         self.historyRepository = historyRepository
         self.exerciseRepository = exerciseRepository
         self.heatMapRepository = heatMapRepository
         self.userRepository = userRepository
+        
+        coordinator = .init(path: path)
     }
     
     public var body: some View {
@@ -42,14 +46,20 @@ public struct NavigationView: View {
                 heatMapRepository: heatMapRepository,
                 userRepository: userRepository
             )
-        }
-        .navigationDestination(for: ExerciseNavigation.self) { navigation in
-            switch navigation.name {
-            case .manage:
-                ExerciseListView(
-                    exerciseRepository: exerciseRepository) { exercise in
-                        print("dg: add exercise!")
-                    }
+            .navigationDestination(for: ExerciseNavigation.self) { navigation in
+                switch navigation.name {
+                case .manage:
+                    ExerciseListView(
+                        exerciseRepository: exerciseRepository) { exercise in
+                            print("dg: add exercise!")
+                        }
+                }
+            }
+            .navigationDestination(for: HistoryNavigation.self) { navigation in
+                switch navigation.name {
+                case .heatMapColor:
+                    HeatMapColorSelectView(userRepository: userRepository)
+                }
             }
         }
     }

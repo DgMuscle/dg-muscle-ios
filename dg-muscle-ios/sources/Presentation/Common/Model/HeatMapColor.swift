@@ -9,7 +9,7 @@ import Foundation
 import Domain
 import SwiftUI
 
-public enum HeatMapColor {
+public enum HeatMapColor: CaseIterable {
     case green
     case blue
     case red

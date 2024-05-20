@@ -1,7 +1,9 @@
 import ProjectDescription
 
 let projectName = "dg-muscle-ios"
+let widgetName = "DgWidget"
 let bundleId = "com.donggyu.dg-muscle-ios"
+let appVersion: String = "2.0.0"
 
 enum Layer: String, CaseIterable {
     case Domain
@@ -28,11 +30,11 @@ func createApp() -> Target {
         infoPlist: .extendingDefault(
             with: [
                 "UILaunchStoryboardName": "LaunchScreen.storyboard",
+                "FirebaseAppDelegateProxyEnabled": false,
                 "UIBackgroundModes": [
                     "remote-notification"
                 ],
-                "FirebaseAppDelegateProxyEnabled": false,
-                "CFBundleShortVersionString": "2.0.0",
+                "CFBundleShortVersionString": "\(appVersion)",
                 "CFBundleURLTypes": [
                     .dictionary([
                         "CFBundleTypeRole": "Editor",
@@ -46,10 +48,12 @@ func createApp() -> Target {
         ),
         sources: ["\(projectName)/sources/App/**"],
         resources: ["\(projectName)/resources/**"],
-        dependencies:  Layer
-            .allCases
-            .filter({ $0 != .Domain })
-            .map({ .target(name: $0.rawValue, condition: nil) }) ,
+        entitlements: "\(projectName)/dg_muscle_ios.entitlements",
+        dependencies: [
+            .target(name: Layer.Presentation.rawValue, condition: nil),
+            .target(name: Layer.DataLayer.rawValue, condition: nil),
+            .target(name: widgetName, condition: nil)
+        ],
         settings: .settings(configurations: [
             .debug(name: "debug", xcconfig: "\(projectName)/configs/app.xcconfig"),
             .release(name: "release", xcconfig: "\(projectName)/configs/app.xcconfig"),
@@ -60,17 +64,44 @@ func createApp() -> Target {
 
 func createTest() -> Target {
     .target(
-        name: "Test",
+        name: "AppTests",
         destinations: .iOS,
         product: .unitTests,
-        bundleId: bundleId + ".test",
-        sources: ["\(projectName)/sources/Test/**"],
+        bundleId: bundleId + "Tests",
+        infoPlist: .default,
+        sources: ["\(projectName)/Tests/**"],
         dependencies: [
-            .target(name: Presentation.Common.rawValue, condition: nil)
+            .target(name: "App", condition: nil)
         ],
         settings: .settings(configurations: [
             .debug(name: "debug", xcconfig: "\(projectName)/configs/test.xcconfig"),
             .release(name: "release", xcconfig: "\(projectName)/configs/test.xcconfig"),
+        ])
+    )
+}
+
+func createWidget() -> Target {
+    .target(
+        name: widgetName,
+        destinations: .iOS,
+        product: .appExtension,
+        bundleId: "\(bundleId).\(widgetName.lowercased())",
+        infoPlist: .extendingDefault(with: [
+            "NSExtension": .dictionary([
+                "NSExtensionPointIdentifier": "com.apple.widgetkit-extension"
+            ]),
+            "CFBundleShortVersionString": "\(appVersion)"
+        ]),
+        sources: "\(widgetName)/Sources/**",
+        resources: "\(widgetName)/Resources/**",
+        entitlements: "\(widgetName)/\(widgetName).entitlements",
+        dependencies: [
+            .target(name: Layer.DataLayer.rawValue, condition: nil),
+            .target(name: Presentation.HistoryHeatMap.rawValue, condition: nil)
+        ],
+        settings: .settings(configurations: [
+            .debug(name: "debug", xcconfig: "\(widgetName)/Configs/widget.xcconfig"),
+            .release(name: "release", xcconfig: "\(widgetName)/Configs/widget.xcconfig")
         ])
     )
 }
@@ -183,6 +214,7 @@ var targets: [Target] {
     targets.append(contentsOf: createLayers())
     targets.append(contentsOf: createPresentations())
     targets.append(createTest())
+    targets.append(createWidget())
     return targets
 }
 

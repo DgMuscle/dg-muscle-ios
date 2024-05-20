@@ -34,6 +34,10 @@ public final class UserRepositoryImpl: UserRepository {
         await AuthManager().withDrawal()
     }
     
+    public func get() -> Domain.User? {
+        _user
+    }
+    
     public func post(_ heatMapColor: Domain.HeatMapColor) throws {
         _user?.heatMapColor = heatMapColor
         let heatMapColor: HeatMapColor = .init(domain: heatMapColor)

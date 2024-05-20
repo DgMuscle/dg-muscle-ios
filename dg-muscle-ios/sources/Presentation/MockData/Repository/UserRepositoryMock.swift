@@ -37,4 +37,8 @@ public final class UserRepositoryMock: UserRepository {
     public func post(fcmToken: String) {
         _user?.fcmToken = fcmToken
     }
+    
+    public func get() -> Domain.User? {
+        _user
+    }
 }

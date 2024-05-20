@@ -16,6 +16,7 @@ struct ContentView: View {
     @Environment(\.window) var window: UIWindow?
     @StateObject var viewModel: ContentViewModel
     @State var splash: Bool = true
+    @State var path = NavigationPath()
     
     init() {
         self._viewModel = .init(wrappedValue: .init(userRepository: UserRepositoryImpl.shared))
@@ -25,6 +26,7 @@ struct ContentView: View {
         ZStack {
             if viewModel.isLogin {
                 Presentation.NavigationView(
+                    path: $path,
                     today: Date(),
                     historyRepository: HistoryRepositoryImpl.shared,
                     exerciseRepository: ExerciseRepositoryImpl.shared,

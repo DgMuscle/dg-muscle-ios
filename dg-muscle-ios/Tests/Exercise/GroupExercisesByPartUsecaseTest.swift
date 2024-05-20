@@ -17,7 +17,6 @@ final class GroupExercisesByPartUsecaseTest: XCTestCase {
 
     func testExample() throws {
         let usecase = Domain.GroupExercisesByPartUsecase()
-        let repository = ExerciseRepositoryMock()
         
         let result = usecase.implement(exercises: [
             EXERCISE_SQUAT,

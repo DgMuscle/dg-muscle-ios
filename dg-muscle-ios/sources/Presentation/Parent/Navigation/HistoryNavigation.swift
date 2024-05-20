@@ -1,13 +1,13 @@
 //
-//  ExerciseNavigation.swift
+//  HistoryNavigation.swift
 //  Presentation
 //
-//  Created by 신동규 on 5/19/24.
+//  Created by 신동규 on 5/20/24.
 //
 
 import Foundation
 
-public struct ExerciseNavigation: Hashable {
+public struct HistoryNavigation: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(name.rawValue.hashValue)
     }
@@ -19,8 +19,8 @@ public struct ExerciseNavigation: Hashable {
     let name: Name
 }
 
-extension ExerciseNavigation {
+extension HistoryNavigation {
     public enum Name: String {
-        case manage
+        case heatMapColor
     }
 }

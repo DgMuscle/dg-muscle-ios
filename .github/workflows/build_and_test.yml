@@ -27,4 +27,4 @@ jobs:
       - name: Build
         run: tuist build
       - name: Test
-        run: tuist test
+        run: tuist test App
