@@ -8,6 +8,7 @@
 import SwiftUI
 import Domain
 import Exercise
+import History
 
 public struct NavigationView: View {
     
@@ -49,6 +50,12 @@ public struct NavigationView: View {
                         exerciseRepository: exerciseRepository) { exercise in
                             print("dg: add exercise!")
                         }
+                }
+            }
+            .navigationDestination(for: HistoryNavigation.self) { navigation in
+                switch navigation.name {
+                case .heatMapColor:
+                    HeatMapColorSelectView(userRepository: userRepository)
                 }
             }
         }
