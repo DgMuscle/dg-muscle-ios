@@ -17,6 +17,10 @@ public final class Coordinator {
         self._path = path
     }
     
+    func exerciseManage() {
+        path.append(ExerciseNavigation(name: .manage))
+    }
+    
     func heatMapColorSelectView() {
         path.append(HistoryNavigation(name: .heatMapColor))
     }
