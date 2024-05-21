@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct StatusView: View {
     
-    public enum Status {
+    public enum Status: Equatable {
         case loading
         case success(String?)
         case error(String?)

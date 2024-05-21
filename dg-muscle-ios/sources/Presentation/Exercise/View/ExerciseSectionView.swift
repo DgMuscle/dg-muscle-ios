@@ -31,13 +31,15 @@ struct ExerciseSectionView: View {
                     tapExercise?(exercise)
                 } label: {
                     HStack {
+                        Image(systemName: "star")
+                            .foregroundStyle(.yellow)
+                            .opacity(exercise.favorite ? 1 : 0)
                         Text(exercise.name)
                             .foregroundStyle(Color(uiColor: .label))
                         Spacer()
                     }
                 }
                 .buttonStyle(.borderless)
-                .listRowBackground(exercise.favorite ? Color.yellow.opacity(0.2) : nil)
             }
             .onDelete(perform: delete)
         }

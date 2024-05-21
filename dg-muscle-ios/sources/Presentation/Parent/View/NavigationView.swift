@@ -12,7 +12,7 @@ import History
 
 public struct NavigationView: View {
     
-    @Binding var path: NavigationPath
+    @State var path = NavigationPath()
     let today: Date
     let historyRepository: HistoryRepository
     let exerciseRepository: ExerciseRepository
@@ -20,21 +20,17 @@ public struct NavigationView: View {
     let userRepository: UserRepository
     
     public init(
-        path: Binding<NavigationPath>,
         today: Date,
         historyRepository: HistoryRepository,
         exerciseRepository: ExerciseRepository,
         heatMapRepository: HeatMapRepository,
         userRepository: UserRepository
     ) {
-        self._path = path
         self.today = today
         self.historyRepository = historyRepository
         self.exerciseRepository = exerciseRepository
         self.heatMapRepository = heatMapRepository
         self.userRepository = userRepository
-        
-        coordinator = .init(path: path)
     }
     
     public var body: some View {
@@ -51,8 +47,13 @@ public struct NavigationView: View {
                 case .manage:
                     ExerciseListView(
                         exerciseRepository: exerciseRepository) { exercise in
-                            print("dg: add exercise!")
+                            coordinator?.addExercise(exercise: exercise)
                         }
+                case .add(let exercise):
+                    PostExerciseView(exercise: exercise,
+                                     exerciseRepository: exerciseRepository) {
+                        coordinator?.pop()
+                    }
                 }
             }
             .navigationDestination(for: HistoryNavigation.self) { navigation in
@@ -61,6 +62,9 @@ public struct NavigationView: View {
                     HeatMapColorSelectView(userRepository: userRepository)
                 }
             }
+        }
+        .onAppear {
+            coordinator = .init(path: $path)
         }
     }
 }

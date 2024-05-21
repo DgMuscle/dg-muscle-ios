@@ -12,11 +12,12 @@ import MockData
 public struct ExerciseListView: View {
     
     @StateObject var viewModel: ExerciseListViewModel
-    private let addExerciseAction: ((Domain.Exercise?) -> ())?
+    @State private var canShowEmptyView: Bool = false
+    private let addExerciseAction: ((Exercise?) -> ())?
     
     public init(
         exerciseRepository: any ExerciseRepository,
-        addExerciseAction: ((Domain.Exercise?) -> ())?
+        addExerciseAction: ((Exercise?) -> ())?
     ) {
         _viewModel = .init(wrappedValue:
                 .init(
@@ -28,53 +29,60 @@ public struct ExerciseListView: View {
     }
     
     public var body: some View {
-        if viewModel.exerciseSections.isEmpty && viewModel.deletedExercises.isEmpty {
-            ExerciseEmptyView {
-                addExerciseAction?(nil)
-            }
-            .padding(.horizontal)
-        } else {
-            List {
-                ForEach(viewModel.exerciseSections, id: \.self) { section in
-                    ExerciseSectionView(exerciseSection: section) { exercise in
-                        addExerciseAction?(exercise.domain)
-                    } deleteExercise: { part, indexSet in
-                        viewModel.delete(part: part, indexSet: indexSet)
-                    }
-                }
-                
-                if viewModel.deletedExercises.isEmpty == false {
-                    Section {
-                        ForEach(viewModel.deletedExercises, id: \.self) { exercise in
-                            Button {
-                                viewModel.rollBack(exercise)
-                            } label: {
-                                Text(exercise.name)
-                            }
-                            .buttonStyle(.borderless)
-                        }
-                    } header: {
-                        Text("deleted exercises")
-                    } footer: {
-                        Text("tap to rollback")
-                    }
-                }
-                
-                Button {
+        ZStack {
+            if viewModel.exerciseSections.isEmpty && viewModel.deletedExercises.isEmpty && canShowEmptyView {
+                ExerciseEmptyView {
                     addExerciseAction?(nil)
-                } label: {
-                    HStack {
-                        Spacer()
-                        Text("ADD")
-                        Spacer()
-                    }
                 }
-                .buttonStyle(.borderless)
+                .padding(.horizontal)
+            } else {
+                List {
+                    ForEach(viewModel.exerciseSections, id: \.self) { section in
+                        ExerciseSectionView(exerciseSection: section) { exercise in
+                            addExerciseAction?(exercise)
+                        } deleteExercise: { part, indexSet in
+                            viewModel.delete(part: part, indexSet: indexSet)
+                        }
+                    }
+                    
+                    if viewModel.deletedExercises.isEmpty == false {
+                        Section {
+                            ForEach(viewModel.deletedExercises, id: \.self) { exercise in
+                                Button {
+                                    viewModel.rollBack(exercise)
+                                } label: {
+                                    Text(exercise.name)
+                                }
+                                .buttonStyle(.borderless)
+                            }
+                        } header: {
+                            Text("deleted exercises")
+                        } footer: {
+                            Text("tap to rollback")
+                        }
+                    }
+                    
+                    Button {
+                        addExerciseAction?(nil)
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text("ADD")
+                            Spacer()
+                        }
+                    }
+                    .buttonStyle(.borderless)
+                }
+                .toolbar {
+                    EditButton()
+                }
+                .animation(.default, value: viewModel.deletedExercises.isEmpty)
             }
-            .toolbar {
-                EditButton()
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                canShowEmptyView.toggle()
             }
-            .animation(.default, value: viewModel.deletedExercises.isEmpty)
         }
     }
 }
