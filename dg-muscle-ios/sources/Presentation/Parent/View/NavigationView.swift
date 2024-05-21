@@ -31,7 +31,6 @@ public struct NavigationView: View {
         self.exerciseRepository = exerciseRepository
         self.heatMapRepository = heatMapRepository
         self.userRepository = userRepository
-        coordinator = .init(path: $path)
     }
     
     public var body: some View {
@@ -58,6 +57,9 @@ public struct NavigationView: View {
                     HeatMapColorSelectView(userRepository: userRepository)
                 }
             }
+        }
+        .onAppear {
+            coordinator = .init(path: $path)
         }
     }
 }
