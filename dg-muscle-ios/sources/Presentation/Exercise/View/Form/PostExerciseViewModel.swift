@@ -13,20 +13,26 @@ import Common
 final class PostExerciseViewModel: ObservableObject {
     @Published var exercise: Exercise
     @Published var status: StatusView.Status? = nil
+    @Published var isPartsSelectionVisible: Bool = false
+    @Published var isSaveButtonVisible: Bool = false
     
     private let postExerciseUsecase: PostExerciseUsecase
+    private let pop: (() -> ())?
     private var cancellables = Set<AnyCancellable>()
     
     init(
         exercise: Exercise?,
-        exerciseRepository: ExerciseRepository
+        exerciseRepository: ExerciseRepository,
+        pop: (() -> ())?
     ) {
         self.exercise = exercise ?? .init()
         self.postExerciseUsecase = .init(exerciseRepository: exerciseRepository)
+        self.pop = pop
+        bind()
     }
     
     @MainActor
-    func tapAdd() {
+    func save() {
         Task {
             status = nil
             var notEnoughParameter: Bool = false
@@ -37,8 +43,22 @@ final class PostExerciseViewModel: ObservableObject {
                 status = .error("Exercise name and parts must be filled.")
                 return
             }
-            status = .success(nil)
+            pop?()
             try await postExerciseUsecase.implement(exercise: exercise.domain)
         }
+    }
+    
+    private func bind() {
+        $exercise
+            .debounce(for: 1, scheduler: DispatchQueue.main)
+            .map({ !$0.name.isEmpty && !$0.parts.isEmpty })
+            .assign(to: \.isSaveButtonVisible, on: self)
+            .store(in: &cancellables)
+        
+        $exercise
+            .debounce(for: 1, scheduler: DispatchQueue.main)
+            .map({ !$0.name.isEmpty })
+            .assign(to: \.isPartsSelectionVisible, on: self)
+            .store(in: &cancellables)
     }
 }

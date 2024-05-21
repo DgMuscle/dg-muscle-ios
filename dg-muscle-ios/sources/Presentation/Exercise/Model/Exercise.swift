@@ -10,9 +10,9 @@ import Domain
 
 public struct Exercise: Hashable {
     let id: String
-    let name: String
-    let parts: [Part]
-    let favorite: Bool
+    var name: String
+    var parts: [Part]
+    var favorite: Bool
     
     init() {
         self.id = UUID().uuidString
@@ -35,7 +35,7 @@ public struct Exercise: Hashable {
 }
 
 extension Exercise {
-    public enum Part: String {
+    public enum Part: String, CaseIterable {
         case arm
         case back
         case chest
