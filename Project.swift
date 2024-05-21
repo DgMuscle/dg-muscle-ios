@@ -222,8 +222,8 @@ let project = Project(
     name: projectName,
     packages: [
         .remote(url: "https://github.com/firebase/firebase-ios-sdk", requirement: .upToNextMajor(from: "10.15.0")),
-        .remote(url: "https://github.com/onevcat/Kingfisher.git", requirement: .upToNextMajor(from: "7.11.0")),
-        .remote(url: "https://github.com/SnapKit/SnapKit.git", requirement: .upToNextMajor(from: "5.7.1"))
+        .remote(url: "https://github.com/onevcat/Kingfisher", requirement: .upToNextMajor(from: "7.11.0")),
+        .remote(url: "https://github.com/SnapKit/SnapKit", requirement: .upToNextMajor(from: "5.7.1"))
     ],
     settings: .settings(configurations: [
         .debug(name: "debug", xcconfig: "\(projectName)/configs/project.xcconfig"),
