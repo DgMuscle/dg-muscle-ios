@@ -6,21 +6,28 @@
 //
 
 import Foundation
+import Exercise
 
 public struct ExerciseNavigation: Hashable {
+    public static func == (lhs: ExerciseNavigation, rhs: ExerciseNavigation) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(name.rawValue.hashValue)
+        hasher.combine(id)
     }
     
     public init(name: Name) {
         self.name = name
     }
     
+    let id = UUID().uuidString
     let name: Name
 }
 
 extension ExerciseNavigation {
-    public enum Name: String {
+    public enum Name {
         case manage
+        case add(Exercise?)
     }
 }

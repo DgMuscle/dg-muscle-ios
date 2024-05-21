@@ -25,7 +25,7 @@ struct PartsSelectView: View {
                     Text(part.rawValue)
                 }
                 .foregroundStyle(Color(uiColor: .label))
-                .listRowBackground(Color.green.opacity(0.4))
+                .listRowBackground(Color.blue.opacity(0.4))
                 
             } else {
                 Button {

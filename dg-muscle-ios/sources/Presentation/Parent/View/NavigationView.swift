@@ -47,8 +47,13 @@ public struct NavigationView: View {
                 case .manage:
                     ExerciseListView(
                         exerciseRepository: exerciseRepository) { exercise in
-                            print("dg: add exercise!")
+                            coordinator?.addExercise(exercise: exercise)
                         }
+                case .add(let exercise):
+                    PostExerciseView(exercise: exercise,
+                                     exerciseRepository: exerciseRepository) {
+                        coordinator?.pop()
+                    }
                 }
             }
             .navigationDestination(for: HistoryNavigation.self) { navigation in
