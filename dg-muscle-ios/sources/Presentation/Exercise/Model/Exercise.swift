@@ -14,6 +14,13 @@ struct Exercise: Hashable {
     let parts: [Part]
     let favorite: Bool
     
+    init() {
+        self.id = UUID().uuidString
+        self.name = ""
+        self.parts = []
+        self.favorite = false
+    }
+    
     init(domain: Domain.Exercise) {
         self.id = domain.id
         self.name = domain.name
