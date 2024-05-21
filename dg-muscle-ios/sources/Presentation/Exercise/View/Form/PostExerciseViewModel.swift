@@ -50,13 +50,13 @@ final class PostExerciseViewModel: ObservableObject {
     
     private func bind() {
         $exercise
-            .debounce(for: 1, scheduler: DispatchQueue.main)
+            .debounce(for: 0.5, scheduler: DispatchQueue.main)
             .map({ !$0.name.isEmpty && !$0.parts.isEmpty })
             .assign(to: \.isSaveButtonVisible, on: self)
             .store(in: &cancellables)
         
         $exercise
-            .debounce(for: 1, scheduler: DispatchQueue.main)
+            .debounce(for: 0.5, scheduler: DispatchQueue.main)
             .map({ !$0.name.isEmpty })
             .assign(to: \.isPartsSelectionVisible, on: self)
             .store(in: &cancellables)
