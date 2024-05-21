@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-struct Exercise: Hashable {
+public struct Exercise: Hashable {
     let id: String
     let name: String
     let parts: [Part]
@@ -21,21 +21,21 @@ struct Exercise: Hashable {
         self.favorite = false
     }
     
-    init(domain: Domain.Exercise) {
+    public init(domain: Domain.Exercise) {
         self.id = domain.id
         self.name = domain.name
         self.parts = domain.parts.map({ .init(domain: $0) })
         self.favorite = domain.favorite
     }
     
-    var domain: Domain.Exercise {
+    public var domain: Domain.Exercise {
         return .init(id: id, name: name, parts: parts.map({ $0.domain }), favorite: favorite)
     }
     
 }
 
 extension Exercise {
-    enum Part: String {
+    public enum Part: String {
         case arm
         case back
         case chest
@@ -43,7 +43,7 @@ extension Exercise {
         case leg
         case shoulder
         
-        init(domain: Domain.Exercise.Part) {
+        public init(domain: Domain.Exercise.Part) {
             switch domain {
             case .arm:
                 self = .arm
@@ -60,7 +60,7 @@ extension Exercise {
             }
         }
         
-        var domain: Domain.Exercise.Part {
+        public var domain: Domain.Exercise.Part {
             switch self {
             case .arm:
                 return .arm
