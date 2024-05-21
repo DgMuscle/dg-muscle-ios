@@ -44,9 +44,7 @@ public struct PostExerciseView: View {
                     Button {
                         viewModel.exercise.favorite.toggle()
                     } label: {
-                        Image(
-                            systemName: viewModel.exercise.favorite ? "star.fill" : "star"
-                        )
+                        Image(systemName: viewModel.exercise.favorite ? "star.fill" : "star")
                     }
                 }
                 

@@ -12,11 +12,11 @@ import MockData
 public struct ExerciseListView: View {
     
     @StateObject var viewModel: ExerciseListViewModel
-    private let addExerciseAction: ((Domain.Exercise?) -> ())?
+    private let addExerciseAction: ((Exercise?) -> ())?
     
     public init(
         exerciseRepository: any ExerciseRepository,
-        addExerciseAction: ((Domain.Exercise?) -> ())?
+        addExerciseAction: ((Exercise?) -> ())?
     ) {
         _viewModel = .init(wrappedValue:
                 .init(
@@ -37,7 +37,7 @@ public struct ExerciseListView: View {
             List {
                 ForEach(viewModel.exerciseSections, id: \.self) { section in
                     ExerciseSectionView(exerciseSection: section) { exercise in
-                        addExerciseAction?(exercise.domain)
+                        addExerciseAction?(exercise)
                     } deleteExercise: { part, indexSet in
                         viewModel.delete(part: part, indexSet: indexSet)
                     }
