@@ -12,7 +12,7 @@ import History
 
 public struct NavigationView: View {
     
-    @Binding var path: NavigationPath
+    @State var path = NavigationPath()
     let today: Date
     let historyRepository: HistoryRepository
     let exerciseRepository: ExerciseRepository
@@ -20,21 +20,18 @@ public struct NavigationView: View {
     let userRepository: UserRepository
     
     public init(
-        path: Binding<NavigationPath>,
         today: Date,
         historyRepository: HistoryRepository,
         exerciseRepository: ExerciseRepository,
         heatMapRepository: HeatMapRepository,
         userRepository: UserRepository
     ) {
-        self._path = path
         self.today = today
         self.historyRepository = historyRepository
         self.exerciseRepository = exerciseRepository
         self.heatMapRepository = heatMapRepository
         self.userRepository = userRepository
-        
-        coordinator = .init(path: path)
+        coordinator = .init(path: $path)
     }
     
     public var body: some View {
