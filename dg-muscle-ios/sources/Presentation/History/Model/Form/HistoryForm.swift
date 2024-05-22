@@ -12,7 +12,7 @@ struct HistoryForm {
     let id: String
     let date: Date
     let memo: String?
-    let records: [ExerciseRecord]
+    var records: [ExerciseRecord]
     
     init() {
         id = UUID().uuidString

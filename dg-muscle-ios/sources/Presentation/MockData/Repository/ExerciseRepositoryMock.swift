@@ -10,7 +10,9 @@ import Combine
 import Domain
 
 public final class ExerciseRepositoryMock: ExerciseRepository {
+    
     public var exercises: AnyPublisher<[Domain.Exercise], Never> { $_exercises.eraseToAnyPublisher() }
+    
     @Published var _exercises: [Exercise] = [
         EXERCISE_SQUAT,
         EXERCISE_BENCH,
@@ -18,6 +20,10 @@ public final class ExerciseRepositoryMock: ExerciseRepository {
     ]
     
     public init() { }
+    
+    public func get() -> [Domain.Exercise] {
+        _exercises
+    }
     
     public func post(_ exercise: Domain.Exercise) async throws {
         if let index = _exercises.firstIndex(where: { $0.id == exercise.id }) {

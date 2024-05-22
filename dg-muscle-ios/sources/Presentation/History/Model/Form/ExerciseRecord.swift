@@ -11,7 +11,8 @@ import Domain
 struct ExerciseRecord: Hashable {
     let id: String
     let exerciseId: String
-    let sets: [ExerciseSet]
+    var exerciseName: String?
+    var sets: [ExerciseSet]
     
     init(domain: Domain.ExerciseRecord) {
         id = domain.id
