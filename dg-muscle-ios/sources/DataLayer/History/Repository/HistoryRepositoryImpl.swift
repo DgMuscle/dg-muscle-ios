@@ -23,6 +23,22 @@ public final class HistoryRepositoryImpl: Domain.HistoryRepository {
         bind()
     }
     
+    public func post(history: Domain.History) async throws {
+        if let index = _histories.firstIndex(where: { $0.id == history.id }) {
+            _histories[index] = history
+        } else {
+            _histories.insert(history, at: 0)
+        }
+        
+        let url = FunctionsURL.history(.posthistory)
+        let data: History = .init(domain: history)
+        let _: DataResponse = try await APIClient.shared.request(
+            method: .post,
+            url: url,
+            body: data
+        )
+    }
+    
     private func bind() {
         UserRepositoryImpl
             .shared
