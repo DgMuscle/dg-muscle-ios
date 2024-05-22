@@ -10,4 +10,6 @@ import Combine
 
 public protocol HistoryRepository {
     var histories: AnyPublisher<[History], Never> { get }
+    
+    func post(history: History) async throws
 }
