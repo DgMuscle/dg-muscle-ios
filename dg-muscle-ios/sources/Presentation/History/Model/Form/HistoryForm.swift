@@ -14,6 +14,13 @@ struct HistoryForm {
     let memo: String?
     let records: [ExerciseRecord]
     
+    init() {
+        id = UUID().uuidString
+        date = .init()
+        memo = nil
+        records = []
+    }
+    
     init(domain: Domain.History) {
         id = domain.id
         date = domain.date
