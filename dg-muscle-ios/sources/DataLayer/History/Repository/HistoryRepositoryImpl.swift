@@ -39,6 +39,23 @@ public final class HistoryRepositoryImpl: Domain.HistoryRepository {
         )
     }
     
+    public func delete(history: Domain.History) async throws {
+        
+        if let index = _histories.firstIndex(where: { $0.id == history.id }) {
+            _histories.remove(at: index)
+        }
+        
+        struct Body: Codable {
+            let id: String
+        }
+        let url = FunctionsURL.history(.deletehistory)
+        let _: DataResponse = try await APIClient.shared.request(
+            method: .post,
+            url: url,
+            body: Body(id: history.id)
+        )
+    }
+    
     private func bind() {
         UserRepositoryImpl
             .shared
