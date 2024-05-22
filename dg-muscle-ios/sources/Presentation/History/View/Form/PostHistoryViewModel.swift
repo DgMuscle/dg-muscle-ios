@@ -13,6 +13,7 @@ class PostHistoryViewModel: ObservableObject {
     @Published var history: HistoryForm
     private let postHistoryUsecase: PostHistoryUsecase
     private let getExercisesUsecase: GetExercisesUsecase
+    private let deleteHistoryUsecase: DeleteHistoryUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
@@ -22,6 +23,7 @@ class PostHistoryViewModel: ObservableObject {
     ) {
         postHistoryUsecase = .init(historyRepository: historyRepository)
         getExercisesUsecase = .init(exerciseRepository: exerciseRepository)
+        deleteHistoryUsecase = .init(historyRepository: historyRepository)
         var historyForm: HistoryForm
         if let history {
             historyForm = .init(domain: history)
@@ -52,7 +54,12 @@ class PostHistoryViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] history in
                 let domain: Domain.History = history.domain
-                self?.postHistoryUsecase.implement(history: domain)
+                
+                if history.records.isEmpty {
+                    self?.deleteHistoryUsecase.implement(history: domain)
+                } else {
+                    self?.postHistoryUsecase.implement(history: domain)
+                }
             }
             .store(in: &cancellables)
     }
