@@ -8,11 +8,14 @@
 import Foundation
 import Domain
 
-struct ExerciseRecord: Hashable {
+public struct ExerciseRecord: Hashable {
     let id: String
     let exerciseId: String
     var exerciseName: String?
     var sets: [ExerciseSet]
+    var volume: Int {
+        sets.map({ $0.volume }).reduce(0, +)
+    }
     
     init(domain: Domain.ExerciseRecord) {
         id = domain.id

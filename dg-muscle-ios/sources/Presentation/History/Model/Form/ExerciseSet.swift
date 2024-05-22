@@ -13,6 +13,7 @@ struct ExerciseSet: Hashable {
     let unit: Unit
     let reps: Int
     let weight: Double
+    var volume: Int { reps * Int(weight) }
     
     init(domain: Domain.ExerciseSet) {
         id = domain.id
