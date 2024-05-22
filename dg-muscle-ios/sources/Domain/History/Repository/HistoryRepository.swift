@@ -12,4 +12,5 @@ public protocol HistoryRepository {
     var histories: AnyPublisher<[History], Never> { get }
     
     func post(history: History) async throws
+    func delete(history: History) async throws
 }

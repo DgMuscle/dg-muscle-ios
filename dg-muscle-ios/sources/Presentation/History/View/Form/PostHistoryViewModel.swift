@@ -43,6 +43,10 @@ class PostHistoryViewModel: ObservableObject {
         bind()
     }
     
+    func delete(record indexSet: IndexSet) {
+        history.records.remove(atOffsets: indexSet)
+    }
+    
     private func bind() {
         $history
             .receive(on: DispatchQueue.main)

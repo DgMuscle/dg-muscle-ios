@@ -24,4 +24,10 @@ public final class HistoryRepositoryMock: HistoryRepository {
             _histories.insert(history, at: 0)
         }
     }
+    
+    public func delete(history: Domain.History) async throws {
+        if let index = _histories.firstIndex(where: { $0.id == history.id }) {
+            _histories.remove(at: index)
+        }
+    }
 }

@@ -48,8 +48,10 @@ public struct PostHistoryView: View {
                     }
                 }
             }
+            .onDelete(perform: viewModel.delete)
         }
         .scrollIndicators(.hidden)
+        .toolbar { EditButton() }
     }
 }
 
