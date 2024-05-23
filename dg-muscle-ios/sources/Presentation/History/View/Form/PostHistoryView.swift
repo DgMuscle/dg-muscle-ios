@@ -12,13 +12,13 @@ import MockData
 public struct PostHistoryView: View {
     
     @StateObject var viewModel: PostHistoryViewModel
-    private let tapRecordAction: ((ExerciseRecord) -> ())?
+    private let tapRecordAction: ((Binding<ExerciseRecord>) -> ())?
     
     public init(
         historyRepository: HistoryRepository,
         exerciseRepository: ExerciseRepository,
         history: Domain.History?,
-        tapRecordAction: ((ExerciseRecord) -> ())?
+        tapRecordAction: ((Binding<ExerciseRecord>) -> ())?
     ) {
         _viewModel = .init(
             wrappedValue: .init(
@@ -32,11 +32,13 @@ public struct PostHistoryView: View {
     
     public var body: some View {
         List {
-            ForEach(viewModel.history.records, id: \.self) { record in
+            ForEach($viewModel.history.records, id: \.self) { record in
+                let binding = record
+                let record = record.wrappedValue
                 Section(record.exerciseName ?? "CAN'T FIND THE EXERCISE") {
                     
                     Button {
-                        tapRecordAction?(record)
+                        tapRecordAction?(binding)
                     } label: {
                         HStack {
                             Text("\(record.sets.count) ").foregroundStyle(.blue) +
@@ -57,7 +59,7 @@ public struct PostHistoryView: View {
 
 #Preview {
     
-    func action(record: ExerciseRecord) {
+    func action(record: Binding<ExerciseRecord>) {
         print(record)
     }
     
