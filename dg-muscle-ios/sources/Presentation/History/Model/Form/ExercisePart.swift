@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-enum ExercisePart {
+enum ExercisePart: CaseIterable {
     case arm
     case back
     case chest
