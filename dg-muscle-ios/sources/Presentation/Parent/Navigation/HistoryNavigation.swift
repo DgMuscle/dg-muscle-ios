@@ -6,21 +6,28 @@
 //
 
 import Foundation
+import Domain
 
 public struct HistoryNavigation: Hashable {
+    public static func == (lhs: HistoryNavigation, rhs: HistoryNavigation) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(name.rawValue.hashValue)
+        hasher.combine(id)
     }
     
     public init(name: Name) {
         self.name = name
     }
     
+    let id: String = UUID().uuidString
     let name: Name
 }
 
 extension HistoryNavigation {
-    public enum Name: String {
+    public enum Name {
         case heatMapColor
+        case historyFormStep1(Domain.History?)
     }
 }

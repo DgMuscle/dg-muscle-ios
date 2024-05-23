@@ -60,6 +60,13 @@ public struct NavigationView: View {
                 switch navigation.name {
                 case .heatMapColor:
                     HeatMapColorSelectView(userRepository: userRepository)
+                case .historyFormStep1(let history):
+                    PostHistoryView(
+                        historyRepository: historyRepository,
+                        exerciseRepository: exerciseRepository,
+                        history: history) { exerciseRecord in
+                            print("dg: tap record")
+                        }
                 }
             }
         }
