@@ -8,42 +8,45 @@
 import SwiftUI
 import Domain
 import MockData
+import Common
 
 public struct PostHistoryView: View {
     
     @StateObject var viewModel: PostHistoryViewModel
-    private let tapRecordAction: ((Binding<ExerciseRecord>) -> ())?
+    @State var isPresentSelectExercise: Bool = false
+    private let exerciseRepository: ExerciseRepository
+    private let setRecordAction: ((Binding<HistoryForm>, String) -> ())?
     
     public init(
         historyRepository: HistoryRepository,
         exerciseRepository: ExerciseRepository,
+        userRepository: UserRepository,
         history: Domain.History?,
-        tapRecordAction: ((Binding<ExerciseRecord>) -> ())?
+        setRecordAction: ((Binding<HistoryForm>, String) -> ())?
     ) {
         _viewModel = .init(
             wrappedValue: .init(
-                historyRepository: historyRepository, 
+                history: history,
+                historyRepository: historyRepository,
                 exerciseRepository: exerciseRepository,
-                history: history
+                userRepository: userRepository
             )
         )
-        self.tapRecordAction = tapRecordAction
+        self.setRecordAction = setRecordAction
+        self.exerciseRepository = exerciseRepository
     }
     
     public var body: some View {
         List {
-            ForEach($viewModel.history.records, id: \.self) { record in
-                let binding = record
-                let record = record.wrappedValue
+            ForEach(viewModel.history.records, id: \.self) { record in
                 Section(record.exerciseName ?? "CAN'T FIND THE EXERCISE") {
-                    
                     Button {
-                        tapRecordAction?(binding)
+                        setRecordAction?($viewModel.history, record.id)
                     } label: {
                         HStack {
-                            Text("\(record.sets.count) ").foregroundStyle(.blue) +
+                            Text("\(record.sets.count) ").foregroundStyle(viewModel.color.color) +
                             Text("Sets ") +
-                            Text("\(record.volume) ").foregroundStyle(.blue) +
+                            Text("\(record.volume) ").foregroundStyle(viewModel.color.color) +
                             Text("Volume")
                         }
                         .foregroundStyle(Color(uiColor: .label))
@@ -51,23 +54,37 @@ public struct PostHistoryView: View {
                 }
             }
             .onDelete(perform: viewModel.delete)
+            
+            Common.GradientButton(action: {
+                isPresentSelectExercise.toggle()
+            },
+                                  text: "ADD RECORD",
+                                  backgroundColor: viewModel.color.color)
         }
         .scrollIndicators(.hidden)
         .toolbar { EditButton() }
+        .fullScreenCover(isPresented: $isPresentSelectExercise, content: {
+            SelectExerciseView(exerciseRepository: exerciseRepository) { exercise in
+                isPresentSelectExercise.toggle()
+                let recordId = viewModel.select(exercise: exercise)
+                setRecordAction?($viewModel.history, recordId)
+            }
+        })
     }
 }
 
 #Preview {
     
-    func action(record: Binding<ExerciseRecord>) {
-        print(record)
+    func action(historyForm: Binding<HistoryForm>, recordId: String) {
+        print(recordId)
     }
     
     return PostHistoryView(
         historyRepository: HistoryRepositoryMock(),
         exerciseRepository: ExerciseRepositoryMock(),
+        userRepository: UserRepositoryMock(),
         history: HISTORY_4,
-        tapRecordAction: action
+        setRecordAction: action
     )
     .preferredColorScheme(.dark)
 }

@@ -11,13 +11,16 @@ public struct GradientButton: View {
     
     let action: (() -> ())?
     let text: String
+    let backgroundColor: Color
     
     public init(
         action: (() -> ())?, 
-        text: String
+        text: String,
+        backgroundColor: Color = .blue
     ) {
         self.action = action
         self.text = text
+        self.backgroundColor = backgroundColor
     }
     
     public var body: some View {
@@ -36,7 +39,7 @@ public struct GradientButton: View {
                 RoundedRectangle(cornerRadius: 8)
                     .fill(
                         LinearGradient(
-                            colors: [.blue, .blue.opacity(0.4)],
+                            colors: [backgroundColor, backgroundColor.opacity(0.4)],
                             startPoint: .leading,
                             endPoint: .trailing
                         )

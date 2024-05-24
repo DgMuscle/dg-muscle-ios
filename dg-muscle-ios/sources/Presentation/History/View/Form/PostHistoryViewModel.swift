@@ -9,23 +9,30 @@ import Foundation
 import Combine
 import Domain
 import SwiftUI
+import Common
 
 class PostHistoryViewModel: ObservableObject {
     @Published var history: HistoryForm
+    @Published var color: Common.HeatMapColor
     
     private let postHistoryUsecase: PostHistoryUsecase
     private let getExercisesUsecase: GetExercisesUsecase
     private let deleteHistoryUsecase: DeleteHistoryUsecase
+    private let getHeatMapColorUsecase: GetHeatMapColorUsecase
+    private let subscribeHeatMapColorUsecase: SubscribeHeatMapColorUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
+        history: Domain.History?,
         historyRepository: HistoryRepository,
         exerciseRepository: ExerciseRepository,
-        history: Domain.History?
+        userRepository: UserRepository
     ) {
         postHistoryUsecase = .init(historyRepository: historyRepository)
         getExercisesUsecase = .init(exerciseRepository: exerciseRepository)
         deleteHistoryUsecase = .init(historyRepository: historyRepository)
+        getHeatMapColorUsecase = .init(userRepository: userRepository)
+        subscribeHeatMapColorUsecase = .init(userRepository: userRepository)
         var historyForm: HistoryForm
         if let history {
             historyForm = .init(domain: history)
@@ -40,9 +47,10 @@ class PostHistoryViewModel: ObservableObject {
                 historyForm.records[index].exerciseName = exercise.name
             }
         }
-         
+        
         
         self.history = historyForm
+        self.color = .init(domain: getHeatMapColorUsecase.implement())
         
         bind()
     }
@@ -77,6 +85,14 @@ class PostHistoryViewModel: ObservableObject {
                     self?.postHistoryUsecase.implement(history: domain)
                 }
             }
+            .store(in: &cancellables)
+        
+        subscribeHeatMapColorUsecase
+            .implement()
+            .receive(on: DispatchQueue.main)
+            .compactMap({ $0 })
+            .map({ Common.HeatMapColor(domain: $0) })
+            .assign(to: \.color, on: self)
             .store(in: &cancellables)
     }
 }
