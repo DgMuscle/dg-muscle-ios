@@ -16,7 +16,7 @@ final class SelectExerciseViewModel: ObservableObject {
     private let groupExercisesByPartUsecase: GroupExercisesByPartUsecase
     private var cancellables = Set<AnyCancellable>()
     
-    private init(exerciseRepository: ExerciseRepository) {
+    init(exerciseRepository: ExerciseRepository) {
         getExercisesUsecase = .init(exerciseRepository: exerciseRepository)
         groupExercisesByPartUsecase = .init()
         
@@ -39,6 +39,9 @@ final class SelectExerciseViewModel: ObservableObject {
             )
             exericeSections.append(section)
         }
+        
+        exericeSections = exericeSections
+            .sorted(by: { $0.part.rawValue < $1.part.rawValue })
         
         self.exericeSections = exericeSections
     }
