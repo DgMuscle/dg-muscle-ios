@@ -8,9 +8,11 @@
 import Foundation
 import Combine
 import Domain
+import SwiftUI
 
 class PostHistoryViewModel: ObservableObject {
     @Published var history: HistoryForm
+    
     private let postHistoryUsecase: PostHistoryUsecase
     private let getExercisesUsecase: GetExercisesUsecase
     private let deleteHistoryUsecase: DeleteHistoryUsecase
@@ -43,6 +45,20 @@ class PostHistoryViewModel: ObservableObject {
         self.history = historyForm
         
         bind()
+    }
+    
+    func select(exercise: Exercise) -> (String) {
+        let selectedRecordId: String
+        
+        if let record = history.records.first(where: { $0.exerciseId == exercise.id }) {
+            selectedRecordId = record.id
+        } else {
+            let newRecord: ExerciseRecord = .init(exerciseId: exercise.id, exerciseName: exercise.name)
+            history.records.append(newRecord)
+            selectedRecordId = newRecord.id
+        }
+        
+        return selectedRecordId
     }
     
     func delete(record indexSet: IndexSet) {

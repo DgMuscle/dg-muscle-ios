@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-struct HistoryForm {
+public struct HistoryForm {
     let id: String
     let date: Date
     let memo: String?
@@ -17,21 +17,21 @@ struct HistoryForm {
         records.map({ $0.volume }).reduce(0, +)
     }
     
-    init() {
+    public init() {
         id = UUID().uuidString
         date = .init()
         memo = nil
         records = []
     }
     
-    init(domain: Domain.History) {
+    public init(domain: Domain.History) {
         id = domain.id
         date = domain.date
         memo = domain.memo
         records = domain.records.map({ .init(domain: $0) })
     }
     
-    var domain: Domain.History {
+    public var domain: Domain.History {
         .init(
             id: id,
             date: date,

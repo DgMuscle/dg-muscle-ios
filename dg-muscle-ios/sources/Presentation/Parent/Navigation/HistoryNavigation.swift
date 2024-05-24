@@ -7,6 +7,8 @@
 
 import Foundation
 import Domain
+import History
+import SwiftUI
 
 public struct HistoryNavigation: Hashable {
     public static func == (lhs: HistoryNavigation, rhs: HistoryNavigation) -> Bool {

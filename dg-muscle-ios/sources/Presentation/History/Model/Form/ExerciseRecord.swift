@@ -17,6 +17,16 @@ public struct ExerciseRecord: Hashable {
         sets.map({ $0.volume }).reduce(0, +)
     }
     
+    init(
+        exerciseId: String,
+        exerciseName: String
+    ) {
+        id = UUID().uuidString
+        self.exerciseId = exerciseId
+        self.exerciseName = exerciseName
+        sets = []
+    }
+    
     init(domain: Domain.ExerciseRecord) {
         id = domain.id
         exerciseId = domain.exerciseId
