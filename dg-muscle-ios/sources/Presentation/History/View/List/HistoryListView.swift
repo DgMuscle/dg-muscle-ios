@@ -80,6 +80,26 @@ public struct HistoryListView: View {
             .padding()
         }
         .scrollIndicators(.hidden)
+        .overlay {
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button {
+                        tapHistory?(UUID().uuidString)
+                    } label: {
+                        Image(systemName: "plus")
+                            .padding()
+                            .foregroundStyle(Color(uiColor: .systemBackground))
+                            .background(
+                                Circle()
+                                    .fill(Color(uiColor: .label).opacity(0.4))
+                            )
+                    }
+                    .padding(.trailing)
+                }
+            }
+        }
     }
 }
 
