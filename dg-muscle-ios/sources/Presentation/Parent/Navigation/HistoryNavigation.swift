@@ -31,5 +31,6 @@ extension HistoryNavigation {
     public enum Name {
         case heatMapColor
         case historyFormStep1(Domain.History?)
+        case historyFormStep2(historyForm: Binding<HistoryForm>, recordId: String)
     }
 }

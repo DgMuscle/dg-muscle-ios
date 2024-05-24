@@ -64,9 +64,12 @@ public struct NavigationView: View {
                     PostHistoryView(
                         historyRepository: historyRepository,
                         exerciseRepository: exerciseRepository,
-                        history: history) { exerciseRecord in
-                            print("dg: tap record")
+                        userRepository: userRepository,
+                        history: history) { historyForm, recordId in
+                            print(recordId)
                         }
+                case .historyFormStep2(let historyForm, let recordId):
+                    Text("historyFormStep2")
                 }
             }
         }

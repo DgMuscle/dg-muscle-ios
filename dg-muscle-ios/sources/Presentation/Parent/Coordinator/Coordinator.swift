@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Domain
+import History
 
 public var coordinator: Coordinator?
 
@@ -28,9 +29,20 @@ public final class Coordinator {
         path.removeLast(k)
     }
     
-    func addHistory(historyId: String?) {
+    func historyFormStep1(historyId: String?) {
         let history = historyRepository.get(historyId: historyId ?? "")
         path.append(HistoryNavigation(name: .historyFormStep1(history)))
+    }
+    
+    func historyFormStep2(historyForm: Binding<HistoryForm>, recordId: String) {
+        path.append(
+            HistoryNavigation(
+                name: .historyFormStep2(
+                    historyForm: historyForm,
+                    recordId: recordId
+                )
+            )
+        )
     }
     
     func addExercise(exercise: Exercise?) {

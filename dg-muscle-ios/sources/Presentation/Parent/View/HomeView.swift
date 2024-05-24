@@ -38,7 +38,7 @@ public struct HomeView: View {
                             exerciseRepository: exerciseRepository,
                             heatMapRepository: heatMapRepository,
                             userRepository: userRepository) { historyId in
-                coordinator?.addHistory(historyId: historyId)
+                coordinator?.historyFormStep1(historyId: historyId)
             } tapHeatMap: {
                 coordinator?.heatMapColorSelectView()
             }
