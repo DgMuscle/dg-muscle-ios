@@ -38,3 +38,4 @@ public let RECORD_3: ExerciseRecord = .init(id: UUID().uuidString, exerciseId: "
 public let HISTORY_1: History = createHistory(date: "20240515", memo: nil, records: [RECORD_1])
 public let HISTORY_2: History = createHistory(date: "20240513", memo: nil, records: [RECORD_2])
 public let HISTORY_3: History = createHistory(date: "20240415", memo: nil, records: [RECORD_3])
+public let HISTORY_4: History = createHistory(date: "20240415", memo: nil, records: [RECORD_1, RECORD_2, RECORD_3])

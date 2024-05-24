@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Exercise
+import Domain
 
 public struct ExerciseNavigation: Hashable {
     public static func == (lhs: ExerciseNavigation, rhs: ExerciseNavigation) -> Bool {

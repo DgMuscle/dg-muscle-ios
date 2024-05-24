@@ -23,6 +23,47 @@ public final class HistoryRepositoryImpl: Domain.HistoryRepository {
         bind()
     }
     
+    public func get() -> [Domain.History] {
+        _histories
+    }
+    
+    public func get(historyId: String) -> Domain.History? {
+        _histories.first(where: { $0.id == historyId })
+    }
+    
+    public func post(history: Domain.History) async throws {
+        if let index = _histories.firstIndex(where: { $0.id == history.id }) {
+            _histories[index] = history
+        } else {
+            _histories.insert(history, at: 0)
+        }
+        
+        let url = FunctionsURL.history(.posthistory)
+        let data: History = .init(domain: history)
+        let _: DataResponse = try await APIClient.shared.request(
+            method: .post,
+            url: url,
+            body: data
+        )
+    }
+    
+    public func delete(history: Domain.History) async throws {
+        
+        if let index = _histories.firstIndex(where: { $0.id == history.id }) {
+            _histories.remove(at: index)
+        }
+        
+        struct Body: Codable {
+            let id: String
+        }
+        let url = FunctionsURL.history(.deletehistory)
+        let _: DataResponse = try await APIClient.shared.request(
+            method: .post,
+            url: url,
+            body: Body(id: history.id)
+        )
+    }
+    
     private func bind() {
         UserRepositoryImpl
             .shared

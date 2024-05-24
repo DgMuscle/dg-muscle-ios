@@ -60,11 +60,28 @@ public struct NavigationView: View {
                 switch navigation.name {
                 case .heatMapColor:
                     HeatMapColorSelectView(userRepository: userRepository)
+                case .historyFormStep1(let history):
+                    PostHistoryView(
+                        historyRepository: historyRepository,
+                        exerciseRepository: exerciseRepository,
+                        userRepository: userRepository,
+                        history: history) { historyForm, recordId in
+                            coordinator?.historyFormStep2(historyForm: historyForm, recordId: recordId)
+                        }
+                case .historyFormStep2(let historyForm, let recordId):
+                    ManageRecordView(
+                        historyForm: historyForm,
+                        recordId: recordId,
+                        userRepository: userRepository
+                    )
                 }
             }
         }
         .onAppear {
-            coordinator = .init(path: $path)
+            coordinator = .init(
+                path: $path,
+                historyRepository: historyRepository
+            )
         }
     }
 }

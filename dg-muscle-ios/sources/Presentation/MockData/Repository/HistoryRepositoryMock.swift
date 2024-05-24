@@ -13,6 +13,29 @@ public final class HistoryRepositoryMock: HistoryRepository {
     public var histories: AnyPublisher<[Domain.History], Never> { $_histories.eraseToAnyPublisher() }
     @Published var _histories: [History] = [
         HISTORY_1, HISTORY_2, HISTORY_3
-    ]    
+    ]   
+    
     public init() { }
+    
+    public func get() -> [Domain.History] {
+        _histories
+    }
+    
+    public func get(historyId: String) -> Domain.History? {
+        _histories.first(where: { $0.id == historyId })
+    }
+    
+    public func post(history: Domain.History) async throws {
+        if let index = _histories.firstIndex(where: { $0.id == history.id }) {
+            _histories[index] = history
+        } else {
+            _histories.insert(history, at: 0)
+        }
+    }
+    
+    public func delete(history: Domain.History) async throws {
+        if let index = _histories.firstIndex(where: { $0.id == history.id }) {
+            _histories.remove(at: index)
+        }
+    }
 }

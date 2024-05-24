@@ -20,6 +20,10 @@ public final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
         }
     }
     
+    public func get() -> [Domain.Exercise] {
+        _exercises
+    }
+    
     private init() { 
         UserRepositoryImpl
             .shared
