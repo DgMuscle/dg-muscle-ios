@@ -66,7 +66,7 @@ public struct NavigationView: View {
                         exerciseRepository: exerciseRepository,
                         userRepository: userRepository,
                         history: history) { historyForm, recordId in
-                            print(recordId)
+                            coordinator?.historyFormStep2(historyForm: historyForm, recordId: recordId)
                         }
                 case .historyFormStep2(let historyForm, let recordId):
                     ManageRecordView(

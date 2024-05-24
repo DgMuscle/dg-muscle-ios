@@ -14,8 +14,7 @@ import Common
 public struct ManageRecordView: View {
     
     @StateObject var viewModel: ManageRecordViewModel
-    @State var selectedSet: ExerciseSet?
-    @State var isPresentSetSheet: Bool = false
+    @State var selectedExercise: ExerciseSet?
     
     public init(
         historyForm: Binding<HistoryForm>,
@@ -32,8 +31,7 @@ public struct ManageRecordView: View {
             Section("\(viewModel.currentVolume)") {
                 ForEach(viewModel.record.sets, id: \.self) { set in
                     Button {
-                        selectedSet = set
-                        isPresentSetSheet.toggle()
+                        selectedExercise = set
                     } label: {
                         HStack {
                             Text(String(set.weight)).foregroundStyle(viewModel.color) +
@@ -49,31 +47,26 @@ public struct ManageRecordView: View {
             }
             
             Common.GradientButton(action: {
-                
                 let previousSet = viewModel.record.sets.last
-                
-                selectedSet = .init(
+                selectedExercise = .init(
                     unit: previousSet?.unit ?? .kg,
                     reps: previousSet?.reps ?? 0,
                     weight: previousSet?.weight ?? 0
                 )
-                isPresentSetSheet.toggle()
             },
                                   text: "NEW",
                                   backgroundColor: viewModel.color)
             
         }
         .toolbar { EditButton() }
-        .sheet(isPresented: $isPresentSetSheet) {
-            ManageSetView(
-                set: selectedSet ?? .init(unit: .kg, reps: 0, weight: 0),
-                color: viewModel.color) { set in
-                    isPresentSetSheet.toggle()
-                    viewModel.post(set: set)
-                }
-                .presentationDetents([.height(280)])
-                .padding(.horizontal)
-        }
+        .sheet(item: $selectedExercise, content: { set in
+            ManageSetView(set: set, color: viewModel.color) { set in
+                selectedExercise = nil
+                viewModel.post(set: set)
+            }
+            .presentationDetents([.height(280)])
+            .padding(.horizontal)
+        })
     }
 }
 

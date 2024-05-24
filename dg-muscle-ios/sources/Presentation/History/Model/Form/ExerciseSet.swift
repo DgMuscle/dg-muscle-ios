@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-struct ExerciseSet: Hashable {
+struct ExerciseSet: Hashable, Identifiable {
     let id: String
     var unit: Unit
     var reps: Int
