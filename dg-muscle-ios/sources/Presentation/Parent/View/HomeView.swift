@@ -38,7 +38,7 @@ public struct HomeView: View {
                             exerciseRepository: exerciseRepository,
                             heatMapRepository: heatMapRepository,
                             userRepository: userRepository) { historyId in
-                print("historyId(\(historyId) is tapped")
+                coordinator?.addHistory(historyId: historyId)
             } tapHeatMap: {
                 coordinator?.heatMapColorSelectView()
             }

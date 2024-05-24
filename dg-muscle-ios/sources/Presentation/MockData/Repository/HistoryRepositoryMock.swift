@@ -17,6 +17,14 @@ public final class HistoryRepositoryMock: HistoryRepository {
     
     public init() { }
     
+    public func get() -> [Domain.History] {
+        _histories
+    }
+    
+    public func get(historyId: String) -> Domain.History? {
+        _histories.first(where: { $0.id == historyId })
+    }
+    
     public func post(history: Domain.History) async throws {
         if let index = _histories.firstIndex(where: { $0.id == history.id }) {
             _histories[index] = history

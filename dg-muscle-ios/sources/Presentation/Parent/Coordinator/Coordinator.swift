@@ -14,12 +14,23 @@ public var coordinator: Coordinator?
 public final class Coordinator {
     @Binding var path: NavigationPath
     
-    init(path: Binding<NavigationPath>) {
+    private let historyRepository: HistoryRepository
+    
+    init(
+        path: Binding<NavigationPath>,
+        historyRepository: HistoryRepository
+    ) {
         self._path = path
+        self.historyRepository = historyRepository
     }
     
     func pop(_ k: Int = 1) {
         path.removeLast(k)
+    }
+    
+    func addHistory(historyId: String?) {
+        let history = historyRepository.get(historyId: historyId ?? "")
+        path.append(HistoryNavigation(name: .historyFormStep1(history)))
     }
     
     func addExercise(exercise: Exercise?) {

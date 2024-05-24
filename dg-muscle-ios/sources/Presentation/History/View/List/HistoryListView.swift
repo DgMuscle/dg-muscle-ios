@@ -13,7 +13,7 @@ import HistoryHeatMap
 public struct HistoryListView: View {
     @StateObject var viewModel: HistoryListViewModel
     
-    let tapHistory: ((_ historyId: String) -> ())?
+    let tapHistory: ((_ historyId: String?) -> ())?
     let tapHeatMap: (() -> ())?
     
     public init(
@@ -22,7 +22,7 @@ public struct HistoryListView: View {
         exerciseRepository: any ExerciseRepository,
         heatMapRepository: any HeatMapRepository,
         userRepository: any UserRepository,
-        tapHistory: ((_ historyId: String) -> ())?,
+        tapHistory: ((_ historyId: String?) -> ())?,
         tapHeatMap: (() -> ())?
     ) {
         _viewModel = .init(wrappedValue:
@@ -86,7 +86,7 @@ public struct HistoryListView: View {
                 HStack {
                     Spacer()
                     Button {
-                        tapHistory?(UUID().uuidString)
+                        tapHistory?(nil)
                     } label: {
                         Image(systemName: "plus")
                             .padding()

@@ -71,7 +71,10 @@ public struct NavigationView: View {
             }
         }
         .onAppear {
-            coordinator = .init(path: $path)
+            coordinator = .init(
+                path: $path,
+                historyRepository: historyRepository
+            )
         }
     }
 }

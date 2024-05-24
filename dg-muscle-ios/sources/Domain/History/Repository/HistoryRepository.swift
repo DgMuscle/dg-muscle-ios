@@ -11,6 +11,8 @@ import Combine
 public protocol HistoryRepository {
     var histories: AnyPublisher<[History], Never> { get }
     
+    func get() -> [History]
+    func get(historyId: String) -> History?
     func post(history: History) async throws
     func delete(history: History) async throws
 }
