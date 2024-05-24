@@ -69,7 +69,11 @@ public struct NavigationView: View {
                             print(recordId)
                         }
                 case .historyFormStep2(let historyForm, let recordId):
-                    Text("historyFormStep2")
+                    ManageRecordView(
+                        historyForm: historyForm,
+                        recordId: recordId,
+                        userRepository: userRepository
+                    )
                 }
             }
         }
