@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-enum Unit {
+enum Unit: String {
     case kg
     case lbs
     
