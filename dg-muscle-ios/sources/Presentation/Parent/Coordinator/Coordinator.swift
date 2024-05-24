@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-import Exercise
+import Domain
 
 public var coordinator: Coordinator?
 

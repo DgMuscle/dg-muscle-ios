@@ -14,16 +14,21 @@ public struct PostExerciseView: View {
     @StateObject var viewModel: PostExerciseViewModel
     
     public init(
-        exercise: Exercise?,
+        exercise: Domain.Exercise?,
         exerciseRepository: ExerciseRepository,
         pop: (() -> ())?
     ) {
+        
+        let exerciseDomain: Domain.Exercise? = exercise
+        var exercise: Exercise? = nil
+        if let exerciseDomain {
+            exercise = .init(domain: exerciseDomain)
+        }
+        
         _viewModel = .init(
-            wrappedValue: .init(
-                exercise: exercise,
-                exerciseRepository: exerciseRepository,
-                pop: pop
-            )
+            wrappedValue: .init(exercise: exercise,
+                                exerciseRepository: exerciseRepository,
+                                pop: pop)
         )
     }
     
