@@ -32,4 +32,21 @@ enum ExercisePart: String, CaseIterable {
             self = .shoulder
         }
     }
+    
+    var domain: Domain.Exercise.Part {
+        switch self {
+        case .arm:
+            return .arm
+        case .back:
+            return .back
+        case .chest:
+            return .chest
+        case .core:
+            return .core
+        case .leg:
+            return .leg
+        case .shoulder:
+            return .shoulder
+        }
+    }
 }
