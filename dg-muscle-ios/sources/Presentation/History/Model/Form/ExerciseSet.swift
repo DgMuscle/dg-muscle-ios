@@ -10,10 +10,21 @@ import Domain
 
 struct ExerciseSet: Hashable {
     let id: String
-    let unit: Unit
-    let reps: Int
-    let weight: Double
+    var unit: Unit
+    var reps: Int
+    var weight: Double
     var volume: Int { reps * Int(weight) }
+    
+    init(
+        unit: Unit,
+        reps: Int,
+        weight: Double
+    ) {
+        id = UUID().uuidString
+        self.unit = unit
+        self.reps = reps
+        self.weight = weight
+    }
     
     init(domain: Domain.ExerciseSet) {
         id = domain.id

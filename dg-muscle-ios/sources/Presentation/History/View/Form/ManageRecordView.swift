@@ -49,7 +49,14 @@ public struct ManageRecordView: View {
             }
             
             Common.GradientButton(action: {
-                selectedSet = nil
+                
+                let previousSet = viewModel.record.sets.last
+                
+                selectedSet = .init(
+                    unit: previousSet?.unit ?? .kg,
+                    reps: previousSet?.reps ?? 0,
+                    weight: previousSet?.weight ?? 0
+                )
                 isPresentSetSheet.toggle()
             },
                                   text: "NEW",
@@ -57,6 +64,16 @@ public struct ManageRecordView: View {
             
         }
         .toolbar { EditButton() }
+        .sheet(isPresented: $isPresentSetSheet) {
+            ManageSetView(
+                set: selectedSet ?? .init(unit: .kg, reps: 0, weight: 0),
+                color: viewModel.color) { set in
+                    isPresentSetSheet.toggle()
+                    viewModel.post(set: set)
+                }
+                .presentationDetents([.height(280)])
+                .padding(.horizontal)
+        }
     }
 }
 
