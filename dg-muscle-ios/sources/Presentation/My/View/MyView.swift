@@ -50,7 +50,6 @@ public struct MyView: View {
                 if let user = viewModel.user {
                     UserItemView(user: user)
                         .padding(.bottom)
-                        .padding(.top, 50)
                 }
             }
             
