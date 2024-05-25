@@ -29,6 +29,10 @@ public final class Coordinator {
         path.removeLast(k)
     }
     
+    func profile() {
+        path.append(MyNavigation(name: .profile))
+    }
+    
     func historyFormStep1(historyId: String?) {
         let history = historyRepository.get(historyId: historyId ?? "")
         path.append(HistoryNavigation(name: .historyFormStep1(history)))

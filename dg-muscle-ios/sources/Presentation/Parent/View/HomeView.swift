@@ -49,7 +49,7 @@ public struct HomeView: View {
                     userRepository: userRepository) {
                         coordinator?.exerciseManage()
                     } tapProfileListItem: {
-                        print("tap profile")
+                        coordinator?.profile()
                     }
 
             }
