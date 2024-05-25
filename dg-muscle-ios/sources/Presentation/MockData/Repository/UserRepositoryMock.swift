@@ -26,6 +26,14 @@ public final class UserRepositoryMock: UserRepository {
         _user?.photoURL = photoURL
     }
     
+    public func updateUser(displayName: String?) async throws {
+        _user?.displayName = displayName
+    }
+    
+    public func updateUser(photoURL: URL?) async throws {
+        _user?.photoURL = photoURL
+    }
+    
     public func withDrawal() async -> (any Error)? {
         nil
     }
