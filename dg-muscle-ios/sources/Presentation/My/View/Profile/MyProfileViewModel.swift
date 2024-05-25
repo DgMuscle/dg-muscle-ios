@@ -12,12 +12,12 @@ import Common
 import UIKit
 
 final class MyProfileViewModel: ObservableObject {
-    
-    @Published var user: Common.User
+    @Published var displayName: String
     @Published var profilePhoto: UIImage?
     @Published var loading: Bool = false
     @Published var status: Common.StatusView.Status?
     
+    private let user: Common.User
     private let postDisplayNameUsecase: PostDisplayNameUsecase
     private let postPhotoURLUsecase: PostPhotoURLUsecase
     private let getUserUsecase: GetUserUsecase
@@ -32,8 +32,10 @@ final class MyProfileViewModel: ObservableObject {
         
         if let userDomain = getUserUsecase.implement() {
             self.user = .init(domain: userDomain)
+            self.displayName = userDomain.displayName ?? ""
         } else {
             self.user = .init()
+            self.displayName = ""
             try? signOutUsecase.implement()
         }
     }
@@ -45,7 +47,7 @@ final class MyProfileViewModel: ObservableObject {
             do {
                 loading = true
                 status = nil
-                try await postDisplayNameUsecase.implement(displayName: user.displayName)
+                try await postDisplayNameUsecase.implement(displayName: displayName)
                 try await postPhotoURLUsecase.implement(photo: profilePhoto)
                 status = .success("Done")
             } catch {
