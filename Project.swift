@@ -125,7 +125,8 @@ func createLayers() -> [Target] {
             
             dependencies.append(contentsOf: [
                 .package(product: "FirebaseAuth", type: .runtime, condition: nil),
-                .package(product: "FirebaseMessaging", type: .runtime, condition: nil)
+                .package(product: "FirebaseMessaging", type: .runtime, condition: nil),
+                .package(product: "FirebaseStorage", type: .runtime, condition: nil)
             ])
             
             return Target.target(
