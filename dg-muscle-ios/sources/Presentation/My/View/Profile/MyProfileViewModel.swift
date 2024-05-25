@@ -38,6 +38,13 @@ final class MyProfileViewModel: ObservableObject {
             self.displayName = ""
             try? signOutUsecase.implement()
         }
+        
+        if let url = user.photoURL {
+            Task {
+                let uiimage = try await Common.UIImageGenerator.shared.generateImageFrom(url: url)
+                self.profilePhoto = uiimage
+            }
+        }
     }
     
     private var saveTask: Task<(), Never>?
