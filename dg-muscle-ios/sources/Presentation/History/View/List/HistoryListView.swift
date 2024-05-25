@@ -95,7 +95,6 @@ public struct HistoryListView: View {
                             )
                     }
                     .padding(.trailing)
-                    .padding(.bottom, 70)
                 }
             }
         }
