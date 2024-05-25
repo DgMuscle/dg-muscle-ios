@@ -16,7 +16,7 @@ final class MyProfileViewModel: ObservableObject {
     @Published var user: Common.User
     @Published var profilePhoto: UIImage?
     @Published var loading: Bool = false
-    @Published var status: Common.StatusView.Status? = nil
+    @Published var status: Common.StatusView.Status?
     
     private let postDisplayNameUsecase: PostDisplayNameUsecase
     private let postPhotoURLUsecase: PostPhotoURLUsecase
