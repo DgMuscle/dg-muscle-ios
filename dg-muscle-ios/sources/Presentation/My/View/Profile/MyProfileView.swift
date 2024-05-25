@@ -16,6 +16,7 @@ public struct MyProfileView: View {
     @StateObject var viewModel: MyProfileViewModel
     @FocusState var displayNameFocus
     @State var isPresentImagePickerForProfilePhoto: Bool = false
+    @State var isPresentImagePickerForBackground: Bool = false
     
     private let profilePhotoSize: CGFloat = 80
     
@@ -25,6 +26,15 @@ public struct MyProfileView: View {
     
     public var body: some View {
         ZStack {
+            
+            if let image = viewModel.backgroundImage {
+                Rectangle()
+                    .fill(.clear)
+                    .background(
+                        Image(uiImage: image)
+                    )
+            }
+            
             VStack(spacing: 20) {
                 
                 if let status = viewModel.status {
@@ -76,6 +86,7 @@ public struct MyProfileView: View {
                     TextField("Display Name", text: $viewModel.displayName)
                         .multilineTextAlignment(.center)
                         .focused($displayNameFocus)
+                        .fontWeight(.black)
                     Image(systemName: "pencil")
                         .font(.title)
                         .onTapGesture {
@@ -94,6 +105,29 @@ public struct MyProfileView: View {
         }
         .fullScreenCover(isPresented: $isPresentImagePickerForProfilePhoto) {
             Common.ImagePicker(image: $viewModel.profilePhoto)
+                .ignoresSafeArea()
+        }
+        .fullScreenCover(isPresented: $isPresentImagePickerForBackground) {
+            Common.ImagePicker(image: $viewModel.backgroundImage)
+                .ignoresSafeArea()
+        }
+        .overlay {
+            VStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        isPresentImagePickerForBackground.toggle()
+                    } label: {
+                        Image(systemName: "camera")
+                            .font(.title)
+                            .padding(.trailing)
+                            .foregroundStyle(Color(uiColor: .label))
+                    }
+                    
+                }
+                
+                Spacer()
+            }
         }
     }
 }

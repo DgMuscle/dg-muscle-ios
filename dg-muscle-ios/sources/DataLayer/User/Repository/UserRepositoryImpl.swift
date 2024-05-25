@@ -14,6 +14,7 @@ import UIKit
 public final class UserRepositoryImpl: UserRepository {
     public static let shared = UserRepositoryImpl()
     public var user: AnyPublisher<Domain.User?, Never> { $_user.eraseToAnyPublisher() }
+    public var isReady: Bool = false
     private var cancellables = Set<AnyCancellable>()
     
     @Published var _user: Domain.User? = nil
@@ -46,6 +47,18 @@ public final class UserRepositoryImpl: UserRepository {
         }
         
         try await AuthManager().updateUser(displayName: _user?.displayName, photoURL: _user?.photoURL)
+    }
+    
+    public func updateUser(backgroundImage: UIImage?) async throws {
+        if let path = _user?.backgroundImageURL?.absoluteString {
+            try await FirestoreFileUploader.shared.deleteImage(path: path)
+        }
+        
+        if let photo = backgroundImage {
+            let path: String = "backgroundImage/\(_user?.uid ?? "")/\(UUID().uuidString).png"
+            let url = try await FirestoreFileUploader.shared.uploadImage(path: path, image: photo)
+            _user?.backgroundImageURL = url
+        }
     }
     
     public func updateUser(photo: UIImage?) async throws {
@@ -89,10 +102,12 @@ public final class UserRepositoryImpl: UserRepository {
         Auth.auth().addStateDidChangeListener { _, user in
             guard let user else {
                 self._user = nil
+                self.isReady = true
                 return
             }
             Task {
-                self._user = try await self.getUserProfileFromUid(uid: user.uid)
+                self._user = try? await self.getUserProfileFromUid(uid: user.uid)
+                self.isReady = true
             }
         }
         
