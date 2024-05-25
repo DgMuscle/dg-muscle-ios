@@ -91,16 +91,9 @@ public final class UserRepositoryImpl: UserRepository {
                 self._user = nil
                 return
             }
-            
-            let heatMapColor: Domain.HeatMapColor? = try? self.get()
-            
-            self._user = .init(
-                uid: user.uid,
-                displayName: user.displayName,
-                photoURL: user.photoURL,
-                heatMapColor: heatMapColor ?? .green, 
-                fcmToken: nil
-            )
+            Task {
+                self._user = try await self.getUserProfileFromUid(uid: user.uid)
+            }
         }
         
         $_user
@@ -113,6 +106,12 @@ public final class UserRepositoryImpl: UserRepository {
                 }
             }
             .store(in: &cancellables)
+    }
+    
+    private func getUserProfileFromUid(uid: String) async throws -> Domain.User {
+        let url = FunctionsURL.user(.getprofilefromuid) + "?uid=\(uid)"
+        let data: UserData = try await APIClient.shared.request(url: url)
+        return data.domain
     }
     
     private func postUserProfileToServer(user: Domain.User) async throws {
