@@ -34,6 +34,10 @@ public final class UserRepositoryMock: UserRepository {
         
     }
     
+    public func updateUser(backgroundImage: UIImage?) async throws {
+        
+    }
+    
     public func withDrawal() async -> (any Error)? {
         nil
     }

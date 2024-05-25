@@ -48,6 +48,18 @@ public final class UserRepositoryImpl: UserRepository {
         try await AuthManager().updateUser(displayName: _user?.displayName, photoURL: _user?.photoURL)
     }
     
+    public func updateUser(backgroundImage: UIImage?) async throws {
+        if let path = _user?.backgroundImageURL?.absoluteString {
+            try await FirestoreFileUploader.shared.deleteImage(path: path)
+        }
+        
+        if let photo = backgroundImage {
+            let path: String = "backgroundImage/\(_user?.uid ?? "")/\(UUID().uuidString).png"
+            let url = try await FirestoreFileUploader.shared.uploadImage(path: path, image: photo)
+            _user?.backgroundImageURL = url
+        }
+    }
+    
     public func updateUser(photo: UIImage?) async throws {
         if let path = _user?.photoURL?.absoluteString {
             try await FirestoreFileUploader.shared.deleteImage(path: path)
