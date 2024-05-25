@@ -32,28 +32,31 @@ public struct HomeView: View {
     }
     
     public var body: some View {
-        TabView {
-            HistoryListView(today: today,
-                            historyRepository: historyRepository,
-                            exerciseRepository: exerciseRepository,
-                            heatMapRepository: heatMapRepository,
-                            userRepository: userRepository) { historyId in
-                coordinator?.historyFormStep1(historyId: historyId)
-            } tapHeatMap: {
-                coordinator?.heatMapColorSelectView()
-            }
-            
-            MyView(
-                userRepository: userRepository) {
-                    coordinator?.exerciseManage()
-                } tapProfileListItem: {
-                    print("tap profile")
+        ZStack {
+            Rectangle().fill(Color(uiColor: .systemBackground))
+            TabView {
+                HistoryListView(today: today,
+                                historyRepository: historyRepository,
+                                exerciseRepository: exerciseRepository,
+                                heatMapRepository: heatMapRepository,
+                                userRepository: userRepository) { historyId in
+                    coordinator?.historyFormStep1(historyId: historyId)
+                } tapHeatMap: {
+                    coordinator?.heatMapColorSelectView()
                 }
+                
+                MyView(
+                    userRepository: userRepository) {
+                        coordinator?.exerciseManage()
+                    } tapProfileListItem: {
+                        coordinator?.profile()
+                    }
 
+            }
+            .ignoresSafeArea()
+            .tabViewStyle(.page(indexDisplayMode: .always))
+            .indexViewStyle(.page(backgroundDisplayMode: .always))
         }
-        .ignoresSafeArea()
-        .tabViewStyle(.page(indexDisplayMode: .always))
-        .indexViewStyle(.page(backgroundDisplayMode: .always))
     }
 }
 

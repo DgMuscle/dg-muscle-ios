@@ -9,6 +9,7 @@ import SwiftUI
 import Domain
 import Exercise
 import History
+import My
 
 public struct NavigationView: View {
     
@@ -74,6 +75,12 @@ public struct NavigationView: View {
                         recordId: recordId,
                         userRepository: userRepository
                     )
+                }
+            }
+            .navigationDestination(for: MyNavigation.self) { navigation in
+                switch navigation.name {
+                case .profile:
+                    My.MyProfileView(userRepository: userRepository)
                 }
             }
         }

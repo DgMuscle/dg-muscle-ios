@@ -9,6 +9,7 @@ import Combine
 import Domain
 import Foundation
 import FirebaseAuth
+import UIKit
 
 public final class UserRepositoryImpl: UserRepository {
     public static let shared = UserRepositoryImpl()
@@ -26,8 +27,39 @@ public final class UserRepositoryImpl: UserRepository {
         try AuthManager().signOut()
     }
     
-    public func updateUser(displayName: String?, photoURL: URL?) async throws {
-        try await AuthManager().updateUser(displayName: displayName, photoURL: photoURL)
+    public func updateUser(displayName: String?) async throws {
+        _user?.displayName = displayName
+        try await AuthManager().updateUser(displayName: displayName)
+    }
+    
+    public func updateUser(displayName: String?, photo: UIImage?) async throws {
+        _user?.displayName = displayName
+        
+        if let path = _user?.photoURL?.absoluteString {
+            try await FirestoreFileUploader.shared.deleteImage(path: path)
+        }
+        
+        if let photo {
+            let path: String = "profilePhoto/\(_user?.uid ?? "")/\(UUID().uuidString).png"
+            let url = try await FirestoreFileUploader.shared.uploadImage(path: path, image: photo)
+            _user?.photoURL = url
+        }
+        
+        try await AuthManager().updateUser(displayName: _user?.displayName, photoURL: _user?.photoURL)
+    }
+    
+    public func updateUser(photo: UIImage?) async throws {
+        if let path = _user?.photoURL?.absoluteString {
+            try await FirestoreFileUploader.shared.deleteImage(path: path)
+        }
+        
+        if let photo {
+            let path: String = "profilePhoto/\(_user?.uid ?? "")/\(UUID().uuidString).png"
+            let url = try await FirestoreFileUploader.shared.uploadImage(path: path, image: photo)
+            _user?.photoURL = url
+        }
+        
+        try await AuthManager().updateUser(photoURL: _user?.photoURL)
     }
     
     public func withDrawal() async -> (any Error)? {
@@ -59,16 +91,9 @@ public final class UserRepositoryImpl: UserRepository {
                 self._user = nil
                 return
             }
-            
-            let heatMapColor: Domain.HeatMapColor? = try? self.get()
-            
-            self._user = .init(
-                uid: user.uid,
-                displayName: user.displayName,
-                photoURL: user.photoURL,
-                heatMapColor: heatMapColor ?? .green, 
-                fcmToken: nil
-            )
+            Task {
+                self._user = try await self.getUserProfileFromUid(uid: user.uid)
+            }
         }
         
         $_user
@@ -81,6 +106,12 @@ public final class UserRepositoryImpl: UserRepository {
                 }
             }
             .store(in: &cancellables)
+    }
+    
+    private func getUserProfileFromUid(uid: String) async throws -> Domain.User {
+        let url = FunctionsURL.user(.getprofilefromuid) + "?uid=\(uid)"
+        let data: UserData = try await APIClient.shared.request(url: url)
+        return data.domain
     }
     
     private func postUserProfileToServer(user: Domain.User) async throws {
@@ -97,11 +128,11 @@ public final class UserRepositoryImpl: UserRepository {
         let user: UserData = .init(domain: user)
         
         let body: Body = .init(
-            id: user.uid,
+            id: user.id,
             displayName: user.displayName ?? "",
             photoURL: user.photoURL,
             fcmtoken: user.fcmToken,
-            heatmapColor: user.heatMapColor?.rawValue ?? "green"
+            heatmapColor: user.heatmapColor?.rawValue ?? "green"
         )
         
         let _: DataResponse = try await APIClient.shared.request(

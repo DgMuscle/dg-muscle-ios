@@ -42,8 +42,6 @@ public struct HistoryListView: View {
     public var body: some View {
         ScrollView {
             VStack {
-                Spacer(minLength: 50)
-                
                 Button {
                     tapHeatMap?()
                 } label: {
@@ -97,7 +95,6 @@ public struct HistoryListView: View {
                             )
                     }
                     .padding(.trailing)
-                    .padding(.bottom, 70)
                 }
             }
         }

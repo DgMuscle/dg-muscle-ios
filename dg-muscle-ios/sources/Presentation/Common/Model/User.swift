@@ -15,6 +15,14 @@ public struct User {
     public let heatMapColor: HeatMapColor
     public let fcmToken: String?
     
+    public init() {
+        uid = UUID().uuidString
+        displayName = nil
+        photoURL = nil
+        heatMapColor = .green
+        fcmToken = nil 
+    }
+    
     public init(domain: Domain.User) {
         self.uid = domain.uid
         self.displayName = domain.displayName
