@@ -128,11 +128,11 @@ public final class UserRepositoryImpl: UserRepository {
         let user: UserData = .init(domain: user)
         
         let body: Body = .init(
-            id: user.uid,
+            id: user.id,
             displayName: user.displayName ?? "",
             photoURL: user.photoURL,
             fcmtoken: user.fcmToken,
-            heatmapColor: user.heatMapColor?.rawValue ?? "green"
+            heatmapColor: user.heatmapColor?.rawValue ?? "green"
         )
         
         let _: DataResponse = try await APIClient.shared.request(

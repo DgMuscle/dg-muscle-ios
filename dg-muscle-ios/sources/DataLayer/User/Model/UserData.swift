@@ -9,26 +9,26 @@ import Foundation
 import Domain
 
 struct UserData: Codable {
-    let uid: String
+    let id: String
     var displayName: String?
     var photoURL: String?
-    var heatMapColor: HeatMapColor?
+    var heatmapColor: HeatMapColor?
     var fcmToken: String?
     
     init(domain: Domain.User) {
-        self.uid = domain.uid
+        self.id = domain.uid
         self.displayName = domain.displayName
         self.photoURL = domain.photoURL?.absoluteString
-        self.heatMapColor = .init(domain: domain.heatMapColor)
+        self.heatmapColor = .init(domain: domain.heatMapColor)
         self.fcmToken = domain.fcmToken
     }
     
     var domain: Domain.User {
         .init(
-            uid: uid,
+            uid: id,
             displayName: displayName,
             photoURL: .init(string: photoURL ?? ""),
-            heatMapColor: heatMapColor?.domain ?? .green,
+            heatMapColor: heatmapColor?.domain ?? .green,
             fcmToken: fcmToken
         )
     }
