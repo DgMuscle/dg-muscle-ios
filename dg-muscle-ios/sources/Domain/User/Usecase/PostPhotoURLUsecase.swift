@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 public final class PostPhotoURLUsecase {
     private let userRepository: UserRepository
     public init(userRepository: UserRepository) {
         self.userRepository = userRepository
     }
-    public func implement(photoURL: URL?) async throws {
-        try await userRepository.updateUser(photoURL: photoURL)
+    public func implement(photo: UIImage?) async throws {
+        try await userRepository.updateUser(photo: photo)
     }
 }

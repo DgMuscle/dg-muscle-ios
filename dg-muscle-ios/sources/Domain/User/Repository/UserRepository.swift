@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 public protocol UserRepository {
     var user: AnyPublisher<User?, Never> { get }
@@ -17,8 +18,8 @@ public protocol UserRepository {
     func post(fcmToken: String)
     
     func signOut() throws
-    func updateUser(displayName: String?, photoURL: URL?) async throws
+    func updateUser(displayName: String?, photo: UIImage?) async throws
     func updateUser(displayName: String?) async throws
-    func updateUser(photoURL: URL?) async throws
+    func updateUser(photo: UIImage?) async throws
     func withDrawal() async -> Error?
 }
