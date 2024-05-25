@@ -46,16 +46,14 @@ public struct ManageRecordView: View {
                 .onDelete(perform: viewModel.delete)
             }
             
-            Common.GradientButton(action: {
+            Button("NEW SET") {
                 let previousSet = viewModel.record.sets.last
                 selectedExercise = .init(
                     unit: previousSet?.unit ?? .kg,
                     reps: previousSet?.reps ?? 0,
                     weight: previousSet?.weight ?? 0
                 )
-            },
-                                  text: "NEW",
-                                  backgroundColor: viewModel.color)
+            }
             
         }
         .toolbar { EditButton() }
@@ -67,6 +65,17 @@ public struct ManageRecordView: View {
             .presentationDetents([.height(280)])
             .padding(.horizontal)
         })
+        .onAppear {
+            if viewModel.record.sets.isEmpty {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    selectedExercise = .init(
+                        unit: .kg,
+                        reps: 0,
+                        weight: 0
+                    )
+                }
+            }
+        }
     }
 }
 
