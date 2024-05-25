@@ -46,7 +46,8 @@ func createApp() -> Target {
                 ],
                 "UILaunchScreen": .dictionary([
                     "UIImageName": "LaunchScreen"
-                ])
+                ]),
+                "CFBundleDisplayName": "DgMuscle"
             ]
         ),
         sources: ["\(projectName)/sources/App/**"],
@@ -93,7 +94,8 @@ func createWidget() -> Target {
             "NSExtension": .dictionary([
                 "NSExtensionPointIdentifier": "com.apple.widgetkit-extension"
             ]),
-            "CFBundleShortVersionString": "\(appVersion)"
+            "CFBundleShortVersionString": "\(appVersion)",
+            "CFBundleDisplayName": "DgMuscle"
         ]),
         sources: "\(widgetName)/Sources/**",
         resources: "\(widgetName)/Resources/**",
