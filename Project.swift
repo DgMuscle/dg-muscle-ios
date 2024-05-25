@@ -43,7 +43,10 @@ func createApp() -> Target {
                             "dgmuscle"
                         ]
                     ])
-                ]
+                ],
+                "UILaunchScreen": .dictionary([
+                    "UIImageName": "LaunchScreen"
+                ])
             ]
         ),
         sources: ["\(projectName)/sources/App/**"],
