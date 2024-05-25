@@ -43,7 +43,13 @@ func createApp() -> Target {
                             "dgmuscle"
                         ]
                     ])
-                ]
+                ],
+                "UILaunchScreen": .dictionary([
+                    "UIImageName": "LaunchScreen"
+                ]),
+                "CFBundleDisplayName": "DgMuscle",
+                "NSHealthShareUsageDescription": "We will sync your data with the Apple Health app to give you better insights",
+                "NSHealthUpdateUsageDescription": "We will sync your data with the Apple Health app to give you better insights"
             ]
         ),
         sources: ["\(projectName)/sources/App/**"],
@@ -85,12 +91,13 @@ func createWidget() -> Target {
         name: widgetName,
         destinations: .iOS,
         product: .appExtension,
-        bundleId: "\(bundleId).\(widgetName.lowercased())",
+        bundleId: "com.donggyu.dg-muscle-ios.dg-muscle-ios-widget",
         infoPlist: .extendingDefault(with: [
             "NSExtension": .dictionary([
                 "NSExtensionPointIdentifier": "com.apple.widgetkit-extension"
             ]),
-            "CFBundleShortVersionString": "\(appVersion)"
+            "CFBundleShortVersionString": "\(appVersion)",
+            "CFBundleDisplayName": "DgMuscle"
         ]),
         sources: "\(widgetName)/Sources/**",
         resources: "\(widgetName)/Resources/**",
