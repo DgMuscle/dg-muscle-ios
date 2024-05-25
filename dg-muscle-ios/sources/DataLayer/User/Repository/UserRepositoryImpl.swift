@@ -9,6 +9,7 @@ import Combine
 import Domain
 import Foundation
 import FirebaseAuth
+import UIKit
 
 public final class UserRepositoryImpl: UserRepository {
     public static let shared = UserRepositoryImpl()
@@ -26,20 +27,39 @@ public final class UserRepositoryImpl: UserRepository {
         try AuthManager().signOut()
     }
     
-    public func updateUser(displayName: String?, photoURL: URL?) async throws {
-        _user?.displayName = displayName
-        _user?.photoURL = photoURL
-        try await AuthManager().updateUser(displayName: displayName, photoURL: photoURL)
-    }
-    
     public func updateUser(displayName: String?) async throws {
         _user?.displayName = displayName
         try await AuthManager().updateUser(displayName: displayName)
     }
     
-    public func updateUser(photoURL: URL?) async throws {
-        _user?.photoURL = photoURL
-        try await AuthManager().updateUser(photoURL: photoURL)
+    public func updateUser(displayName: String?, photo: UIImage?) async throws {
+        _user?.displayName = displayName
+        
+        if let path = _user?.photoURL?.absoluteString {
+            try await FirestoreFileUploader.shared.deleteImage(path: path)
+        }
+        
+        if let photo {
+            let path: String = "profilePhoto/\(_user?.uid ?? "")/\(UUID().uuidString).png"
+            let url = try await FirestoreFileUploader.shared.uploadImage(path: path, image: photo)
+            _user?.photoURL = url
+        }
+        
+        try await AuthManager().updateUser(displayName: _user?.displayName, photoURL: _user?.photoURL)
+    }
+    
+    public func updateUser(photo: UIImage?) async throws {
+        if let path = _user?.photoURL?.absoluteString {
+            try await FirestoreFileUploader.shared.deleteImage(path: path)
+        }
+        
+        if let photo {
+            let path: String = "profilePhoto/\(_user?.uid ?? "")/\(UUID().uuidString).png"
+            let url = try await FirestoreFileUploader.shared.uploadImage(path: path, image: photo)
+            _user?.photoURL = url
+        }
+        
+        try await AuthManager().updateUser(photoURL: _user?.photoURL)
     }
     
     public func withDrawal() async -> (any Error)? {
