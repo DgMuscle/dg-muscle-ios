@@ -85,7 +85,7 @@ func createWidget() -> Target {
         name: widgetName,
         destinations: .iOS,
         product: .appExtension,
-        bundleId: "\(bundleId).\(widgetName.lowercased())",
+        bundleId: "com.donggyu.dg-muscle-ios.dg-muscle-ios-widget",
         infoPlist: .extendingDefault(with: [
             "NSExtension": .dictionary([
                 "NSExtensionPointIdentifier": "com.apple.widgetkit-extension"
