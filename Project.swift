@@ -47,7 +47,8 @@ func createApp() -> Target {
                 "UILaunchScreen": .dictionary([
                     "UIImageName": "LaunchScreen"
                 ]),
-                "CFBundleDisplayName": "DgMuscle"
+                "CFBundleDisplayName": "DgMuscle",
+                "NSHealthShareUsageDescription": "We will sync your data with the Apple Health app to give you better insights"
             ]
         ),
         sources: ["\(projectName)/sources/App/**"],
