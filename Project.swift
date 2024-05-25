@@ -48,7 +48,8 @@ func createApp() -> Target {
                     "UIImageName": "LaunchScreen"
                 ]),
                 "CFBundleDisplayName": "DgMuscle",
-                "NSHealthShareUsageDescription": "We will sync your data with the Apple Health app to give you better insights"
+                "NSHealthShareUsageDescription": "We will sync your data with the Apple Health app to give you better insights",
+                "NSHealthUpdateUsageDescription": "We will sync your data with the Apple Health app to give you better insights"
             ]
         ),
         sources: ["\(projectName)/sources/App/**"],
