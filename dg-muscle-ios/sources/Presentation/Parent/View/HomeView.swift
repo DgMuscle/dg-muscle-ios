@@ -50,6 +50,8 @@ public struct HomeView: View {
                         coordinator?.exerciseManage()
                     } tapProfileListItem: {
                         coordinator?.profile()
+                    } tapFriendListItem: {
+                        print("tap friend")
                     }
 
             }
