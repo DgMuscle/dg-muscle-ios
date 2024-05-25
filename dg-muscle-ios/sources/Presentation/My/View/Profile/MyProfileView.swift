@@ -15,6 +15,7 @@ public struct MyProfileView: View {
     
     @StateObject var viewModel: MyProfileViewModel
     @FocusState var displayNameFocus
+    @State var isPresentImagePickerForProfilePhoto: Bool = false
     
     private let profilePhotoSize: CGFloat = 80
     
@@ -43,26 +44,31 @@ public struct MyProfileView: View {
                 
                 Spacer()
                 
-                if let uiimage = viewModel.profilePhoto {
-                    Image(uiImage: uiimage)
-                        .resizable()
-                        .frame(width: profilePhotoSize, height: profilePhotoSize)
-                        .clipShape(
-                            RoundedRectangle(cornerRadius: profilePhotoSize / 4)
-                        )
-                } else {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: profilePhotoSize / 4)
-                            .fill(
-                                Color(uiColor: .secondarySystemBackground)
-                            )
+                Button {
+                    isPresentImagePickerForProfilePhoto.toggle()
+                } label: {
+                    if let uiimage = viewModel.profilePhoto {
+                        Image(uiImage: uiimage)
+                            .resizable()
                             .frame(width: profilePhotoSize, height: profilePhotoSize)
-                        
-                        Image(systemName: "person")
-                            .font(.largeTitle)
-                        
+                            .clipShape(
+                                RoundedRectangle(cornerRadius: profilePhotoSize / 4)
+                            )
+                    } else {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: profilePhotoSize / 4)
+                                .fill(
+                                    Color(uiColor: .secondarySystemBackground)
+                                )
+                                .frame(width: profilePhotoSize, height: profilePhotoSize)
+                            
+                            Image(systemName: "person")
+                                .font(.largeTitle)
+                            
+                        }
                     }
                 }
+                .foregroundStyle(Color(uiColor: .label))
                 
                 HStack {
                     Image(systemName: "pencil").hidden()
@@ -85,6 +91,9 @@ public struct MyProfileView: View {
             }
             .padding(.horizontal)
             .animation(.default, value: viewModel.status)
+        }
+        .fullScreenCover(isPresented: $isPresentImagePickerForProfilePhoto) {
+            Common.ImagePicker(image: $viewModel.profilePhoto)
         }
     }
 }
