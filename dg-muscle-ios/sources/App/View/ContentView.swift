@@ -38,7 +38,7 @@ struct ContentView: View {
                     )
                 )
             }
-            SplashView().opacity(splash ? 1 : 0)
+            SplashView().opacity((splash || UserRepositoryImpl.shared.isReady == false) ? 1 : 0)
         }
         .animation(.default, value: splash)
         .onAppear {

@@ -14,6 +14,7 @@ import UIKit
 public final class UserRepositoryImpl: UserRepository {
     public static let shared = UserRepositoryImpl()
     public var user: AnyPublisher<Domain.User?, Never> { $_user.eraseToAnyPublisher() }
+    public var isReady: Bool = false
     private var cancellables = Set<AnyCancellable>()
     
     @Published var _user: Domain.User? = nil
@@ -101,10 +102,12 @@ public final class UserRepositoryImpl: UserRepository {
         Auth.auth().addStateDidChangeListener { _, user in
             guard let user else {
                 self._user = nil
+                self.isReady = true
                 return
             }
             Task {
-                self._user = try await self.getUserProfileFromUid(uid: user.uid)
+                self._user = try? await self.getUserProfileFromUid(uid: user.uid)
+                self.isReady = true
             }
         }
         
