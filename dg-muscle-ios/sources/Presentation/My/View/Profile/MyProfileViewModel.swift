@@ -49,12 +49,15 @@ final class MyProfileViewModel: ObservableObject {
         if let url = user.photoURL {
             Task {
                 let uiimage = try await Common.UIImageGenerator.shared.generateImageFrom(url: url)
-                self.profilePhoto = uiimage
+                DispatchQueue.main.async { [weak self] in
+                    self?.profilePhoto = uiimage
+                }
             }
         }
     }
     
     private var saveTask: Task<(), Never>?
+    @MainActor
     func save() {
         guard saveTask == nil else { return }
         saveTask = Task {
