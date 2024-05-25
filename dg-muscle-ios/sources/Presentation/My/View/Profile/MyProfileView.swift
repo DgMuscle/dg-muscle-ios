@@ -25,6 +25,15 @@ public struct MyProfileView: View {
     
     public var body: some View {
         ZStack {
+            
+            if let image = viewModel.backgroundImage {
+                Rectangle()
+                    .fill(.clear)
+                    .background(
+                        Image(uiImage: image)
+                    )
+            }
+            
             VStack(spacing: 20) {
                 
                 if let status = viewModel.status {
@@ -76,6 +85,7 @@ public struct MyProfileView: View {
                     TextField("Display Name", text: $viewModel.displayName)
                         .multilineTextAlignment(.center)
                         .focused($displayNameFocus)
+                        .fontWeight(.black)
                     Image(systemName: "pencil")
                         .font(.title)
                         .onTapGesture {

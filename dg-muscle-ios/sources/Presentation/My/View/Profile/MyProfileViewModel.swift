@@ -57,6 +57,15 @@ final class MyProfileViewModel: ObservableObject {
                 }
             }
         }
+        
+        if let url = user.backgroundImageURL {
+            Task {
+                let uiimage = try await Common.UIImageGenerator.shared.generateImageFrom(url: url)
+                DispatchQueue.main.async { [weak self] in
+                    self?.backgroundImage = uiimage
+                }
+            }
+        }
     }
     
     private var saveTask: Task<(), Never>?
