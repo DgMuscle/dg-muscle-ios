@@ -16,7 +16,6 @@ final class MyProfileViewModel: ObservableObject {
     @Published var color: Color
     @Published var displayName: String
     @Published var profilePhoto: UIImage?
-    @Published var loading: Bool = false
     @Published var status: Common.StatusView.Status?
     
     private let user: Common.User
@@ -60,8 +59,7 @@ final class MyProfileViewModel: ObservableObject {
         guard saveTask == nil else { return }
         saveTask = Task {
             do {
-                loading = true
-                status = nil
+                status = .loading
                 try await postDisplayNameUsecase.implement(displayName: displayName)
                 try await postPhotoURLUsecase.implement(photo: profilePhoto)
                 status = .success("Done")
@@ -69,7 +67,6 @@ final class MyProfileViewModel: ObservableObject {
                 status = .error(error.localizedDescription)
             }
             saveTask = nil
-            loading = false
         }
     }
 }
