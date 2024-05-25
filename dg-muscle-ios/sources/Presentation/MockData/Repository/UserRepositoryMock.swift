@@ -8,6 +8,7 @@
 import Foundation
 import Domain
 import Combine
+import UIKit
 
 public final class UserRepositoryMock: UserRepository {
     public var user: AnyPublisher<Domain.User?, Never> { $_user.eraseToAnyPublisher() }
@@ -21,17 +22,16 @@ public final class UserRepositoryMock: UserRepository {
         _user = nil 
     }
     
-    public func updateUser(displayName: String?, photoURL: URL?) async throws {
-        _user?.displayName = displayName
-        _user?.photoURL = photoURL
-    }
-    
     public func updateUser(displayName: String?) async throws {
         _user?.displayName = displayName
     }
     
-    public func updateUser(photoURL: URL?) async throws {
-        _user?.photoURL = photoURL
+    public func updateUser(displayName: String?, photo: UIImage?) async throws {
+        _user?.displayName = displayName
+    }
+    
+    public func updateUser(photo: UIImage?) async throws {
+        
     }
     
     public func withDrawal() async -> (any Error)? {
