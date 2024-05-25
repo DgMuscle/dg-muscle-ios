@@ -10,8 +10,10 @@ import Combine
 import Domain
 import Common
 import UIKit
+import SwiftUI
 
 final class MyProfileViewModel: ObservableObject {
+    @Published var color: Color
     @Published var displayName: String
     @Published var profilePhoto: UIImage?
     @Published var loading: Bool = false
@@ -22,6 +24,7 @@ final class MyProfileViewModel: ObservableObject {
     private let postPhotoURLUsecase: PostPhotoURLUsecase
     private let getUserUsecase: GetUserUsecase
     private let signOutUsecase: SignOutUsecase
+    private let getHeatMapColorUsecase: GetHeatMapColorUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(userRepository: UserRepository) {
@@ -29,6 +32,7 @@ final class MyProfileViewModel: ObservableObject {
         postPhotoURLUsecase = .init(userRepository: userRepository)
         getUserUsecase = .init(userRepository: userRepository)
         signOutUsecase = .init(userRepository: userRepository)
+        getHeatMapColorUsecase = .init(userRepository: userRepository)
         
         if let userDomain = getUserUsecase.implement() {
             self.user = .init(domain: userDomain)
@@ -38,6 +42,10 @@ final class MyProfileViewModel: ObservableObject {
             self.displayName = ""
             try? signOutUsecase.implement()
         }
+        
+        let domainColor: Domain.HeatMapColor = getHeatMapColorUsecase.implement()
+        let heatMapColor: Common.HeatMapColor = .init(domain: domainColor)
+        self.color = heatMapColor.color
         
         if let url = user.photoURL {
             Task {
