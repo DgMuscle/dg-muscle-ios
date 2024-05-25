@@ -2,6 +2,13 @@
 
 효율적으로 비교하고 기록하여 점진적 과부하를 이루고 근 성장을 이루자는 목적의 프로젝트. 
 
+## Environment
+- macos-14
+- xcode-version: 15.4
+- tuist   4.12.1
+- mise 2024.5.5 macos-arm64 (7e8dab5 2024-05-12)
+
+
 ### [Introduction](https://judicious-hoof-33e.notion.site/dgmuscle-ios-a7162152c1594a09902d7d6c07da8bdd?pvs=74)
 <!-- 
 <div>
@@ -17,7 +24,7 @@
 -->
 
 ![image](https://github.com/DgMuscle/dg-muscle-ios/assets/34573243/a127df42-9f0c-41e5-b151-aebb86533973)
-<img width=750 src="https://github.com/DgMuscle/dg-muscle-ios/assets/34573243/3766d856-a731-4010-a56b-b4cd01365a38" />
+<img width=750 src="https://github.com/DgMuscle/dg-muscle-ios/assets/34573243/4821b759-fea1-47f7-8e1d-aeceae60eace" />
 
 __프레젠테이션 계층__ 
 - 뷰(View)와 뷰모델(ViewModel) 구성요소를 포함합니다.
@@ -57,14 +64,17 @@ __의존성 방향__
 
 | Concern  | Purpose                                                                |
 | -------- | ---------------------------------------------------------------------- |
-| Auth     | 회원가입 및 로그인의 유저의 인증 관리                                  |
-| History  | 유저의 운동일지 기록 추가, 수정, 삭제 및 UI                            |
-| Exercise | 유저의 운동종목 추가, 수정, 삭제                                       |
-| Setting  | 유저의 프로필 이미지 등록 및 닉네임 설정 등 그 외의 자잘한 기능들 포함 |
+| Auth     | 회원가입 및 로그인의 유저의 인증 관리                                           |
+| History  | 유저의 운동일지 기록 추가, 수정, 삭제 및 UI                                     |
+| Exercise | 유저의 운동종목 추가, 수정, 삭제                                              |
+| My       | 유저의 프로필 이미지 등록 및 닉네임 설정 등 그 외의 자잘한 기능들 포함                 |
+| HeatMap  | 위젯 및 History 모듈에서 공통으로 사용될 히트맵 UI 관련 기능                       |
+
 
 ## CI
 
 Github Action을 활용하여 메인 branch에 코드가 붙기전 빌드 및 테스트 케이스를 검증
+
 
 ## CD
 
