@@ -27,7 +27,19 @@ public final class UserRepositoryImpl: UserRepository {
     }
     
     public func updateUser(displayName: String?, photoURL: URL?) async throws {
+        _user?.displayName = displayName
+        _user?.photoURL = photoURL
         try await AuthManager().updateUser(displayName: displayName, photoURL: photoURL)
+    }
+    
+    public func updateUser(displayName: String?) async throws {
+        _user?.displayName = displayName
+        try await AuthManager().updateUser(displayName: displayName)
+    }
+    
+    public func updateUser(photoURL: URL?) async throws {
+        _user?.photoURL = photoURL
+        try await AuthManager().updateUser(photoURL: photoURL)
     }
     
     public func withDrawal() async -> (any Error)? {
