@@ -13,7 +13,9 @@ public protocol FriendRepository {
     var requests: AnyPublisher<[FriendRequest], Never> { get }
     var users: AnyPublisher<[User], Never> { get }
     
+    func getUser(uid: String) -> User?
     func getFriends() -> [User]
+    func getUsers() -> [User]
     func requestFriend(userId: String) async throws
     func accept(request: FriendRequest) async throws
     func refuse(request: FriendRequest) async throws
