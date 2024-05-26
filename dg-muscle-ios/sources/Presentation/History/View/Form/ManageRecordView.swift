@@ -66,8 +66,8 @@ public struct ManageRecordView: View {
             .padding(.horizontal)
         })
         .onAppear {
-            if viewModel.record.sets.isEmpty {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                if viewModel.record.sets.isEmpty {
                     selectedExercise = .init(
                         unit: .kg,
                         reps: 0,
