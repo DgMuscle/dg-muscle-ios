@@ -21,10 +21,9 @@ public final class SearchUsersExceptForMyFriendsUsecase {
     
     public func implement(query: String) -> [User] {
         var users = friendRepository.getUsers()
+        users = excludeFriendsAndMeAndSort(users: users)
         
         guard query.isEmpty == false else { return users }
-        
-        users = excludeFriendsAndMeAndSort(users: users)
         
         users = users
             .filter({
