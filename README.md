@@ -9,22 +9,35 @@
 - mise 2024.5.5 macos-arm64 (7e8dab5 2024-05-12)
 
 
-### [Introduction](https://judicious-hoof-33e.notion.site/dgmuscle-ios-a7162152c1594a09902d7d6c07da8bdd?pvs=74)
-<!-- 
-<div>
-  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/45eff686-131d-4a7f-80e3-f0a3af518df5" width=200 />
-  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/90a1b76b-81d5-40bd-842e-c0e8c856cf4c" width=200 />
-  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/388c212b-ecb2-475c-a609-cde14f0dcc45" width=200 />
-  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/02debaa7-9a23-491b-8b9c-e2884ccbcb95" width=200 />
-  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/db2799b9-ea3e-44cf-8063-ae3855d2db4c" width=200 />
-  <img src="https://github.com/donggyushin/dg-muscle-ios/assets/34573243/24bf0696-f755-4be1-817b-6ee0356ab227" width=200 />
-</div>
+## Tech
+<table border="0">
+ <tr>
+    <td>SwiftUI</td>
+    <td>Firebase Functions</td>
+    <td>Combine</td>
+ </tr>
+  <tr>
+    <td>UIKit</td>
+    <td>Firestorage</td>
+    <td>Swift Concurrency</td>
+ </tr>
+ <tr>
+    <td>Tuist</td>
+    <td>Remote Push Notification</td>
+ </tr>
+ <tr>
+    <td>Github Action</td>
+    <td>Widget Extension</td>
+ </tr>
+ <tr>
+    <td>Fastlane</td>
+ </tr>
+</table>
 
-![RPReplay_Final1713610744-ezgif com-resize](https://github.com/donggyushin/dg-muscle-ios/assets/34573243/5067705b-f234-47f5-8ca8-df15cbf625ca)
--->
 
+
+### Basic Architecture
 ![image](https://github.com/DgMuscle/dg-muscle-ios/assets/34573243/a127df42-9f0c-41e5-b151-aebb86533973)
-<img width=750 src="https://github.com/DgMuscle/dg-muscle-ios/assets/34573243/9d1e25c7-3447-48c4-a36c-cf5219f498b3" />
 
 __프레젠테이션 계층__ 
 - 뷰(View)와 뷰모델(ViewModel) 구성요소를 포함합니다.
@@ -50,15 +63,11 @@ __의존성 방향__
 이 아키텍쳐는 각 구성요소간 책임을 명확히 구분함으로써 유지보수성과 테스트 가능성이 높은 애플리케이션을 만드는 데 도움을 주며, 소프트웨어 설계에서 SRP, DIP 원칙들을 준수합니다. 
 
 
-## Main Model
+### Module Graph
+<img width=750 src="https://github.com/DgMuscle/dg-muscle-ios/assets/34573243/9d1e25c7-3447-48c4-a36c-cf5219f498b3" />
 
-### Exercise
 
-유저가 직접 등록하는 운동 모델. 이름과 운동을 통하여 발전시키고자 하는 타겟 부위를 담고 있음
 
-### History
-
-유저의 운동 기록 모델. Exercise Id 와 여러개의 Set가 모여서 하나의 Record를 이루고, 여러개의 Record가 모여서 그 날의 운동 기록을 구성.
 
 ### Concern
 
@@ -68,20 +77,15 @@ __의존성 방향__
 | History  | 유저의 운동일지 기록 추가, 수정, 삭제 및 UI                                     |
 | Exercise | 유저의 운동종목 추가, 수정, 삭제                                              |
 | My       | 유저의 프로필 이미지 등록 및 닉네임 설정 등 그 외의 자잘한 기능들 포함                 |
-| HeatMap  | 위젯 및 History 모듈에서 공통으로 사용될 히트맵 UI 관련 기능                       |
+| HeatMap  | 위젯 및 History 모듈에서 공통으로 사용될 히트맵 UI 관련 기능                      |
+| Friend   | 다른 유저들과의 Connection 구축                                            |
 
 
-## CI
+## CI/CD
 
-Github Action을 활용하여 메인 branch에 코드가 붙기전 빌드 및 테스트 케이스를 검증
-
-
-## CD
-
-Fastlane을 이용하여 배포 절차 간소화
-
-1. 배포용 인증서 및 프로비저닝 프로파일을 Private Repository(storage: git)에 저장
-2. match를 활용하여 storage로 부터 필요한 프로비저닝 프로파일 다운
-3. 다운 받은 프로파일을 이용하여 앱 빌드
-4. App Store Connect API 인증
-5. 테스트 플라이트 배포
+- Github Action을 활용하여 메인 branch에 코드가 붙기전 빌드 및 테스트 케이스를 검증
+- 배포용 인증서 및 프로비저닝 프로파일을 Private Repository(storage: git)에 저장
+- match를 활용하여 storage로 부터 필요한 프로비저닝 프로파일 다운
+- 다운 받은 프로파일을 이용하여 앱 빌드
+- App Store Connect API 인증
+- 테스트 플라이트 배포
