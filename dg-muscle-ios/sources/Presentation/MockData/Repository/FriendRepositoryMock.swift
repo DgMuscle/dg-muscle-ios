@@ -25,6 +25,8 @@ public final class FriendRepositoryMock: FriendRepository {
         USER_DG, USER_1, USER_2, USER_3
     ]
     
+    public init() { }
+    
     public func getFriends() -> [Domain.User] {
         _friends
     }

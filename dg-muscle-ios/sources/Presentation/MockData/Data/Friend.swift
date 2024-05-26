@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-public let FRIEND_1 = USER_1
+public let FRIEND_1 = USER_4
 
 
 public let FRIEND_REQUEST_1: Domain.FriendRequest = .init(fromId: USER_3.uid, createdAt: generateDate(date: "20240526"))
