@@ -30,6 +30,10 @@ public final class FriendRepositoryImpl: FriendRepository {
         bind()
     }
     
+    public func getFriends() -> [Domain.User] {
+        _friends
+    }
+    
     public func requestFriend(userId: String) async throws {
         
         struct Body: Codable {
