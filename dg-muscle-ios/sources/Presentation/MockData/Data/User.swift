@@ -41,7 +41,7 @@ public let USER_2: User = .init(
 public let USER_3: User = .init(
     uid: "nkKKFlPlBTN14cAlOgnwNC0rmel2",
     displayName: "JIN",
-    backgroundImageURL: nil,
+    backgroundImageURL: .init(string: "https://firebasestorage.googleapis.com:443/v0/b/dg-muscle.appspot.com/o/profilePhoto%2FtaEJh30OpGVsR3FEFN2s67A8FvF3%2F9F14BFF8-33CE-40BF-822F-BB834CE379FE.png?alt=media&token=bca448b7-f0e6-48fe-9a78-c309220fe7bb"),
     photoURL: .init(string: "https://firebasestorage.googleapis.com:443/v0/b/dg-muscle.appspot.com/o/profilePhoto%2FnkKKFlPlBTN14cAlOgnwNC0rmel2%2F559DE7D0-33AD-4BA0-8093-BD1E95276263.png?alt=media&token=8793f93b-e87e-4a43-81b9-d25cd4c083d2"),
     heatMapColor: .mint,
     fcmToken: nil
