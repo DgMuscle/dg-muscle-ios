@@ -51,7 +51,8 @@ func createApp() -> Target {
                 "CFBundleDisplayName": "DgMuscle",
                 "NSHealthShareUsageDescription": "We will sync your data with the Apple Health app to give you better insights",
                 "NSHealthUpdateUsageDescription": "We will sync your data with the Apple Health app to give you better insights",
-                "ITSAppUsesNonExemptEncryption": false
+                "ITSAppUsesNonExemptEncryption": false,
+                "LSApplicationCategoryType": "public.app-category.healthcare-fitness"
             ]
         ),
         sources: ["\(projectName)/sources/App/**"],
