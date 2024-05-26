@@ -35,6 +35,28 @@ public final class SubscribeUsersUsecase {
                     .filter({ !friendIds.contains($0.uid) })
                 return users
             })
+            .map({ (users: [User]) in
+                var users = users
+                users = users
+                    .sorted(by: { user1, user2 in
+                        let user1HasProfilePhoto = user1.photoURL != nil
+                        let user1HasBackgroundPhoto = user1.backgroundImageURL != nil
+                        let user2HasProfilePhoto = user2.photoURL != nil
+                        let user2HasBackgroundPhoto = user2.backgroundImageURL != nil
+                        
+                        if user1HasProfilePhoto && user1HasBackgroundPhoto {
+                            return true
+                        }
+                        
+                        if user1HasProfilePhoto && !user2HasProfilePhoto {
+                            return true
+                        }
+                        
+                        return false
+                    })
+                
+                return users
+            })
             .assign(to: \.users, on: self)
             .store(in: &cancellables)
     }
