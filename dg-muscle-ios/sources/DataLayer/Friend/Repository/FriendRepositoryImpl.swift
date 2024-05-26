@@ -30,6 +30,14 @@ public final class FriendRepositoryImpl: FriendRepository {
         bind()
     }
     
+    public func getUser(uid: String) -> Domain.User? {
+        _users.first(where: { $0.uid == uid })
+    }
+    
+    public func getUsers() -> [Domain.User] {
+        _users
+    }
+    
     public func getFriends() -> [Domain.User] {
         _friends
     }
