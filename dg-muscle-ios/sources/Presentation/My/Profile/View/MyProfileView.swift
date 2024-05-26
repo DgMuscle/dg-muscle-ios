@@ -32,7 +32,10 @@ public struct MyProfileView: View {
                     .fill(.clear)
                     .background(
                         Image(uiImage: image)
+                            .resizable()
+                            .scaledToFill()
                     )
+                    .ignoresSafeArea()
             }
             
             VStack(spacing: 20) {
