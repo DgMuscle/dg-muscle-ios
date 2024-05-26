@@ -10,13 +10,19 @@ import Combine
 
 public final class SubscribeUsersUsecase {
     private let friendRepository: FriendRepository
+    private let userRepository: UserRepository
+    private let myUid: String
     
     @Published private var users: [User] = []
     
     private var cancellables = Set<AnyCancellable>()
-    public init(friendRepository: FriendRepository) {
+    public init(
+        friendRepository: FriendRepository,
+        userRepository: UserRepository
+    ) {
         self.friendRepository = friendRepository
-        
+        self.userRepository = userRepository
+        self.myUid = userRepository.get()?.uid ?? ""
         bind()
     }
     
@@ -28,11 +34,13 @@ public final class SubscribeUsersUsecase {
         friendRepository
             .users
             .combineLatest(friendRepository.friends)
-            .map({ users, friends in
-                let friendIds = friends.map({ $0.uid })
+            .map({ [weak self] users, friends in
+                guard let self else { return [] }
+                var excludeIds = friends.map({ $0.uid })
+                excludeIds.append(myUid)
                 var users = users
                 users = users
-                    .filter({ !friendIds.contains($0.uid) })
+                    .filter({ !excludeIds.contains($0.uid) })
                 return users
             })
             .map({ (users: [User]) in
@@ -42,7 +50,6 @@ public final class SubscribeUsersUsecase {
                         let user1HasProfilePhoto = user1.photoURL != nil
                         let user1HasBackgroundPhoto = user1.backgroundImageURL != nil
                         let user2HasProfilePhoto = user2.photoURL != nil
-                        let user2HasBackgroundPhoto = user2.backgroundImageURL != nil
                         
                         if user1HasProfilePhoto && user1HasBackgroundPhoto {
                             return true
