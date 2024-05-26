@@ -50,6 +50,10 @@ public final class SearchUsersExceptForMyFriendsUsecase {
                     return true
                 }
                 
+                if user1.displayName != nil && user2.displayName == nil {
+                    return true
+                }
+                
                 if user1.backgroundImageURL != nil && user2.backgroundImageURL == nil {
                     return true 
                 }
