@@ -9,7 +9,10 @@ import Foundation
 import Domain
 import Common
 
-struct FriendRequest: Hashable {
+struct FriendRequest: Hashable, Identifiable {
+    var id: String {
+        user.uid
+    }
     let user: Common.User
     let createdAt: Date
     

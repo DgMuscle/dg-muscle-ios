@@ -8,20 +8,29 @@
 import Foundation
 import Combine
 import Domain
+import Common
+import SwiftUI
 
 class RequestListViewModel: ObservableObject {
     @Published var requests: [FriendRequest] = []
+    let color: Color
     private let getUserFromUidUsecase: GetUserFromUidUsecase
     private let subscribeFriendRequestsUsecase: SubscribeFriendRequestsUsecase
     private let refuseFriendUsecase: RefuseFriendUsecase
     private let acceptFriendUsecase: AcceptFriendUsecase
+    private let getHeatMapColorUsecase: GetHeatMapColorUsecase
     private var cancellables = Set<AnyCancellable>()
     
-    init(friendRepository: FriendRepository) {
+    init(friendRepository: FriendRepository, userRepository: UserRepository) {
         getUserFromUidUsecase = .init(friendRepository: friendRepository)
         subscribeFriendRequestsUsecase = .init(friendRepository: friendRepository)
         refuseFriendUsecase = .init(friendRepository: friendRepository)
         acceptFriendUsecase = .init(friendRepository: friendRepository)
+        getHeatMapColorUsecase = .init(userRepository: userRepository)
+        
+        let heatMapColor: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
+        self.color = heatMapColor.color
+        
         bind()
     }
     

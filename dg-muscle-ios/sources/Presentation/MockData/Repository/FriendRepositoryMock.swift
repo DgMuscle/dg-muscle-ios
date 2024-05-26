@@ -22,10 +22,18 @@ public final class FriendRepositoryMock: FriendRepository {
     
     public var users: AnyPublisher<[Domain.User], Never> { $_users.eraseToAnyPublisher() }
     @Published var _users: [Domain.User] = [
-        USER_DG, USER_1, USER_2, USER_3
+        USER_DG, USER_1, USER_2, USER_3, USER_4
     ]
     
     public init() { }
+    
+    public func getUser(uid: String) -> Domain.User? {
+        _users.first(where: { $0.uid == uid })
+    }
+    
+    public func getUsers() -> [Domain.User] {
+        _users
+    }
     
     public func getFriends() -> [Domain.User] {
         _friends
