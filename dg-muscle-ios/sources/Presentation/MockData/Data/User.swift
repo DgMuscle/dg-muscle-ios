@@ -18,3 +18,31 @@ public let USER_DG: User = .init(
     heatMapColor: .purple, 
     fcmToken: nil
 )
+
+
+public let USER_1: User = .init(
+    uid: "2Mwgf4vpKLRyz1ynuWBwvcyEBe92",
+    displayName: "Hui",
+    backgroundImageURL: nil,
+    photoURL: nil,
+    heatMapColor: .green,
+    fcmToken: nil
+)
+
+public let USER_2: User = .init(
+    uid: "5cLTF5EVsMdtOgYpl6RQKi9xVCE3",
+    displayName: nil,
+    backgroundImageURL: nil,
+    photoURL: nil,
+    heatMapColor: .green,
+    fcmToken: nil
+)
+
+public let USER_3: User = .init(
+    uid: "nkKKFlPlBTN14cAlOgnwNC0rmel2",
+    displayName: "JIN",
+    backgroundImageURL: nil,
+    photoURL: .init(string: "https://firebasestorage.googleapis.com:443/v0/b/dg-muscle.appspot.com/o/profilePhoto%2FnkKKFlPlBTN14cAlOgnwNC0rmel2%2F559DE7D0-33AD-4BA0-8093-BD1E95276263.png?alt=media&token=8793f93b-e87e-4a43-81b9-d25cd4c083d2"),
+    heatMapColor: .mint,
+    fcmToken: nil
+)
