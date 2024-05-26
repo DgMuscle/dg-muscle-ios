@@ -25,6 +25,7 @@ struct FriendListItemView: View {
             }
             
             Text(friend.displayName ?? "Display Name")
+                .foregroundStyle(Color(uiColor: friend.displayName == nil ? .secondaryLabel : .label))
         }
     }
 }

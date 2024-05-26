@@ -1,5 +1,5 @@
 //
-//  UserListViewModel.swift
+//  SearchUsersViewModel.swift
 //  Friend
 //
 //  Created by 신동규 on 5/26/24.
@@ -10,7 +10,7 @@ import Domain
 import Combine
 import Common
 
-final class UserListViewModel: ObservableObject {
+final class SearchUsersViewModel: ObservableObject {
     @Published var users: [Common.User] = []
     @Published var query: String = ""
     
