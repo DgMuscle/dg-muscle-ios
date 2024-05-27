@@ -34,7 +34,16 @@ public final class Coordinator {
     }
     
     func historyFormStep1(historyId: String?) {
-        let history = historyRepository.get(historyId: historyId ?? "")
+        /// If historyId is nil, find the today's history first.
+        let history: History?
+        
+        if let historyId {
+            history = historyRepository.get(historyId: historyId)
+        } else {
+            let histories = historyRepository.get()
+            history = histories.first(where: { Calendar.current.isDate(Date(), inSameDayAs: $0.date) })
+        }
+        
         path.append(HistoryNavigation(name: .historyFormStep1(history)))
     }
     
