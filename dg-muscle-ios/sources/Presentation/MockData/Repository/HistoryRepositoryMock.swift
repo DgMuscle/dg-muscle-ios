@@ -12,7 +12,7 @@ import Domain
 public final class HistoryRepositoryMock: HistoryRepository {
     public var histories: AnyPublisher<[Domain.History], Never> { $_histories.eraseToAnyPublisher() }
     @Published var _histories: [History] = [
-        HISTORY_1, HISTORY_2, HISTORY_3
+        HISTORY_1, HISTORY_2, HISTORY_3, HISTORY_4
     ]   
     
     public init() { }
