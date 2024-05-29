@@ -17,6 +17,7 @@ final class ManageRecordViewModel: ObservableObject {
     @Published var color: Color
     @Published var currentVolume: Int
     @Published var previousRecord: ExerciseRecord?
+    @Published var diffWithPreviousRecord: Int?
     
     private let recordId: String
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
@@ -90,6 +91,13 @@ final class ManageRecordViewModel: ObservableObject {
             .map({ Common.HeatMapColor(domain: $0) })
             .map({ $0.color })
             .assign(to: \.color, on: self)
+            .store(in: &cancellables)
+        
+        $record
+            .combineLatest($previousRecord.compactMap({ $0 }))
+            .receive(on: DispatchQueue.main)
+            .map({ $0.volume - $1.volume })
+            .assign(to: \.diffWithPreviousRecord, on: self)
             .store(in: &cancellables)
     }
 }

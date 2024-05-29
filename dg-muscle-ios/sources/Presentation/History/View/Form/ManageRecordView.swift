@@ -31,7 +31,7 @@ public struct ManageRecordView: View {
     
     public var body: some View {
         List {
-            Section("\(viewModel.currentVolume)") {
+            Section {
                 ForEach(viewModel.record.sets, id: \.self) { set in
                     Button {
                         selectedExercise = set
@@ -47,6 +47,12 @@ public struct ManageRecordView: View {
                     }
                 }
                 .onDelete(perform: viewModel.delete)
+            } header: {
+                Text("\(viewModel.currentVolume)")
+            } footer: {
+                if let diff = viewModel.diffWithPreviousRecord {
+                    Text("\(diff)").foregroundStyle(diff >= 0 ? .mint : .red)
+                }
             }
             
             Button("NEW SET") {
