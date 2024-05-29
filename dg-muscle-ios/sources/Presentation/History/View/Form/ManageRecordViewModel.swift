@@ -49,11 +49,11 @@ final class ManageRecordViewModel: ObservableObject {
         self.color = color.color
         
         currentVolume = record.volume
-        if let previousRecordDomain = getPreviousRecordUsecase.implement(
+        if let previousRecord = getPreviousRecordUsecase.implement(
             history: self.historyForm.domain,
             record: self.record.domain
         ) {
-            self.previousRecord = .init(domain: previousRecordDomain)
+            self.previousRecord = .init(domain: previousRecord)
         }
         
         bind()

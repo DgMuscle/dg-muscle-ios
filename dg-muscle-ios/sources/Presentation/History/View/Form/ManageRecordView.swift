@@ -15,6 +15,7 @@ public struct ManageRecordView: View {
     
     @StateObject var viewModel: ManageRecordViewModel
     @State var selectedExercise: ExerciseSet?
+    @State var previousRecord: ExerciseRecord?
     
     public init(
         historyForm: Binding<HistoryForm>,
@@ -61,8 +62,9 @@ public struct ManageRecordView: View {
         .toolbar { 
             EditButton()
             if let previousRecord = viewModel.previousRecord {
+                
                 Button("Previous Record") {
-                    print("tap previous record")
+                    self.previousRecord = previousRecord
                 }
             }
         }
@@ -74,6 +76,9 @@ public struct ManageRecordView: View {
             .presentationDetents([.height(280)])
             .padding(.horizontal)
         })
+        .fullScreenCover(item: $previousRecord) {
+            RecordView(record: $0, color: viewModel.color)
+        }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 if viewModel.record.sets.isEmpty {
@@ -92,11 +97,13 @@ public struct ManageRecordView: View {
     
     let historyForm: HistoryForm = .init(domain: HISTORY_4)
     
-    return ManageRecordView(
-        historyForm: .constant(historyForm),
-        recordId: RECORD_1.id,
-        userRepository: UserRepositoryMock(), 
-        historyRepository: HistoryRepositoryMock()
-    )
-    .preferredColorScheme(.dark)
+    return NavigationStack {
+        ManageRecordView(
+            historyForm: .constant(historyForm),
+            recordId: RECORD_1.id,
+            userRepository: UserRepositoryMock(),
+            historyRepository: HistoryRepositoryMock()
+        )
+        .preferredColorScheme(.dark)
+    }
 }

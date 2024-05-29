@@ -8,8 +8,8 @@
 import Foundation
 import Domain
 
-public struct ExerciseRecord: Hashable {
-    let id: String
+public struct ExerciseRecord: Hashable, Identifiable {
+    public let id: String
     let exerciseId: String
     var exerciseName: String?
     var sets: [ExerciseSet]
