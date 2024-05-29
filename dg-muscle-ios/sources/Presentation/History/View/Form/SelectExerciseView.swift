@@ -38,6 +38,7 @@ struct SelectExerciseView: View {
                                         .foregroundStyle(.yellow)
                                 } else {
                                     Image(systemName: "star")
+                                        .hidden()
                                 }
                                 
                                 Text(exercise.name)
@@ -48,6 +49,7 @@ struct SelectExerciseView: View {
                 }
             }
         }
+        .scrollIndicators(.hidden)
     }
 }
 
