@@ -12,15 +12,25 @@ struct RecordView: View {
     
     let record: ExerciseRecord
     let color: Color
+    let closeAction: (() -> ())?
     
     var body: some View {
         List {
-            ForEach(record.sets, id: \.self) { set in
-                HStack {
-                    Text(String(set.weight)).foregroundStyle(color) +
-                    Text(" \(set.unit.rawValue)") +
-                    Text(" x ").fontWeight(.heavy) +
-                    Text(" \(set.reps) ").foregroundStyle(color)
+            
+            HStack {
+                Button("Close") {
+                    closeAction?()
+                }
+            }
+            
+            Section("\(record.volume)") {
+                ForEach(record.sets, id: \.self) { set in
+                    HStack {
+                        Text(String(set.weight)).foregroundStyle(color) +
+                        Text(" \(set.unit.rawValue)") +
+                        Text(" x ").fontWeight(.heavy) +
+                        Text(" \(set.reps) ").foregroundStyle(color)
+                    }
                 }
             }
         }
@@ -29,6 +39,10 @@ struct RecordView: View {
 }
 
 #Preview {
-    RecordView(record: .init(domain: RECORD_1), color: .mint)
+    RecordView(
+        record: .init(domain: RECORD_1),
+        color: .mint,
+        closeAction: nil
+    )
         .preferredColorScheme(.dark)
 }

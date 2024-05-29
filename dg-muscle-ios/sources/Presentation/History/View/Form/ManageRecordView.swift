@@ -77,7 +77,9 @@ public struct ManageRecordView: View {
             .padding(.horizontal)
         })
         .fullScreenCover(item: $previousRecord) {
-            RecordView(record: $0, color: viewModel.color)
+            RecordView(record: $0, color: viewModel.color) {
+                self.previousRecord = nil
+            }
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -95,7 +97,7 @@ public struct ManageRecordView: View {
 
 #Preview {
     
-    let historyForm: HistoryForm = .init(domain: HISTORY_4)
+    let historyForm: HistoryForm = .init(domain: HISTORY_1)
     
     return NavigationStack {
         ManageRecordView(
