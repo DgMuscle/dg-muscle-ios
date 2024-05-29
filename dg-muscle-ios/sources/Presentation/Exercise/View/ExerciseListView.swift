@@ -73,6 +73,7 @@ public struct ExerciseListView: View {
                     }
                     .buttonStyle(.borderless)
                 }
+                .scrollIndicators(.hidden)
                 .toolbar {
                     EditButton()
                     Button("Add") {
