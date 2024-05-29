@@ -73,7 +73,8 @@ public struct NavigationView: View {
                     ManageRecordView(
                         historyForm: historyForm,
                         recordId: recordId,
-                        userRepository: userRepository
+                        userRepository: userRepository, 
+                        historyRepository: historyRepository
                     )
                 }
             }

@@ -58,7 +58,14 @@ public struct ManageRecordView: View {
             }
             
         }
-        .toolbar { EditButton() }
+        .toolbar { 
+            EditButton()
+            if let previousRecord = viewModel.previousRecord {
+                Button("Previous Record") {
+                    print("tap previous record")
+                }
+            }
+        }
         .sheet(item: $selectedExercise, content: { set in
             ManageSetView(set: set, color: viewModel.color) { set in
                 selectedExercise = nil
