@@ -75,6 +75,9 @@ public struct ExerciseListView: View {
                 }
                 .toolbar {
                     EditButton()
+                    Button("Add") {
+                        addExerciseAction?(nil)
+                    }
                 }
                 .animation(.default, value: viewModel.deletedExercises.isEmpty)
             }
