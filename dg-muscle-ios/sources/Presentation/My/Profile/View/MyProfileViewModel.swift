@@ -50,20 +50,16 @@ final class MyProfileViewModel: ObservableObject {
         self.color = heatMapColor.color
         
         if let url = user.photoURL {
-            Task {
+            Task { @MainActor in
                 let uiimage = try await Common.UIImageGenerator.shared.generateImageFrom(url: url)
-                DispatchQueue.main.async { [weak self] in
-                    self?.profilePhoto = uiimage
-                }
+                self.profilePhoto = uiimage
             }
         }
         
         if let url = user.backgroundImageURL {
-            Task {
+            Task { @MainActor in
                 let uiimage = try await Common.UIImageGenerator.shared.generateImageFrom(url: url)
-                DispatchQueue.main.async { [weak self] in
-                    self?.backgroundImage = uiimage
-                }
+                self.backgroundImage = uiimage
             }
         }
     }
