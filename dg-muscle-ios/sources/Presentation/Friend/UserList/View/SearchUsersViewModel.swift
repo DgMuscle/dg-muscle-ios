@@ -13,8 +13,10 @@ import Common
 final class SearchUsersViewModel: ObservableObject {
     @Published var users: [Common.User] = []
     @Published var query: String = ""
+    @Published var status: Common.StatusView.Status? = nil
     
     private let searchUsersExceptForMyFriendsUsecase: SearchUsersExceptForMyFriendsUsecase
+    private let requestFriendUsecase: RequestFriendUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
@@ -26,7 +28,25 @@ final class SearchUsersViewModel: ObservableObject {
             userRepository: userRepository
         )
         
+        requestFriendUsecase = .init(friendRepository: friendRepository)
+        
         bind()
+    }
+    
+    private var requestFriend: Task<(), Never>? = nil
+    @MainActor
+    func requestFriend(userId: String) {
+        guard requestFriend == nil else { return }
+        requestFriend = Task {
+            status = .loading
+            do {
+                try await requestFriendUsecase.implement(userId: userId)
+                status = .success("Done!")
+            } catch {
+                status = .error(error.localizedDescription)
+            }
+            requestFriend = nil
+        }
     }
     
     private func bind() {
