@@ -64,9 +64,7 @@ __의존성 방향__
 
 
 ### Module Graph
-<img width=750 src="https://github.com/DgMuscle/dg-muscle-ios/assets/34573243/9d1e25c7-3447-48c4-a36c-cf5219f498b3" />
-
-
+<img width=750 src="https://github.com/DgMuscle/dg-muscle-ios/assets/34573243/6c4cd2ef-a66d-44da-ad3f-9cb1ce3afe85" />
 
 
 ### Concern
