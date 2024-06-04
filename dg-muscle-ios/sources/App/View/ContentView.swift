@@ -41,6 +41,7 @@ struct ContentView: View {
             SplashView().opacity((splash || UserRepositoryImpl.shared.isReady == false) ? 1 : 0)
         }
         .animation(.default, value: splash)
+        .animation(.default, value: UserRepositoryImpl.shared.isReady)
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                 splash.toggle()
