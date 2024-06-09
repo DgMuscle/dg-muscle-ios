@@ -10,6 +10,7 @@ import Domain
 import Foundation
 import FirebaseAuth
 import UIKit
+import WidgetKit
 
 public final class UserRepositoryImpl: UserRepository {
     public static let shared = UserRepositoryImpl()
@@ -87,6 +88,7 @@ public final class UserRepositoryImpl: UserRepository {
         _user?.heatMapColor = heatMapColor
         let heatMapColor: HeatMapColor = .init(domain: heatMapColor)
         try FileManagerHelper.shared.save(heatMapColor, toFile: .heatmapColor)
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     public func post(fcmToken: String) {
