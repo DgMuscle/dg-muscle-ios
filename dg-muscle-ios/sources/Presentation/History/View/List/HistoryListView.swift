@@ -9,21 +9,17 @@ import SwiftUI
 import Domain
 import MockData
 import HistoryHeatMap
+import Common
 
 public struct HistoryListView: View {
     @StateObject var viewModel: HistoryListViewModel
-    
-    let tapHistory: ((_ historyId: String?) -> ())?
-    let tapHeatMap: (() -> ())?
     
     public init(
         today: Date,
         historyRepository: any HistoryRepository,
         exerciseRepository: any ExerciseRepository,
         heatMapRepository: any HeatMapRepository,
-        userRepository: any UserRepository,
-        tapHistory: ((_ historyId: String?) -> ())?,
-        tapHeatMap: (() -> ())?
+        userRepository: any UserRepository
     ) {
         _viewModel = .init(wrappedValue:
                 .init(
@@ -34,16 +30,13 @@ public struct HistoryListView: View {
                     userRepository: userRepository
                 )
         )
-        
-        self.tapHistory = tapHistory
-        self.tapHeatMap = tapHeatMap
     }
     
     public var body: some View {
         ScrollView {
             VStack {
                 Button {
-                    tapHeatMap?()
+                    URLManager.shared.open(url: "dgmuscle://heatmapcolorselect")
                 } label: {
                     HeatMapView(
                         heatMap: viewModel.heatMap,
@@ -57,7 +50,7 @@ public struct HistoryListView: View {
                         VStack(spacing: 12) {
                             ForEach(section.histories, id: \.self) { history in
                                 Button {
-                                    tapHistory?(history.id)
+                                    URLManager.shared.open(url: "dgmuscle://history?id=\(history.id)")
                                 } label: {
                                     HistoryItemView(history: history)
                                 }
@@ -84,7 +77,7 @@ public struct HistoryListView: View {
                 HStack {
                     Spacer()
                     Button {
-                        tapHistory?(nil)
+                        URLManager.shared.open(url: "dgmuscle://history")
                     } label: {
                         Image(systemName: "plus")
                             .padding()
@@ -111,8 +104,6 @@ public struct HistoryListView: View {
                            historyRepository: HistoryRepositoryMock(),
                            exerciseRepository: ExerciseRepositoryMock(),
                            heatMapRepository: HeatMapRepositoryMock(),
-                           userRepository: UserRepositoryMock(),
-                           tapHistory: nil,
-                           tapHeatMap: nil)
+                           userRepository: UserRepositoryMock())
     .preferredColorScheme(.dark)
 }

@@ -16,16 +16,20 @@ final class ManageRecordViewModel: ObservableObject {
     @Published var record: ExerciseRecord
     @Published var color: Color
     @Published var currentVolume: Int
+    @Published var previousRecord: ExerciseRecord?
+    @Published var diffWithPreviousRecord: Int?
     
     private let recordId: String
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
     private let subscribeHeatMapColorUsecase: SubscribeHeatMapColorUsecase
+    private let getPreviousRecordUsecase: GetPreviousRecordUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
         historyForm: Binding<HistoryForm>,
         recordId: String,
-        userRepository: UserRepository
+        userRepository: UserRepository,
+        historyRepository: HistoryRepository
     ) {
         self._historyForm = historyForm
         self.recordId = recordId
@@ -40,11 +44,18 @@ final class ManageRecordViewModel: ObservableObject {
         
         getHeatMapColorUsecase = .init(userRepository: userRepository)
         subscribeHeatMapColorUsecase = .init(userRepository: userRepository)
+        getPreviousRecordUsecase = .init(historyRepository: historyRepository)
         
         let color: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
         self.color = color.color
         
         currentVolume = record.volume
+        if let previousRecord = getPreviousRecordUsecase.implement(
+            history: self.historyForm.domain,
+            record: self.record.domain
+        ) {
+            self.previousRecord = .init(domain: previousRecord)
+        }
         
         bind()
     }
@@ -80,6 +91,13 @@ final class ManageRecordViewModel: ObservableObject {
             .map({ Common.HeatMapColor(domain: $0) })
             .map({ $0.color })
             .assign(to: \.color, on: self)
+            .store(in: &cancellables)
+        
+        $record
+            .combineLatest($previousRecord.compactMap({ $0 }))
+            .receive(on: DispatchQueue.main)
+            .map({ $0.volume - $1.volume })
+            .assign(to: \.diffWithPreviousRecord, on: self)
             .store(in: &cancellables)
     }
 }

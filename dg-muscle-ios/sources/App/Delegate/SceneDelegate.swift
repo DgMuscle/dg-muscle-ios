@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Presentation
+import Friend
+import Common
 
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
     
@@ -18,5 +21,42 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         print("dg: shortcutItem is \(shortcutItem)")
         completionHandler(true)
+    }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        for context in URLContexts {
+            let url = context.url
+            guard let scheme = url.scheme, let host = url.host() else { return }
+            guard scheme == "dgmuscle" else { return }
+            
+            switch host {
+            case "friend":
+                var anchor: PageAnchorView.Page = .friend
+                
+                let anchorString = URLManager.shared.getParameter(url: url, name: "anchor")
+                
+                switch anchorString {
+                case "friend":
+                    anchor = .friend
+                case "request":
+                    anchor = .request
+                case "search":
+                    anchor = .search
+                default: break
+                }
+                
+                coordinator?.friendMainView(anchor: anchor)
+            case "profile":
+                coordinator?.profile()
+            case "exercisemanage":
+                coordinator?.exerciseManage()
+            case "heatmapcolorselect":
+                coordinator?.heatMapColorSelectView()
+            case "history":
+                let historyId = URLManager.shared.getParameter(url: url, name: "id")
+                coordinator?.historyFormStep1(historyId: historyId)
+            default: break
+            }
+        }
     }
 }

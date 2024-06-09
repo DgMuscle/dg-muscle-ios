@@ -9,6 +9,7 @@ enum Layer: String, CaseIterable {
     case Domain
     case DataLayer
     case Presentation
+    case MockData
 }
 
 enum Presentation: String, CaseIterable {
@@ -17,8 +18,8 @@ enum Presentation: String, CaseIterable {
     case Exercise
     case HistoryHeatMap
     case History
-    case MockData
     case My
+    case Friend
 }
 
 func createApp() -> Target {
@@ -50,7 +51,8 @@ func createApp() -> Target {
                 "CFBundleDisplayName": "DgMuscle",
                 "NSHealthShareUsageDescription": "We will sync your data with the Apple Health app to give you better insights",
                 "NSHealthUpdateUsageDescription": "We will sync your data with the Apple Health app to give you better insights",
-                "ITSAppUsesNonExemptEncryption": false
+                "ITSAppUsesNonExemptEncryption": false,
+                "LSApplicationCategoryType": "public.app-category.healthcare-fitness"
             ]
         ),
         sources: ["\(projectName)/sources/App/**"],
@@ -157,8 +159,19 @@ func createLayers() -> [Target] {
                 destinations: .iOS,
                 product: .framework,
                 bundleId: bundleId + ".\($0.rawValue)".lowercased(),
-                sources: ["\(projectName)/sources/\($0.rawValue)/Parent/**"],
+                sources: ["\(projectName)/sources/\($0.rawValue)/Main/**"],
                 dependencies: dependencies
+            )
+        case .MockData:
+            return .target(
+                name: $0.rawValue,
+                destinations: .iOS,
+                product: .framework,
+                bundleId: bundleId + ".\(Layer.Presentation.rawValue).\($0.rawValue)".lowercased(),
+                sources: ["\(projectName)/sources/\($0.rawValue)/**"],
+                dependencies: [
+                    .target(name: Layer.Domain.rawValue, condition: nil)
+                ]
             )
         }
     })
@@ -182,23 +195,12 @@ func createPresentations() -> [Target] {
     
     return Presentation.allCases.map({
         switch $0 {
-        case .Auth, .HistoryHeatMap, .Exercise, .My:
+        case .Auth, .HistoryHeatMap, .Exercise, .My, .Friend:
             return createPresentation($0, dependencies: [])
         case .History:
             return createPresentation($0, dependencies: [
                 .target(name: Presentation.HistoryHeatMap.rawValue, condition: nil)
             ])
-        case .MockData:
-            return .target(
-                name: $0.rawValue,
-                destinations: .iOS,
-                product: .framework,
-                bundleId: bundleId + ".\(Layer.Presentation.rawValue).\($0.rawValue)".lowercased(),
-                sources: ["\(projectName)/sources/\(Layer.Presentation.rawValue)/\($0.rawValue)/**"],
-                dependencies: [
-                    .target(name: Layer.Domain.rawValue, condition: nil)
-                ]
-            )
         case .Common:
             return .target(
                 name: $0.rawValue,
@@ -207,7 +209,7 @@ func createPresentations() -> [Target] {
                 bundleId: bundleId + ".\(Layer.Presentation.rawValue).\($0.rawValue)".lowercased(),
                 sources: ["\(projectName)/sources/\(Layer.Presentation.rawValue)/\($0.rawValue)/**"],
                 dependencies: [
-                    .target(name: Presentation.MockData.rawValue, condition: nil),
+                    .target(name: Layer.MockData.rawValue, condition: nil),
                     .target(name: Layer.Domain.rawValue, condition: nil),
                     .package(product: "Kingfisher", type: .runtime, condition: nil),
                     .package(product: "SnapKit", type: .runtime, condition: nil)

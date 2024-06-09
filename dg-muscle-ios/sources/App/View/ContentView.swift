@@ -29,7 +29,8 @@ struct ContentView: View {
                     historyRepository: HistoryRepositoryImpl.shared,
                     exerciseRepository: ExerciseRepositoryImpl.shared,
                     heatMapRepository: HeatMapRepositoryImpl.shared,
-                    userRepository: UserRepositoryImpl.shared
+                    userRepository: UserRepositoryImpl.shared, 
+                    friendRepository: FriendRepositoryImpl.shared
                 )
             } else {
                 AuthenticationView(
@@ -41,6 +42,7 @@ struct ContentView: View {
             SplashView().opacity((splash || UserRepositoryImpl.shared.isReady == false) ? 1 : 0)
         }
         .animation(.default, value: splash)
+        .animation(.default, value: UserRepositoryImpl.shared.isReady)
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                 splash.toggle()

@@ -15,20 +15,23 @@ public struct ManageRecordView: View {
     
     @StateObject var viewModel: ManageRecordViewModel
     @State var selectedExercise: ExerciseSet?
+    @State var previousRecord: ExerciseRecord?
     
     public init(
         historyForm: Binding<HistoryForm>,
         recordId: String,
-        userRepository: UserRepository
+        userRepository: UserRepository,
+        historyRepository: HistoryRepository
     ) {
         _viewModel = .init(wrappedValue: .init(historyForm: historyForm,
                                                recordId: recordId, 
-                                               userRepository: userRepository))
+                                               userRepository: userRepository, 
+                                               historyRepository: historyRepository))
     }
     
     public var body: some View {
         List {
-            Section("\(viewModel.currentVolume)") {
+            Section {
                 ForEach(viewModel.record.sets, id: \.self) { set in
                     Button {
                         selectedExercise = set
@@ -44,21 +47,33 @@ public struct ManageRecordView: View {
                     }
                 }
                 .onDelete(perform: viewModel.delete)
+            } header: {
+                Text("\(viewModel.currentVolume)")
+            } footer: {
+                if let diff = viewModel.diffWithPreviousRecord {
+                    Text("\(diff)").foregroundStyle(diff >= 0 ? .mint : .red)
+                }
             }
             
-            Common.GradientButton(action: {
+            Button("NEW SET") {
                 let previousSet = viewModel.record.sets.last
                 selectedExercise = .init(
                     unit: previousSet?.unit ?? .kg,
                     reps: previousSet?.reps ?? 0,
                     weight: previousSet?.weight ?? 0
                 )
-            },
-                                  text: "NEW",
-                                  backgroundColor: viewModel.color)
+            }
             
         }
-        .toolbar { EditButton() }
+        .toolbar { 
+            EditButton()
+            if let previousRecord = viewModel.previousRecord {
+                
+                Button("Previous Record") {
+                    self.previousRecord = previousRecord
+                }
+            }
+        }
         .sheet(item: $selectedExercise, content: { set in
             ManageSetView(set: set, color: viewModel.color) { set in
                 selectedExercise = nil
@@ -67,17 +82,36 @@ public struct ManageRecordView: View {
             .presentationDetents([.height(280)])
             .padding(.horizontal)
         })
+        .fullScreenCover(item: $previousRecord) {
+            RecordView(record: $0, color: viewModel.color) {
+                self.previousRecord = nil
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                if viewModel.record.sets.isEmpty {
+                    selectedExercise = .init(
+                        unit: .kg,
+                        reps: 0,
+                        weight: 0
+                    )
+                }
+            }
+        }
     }
 }
 
 #Preview {
     
-    let historyForm: HistoryForm = .init(domain: HISTORY_4)
+    let historyForm: HistoryForm = .init(domain: HISTORY_1)
     
-    return ManageRecordView(
-        historyForm: .constant(historyForm),
-        recordId: RECORD_1.id,
-        userRepository: UserRepositoryMock()
-    )
-    .preferredColorScheme(.dark)
+    return NavigationStack {
+        ManageRecordView(
+            historyForm: .constant(historyForm),
+            recordId: RECORD_1.id,
+            userRepository: UserRepositoryMock(),
+            historyRepository: HistoryRepositoryMock()
+        )
+        .preferredColorScheme(.dark)
+    }
 }

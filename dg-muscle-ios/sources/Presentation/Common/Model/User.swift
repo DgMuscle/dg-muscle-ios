@@ -8,7 +8,9 @@
 import Foundation
 import Domain
 
-public struct User {
+public struct User: Hashable, Identifiable {
+    public var id: String { uid }
+    
     public let uid: String
     public let displayName: String?
     public let backgroundImageURL: URL?

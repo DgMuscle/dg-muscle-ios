@@ -35,6 +35,7 @@ struct ManageSetView: View {
                     } label: {
                         Image(systemName: "plus")
                             .foregroundStyle(color)
+                            .font(.title)
                     }
                     
                     Button {
@@ -42,6 +43,7 @@ struct ManageSetView: View {
                     } label: {
                         Image(systemName: "minus")
                             .foregroundStyle(color)
+                            .font(.title)
                     }
                 }
             }
@@ -65,6 +67,7 @@ struct ManageSetView: View {
                     } label: {
                         Image(systemName: "plus")
                             .foregroundStyle(color)
+                            .font(.title)
                     }
                     
                     Button {
@@ -72,6 +75,7 @@ struct ManageSetView: View {
                     } label: {
                         Image(systemName: "minus")
                             .foregroundStyle(color)
+                            .font(.title)
                     }
                 }
             }
@@ -79,6 +83,7 @@ struct ManageSetView: View {
             Common.GradientButton(action: {
                 saveAction?(set)
             }, text: "SAVE", backgroundColor: color)
+            .padding(.top, 30)
         }
     }
 }

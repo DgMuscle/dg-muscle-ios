@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import FirebaseMessaging
 import DataLayer
+import Common
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
@@ -44,7 +45,15 @@ func application(_ application: UIApplication, didRegisterForRemoteNotifications
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
         let userInfo = response.notification.request.content.userInfo
         if let destination = userInfo["destination"] as? String {
-            print("dg: destination is \(destination)")
+            
+            if destination == "friend_request" {
+                FriendRepositoryImpl.shared.fetch()
+                URLManager.shared.open(url: "dgmuscle://friend?anchor=request")
+            } else if destination == "friend_list" {
+                FriendRepositoryImpl.shared.fetch()
+                URLManager.shared.open(url: "dgmuscle://friend")
+            }
+            
         }
     }
 }

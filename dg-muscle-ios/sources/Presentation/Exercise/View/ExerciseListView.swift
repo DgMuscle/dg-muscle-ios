@@ -73,8 +73,12 @@ public struct ExerciseListView: View {
                     }
                     .buttonStyle(.borderless)
                 }
+                .scrollIndicators(.hidden)
                 .toolbar {
                     EditButton()
+                    Button("Add") {
+                        addExerciseAction?(nil)
+                    }
                 }
                 .animation(.default, value: viewModel.deletedExercises.isEmpty)
             }

@@ -29,7 +29,6 @@ public final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
             .shared
             .$isLogin
             .removeDuplicates()
-            .debounce(for: 0.5, scheduler: DispatchQueue.global(qos: .background))
             .sink { isLogin in
                 if isLogin {
                     Task {
