@@ -14,19 +14,12 @@ import Common
 public struct MyView: View {
     @StateObject var viewModel: MyViewModel
     
-    private let tapExerciseListItem: (() -> ())?
-    private let tapProfileListItem: (() -> ())?
-    
     public init(
-        userRepository: any UserRepository,
-        tapExerciseListItem: (() -> ())?,
-        tapProfileListItem: (() -> ())?
+        userRepository: any UserRepository
     ) {
         _viewModel = .init(
             wrappedValue: .init(userRepository: userRepository)
         )
-        self.tapExerciseListItem = tapExerciseListItem
-        self.tapProfileListItem = tapProfileListItem
     }
     
     public var body: some View {
@@ -41,7 +34,7 @@ public struct MyView: View {
                     .buttonStyle(.borderless)
                     
                     Button {
-                        tapExerciseListItem?()
+                        URLManager.shared.open(url: "dgmuscle://exercisemanage")
                     } label: {
                         ListItemView(systemName: "dumbbell", text: "Exercise", color: .blue)
                     }
@@ -50,7 +43,7 @@ public struct MyView: View {
             } header: {
                 if let user = viewModel.user {
                     Button {
-                        tapProfileListItem?()
+                        URLManager.shared.open(url: "dgmuscle://profile")
                     } label: {
                         UserItemView(user: user)
                             .padding(.bottom)
@@ -72,9 +65,7 @@ public struct MyView: View {
 
 #Preview {
     return MyView(
-        userRepository: UserRepositoryMock(),
-        tapExerciseListItem: nil,
-        tapProfileListItem: nil
+        userRepository: UserRepositoryMock()
     )
         .preferredColorScheme(.dark)
 }

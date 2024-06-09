@@ -45,12 +45,7 @@ public struct HomeView: View {
                     coordinator?.heatMapColorSelectView()
                 }
                 
-                MyView(
-                    userRepository: userRepository) {
-                        coordinator?.exerciseManage()
-                    } tapProfileListItem: {
-                        coordinator?.profile()
-                    }
+                MyView(userRepository: userRepository)
 
             }
             .ignoresSafeArea()

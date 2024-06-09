@@ -30,6 +30,10 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             switch host {
             case "friend":
                 coordinator?.friendMainView()
+            case "profile":
+                coordinator?.profile()
+            case "exercisemanage":
+                coordinator?.exerciseManage()
             default: break
             }
         }
