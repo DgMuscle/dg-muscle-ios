@@ -85,13 +85,12 @@ public struct MyProfileView: View {
                 
                 HStack {
                     Image(systemName: "pencil").hidden()
-                        .font(.title)
+
                     TextField("Display Name", text: $viewModel.displayName)
                         .multilineTextAlignment(.center)
                         .focused($displayNameFocus)
                         .fontWeight(.black)
                     Image(systemName: "pencil")
-                        .font(.title)
                         .onTapGesture {
                             displayNameFocus.toggle()
                         }

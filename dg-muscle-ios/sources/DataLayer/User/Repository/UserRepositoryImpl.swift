@@ -109,6 +109,7 @@ public final class UserRepositoryImpl: UserRepository {
         }
         
         $_user
+            .debounce(for: 0.5, scheduler: DispatchQueue.main)
             .sink { user in
                 self.isLogin = user != nil
                 Task {

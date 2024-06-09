@@ -18,6 +18,7 @@ final class MyProfileViewModel: ObservableObject {
     @Published var profilePhoto: UIImage?
     @Published var backgroundImage: UIImage?
     @Published var status: Common.StatusView.Status?
+    @Published var link: String
     
     private let user: Common.User
     private let postDisplayNameUsecase: PostDisplayNameUsecase
@@ -48,6 +49,8 @@ final class MyProfileViewModel: ObservableObject {
         let domainColor: Domain.HeatMapColor = getHeatMapColorUsecase.implement()
         let heatMapColor: Common.HeatMapColor = .init(domain: domainColor)
         self.color = heatMapColor.color
+        
+        self.link = user.link?.absoluteString ?? ""
         
         if let url = user.photoURL {
             Task { @MainActor in
