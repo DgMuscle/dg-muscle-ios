@@ -39,6 +39,8 @@ public struct FriendMainView: View {
             )
         }
         .tabViewStyle(.page)
+        .navigationTitle("Friend")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -51,9 +53,11 @@ extension FriendMainView {
 }
 
 #Preview {
-    return FriendMainView(
-        friendRepository: FriendRepositoryMock(),
-        userRepository: UserRepositoryMock()
-    )
-    .preferredColorScheme(.dark)
+    return NavigationStack {
+        FriendMainView(
+            friendRepository: FriendRepositoryMock(),
+            userRepository: UserRepositoryMock()
+        )
+        .preferredColorScheme(.dark)
+    }
 }
