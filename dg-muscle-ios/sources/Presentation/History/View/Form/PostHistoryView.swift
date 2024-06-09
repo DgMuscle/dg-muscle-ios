@@ -68,6 +68,11 @@ public struct PostHistoryView: View {
                 isPresentSelectExercise.toggle()
                 let recordId = viewModel.select(exercise: exercise)
                 setRecordAction?($viewModel.history, recordId)
+            } add: {
+                isPresentSelectExercise.toggle()
+                URLManager.shared.open(url: "dgmuscle://exercisemanage")
+            } close: {
+                isPresentSelectExercise.toggle()
             }
         })
     }
