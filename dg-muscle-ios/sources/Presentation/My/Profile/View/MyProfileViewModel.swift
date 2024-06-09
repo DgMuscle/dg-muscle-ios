@@ -24,6 +24,7 @@ final class MyProfileViewModel: ObservableObject {
     private let postDisplayNameUsecase: PostDisplayNameUsecase
     private let postPhotoURLUsecase: PostPhotoURLUsecase
     private let postBackgroundImageUsecase: PostBackgroundImageUsecase
+    private let postLinkUsecase: PostLinkUsecase
     private let getUserUsecase: GetUserUsecase
     private let signOutUsecase: SignOutUsecase
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
@@ -33,6 +34,7 @@ final class MyProfileViewModel: ObservableObject {
         postDisplayNameUsecase = .init(userRepository: userRepository)
         postPhotoURLUsecase = .init(userRepository: userRepository)
         postBackgroundImageUsecase = .init(userRepository: userRepository)
+        postLinkUsecase = .init(userRepository: userRepository)
         getUserUsecase = .init(userRepository: userRepository)
         signOutUsecase = .init(userRepository: userRepository)
         getHeatMapColorUsecase = .init(userRepository: userRepository)
@@ -78,6 +80,8 @@ final class MyProfileViewModel: ObservableObject {
                 async let displayNameTask: () = postDisplayNameUsecase.implement(displayName: displayName)
                 async let photoTask: () = postPhotoURLUsecase.implement(photo: profilePhoto)
                 async let backgroundImageTask: () = postBackgroundImageUsecase.implement(backgroundImage: backgroundImage)
+                
+                postLinkUsecase.implement(link: .init(string: link))
                 
                 try await displayNameTask
                 try await photoTask

@@ -22,5 +22,6 @@ public protocol UserRepository {
     func updateUser(displayName: String?) async throws
     func updateUser(photo: UIImage?) async throws
     func updateUser(backgroundImage: UIImage?) async throws
+    func updateUser(link: URL?)
     func withDrawal() async -> Error?
 }

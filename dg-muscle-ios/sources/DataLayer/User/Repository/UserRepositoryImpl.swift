@@ -34,6 +34,10 @@ public final class UserRepositoryImpl: UserRepository {
         try await AuthManager().updateUser(displayName: displayName)
     }
     
+    public func updateUser(link: URL?) {
+        _user?.link = link
+    }
+    
     public func updateUser(displayName: String?, photo: UIImage?) async throws {
         _user?.displayName = displayName
         

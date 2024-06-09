@@ -38,6 +38,10 @@ public final class UserRepositoryMock: UserRepository {
         
     }
     
+    public func updateUser(link: URL?) {
+        _user?.link = link
+    }
+    
     public func withDrawal() async -> (any Error)? {
         nil
     }
