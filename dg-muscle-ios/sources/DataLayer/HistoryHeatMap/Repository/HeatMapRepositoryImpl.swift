@@ -24,4 +24,9 @@ public final class HeatMapRepositoryImpl: HeatMapRepository {
             try? FileManagerHelper.shared.save(heatMap, toFile: .heatmap)
         }
     }
+    
+    public func get() throws -> Domain.HeatMapColor {
+        let data = try FileManagerHelper.shared.load(HeatMapColor.self, fromFile: .heatmapColor)
+        return data.domain
+    }
 }
