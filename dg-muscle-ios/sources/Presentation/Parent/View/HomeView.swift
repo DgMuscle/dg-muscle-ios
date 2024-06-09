@@ -51,7 +51,7 @@ public struct HomeView: View {
                     } tapProfileListItem: {
                         coordinator?.profile()
                     } tapFriendListItem: {
-                        print("tap friend")
+                        coordinator?.friendMainView()
                     }
 
             }

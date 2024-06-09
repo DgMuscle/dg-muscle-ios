@@ -19,4 +19,11 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         print("dg: shortcutItem is \(shortcutItem)")
         completionHandler(true)
     }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        for context in URLContexts {
+            let url = context.url.absoluteString
+            print("dg: url is \(url)")
+        }
+    }
 }

@@ -69,4 +69,8 @@ public final class Coordinator {
     func heatMapColorSelectView() {
         path.append(HistoryNavigation(name: .heatMapColor))
     }
+    
+    func friendMainView() {
+        path.append(FriendNavigation(name: .main))
+    }
 }

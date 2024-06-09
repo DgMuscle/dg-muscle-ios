@@ -10,6 +10,7 @@ import Domain
 import Exercise
 import History
 import My
+import Friend
 
 public struct NavigationView: View {
     
@@ -82,6 +83,12 @@ public struct NavigationView: View {
                 switch navigation.name {
                 case .profile:
                     My.MyProfileView(userRepository: userRepository)
+                }
+            }
+            .navigationDestination(for: FriendNavigation.self) { navigation in
+                switch navigation.name {
+                case .main:
+                    Friend.FriendMainView()
                 }
             }
         }
