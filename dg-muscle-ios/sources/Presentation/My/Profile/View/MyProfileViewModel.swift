@@ -73,6 +73,19 @@ final class MyProfileViewModel: ObservableObject {
     @MainActor
     func save() {
         guard saveTask == nil else { return }
+        
+        if link.isEmpty == false {
+            guard let url = URL(string: link) else {
+                status = .error("Link must be url that can be opened")
+                return
+            }
+            
+            guard UIApplication.shared.canOpenURL(url) else {
+                status = .error("Link must be url that can be opened")
+                return
+            }
+        }
+        
         saveTask = Task {
             do {
                 status = .loading

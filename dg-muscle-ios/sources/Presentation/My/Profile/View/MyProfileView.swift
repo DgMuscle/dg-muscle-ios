@@ -15,6 +15,7 @@ public struct MyProfileView: View {
     
     @StateObject var viewModel: MyProfileViewModel
     @FocusState var displayNameFocus
+    @FocusState var linkFocus
     @State var isPresentImagePickerForProfilePhoto: Bool = false
     @State var isPresentImagePickerForBackground: Bool = false
     
@@ -43,12 +44,12 @@ public struct MyProfileView: View {
                 if let status = viewModel.status {
                     
                     switch status {
-                    case .loading, .error:
+                    case .loading:
                         Common.StatusView(status: status)
-                    case .success:
+                    case .success, .error:
                         Common.StatusView(status: status)
                             .onAppear {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                                     viewModel.status = nil
                                 }
                             }
@@ -93,6 +94,19 @@ public struct MyProfileView: View {
                     Image(systemName: "pencil")
                         .onTapGesture {
                             displayNameFocus.toggle()
+                        }
+                }
+                
+                HStack {
+                    Image(systemName: "link").hidden()
+
+                    TextField("Link", text: $viewModel.link)
+                        .multilineTextAlignment(.center)
+                        .focused($linkFocus)
+                        .fontWeight(.black)
+                    Image(systemName: "link")
+                        .onTapGesture {
+                            linkFocus.toggle()
                         }
                 }
                 
