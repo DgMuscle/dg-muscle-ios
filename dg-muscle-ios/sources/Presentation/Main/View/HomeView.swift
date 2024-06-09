@@ -39,9 +39,7 @@ public struct HomeView: View {
                                 historyRepository: historyRepository,
                                 exerciseRepository: exerciseRepository,
                                 heatMapRepository: heatMapRepository,
-                                userRepository: userRepository) { historyId in
-                    coordinator?.historyFormStep1(historyId: historyId)
-                }
+                                userRepository: userRepository)
                 
                 MyView(userRepository: userRepository)
 

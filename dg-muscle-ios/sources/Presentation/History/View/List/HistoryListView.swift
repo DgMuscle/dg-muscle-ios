@@ -14,15 +14,12 @@ import Common
 public struct HistoryListView: View {
     @StateObject var viewModel: HistoryListViewModel
     
-    let tapHistory: ((_ historyId: String?) -> ())?
-    
     public init(
         today: Date,
         historyRepository: any HistoryRepository,
         exerciseRepository: any ExerciseRepository,
         heatMapRepository: any HeatMapRepository,
-        userRepository: any UserRepository,
-        tapHistory: ((_ historyId: String?) -> ())?
+        userRepository: any UserRepository
     ) {
         _viewModel = .init(wrappedValue:
                 .init(
@@ -33,8 +30,6 @@ public struct HistoryListView: View {
                     userRepository: userRepository
                 )
         )
-        
-        self.tapHistory = tapHistory
     }
     
     public var body: some View {
@@ -55,7 +50,7 @@ public struct HistoryListView: View {
                         VStack(spacing: 12) {
                             ForEach(section.histories, id: \.self) { history in
                                 Button {
-                                    tapHistory?(history.id)
+                                    URLManager.shared.open(url: "dgmuscle://history?id=\(history.id)")
                                 } label: {
                                     HistoryItemView(history: history)
                                 }
@@ -82,7 +77,7 @@ public struct HistoryListView: View {
                 HStack {
                     Spacer()
                     Button {
-                        tapHistory?(nil)
+                        URLManager.shared.open(url: "dgmuscle://history")
                     } label: {
                         Image(systemName: "plus")
                             .padding()
@@ -109,7 +104,6 @@ public struct HistoryListView: View {
                            historyRepository: HistoryRepositoryMock(),
                            exerciseRepository: ExerciseRepositoryMock(),
                            heatMapRepository: HeatMapRepositoryMock(),
-                           userRepository: UserRepositoryMock(),
-                           tapHistory: nil)
+                           userRepository: UserRepositoryMock())
     .preferredColorScheme(.dark)
 }

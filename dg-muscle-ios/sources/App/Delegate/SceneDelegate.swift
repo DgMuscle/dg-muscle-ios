@@ -36,6 +36,14 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
                 coordinator?.exerciseManage()
             case "heatmapcolorselect":
                 coordinator?.heatMapColorSelectView()
+            case "history":
+                var historyId: String?
+                if let components = URLComponents(url: url, resolvingAgainstBaseURL: false) {
+                    if let id = components.queryItems?.first(where: { $0.name == "id" })?.value {
+                        historyId = id
+                    }
+                }
+                coordinator?.historyFormStep1(historyId: historyId)
             default: break
             }
         }
