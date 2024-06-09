@@ -17,6 +17,7 @@ public struct User: Hashable, Identifiable {
     public let photoURL: URL?
     public let heatMapColor: HeatMapColor
     public let fcmToken: String?
+    public let link: URL?
     
     public init() {
         uid = UUID().uuidString
@@ -25,6 +26,7 @@ public struct User: Hashable, Identifiable {
         photoURL = nil
         heatMapColor = .green
         fcmToken = nil 
+        link = nil
     }
     
     public init(domain: Domain.User) {
@@ -34,6 +36,7 @@ public struct User: Hashable, Identifiable {
         self.photoURL = domain.photoURL
         self.heatMapColor = .init(domain: domain.heatMapColor)
         self.fcmToken = domain.fcmToken
+        self.link = domain.link
     }
     
     public var domain: Domain.User {
@@ -43,7 +46,8 @@ public struct User: Hashable, Identifiable {
             backgroundImageURL: backgroundImageURL,
             photoURL: photoURL,
             heatMapColor: heatMapColor.domain,
-            fcmToken: fcmToken
+            fcmToken: fcmToken,
+            link: link
         )
     }
 }

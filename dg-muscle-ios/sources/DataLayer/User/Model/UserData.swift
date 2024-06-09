@@ -15,6 +15,7 @@ struct UserData: Codable {
     var photoURL: String?
     var heatmapColor: HeatMapColor?
     var fcmToken: String?
+    var link: String?
     
     init(domain: Domain.User) {
         self.id = domain.uid
@@ -23,6 +24,7 @@ struct UserData: Codable {
         self.photoURL = domain.photoURL?.absoluteString
         self.heatmapColor = .init(domain: domain.heatMapColor)
         self.fcmToken = domain.fcmToken
+        self.link = domain.link?.absoluteString
     }
     
     var domain: Domain.User {
@@ -32,7 +34,8 @@ struct UserData: Codable {
             backgroundImageURL: .init(string: backgroundImageURL ?? ""),
             photoURL: .init(string: photoURL ?? ""),
             heatMapColor: heatmapColor?.domain ?? .green,
-            fcmToken: fcmToken
+            fcmToken: fcmToken,
+            link: .init(string: link ?? "")
         )
     }
 }

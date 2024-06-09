@@ -14,6 +14,7 @@ public struct User {
     public var backgroundImageURL: URL?
     public var heatMapColor: HeatMapColor
     public var fcmToken: String?
+    public var link: URL?
     
     public init(
         uid: String, 
@@ -21,7 +22,8 @@ public struct User {
         backgroundImageURL: URL?,
         photoURL: URL? = nil,
         heatMapColor: HeatMapColor,
-        fcmToken: String?
+        fcmToken: String?,
+        link: URL?
     ) {
         self.uid = uid
         self.displayName = displayName
@@ -29,5 +31,6 @@ public struct User {
         self.photoURL = photoURL
         self.heatMapColor = heatMapColor
         self.fcmToken = fcmToken
+        self.link = link
     }
 }

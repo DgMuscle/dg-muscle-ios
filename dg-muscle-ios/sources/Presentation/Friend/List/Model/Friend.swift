@@ -15,6 +15,7 @@ struct Friend: Hashable {
     var photoURL: URL?
     var backgroundImageURL: URL?
     var heatMapColor: Common.HeatMapColor
+    var link: URL?
     
     init(domain: Domain.User) {
         uid = domain.uid
@@ -22,6 +23,7 @@ struct Friend: Hashable {
         photoURL = domain.photoURL
         backgroundImageURL = domain.backgroundImageURL
         heatMapColor = .init(domain: domain.heatMapColor)
+        link = domain.link
     }
     
     var domain: Domain.User {
@@ -31,7 +33,8 @@ struct Friend: Hashable {
             backgroundImageURL: backgroundImageURL,
             photoURL: photoURL,
             heatMapColor: heatMapColor.domain,
-            fcmToken: nil
+            fcmToken: nil, 
+            link: link
         )
     }
 }
