@@ -34,6 +34,8 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
                 coordinator?.profile()
             case "exercisemanage":
                 coordinator?.exerciseManage()
+            case "heatmapcolorselect":
+                coordinator?.heatMapColorSelectView()
             default: break
             }
         }
