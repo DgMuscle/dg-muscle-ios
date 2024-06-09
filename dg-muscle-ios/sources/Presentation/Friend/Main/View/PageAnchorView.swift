@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Domain
+import MockData
 
 struct PageAnchorView: View {
     
@@ -16,6 +18,16 @@ struct PageAnchorView: View {
     }
     
     @Binding var page: Page
+    @StateObject var viewModel: PageAnchorViewModel
+    private let badgeSize: CGFloat = 5
+    
+    init(
+        page: Binding<Page>,
+        friendRepository: FriendRepository
+    ) {
+        _page = page
+        _viewModel = .init(wrappedValue: .init(friendRepository: friendRepository))
+    }
     
     var body: some View {
         VStack {
@@ -29,6 +41,21 @@ struct PageAnchorView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .foregroundStyle(Color(uiColor: .label))
+                    .overlay {
+                        if page == .request && viewModel.hasRequest {
+                            VStack {
+                                HStack {
+                                    Spacer()
+                                    Circle()
+                                        .fill(Color.red)
+                                        .frame(width: badgeSize, height: badgeSize)
+                                        .offset(x: -20)
+                                }
+                                Spacer()
+                            }
+                            
+                        }
+                    }
                 }
             }
             GeometryReader(content: { geometry in
@@ -58,6 +85,9 @@ struct PageAnchorView: View {
     
     @State var page: PageAnchorView.Page = .friend
     
-    return PageAnchorView(page: $page)
-        .preferredColorScheme(.dark)
+    return PageAnchorView(
+        page: $page,
+        friendRepository: FriendRepositoryMock()
+    )
+    .preferredColorScheme(.dark)
 }

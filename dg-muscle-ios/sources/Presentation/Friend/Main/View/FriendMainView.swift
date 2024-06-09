@@ -27,7 +27,10 @@ public struct FriendMainView: View {
     public var body: some View {
         
         VStack {
-            PageAnchorView(page: $page)
+            PageAnchorView(
+                page: $page,
+                friendRepository: friendRepository
+            )
             TabView(selection: $page) {
                 FriendListView(friendRepository: friendRepository)
                     .tag(PageAnchorView.Page.friend)

@@ -33,7 +33,7 @@ struct SearchUsersView: View {
                 case .success, .error:
                     Common.StatusView(status: status)
                         .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                                 viewModel.status = nil
                             }
                         }
