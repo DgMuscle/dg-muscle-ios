@@ -9,26 +9,24 @@ import SwiftUI
 import Domain
 import MockData
 import Kingfisher
+import Common
 
 public struct MyView: View {
     @StateObject var viewModel: MyViewModel
     
     private let tapExerciseListItem: (() -> ())?
     private let tapProfileListItem: (() -> ())?
-    private let tapFriendListItem: (() -> ())?
     
     public init(
         userRepository: any UserRepository,
         tapExerciseListItem: (() -> ())?,
-        tapProfileListItem: (() -> ())?,
-        tapFriendListItem: (() -> ())?
+        tapProfileListItem: (() -> ())?
     ) {
         _viewModel = .init(
             wrappedValue: .init(userRepository: userRepository)
         )
         self.tapExerciseListItem = tapExerciseListItem
         self.tapProfileListItem = tapProfileListItem
-        self.tapFriendListItem = tapFriendListItem
     }
     
     public var body: some View {
@@ -36,7 +34,7 @@ public struct MyView: View {
             Section {
                 VStack(spacing: 20) {
                     Button {
-                        tapFriendListItem?()
+                        URLManager.shared.open(url: "dgmuscle://friend")
                     } label: {
                         ListItemView(systemName: "person", text: "Friend", color: .green)
                     }
@@ -76,8 +74,7 @@ public struct MyView: View {
     return MyView(
         userRepository: UserRepositoryMock(),
         tapExerciseListItem: nil,
-        tapProfileListItem: nil, 
-        tapFriendListItem: nil
+        tapProfileListItem: nil
     )
         .preferredColorScheme(.dark)
 }

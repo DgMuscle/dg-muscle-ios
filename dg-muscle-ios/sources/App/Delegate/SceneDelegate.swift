@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Presentation
 
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
     
@@ -22,8 +23,15 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         for context in URLContexts {
-            let url = context.url.absoluteString
-            print("dg: url is \(url)")
+            let url = context.url
+            guard let scheme = url.scheme, let host = url.host() else { return }
+            guard scheme == "dgmuscle" else { return }
+            
+            switch host {
+            case "friend":
+                coordinator?.friendMainView()
+            default: break
+            }
         }
     }
 }

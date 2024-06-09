@@ -25,15 +25,15 @@ public final class Coordinator {
         self.historyRepository = historyRepository
     }
     
-    func pop(_ k: Int = 1) {
+    public func pop(_ k: Int = 1) {
         path.removeLast(k)
     }
     
-    func profile() {
+    public func profile() {
         path.append(MyNavigation(name: .profile))
     }
     
-    func historyFormStep1(historyId: String?) {
+    public func historyFormStep1(historyId: String?) {
         /// If historyId is nil, find the today's history first.
         let history: History?
         
@@ -47,7 +47,7 @@ public final class Coordinator {
         path.append(HistoryNavigation(name: .historyFormStep1(history)))
     }
     
-    func historyFormStep2(historyForm: Binding<HistoryForm>, recordId: String) {
+    public func historyFormStep2(historyForm: Binding<HistoryForm>, recordId: String) {
         path.append(
             HistoryNavigation(
                 name: .historyFormStep2(
@@ -58,19 +58,19 @@ public final class Coordinator {
         )
     }
     
-    func addExercise(exercise: Exercise?) {
+    public func addExercise(exercise: Exercise?) {
         path.append(ExerciseNavigation(name: .add(exercise)))
     }
     
-    func exerciseManage() {
+    public func exerciseManage() {
         path.append(ExerciseNavigation(name: .manage))
     }
     
-    func heatMapColorSelectView() {
+    public func heatMapColorSelectView() {
         path.append(HistoryNavigation(name: .heatMapColor))
     }
     
-    func friendMainView() {
+    public func friendMainView() {
         path.append(FriendNavigation(name: .main))
     }
 }
