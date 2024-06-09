@@ -41,24 +41,19 @@ struct DgWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Favorite Emoji:")
-            Text(entry.configuration.favoriteEmoji)
-        }
+        HeatMapView()
     }
 }
 
 struct DgWidget: Widget {
     let kind: String = "DgWidget"
-
+    
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
             DgWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
+        .supportedFamilies([.systemMedium])
     }
 }
 
@@ -76,7 +71,7 @@ extension ConfigurationAppIntent {
     }
 }
 
-#Preview(as: .systemSmall) {
+#Preview(as: .systemMedium) {
     DgWidget()
 } timeline: {
     SimpleEntry(date: .now, configuration: .smiley)
