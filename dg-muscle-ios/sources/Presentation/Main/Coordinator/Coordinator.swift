@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import Domain
 import History
+import Friend
 
 public var coordinator: Coordinator?
 
@@ -70,7 +71,7 @@ public final class Coordinator {
         path.append(HistoryNavigation(name: .heatMapColor))
     }
     
-    public func friendMainView() {
-        path.append(FriendNavigation(name: .main))
+    public func friendMainView(anchor: PageAnchorView.Page) {
+        path.append(FriendNavigation(name: .main(anchor) ))
     }
 }

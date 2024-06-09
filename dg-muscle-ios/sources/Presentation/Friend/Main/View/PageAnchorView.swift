@@ -9,9 +9,9 @@ import SwiftUI
 import Domain
 import MockData
 
-struct PageAnchorView: View {
+public struct PageAnchorView: View {
     
-    enum Page: String, Hashable, CaseIterable {
+    public enum Page: String, Hashable, CaseIterable {
         case friend = "Friend"
         case search = "Search"
         case request = "Request"
@@ -29,7 +29,7 @@ struct PageAnchorView: View {
         _viewModel = .init(wrappedValue: .init(friendRepository: friendRepository))
     }
     
-    var body: some View {
+    public var body: some View {
         VStack {
             HStack {
                 ForEach(Page.allCases, id: \.self) { page in

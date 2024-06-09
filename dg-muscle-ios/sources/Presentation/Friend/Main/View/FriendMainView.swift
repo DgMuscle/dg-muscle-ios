@@ -14,14 +14,16 @@ public struct FriendMainView: View {
     private let friendRepository: FriendRepository
     private let userRepository: UserRepository
     
-    @State private var page: PageAnchorView.Page = .friend
+    @State var page: PageAnchorView.Page
     
     public init(
         friendRepository: FriendRepository,
-        userRepository: UserRepository
+        userRepository: UserRepository,
+        page: PageAnchorView.Page
     ) {
         self.friendRepository = friendRepository
         self.userRepository = userRepository
+        self.page = page
     }
     
     public var body: some View {
@@ -57,7 +59,8 @@ public struct FriendMainView: View {
     return NavigationStack {
         FriendMainView(
             friendRepository: FriendRepositoryMock(),
-            userRepository: UserRepositoryMock()
+            userRepository: UserRepositoryMock(), 
+            page: .friend
         )
         .preferredColorScheme(.dark)
     }

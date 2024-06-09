@@ -6,13 +6,23 @@
 //
 
 import Foundation
+import Friend
 
 public struct FriendNavigation: Hashable {
+    public static func == (lhs: FriendNavigation, rhs: FriendNavigation) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    let id = UUID().uuidString
     let name: Name
 }
 
 extension FriendNavigation {
     public enum Name {
-        case main
+        case main(PageAnchorView.Page)
     }
 }

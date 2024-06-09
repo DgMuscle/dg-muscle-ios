@@ -90,10 +90,11 @@ public struct NavigationView: View {
             }
             .navigationDestination(for: FriendNavigation.self) { navigation in
                 switch navigation.name {
-                case .main:
+                case .main(let anchor):
                     Friend.FriendMainView(
                         friendRepository: friendRepository,
-                        userRepository: userRepository
+                        userRepository: userRepository, 
+                        page: anchor
                     )
                 }
             }

@@ -7,6 +7,8 @@
 
 import UIKit
 import Presentation
+import Friend
+import Common
 
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
     
@@ -29,7 +31,21 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             
             switch host {
             case "friend":
-                coordinator?.friendMainView()
+                var anchor: PageAnchorView.Page = .friend
+                
+                let anchorString = URLManager.shared.getParameter(url: url, name: "anchor")
+                
+                switch anchorString {
+                case "friend":
+                    anchor = .friend
+                case "request":
+                    anchor = .request
+                case "search":
+                    anchor = .search
+                default: break
+                }
+                
+                coordinator?.friendMainView(anchor: anchor)
             case "profile":
                 coordinator?.profile()
             case "exercisemanage":
@@ -37,12 +53,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             case "heatmapcolorselect":
                 coordinator?.heatMapColorSelectView()
             case "history":
-                var historyId: String?
-                if let components = URLComponents(url: url, resolvingAgainstBaseURL: false) {
-                    if let id = components.queryItems?.first(where: { $0.name == "id" })?.value {
-                        historyId = id
-                    }
-                }
+                let historyId = URLManager.shared.getParameter(url: url, name: "id")
                 coordinator?.historyFormStep1(historyId: historyId)
             default: break
             }
