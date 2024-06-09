@@ -20,19 +20,22 @@ public struct NavigationView: View {
     let exerciseRepository: ExerciseRepository
     let heatMapRepository: HeatMapRepository
     let userRepository: UserRepository
+    let friendRepository: FriendRepository
     
     public init(
         today: Date,
         historyRepository: HistoryRepository,
         exerciseRepository: ExerciseRepository,
         heatMapRepository: HeatMapRepository,
-        userRepository: UserRepository
+        userRepository: UserRepository,
+        friendRepository: FriendRepository
     ) {
         self.today = today
         self.historyRepository = historyRepository
         self.exerciseRepository = exerciseRepository
         self.heatMapRepository = heatMapRepository
         self.userRepository = userRepository
+        self.friendRepository = friendRepository
     }
     
     public var body: some View {
@@ -88,7 +91,10 @@ public struct NavigationView: View {
             .navigationDestination(for: FriendNavigation.self) { navigation in
                 switch navigation.name {
                 case .main:
-                    Friend.FriendMainView()
+                    Friend.FriendMainView(
+                        friendRepository: friendRepository,
+                        userRepository: userRepository
+                    )
                 }
             }
         }

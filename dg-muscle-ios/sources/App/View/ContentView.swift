@@ -29,7 +29,8 @@ struct ContentView: View {
                     historyRepository: HistoryRepositoryImpl.shared,
                     exerciseRepository: ExerciseRepositoryImpl.shared,
                     heatMapRepository: HeatMapRepositoryImpl.shared,
-                    userRepository: UserRepositoryImpl.shared
+                    userRepository: UserRepositoryImpl.shared, 
+                    friendRepository: FriendRepositoryImpl.shared
                 )
             } else {
                 AuthenticationView(

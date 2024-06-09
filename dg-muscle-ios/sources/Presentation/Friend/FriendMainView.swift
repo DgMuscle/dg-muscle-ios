@@ -6,14 +6,54 @@
 //
 
 import SwiftUI
+import Domain
+import MockData
 
 public struct FriendMainView: View {
     
-    public init() {
-        
+    private let friendRepository: FriendRepository
+    private let userRepository: UserRepository
+    
+    @State private var page: Page = .friend
+    
+    public init(
+        friendRepository: FriendRepository,
+        userRepository: UserRepository
+    ) {
+        self.friendRepository = friendRepository
+        self.userRepository = userRepository
     }
     
     public var body: some View {
-        Text("FriendMainView")
+        TabView(selection: $page) {
+            FriendListView(friendRepository: friendRepository)
+            
+            SearchUsersView(
+                friendRepository: friendRepository,
+                userRepository: userRepository
+            )
+            
+            RequestListView(
+                friendRepository: friendRepository,
+                userRepository: userRepository
+            )
+        }
+        .tabViewStyle(.page)
     }
+}
+
+extension FriendMainView {
+    enum Page: Hashable {
+        case friend
+        case search
+        case request
+    }
+}
+
+#Preview {
+    return FriendMainView(
+        friendRepository: FriendRepositoryMock(),
+        userRepository: UserRepositoryMock()
+    )
+    .preferredColorScheme(.dark)
 }
