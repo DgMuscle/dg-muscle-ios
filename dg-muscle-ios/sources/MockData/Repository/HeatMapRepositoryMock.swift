@@ -15,4 +15,8 @@ public final class HeatMapRepositoryMock: HeatMapRepository {
     }
     
     public func post(heatMap: [Domain.HeatMap]) { }
+    
+    public func get() throws -> Domain.HeatMapColor {
+        return .blue
+    }
 }

@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import Domain
+import WidgetKit
 
 public final class HistoryRepositoryImpl: Domain.HistoryRepository {
     public static let shared = HistoryRepositoryImpl()
@@ -16,6 +17,7 @@ public final class HistoryRepositoryImpl: Domain.HistoryRepository {
     @Published var _histories: [Domain.History] = [] {
         didSet {
             postMyHistoriesToFileManager(histories: _histories)
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
     

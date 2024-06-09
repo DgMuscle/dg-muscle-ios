@@ -107,6 +107,7 @@ func createWidget() -> Target {
         entitlements: "\(widgetName)/\(widgetName).entitlements",
         dependencies: [
             .target(name: Layer.DataLayer.rawValue, condition: nil),
+            .target(name: Layer.Domain.rawValue, condition: nil),
             .target(name: Presentation.HistoryHeatMap.rawValue, condition: nil)
         ],
         settings: .settings(configurations: [
