@@ -89,11 +89,6 @@ public final class UserRepositoryImpl: UserRepository {
         try FileManagerHelper.shared.save(heatMapColor, toFile: .heatmapColor)
     }
     
-    private func get() throws -> Domain.HeatMapColor {
-        let data = try FileManagerHelper.shared.load(HeatMapColor.self, fromFile: .heatmapColor)
-        return data.domain
-    }
-    
     public func post(fcmToken: String) {
         _user?.fcmToken = fcmToken
     }
