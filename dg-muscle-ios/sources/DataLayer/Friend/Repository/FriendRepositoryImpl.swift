@@ -103,6 +103,19 @@ public final class FriendRepositoryImpl: FriendRepository {
         )
     }
     
+    public func fetch() {
+        Task {
+            async let getFriendsTask = self.getFriendsFromServer()
+            async let getRequestsTask = self.getRequestsFromServer()
+            
+            let friends = try await getFriendsTask
+            let requests = try await getRequestsTask
+              
+            self._friends = friends
+            self._requests = requests
+        }
+    }
+    
     private func bind() {
         // fetch friends
         // fetch requests
@@ -114,16 +127,7 @@ public final class FriendRepositoryImpl: FriendRepository {
             .delay(for: 0.5, scheduler: DispatchQueue.main)
             .filter({ $0 })
             .sink { _ in
-                Task {
-                    async let getFriendsTask = self.getFriendsFromServer()
-                    async let getRequestsTask = self.getRequestsFromServer()
-                    
-                    let friends = try await getFriendsTask
-                    let requests = try await getRequestsTask
-                      
-                    self._friends = friends
-                    self._requests = requests
-                }
+                self.fetch()
             }
             .store(in: &cancellables)
     }

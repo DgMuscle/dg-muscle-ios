@@ -47,8 +47,10 @@ func application(_ application: UIApplication, didRegisterForRemoteNotifications
         if let destination = userInfo["destination"] as? String {
             
             if destination == "friend_request" {
+                FriendRepositoryImpl.shared.fetch()
                 URLManager.shared.open(url: "dgmuscle://friend?anchor=request")
             } else if destination == "friend_list" {
+                FriendRepositoryImpl.shared.fetch()
                 URLManager.shared.open(url: "dgmuscle://friend")
             }
             
