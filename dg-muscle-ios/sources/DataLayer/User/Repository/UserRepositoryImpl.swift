@@ -135,6 +135,8 @@ public final class UserRepositoryImpl: UserRepository {
             let photoURL: String?
             let fcmtoken: String?
             let heatmapColor: String
+            let backgroundImageURL: String?
+            let link: String?
         }
         
         let user: UserData = .init(domain: user)
@@ -144,7 +146,9 @@ public final class UserRepositoryImpl: UserRepository {
             displayName: user.displayName ?? "",
             photoURL: user.photoURL,
             fcmtoken: user.fcmToken,
-            heatmapColor: user.heatmapColor?.rawValue ?? "green"
+            heatmapColor: user.heatmapColor?.rawValue ?? "green", 
+            backgroundImageURL: user.backgroundImageURL,
+            link: user.link
         )
         
         let _: DataResponse = try await APIClient.shared.request(
