@@ -9,6 +9,7 @@ import UIKit
 import Presentation
 import Friend
 import Common
+import DataLayer
 
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
     
@@ -18,7 +19,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         }
         
         if let urlContext = connectionOptions.urlContexts.first {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.handleURL(url: urlContext.url)
             }
         }
@@ -35,6 +36,12 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     }
     
     private func handleURL(url: URL) {
+        if UserRepositoryImpl.shared.isReady == false {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.handleURL(url: url)
+            }
+            return
+        }
         guard let scheme = url.scheme, let host = url.host() else { return }
         guard scheme == "dgmuscle" else { return }
         
