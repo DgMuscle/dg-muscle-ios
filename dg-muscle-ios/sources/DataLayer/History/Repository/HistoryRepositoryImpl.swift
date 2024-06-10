@@ -16,6 +16,7 @@ public final class HistoryRepositoryImpl: Domain.HistoryRepository {
     private var cancellables = Set<AnyCancellable>()
     @Published var _histories: [Domain.History] = [] {
         didSet {
+            guard _histories.isEmpty == false else { return }
             postMyHistoriesToFileManager(histories: _histories)
             WidgetCenter.shared.reloadAllTimelines()
         }
@@ -72,13 +73,15 @@ public final class HistoryRepositoryImpl: Domain.HistoryRepository {
             .$isLogin
             .removeDuplicates()
             .sink { isLogin in
-                if isLogin {
-                    Task {
+                Task {
+                    if isLogin {
                         self._histories = await self.getMyHistoriesFromFilemanager()
                         self._histories = try await self.getMyHistoriesFromServer(lastId: nil, limit: 365)
+                    } else {
+                        self._histories = []
+                        self.postMyHistoriesToFileManager(histories: [])
+                        WidgetCenter.shared.reloadAllTimelines()
                     }
-                } else {
-                    self._histories = []
                 }
             }
             .store(in: &cancellables)
