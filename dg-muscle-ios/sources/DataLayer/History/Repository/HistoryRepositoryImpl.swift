@@ -77,9 +77,11 @@ public final class HistoryRepositoryImpl: Domain.HistoryRepository {
                     if isLogin {
                         self._histories = await self.getMyHistoriesFromFilemanager()
                         self._histories = try await self.getMyHistoriesFromServer(lastId: nil, limit: 365)
+                        if self._histories.isEmpty {
+                            self.postMyHistoriesToFileManager(histories: [])
+                        }
                     } else {
                         self._histories = []
-                        self.postMyHistoriesToFileManager(histories: [])
                         WidgetCenter.shared.reloadAllTimelines()
                     }
                 }
