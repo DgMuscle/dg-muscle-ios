@@ -18,7 +18,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         }
         
         if let urlContext = connectionOptions.urlContexts.first {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                 self.handleURL(url: urlContext.url)
             }
         }

@@ -16,6 +16,7 @@ public final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
     private var cancellables = Set<AnyCancellable>()
     @Published var _exercises: [Domain.Exercise] = [] {
         didSet {
+            guard _exercises.isEmpty == false else { return }
             saveMyExercisesToFileManager(exercises: _exercises)
         }
     }
@@ -34,6 +35,9 @@ public final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
                     Task {
                         self._exercises = await self.geyMyExercisesFromFileManager()
                         self._exercises = try await self.getMyExercisesFromServer()
+                        if self._exercises.isEmpty {
+                            self.saveMyExercisesToFileManager(exercises: [])
+                        }
                     }
                 } else {
                     self._exercises = []
