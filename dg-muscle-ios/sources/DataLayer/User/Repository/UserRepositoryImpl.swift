@@ -19,7 +19,7 @@ public final class UserRepositoryImpl: UserRepository {
     private var cancellables = Set<AnyCancellable>()
     
     @Published var _user: Domain.User? = nil
-    @Published var isLogin: Bool = true
+    @Published var isLogin: Bool = false
     
     private init() {
         bind()
