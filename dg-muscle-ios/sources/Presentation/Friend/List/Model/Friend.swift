@@ -9,7 +9,8 @@ import Foundation
 import Domain
 import Common
 
-struct Friend: Hashable {
+struct Friend: Hashable, Identifiable {
+    var id: String { uid }
     let uid: String
     var displayName: String?
     var photoURL: URL?
