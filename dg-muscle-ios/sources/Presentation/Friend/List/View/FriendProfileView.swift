@@ -89,8 +89,7 @@ struct FriendProfileView: View {
             DragGesture()
                 .onChanged { gesture in
                     
-                    let throtte = 50
-                    var newOffset = gesture.translation.height - 50
+                    let newOffset = gesture.translation.height - 50
                     if newOffset >= 0 {
                         offset = newOffset
                     }
