@@ -28,6 +28,7 @@ final class PageAnchorViewModel: ObservableObject {
             .implement()
             .map({ $0.isEmpty })
             .map({ !$0 })
+            .receive(on: DispatchQueue.main)
             .assign(to: \.hasRequest, on: self)
             .store(in: &cancellables)
     }
