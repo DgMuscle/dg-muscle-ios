@@ -15,6 +15,7 @@ struct FriendProfileView: View {
     
     let friend: Friend
     @Binding var selectedFriend: Friend?
+    @State private var offset: CGFloat = 0
     
     private let profileImageSize: CGFloat = 80
     
@@ -62,7 +63,7 @@ struct FriendProfileView: View {
                 
                 Text(friend.displayName ?? friend.id)
                     .fontWeight(.black)
-                    
+                
                 if let link = friend.link {
                     VStack {
                         HStack {
@@ -83,6 +84,27 @@ struct FriendProfileView: View {
                 .padding(.horizontal)
             }
         }
+        .offset(y: offset)
+        .gesture(
+            DragGesture()
+                .onChanged { gesture in
+                    
+                    let throtte = 50
+                    var newOffset = gesture.translation.height - 50
+                    if newOffset >= 0 {
+                        offset = newOffset
+                    }
+                }
+                .onEnded { gesture in
+                    if gesture.translation.height > 400 {
+                        selectedFriend = nil
+                    } else {
+                        withAnimation {
+                            offset = .zero
+                        }
+                    }
+                }
+        )
         
     }
 }
