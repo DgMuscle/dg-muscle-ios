@@ -39,6 +39,10 @@ public final class FriendRepositoryMock: FriendRepository {
         _friends
     }
     
+    public func getHistories(friendId: String) async throws -> [Domain.History] {
+        HistoryRepositoryMock()._histories
+    }
+    
     public func requestFriend(userId: String) async throws {
         
     }
