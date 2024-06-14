@@ -61,4 +61,10 @@ public final class FriendRepositoryMock: FriendRepository {
             _requests.remove(at: index)
         }
     }
+    
+    public func delete(friendId: String) async throws {
+        if let index = _friends.firstIndex(where: { $0.uid == friendId }) {
+            _friends.remove(at: index)
+        }
+    }
 }
