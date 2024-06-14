@@ -117,6 +117,11 @@ public final class FriendRepositoryImpl: FriendRepository {
     }
     
     public func delete(friendId: String) async throws {
+        
+        if let index = _friends.firstIndex(where: { $0.uid == friendId }) {
+            _friends.remove(at: index)
+        }
+        
         let url = FunctionsURL.friend(.delete)
         
         struct body: Codable {
