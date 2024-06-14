@@ -17,6 +17,7 @@ final class SearchUsersViewModel: ObservableObject {
     
     private let searchUsersExceptForMyFriendsUsecase: SearchUsersExceptForMyFriendsUsecase
     private let requestFriendUsecase: RequestFriendUsecase
+    private let subscribeFriendsUsecase: SubscribeFriendsUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
@@ -29,6 +30,8 @@ final class SearchUsersViewModel: ObservableObject {
         )
         
         requestFriendUsecase = .init(friendRepository: friendRepository)
+        
+        subscribeFriendsUsecase = .init(friendRepository: friendRepository)
         
         bind()
     }
@@ -51,9 +54,10 @@ final class SearchUsersViewModel: ObservableObject {
     
     private func bind() {
         $query
+            .combineLatest(subscribeFriendsUsecase.implement())
             .receive(on: DispatchQueue.main)
             .debounce(for: 0.5, scheduler: DispatchQueue.main)
-            .map({ [weak self] query in
+            .map({ [weak self] query, _ in
                 guard let self else { return [] }
                 let domainUsers: [Domain.User] = searchUsersExceptForMyFriendsUsecase.implement(query: query)
                 let users: [Common.User] = domainUsers.map({ .init(domain: $0) })
