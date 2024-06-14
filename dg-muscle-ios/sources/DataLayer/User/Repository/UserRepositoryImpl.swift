@@ -96,7 +96,13 @@ public final class UserRepositoryImpl: UserRepository {
     }
     
     public func post(fcmToken: String) {
-        _user?.fcmToken = fcmToken
+        if _user == nil {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.post(fcmToken: fcmToken)
+            }
+        } else {
+            _user?.fcmToken = fcmToken
+        }
     }
     
     private func bind() {
