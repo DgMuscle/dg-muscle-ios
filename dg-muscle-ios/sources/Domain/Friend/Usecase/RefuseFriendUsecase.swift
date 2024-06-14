@@ -13,6 +13,6 @@ public final class RefuseFriendUsecase {
         self.friendRepository = friendRepository
     }
     public func implement(request: FriendRequest) async throws {
-        try await friendRepository.accept(request: request)
+        try await friendRepository.refuse(request: request)
     }
 }
