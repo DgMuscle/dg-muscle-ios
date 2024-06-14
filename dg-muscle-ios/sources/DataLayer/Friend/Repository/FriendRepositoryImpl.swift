@@ -116,6 +116,20 @@ public final class FriendRepositoryImpl: FriendRepository {
         }
     }
     
+    public func delete(friendId: String) async throws {
+        let url = FunctionsURL.friend(.delete)
+        
+        struct body: Codable {
+            let friendId: String
+        }
+        
+        let _: DataResponse = try await APIClient.shared.request(
+            method: .delete,
+            url: url,
+            body: body(friendId: friendId)
+        )
+    }
+    
     private func bind() {
         // fetch friends
         // fetch requests
