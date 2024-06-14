@@ -3,11 +3,11 @@
 효율적으로 비교하고 기록하여 점진적 과부하를 이루고 근 성장을 이루자는 목적의 프로젝트. 
 
 ## Environment
-- macos-14
-- xcode-version: 15.4
-- tuist   4.12.1
-- mise 2024.5.5 macos-arm64 (7e8dab5 2024-05-12)
-
+- xcodes: 15.4 
+- ruby: 3.3.2(managed by rbenv)
+- bundler: 2.5.9
+- mise: 2024.5.9 macos-arm64 (b9089f8 2024-05-12)
+- tuist: 4.12.1
 
 ## Tech
 <table border="0">
