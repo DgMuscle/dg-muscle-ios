@@ -62,6 +62,9 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             }
             
             coordinator?.friendMainView(anchor: anchor)
+        case "friendhistory":
+            guard let friendId = URLManager.shared.getParameter(url: url, name: "id") else { return }
+            coordinator?.friendHistory(friendId: friendId)
         case "profile":
             coordinator?.profile()
         case "exercisemanage":

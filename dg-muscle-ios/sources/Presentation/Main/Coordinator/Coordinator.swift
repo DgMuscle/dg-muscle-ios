@@ -74,4 +74,8 @@ public final class Coordinator {
     public func friendMainView(anchor: PageAnchorView.Page) {
         path.append(FriendNavigation(name: .main(anchor) ))
     }
+    
+    public func friendHistory(friendId: String) {
+        path.append(FriendNavigation(name: .history(friendId)))
+    }
 }

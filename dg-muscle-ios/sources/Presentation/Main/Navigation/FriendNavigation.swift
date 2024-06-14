@@ -24,5 +24,6 @@ public struct FriendNavigation: Hashable {
 extension FriendNavigation {
     public enum Name {
         case main(PageAnchorView.Page)
+        case history(String)
     }
 }
