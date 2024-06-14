@@ -25,6 +25,11 @@ struct FriendListView: View {
                     .onTapGesture {
                         selectedFriend = friend
                     }
+                    .contextMenu {
+                        Button("delete") {
+                            viewModel.delete(friendId: friend.id)
+                        }
+                    }
             }
         }
         .scrollIndicators(.hidden)
