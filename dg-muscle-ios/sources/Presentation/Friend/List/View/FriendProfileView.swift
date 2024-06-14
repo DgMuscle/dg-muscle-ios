@@ -78,6 +78,7 @@ struct FriendProfileView: View {
                 }
                 
                 GradientButton(action: {
+                    selectedFriend = nil
                     URLManager.shared.open(url: "dgmuscle://friendhistory?id=\(friend.uid)")
                 }, text: "Workout History", backgroundColor: friend.heatMapColor.color)
                 .padding(.horizontal)
