@@ -16,7 +16,8 @@ final class FriendHistoryViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init(
-        friendRepository: any FriendRepository
+        friendRepository: any FriendRepository,
+        friendId: String
     ) {
         getFriendHistoriesUsecase = .init(friendRepository: friendRepository)
     }

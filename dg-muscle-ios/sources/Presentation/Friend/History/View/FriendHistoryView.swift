@@ -14,9 +14,13 @@ public struct FriendHistoryView: View {
     @StateObject var viewModel: FriendHistoryViewModel
     
     public init(
-        friendRepository: any FriendRepository
+        friendRepository: any FriendRepository,
+        friendId: String
     ) {
-        _viewModel = .init(wrappedValue: .init(friendRepository: friendRepository))
+        _viewModel = .init(wrappedValue: .init(
+            friendRepository: friendRepository,
+            friendId: friendId
+        ))
     }
     
     public var body: some View {
@@ -26,7 +30,8 @@ public struct FriendHistoryView: View {
 
 #Preview {
     return FriendHistoryView(
-        friendRepository: FriendRepositoryMock()
+        friendRepository: FriendRepositoryMock(),
+        friendId: ""
     ).preferredColorScheme(
         .dark
     )
