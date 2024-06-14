@@ -17,6 +17,7 @@ public protocol FriendRepository {
     func getFriends() -> [User]
     func getUsers() -> [User]
     func getHistories(friendId: String) async throws -> [History]
+    func getExercises(friendId: String) async throws -> [Exercise]
     func requestFriend(userId: String) async throws
     func accept(request: FriendRequest) async throws
     func refuse(request: FriendRequest) async throws

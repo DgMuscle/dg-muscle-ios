@@ -22,6 +22,7 @@ public final class FriendRepositoryImpl: FriendRepository {
     @Published var _users: [Domain.User] = []
     
     private var friendsHistories: [String: [Domain.History]] = [:]
+    private var friendsExercises: [String: [Domain.Exercise]] = [:]
     
     private var cancellables = Set<AnyCancellable>()
     private init() {
@@ -54,6 +55,21 @@ public final class FriendRepositoryImpl: FriendRepository {
             friendsHistories[friendId] = domain
             return domain
         }
+    }
+    
+    public func getExercises(friendId: String) async throws -> [Domain.Exercise] {
+        
+        if let exercises = friendsExercises[friendId] {
+            return exercises
+        }
+        
+        let url = FunctionsURL.exercise(.getexercisesfromuid) + "?uid=\(friendId)"
+        let exercises: [Exercise] = try await APIClient.shared.request(url: url)
+        let domain: [Domain.Exercise] = exercises.map({ $0.domain })
+        
+        friendsExercises[friendId] = domain
+        
+        return domain
     }
     
     public func requestFriend(userId: String) async throws {
