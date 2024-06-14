@@ -19,4 +19,5 @@ public protocol FriendRepository {
     func requestFriend(userId: String) async throws
     func accept(request: FriendRequest) async throws
     func refuse(request: FriendRequest) async throws
+    func delete(friendId: String) async throws
 }
