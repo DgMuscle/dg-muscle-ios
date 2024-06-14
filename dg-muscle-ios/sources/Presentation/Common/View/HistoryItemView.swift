@@ -7,11 +7,15 @@
 
 import SwiftUI
 
-struct HistoryItemView: View {
+public struct HistoryItemView: View {
     
     let history: HistoryItem
     
-    var body: some View {
+    public init(history: HistoryItem) {
+        self.history = history
+    }
+    
+    public var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 coloredText

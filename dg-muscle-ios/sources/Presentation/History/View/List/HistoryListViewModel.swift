@@ -73,7 +73,13 @@ final class HistoryListViewModel: ObservableObject {
         let dateFormatter = DateFormatter()
         
         for (month, histories) in grouped {
-            let historyList: [History] = histories.map({ convert(history: $0, exercises: exercises, color: color) })
+            let historyList: [Common.HistoryItem] = histories.map({
+                .init(
+                    history: $0,
+                    exercises: exercises,
+                    color: color
+                )
+            })
             dateFormatter.dateFormat = "yyyyMM"
             let date = dateFormatter.date(from: month) ?? Date()
             dateFormatter.dateFormat = "MMM y"
@@ -91,44 +97,6 @@ final class HistoryListViewModel: ObservableObject {
         data.sort(by: { $0.yyyyMM > $1.yyyyMM })
         
         self.historiesGroupedByMonth = data
-    }
-    
-    private func convert(history: Domain.History, exercises: [Domain.Exercise], color: Color) -> History {
-        
-        var parts = Set<Domain.Exercise.Part>()
-        let exerciseIdList: [String] = history.records.map({ $0.exerciseId })
-        
-        
-        for id in exerciseIdList {
-            if let exercise = exercises.first(where: { $0.id == id }) {
-                exercise.parts.forEach({ parts.insert($0) })
-            }
-        }
-        
-        return .init(id: history.id,
-                     date: history.date,
-                     parts: parts.map({ convert(part: $0) }).sorted(),
-                     volume: history.volume,
-                     color: color,
-                     time: nil,
-                     kcal: nil)
-    }
-    
-    private func convert(part: Domain.Exercise.Part) -> String {
-        switch part {
-        case .arm:
-            return "Arm"
-        case .back:
-            return "Back"
-        case .chest:
-            return "Chest"
-        case .core:
-            return "Core"
-        case .leg:
-            return "Leg"
-        case .shoulder:
-            return "Shoulder"
-        }
     }
 }
 

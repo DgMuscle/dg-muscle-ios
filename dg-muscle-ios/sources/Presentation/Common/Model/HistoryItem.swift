@@ -9,16 +9,16 @@ import Foundation
 import SwiftUI
 import Domain
 
-struct HistoryItem: Hashable {
-    let id: String
-    let date: Date
-    let parts: [String]
-    let volume: Double
-    let color: Color
-    let time: Double?
-    let kcal: Double?
+public struct HistoryItem: Hashable {
+    public let id: String
+    public let date: Date
+    public let parts: [String]
+    public let volume: Double
+    public let color: Color
+    public let time: Double?
+    public let kcal: Double?
     
-    init(id: String, date: Date, parts: [String], volume: Double, color: Color, time: Double?, kcal: Double?) {
+    public init(id: String, date: Date, parts: [String], volume: Double, color: Color, time: Double?, kcal: Double?) {
         self.id = id
         self.date = date
         self.parts = parts
@@ -28,7 +28,7 @@ struct HistoryItem: Hashable {
         self.kcal = kcal
     }
     
-    init(history: Domain.History, exercises: [Domain.Exercise], color: Color) {
+    public init(history: Domain.History, exercises: [Domain.Exercise], color: Color) {
         self = Self.convert(history: history, exercises: exercises, color: color)
     }
     

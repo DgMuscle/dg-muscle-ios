@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import Common
 
 struct HistorySection: Hashable {
     let id: String
     let yearMonth: String
-    let histories: [History]
+    let histories: [Common.HistoryItem]
     let yyyyMM: String
 }
