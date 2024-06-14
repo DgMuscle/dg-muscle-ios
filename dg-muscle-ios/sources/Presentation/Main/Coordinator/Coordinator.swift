@@ -36,7 +36,7 @@ public final class Coordinator {
     
     public func historyFormStep1(historyId: String?) {
         /// If historyId is nil, find the today's history first.
-        let history: History?
+        let history: Domain.History?
         
         if let historyId {
             history = historyRepository.get(historyId: historyId)
