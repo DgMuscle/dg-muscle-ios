@@ -21,6 +21,8 @@ public final class FriendRepositoryImpl: FriendRepository {
     public var users: AnyPublisher<[Domain.User], Never> { $_users.eraseToAnyPublisher() }
     @Published var _users: [Domain.User] = []
     
+    private var friendsHistories: [String: [Domain.History]] = [:]
+    
     private var cancellables = Set<AnyCancellable>()
     private init() {
         Task {
@@ -40,6 +42,18 @@ public final class FriendRepositoryImpl: FriendRepository {
     
     public func getFriends() -> [Domain.User] {
         _friends
+    }
+    
+    public func getHistories(friendId: String) async throws -> [Domain.History] {
+        if let histories = friendsHistories[friendId] {
+            return histories
+        } else {
+            let url = FunctionsURL.history(.getfriendhistories) + "?friendId=\(friendId)"
+            let histories: [History] = try await APIClient.shared.request(url: url)
+            let domain = histories.map({ $0.domain })
+            friendsHistories[friendId] = domain
+            return domain
+        }
     }
     
     public func requestFriend(userId: String) async throws {
