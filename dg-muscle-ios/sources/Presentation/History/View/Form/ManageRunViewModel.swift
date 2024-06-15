@@ -25,6 +25,7 @@ final class ManageRunViewModel: ObservableObject {
     @Published var startTime: String = ""
     @Published var endTime: String = ""
     @Published var color: Common.HeatMapColor
+    @Published var statusView: Common.StatusView.Status? = nil
     
     @Binding var run: RunPresentation
     
@@ -76,6 +77,12 @@ final class ManageRunViewModel: ObservableObject {
     }
     
     private func start() {
+        
+        if velocity == 0 {
+            statusView = .error("Configure Velocity before run.")
+            return
+        }
+        
         let now = Date()
         
         if let index = runPieces.indices.last {

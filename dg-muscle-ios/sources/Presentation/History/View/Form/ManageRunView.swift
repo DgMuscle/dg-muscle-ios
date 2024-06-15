@@ -8,6 +8,7 @@
 import SwiftUI
 import MockData
 import Domain
+import Common
 
 public struct ManageRunView: View {
     
@@ -27,6 +28,16 @@ public struct ManageRunView: View {
     
     public var body: some View {
         VStack(spacing: 20) {
+            
+            if let status = viewModel.statusView {
+                Common.StatusView(status: status)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            viewModel.statusView = nil
+                        }
+                    }
+            }
+            
             Text(String(viewModel.velocity) + " km/h")
                 .font(.largeTitle)
                 .fontWeight(.black)
@@ -65,6 +76,7 @@ public struct ManageRunView: View {
         }
         .padding()
         .animation(.default, value: viewModel.status)
+        .animation(.default, value: viewModel.statusView)
     }
 }
 
