@@ -10,9 +10,22 @@ import Domain
 
 struct RunPiece: Hashable {
     let id: String
-    let velocity: Double
-    let start: Date?
-    let end: Date?
+    var velocity: Double
+    var start: Date?
+    var end: Date?
+    
+    var duration: Int {
+        guard let start else { return 0 }
+        let end = end ?? Date()
+        return Int(end.timeIntervalSince1970 - start.timeIntervalSince1970)
+    }
+    
+    init(velocity: Double, start: Date) {
+        id = UUID().uuidString
+        self.velocity = velocity
+        self.start = start
+        self.end = nil
+    }
     
     init(domain: Domain.RunPiece) {
         id = domain.id

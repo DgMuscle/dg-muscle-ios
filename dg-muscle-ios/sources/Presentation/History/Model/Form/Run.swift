@@ -10,7 +10,7 @@ import Domain
 
 struct Run {
     let id: String
-    let pieces: [RunPiece]
+    var pieces: [RunPiece]
     
     var start: Date? {
         pieces.first?.start
@@ -18,6 +18,10 @@ struct Run {
     
     var end: Date? {
         pieces.last?.end ?? pieces.last?.start
+    }
+    
+    var duration: Int {
+        pieces.map({ $0.duration }).reduce(0, +)
     }
     
     init(domain: Domain.Run) {
