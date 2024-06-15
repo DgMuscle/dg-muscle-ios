@@ -28,7 +28,16 @@ public struct HistoryDetailView: View {
     }
     
     public var body: some View {
-        Text("HistoryDetailView")
+        List {
+            if let history = viewModel.history {
+                ForEach(history.records, id: \.self) { record in
+                    RecordSectionView(record: record, color: viewModel.color)
+                }
+            } else {
+                Text("Can't find data")
+            }
+        }
+        .scrollIndicators(.hidden)
     }
 }
 
@@ -36,7 +45,7 @@ public struct HistoryDetailView: View {
     let view = HistoryDetailView(
         friendRepository: FriendRepositoryMock(),
         friendId: USER_DG.uid,
-        historyId: HISTORY_1.id
+        historyId: HISTORY_4.id
     )
     
     return view.preferredColorScheme(.dark)
