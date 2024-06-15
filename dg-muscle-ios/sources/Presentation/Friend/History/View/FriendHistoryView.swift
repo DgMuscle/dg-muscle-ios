@@ -87,7 +87,7 @@ public struct FriendHistoryView: View {
                 if let profileImage = user.photoURL {
                     KFImage(profileImage)
                         .resizable()
-                        .frame(width: 40, height: 40)
+                        .frame(width: 30, height: 30)
                         .clipShape(Circle())
                 }
                 
