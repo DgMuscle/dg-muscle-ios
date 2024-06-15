@@ -24,11 +24,11 @@ final class ManageRunViewModel: ObservableObject {
     @Published var startTime: String = ""
     @Published var endTime: String = ""
     
-    @Binding var run: Run
+    @Binding var run: RunPresentation
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(run: Binding<Run>) {
+    init(run: Binding<RunPresentation>) {
         self._run = run
         self.runPieces = run.pieces.wrappedValue
         self.velocity = run.pieces.wrappedValue.last?.velocity ?? 0

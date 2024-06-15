@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-public struct Run {
+public struct RunPresentation {
     public let id: String
     public var pieces: [RunPiece]
     

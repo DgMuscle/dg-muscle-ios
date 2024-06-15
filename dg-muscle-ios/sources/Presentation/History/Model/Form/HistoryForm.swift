@@ -13,7 +13,7 @@ public struct HistoryForm {
     let date: Date
     let memo: String?
     var records: [ExerciseRecord]
-    var run: Run?
+    var run: RunPresentation?
     var volume: Int {
         records.map({ $0.volume }).reduce(0, +)
     }
