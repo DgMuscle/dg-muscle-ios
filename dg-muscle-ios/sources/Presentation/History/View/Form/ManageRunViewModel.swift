@@ -120,16 +120,16 @@ final class ManageRunViewModel: ObservableObject {
         result = min(result, 1)
         
         self.runGraphPercentage = result
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "H.m"
+        
+        self.endTime = dateFormatter.string(from: Date())
     }
     
     @objc private func executeEverySecond() {
         if status == .running {
             configureRunGraphPercentage()
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "H.m"
-            
-            self.endTime = dateFormatter.string(from: Date())
         }
     }
 }

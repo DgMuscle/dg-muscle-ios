@@ -37,6 +37,20 @@ struct VelocityChartView: View {
                     x: .value("time", item.start),
                     y: .value("velocity", item.velocity)
                 )
+                .interpolationMethod(.catmullRom)
+                
+                AreaMark(
+                    x: .value("time", item.start),
+                    y: .value("velocity", item.velocity)
+                )
+                .interpolationMethod(.catmullRom)
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [.blue.opacity(0.1), .blue.opacity(0.3)],
+                        startPoint: .bottom,
+                        endPoint: .top
+                    )
+                )
             }
         }
         .frame(height: 200)
