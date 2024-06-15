@@ -59,6 +59,10 @@ public final class Coordinator {
         )
     }
     
+    public func historyManageRun(run: Binding<RunPresentation>) {
+        path.append(HistoryNavigation(name: .manageRun(run)))
+    }
+    
     public func addExercise(exercise: Exercise?) {
         path.append(ExerciseNavigation(name: .add(exercise)))
     }
