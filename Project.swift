@@ -196,9 +196,9 @@ func createPresentations() -> [Target] {
     
     return Presentation.allCases.map({
         switch $0 {
-        case .Auth, .HistoryHeatMap, .Exercise, .My, .Friend:
+        case .Auth, .HistoryHeatMap, .Exercise, .My:
             return createPresentation($0, dependencies: [])
-        case .History:
+        case .History, .Friend:
             return createPresentation($0, dependencies: [
                 .target(name: Presentation.HistoryHeatMap.rawValue, condition: nil)
             ])

@@ -10,6 +10,7 @@ import Domain
 import MockData
 import Common
 import Kingfisher
+import HistoryHeatMap
 
 public struct FriendHistoryView: View {
     
@@ -28,44 +29,54 @@ public struct FriendHistoryView: View {
     }
     
     public var body: some View {
-        List {
-            if let status = viewModel.status {
-                switch status {
-                case .loading:
-                    StatusView(status: status)
-                case .success, .error:
-                    StatusView(status: status)
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                viewModel.status = nil
+        ScrollView {
+            VStack {
+                if let status = viewModel.status {
+                    switch status {
+                    case .loading:
+                        StatusView(status: status)
+                    case .success, .error:
+                        StatusView(status: status)
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    viewModel.status = nil
+                                }
                             }
-                        }
+                    }
                 }
-            }
-            
-            ForEach(viewModel.historySection, id: \.self) { section in
-                Section {
-                    VStack(spacing: 12) {
-                        ForEach(section.histories, id: \.self) { history in
-                            Button {
-                                print("tap")
-                            } label: {
-                                Common.HistoryItemView(history: history)
-                            }
-                        }
-                    }
-                    .padding(.bottom)
-                } header: {
-                    HStack {
-                        Text(section.yearMonth)
-                            .font(.system(size: 20))
-                            .fontWeight(.black)
-                        Spacer()
-                    }
+                
+                if viewModel.heatMap.isEmpty == false {
+                    HistoryHeatMap.HeatMapView(
+                        heatMap: viewModel.heatMap,
+                        color: viewModel.user?.heatMapColor.color ?? .green
+                    )
                     .padding(.bottom)
                 }
+                
+                ForEach(viewModel.historySection, id: \.self) { section in
+                    Section {
+                        VStack(spacing: 12) {
+                            ForEach(section.histories, id: \.self) { history in
+                                Button {
+                                    print("tap")
+                                } label: {
+                                    Common.HistoryItemView(history: history)
+                                }
+                            }
+                        }
+                        .padding(.bottom)
+                    } header: {
+                        HStack {
+                            Text(section.yearMonth)
+                                .font(.system(size: 20))
+                                .fontWeight(.black)
+                            Spacer()
+                        }
+                        .padding(.bottom)
+                    }
+                }
             }
-            
+            .padding()
         }
         .scrollIndicators(.hidden)
         .animation(.default, value: viewModel.status)
