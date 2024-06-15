@@ -25,5 +25,6 @@ extension FriendNavigation {
     public enum Name {
         case main(PageAnchorView.Page)
         case history(String)
+        case historyDetail(String, String)
     }
 }

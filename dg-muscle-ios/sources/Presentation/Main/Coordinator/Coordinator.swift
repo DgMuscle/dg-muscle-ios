@@ -78,4 +78,8 @@ public final class Coordinator {
     public func friendHistory(friendId: String) {
         path.append(FriendNavigation(name: .history(friendId)))
     }
+    
+    public func friendHistoryDetail(friendId: String, historyId: String) {
+        path.append(FriendNavigation(name: .historyDetail(friendId, historyId)))
+    }
 }

@@ -19,7 +19,7 @@ final class FriendHistoryViewModel: ObservableObject {
     @Published var status: Common.StatusView.Status? = nil
     @Published var user: Common.User?
     
-    private let friendId: String
+    let friendId: String
     private let getFriendHistoriesUsecase: GetFriendHistoriesUsecase
     private let getUserFromUidUsecase: GetUserFromUidUsecase
     private let getFriendExercisesUsecase: GetFriendExercisesUsecase

@@ -74,6 +74,11 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         case "history":
             let historyId = URLManager.shared.getParameter(url: url, name: "id")
             coordinator?.historyFormStep1(historyId: historyId)
+        case "friendhistorydetail":
+            guard let friendId = URLManager.shared.getParameter(url: url, name: "friend_id") else { return }
+            guard let historyId = URLManager.shared.getParameter(url: url, name: "history_id") else { return }
+            coordinator?.friendHistoryDetail(friendId: friendId, historyId: historyId)
+            
         default: break
         }
     }

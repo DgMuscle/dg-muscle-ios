@@ -58,7 +58,9 @@ public struct FriendHistoryView: View {
                         VStack(spacing: 12) {
                             ForEach(section.histories, id: \.self) { history in
                                 Button {
-                                    print("tap")
+                                    URLManager.shared.open(
+                                        url: "dgmuscle://friendhistorydetail?friend_id=\(viewModel.friendId)&history_id=\(history.id)"
+                                    )
                                 } label: {
                                     Common.HistoryItemView(history: history)
                                 }

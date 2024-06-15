@@ -102,6 +102,12 @@ public struct NavigationView: View {
                         friendId: friendId, 
                         today: today
                     )
+                case .historyDetail(let friendId, let historyId):
+                    Friend.HistoryDetailView(
+                        friendRepository: friendRepository,
+                        friendId: friendId,
+                        historyId: historyId
+                    )
                 }
             }
         }
