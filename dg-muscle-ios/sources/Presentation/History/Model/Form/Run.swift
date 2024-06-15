@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-public struct RunPresentation {
+public struct RunPresentation: Hashable {
     public let id: String
     public var pieces: [RunPiece]
     
