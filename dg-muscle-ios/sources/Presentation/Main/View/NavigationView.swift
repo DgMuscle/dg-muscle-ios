@@ -72,6 +72,8 @@ public struct NavigationView: View {
                         userRepository: userRepository,
                         history: history) { historyForm, recordId in
                             coordinator?.historyFormStep2(historyForm: historyForm, recordId: recordId)
+                        } runAction: { run in
+                            coordinator?.historyManageRun(run: run)
                         }
                 case .historyFormStep2(let historyForm, let recordId):
                     ManageRecordView(
