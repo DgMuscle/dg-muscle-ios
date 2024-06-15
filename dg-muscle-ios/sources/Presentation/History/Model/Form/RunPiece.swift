@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-struct RunPiece {
+struct RunPiece: Hashable {
     let id: String
     let velocity: Double
     let start: Date?
