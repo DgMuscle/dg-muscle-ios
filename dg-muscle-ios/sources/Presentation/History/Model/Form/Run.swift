@@ -12,6 +12,10 @@ public struct RunPresentation: Hashable {
     public let id: String
     public var pieces: [RunPiece]
     
+    var distance: Double {
+        pieces.map({ $0.distance }).reduce(0, +)
+    }
+    
     var start: Date? {
         pieces.first?.start
     }

@@ -60,10 +60,13 @@ public struct PostHistoryView: View {
             
             ForEach(viewModel.run, id: \.self) { run in
                 Section("Running") {
-                    Button("Run") {
+                    
+                    Button {
                         runAction?($viewModel.history.run)
+                    } label: {
+                        Text(String(format: "%.2f", run.distance)).foregroundStyle(viewModel.color.color) +
+                        Text(" km").foregroundStyle(Color(uiColor: .label))
                     }
-                    .foregroundStyle(Color(uiColor: .label))
                 }
             }
             .onDelete(perform: viewModel.deleteRun)

@@ -14,6 +14,13 @@ public struct RunPiece: Hashable {
     public var start: Date
     public var end: Date?
     
+    var distance: Double {
+        let end = end ?? Date()
+        let diff = end.timeIntervalSince1970 - start.timeIntervalSince1970
+        let timeInHours = diff / 3600.0
+        return timeInHours * velocity
+    }
+    
     var duration: Int {
         let end = end ?? Date()
         return Int(end.timeIntervalSince1970 - start.timeIntervalSince1970)
