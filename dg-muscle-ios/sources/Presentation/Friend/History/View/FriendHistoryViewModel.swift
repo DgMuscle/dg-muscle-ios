@@ -8,8 +8,14 @@
 import Foundation
 import Combine
 import Domain
+import Common
+import SwiftUI
 
 final class FriendHistoryViewModel: ObservableObject {
+    
+    @Published var histories: [Common.HistoryItem] = []
+    @Published var status: Common.StatusView.Status? = .loading
+    @Published var user: Common.User?
     
     private let friendId: String
     private let getFriendHistoriesUsecase: GetFriendHistoriesUsecase
@@ -26,5 +32,32 @@ final class FriendHistoryViewModel: ObservableObject {
         getFriendHistoriesUsecase = .init(friendRepository: friendRepository)
         getUserFromUidUsecase = .init(friendRepository: friendRepository)
         getFriendExercisesUsecase = .init(friendRepository: friendRepository)
+        
+        if let domainUser = getUserFromUidUsecase.implement(uid: friendId) {
+            self.user = .init(domain: domainUser)
+        }
+        
+        configureHistories()
+    }
+    
+    private func configureHistories() {
+        Task {
+            do {
+                async let historiesTask = getFriendHistoriesUsecase.implement(friendId: friendId)
+                async let exercisesTask = getFriendExercisesUsecase.implement(friendId: friendId)
+                
+                let histories = try await historiesTask
+                let exercises = try await exercisesTask
+                let color: Color = self.user?.heatMapColor.color ?? .green
+                
+                self.histories = histories.map({
+                    .init(history: $0, exercises: exercises, color: color)
+                })
+                
+                status = nil
+            } catch {
+                status = .error(error.localizedDescription)
+            }
+        }
     }
 }
