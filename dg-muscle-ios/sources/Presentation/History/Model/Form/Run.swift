@@ -8,9 +8,9 @@
 import Foundation
 import Domain
 
-struct Run {
-    let id: String
-    var pieces: [RunPiece]
+public struct Run {
+    public let id: String
+    public var pieces: [RunPiece]
     
     var start: Date? {
         pieces.first?.start
@@ -24,12 +24,12 @@ struct Run {
         pieces.map({ $0.duration }).reduce(0, +)
     }
     
-    init(domain: Domain.Run) {
+    public init(domain: Domain.Run) {
         id = domain.id
         pieces = domain.pieces.map({ .init(domain: $0) })
     }
     
-    var domain: Domain.Run {
+    public var domain: Domain.Run {
         .init(
             id: id,
             pieces: pieces.map({ $0.domain })

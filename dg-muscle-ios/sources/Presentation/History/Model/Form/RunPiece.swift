@@ -8,11 +8,11 @@
 import Foundation
 import Domain
 
-struct RunPiece: Hashable {
-    let id: String
-    var velocity: Double
-    var start: Date?
-    var end: Date?
+public struct RunPiece: Hashable {
+    public let id: String
+    public var velocity: Double
+    public var start: Date?
+    public var end: Date?
     
     var duration: Int {
         guard let start else { return 0 }
@@ -20,21 +20,21 @@ struct RunPiece: Hashable {
         return Int(end.timeIntervalSince1970 - start.timeIntervalSince1970)
     }
     
-    init(velocity: Double, start: Date) {
+    public init(velocity: Double, start: Date) {
         id = UUID().uuidString
         self.velocity = velocity
         self.start = start
         self.end = nil
     }
     
-    init(domain: Domain.RunPiece) {
+    public init(domain: Domain.RunPiece) {
         id = domain.id
         velocity = domain.velocity
         start = domain.start
         end = domain.end
     }
     
-    var domain: Domain.RunPiece {
+    public var domain: Domain.RunPiece {
         return .init(
             id: id,
             velocity: velocity,
