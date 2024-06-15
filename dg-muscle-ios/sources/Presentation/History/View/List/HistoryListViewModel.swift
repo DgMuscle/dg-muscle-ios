@@ -14,7 +14,7 @@ import Common
 
 final class HistoryListViewModel: ObservableObject {
     @Published var heatMap: [HistoryHeatMap.HeatMap] = []
-    @Published var historiesGroupedByMonth: [HistorySection] = []
+    @Published var historiesGroupedByMonth: [Common.HistorySection] = []
     @Published var color: Color = .green
     
     let subscribeHeatMapUsecase: SubscribeHeatMapUsecase
@@ -45,8 +45,16 @@ final class HistoryListViewModel: ObservableObject {
                 $color
             )
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] grouped, exercises, color in
-                self?.configureData(grouped: grouped, exercises: exercises, color: color)
+            .sink {
+                [weak self] grouped,
+                exercises,
+                color in
+                
+                self?.historiesGroupedByMonth = HistorySection.configureData(
+                    grouped: grouped,
+                    exercises: exercises,
+                    color: color
+                )
             }
             .store(in: &cancellables)
         
@@ -65,70 +73,6 @@ final class HistoryListViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: \.color, on: self)
             .store(in: &cancellables)
-    }
-    
-    private func configureData(grouped: [String: [Domain.History]], exercises: [Domain.Exercise], color: Color) {
-        var data: [HistorySection] = []
-        
-        let dateFormatter = DateFormatter()
-        
-        for (month, histories) in grouped {
-            let historyList: [History] = histories.map({ convert(history: $0, exercises: exercises, color: color) })
-            dateFormatter.dateFormat = "yyyyMM"
-            let date = dateFormatter.date(from: month) ?? Date()
-            dateFormatter.dateFormat = "MMM y"
-            
-            data.append(
-                .init(
-                    id: UUID().uuidString,
-                    yearMonth: dateFormatter.string(from: date),
-                    histories: historyList,
-                    yyyyMM: month
-                )
-            )
-        }
-        
-        data.sort(by: { $0.yyyyMM > $1.yyyyMM })
-        
-        self.historiesGroupedByMonth = data
-    }
-    
-    private func convert(history: Domain.History, exercises: [Domain.Exercise], color: Color) -> History {
-        
-        var parts = Set<Domain.Exercise.Part>()
-        let exerciseIdList: [String] = history.records.map({ $0.exerciseId })
-        
-        
-        for id in exerciseIdList {
-            if let exercise = exercises.first(where: { $0.id == id }) {
-                exercise.parts.forEach({ parts.insert($0) })
-            }
-        }
-        
-        return .init(id: history.id,
-                     date: history.date,
-                     parts: parts.map({ convert(part: $0) }).sorted(),
-                     volume: history.volume,
-                     color: color,
-                     time: nil,
-                     kcal: nil)
-    }
-    
-    private func convert(part: Domain.Exercise.Part) -> String {
-        switch part {
-        case .arm:
-            return "Arm"
-        case .back:
-            return "Back"
-        case .chest:
-            return "Chest"
-        case .core:
-            return "Core"
-        case .leg:
-            return "Leg"
-        case .shoulder:
-            return "Shoulder"
-        }
     }
 }
 

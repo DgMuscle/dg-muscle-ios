@@ -21,6 +21,9 @@ public final class FriendRepositoryImpl: FriendRepository {
     public var users: AnyPublisher<[Domain.User], Never> { $_users.eraseToAnyPublisher() }
     @Published var _users: [Domain.User] = []
     
+    private var friendsHistories: [String: [Domain.History]] = [:]
+    private var friendsExercises: [String: [Domain.Exercise]] = [:]
+    
     private var cancellables = Set<AnyCancellable>()
     private init() {
         Task {
@@ -40,6 +43,33 @@ public final class FriendRepositoryImpl: FriendRepository {
     
     public func getFriends() -> [Domain.User] {
         _friends
+    }
+    
+    public func getHistories(friendId: String) async throws -> [Domain.History] {
+        if let histories = friendsHistories[friendId] {
+            return histories
+        } else {
+            let url = FunctionsURL.history(.getfriendhistories) + "?friendId=\(friendId)"
+            let histories: [History] = try await APIClient.shared.request(url: url)
+            let domain = histories.map({ $0.domain })
+            friendsHistories[friendId] = domain
+            return domain
+        }
+    }
+    
+    public func getExercises(friendId: String) async throws -> [Domain.Exercise] {
+        
+        if let exercises = friendsExercises[friendId] {
+            return exercises
+        }
+        
+        let url = FunctionsURL.exercise(.getexercisesfromuid) + "?uid=\(friendId)"
+        let exercises: [Exercise] = try await APIClient.shared.request(url: url)
+        let domain: [Domain.Exercise] = exercises.map({ $0.domain })
+        
+        friendsExercises[friendId] = domain
+        
+        return domain
     }
     
     public func requestFriend(userId: String) async throws {
@@ -114,6 +144,25 @@ public final class FriendRepositoryImpl: FriendRepository {
             self._friends = friends
             self._requests = requests
         }
+    }
+    
+    public func delete(friendId: String) async throws {
+        
+        if let index = _friends.firstIndex(where: { $0.uid == friendId }) {
+            _friends.remove(at: index)
+        }
+        
+        let url = FunctionsURL.friend(.delete)
+        
+        struct body: Codable {
+            let friendId: String
+        }
+        
+        let _: DataResponse = try await APIClient.shared.request(
+            method: .delete,
+            url: url,
+            body: body(friendId: friendId)
+        )
     }
     
     private func bind() {

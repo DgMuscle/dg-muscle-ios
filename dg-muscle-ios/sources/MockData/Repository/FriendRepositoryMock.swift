@@ -39,6 +39,14 @@ public final class FriendRepositoryMock: FriendRepository {
         _friends
     }
     
+    public func getHistories(friendId: String) async throws -> [Domain.History] {
+        HistoryRepositoryMock()._histories
+    }
+    
+    public func getExercises(friendId: String) async throws -> [Domain.Exercise] {
+        ExerciseRepositoryMock()._exercises
+    }
+    
     public func requestFriend(userId: String) async throws {
         
     }
@@ -59,6 +67,12 @@ public final class FriendRepositoryMock: FriendRepository {
         // delete request
         if let index = _requests.firstIndex(where: { $0.fromId == request.fromId }) {
             _requests.remove(at: index)
+        }
+    }
+    
+    public func delete(friendId: String) async throws {
+        if let index = _friends.firstIndex(where: { $0.uid == friendId }) {
+            _friends.remove(at: index)
         }
     }
 }

@@ -36,7 +36,7 @@ public final class Coordinator {
     
     public func historyFormStep1(historyId: String?) {
         /// If historyId is nil, find the today's history first.
-        let history: History?
+        let history: Domain.History?
         
         if let historyId {
             history = historyRepository.get(historyId: historyId)
@@ -73,5 +73,13 @@ public final class Coordinator {
     
     public func friendMainView(anchor: PageAnchorView.Page) {
         path.append(FriendNavigation(name: .main(anchor) ))
+    }
+    
+    public func friendHistory(friendId: String) {
+        path.append(FriendNavigation(name: .history(friendId)))
+    }
+    
+    public func friendHistoryDetail(friendId: String, historyId: String) {
+        path.append(FriendNavigation(name: .historyDetail(friendId, historyId)))
     }
 }

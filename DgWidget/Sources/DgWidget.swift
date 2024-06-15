@@ -41,7 +41,9 @@ struct DgWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        HeatMapView()
+        Link(destination: URL(string: "dgmuscle://history")!, label: {
+            HeatMapView()
+        })
     }
 }
 

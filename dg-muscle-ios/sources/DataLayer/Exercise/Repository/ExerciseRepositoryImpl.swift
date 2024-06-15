@@ -25,18 +25,19 @@ public final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
     }
     
     private init() { 
+        
+        Task {
+            self._exercises = await self.geyMyExercisesFromFileManager()
+        }
+        
         UserRepositoryImpl
             .shared
             .$isLogin
             .removeDuplicates()
-            .sink { isLogin in
-                if isLogin {
-                    Task {
-                        self._exercises = await self.geyMyExercisesFromFileManager()
-                        self._exercises = try await self.getMyExercisesFromServer()
-                    }
-                } else {
-                    self._exercises = []
+            .filter({ $0 })
+            .sink { _ in
+                Task {
+                    self._exercises = try await self.getMyExercisesFromServer()
                 }
             }
             .store(in: &cancellables)

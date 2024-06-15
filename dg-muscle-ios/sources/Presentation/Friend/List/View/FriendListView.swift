@@ -12,6 +12,7 @@ import MockData
 struct FriendListView: View {
     
     @StateObject var viewModel: FriendListViewModel
+    @State private var selectedFriend: Friend?
     
     init(friendRepository: FriendRepository) {
         _viewModel = .init(wrappedValue: .init(friendRepository: friendRepository))
@@ -21,9 +22,20 @@ struct FriendListView: View {
         List {
             ForEach(viewModel.friends, id: \.self) { friend in
                 FriendListItemView(friend: friend)
+                    .onTapGesture {
+                        selectedFriend = friend
+                    }
+                    .contextMenu {
+                        Button("delete") {
+                            viewModel.delete(friendId: friend.id)
+                        }
+                    }
             }
         }
         .scrollIndicators(.hidden)
+        .fullScreenCover(item: $selectedFriend) { friend in
+            FriendProfileView(friend: friend, selectedFriend: $selectedFriend)
+        }
     }
 }
 

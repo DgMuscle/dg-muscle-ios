@@ -2,16 +2,20 @@
 //  HistoryItemView.swift
 //  Presentation
 //
-//  Created by 신동규 on 5/15/24.
+//  Created by 신동규 on 6/14/24.
 //
 
 import SwiftUI
 
-struct HistoryItemView: View {
+public struct HistoryItemView: View {
     
-    let history: History
+    let history: HistoryItem
     
-    var body: some View {
+    public init(history: HistoryItem) {
+        self.history = history
+    }
+    
+    public var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 coloredText
@@ -93,7 +97,8 @@ struct HistoryItemView: View {
 }
 
 #Preview {
-    let history: History = .init(id: UUID().uuidString, date: Date(), parts: ["leg", "chest"], volume: 6890, color: .blue, time: 1500, kcal: 500)
+    let history: HistoryItem = .init(id: UUID().uuidString, date: Date(), parts: ["leg", "chest"], volume: 6890, color: .blue, time: 1500, kcal: 500)
     
     return HistoryItemView(history: history).preferredColorScheme(.dark)
 }
+

@@ -18,11 +18,13 @@ final class MyProfileViewModel: ObservableObject {
     @Published var profilePhoto: UIImage?
     @Published var backgroundImage: UIImage?
     @Published var status: Common.StatusView.Status?
+    @Published var link: String
     
     private let user: Common.User
     private let postDisplayNameUsecase: PostDisplayNameUsecase
     private let postPhotoURLUsecase: PostPhotoURLUsecase
     private let postBackgroundImageUsecase: PostBackgroundImageUsecase
+    private let postLinkUsecase: PostLinkUsecase
     private let getUserUsecase: GetUserUsecase
     private let signOutUsecase: SignOutUsecase
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
@@ -32,6 +34,7 @@ final class MyProfileViewModel: ObservableObject {
         postDisplayNameUsecase = .init(userRepository: userRepository)
         postPhotoURLUsecase = .init(userRepository: userRepository)
         postBackgroundImageUsecase = .init(userRepository: userRepository)
+        postLinkUsecase = .init(userRepository: userRepository)
         getUserUsecase = .init(userRepository: userRepository)
         signOutUsecase = .init(userRepository: userRepository)
         getHeatMapColorUsecase = .init(userRepository: userRepository)
@@ -48,6 +51,8 @@ final class MyProfileViewModel: ObservableObject {
         let domainColor: Domain.HeatMapColor = getHeatMapColorUsecase.implement()
         let heatMapColor: Common.HeatMapColor = .init(domain: domainColor)
         self.color = heatMapColor.color
+        
+        self.link = user.link?.absoluteString ?? ""
         
         if let url = user.photoURL {
             Task { @MainActor in
@@ -68,6 +73,19 @@ final class MyProfileViewModel: ObservableObject {
     @MainActor
     func save() {
         guard saveTask == nil else { return }
+        
+        if link.isEmpty == false {
+            guard let url = URL(string: link) else {
+                status = .error("Link must be url that can be opened")
+                return
+            }
+            
+            guard UIApplication.shared.canOpenURL(url) else {
+                status = .error("Link must be url that can be opened")
+                return
+            }
+        }
+        
         saveTask = Task {
             do {
                 status = .loading
@@ -75,6 +93,8 @@ final class MyProfileViewModel: ObservableObject {
                 async let displayNameTask: () = postDisplayNameUsecase.implement(displayName: displayName)
                 async let photoTask: () = postPhotoURLUsecase.implement(photo: profilePhoto)
                 async let backgroundImageTask: () = postBackgroundImageUsecase.implement(backgroundImage: backgroundImage)
+                
+                postLinkUsecase.implement(link: .init(string: link))
                 
                 try await displayNameTask
                 try await photoTask

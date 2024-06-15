@@ -96,6 +96,18 @@ public struct NavigationView: View {
                         userRepository: userRepository, 
                         page: anchor
                     )
+                case .history(let friendId):
+                    Friend.FriendHistoryView(
+                        friendRepository: friendRepository,
+                        friendId: friendId, 
+                        today: today
+                    )
+                case .historyDetail(let friendId, let historyId):
+                    Friend.HistoryDetailView(
+                        friendRepository: friendRepository,
+                        friendId: friendId,
+                        historyId: historyId
+                    )
                 }
             }
         }

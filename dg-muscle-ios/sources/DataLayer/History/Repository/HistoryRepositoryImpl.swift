@@ -67,18 +67,18 @@ public final class HistoryRepositoryImpl: Domain.HistoryRepository {
     }
     
     private func bind() {
+        Task {
+            self._histories = await self.getMyHistoriesFromFilemanager()
+        }
+        
         UserRepositoryImpl
             .shared
             .$isLogin
             .removeDuplicates()
+            .filter({ $0 })
             .sink { isLogin in
-                if isLogin {
-                    Task {
-                        self._histories = await self.getMyHistoriesFromFilemanager()
-                        self._histories = try await self.getMyHistoriesFromServer(lastId: nil, limit: 365)
-                    }
-                } else {
-                    self._histories = []
+                Task {
+                    self._histories = try await self.getMyHistoriesFromServer(lastId: nil, limit: 365)
                 }
             }
             .store(in: &cancellables)

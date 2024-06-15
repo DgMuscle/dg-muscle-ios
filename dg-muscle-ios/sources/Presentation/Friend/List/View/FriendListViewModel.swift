@@ -14,15 +14,23 @@ final class FriendListViewModel: ObservableObject {
     
     private let subscribeFriendsUsecase: SubscribeFriendsUsecase
     private let getFriendsUsecase: GetFriendsUsecase
+    private let deleteFriendUsecase: DeleteFriendUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(friendRepository: FriendRepository) {
         subscribeFriendsUsecase = .init(friendRepository: friendRepository)
         getFriendsUsecase = .init(friendRepository: friendRepository)
+        deleteFriendUsecase = .init(friendRepository: friendRepository)
         friends = getFriendsUsecase
             .implement()
             .map({ Friend(domain: $0) })
         bind()
+    }
+    
+    func delete(friendId: String) {
+        Task {
+            try await deleteFriendUsecase.implement(friendId: friendId)
+        }
     }
     
     private func bind() {

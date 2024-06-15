@@ -12,9 +12,13 @@ public final class URLManager {
     
     private init() { }
     
+    public func open(url: URL, completionHandler: ((Bool) -> (Void))? = nil) {
+        UIApplication.shared.open(url, completionHandler: completionHandler)
+    }
+    
     public func open(url: String, completionHandler: ((Bool) -> (Void))? = nil) {
         guard let url = URL(string: url) else { return }
-        UIApplication.shared.open(url, completionHandler: completionHandler)
+        open(url: url, completionHandler: completionHandler)
     }
     
     public func getParameter(url: URL, name: String) -> String? {

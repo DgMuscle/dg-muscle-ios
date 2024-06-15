@@ -34,6 +34,10 @@ public final class UserRepositoryImpl: UserRepository {
         try await AuthManager().updateUser(displayName: displayName)
     }
     
+    public func updateUser(link: URL?) {
+        _user?.link = link
+    }
+    
     public func updateUser(displayName: String?, photo: UIImage?) async throws {
         _user?.displayName = displayName
         
@@ -92,7 +96,13 @@ public final class UserRepositoryImpl: UserRepository {
     }
     
     public func post(fcmToken: String) {
-        _user?.fcmToken = fcmToken
+        if _user == nil {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.post(fcmToken: fcmToken)
+            }
+        } else {
+            _user?.fcmToken = fcmToken
+        }
     }
     
     private func bind() {
@@ -109,6 +119,7 @@ public final class UserRepositoryImpl: UserRepository {
         }
         
         $_user
+            .debounce(for: 0.5, scheduler: DispatchQueue.main)
             .sink { user in
                 self.isLogin = user != nil
                 Task {
@@ -135,6 +146,8 @@ public final class UserRepositoryImpl: UserRepository {
             let photoURL: String?
             let fcmtoken: String?
             let heatmapColor: String
+            let backgroundImageURL: String?
+            let link: String?
         }
         
         let user: UserData = .init(domain: user)
@@ -144,7 +157,9 @@ public final class UserRepositoryImpl: UserRepository {
             displayName: user.displayName ?? "",
             photoURL: user.photoURL,
             fcmtoken: user.fcmToken,
-            heatmapColor: user.heatmapColor?.rawValue ?? "green"
+            heatmapColor: user.heatmapColor?.rawValue ?? "green", 
+            backgroundImageURL: user.backgroundImageURL,
+            link: user.link
         )
         
         let _: DataResponse = try await APIClient.shared.request(

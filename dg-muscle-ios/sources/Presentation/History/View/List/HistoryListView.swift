@@ -52,7 +52,7 @@ public struct HistoryListView: View {
                                 Button {
                                     URLManager.shared.open(url: "dgmuscle://history?id=\(history.id)")
                                 } label: {
-                                    HistoryItemView(history: history)
+                                    Common.HistoryItemView(history: history)
                                 }
                             }
                         }
