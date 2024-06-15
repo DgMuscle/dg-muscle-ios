@@ -8,32 +8,20 @@
 import Foundation
 import Domain
 
-struct RunPiece: Codable {
+struct RunPiece {
     let id: String
     let velocity: Double
-    let start: TimeInterval?
-    let end: TimeInterval?
+    let start: Date?
+    let end: Date?
     
     init(domain: Domain.RunPiece) {
         id = domain.id
         velocity = domain.velocity
-        start = domain.start?.timeIntervalSince1970
-        end = domain.end?.timeIntervalSince1970
+        start = domain.start
+        end = domain.end
     }
     
     var domain: Domain.RunPiece {
-        
-        var start: Date?
-        var end: Date?
-        
-        if let timeInterval = self.start {
-            start = .init(timeIntervalSince1970: timeInterval)
-        }
-        
-        if let timeInterval = self.end {
-            end = .init(timeIntervalSince1970: timeInterval)
-        }
-        
         return .init(
             id: id,
             velocity: velocity,

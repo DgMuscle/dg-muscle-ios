@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-struct Run: Codable {
+struct Run {
     let id: String
     let pieces: [RunPiece]
     
