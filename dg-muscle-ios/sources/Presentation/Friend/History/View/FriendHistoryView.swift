@@ -41,9 +41,29 @@ public struct FriendHistoryView: View {
                 }
             }
             
-            ForEach(viewModel.histories, id: \.self) { history in
-                Common.HistoryItemView(history: history)
+            ForEach(viewModel.historySection, id: \.self) { section in
+                Section {
+                    VStack(spacing: 12) {
+                        ForEach(section.histories, id: \.self) { history in
+                            Button {
+                                print("tap")
+                            } label: {
+                                Common.HistoryItemView(history: history)
+                            }
+                        }
+                    }
+                    .padding(.bottom)
+                } header: {
+                    HStack {
+                        Text(section.yearMonth)
+                            .font(.system(size: 20))
+                            .fontWeight(.black)
+                        Spacer()
+                    }
+                    .padding(.bottom)
+                }
             }
+            
         }
         .scrollIndicators(.hidden)
         .animation(.default, value: viewModel.status)
