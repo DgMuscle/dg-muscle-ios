@@ -15,7 +15,7 @@ private func createHistory(date: String, memo: String?, records: [ExerciseRecord
 
     // 47분을 더하기 위한 DateComponents 생성
     var dateComponents = DateComponents()
-    dateComponents.minute = 47
+    dateComponents.minute = 17
 
     // Calendar를 사용하여 날짜 계산
     let date2 = Calendar.current.date(byAdding: dateComponents, to: date)!
