@@ -57,6 +57,10 @@ public struct ManageRunView: View {
                 endTime: viewModel.endTime
             )
             
+            if viewModel.runPieces.isEmpty == false {
+                VelocityChartView(data: viewModel.runPieces)
+            }
+            
         }
         .padding()
         .animation(.default, value: viewModel.status)

@@ -11,11 +11,10 @@ import Domain
 public struct RunPiece: Hashable {
     public let id: String
     public var velocity: Double
-    public var start: Date?
+    public var start: Date
     public var end: Date?
     
     var duration: Int {
-        guard let start else { return 0 }
         let end = end ?? Date()
         return Int(end.timeIntervalSince1970 - start.timeIntervalSince1970)
     }
@@ -30,7 +29,7 @@ public struct RunPiece: Hashable {
     public init(domain: Domain.RunPiece) {
         id = domain.id
         velocity = domain.velocity
-        start = domain.start
+        start = domain.start ?? .init()
         end = domain.end
     }
     
