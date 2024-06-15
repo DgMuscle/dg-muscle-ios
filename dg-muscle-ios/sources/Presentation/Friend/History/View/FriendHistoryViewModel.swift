@@ -14,7 +14,7 @@ import SwiftUI
 final class FriendHistoryViewModel: ObservableObject {
     
     @Published var histories: [Common.HistoryItem] = []
-    @Published var status: Common.StatusView.Status? = .loading
+    @Published var status: Common.StatusView.Status? = nil
     @Published var user: Common.User?
     
     private let friendId: String
@@ -42,6 +42,7 @@ final class FriendHistoryViewModel: ObservableObject {
     
     private func configureHistories() {
         Task {
+            status = .loading
             do {
                 async let historiesTask = getFriendHistoriesUsecase.implement(friendId: friendId)
                 async let exercisesTask = getFriendExercisesUsecase.implement(friendId: friendId)

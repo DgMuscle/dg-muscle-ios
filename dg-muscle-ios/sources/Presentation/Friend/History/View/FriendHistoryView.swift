@@ -8,6 +8,8 @@
 import SwiftUI
 import Domain
 import MockData
+import Common
+import Kingfisher
 
 public struct FriendHistoryView: View {
     
@@ -24,15 +26,52 @@ public struct FriendHistoryView: View {
     }
     
     public var body: some View {
-        Text("FriendHistoryView")
+        List {
+            if let status = viewModel.status {
+                switch status {
+                case .loading:
+                    StatusView(status: status)
+                case .success, .error:
+                    StatusView(status: status)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                viewModel.status = nil
+                            }
+                        }
+                }
+            }
+            
+            ForEach(viewModel.histories, id: \.self) { history in
+                Common.HistoryItemView(history: history)
+            }
+        }
+        .scrollIndicators(.hidden)
+        .animation(.default, value: viewModel.status)
+        .toolbar {
+            if let user = viewModel.user {
+                if let profileImage = user.photoURL {
+                    KFImage(profileImage)
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .clipShape(Circle())
+                }
+                
+                if let displayName = user.displayName {
+                    Text(displayName)
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    return FriendHistoryView(
-        friendRepository: FriendRepositoryMock(),
-        friendId: ""
-    ).preferredColorScheme(
+    return NavigationStack {
+        FriendHistoryView(
+            friendRepository: FriendRepositoryMock(),
+            friendId: USER_DG.uid
+        )
+    }
+    .preferredColorScheme(
         .dark
     )
 }
