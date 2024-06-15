@@ -24,6 +24,11 @@ public struct RunPresentation {
         pieces.map({ $0.duration }).reduce(0, +)
     }
     
+    public init() {
+        id = UUID().uuidString
+        pieces = []
+    }
+    
     public init(domain: Domain.Run) {
         id = domain.id
         pieces = domain.pieces.map({ .init(domain: $0) })

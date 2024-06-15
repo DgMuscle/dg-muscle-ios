@@ -16,13 +16,15 @@ public struct PostHistoryView: View {
     @State var isPresentSelectExercise: Bool = false
     private let exerciseRepository: ExerciseRepository
     private let setRecordAction: ((Binding<HistoryForm>, String) -> ())?
+    private let runAction: ((Binding<RunPresentation>) -> ())?
     
     public init(
         historyRepository: HistoryRepository,
         exerciseRepository: ExerciseRepository,
         userRepository: UserRepository,
         history: Domain.History?,
-        setRecordAction: ((Binding<HistoryForm>, String) -> ())?
+        setRecordAction: ((Binding<HistoryForm>, String) -> ())?,
+        runAction: ((Binding<RunPresentation>) -> ())?
     ) {
         _viewModel = .init(
             wrappedValue: .init(
@@ -34,6 +36,7 @@ public struct PostHistoryView: View {
         )
         self.setRecordAction = setRecordAction
         self.exerciseRepository = exerciseRepository
+        self.runAction = runAction
     }
     
     public var body: some View {
@@ -73,6 +76,9 @@ public struct PostHistoryView: View {
                 URLManager.shared.open(url: "dgmuscle://exercisemanage")
             } close: {
                 isPresentSelectExercise.toggle()
+            } run: {
+                isPresentSelectExercise.toggle()
+                runAction?($viewModel.history.run)
             }
         })
     }
@@ -89,7 +95,8 @@ public struct PostHistoryView: View {
         exerciseRepository: ExerciseRepositoryMock(),
         userRepository: UserRepositoryMock(),
         history: HISTORY_4,
-        setRecordAction: action
+        setRecordAction: action,
+        runAction: nil
     )
     .preferredColorScheme(.dark)
 }
