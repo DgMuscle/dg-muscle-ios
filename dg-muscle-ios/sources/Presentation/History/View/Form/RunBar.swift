@@ -14,6 +14,8 @@ struct RunBar: View {
     let startTime: String
     let endTime: String
     
+    @State private var animate: Bool = false
+    
     var body: some View {
         HStack(spacing: 12) {
             GeometryReader { geometry in
@@ -30,9 +32,9 @@ struct RunBar: View {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(
                                     LinearGradient(
-                                        colors: [color.opacity(0.4), color.opacity(0.8)],
-                                        startPoint: .leading,
-                                        endPoint: .trailing
+                                        colors: [color.opacity(0.2), color.opacity(0.8)],
+                                        startPoint: animate ? .topLeading : .bottomLeading,
+                                        endPoint: animate ? .bottomTrailing : .topTrailing
                                     )
                                 )
                                 .frame(width: geometry.size.width * percentage)
@@ -51,6 +53,11 @@ struct RunBar: View {
             }
             .frame(height: 90)
             Image(systemName: "figure.run")
+        }
+        .onAppear {
+            withAnimation(.linear(duration: 3).repeatForever(autoreverses: true)) {
+                animate.toggle()
+            }
         }
     }
 }
