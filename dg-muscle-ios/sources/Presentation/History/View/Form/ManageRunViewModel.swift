@@ -68,6 +68,11 @@ final class ManageRunViewModel: ObservableObject {
         }
     }
     
+    func update(velocity: Double) {
+        self.velocity = velocity
+        start()
+    }
+    
     private func bind() {
         $runPieces
             .receive(on: DispatchQueue.main)
