@@ -55,44 +55,12 @@ final class FriendHistoryViewModel: ObservableObject {
                 
                 let grouped = groupByMonthHistoriesUsecase.implement(histories: histories)
                 
-                historySection = configureData(grouped: grouped, exercises: exercises, color: color)
+                historySection = HistorySection.configureData(grouped: grouped, exercises: exercises, color: color)
                 
                 status = nil
             } catch {
                 status = .error(error.localizedDescription)
             }
         }
-    }
-    
-    private func configureData(grouped: [String: [Domain.History]], exercises: [Domain.Exercise], color: Color) -> [HistorySection] {
-        var data: [HistorySection] = []
-        
-        let dateFormatter = DateFormatter()
-        
-        for (month, histories) in grouped {
-            let historyList: [Common.HistoryItem] = histories.map({
-                .init(
-                    history: $0,
-                    exercises: exercises,
-                    color: color
-                )
-            })
-            dateFormatter.dateFormat = "yyyyMM"
-            let date = dateFormatter.date(from: month) ?? Date()
-            dateFormatter.dateFormat = "MMM y"
-            
-            data.append(
-                .init(
-                    id: UUID().uuidString,
-                    yearMonth: dateFormatter.string(from: date),
-                    histories: historyList,
-                    yyyyMM: month
-                )
-            )
-        }
-        
-        data.sort(by: { $0.yyyyMM > $1.yyyyMM })
-        
-        return data
     }
 }

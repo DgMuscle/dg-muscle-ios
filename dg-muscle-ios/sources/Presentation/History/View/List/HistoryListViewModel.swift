@@ -45,8 +45,16 @@ final class HistoryListViewModel: ObservableObject {
                 $color
             )
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] grouped, exercises, color in
-                self?.configureData(grouped: grouped, exercises: exercises, color: color)
+            .sink {
+                [weak self] grouped,
+                exercises,
+                color in
+                
+                self?.historiesGroupedByMonth = HistorySection.configureData(
+                    grouped: grouped,
+                    exercises: exercises,
+                    color: color
+                )
             }
             .store(in: &cancellables)
         
@@ -65,38 +73,6 @@ final class HistoryListViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: \.color, on: self)
             .store(in: &cancellables)
-    }
-    
-    private func configureData(grouped: [String: [Domain.History]], exercises: [Domain.Exercise], color: Color) {
-        var data: [HistorySection] = []
-        
-        let dateFormatter = DateFormatter()
-        
-        for (month, histories) in grouped {
-            let historyList: [Common.HistoryItem] = histories.map({
-                .init(
-                    history: $0,
-                    exercises: exercises,
-                    color: color
-                )
-            })
-            dateFormatter.dateFormat = "yyyyMM"
-            let date = dateFormatter.date(from: month) ?? Date()
-            dateFormatter.dateFormat = "MMM y"
-            
-            data.append(
-                .init(
-                    id: UUID().uuidString,
-                    yearMonth: dateFormatter.string(from: date),
-                    histories: historyList,
-                    yyyyMM: month
-                )
-            )
-        }
-        
-        data.sort(by: { $0.yyyyMM > $1.yyyyMM })
-        
-        self.historiesGroupedByMonth = data
     }
 }
 
