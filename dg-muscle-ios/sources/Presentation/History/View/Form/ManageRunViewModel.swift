@@ -67,10 +67,8 @@ final class ManageRunViewModel: ObservableObject {
     func tapButton() {
         switch status {
         case .running:
-            status = .notRunning
             stop()
         case .notRunning:
-            status = .running
             start()
             executeEverySecond()
         }
@@ -90,6 +88,8 @@ final class ManageRunViewModel: ObservableObject {
         }
         
         runPieces.append(.init(velocity: velocity, start: now))
+        
+        status = .running
     }
     
     private func stop() {
@@ -98,6 +98,8 @@ final class ManageRunViewModel: ObservableObject {
         if let index = runPieces.indices.last {
             runPieces[index].end = now
         }
+        
+        status = .notRunning
     }
     
     private func bind() {
