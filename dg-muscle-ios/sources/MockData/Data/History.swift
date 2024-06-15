@@ -20,10 +20,11 @@ private func createHistory(date: String, memo: String?, records: [ExerciseRecord
     // Calendar를 사용하여 날짜 계산
     let date2 = Calendar.current.date(byAdding: dateComponents, to: date)!
     let date3 = Calendar.current.date(byAdding: dateComponents, to: date2)!
+    let date4 = Calendar.current.date(byAdding: dateComponents, to: date3)!
     
     let runPieces: [RunPiece] = [
-        .init(id: UUID().uuidString, velocity: 5.5, start: date, end: nil),
-        .init(id: UUID().uuidString, velocity: 6.7, start: date2, end: date3),
+        .init(id: UUID().uuidString, velocity: 5.5, start: date2, end: date3),
+        .init(id: UUID().uuidString, velocity: 6.7, start: date3, end: date4),
     ]
     
     let run: Run = .init(id: UUID().uuidString, pieces: runPieces)

@@ -69,6 +69,7 @@ final class ManageRunViewModel: ObservableObject {
         case .notRunning:
             status = .running
             start()
+            executeEverySecond()
         }
     }
     
@@ -101,7 +102,7 @@ final class ManageRunViewModel: ObservableObject {
             .compactMap({ $0.first?.start })
             .map({
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "H.m.s"
+                dateFormatter.dateFormat = "H.m"
                 return dateFormatter.string(from: $0)
             })
             .assign(to: \.startTime, on: self)
@@ -124,7 +125,7 @@ final class ManageRunViewModel: ObservableObject {
             configureRunGraphPercentage()
             
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "H.m.s"
+            dateFormatter.dateFormat = "H.m"
             
             self.endTime = dateFormatter.string(from: Date())
         }
