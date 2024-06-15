@@ -17,11 +17,13 @@ public struct FriendHistoryView: View {
     
     public init(
         friendRepository: any FriendRepository,
-        friendId: String
+        friendId: String,
+        today: Date
     ) {
         _viewModel = .init(wrappedValue: .init(
             friendRepository: friendRepository,
-            friendId: friendId
+            friendId: friendId, 
+            today: today
         ))
     }
     
@@ -85,10 +87,16 @@ public struct FriendHistoryView: View {
 }
 
 #Preview {
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyyMMdd"
+    let date = dateFormatter.date(from: "20240515")!
+    
     return NavigationStack {
         FriendHistoryView(
             friendRepository: FriendRepositoryMock(),
-            friendId: USER_DG.uid
+            friendId: USER_DG.uid,
+            today: date
         )
     }
     .preferredColorScheme(

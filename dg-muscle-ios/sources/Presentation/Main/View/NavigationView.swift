@@ -99,7 +99,8 @@ public struct NavigationView: View {
                 case .history(let friendId):
                     Friend.FriendHistoryView(
                         friendRepository: friendRepository,
-                        friendId: friendId
+                        friendId: friendId, 
+                        today: today
                     )
                 }
             }
