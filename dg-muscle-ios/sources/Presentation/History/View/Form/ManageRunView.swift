@@ -50,7 +50,15 @@ public struct ManageRunView: View {
                     }
             }
             
+            RunBar(
+                color: viewModel.color.color,
+                percentage: viewModel.runGraphPercentage,
+                startTime: viewModel.startTime,
+                endTime: viewModel.endTime
+            )
+            
         }
+        .padding()
         .animation(.default, value: viewModel.status)
     }
 }

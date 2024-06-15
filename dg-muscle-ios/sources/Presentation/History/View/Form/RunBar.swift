@@ -17,7 +17,7 @@ struct RunBar: View {
     @State private var animate: Bool = false
     
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 40) {
             GeometryReader { geometry in
                 VStack {
                     HStack {
@@ -25,8 +25,14 @@ struct RunBar: View {
                         Spacer()
                     }
                     ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color(uiColor: .tertiarySystemGroupedBackground))
+                        HStack {
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color(uiColor: .tertiarySystemGroupedBackground))
+                                .frame(width: geometry.size.width)
+                            
+                            Spacer()
+                        }
+                        
                             
                         HStack {
                             RoundedRectangle(cornerRadius: 8)
