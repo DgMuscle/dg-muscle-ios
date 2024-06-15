@@ -13,6 +13,7 @@ public struct HistoryForm {
     let date: Date
     let memo: String?
     var records: [ExerciseRecord]
+    var run: Run?
     var volume: Int {
         records.map({ $0.volume }).reduce(0, +)
     }
@@ -22,6 +23,7 @@ public struct HistoryForm {
         date = .init()
         memo = nil
         records = []
+        run = nil
     }
     
     public init(domain: Domain.History) {
@@ -29,6 +31,11 @@ public struct HistoryForm {
         date = domain.date
         memo = domain.memo
         records = domain.records.map({ .init(domain: $0) })
+        if let domain = domain.run {
+            self.run = .init(domain: domain)
+        } else {
+            self.run = nil
+        }
     }
     
     public var domain: Domain.History {
@@ -38,7 +45,8 @@ public struct HistoryForm {
             memo: memo,
             records: records.map({
                 $0.domain
-            })
+            }), 
+            run: run?.domain
         )
     }
 }
