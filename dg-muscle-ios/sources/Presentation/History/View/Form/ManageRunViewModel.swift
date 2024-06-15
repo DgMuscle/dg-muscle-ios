@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import Domain
 import SwiftUI
+import Common
 
 final class ManageRunViewModel: ObservableObject {
     
@@ -23,15 +24,20 @@ final class ManageRunViewModel: ObservableObject {
     @Published var runGraphPercentage: Double = 0
     @Published var startTime: String = ""
     @Published var endTime: String = ""
+    @Published var color: Common.HeatMapColor
     
     @Binding var run: RunPresentation
     
+    private let getHeatMapColorUsecase: GetHeatMapColorUsecase
+    
     private var cancellables = Set<AnyCancellable>()
     
-    init(run: Binding<RunPresentation>) {
+    init(run: Binding<RunPresentation>, userRepository: UserRepository) {
         self._run = run
         self.runPieces = run.pieces.wrappedValue
         self.velocity = run.pieces.wrappedValue.last?.velocity ?? 0
+        self.getHeatMapColorUsecase = .init(userRepository: userRepository)
+        self.color = .init(domain: getHeatMapColorUsecase.implement())
         
         bind()
         
@@ -50,7 +56,23 @@ final class ManageRunViewModel: ObservableObject {
         RunLoop.current.add(timer, forMode: .common)
     }
     
-    func start() {
+    func update(velocity: Double) {
+        self.velocity = velocity
+        start()
+    }
+    
+    func tapButton() {
+        switch status {
+        case .running:
+            status = .notRunning
+            stop()
+        case .notRunning:
+            status = .running
+            start()
+        }
+    }
+    
+    private func start() {
         let now = Date()
         
         if let index = runPieces.indices.last {
@@ -60,17 +82,12 @@ final class ManageRunViewModel: ObservableObject {
         runPieces.append(.init(velocity: velocity, start: now))
     }
     
-    func stop() {
+    private func stop() {
         let now = Date()
         
         if let index = runPieces.indices.last {
             runPieces[index].end = now
         }
-    }
-    
-    func update(velocity: Double) {
-        self.velocity = velocity
-        start()
     }
     
     private func bind() {
