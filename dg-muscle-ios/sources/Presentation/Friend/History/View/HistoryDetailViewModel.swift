@@ -15,6 +15,7 @@ final class HistoryDetailViewModel: ObservableObject {
     
     @Published var history: History?
     @Published var color: Color
+    @Published var totalVolume: Int = 0
     
     private let getFriendHistoriesUsecase: GetFriendHistoriesUsecase
     private let getFriendExercisesUsecase: GetFriendExercisesUsecase
@@ -32,11 +33,8 @@ final class HistoryDetailViewModel: ObservableObject {
         getFriendExercisesUsecase = .init(friendRepository: friendRepository)
         getUserFromUidUsecase = .init(friendRepository: friendRepository)
         
-        
-        
         self.friendId = friendId
         self.historyId = historyId
-        
         
         if let user = getUserFromUidUsecase.implement(uid: friendId) {
             color = Common.HeatMapColor(domain: user.heatMapColor).color
@@ -47,6 +45,17 @@ final class HistoryDetailViewModel: ObservableObject {
         Task {
             await configureHistory()
         }
+        
+        bind()
+    }
+    
+    private func bind() {
+        $history
+            .compactMap({ $0 })
+            .receive(on: DispatchQueue.main)
+            .map({ $0.volume })
+            .assign(to: \.totalVolume, on: self)
+            .store(in: &cancellables)
     }
     
     @MainActor

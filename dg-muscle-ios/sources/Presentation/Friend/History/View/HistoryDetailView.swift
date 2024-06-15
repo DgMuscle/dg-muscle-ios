@@ -36,6 +36,9 @@ public struct HistoryDetailView: View {
             } else {
                 Text("Can't find data")
             }
+            
+            Text("Total Volume is ") +
+            Text("\(viewModel.totalVolume)").foregroundStyle(viewModel.color)
         }
         .scrollIndicators(.hidden)
     }

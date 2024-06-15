@@ -44,9 +44,12 @@ final class FriendHistoryViewModel: ObservableObject {
             self.user = .init(domain: domainUser)
         }
         
-        configureHistories()
+        Task {
+            await configureHistories()
+        }
     }
     
+    @MainActor
     private func configureHistories() {
         Task {
             status = .loading
