@@ -41,6 +41,8 @@ final class ManageRunViewModel: ObservableObject {
         
         bind()
         
+        configureRunGraphPercentage()
+        
         // 타이머 설정
         let timer = Timer.scheduledTimer(
             timeInterval: 1.0,

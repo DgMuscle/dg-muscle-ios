@@ -29,6 +29,7 @@ public struct ManageRunView: View {
         VStack(spacing: 20) {
             Text(String(viewModel.velocity) + " km/h")
                 .font(.largeTitle)
+                .fontWeight(.black)
             
             Button {
                 viewModel.tapButton()
