@@ -23,7 +23,7 @@ final class ManageRunViewModel: ObservableObject {
     @Published var status: Status = .notRunning
     @Published var runGraphPercentage: Double = 0
     @Published var startTime: String = ""
-    @Published var endTime: String = ""
+    @Published var distance: String = ""
     @Published var color: Common.HeatMapColor
     @Published var statusView: Common.StatusView.Status? = nil
     
@@ -42,7 +42,7 @@ final class ManageRunViewModel: ObservableObject {
         
         bind()
         
-        configureRunGraphPercentage()
+        configureUI()
         
         // 타이머 설정
         let timer = Timer.scheduledTimer(
@@ -124,7 +124,7 @@ final class ManageRunViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    private func configureRunGraphPercentage() {
+    private func configureUI() {
         var result: Double = 0
         let totalDuration = Double(run.duration)
         let hour: Double = 3600
@@ -134,15 +134,12 @@ final class ManageRunViewModel: ObservableObject {
         
         self.runGraphPercentage = result
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "H.m"
-        
-        self.endTime = dateFormatter.string(from: Date())
+        self.distance = String(format: "%.2f", run.distance) + " km"
     }
     
     @objc private func executeEverySecond() {
         if status == .running {
-            configureRunGraphPercentage()
+            configureUI()
         }
     }
 }

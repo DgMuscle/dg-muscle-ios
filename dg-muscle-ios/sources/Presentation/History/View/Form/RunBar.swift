@@ -12,7 +12,7 @@ struct RunBar: View {
     let color: Color
     let percentage: Double
     let startTime: String
-    let endTime: String
+    let distance: String
     
     @State private var animate: Bool = false
     
@@ -51,7 +51,7 @@ struct RunBar: View {
                     .frame(height: 30)
                     
                     HStack {
-                        Text(endTime)
+                        Text(distance)
                             .offset(x: geometry.size.width * percentage)
                         Spacer()
                     }
@@ -73,7 +73,7 @@ struct RunBar: View {
         color: .purple,
         percentage: 0.7,
         startTime: "7:03",
-        endTime: "7:47"
+        distance: "3.46 km"
     )
     .preferredColorScheme(.dark)
 }
