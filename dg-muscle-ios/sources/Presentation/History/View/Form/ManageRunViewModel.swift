@@ -23,6 +23,7 @@ final class ManageRunViewModel: ObservableObject {
     @Published var status: Status = .notRunning
     @Published var runGraphPercentage: Double = 0
     @Published var startTime: String = ""
+    @Published var endTime: String = ""
     @Published var distance: String = ""
     @Published var color: Common.HeatMapColor
     @Published var statusView: Common.StatusView.Status? = nil
@@ -117,7 +118,7 @@ final class ManageRunViewModel: ObservableObject {
             .compactMap({ $0.first?.start })
             .map({
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "H.m"
+                dateFormatter.dateFormat = "HH.mm"
                 return dateFormatter.string(from: $0)
             })
             .assign(to: \.startTime, on: self)
@@ -135,6 +136,13 @@ final class ManageRunViewModel: ObservableObject {
         self.runGraphPercentage = result
         
         self.distance = String(format: "%.2f", run.distance) + " km"
+        
+        let end = run.pieces.last?.end ?? Date()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH.mm"
+        
+        self.endTime = dateFormatter.string(from: end)
     }
     
     @objc private func executeEverySecond() {

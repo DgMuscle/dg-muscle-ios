@@ -12,6 +12,7 @@ struct RunBar: View {
     let color: Color
     let percentage: Double
     let startTime: String
+    let endTime: String
     let distance: String
     
     @State private var animate: Bool = false
@@ -21,7 +22,12 @@ struct RunBar: View {
             GeometryReader { geometry in
                 VStack {
                     HStack {
-                        Text(startTime)
+                        ZStack {
+                            Text(startTime)
+                            Text(endTime)
+                                .offset(x: geometry.size.width * min(percentage, 0.85))
+                        }
+                        
                         Spacer()
                     }
                     ZStack {
@@ -52,7 +58,7 @@ struct RunBar: View {
                     
                     HStack {
                         Text(distance)
-                            .offset(x: geometry.size.width * percentage)
+                            .offset(x: geometry.size.width * min(percentage, 0.85))
                         Spacer()
                     }
                 }
@@ -71,8 +77,9 @@ struct RunBar: View {
 #Preview {
     RunBar(
         color: .purple,
-        percentage: 0.7,
-        startTime: "7:03",
+        percentage: 1,
+        startTime: "19:03",
+        endTime: "19:41",
         distance: "3.46 km"
     )
     .preferredColorScheme(.dark)

@@ -66,6 +66,7 @@ public struct ManageRunView: View {
                 color: viewModel.color.color,
                 percentage: viewModel.runGraphPercentage,
                 startTime: viewModel.startTime,
+                endTime: viewModel.endTime,
                 distance: viewModel.distance
             )
             
