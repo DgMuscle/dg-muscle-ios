@@ -24,8 +24,10 @@ struct RunBar: View {
                     HStack {
                         ZStack {
                             Text(startTime)
-                            Text(endTime)
-                                .offset(x: geometry.size.width * min(percentage, 0.85))
+                            if percentage >= 0.2 {
+                                Text(endTime)
+                                    .offset(x: geometry.size.width * min(percentage, 0.85))
+                            }
                         }
                         
                         Spacer()
@@ -77,7 +79,7 @@ struct RunBar: View {
 #Preview {
     RunBar(
         color: .purple,
-        percentage: 1,
+        percentage: 0.2,
         startTime: "19:03",
         endTime: "19:41",
         distance: "3.46 km"
