@@ -84,7 +84,9 @@ final class ManageRunViewModel: ObservableObject {
         let now = Date()
         
         if let index = runPieces.indices.last {
-            runPieces[index].end = now
+            if runPieces[index].end == nil {
+                runPieces[index].end = now
+            }
         }
         
         runPieces.append(.init(velocity: velocity, start: now))
@@ -96,7 +98,9 @@ final class ManageRunViewModel: ObservableObject {
         let now = Date()
         
         if let index = runPieces.indices.last {
-            runPieces[index].end = now
+            if runPieces[index].end == nil {
+                runPieces[index].end = now
+            }
         }
         
         status = .notRunning
