@@ -30,6 +30,8 @@ final class AuthenticationViewModel: ObservableObject {
 
 extension AuthenticationViewModel: AppleAuthCoordinatorDelegate {
     func error(message: String) {
-        status = .error(message)
+        DispatchQueue.main.async { [weak self] in
+            self?.status = .error(message)
+        }
     }
 }
