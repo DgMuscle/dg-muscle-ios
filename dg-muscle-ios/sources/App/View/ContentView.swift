@@ -33,11 +33,7 @@ struct ContentView: View {
                     friendRepository: FriendRepositoryImpl.shared
                 )
             } else {
-                AuthenticationView(
-                    startAppleLoginUsecase: .init(
-                        appleAuthCoordinator: AppleAuthCoordinatorImpl(window: window)
-                    )
-                )
+                AuthenticationView(appleAuthCoordinator: AppleAuthCoordinatorImpl(window: window))
             }
             SplashView().opacity((splash || UserRepositoryImpl.shared.isReady == false) ? 1 : 0)
         }

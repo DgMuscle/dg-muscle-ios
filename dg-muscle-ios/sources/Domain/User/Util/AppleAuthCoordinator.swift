@@ -7,6 +7,11 @@
 
 import Foundation
 
+public protocol AppleAuthCoordinatorDelegate: AnyObject {
+    func error(message: String)
+}
+
 public protocol AppleAuthCoordinator {
+    var delegate: AppleAuthCoordinatorDelegate? { get set }
     func startAppleLogin()
 }
