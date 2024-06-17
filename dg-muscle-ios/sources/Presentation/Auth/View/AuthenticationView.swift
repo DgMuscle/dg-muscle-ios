@@ -22,6 +22,7 @@ public struct AuthenticationView: View {
             
             if let status = viewModel.status {
                 Common.StatusView(status: status)
+                    .padding()
             }
             
             Button {
