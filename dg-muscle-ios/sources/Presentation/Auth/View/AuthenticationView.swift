@@ -7,35 +7,48 @@
 
 import SwiftUI
 import Domain
+import Common
 
 public struct AuthenticationView: View {
     
-    private let startAppleLoginUsecase: StartAppleLoginUsecase
+    @StateObject var viewModel: AuthenticationViewModel
     
-    public init(startAppleLoginUsecase: StartAppleLoginUsecase) {
-        self.startAppleLoginUsecase = startAppleLoginUsecase
+    public init(appleAuthCoordinator: any AppleAuthCoordinator) {
+        _viewModel = .init(wrappedValue: .init(appleAuthCoordinator: appleAuthCoordinator))
     }
     
     public var body: some View {
-        Button {
-            startAppleLoginUsecase.implement()
-        } label: {
-            HStack {
-                Image(systemName: "apple.logo")
-                Text("Sign In with Apple")
+        VStack {
+            
+            if let status = viewModel.status {
+                Common.StatusView(status: status)
+                    .padding()
             }
+            
+            Button {
+                viewModel.startAppleLogin()
+            } label: {
+                HStack {
+                    Image(systemName: "apple.logo")
+                    Text("Sign In with Apple")
+                }
+            }
+            .foregroundStyle(Color(uiColor: .label))
         }
-        .foregroundStyle(Color(uiColor: .label))
+        .animation(.default, value: viewModel.status)
     }
 }
 
 #Preview {
     
     class AppleAuthCoordinatorTest: AppleAuthCoordinator {
+        var delegate: (any Domain.AppleAuthCoordinatorDelegate)? = nil
+        
         func startAppleLogin() {
             print("startAppleLogin")
         }
     }
     
-    return AuthenticationView(startAppleLoginUsecase: .init(appleAuthCoordinator: AppleAuthCoordinatorTest())).preferredColorScheme(.dark)
+    return AuthenticationView(appleAuthCoordinator: AppleAuthCoordinatorTest())
+        .preferredColorScheme(.dark)
 }
