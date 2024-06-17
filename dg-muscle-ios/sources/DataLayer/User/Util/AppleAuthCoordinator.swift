@@ -11,6 +11,8 @@ import FirebaseAuth
 import Domain
 
 public class AppleAuthCoordinatorImpl: NSObject, AppleAuthCoordinator {
+    public weak var delegate: (any Domain.AppleAuthCoordinatorDelegate)?
+    
     var currentNonce: String?
     let window: UIWindow?
 
@@ -83,11 +85,11 @@ extension AppleAuthCoordinatorImpl: ASAuthorizationControllerDelegate {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
             }
             guard let appleIDToken = appleIDCredential.identityToken else {
-                print("Unable to fetch identity token")
+                delegate?.error(message: "Unable to fetch identity token")
                 return
             }
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                delegate?.error(message: "Unable to serialize token string from data: \(appleIDToken.debugDescription)")
                 return
             }
 
@@ -102,7 +104,7 @@ extension AppleAuthCoordinatorImpl: ASAuthorizationControllerDelegate {
                     // Error. If error.code == .MissingOrInvalidNonce, make sure
                     // you're sending the SHA256-hashed nonce as a hex string with
                     // your request to Apple.
-                    print(error.localizedDescription)
+                    self.delegate?.error(message: error.localizedDescription)
                     return
                 }
                 // User is signed in to Firebase with Apple.

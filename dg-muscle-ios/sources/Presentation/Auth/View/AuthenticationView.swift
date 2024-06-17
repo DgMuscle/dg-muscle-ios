@@ -32,6 +32,8 @@ public struct AuthenticationView: View {
 #Preview {
     
     class AppleAuthCoordinatorTest: AppleAuthCoordinator {
+        var delegate: (any Domain.AppleAuthCoordinatorDelegate)? = nil
+        
         func startAppleLogin() {
             print("startAppleLogin")
         }
