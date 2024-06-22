@@ -157,7 +157,7 @@ final class ManageRunViewModel: ObservableObject {
         }
         
         var result: Double = 0
-        let totalDuration = Double(run.duration)
+        let totalDuration = Double(runPieces.map({ $0.duration }).reduce(0, +))
         let hour: Double = 3600
         
         result = totalDuration / hour
@@ -165,7 +165,7 @@ final class ManageRunViewModel: ObservableObject {
         
         self.runGraphPercentage = result
         
-        self.distance = String(format: "%.2f", run.distance) + " km"
+        self.distance = String(format: "%.2f", runPieces.map({ $0.distance }).reduce(0, +)) + " km"
         
         guard let end = run.pieces.last?.end else { return }
         
