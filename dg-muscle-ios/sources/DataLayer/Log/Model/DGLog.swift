@@ -13,7 +13,7 @@ struct DGLog: Codable {
     let message: String
     let resolved: Bool
     let createdAt: CreatedAt
-    let creator: String
+    let creator: String?
     
     init(domain: Domain.DGLog) {
         id = domain.id

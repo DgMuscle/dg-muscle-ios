@@ -50,8 +50,10 @@ final class LogsViewModel: ObservableObject {
         logs = logs
             .map({ log in
                 var log = log
-                let user = getUserFromUidUsecase.implement(uid: log.creator)
-                log.user = .init(displayName: user?.displayName ?? user?.uid ?? "", photoURL: user?.photoURL)
+                if let userId = log.creator {
+                    let user = getUserFromUidUsecase.implement(uid: userId)
+                    log.user = .init(displayName: user?.displayName ?? user?.uid ?? "", photoURL: user?.photoURL)
+                }
                 return log
             })
         

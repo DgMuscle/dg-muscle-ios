@@ -15,7 +15,7 @@ struct DGLog: Hashable {
     let message: String
     let resolved: Bool
     let createdAt: Date
-    let creator: String
+    let creator: String?
     var user: User?
     var expanded: Bool = false
     

@@ -17,7 +17,9 @@ public final class LogRepositoryImpl: LogRepository {
     private var postLogTask: Task<(), Never>? = nil
     private var fetchLogsTask: Task<(), Never>? = nil
     
-    private init() { }
+    private init() {
+        fetchLogs()
+    }
     
     public func post(log: Domain.DGLog) {
         if let index = _logs.firstIndex(where: { $0.id == log.id }) {

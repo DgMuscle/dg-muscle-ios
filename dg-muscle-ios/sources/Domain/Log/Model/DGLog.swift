@@ -13,7 +13,7 @@ public struct DGLog {
     public let message: String
     public var resolved: Bool
     public let createdAt: Date
-    public let creator: String
+    public let creator: String?
     
     public init(
         id: String,
@@ -21,7 +21,7 @@ public struct DGLog {
         message: String,
         resolved: Bool,
         createdAt: Date,
-        creator: String
+        creator: String?
     ) {
         self.id = id
         self.category = category
