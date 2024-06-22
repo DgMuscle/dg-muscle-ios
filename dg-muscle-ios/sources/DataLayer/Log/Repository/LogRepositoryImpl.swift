@@ -7,6 +7,7 @@
 
 import Combine
 import Domain
+import Foundation
 
 public final class LogRepositoryImpl: LogRepository {
     public static let shared = LogRepositoryImpl()
@@ -18,7 +19,9 @@ public final class LogRepositoryImpl: LogRepository {
     private var fetchLogsTask: Task<(), Never>? = nil
     
     private init() {
-        fetchLogs()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.fetchLogs()
+        }
     }
     
     public func post(log: Domain.DGLog) {
@@ -59,7 +62,7 @@ public final class LogRepositoryImpl: LogRepository {
                 
                 self._logs = logs.map({ $0.domain })
             } catch {
-                
+                print("dg: \(error.localizedDescription)")
             }
             
             fetchLogsTask = nil

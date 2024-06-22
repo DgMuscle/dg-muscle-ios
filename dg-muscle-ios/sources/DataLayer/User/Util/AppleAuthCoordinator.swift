@@ -126,6 +126,8 @@ extension AppleAuthCoordinatorImpl: ASAuthorizationControllerDelegate {
                     self.postLogUsecase.implement(message: error.localizedDescription, category: .error)
                     self.delegate?.error(message: error.localizedDescription)
                     return
+                } else {
+                    self.postLogUsecase.implement(message: "login success", category: .log)
                 }
                 // User is signed in to Firebase with Apple.
                 // ...
