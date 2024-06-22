@@ -67,6 +67,13 @@ final class MyViewModel: ObservableObject {
     }
     
     private func deleteAccount() {
+        Task {
+            await deleteAccountMainActor()
+        }
+    }
+    
+    @MainActor
+    private func deleteAccountMainActor() {
         guard deleteAccountTask == nil else { return }
         deleteAccountTask = Task {
             loading = true
