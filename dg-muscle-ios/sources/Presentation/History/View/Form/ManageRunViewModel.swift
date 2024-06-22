@@ -52,18 +52,12 @@ final class ManageRunViewModel: ObservableObject {
         configureViewData()
         
         // 타이머 설정
-        let timer = Timer.scheduledTimer(
-            timeInterval: 6.0,
-            target: self,
-            selector: #selector(
-                executeEverySecond
-            ),
-            userInfo: nil,
-            repeats: true
-        )
-        
-        // 타이머가 실행될 수 있도록 현재 RunLoop에 추가
-        RunLoop.current.add(timer, forMode: .common)
+        Timer.publish(every: 6.0, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                self?.executeEverySecond()
+            }
+            .store(in: &cancellables)
     }
     
     func update(velocity: Double) {
@@ -107,7 +101,9 @@ final class ManageRunViewModel: ObservableObject {
         $runPieces
             .receive(on: DispatchQueue.main)
             .removeDuplicates()
-            .assign(to: \.run.pieces, on: self)
+            .sink { [weak self] pieces in
+                self?.run.pieces = pieces
+            }
             .store(in: &cancellables)
         
         $runPieces
@@ -117,7 +113,9 @@ final class ManageRunViewModel: ObservableObject {
                 dateFormatter.dateFormat = "HH.mm"
                 return dateFormatter.string(from: $0)
             })
-            .assign(to: \.startTime, on: self)
+            .sink(receiveValue: { [weak self] time in
+                self?.startTime = time
+            })
             .store(in: &cancellables)
         
         subscribeRunVelocityUpdatesUsecase
