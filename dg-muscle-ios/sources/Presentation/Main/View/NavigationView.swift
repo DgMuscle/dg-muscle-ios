@@ -51,7 +51,8 @@ public struct NavigationView: View {
                 historyRepository: historyRepository,
                 exerciseRepository: exerciseRepository,
                 heatMapRepository: heatMapRepository,
-                userRepository: userRepository
+                userRepository: userRepository, 
+                logRepository: logRepository
             )
             .navigationDestination(for: ExerciseNavigation.self) { navigation in
                 switch navigation.name {

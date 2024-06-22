@@ -15,10 +15,12 @@ public struct MyView: View {
     @StateObject var viewModel: MyViewModel
     
     public init(
-        userRepository: any UserRepository
+        userRepository: any UserRepository,
+        logRepository: LogRepository
     ) {
         _viewModel = .init(
-            wrappedValue: .init(userRepository: userRepository)
+            wrappedValue: .init(userRepository: userRepository, 
+                                logRepository: logRepository)
         )
     }
     
@@ -57,6 +59,16 @@ public struct MyView: View {
                             ListItemView(systemName: "doc", text: "Logs", color: .purple)
                         }
                         .buttonStyle(.borderless)
+                        .overlay {
+                            if viewModel.hasLogBadge {
+                                HStack {
+                                    Circle().fill(.red)
+                                        .frame(width: 4)
+                                        .offset(x: 4, y: -8)
+                                    Spacer()
+                                }
+                            }
+                        }
                     }
                 }
             } header: {
@@ -92,7 +104,8 @@ public struct MyView: View {
 
 #Preview {
     return MyView(
-        userRepository: UserRepositoryMock()
+        userRepository: UserRepositoryMock(),
+        logRepository: LogRepositoryMock()
     )
         .preferredColorScheme(.dark)
 }
