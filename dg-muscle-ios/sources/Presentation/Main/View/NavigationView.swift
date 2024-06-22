@@ -88,7 +88,8 @@ public struct NavigationView: View {
                 case .manageRun(let run):
                     ManageRunView(
                         run: run,
-                        userRepository: userRepository
+                        userRepository: userRepository, 
+                        runRepository: runRepository
                     )
                 case .updateRunVelocity:
                     UpdateRunVelocityView(runRepository: runRepository)
