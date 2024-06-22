@@ -15,9 +15,15 @@ public class AppleAuthCoordinatorImpl: NSObject, AppleAuthCoordinator {
     
     var currentNonce: String?
     let window: UIWindow?
+    private let postLogUsecase: PostLogUsecase
 
-    public init(window: UIWindow?) {
+    public init(
+        window: UIWindow?,
+        logRepository: LogRepository,
+        userRepository: UserRepository
+    ) {
         self.window = window
+        self.postLogUsecase = .init(logRepository: logRepository, userRepository: userRepository)
     }
 
     public func startAppleLogin() {
@@ -57,6 +63,7 @@ public class AppleAuthCoordinatorImpl: NSObject, AppleAuthCoordinator {
                 var random: UInt8 = 0
                 let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
                 if errorCode != errSecSuccess {
+                    postLogUsecase.implement(message: "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)", category: .error)
                     fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
                 }
                 return random
@@ -82,13 +89,25 @@ extension AppleAuthCoordinatorImpl: ASAuthorizationControllerDelegate {
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
+                postLogUsecase.implement(
+                    message: "Invalid state: A login callback was received, but no login request was sent.",
+                    category: .error
+                )
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
             }
             guard let appleIDToken = appleIDCredential.identityToken else {
                 delegate?.error(message: "Unable to fetch identity token")
+                postLogUsecase.implement(
+                    message: "Unable to fetch identity token",
+                    category: .error
+                )
                 return
             }
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                postLogUsecase.implement(
+                    message: "Unable to serialize token string from data: \(appleIDToken.debugDescription)",
+                    category: .error
+                )
                 delegate?.error(message: "Unable to serialize token string from data: \(appleIDToken.debugDescription)")
                 return
             }
@@ -104,8 +123,11 @@ extension AppleAuthCoordinatorImpl: ASAuthorizationControllerDelegate {
                     // Error. If error.code == .MissingOrInvalidNonce, make sure
                     // you're sending the SHA256-hashed nonce as a hex string with
                     // your request to Apple.
+                    self.postLogUsecase.implement(message: error.localizedDescription, category: .error)
                     self.delegate?.error(message: error.localizedDescription)
                     return
+                } else {
+                    self.postLogUsecase.implement(message: "login success", category: .log)
                 }
                 // User is signed in to Firebase with Apple.
                 // ...

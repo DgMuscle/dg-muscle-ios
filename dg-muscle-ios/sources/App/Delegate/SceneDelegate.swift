@@ -85,6 +85,8 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             coordinator?.updateRunVelocity(velocity: Double(velocity) ?? 0)
         case "deleteaccountconfirm":
             coordinator?.deleteAccountConfirm()
+        case "logs":
+            coordinator?.logs()
         default: break
         }
     }

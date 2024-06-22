@@ -61,3 +61,14 @@ extension FunctionsURL {
         }
     }
 }
+
+extension FunctionsURL {
+    enum Log: String {
+        case postlog
+        case getlogs
+        
+        var value: String {
+            return "v4log-\(self.rawValue)"
+        }
+    }
+}

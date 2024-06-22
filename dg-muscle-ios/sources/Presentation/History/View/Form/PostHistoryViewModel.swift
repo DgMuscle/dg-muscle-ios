@@ -88,7 +88,7 @@ class PostHistoryViewModel: ObservableObject {
             .sink { [weak self] history in
                 let domain: Domain.History = history.domain
                 
-                if history.volume == 0 && history.run.pieces.isEmpty {
+                if history.volume == 0 && history.run.pieces.isEmpty && history.memo == nil {
                     self?.deleteHistoryUsecase.implement(history: domain)
                 } else {
                     self?.postHistoryUsecase.implement(history: domain)

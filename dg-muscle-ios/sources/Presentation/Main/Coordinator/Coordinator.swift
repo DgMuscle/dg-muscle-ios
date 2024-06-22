@@ -96,4 +96,8 @@ public final class Coordinator {
     public func deleteAccountConfirm() {
         path.append(MyNavigation(name: .deleteAccountConfirm))
     }
+    
+    public func logs() {
+        path.append(MyNavigation(name: .logs))
+    }
 }
