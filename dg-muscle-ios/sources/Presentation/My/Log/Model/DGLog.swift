@@ -16,6 +16,7 @@ struct DGLog: Hashable {
     let createdAt: Date
     let creator: String
     var user: User?
+    var expanded: Bool = false
     
     init(domain: Domain.DGLog) {
         id = domain.id

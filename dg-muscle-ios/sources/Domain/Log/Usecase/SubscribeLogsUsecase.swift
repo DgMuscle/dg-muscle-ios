@@ -9,13 +9,27 @@ import Foundation
 import Combine
 
 public final class SubscribeLogsUsecase {
+    
+    @Published var logs: [DGLog] = []
+    
     private let logRepository: LogRepository
+    private var cancellables = Set<AnyCancellable>()
     
     public init(logRepository: LogRepository) {
         self.logRepository = logRepository
+        bind()
     }
     
     public func implement() -> AnyPublisher<[DGLog], Never> {
-        logRepository.logs
+        $logs.eraseToAnyPublisher()
+    }
+    
+    private func bind() {
+        logRepository
+            .logs
+            .sink { [weak self] logs in
+                self?.logs = logs
+            }
+            .store(in: &cancellables)
     }
 }
