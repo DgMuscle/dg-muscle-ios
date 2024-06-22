@@ -83,8 +83,8 @@ final class ManageRunViewModel: ObservableObject {
             stop()
         case .notRunning:
             start()
-            executeEverySecond()
         }
+        configureViewData()
     }
     
     private func start() {
@@ -104,12 +104,10 @@ final class ManageRunViewModel: ObservableObject {
         
         runPieces.append(.init(velocity: velocity, start: now))
         status = .running
-        configureViewData()
     }
     
     private func stop() {
         status = .notRunning
-        configureViewData()
     }
     
     private func bind() {
@@ -151,6 +149,13 @@ final class ManageRunViewModel: ObservableObject {
     }
     
     private func configureViewData() {
+        
+        if status == .running {
+            if let index = runPieces.indices.last {
+                runPieces[index].end = .init()
+            }
+        }
+        
         var result: Double = 0
         let totalDuration = Double(run.duration)
         let hour: Double = 3600
@@ -162,7 +167,7 @@ final class ManageRunViewModel: ObservableObject {
         
         self.distance = String(format: "%.2f", run.distance) + " km"
         
-        let end = run.pieces.last?.end ?? Date()
+        guard let end = run.pieces.last?.end else { return }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h.m a"
@@ -171,12 +176,6 @@ final class ManageRunViewModel: ObservableObject {
     }
     
     @objc private func executeEverySecond() {
-        if status == .running {
-            if let index = runPieces.indices.last {
-                runPieces[index].end = .init()
-            }
-            
-            configureViewData()
-        }
+        configureViewData()
     }
 }
