@@ -15,6 +15,7 @@ struct DGLog: Hashable {
     let resolved: Bool
     let createdAt: Date
     let creator: String
+    var user: User?
     
     init(domain: Domain.DGLog) {
         id = domain.id
@@ -62,3 +63,9 @@ extension DGLog {
     }
 }
 
+extension DGLog {
+    struct User: Hashable {
+        let displayName: String
+        let photoURL: URL?
+    }
+}
