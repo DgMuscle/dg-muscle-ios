@@ -11,11 +11,19 @@ import Combine
 import UIKit
 
 public final class UserRepositoryMock: UserRepository {
+    public var deleteAccountStatus: AnyPublisher<Domain.DeleteAccountStatus?, Never> {
+        $_deleteAccountStatus.eraseToAnyPublisher()
+    }
     public var user: AnyPublisher<Domain.User?, Never> { $_user.eraseToAnyPublisher() }
     @Published var _user: Domain.User? = USER_DG
+    @Published var _deleteAccountStatus: DeleteAccountStatus? = nil
     
     public init() {
         
+    }
+    
+    public func setDeleteAccountStatus(status: Domain.DeleteAccountStatus?) {
+        _deleteAccountStatus = status
     }
     
     public func signOut() throws {
