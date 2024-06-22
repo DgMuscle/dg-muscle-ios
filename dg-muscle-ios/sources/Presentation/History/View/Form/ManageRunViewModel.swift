@@ -53,7 +53,7 @@ final class ManageRunViewModel: ObservableObject {
         
         // 타이머 설정
         let timer = Timer.scheduledTimer(
-            timeInterval: 1.0,
+            timeInterval: 3.0,
             target: self,
             selector: #selector(
                 executeEverySecond
@@ -82,7 +82,6 @@ final class ManageRunViewModel: ObservableObject {
     }
     
     private func start() {
-        
         if velocity == 0 {
             statusView = .error("Configure Velocity before run.")
             return
@@ -97,19 +96,10 @@ final class ManageRunViewModel: ObservableObject {
         }
         
         runPieces.append(.init(velocity: velocity, start: now))
-        
         status = .running
     }
     
     private func stop() {
-        let now = Date()
-        
-        if let index = runPieces.indices.last {
-            if runPieces[index].end == nil {
-                runPieces[index].end = now
-            }
-        }
-        
         status = .notRunning
     }
     
@@ -140,6 +130,11 @@ final class ManageRunViewModel: ObservableObject {
     }
     
     private func configureViewData() {
+        
+        if let index = runPieces.indices.last {
+            runPieces[index].end = .init()
+        }
+        
         var result: Double = 0
         let totalDuration = Double(run.duration)
         let hour: Double = 3600
