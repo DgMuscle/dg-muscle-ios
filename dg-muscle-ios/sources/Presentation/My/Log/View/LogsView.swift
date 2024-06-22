@@ -13,16 +13,35 @@ public struct LogsView: View {
     
     @StateObject var viewModel: LogsViewModel
     
-    public init(logRepository: LogRepository) {
-        _viewModel = .init(wrappedValue: .init(logRepository: logRepository))
+    public init(
+        logRepository: LogRepository,
+        friendRepository: FriendRepository
+    ) {
+        _viewModel = .init(
+            wrappedValue: .init(
+                logRepository: logRepository,
+                friendRepository: friendRepository
+            )
+        )
     }
     
     public var body: some View {
-        Text("LogsView")
+        ScrollView {
+            VStack {
+                ForEach(viewModel.logs, id: \.self) { log in
+                    Text(log.message)
+                }
+            }
+            .padding()
+        }
+        .scrollIndicators(.hidden)
     }
 }
 
 #Preview {
-    LogsView(logRepository: LogRepositoryMock())
-        .preferredColorScheme(.dark)
+    LogsView(
+        logRepository: LogRepositoryMock(),
+        friendRepository: FriendRepositoryMock()
+    )
+    .preferredColorScheme(.dark)
 }

@@ -109,7 +109,10 @@ public struct NavigationView: View {
                 case .deleteAccountConfirm:
                     My.DeleteAccountConfirmView(userRepository: userRepository)
                 case .logs:
-                    My.LogsView(logRepository: logRepository)
+                    My.LogsView(
+                        logRepository: logRepository,
+                        friendRepository: friendRepository
+                    )
                 }
             }
             .navigationDestination(for: FriendNavigation.self) { navigation in

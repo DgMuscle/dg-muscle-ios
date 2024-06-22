@@ -15,12 +15,17 @@ final class LogsViewModel: ObservableObject {
     
     private let resolveLogUsecase: ResolveLogUsecase
     private let subscribeLogsUsecase: SubscribeLogsUsecase
+    private let getUserFromUidUsecase: GetUserFromUidUsecase
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(logRepository: LogRepository) {
+    init(
+        logRepository: LogRepository,
+        friendRepository: FriendRepository
+    ) {
         resolveLogUsecase = .init(logRepository: logRepository)
         subscribeLogsUsecase = .init(logRepository: logRepository)
+        getUserFromUidUsecase = .init(friendRepository: friendRepository)
         
         bind()
     }
@@ -30,8 +35,22 @@ final class LogsViewModel: ObservableObject {
             .implement()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] domainLogs in
-                self?.logs = domainLogs.map({ .init(domain: $0) })
+                self?.configureLogs(logs: domainLogs)
             }
             .store(in: &cancellables)
+    }
+    
+    private func configureLogs(logs domains: [Domain.DGLog]) {
+        var logs: [DGLog] = domains.map({ .init(domain: $0) })
+        
+        logs = logs
+            .map({ log in
+                var log = log
+                let user = getUserFromUidUsecase.implement(uid: log.creator)
+                log.user = .init(displayName: user?.displayName ?? user?.uid ?? "", photoURL: user?.photoURL)
+                return log
+            })
+        
+        self.logs = logs
     }
 }
