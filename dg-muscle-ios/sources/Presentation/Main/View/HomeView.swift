@@ -18,17 +18,21 @@ public struct HomeView: View {
     let exerciseRepository: ExerciseRepository
     let heatMapRepository: HeatMapRepository
     let userRepository: UserRepository
+    let logRepository: LogRepository
     
     public init(today: Date,
                 historyRepository: HistoryRepository,
                 exerciseRepository: ExerciseRepository,
                 heatMapRepository: HeatMapRepository,
-                userRepository: UserRepository) {
+                userRepository: UserRepository,
+                logRepository: LogRepository
+    ) {
         self.today = today
         self.historyRepository = historyRepository
         self.exerciseRepository = exerciseRepository
         self.heatMapRepository = heatMapRepository
         self.userRepository = userRepository
+        self.logRepository = logRepository
     }
     
     public var body: some View {
@@ -41,7 +45,8 @@ public struct HomeView: View {
                                 heatMapRepository: heatMapRepository,
                                 userRepository: userRepository)
                 
-                MyView(userRepository: userRepository)
+                MyView(userRepository: userRepository, 
+                       logRepository: logRepository)
 
             }
             .ignoresSafeArea()
@@ -58,9 +63,11 @@ public struct HomeView: View {
     let today = dateFormatter.date(from: "20240515")!
     
     return HomeView(today: today,
-             historyRepository: HistoryRepositoryMock(),
-             exerciseRepository: ExerciseRepositoryMock(),
-             heatMapRepository: HeatMapRepositoryMock(),
-             userRepository: UserRepositoryMock())
+                    historyRepository: HistoryRepositoryMock(),
+                    exerciseRepository: ExerciseRepositoryMock(),
+                    heatMapRepository: HeatMapRepositoryMock(),
+                    userRepository: UserRepositoryMock(),
+                    logRepository: LogRepositoryMock()
+    )
     .preferredColorScheme(.dark)
 }

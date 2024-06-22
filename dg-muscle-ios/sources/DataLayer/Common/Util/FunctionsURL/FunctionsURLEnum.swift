@@ -26,6 +26,7 @@ extension FunctionsURL {
         case getprofile
         case postprofile
         case getprofilefromuid
+        case deleteaccount
         
         var value: String {
             return "v4user-\(self.rawValue)"
@@ -57,6 +58,17 @@ extension FunctionsURL {
         
         var value: String {
             return "v4exercise-\(self.rawValue)"
+        }
+    }
+}
+
+extension FunctionsURL {
+    enum Log: String {
+        case postlog
+        case getlogs
+        
+        var value: String {
+            return "v4log-\(self.rawValue)"
         }
     }
 }

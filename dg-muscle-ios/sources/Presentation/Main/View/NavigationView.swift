@@ -21,6 +21,8 @@ public struct NavigationView: View {
     let heatMapRepository: HeatMapRepository
     let userRepository: UserRepository
     let friendRepository: FriendRepository
+    let runRepository: RunRepository
+    let logRepository: LogRepository
     
     public init(
         today: Date,
@@ -28,7 +30,9 @@ public struct NavigationView: View {
         exerciseRepository: ExerciseRepository,
         heatMapRepository: HeatMapRepository,
         userRepository: UserRepository,
-        friendRepository: FriendRepository
+        friendRepository: FriendRepository,
+        runRepository: RunRepository,
+        logRepository: LogRepository
     ) {
         self.today = today
         self.historyRepository = historyRepository
@@ -36,6 +40,8 @@ public struct NavigationView: View {
         self.heatMapRepository = heatMapRepository
         self.userRepository = userRepository
         self.friendRepository = friendRepository
+        self.runRepository = runRepository
+        self.logRepository = logRepository
     }
     
     public var body: some View {
@@ -45,7 +51,8 @@ public struct NavigationView: View {
                 historyRepository: historyRepository,
                 exerciseRepository: exerciseRepository,
                 heatMapRepository: heatMapRepository,
-                userRepository: userRepository
+                userRepository: userRepository, 
+                logRepository: logRepository
             )
             .navigationDestination(for: ExerciseNavigation.self) { navigation in
                 switch navigation.name {
@@ -72,6 +79,8 @@ public struct NavigationView: View {
                         userRepository: userRepository,
                         history: history) { historyForm, recordId in
                             coordinator?.historyFormStep2(historyForm: historyForm, recordId: recordId)
+                        } runAction: { run in
+                            coordinator?.historyManageRun(run: run)
                         }
                 case .historyFormStep2(let historyForm, let recordId):
                     ManageRecordView(
@@ -80,12 +89,31 @@ public struct NavigationView: View {
                         userRepository: userRepository, 
                         historyRepository: historyRepository
                     )
+                case .manageRun(let run):
+                    ManageRunView(
+                        run: run,
+                        userRepository: userRepository, 
+                        runRepository: runRepository
+                    )
+                case .updateRunVelocity(let velocity):
+                    UpdateRunVelocityView(
+                        runRepository: runRepository, 
+                        userRepository: userRepository,
+                        velocity: velocity
+                    )
                 }
             }
             .navigationDestination(for: MyNavigation.self) { navigation in
                 switch navigation.name {
                 case .profile:
                     My.MyProfileView(userRepository: userRepository)
+                case .deleteAccountConfirm:
+                    My.DeleteAccountConfirmView(userRepository: userRepository)
+                case .logs:
+                    My.LogsView(
+                        logRepository: logRepository,
+                        friendRepository: friendRepository
+                    )
                 }
             }
             .navigationDestination(for: FriendNavigation.self) { navigation in

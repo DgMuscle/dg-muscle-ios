@@ -183,7 +183,9 @@ public final class FriendRepositoryImpl: FriendRepository {
     
     private func getUsersFromServer() async throws -> [Domain.User] {
         let url = FunctionsURL.user(.getprofiles)
-        let data: [UserData] = try await APIClient.shared.request(url: url)
+        var data: [UserData] = try await APIClient.shared.request(url: url)
+        data = data
+            .filter({ $0.deleted != true })
         return data.map({ $0.domain })
     }
     

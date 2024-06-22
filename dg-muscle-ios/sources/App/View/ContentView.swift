@@ -30,10 +30,18 @@ struct ContentView: View {
                     exerciseRepository: ExerciseRepositoryImpl.shared,
                     heatMapRepository: HeatMapRepositoryImpl.shared,
                     userRepository: UserRepositoryImpl.shared, 
-                    friendRepository: FriendRepositoryImpl.shared
+                    friendRepository: FriendRepositoryImpl.shared, 
+                    runRepository: RunRepositoryImpl.shared, 
+                    logRepository: LogRepositoryImpl.shared
                 )
             } else {
-                AuthenticationView(appleAuthCoordinator: AppleAuthCoordinatorImpl(window: window))
+                AuthenticationView(
+                    appleAuthCoordinator: AppleAuthCoordinatorImpl(
+                        window: window,
+                        logRepository: LogRepositoryImpl.shared,
+                        userRepository: UserRepositoryImpl.shared
+                    )
+                )
             }
             SplashView().opacity((splash || UserRepositoryImpl.shared.isReady == false) ? 1 : 0)
         }

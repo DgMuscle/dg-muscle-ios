@@ -12,7 +12,27 @@ private func createHistory(date: String, memo: String?, records: [ExerciseRecord
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyyMMdd"
     let date = dateFormatter.date(from: date)!
-    return .init(id: UUID().uuidString, date: date, memo: memo, records: records)
+
+    // 17분을 더하기 위한 DateComponents 생성
+    var dateComponents = DateComponents()
+    dateComponents.minute = 17
+
+    // Calendar를 사용하여 날짜 계산
+    // 17분
+    let date2 = Calendar.current.date(byAdding: dateComponents, to: date)!
+    // 34분
+    let date3 = Calendar.current.date(byAdding: dateComponents, to: date2)!
+    // 51분
+    let date4 = Calendar.current.date(byAdding: dateComponents, to: date3)!
+    
+    let runPieces: [RunPiece] = [
+        .init(id: UUID().uuidString, velocity: 5.5, start: date2, end: date3),
+        .init(id: UUID().uuidString, velocity: 6.7, start: date3, end: date4),
+    ]
+    
+    let run: Run = .init(id: UUID().uuidString, pieces: runPieces, status: .notRunning)
+    
+    return .init(id: UUID().uuidString, date: date, memo: memo, records: records, run: run)
 }
 
 public let SETS_1: [ExerciseSet] = [

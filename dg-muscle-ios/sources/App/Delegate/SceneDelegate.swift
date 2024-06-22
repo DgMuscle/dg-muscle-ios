@@ -46,6 +46,8 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         guard scheme == "dgmuscle" else { return }
         
         switch host {
+        case "pop":
+            coordinator?.pop()
         case "friend":
             var anchor: PageAnchorView.Page = .friend
             
@@ -78,7 +80,13 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             guard let friendId = URLManager.shared.getParameter(url: url, name: "friend_id") else { return }
             guard let historyId = URLManager.shared.getParameter(url: url, name: "history_id") else { return }
             coordinator?.friendHistoryDetail(friendId: friendId, historyId: historyId)
-            
+        case "updaterunvelocity":
+            let velocity = URLManager.shared.getParameter(url: url, name: "velocity") ?? "0"
+            coordinator?.updateRunVelocity(velocity: Double(velocity) ?? 0)
+        case "deleteaccountconfirm":
+            coordinator?.deleteAccountConfirm()
+        case "logs":
+            coordinator?.logs()
         default: break
         }
     }

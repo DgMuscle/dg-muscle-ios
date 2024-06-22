@@ -15,7 +15,6 @@ public final class GetUserFromUidUsecase {
     }
     
     public func implement(uid: String) -> User? {
-        let users = friendRepository.getUsers()
-        return users.first(where: { $0.uid == uid })
+        return friendRepository.getUser(uid: uid)
     }
 }

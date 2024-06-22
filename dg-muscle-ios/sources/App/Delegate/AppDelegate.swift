@@ -47,14 +47,17 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         let userInfo = response.notification.request.content.userInfo
         if let destination = userInfo["destination"] as? String {
             
-            if destination == "friend_request" {
+            switch destination {
+            case "friend_request":
                 FriendRepositoryImpl.shared.fetch()
                 URLManager.shared.open(url: "dgmuscle://friend?anchor=request")
-            } else if destination == "friend_list" {
+            case "friend_list":
                 FriendRepositoryImpl.shared.fetch()
                 URLManager.shared.open(url: "dgmuscle://friend")
+            case "logs":
+                URLManager.shared.open(url: "dgmuscle://logs")
+            default: break
             }
-            
         }
     }
 }
