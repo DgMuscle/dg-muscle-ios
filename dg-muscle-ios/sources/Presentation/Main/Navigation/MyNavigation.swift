@@ -15,5 +15,6 @@ extension MyNavigation {
     public enum Name {
         case profile
         case deleteAccountConfirm
+        case logs
     }
 }

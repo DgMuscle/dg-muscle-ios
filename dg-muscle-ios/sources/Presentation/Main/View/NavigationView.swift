@@ -22,6 +22,7 @@ public struct NavigationView: View {
     let userRepository: UserRepository
     let friendRepository: FriendRepository
     let runRepository: RunRepository
+    let logRepository: LogRepository
     
     public init(
         today: Date,
@@ -30,7 +31,8 @@ public struct NavigationView: View {
         heatMapRepository: HeatMapRepository,
         userRepository: UserRepository,
         friendRepository: FriendRepository,
-        runRepository: RunRepository
+        runRepository: RunRepository,
+        logRepository: LogRepository
     ) {
         self.today = today
         self.historyRepository = historyRepository
@@ -39,6 +41,7 @@ public struct NavigationView: View {
         self.userRepository = userRepository
         self.friendRepository = friendRepository
         self.runRepository = runRepository
+        self.logRepository = logRepository
     }
     
     public var body: some View {
@@ -105,6 +108,8 @@ public struct NavigationView: View {
                     My.MyProfileView(userRepository: userRepository)
                 case .deleteAccountConfirm:
                     My.DeleteAccountConfirmView(userRepository: userRepository)
+                case .logs:
+                    My.LogsView(logRepository: logRepository)
                 }
             }
             .navigationDestination(for: FriendNavigation.self) { navigation in

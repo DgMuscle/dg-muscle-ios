@@ -9,11 +9,15 @@ import Combine
 import Domain
 
 public final class LogRepositoryImpl: LogRepository {
+    public static let shared = LogRepositoryImpl()
+    
     public var logs: AnyPublisher<[Domain.DGLog], Never> { $_logs.eraseToAnyPublisher() }
     @Published var _logs: [Domain.DGLog] = []
     
     private var postLogTask: Task<(), Never>? = nil
     private var fetchLogsTask: Task<(), Never>? = nil
+    
+    private init() { }
     
     public func post(log: Domain.DGLog) {
         if let index = _logs.firstIndex(where: { $0.id == log.id }) {
