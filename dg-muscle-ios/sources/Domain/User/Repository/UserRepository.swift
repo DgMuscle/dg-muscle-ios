@@ -11,6 +11,7 @@ import UIKit
 
 public protocol UserRepository {
     var user: AnyPublisher<User?, Never> { get }
+    var startDeleteAccount: PassthroughSubject<(), Never> { get }
     
     func get() -> User?
     

@@ -12,6 +12,7 @@ import UIKit
 
 public final class UserRepositoryMock: UserRepository {
     public var user: AnyPublisher<Domain.User?, Never> { $_user.eraseToAnyPublisher() }
+    public var startDeleteAccount: PassthroughSubject<(), Never> = .init()
     @Published var _user: Domain.User? = USER_DG
     
     public init() {

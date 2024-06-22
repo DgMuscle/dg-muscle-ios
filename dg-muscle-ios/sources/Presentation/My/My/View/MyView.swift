@@ -24,6 +24,16 @@ public struct MyView: View {
     
     public var body: some View {
         List {
+            
+            if let errorMessage = viewModel.errorMessage {
+                Common.StatusView(status: .error(errorMessage))
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+                            viewModel.errorMessage = nil
+                        }
+                    }
+            }
+            
             Section {
                 VStack(spacing: 20) {
                     Button {
@@ -57,9 +67,17 @@ public struct MyView: View {
                 } label: {
                     Text("Sign Out")
                 }
+                
+                Button {
+                    URLManager.shared.open(url: "dgmuscle://deleteaccountconfirm")
+                } label: {
+                    Text("Delete Account")
+                        .italic()
+                }
             }
         }
         .scrollIndicators(.hidden)
+        .animation(.default, value: viewModel.errorMessage)
     }
 }
 

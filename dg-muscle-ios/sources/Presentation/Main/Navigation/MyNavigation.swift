@@ -14,5 +14,6 @@ public struct MyNavigation: Hashable {
 extension MyNavigation {
     public enum Name {
         case profile
+        case deleteAccountConfirm
     }
 }

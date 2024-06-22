@@ -103,6 +103,8 @@ public struct NavigationView: View {
                 switch navigation.name {
                 case .profile:
                     My.MyProfileView(userRepository: userRepository)
+                case .deleteAccountConfirm:
+                    My.DeleteAccountConfirmView(userRepository: userRepository)
                 }
             }
             .navigationDestination(for: FriendNavigation.self) { navigation in

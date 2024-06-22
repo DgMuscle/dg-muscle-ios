@@ -14,8 +14,11 @@ import WidgetKit
 
 public final class UserRepositoryImpl: UserRepository {
     public static let shared = UserRepositoryImpl()
+    
     public var user: AnyPublisher<Domain.User?, Never> { $_user.eraseToAnyPublisher() }
     public var isReady: Bool = false
+    public var startDeleteAccount: PassthroughSubject<(), Never> = .init()
+    
     private var cancellables = Set<AnyCancellable>()
     
     @Published var _user: Domain.User? = nil
@@ -81,7 +84,20 @@ public final class UserRepositoryImpl: UserRepository {
     }
     
     public func withDrawal() async -> (any Error)? {
-        await AuthManager().withDrawal()
+        
+        if _user?.uid == "taEJh30OpGVsR3FEFN2s67A8FvF3" {
+            return DataError.authentication
+        }
+        
+        do {
+            let _: DataResponse = try await APIClient.shared.request(
+                method: .delete,
+                url: FunctionsURL.user(.deleteaccount)
+            )
+            return await AuthManager().withDrawal()
+        } catch {
+            return error
+        }
     }
     
     public func get() -> Domain.User? {
