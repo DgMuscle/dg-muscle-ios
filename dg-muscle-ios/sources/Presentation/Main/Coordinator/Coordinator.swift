@@ -13,6 +13,8 @@ import Friend
 
 public var coordinator: Coordinator?
 
+// TODO: Coordinator 나누기
+
 public final class Coordinator {
     @Binding var path: NavigationPath
     
@@ -30,8 +32,24 @@ public final class Coordinator {
         path.removeLast(k)
     }
     
-    public func profile() {
-        path.append(MyNavigation(name: .profile))
+    public func addExercise(exercise: Exercise?) {
+        path.append(ExerciseNavigation(name: .add(exercise)))
+    }
+    
+    public func exerciseManage() {
+        path.append(ExerciseNavigation(name: .manage))
+    }
+    
+    public func friendMainView(anchor: PageAnchorView.Page) {
+        path.append(FriendNavigation(name: .main(anchor) ))
+    }
+    
+    public func friendHistory(friendId: String) {
+        path.append(FriendNavigation(name: .history(friendId)))
+    }
+    
+    public func friendHistoryDetail(friendId: String, historyId: String) {
+        path.append(FriendNavigation(name: .historyDetail(friendId, historyId)))
     }
     
     public func historyFormStep1(historyId: String?) {
@@ -59,27 +77,19 @@ public final class Coordinator {
         )
     }
     
-    public func addExercise(exercise: Exercise?) {
-        path.append(ExerciseNavigation(name: .add(exercise)))
-    }
-    
-    public func exerciseManage() {
-        path.append(ExerciseNavigation(name: .manage))
-    }
-    
     public func heatMapColorSelectView() {
         path.append(HistoryNavigation(name: .heatMapColor))
     }
     
-    public func friendMainView(anchor: PageAnchorView.Page) {
-        path.append(FriendNavigation(name: .main(anchor) ))
+    public func updateRunVelocity(velocity: Double) {
+        path.append(HistoryNavigation(name: .updateRunVelocity(velocity)))
     }
     
-    public func friendHistory(friendId: String) {
-        path.append(FriendNavigation(name: .history(friendId)))
+    public func historyManageRun(run: Binding<RunPresentation>) {
+        path.append(HistoryNavigation(name: .manageRun(run)))
     }
     
-    public func friendHistoryDetail(friendId: String, historyId: String) {
-        path.append(FriendNavigation(name: .historyDetail(friendId, historyId)))
+    public func profile() {
+        path.append(MyNavigation(name: .profile))
     }
 }

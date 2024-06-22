@@ -21,6 +21,7 @@ public struct NavigationView: View {
     let heatMapRepository: HeatMapRepository
     let userRepository: UserRepository
     let friendRepository: FriendRepository
+    let runRepository: RunRepository
     
     public init(
         today: Date,
@@ -28,7 +29,8 @@ public struct NavigationView: View {
         exerciseRepository: ExerciseRepository,
         heatMapRepository: HeatMapRepository,
         userRepository: UserRepository,
-        friendRepository: FriendRepository
+        friendRepository: FriendRepository,
+        runRepository: RunRepository
     ) {
         self.today = today
         self.historyRepository = historyRepository
@@ -36,6 +38,7 @@ public struct NavigationView: View {
         self.heatMapRepository = heatMapRepository
         self.userRepository = userRepository
         self.friendRepository = friendRepository
+        self.runRepository = runRepository
     }
     
     public var body: some View {
@@ -72,6 +75,8 @@ public struct NavigationView: View {
                         userRepository: userRepository,
                         history: history) { historyForm, recordId in
                             coordinator?.historyFormStep2(historyForm: historyForm, recordId: recordId)
+                        } runAction: { run in
+                            coordinator?.historyManageRun(run: run)
                         }
                 case .historyFormStep2(let historyForm, let recordId):
                     ManageRecordView(
@@ -79,6 +84,18 @@ public struct NavigationView: View {
                         recordId: recordId,
                         userRepository: userRepository, 
                         historyRepository: historyRepository
+                    )
+                case .manageRun(let run):
+                    ManageRunView(
+                        run: run,
+                        userRepository: userRepository, 
+                        runRepository: runRepository
+                    )
+                case .updateRunVelocity(let velocity):
+                    UpdateRunVelocityView(
+                        runRepository: runRepository, 
+                        userRepository: userRepository,
+                        velocity: velocity
                     )
                 }
             }

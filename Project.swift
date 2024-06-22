@@ -3,7 +3,7 @@ import ProjectDescription
 let projectName = "dg-muscle-ios"
 let widgetName = "DgWidget"
 let bundleId = "com.donggyu.dg-muscle-ios"
-let appVersion: String = "2.0.1"
+let appVersion: String = "2.1.0"
 
 enum Layer: String, CaseIterable {
     case Domain
@@ -118,7 +118,7 @@ func createWidget() -> Target {
 }
 
 func createLayers() -> [Target] {
-    
+
     return Layer.allCases.map({
         switch $0 {
         case .Domain:
@@ -133,13 +133,13 @@ func createLayers() -> [Target] {
             var dependencies: [TargetDependency] = [
                 .target(name: Layer.Domain.rawValue, condition: nil)
             ]
-            
+
             dependencies.append(contentsOf: [
                 .package(product: "FirebaseAuth", type: .runtime, condition: nil),
                 .package(product: "FirebaseMessaging", type: .runtime, condition: nil),
                 .package(product: "FirebaseStorage", type: .runtime, condition: nil)
             ])
-            
+
             return Target.target(
                 name: $0.rawValue,
                 destinations: .iOS,
@@ -150,11 +150,11 @@ func createLayers() -> [Target] {
             )
         case .Presentation:
             var dependencies: [TargetDependency] = []
-            
+
             Presentation.allCases.forEach({
                 dependencies.append(.target(name: $0.rawValue, condition: nil))
             })
-            
+
             return Target.target(
                 name: $0.rawValue,
                 destinations: .iOS,
@@ -183,7 +183,7 @@ func createPresentations() -> [Target] {
         let commonDependency: TargetDependency = .target(name: Presentation.Common.rawValue, condition: nil)
         var dependencies = dependencies
         dependencies.append(commonDependency)
-        
+
         return .target(
             name: presentation.rawValue,
             destinations: .iOS,
@@ -193,7 +193,7 @@ func createPresentations() -> [Target] {
             dependencies: dependencies
         )
     }
-    
+
     return Presentation.allCases.map({
         switch $0 {
         case .Auth, .HistoryHeatMap, .Exercise, .My:
