@@ -30,7 +30,7 @@ private func createHistory(date: String, memo: String?, records: [ExerciseRecord
         .init(id: UUID().uuidString, velocity: 6.7, start: date3, end: date4),
     ]
     
-    let run: Run = .init(id: UUID().uuidString, pieces: runPieces)
+    let run: Run = .init(id: UUID().uuidString, pieces: runPieces, status: .notRunning)
     
     return .init(id: UUID().uuidString, date: date, memo: memo, records: records, run: run)
 }
