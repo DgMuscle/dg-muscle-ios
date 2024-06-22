@@ -49,7 +49,8 @@ public struct UpdateRunVelocityView: View {
             }
             
             Common.GradientButton(action: {
-                print("save")
+                updateRunVelocityUsecase.implement(velocity: velocity)
+                URLManager.shared.open(url: "dgmuscle://pop")
             }, text: "SAVE", backgroundColor: color.color)
         }
         .padding()

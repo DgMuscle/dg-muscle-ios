@@ -133,7 +133,9 @@ final class ManageRunViewModel: ObservableObject {
         subscribeRunVelocityUpdatesUsecase
             .implement()
             .receive(on: DispatchQueue.main)
-            .assign(to: \.velocity, on: self)
+            .sink { [weak self] velocity in
+                self?.update(velocity: velocity)
+            }
             .store(in: &cancellables)
     }
     

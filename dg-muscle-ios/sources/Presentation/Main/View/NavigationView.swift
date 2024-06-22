@@ -93,7 +93,8 @@ public struct NavigationView: View {
                     )
                 case .updateRunVelocity(let velocity):
                     UpdateRunVelocityView(
-                        runRepository: runRepository,
+                        runRepository: runRepository, 
+                        userRepository: userRepository,
                         velocity: velocity
                     )
                 }

@@ -46,6 +46,8 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         guard scheme == "dgmuscle" else { return }
         
         switch host {
+        case "pop":
+            coordinator?.pop()
         case "friend":
             var anchor: PageAnchorView.Page = .friend
             
