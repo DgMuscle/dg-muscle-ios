@@ -13,25 +13,19 @@ import UIKit
 import WidgetKit
 
 public final class UserRepositoryImpl: UserRepository {
-    
     public static let shared = UserRepositoryImpl()
+    
     public var user: AnyPublisher<Domain.User?, Never> { $_user.eraseToAnyPublisher() }
     public var isReady: Bool = false
-    public var deleteAccountStatus: AnyPublisher<Domain.DeleteAccountStatus?, Never> {
-        $_deleteAccountStatus.eraseToAnyPublisher()
-    }
+    public var startDeleteAccount: PassthroughSubject<(), Never> = .init()
+    
     private var cancellables = Set<AnyCancellable>()
     
     @Published var _user: Domain.User? = nil
     @Published var isLogin: Bool = false
-    @Published var _deleteAccountStatus: DeleteAccountStatus? = nil
     
     private init() {
         bind()
-    }
-    
-    public func setDeleteAccountStatus(status: Domain.DeleteAccountStatus?) {
-        _deleteAccountStatus = status
     }
     
     public func signOut() throws {
@@ -92,8 +86,7 @@ public final class UserRepositoryImpl: UserRepository {
     public func withDrawal() async -> (any Error)? {
         
         if _user?.uid == "taEJh30OpGVsR3FEFN2s67A8FvF3" {
-            _deleteAccountStatus = .error("Can't delete DG")
-            return nil
+            return DataError.authentication
         }
         
         do {
