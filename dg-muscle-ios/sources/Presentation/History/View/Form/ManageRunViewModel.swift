@@ -43,7 +43,7 @@ final class ManageRunViewModel: ObservableObject {
         
         bind()
         
-        configureUI()
+        configureViewData()
         
         // 타이머 설정
         let timer = Timer.scheduledTimer(
@@ -125,7 +125,7 @@ final class ManageRunViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    private func configureUI() {
+    private func configureViewData() {
         var result: Double = 0
         let totalDuration = Double(run.duration)
         let hour: Double = 3600
@@ -147,7 +147,7 @@ final class ManageRunViewModel: ObservableObject {
     
     @objc private func executeEverySecond() {
         if status == .running {
-            configureUI()
+            configureViewData()
         }
     }
 }
