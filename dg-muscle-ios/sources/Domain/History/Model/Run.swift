@@ -10,12 +10,22 @@ import Foundation
 public struct Run {
     public let id: String
     public let pieces: [RunPiece]
+    public var status: Status
     
     public init(
         id: String,
-        pieces: [RunPiece]
+        pieces: [RunPiece],
+        status: Status
     ) {
         self.id = id
         self.pieces = pieces
+        self.status = status
+    }
+}
+
+extension Run {
+    public enum Status {
+        case running
+        case notRunning
     }
 }

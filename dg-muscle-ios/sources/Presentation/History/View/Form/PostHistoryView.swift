@@ -58,6 +58,19 @@ public struct PostHistoryView: View {
             }
             .onDelete(perform: viewModel.delete)
             
+            ForEach(viewModel.run, id: \.self) { run in
+                Section("Running") {
+                    
+                    Button {
+                        runAction?($viewModel.history.run)
+                    } label: {
+                        Text(String(format: "%.2f", run.distance)).foregroundStyle(viewModel.color.color) +
+                        Text(" km").foregroundStyle(Color(uiColor: .label))
+                    }
+                }
+            }
+            .onDelete(perform: viewModel.deleteRun)
+            
             Common.GradientButton(action: {
                 isPresentSelectExercise.toggle()
             },

@@ -30,7 +30,8 @@ struct ContentView: View {
                     exerciseRepository: ExerciseRepositoryImpl.shared,
                     heatMapRepository: HeatMapRepositoryImpl.shared,
                     userRepository: UserRepositoryImpl.shared, 
-                    friendRepository: FriendRepositoryImpl.shared
+                    friendRepository: FriendRepositoryImpl.shared, 
+                    runRepository: RunRepositoryImpl.shared
                 )
             } else {
                 AuthenticationView(appleAuthCoordinator: AppleAuthCoordinatorImpl(window: window))
