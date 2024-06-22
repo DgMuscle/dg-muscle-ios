@@ -58,9 +58,24 @@ final class ManageRunViewModel: ObservableObject {
                 self?.executeEverySecond()
             }
             .store(in: &cancellables)
+        
+        // Velocity graph 업데이트
+        Timer.publish(every: 200, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                if self?.status == .running {
+                    self?.start()
+                }
+            }
+            .store(in: &cancellables)
     }
     
     func update(velocity: Double) {
+        if status == .running && velocity <= 0 {
+            statusView = .error("Can't set velocity under 0 when running.")
+            return
+        }
+        
         self.velocity = velocity
         start()
     }
@@ -92,10 +107,12 @@ final class ManageRunViewModel: ObservableObject {
         
         runPieces.append(.init(velocity: velocity, start: now))
         status = .running
+        configureViewData()
     }
     
     private func stop() {
         status = .notRunning
+        configureViewData()
     }
     
     private func bind() {
@@ -111,7 +128,7 @@ final class ManageRunViewModel: ObservableObject {
             .compactMap({ $0.first?.start })
             .map({
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "HH.mm"
+                dateFormatter.dateFormat = "h.m a"
                 return dateFormatter.string(from: $0)
             })
             .sink(receiveValue: { [weak self] time in
@@ -143,7 +160,7 @@ final class ManageRunViewModel: ObservableObject {
         let end = run.pieces.last?.end ?? Date()
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH.mm"
+        dateFormatter.dateFormat = "h.m a"
         
         self.endTime = dateFormatter.string(from: end)
     }
