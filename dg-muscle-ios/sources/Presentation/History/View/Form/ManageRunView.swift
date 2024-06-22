@@ -16,12 +16,14 @@ public struct ManageRunView: View {
     
     public init(
         run: Binding<RunPresentation>,
-        userRepository: UserRepository
+        userRepository: UserRepository,
+        runRepository: RunRepository
     ) {
         _viewModel = .init(
             wrappedValue: .init(
                 run: run,
-                userRepository: userRepository
+                userRepository: userRepository, 
+                runRepository: runRepository
             )
         )
     }
@@ -91,7 +93,8 @@ public struct ManageRunView: View {
                 domain: HISTORY_1.run!
             )
         ),
-        userRepository: UserRepositoryMock()
+        userRepository: UserRepositoryMock(),
+        runRepository: RunRepositoryMock()
     )
         .preferredColorScheme(.dark)
 }

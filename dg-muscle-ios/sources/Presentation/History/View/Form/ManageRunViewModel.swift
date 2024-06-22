@@ -31,15 +31,21 @@ final class ManageRunViewModel: ObservableObject {
     @Binding var run: RunPresentation
     
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
+    private let subscribeRunVelocityUpdatesUsecase: SubscribeRunVelocityUpdatesUsecase
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(run: Binding<RunPresentation>, userRepository: UserRepository) {
+    init(
+        run: Binding<RunPresentation>,
+        userRepository: UserRepository,
+        runRepository: RunRepository
+    ) {
         self._run = run
         self.runPieces = run.pieces.wrappedValue
         self.velocity = run.pieces.wrappedValue.last?.velocity ?? 0
         self.getHeatMapColorUsecase = .init(userRepository: userRepository)
         self.color = .init(domain: getHeatMapColorUsecase.implement())
+        self.subscribeRunVelocityUpdatesUsecase = .init(runRepository: runRepository)
         
         bind()
         
@@ -122,6 +128,12 @@ final class ManageRunViewModel: ObservableObject {
                 return dateFormatter.string(from: $0)
             })
             .assign(to: \.startTime, on: self)
+            .store(in: &cancellables)
+        
+        subscribeRunVelocityUpdatesUsecase
+            .implement()
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.velocity, on: self)
             .store(in: &cancellables)
     }
     
