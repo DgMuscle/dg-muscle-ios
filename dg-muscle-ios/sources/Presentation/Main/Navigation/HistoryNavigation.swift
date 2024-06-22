@@ -33,5 +33,6 @@ extension HistoryNavigation {
         case historyFormStep1(Domain.History?)
         case historyFormStep2(historyForm: Binding<HistoryForm>, recordId: String)
         case manageRun(Binding<RunPresentation>)
+        case updateRunVelocity
     }
 }
