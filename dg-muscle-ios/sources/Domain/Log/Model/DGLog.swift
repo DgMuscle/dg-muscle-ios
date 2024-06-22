@@ -8,12 +8,28 @@
 import Foundation
 
 public struct DGLog {
-    let id: String
-    let category: Category
-    let message: String
-    let resolved: Bool
-    let createdAt: Date
-    let creator: String
+    public let id: String
+    public let category: Category
+    public let message: String
+    public var resolved: Bool
+    public let createdAt: Date
+    public let creator: String
+    
+    public init(
+        id: String,
+        category: Category,
+        message: String,
+        resolved: Bool,
+        createdAt: Date,
+        creator: String
+    ) {
+        self.id = id
+        self.category = category
+        self.message = message
+        self.resolved = resolved
+        self.createdAt = createdAt
+        self.creator = creator
+    }
 }
 
 extension DGLog {
