@@ -11,6 +11,7 @@ import UIKit
 
 public protocol UserRepository {
     var user: AnyPublisher<User?, Never> { get }
+    var deleteAccountStatus: AnyPublisher<DeleteAccountStatus?, Never> { get }
     
     func get() -> User?
     
@@ -24,4 +25,6 @@ public protocol UserRepository {
     func updateUser(backgroundImage: UIImage?) async throws
     func updateUser(link: URL?)
     func withDrawal() async -> Error?
+    
+    func setDeleteAccountStatus(status: DeleteAccountStatus?)
 }
