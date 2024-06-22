@@ -53,7 +53,7 @@ final class ManageRunViewModel: ObservableObject {
         
         // 타이머 설정
         let timer = Timer.scheduledTimer(
-            timeInterval: 3.0,
+            timeInterval: 6.0,
             target: self,
             selector: #selector(
                 executeEverySecond
