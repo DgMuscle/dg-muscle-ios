@@ -49,6 +49,15 @@ public struct MyView: View {
                         ListItemView(systemName: "dumbbell", text: "Exercise", color: .blue)
                     }
                     .buttonStyle(.borderless)
+                    
+                    if viewModel.user?.developer == true {
+                        Button {
+                            URLManager.shared.open(url: "dgmuscle://logs")
+                        } label: {
+                            ListItemView(systemName: "doc", text: "Logs", color: .purple)
+                        }
+                        .buttonStyle(.borderless)
+                    }
                 }
             } header: {
                 if let user = viewModel.user {
