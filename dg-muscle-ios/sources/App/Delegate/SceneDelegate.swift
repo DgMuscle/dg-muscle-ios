@@ -83,6 +83,8 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         case "updaterunvelocity":
             let velocity = URLManager.shared.getParameter(url: url, name: "velocity") ?? "0"
             coordinator?.updateRunVelocity(velocity: Double(velocity) ?? 0)
+        case "deleteaccountconfirm":
+            coordinator?.deleteAccountConfirm()
         default: break
         }
     }

@@ -57,6 +57,13 @@ public struct MyView: View {
                 } label: {
                     Text("Sign Out")
                 }
+                
+                Button {
+                    URLManager.shared.open(url: "dgmuscle://deleteaccountconfirm")
+                } label: {
+                    Text("Delete Account")
+                        .italic()
+                }
             }
         }
         .scrollIndicators(.hidden)
