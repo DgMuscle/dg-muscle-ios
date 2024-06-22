@@ -10,4 +10,6 @@ import Combine
 
 public final class RunRepositoryMock: RunRepository {
     public var velocitySubject: PassthroughSubject<Double, Never> = .init()
+    
+    public init() { }
 }
