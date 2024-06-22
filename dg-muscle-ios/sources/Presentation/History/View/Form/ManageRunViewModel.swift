@@ -13,14 +13,10 @@ import Common
 
 final class ManageRunViewModel: ObservableObject {
     
-    enum Status {
-        case running
-        case notRunning
-    }
-    
     @Published var velocity: Double
     @Published var runPieces: [RunPiece]
-    @Published var status: Status = .notRunning
+    @Published var status: RunPresentation.Status
+    
     @Published var runGraphPercentage: Double = 0
     @Published var startTime: String = ""
     @Published var endTime: String = ""
@@ -42,6 +38,7 @@ final class ManageRunViewModel: ObservableObject {
     ) {
         self._run = run
         self.runPieces = run.pieces.wrappedValue
+        self.status = run.status.wrappedValue
         self.velocity = run.pieces.wrappedValue.last?.velocity ?? 0
         self.getHeatMapColorUsecase = .init(userRepository: userRepository)
         self.color = .init(domain: getHeatMapColorUsecase.implement())
@@ -134,6 +131,14 @@ final class ManageRunViewModel: ObservableObject {
             .sink(receiveValue: { [weak self] time in
                 self?.startTime = time
             })
+            .store(in: &cancellables)
+        
+        $status
+            .receive(on: DispatchQueue.main)
+            .removeDuplicates()
+            .sink { [weak self] status in
+                self?.run.status = status
+            }
             .store(in: &cancellables)
         
         subscribeRunVelocityUpdatesUsecase

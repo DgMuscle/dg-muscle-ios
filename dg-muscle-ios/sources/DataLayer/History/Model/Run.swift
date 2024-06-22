@@ -11,7 +11,7 @@ import Domain
 struct Run: Codable {
     let id: String
     let pieces: [RunPiece]
-    let status: Status
+    let status: Status?
     
     init(domain: Domain.Run) {
         id = domain.id
@@ -22,7 +22,7 @@ struct Run: Codable {
     var domain: Domain.Run {
         .init(
             id: id,
-            pieces: pieces.map({ $0.domain }), status: status.domain
+            pieces: pieces.map({ $0.domain }), status: status?.domain ?? .notRunning
         )
     }
 }
