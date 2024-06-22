@@ -17,7 +17,7 @@ struct UserData: Codable {
     var heatmapColor: HeatMapColor?
     var fcmToken: String?
     var link: String?
-    var developer: Bool
+    var developer: Bool?
     
     init(domain: Domain.User) {
         self.id = domain.uid
@@ -40,7 +40,7 @@ struct UserData: Codable {
             heatMapColor: heatmapColor?.domain ?? .green,
             fcmToken: fcmToken,
             link: .init(string: link ?? ""),
-            developer: developer
+            developer: developer ?? false
         )
     }
 }
