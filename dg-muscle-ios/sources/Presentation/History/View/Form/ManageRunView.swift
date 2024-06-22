@@ -44,7 +44,7 @@ public struct ManageRunView: View {
                 .font(.largeTitle)
                 .fontWeight(.black)
                 .onTapGesture {
-                    URLManager.shared.open(url: "dgmuscle://updaterunvelocity")
+                    URLManager.shared.open(url: "dgmuscle://updaterunvelocity?velocity=\(viewModel.velocity)")
                 }
             
             Button {

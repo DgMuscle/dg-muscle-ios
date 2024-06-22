@@ -81,8 +81,8 @@ public final class Coordinator {
         path.append(HistoryNavigation(name: .heatMapColor))
     }
     
-    public func updateRunVelocity() {
-        path.append(HistoryNavigation(name: .updateRunVelocity))
+    public func updateRunVelocity(velocity: Double) {
+        path.append(HistoryNavigation(name: .updateRunVelocity(velocity)))
     }
     
     public func historyManageRun(run: Binding<RunPresentation>) {

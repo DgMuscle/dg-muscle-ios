@@ -11,10 +11,16 @@ import MockData
 
 public struct UpdateRunVelocityView: View {
     
+    @State private var velocity: Double
+    
     private let updateRunVelocityUsecase: UpdateRunVelocityUsecase
     
-    public init(runRepository: RunRepository) {
+    public init(
+        runRepository: RunRepository,
+        velocity: Double
+    ) {
         updateRunVelocityUsecase = .init(runRepository: runRepository)
+        _velocity = .init(initialValue: velocity)
     }
     
     public var body: some View {
@@ -23,6 +29,6 @@ public struct UpdateRunVelocityView: View {
 }
 
 #Preview {
-    UpdateRunVelocityView(runRepository: RunRepositoryMock())
+    UpdateRunVelocityView(runRepository: RunRepositoryMock(), velocity: 6.7)
         .preferredColorScheme(.dark)
 }

@@ -91,8 +91,11 @@ public struct NavigationView: View {
                         userRepository: userRepository, 
                         runRepository: runRepository
                     )
-                case .updateRunVelocity:
-                    UpdateRunVelocityView(runRepository: runRepository)
+                case .updateRunVelocity(let velocity):
+                    UpdateRunVelocityView(
+                        runRepository: runRepository,
+                        velocity: velocity
+                    )
                 }
             }
             .navigationDestination(for: MyNavigation.self) { navigation in
