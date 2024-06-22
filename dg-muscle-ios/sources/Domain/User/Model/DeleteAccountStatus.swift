@@ -10,5 +10,5 @@ import Foundation
 public enum DeleteAccountStatus {
     case start
     case loading
-    case error(Error)
+    case error(String)
 }

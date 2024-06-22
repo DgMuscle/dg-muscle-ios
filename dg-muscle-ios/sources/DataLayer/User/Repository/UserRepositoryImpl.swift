@@ -90,13 +90,17 @@ public final class UserRepositoryImpl: UserRepository {
     }
     
     public func withDrawal() async -> (any Error)? {
+        
+        if _user?.uid == "taEJh30OpGVsR3FEFN2s67A8FvF3" {
+            _deleteAccountStatus = .error("Can't delete DG")
+            return nil
+        }
+        
         do {
-            
             let _: DataResponse = try await APIClient.shared.request(
                 method: .delete,
                 url: FunctionsURL.user(.deleteaccount)
             )
-            
             return await AuthManager().withDrawal()
         } catch {
             return error
