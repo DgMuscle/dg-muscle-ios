@@ -11,4 +11,5 @@ public protocol LogRepository {
     var logs: AnyPublisher<[DGLog], Never> { get }
     
     func post(log: DGLog)
+    func resolve(id: String)
 }

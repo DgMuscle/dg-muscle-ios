@@ -8,6 +8,7 @@
 import Foundation
 
 public struct DGLog {
+    let id: String
     let category: Category
     let message: String
     let resolved: Bool
