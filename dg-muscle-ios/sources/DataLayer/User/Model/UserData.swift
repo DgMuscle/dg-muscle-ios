@@ -10,6 +10,7 @@ import Domain
 
 struct UserData: Codable {
     let id: String
+    let deleted: Bool?
     var displayName: String?
     var backgroundImageURL: String?
     var photoURL: String?
@@ -25,6 +26,7 @@ struct UserData: Codable {
         self.heatmapColor = .init(domain: domain.heatMapColor)
         self.fcmToken = domain.fcmToken
         self.link = domain.link?.absoluteString
+        self.deleted = false
     }
     
     var domain: Domain.User {
