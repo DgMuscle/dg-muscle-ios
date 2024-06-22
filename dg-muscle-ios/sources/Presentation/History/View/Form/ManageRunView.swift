@@ -41,6 +41,9 @@ public struct ManageRunView: View {
             Text(String(viewModel.velocity) + " km/h")
                 .font(.largeTitle)
                 .fontWeight(.black)
+                .onTapGesture {
+                    URLManager.shared.open(url: "dgmuscle://updaterunvelocity")
+                }
             
             Button {
                 viewModel.tapButton()

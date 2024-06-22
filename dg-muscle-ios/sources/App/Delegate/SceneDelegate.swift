@@ -78,7 +78,8 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             guard let friendId = URLManager.shared.getParameter(url: url, name: "friend_id") else { return }
             guard let historyId = URLManager.shared.getParameter(url: url, name: "history_id") else { return }
             coordinator?.friendHistoryDetail(friendId: friendId, historyId: historyId)
-            
+        case "updaterunvelocity":
+            coordinator?.updateRunVelocity()
         default: break
         }
     }

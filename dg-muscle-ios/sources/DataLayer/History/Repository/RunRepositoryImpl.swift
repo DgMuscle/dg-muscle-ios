@@ -9,5 +9,9 @@ import Combine
 import Domain
 
 public final class RunRepositoryImpl: RunRepository {
+    public static let shared = RunRepositoryImpl()
+    
     public var velocitySubject: PassthroughSubject<Double, Never> = .init()
+    
+    private init() { }
 }
