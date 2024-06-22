@@ -76,6 +76,7 @@ final class ManageRunViewModel: ObservableObject {
     }
     
     private func start() {
+        
         if velocity == 0 {
             statusView = .error("Configure Velocity before run.")
             return
@@ -128,11 +129,6 @@ final class ManageRunViewModel: ObservableObject {
     }
     
     private func configureViewData() {
-        
-        if let index = runPieces.indices.last {
-            runPieces[index].end = .init()
-        }
-        
         var result: Double = 0
         let totalDuration = Double(run.duration)
         let hour: Double = 3600
@@ -154,6 +150,10 @@ final class ManageRunViewModel: ObservableObject {
     
     @objc private func executeEverySecond() {
         if status == .running {
+            if let index = runPieces.indices.last {
+                runPieces[index].end = .init()
+            }
+            
             configureViewData()
         }
     }
