@@ -18,10 +18,10 @@ public final class LogRepositoryImpl: LogRepository {
     private var postLogTask: Task<(), Never>? = nil
     private var fetchLogsTask: Task<(), Never>? = nil
     
+    private var cancellables = Set<AnyCancellable>()
+    
     private init() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.fetchLogs()
-        }
+        bind()
     }
     
     public func post(log: Domain.DGLog) {
@@ -67,5 +67,17 @@ public final class LogRepositoryImpl: LogRepository {
             
             fetchLogsTask = nil
         }
+    }
+    
+    private func bind() {
+        UserRepositoryImpl
+            .shared
+            .user
+            .compactMap({ $0 })
+            .debounce(for: 1, scheduler: DispatchQueue.main)
+            .sink { _ in
+                self.fetchLogs()
+            }
+            .store(in: &cancellables)
     }
 }
