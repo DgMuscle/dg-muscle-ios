@@ -15,6 +15,6 @@ public final class ResolveLogUsecase {
     }
     
     public func implement(id: String) {
-        
+        logRepository.resolve(id: id)
     }
 }

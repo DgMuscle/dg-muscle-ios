@@ -27,7 +27,7 @@ public final class LogRepositoryMock: LogRepository {
     
     public func resolve(id: String) {
         if let index = _logs.firstIndex(where: { $0.id == id }) {
-            _logs[index].resolved = true
+            _logs[index].resolved.toggle()
         }
     }
 }

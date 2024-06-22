@@ -42,7 +42,7 @@ public final class LogRepositoryImpl: LogRepository {
     
     public func resolve(id: String) {
         guard let index = _logs.firstIndex(where: { $0.id == id }) else { return }
-        _logs[index].resolved = true
+        _logs[index].resolved.toggle()
         post(log: _logs[index])
     }
     

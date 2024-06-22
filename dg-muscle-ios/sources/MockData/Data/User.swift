@@ -13,7 +13,7 @@ public let USER_DG: User = .init(
     displayName: "DG", 
     backgroundImageURL: .init(string: "https://i.pinimg.com/564x/6f/9c/3e/6f9c3e191d2b4fe3772d39af645227d7.jpg"),
     photoURL: .init(
-        string: "https://firebasestorage.googleapis.com:443/v0/b/dg-muscle.appspot.com/o/profilePhoto%2FtaEJh30OpGVsR3FEFN2s67A8FvF3%2F6DB88FAB-95C0-43E9-8E3C-144728415F78.png?alt=media&token=f8feaa40-a306-4c01-8396-e40662bb4ecc"
+        string: "https://firebasestorage.googleapis.com:443/v0/b/dg-muscle.appspot.com/o/profilePhoto%2FtaEJh30OpGVsR3FEFN2s67A8FvF3%2F05A3848B-E35C-4208-8AFC-1EFA3E1218DD.png?alt=media&token=79f57f85-ae71-42eb-8fbb-17779191d935"
     ),
     heatMapColor: .purple, 
     fcmToken: nil, 

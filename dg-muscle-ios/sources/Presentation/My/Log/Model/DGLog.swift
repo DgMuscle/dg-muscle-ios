@@ -7,6 +7,7 @@
 
 import Domain
 import Foundation
+import SwiftUI
 
 struct DGLog: Hashable {
     let id: String
@@ -40,7 +41,7 @@ struct DGLog: Hashable {
 }
 
 extension DGLog {
-    enum Category: String, Codable {
+    enum Category: String {
         case error
         case log
         
@@ -61,12 +62,21 @@ extension DGLog {
                 return .log
             }
         }
+        
+        var color: Color {
+            switch self {
+            case .error:
+                return .red
+            case .log:
+                return .yellow
+            }
+        }
     }
 }
 
 extension DGLog {
     struct User: Hashable {
-        let displayName: String
-        let photoURL: URL?
+        var displayName: String
+        var photoURL: URL?
     }
 }

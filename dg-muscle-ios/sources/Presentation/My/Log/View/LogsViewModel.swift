@@ -30,6 +30,10 @@ final class LogsViewModel: ObservableObject {
         bind()
     }
     
+    func resolve(log: DGLog) {
+        resolveLogUsecase.implement(id: log.id)
+    }
+    
     private func bind() {
         subscribeLogsUsecase
             .implement()

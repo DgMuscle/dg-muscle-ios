@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-let LOG_1: DGLog = .init(
+public let LOG_1: DGLog = .init(
     id: "1",
     category: .error,
     message: "sample error",
@@ -17,7 +17,7 @@ let LOG_1: DGLog = .init(
     creator: "taEJh30OpGVsR3FEFN2s67A8FvF3"
 )
 
-let LOG_2: DGLog = .init(
+public let LOG_2: DGLog = .init(
     id: "2",
     category: .log,
     message: "sample log",

@@ -27,9 +27,11 @@ public struct LogsView: View {
     
     public var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 35) {
                 ForEach(viewModel.logs, id: \.self) { log in
-                    Text(log.message)
+                    LogView(log: log) { log in
+                        viewModel.resolve(log: log)
+                    }
                 }
             }
             .padding()
