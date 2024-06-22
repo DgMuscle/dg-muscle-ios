@@ -17,7 +17,8 @@ public let USER_DG: User = .init(
     ),
     heatMapColor: .purple, 
     fcmToken: nil, 
-    link: .init(string: "https://github.com/donggyushin")
+    link: .init(string: "https://github.com/donggyushin"), 
+    developer: true
 )
 
 
@@ -28,7 +29,8 @@ public let USER_1: User = .init(
     photoURL: nil,
     heatMapColor: .green,
     fcmToken: nil, 
-    link: nil
+    link: nil,
+    developer: false
 )
 
 public let USER_2: User = .init(
@@ -38,7 +40,8 @@ public let USER_2: User = .init(
     photoURL: .init(string: "https://firebasestorage.googleapis.com:443/v0/b/dg-muscle.appspot.com/o/profilePhoto%2F56mGcK9Nm5cVcUk8vxW5h9jIQcA2%2FFDED5B8E-229B-4EAE-BEF8-912E5C41D7D6.png?alt=media&token=f74e7d94-c050-461c-98bd-c2e8ded5f9c8"),
     heatMapColor: .green,
     fcmToken: nil,
-    link: nil
+    link: nil,
+    developer: false
 )
 
 public let USER_3: User = .init(
@@ -48,7 +51,8 @@ public let USER_3: User = .init(
     photoURL: .init(string: "https://firebasestorage.googleapis.com:443/v0/b/dg-muscle.appspot.com/o/profilePhoto%2FnkKKFlPlBTN14cAlOgnwNC0rmel2%2F559DE7D0-33AD-4BA0-8093-BD1E95276263.png?alt=media&token=8793f93b-e87e-4a43-81b9-d25cd4c083d2"),
     heatMapColor: .mint,
     fcmToken: nil,
-    link: nil
+    link: nil,
+    developer: false
 )
 
 public let USER_4: User = .init(
@@ -58,5 +62,6 @@ public let USER_4: User = .init(
     photoURL: .init(string: "https://firebasestorage.googleapis.com:443/v0/b/dg-muscle.appspot.com/o/profilePhoto%2F56mGcK9Nm5cVcUk8vxW5h9jIQcA2%2FFDED5B8E-229B-4EAE-BEF8-912E5C41D7D6.png?alt=media&token=f74e7d94-c050-461c-98bd-c2e8ded5f9c8"),
     heatMapColor: .mint,
     fcmToken: nil,
-    link: .init(string: "https://github.com/donggyushin")
+    link: .init(string: "https://github.com/donggyushin"),
+    developer: false
 )
