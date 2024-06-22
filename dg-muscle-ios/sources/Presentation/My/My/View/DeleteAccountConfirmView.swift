@@ -8,6 +8,7 @@
 import SwiftUI
 import Domain
 import MockData
+import Common
 
 public struct DeleteAccountConfirmView: View {
     
@@ -18,7 +19,28 @@ public struct DeleteAccountConfirmView: View {
     }
     
     public var body: some View {
-        Text("DeleteAccountConfirmView")
+        ZStack {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Are you really want to delete your account?")
+                    Spacer()
+                }
+                
+                Text("This cannot be reversed.")
+                    .italic()
+                    .foregroundStyle(.red)
+                
+            }
+            
+            VStack {
+                Spacer()
+                Common.GradientButton(action: {
+                    URLManager.shared.open(url: "dgmuscle://pop")
+                    deleteAccountTriggerUsecase.implement()
+                }, text: "DELETE", backgroundColor: .red)
+            }
+        }
+        .padding()
     }
 }
 
