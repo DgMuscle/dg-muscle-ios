@@ -29,4 +29,8 @@ struct FunctionsURL {
     static func friend(_ type: Friend) -> String {
         "\(prefix)\(type.value)\(suffix)"
     }
+    
+    static func log(_ type: Log) -> String {
+        "\(prefix)\(type.value)\(suffix)"
+    }
 }
