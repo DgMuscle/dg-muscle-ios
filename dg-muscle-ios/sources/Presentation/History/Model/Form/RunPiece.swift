@@ -34,7 +34,7 @@ public struct RunPiece: Hashable {
     public init(domain: Domain.RunPiece) {
         id = domain.id
         velocity = domain.velocity
-        start = domain.start ?? .init()
+        start = domain.start
         end = domain.end
     }
     
