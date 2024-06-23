@@ -1,8 +1,8 @@
 //
 //  RunPiece.swift
-//  Presentation
+//  Common
 //
-//  Created by 신동규 on 6/15/24.
+//  Created by 신동규 on 6/23/24.
 //
 
 import Foundation
@@ -47,3 +47,4 @@ public struct RunPiece: Hashable {
         )
     }
 }
+
