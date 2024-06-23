@@ -17,18 +17,6 @@ public struct RunPresentation: Hashable {
         pieces.map({ $0.distance }).reduce(0, +)
     }
     
-    var start: Date? {
-        pieces.first?.start
-    }
-    
-    var end: Date? {
-        pieces.last?.end ?? pieces.last?.start
-    }
-    
-    var duration: Int {
-        pieces.map({ $0.duration }).reduce(0, +)
-    }
-    
     public init() {
         id = UUID().uuidString
         pieces = []
