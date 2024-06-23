@@ -10,6 +10,7 @@ import SwiftUI
 import Domain
 import History
 import Friend
+import Common
 
 public var coordinator: Coordinator?
 

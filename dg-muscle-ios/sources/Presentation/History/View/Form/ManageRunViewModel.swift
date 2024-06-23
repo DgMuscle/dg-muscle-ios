@@ -14,7 +14,7 @@ import Common
 final class ManageRunViewModel: ObservableObject {
     
     @Published var velocity: Double
-    @Published var runPieces: [RunPiece]
+    @Published var runPieces: [Common.RunPiece]
     @Published var status: RunPresentation.Status
     
     @Published var runGraphPercentage: Double = 0

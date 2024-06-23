@@ -7,6 +7,7 @@
 
 import Foundation
 import Domain
+import Common
 
 public struct HistoryForm {
     let id: String
