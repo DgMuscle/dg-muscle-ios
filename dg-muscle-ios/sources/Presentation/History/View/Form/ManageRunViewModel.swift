@@ -29,6 +29,7 @@ final class ManageRunViewModel: ObservableObject {
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
     private let subscribeRunVelocityUpdatesUsecase: SubscribeRunVelocityUpdatesUsecase
     private let getRunGraphPercentageUsecase: GetRunGraphPercentageUsecase
+    private let getRunDistanceUsecase: GetRunDistanceUsecase
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -45,6 +46,7 @@ final class ManageRunViewModel: ObservableObject {
         self.color = .init(domain: getHeatMapColorUsecase.implement())
         self.subscribeRunVelocityUpdatesUsecase = .init(runRepository: runRepository)
         self.getRunGraphPercentageUsecase = .init()
+        self.getRunDistanceUsecase = .init()
         
         bind()
         
@@ -166,7 +168,11 @@ final class ManageRunViewModel: ObservableObject {
             })
         )
         
-        self.distance = String(format: "%.2f", runPieces.map({ $0.distance }).reduce(0, +)) + " km"
+        self.distance = getRunDistanceUsecase.implement(
+            runPieces: runPieces.map({
+                $0.domain
+            })
+        )
         
         guard let end = run.pieces.last?.end else { return }
         
