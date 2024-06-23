@@ -42,6 +42,7 @@ public struct UpdateRunVelocityView: View {
             HStack {
                 Spacer()
                 TextField("Velocity", value: $velocity, formatter: numberFormatter)
+                    .keyboardType(.decimalPad)
                     .fontWeight(.black)
                     .font(.system(size: 40))
                     .focused($focus)
