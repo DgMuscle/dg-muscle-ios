@@ -44,6 +44,7 @@ public struct UpdateRunVelocityView: View {
                 TextField("Velocity", value: $velocity, formatter: numberFormatter)
                     .fontWeight(.black)
                     .font(.system(size: 40))
+                    .focused($focus)
                 Text("km/h")
                 Spacer()
             }
