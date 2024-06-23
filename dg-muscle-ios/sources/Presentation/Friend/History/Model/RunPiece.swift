@@ -11,7 +11,7 @@ import Domain
 struct RunPiece: Hashable {
     let id: String
     let velocity: Double
-    let start: Date?
+    let start: Date
     let end: Date?
     
     init(domain: Domain.RunPiece) {

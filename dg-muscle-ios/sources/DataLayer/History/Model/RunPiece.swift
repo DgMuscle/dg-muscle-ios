@@ -11,24 +11,20 @@ import Domain
 struct RunPiece: Codable {
     let id: String
     let velocity: Double
-    let start: TimeInterval?
+    let start: TimeInterval
     let end: TimeInterval?
     
     init(domain: Domain.RunPiece) {
         id = domain.id
         velocity = domain.velocity
-        start = domain.start?.timeIntervalSince1970
+        start = domain.start.timeIntervalSince1970
         end = domain.end?.timeIntervalSince1970
     }
     
     var domain: Domain.RunPiece {
         
-        var start: Date?
+        let start: Date = .init(timeIntervalSince1970: self.start)
         var end: Date?
-        
-        if let timeInterval = self.start {
-            start = .init(timeIntervalSince1970: timeInterval)
-        }
         
         if let timeInterval = self.end {
             end = .init(timeIntervalSince1970: timeInterval)
