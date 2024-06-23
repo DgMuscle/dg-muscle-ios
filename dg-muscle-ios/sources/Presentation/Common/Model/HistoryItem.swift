@@ -18,7 +18,15 @@ public struct HistoryItem: Hashable {
     public let time: Double?
     public let kcal: Double?
     
-    public init(id: String, date: Date, parts: [String], volume: Double, color: Color, time: Double?, kcal: Double?) {
+    public init(
+        id: String,
+        date: Date,
+        parts: [String],
+        volume: Double,
+        color: Color,
+        time: Double?,
+        kcal: Double?
+    ) {
         self.id = id
         self.date = date
         self.parts = parts
