@@ -74,7 +74,9 @@ final class ManageRunViewModel: ObservableObject {
         }
         
         self.velocity = velocity
-        start()
+        if velocity > 0 {
+            start()
+        }
     }
     
     func tapButton() {

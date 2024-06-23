@@ -13,6 +13,7 @@ import Common
 public struct ManageRunView: View {
     
     @StateObject var viewModel: ManageRunViewModel
+    @State var animate: Bool = false
     
     public init(
         run: Binding<RunPresentation>,
@@ -43,6 +44,7 @@ public struct ManageRunView: View {
             Text(String(viewModel.velocity) + " km/h")
                 .font(.largeTitle)
                 .fontWeight(.black)
+                .opacity(animate && viewModel.velocity == 0 ? 0.4 : 1)
                 .onTapGesture {
                     URLManager.shared.open(url: "dgmuscle://updaterunvelocity?velocity=\(viewModel.velocity)")
                 }
@@ -83,18 +85,27 @@ public struct ManageRunView: View {
         .padding()
         .animation(.default, value: viewModel.status)
         .animation(.default, value: viewModel.statusView)
+        .onAppear {
+            withAnimation(.linear(duration: 2).repeatForever(autoreverses: true)) {
+                animate.toggle()
+            }
+        }
     }
 }
 
 #Preview {
-    ManageRunView(
+    var run: RunPresentation = .init(domain: HISTORY_1.run!)
+    
+    if let index = run.pieces.indices.last {
+        run.pieces[index].velocity = 0
+    }
+    
+    return ManageRunView(
         run: .constant(
-            .init(
-                domain: HISTORY_1.run!
-            )
+            run
         ),
         userRepository: UserRepositoryMock(),
         runRepository: RunRepositoryMock()
     )
-        .preferredColorScheme(.dark)
+    .preferredColorScheme(.dark)
 }
