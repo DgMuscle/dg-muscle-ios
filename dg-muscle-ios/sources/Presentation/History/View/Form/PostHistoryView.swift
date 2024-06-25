@@ -16,15 +16,13 @@ public struct PostHistoryView: View {
     @State var isPresentSelectExercise: Bool = false
     private let exerciseRepository: ExerciseRepository
     private let setRecordAction: ((Binding<HistoryForm>, String) -> ())?
-    private let runAction: ((Binding<RunPresentation>) -> ())?
     
     public init(
         historyRepository: HistoryRepository,
         exerciseRepository: ExerciseRepository,
         userRepository: UserRepository,
         history: Domain.History?,
-        setRecordAction: ((Binding<HistoryForm>, String) -> ())?,
-        runAction: ((Binding<RunPresentation>) -> ())?
+        setRecordAction: ((Binding<HistoryForm>, String) -> ())?
     ) {
         _viewModel = .init(
             wrappedValue: .init(
@@ -36,7 +34,6 @@ public struct PostHistoryView: View {
         )
         self.setRecordAction = setRecordAction
         self.exerciseRepository = exerciseRepository
-        self.runAction = runAction
     }
     
     public var body: some View {
@@ -58,19 +55,6 @@ public struct PostHistoryView: View {
             }
             .onDelete(perform: viewModel.delete)
             
-            ForEach(viewModel.run, id: \.self) { run in
-                Section("Running") {
-                    
-                    Button {
-                        runAction?($viewModel.history.run)
-                    } label: {
-                        Text(String(format: "%.2f", run.distance)).foregroundStyle(viewModel.color.color) +
-                        Text(" km").foregroundStyle(Color(uiColor: .label))
-                    }
-                }
-            }
-            .onDelete(perform: viewModel.deleteRun)
-            
             Common.GradientButton(action: {
                 isPresentSelectExercise.toggle()
             },
@@ -91,7 +75,6 @@ public struct PostHistoryView: View {
                 isPresentSelectExercise.toggle()
             } run: {
                 isPresentSelectExercise.toggle()
-                runAction?($viewModel.history.run)
             }
         })
     }
@@ -108,8 +91,7 @@ public struct PostHistoryView: View {
         exerciseRepository: ExerciseRepositoryMock(),
         userRepository: UserRepositoryMock(),
         history: HISTORY_4,
-        setRecordAction: action,
-        runAction: nil
+        setRecordAction: action
     )
     .preferredColorScheme(.dark)
 }

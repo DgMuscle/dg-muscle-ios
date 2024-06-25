@@ -13,7 +13,6 @@ struct History: Codable {
     let date: String
     let memo: String?
     let records: [ExerciseRecord]
-    let run: Run?
     
     static private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -26,12 +25,6 @@ struct History: Codable {
         self.date = Self.dateFormatter.string(from: domain.date)
         self.memo = domain.memo
         self.records = domain.records.map({ .init(domain: $0) })
-        
-        if let domain = domain.run {
-            self.run = .init(domain: domain)
-        } else {
-            self.run = nil
-        }
     }
     
     var domain: Domain.History {
@@ -43,8 +36,7 @@ struct History: Codable {
             memo: memo,
             records: records.map({
                 $0.domain
-            }),
-            run: run?.domain
+            })
         )
     }
 }
