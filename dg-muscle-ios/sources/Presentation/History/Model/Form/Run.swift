@@ -1,6 +1,6 @@
 //
 //  Run.swift
-//  DataLayer
+//  History
 //
 //  Created by Donggyu Shin on 6/25/24.
 //
@@ -24,4 +24,3 @@ struct Run: Codable {
         )
     }
 }
-

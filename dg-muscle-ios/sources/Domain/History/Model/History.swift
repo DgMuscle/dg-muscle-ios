@@ -12,17 +12,20 @@ public struct History {
     public let date: Date
     public let memo: String?
     public let records: [ExerciseRecord]
+    public let run: Run?
     
     public init(
         id: String,
         date: Date,
         memo: String?,
-        records: [ExerciseRecord]
+        records: [ExerciseRecord],
+        run: Run?
     ) {
         self.id = id
         self.date = date
         self.memo = memo
         self.records = records
+        self.run = run
     }
     
     public var volume: Double {
