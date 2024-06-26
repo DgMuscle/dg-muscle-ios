@@ -116,7 +116,9 @@ final class ManageRecordViewModel: ObservableObject {
         
         $goal
             .compactMap({ $0 })
+            .removeDuplicates()
             .combineLatest($record)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] goal, record in
                 var sets = record.sets
                 sets = sets.filter({ $0.weight >= goal.weight && $0.reps >= goal.reps })
