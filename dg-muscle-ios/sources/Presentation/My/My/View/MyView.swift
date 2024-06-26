@@ -94,6 +94,7 @@ public struct MyView: View {
                 } label: {
                     Text("Delete Account")
                         .italic()
+                        .foregroundStyle(.red)
                 }
             }
         }
