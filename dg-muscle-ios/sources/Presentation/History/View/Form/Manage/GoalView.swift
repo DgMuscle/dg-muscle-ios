@@ -13,7 +13,7 @@ struct GoalView: View {
     let color: Color
     
     var body: some View {
-        Section("give it a try") {
+        Section {
             HStack {
                 Text(String(goal.weight)).foregroundStyle(color) +
                 Text(" kg x ") +
@@ -22,7 +22,13 @@ struct GoalView: View {
                 Spacer()
                 
                 Image(systemName: "flag.checkered")
-                    .foregroundStyle(goal.achive ? color : .gray)
+                    .foregroundStyle(goal.achive ? .green : .gray)
+            }
+        } header: {
+            Text("give it a try")
+        } footer: {
+            if goal.achive {
+                Text("You did it!").foregroundStyle(.green)
             }
         }
     }
@@ -30,7 +36,7 @@ struct GoalView: View {
 
 #Preview {
     List {
-        GoalView(goal: .init(weight: 70, reps: 9, achive: false), color: .purple)
+        GoalView(goal: .init(weight: 70, reps: 9, achive: true), color: .purple)
     }
     .preferredColorScheme(.dark)
 }
