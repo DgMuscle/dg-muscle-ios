@@ -21,6 +21,6 @@ final class GetRecordGoalUsecaseTest: XCTestCase {
         
         /// then
         XCTAssertEqual(recommendedSet?.weight, 70)
-        XCTAssertEqual(recommendedSet?.reps, 10)
+        XCTAssertEqual(recommendedSet?.reps, 9)
     }
 }
