@@ -10,8 +10,8 @@ import Foundation
 public struct ExerciseSet {
     public let id: String
     public let unit: Unit
-    public let reps: Int
-    public let weight: Double
+    public var reps: Int
+    public var weight: Double
     
     public init(id: String, unit: Unit, reps: Int, weight: Double) {
         self.id = id

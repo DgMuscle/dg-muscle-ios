@@ -14,9 +14,18 @@ public final class GetRecordGoalUsecase {
     public func implement(previousRecord: ExerciseRecord) -> ExerciseSet? {
         var sets = previousRecord.sets
         guard let maxWeight = sets.map({ $0.weight }).max() else { return nil }
-        return sets
+        guard var set = sets
             .filter({ $0.weight == maxWeight })
             .sorted(by: { $0.reps > $1.reps })
-            .first
+            .first else { return nil }
+        
+        if set.reps >= 15 {
+            set.weight += 5
+            set.reps = 10
+        } else {
+            set.reps = min(set.reps + 2, 15)
+        }
+        
+        return set
     }
 }
