@@ -82,6 +82,10 @@ public final class Coordinator {
         path.append(HistoryNavigation(name: .heatMapColor))
     }
     
+    public func manageRun(run: Binding<RunPresentation>) {
+        path.append(HistoryNavigation(name: .manageRun(run: run)))
+    }
+    
     public func profile() {
         path.append(MyNavigation(name: .profile))
     }

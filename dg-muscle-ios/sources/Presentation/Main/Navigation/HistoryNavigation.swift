@@ -33,5 +33,6 @@ extension HistoryNavigation {
         case heatMapColor
         case historyFormStep1(Domain.History?)
         case historyFormStep2(historyForm: Binding<HistoryForm>, recordId: String)
+        case manageRun(run: Binding<RunPresentation>)
     }
 }

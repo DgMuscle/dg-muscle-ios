@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-public struct Run: Hashable {
+public struct RunPresentation: Hashable {
     public var duration: Int
     public var distance: Double
     

@@ -13,7 +13,7 @@ public struct ManageRunView: View {
     
     @StateObject var viewModel: ManageRunViewModel
     
-    public init(run: Binding<Run>) {
+    public init(run: Binding<RunPresentation>) {
         _viewModel = .init(wrappedValue: .init(run: run))
     }
     

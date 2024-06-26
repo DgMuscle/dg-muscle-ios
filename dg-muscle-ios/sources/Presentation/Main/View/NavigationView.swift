@@ -84,6 +84,8 @@ public struct NavigationView: View {
                         userRepository: userRepository, 
                         historyRepository: historyRepository
                     )
+                case .manageRun(let run):
+                    ManageRunView(run: run)
                 }
             }
             .navigationDestination(for: MyNavigation.self) { navigation in

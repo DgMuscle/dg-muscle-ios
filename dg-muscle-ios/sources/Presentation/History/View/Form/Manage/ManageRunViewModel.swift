@@ -13,7 +13,7 @@ import MapKit
 
 final class ManageRunViewModel: ObservableObject {
     
-    @Binding private var run: Run
+    @Binding private var run: RunPresentation
     
     @Published var distanceText: String
     @Published var durationText: String
@@ -32,7 +32,7 @@ final class ManageRunViewModel: ObservableObject {
     
     private let getAverageVelocityUsecase: GetAverageVelocityUsecase
     
-    init(run: Binding<Run>) {
+    init(run: Binding<RunPresentation>) {
         self._run = run
         getAverageVelocityUsecase = .init()
         
