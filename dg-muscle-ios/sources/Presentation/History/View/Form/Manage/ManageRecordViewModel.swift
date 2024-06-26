@@ -102,29 +102,24 @@ final class ManageRecordViewModel: ObservableObject {
             .assign(to: &$diffWithPreviousRecord)
         
         $previousRecord
-            .receive(on: DispatchQueue.main)
             .compactMap({ $0?.domain })
             .map({ [weak self] in self?.getRecordGoalUsecase.implement(previousRecord: $0) })
-            .map({ set in
-                if let set {
-                    return Goal(weight: set.weight, reps: set.reps, achive: false)
-                } else {
-                    return nil
-                }
+            .map({ (set) -> Goal? in
+                guard let set else { return nil }
+                return Goal(weight: set.weight, reps: set.reps, achive: false)
             })
-            .assign(to: &$goal)
-        
-        $goal
-            .compactMap({ $0 })
-            .removeDuplicates()
             .combineLatest($record)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] goal, record in
-                var sets = record.sets
-                sets = sets.filter({ $0.weight >= goal.weight && $0.reps >= goal.reps })
-                self?.goal?.achive = sets.isEmpty == false
+                if var goal {
+                    var sets = record.sets
+                    sets = sets.filter({ $0.weight >= goal.weight && $0.reps >= goal.reps })
+                    goal.achive = sets.isEmpty == false
+                    self?.goal = goal
+                } else {
+                    self?.goal = nil
+                }
             }
             .store(in: &cancellables)
-        
     }
 }

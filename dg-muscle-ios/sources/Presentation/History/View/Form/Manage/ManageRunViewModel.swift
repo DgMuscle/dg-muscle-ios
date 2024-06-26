@@ -31,6 +31,7 @@ final class ManageRunViewModel: ObservableObject {
     }
     
     private let getAverageVelocityUsecase: GetAverageVelocityUsecase
+    private var cancellables = Set<AnyCancellable>()
     
     init(run: Binding<RunPresentation>) {
         self._run = run
@@ -62,5 +63,14 @@ final class ManageRunViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .map({ String(format: "%.2f", $0) })
             .assign(to: &$averageVelocityText)
+        
+        $distance
+            .combineLatest($duration)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] distance, duration in
+                self?.run.duration = duration
+                self?.run.distance = distance
+            }
+            .store(in: &cancellables)
     }
 }
