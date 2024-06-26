@@ -34,9 +34,19 @@ public let SETS_2: [ExerciseSet] = [
     .init(id: UUID().uuidString, unit: .kg, reps: 12, weight: 40)
 ]
 
+public let SETS_3: [ExerciseSet] = [
+    .init(id: UUID().uuidString, unit: .kg, reps: 15, weight: 20),
+    .init(id: UUID().uuidString, unit: .kg, reps: 15, weight: 40),
+    .init(id: UUID().uuidString, unit: .kg, reps: 10, weight: 50),
+    .init(id: UUID().uuidString, unit: .kg, reps: 10, weight: 60),
+    .init(id: UUID().uuidString, unit: .kg, reps: 8, weight: 70),
+    .init(id: UUID().uuidString, unit: .kg, reps: 6, weight: 70)
+]
+
 public let RECORD_1: ExerciseRecord = .init(id: UUID().uuidString, exerciseId: "squat", sets: SETS_1)
 public let RECORD_2: ExerciseRecord = .init(id: UUID().uuidString, exerciseId: "bench press", sets: SETS_2)
 public let RECORD_3: ExerciseRecord = .init(id: UUID().uuidString, exerciseId: "deadlift", sets: SETS_2)
+public let RECORD_4: ExerciseRecord = .init(id: UUID().uuidString, exerciseId: "squat", sets: SETS_3)
 
 public let HISTORY_1: History = createHistory(date: "20240515", memo: nil, records: [RECORD_1])
 public let HISTORY_2: History = createHistory(date: "20240513", memo: nil, records: [RECORD_2])
