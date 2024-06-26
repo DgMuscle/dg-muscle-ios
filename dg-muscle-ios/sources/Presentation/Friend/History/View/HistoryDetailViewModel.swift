@@ -54,8 +54,7 @@ final class HistoryDetailViewModel: ObservableObject {
             .compactMap({ $0 })
             .receive(on: DispatchQueue.main)
             .map({ $0.volume })
-            .assign(to: \.totalVolume, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$totalVolume)
     }
     
     @MainActor

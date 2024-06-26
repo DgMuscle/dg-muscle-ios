@@ -90,14 +90,12 @@ final class ManageRecordViewModel: ObservableObject {
             .compactMap({ $0 })
             .map({ Common.HeatMapColor(domain: $0) })
             .map({ $0.color })
-            .assign(to: \.color, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$color)
         
         $record
             .combineLatest($previousRecord.compactMap({ $0 }))
             .receive(on: DispatchQueue.main)
             .map({ $0.volume - $1.volume })
-            .assign(to: \.diffWithPreviousRecord, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$diffWithPreviousRecord)
     }
 }

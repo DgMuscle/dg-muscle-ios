@@ -39,7 +39,6 @@ final class HeatMapColorSelectViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .map({ $0 ?? .green })
             .map({ Common.HeatMapColor(domain: $0) })
-            .assign(to: \.selectedColor, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$selectedColor)
     }
 }

@@ -63,7 +63,6 @@ class RequestListViewModel: ObservableObject {
                 
                 return friendRequests
             })
-            .assign(to: \.requests, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$requests)
     }
 }

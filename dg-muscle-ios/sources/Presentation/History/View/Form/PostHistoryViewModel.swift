@@ -93,7 +93,6 @@ class PostHistoryViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .compactMap({ $0 })
             .map({ Common.HeatMapColor(domain: $0) })
-            .assign(to: \.color, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$color)
     }
 }
