@@ -8,16 +8,16 @@
 import Foundation
 import Domain
 
-struct Run: Hashable {
-    let duration: Int
-    let distance: Double
+public struct Run: Hashable {
+    public var duration: Int
+    public var distance: Double
     
-    init(domain: Domain.Run) {
+    public init(domain: Domain.Run) {
         self.duration = domain.duration
         self.distance = domain.distance
     }
     
-    var domain: Domain.Run {
+    public var domain: Domain.Run {
         .init(
             duration: duration,
             distance: distance
