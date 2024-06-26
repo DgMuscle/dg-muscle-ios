@@ -18,11 +18,13 @@ final class ManageRecordViewModel: ObservableObject {
     @Published var currentVolume: Int
     @Published var previousRecord: ExerciseRecord?
     @Published var diffWithPreviousRecord: Int?
+    @Published var goal: Goal?
     
     private let recordId: String
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
     private let subscribeHeatMapColorUsecase: SubscribeHeatMapColorUsecase
     private let getPreviousRecordUsecase: GetPreviousRecordUsecase
+    private let getRecordGoalUsecase: GetRecordGoalUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
@@ -45,6 +47,7 @@ final class ManageRecordViewModel: ObservableObject {
         getHeatMapColorUsecase = .init(userRepository: userRepository)
         subscribeHeatMapColorUsecase = .init(userRepository: userRepository)
         getPreviousRecordUsecase = .init(historyRepository: historyRepository)
+        getRecordGoalUsecase = .init()
         
         let color: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
         self.color = color.color
@@ -97,5 +100,29 @@ final class ManageRecordViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .map({ $0.volume - $1.volume })
             .assign(to: &$diffWithPreviousRecord)
+        
+        $previousRecord
+            .receive(on: DispatchQueue.main)
+            .compactMap({ $0?.domain })
+            .map({ [weak self] in self?.getRecordGoalUsecase.implement(previousRecord: $0) })
+            .map({ set in
+                if let set {
+                    return Goal(weight: set.weight, reps: set.reps, achive: false)
+                } else {
+                    return nil
+                }
+            })
+            .assign(to: &$goal)
+        
+        $goal
+            .compactMap({ $0 })
+            .combineLatest($record)
+            .sink { [weak self] goal, record in
+                var sets = record.sets
+                sets = sets.filter({ $0.weight >= goal.weight && $0.reps >= goal.reps })
+                self?.goal?.achive = sets.isEmpty == false
+            }
+            .store(in: &cancellables)
+        
     }
 }
