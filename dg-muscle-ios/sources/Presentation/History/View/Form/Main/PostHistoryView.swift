@@ -90,6 +90,15 @@ public struct PostHistoryView: View {
                 isPresentSelectExercise.toggle()
             } run: {
                 isPresentSelectExercise.toggle()
+                
+                if let run = $viewModel.history.run.first {
+                    manageRun?(run)
+                } else {
+                    viewModel.history.run = [.init()]
+                    if let run = $viewModel.history.run.first {
+                        manageRun?(run)
+                    }
+                }
             }
         })
     }

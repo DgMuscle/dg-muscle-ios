@@ -12,6 +12,11 @@ public struct RunPresentation: Hashable {
     public var duration: Int
     public var distance: Double
     
+    init() {
+        duration = 0
+        distance = 0
+    }
+    
     public init(domain: Domain.Run) {
         self.duration = domain.duration
         self.distance = domain.distance
