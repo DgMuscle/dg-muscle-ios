@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-struct Run: Codable {
+struct Run: Hashable {
     let duration: Int
     let distance: Double
     

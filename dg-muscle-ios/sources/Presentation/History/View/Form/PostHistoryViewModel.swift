@@ -70,9 +70,16 @@ class PostHistoryViewModel: ObservableObject {
     }
     
     func delete(record indexSet: IndexSet) {
-        history.records.remove(atOffsets: indexSet)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.history.records.remove(atOffsets: indexSet)
+        }
     }
     
+    func deleteRun(indexSet: IndexSet) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.history.run.remove(atOffsets: indexSet)
+        }
+    }
     
     private func bind() {
         $history

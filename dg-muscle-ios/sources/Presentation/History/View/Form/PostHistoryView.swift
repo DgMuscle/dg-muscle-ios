@@ -9,6 +9,7 @@ import SwiftUI
 import Domain
 import MockData
 import Common
+import MapKit
 
 public struct PostHistoryView: View {
     
@@ -54,6 +55,17 @@ public struct PostHistoryView: View {
                 }
             }
             .onDelete(perform: viewModel.delete)
+            
+            ForEach(viewModel.history.run, id: \.self) { run in
+                Section("RUN") {
+                    Button {
+                        print("tap run")
+                    } label: {
+                        Text(MKDistanceFormatter().string(fromDistance: run.distance))
+                    }
+                }
+            }
+            .onDelete(perform: viewModel.deleteRun)
             
             Common.GradientButton(action: {
                 isPresentSelectExercise.toggle()
