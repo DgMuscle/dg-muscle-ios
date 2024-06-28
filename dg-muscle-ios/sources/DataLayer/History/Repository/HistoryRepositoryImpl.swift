@@ -12,6 +12,10 @@ import WidgetKit
 
 public final class HistoryRepositoryImpl: Domain.HistoryRepository {
     public static let shared = HistoryRepositoryImpl()
+    
+    public var runDistanceSubject: PassthroughSubject<Double, Never> = .init()
+    public var runDurationSubject: PassthroughSubject<Int, Never> = .init()
+    
     public var histories: AnyPublisher<[Domain.History], Never> { $_histories.eraseToAnyPublisher() }
     private var cancellables = Set<AnyCancellable>()
     @Published var _histories: [Domain.History] = [] {
