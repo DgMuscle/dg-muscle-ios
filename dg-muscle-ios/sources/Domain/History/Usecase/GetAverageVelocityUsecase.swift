@@ -13,6 +13,7 @@ public final class GetAverageVelocityUsecase {
     /// velocity
     /// distance / hour
     public func implement(run: Run) -> Double {
-        run.distance / (Double(run.duration) / 3600) / 1000
+        guard run.duration > 0 else { return 0 }
+        return run.distance / (Double(run.duration) / 3600) / 1000
     }
 }
