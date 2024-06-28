@@ -17,42 +17,48 @@ public struct ManageRunView: View {
     
     public init(
         run: Binding<RunPresentation>,
-        userRepository: UserRepository
+        userRepository: UserRepository,
+        historyRepository: HistoryRepository
     ) {
-        _viewModel = .init(wrappedValue: .init(run: run, userRepository: userRepository))
+        _viewModel = .init(
+            wrappedValue: .init(
+                run: run,
+                userRepository: userRepository,
+                historyRepository: historyRepository
+            )
+        )
     }
     
     public var body: some View {
         VStack(alignment: .leading, spacing: spacing) {
             
-            GeometryReader { geometry in
-                HStack {
-                    RoundedRectangle(cornerRadius: 8)
-                        .foregroundStyle(
-                            LinearGradient(
-                                colors: [viewModel.color.opacity(0.4), viewModel.color.opacity(0.9)],
-                                startPoint: .leading,
-                                endPoint: .trailing
+            if viewModel.runBarPercentage != 0 {
+                GeometryReader { geometry in
+                    HStack {
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundStyle(
+                                LinearGradient(
+                                    colors: [viewModel.color.opacity(0.4), viewModel.color.opacity(0.9)],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
                             )
-                        )
-                        .frame(width: geometry.size.width * viewModel.runBarPercentage - 30)
-                        .overlay {
-                            HStack {
-                                Spacer()
-                                Text(viewModel.averageVelocityText)
-                                    .font(.caption2)
-                                    .padding(.trailing)
-                                    .foregroundStyle(Color(uiColor: .secondaryLabel))
+                            .frame(width: max(0, geometry.size.width * viewModel.runBarPercentage - 30))
+                            .overlay {
+                                HStack {
+                                    Spacer()
+                                    Text(viewModel.averageVelocityText)
+                                        .font(.caption2)
+                                        .padding(.trailing)
+                                        .foregroundStyle(Color(uiColor: .secondaryLabel))
+                                }
                             }
-                            
-                        }
-                    
-                    Image(systemName: "figure.run")
+                        Image(systemName: "figure.run")
+                    }
                 }
-                
+                .frame(height: 30)
+                .animation(.linear(duration: 0.5), value: viewModel.runBarPercentage)
             }
-            .frame(height: 30)
-            .animation(.linear(duration: 0.5), value: viewModel.runBarPercentage)
             
             HStack {
                 Text("Distance: ")
@@ -99,7 +105,8 @@ public struct ManageRunView: View {
                 domain: run
             )
         ),
-        userRepository: UserRepositoryMock()
+        userRepository: UserRepositoryMock(),
+        historyRepository: HistoryRepositoryMock()
     )
     return view
         .preferredColorScheme(.dark)

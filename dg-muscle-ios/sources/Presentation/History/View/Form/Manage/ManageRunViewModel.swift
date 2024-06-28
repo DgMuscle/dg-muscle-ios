@@ -35,15 +35,18 @@ final class ManageRunViewModel: ObservableObject {
     
     private let getAverageVelocityUsecase: GetAverageVelocityUsecase
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
+    private let subscribeRunDistanceUsecase: SubscribeRunDistanceUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
         run: Binding<RunPresentation>,
-        userRepository: UserRepository
+        userRepository: UserRepository,
+        historyRepository: HistoryRepository
     ) {
         self._run = run
         getAverageVelocityUsecase = .init()
         getHeatMapColorUsecase = .init(userRepository: userRepository)
+        subscribeRunDistanceUsecase = .init(historyRepository: historyRepository)
         
         distance = run.distance.wrappedValue
         duration = run.duration.wrappedValue
@@ -87,5 +90,10 @@ final class ManageRunViewModel: ObservableObject {
                 self?.run.distance = distance
             }
             .store(in: &cancellables)
+        
+        subscribeRunDistanceUsecase
+            .implement()
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$distance)
     }
 }

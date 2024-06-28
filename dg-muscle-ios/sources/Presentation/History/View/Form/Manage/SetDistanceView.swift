@@ -42,7 +42,7 @@ public struct SetDistanceView: View {
                         RoundedRectangle(cornerRadius: 8)
                             .fill(Color(uiColor: .tertiarySystemFill))
                     )
-                    .keyboardType(.numberPad)
+                    .keyboardType(.decimalPad)
                 Text("km")
             }
             

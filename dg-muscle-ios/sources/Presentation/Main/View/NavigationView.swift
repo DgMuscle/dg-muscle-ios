@@ -89,7 +89,8 @@ public struct NavigationView: View {
                 case .manageRun(let run):
                     ManageRunView(
                         run: run,
-                        userRepository: userRepository
+                        userRepository: userRepository, 
+                        historyRepository: historyRepository
                     )
                 case .setDistance(let distance):
                     SetDistanceView(
