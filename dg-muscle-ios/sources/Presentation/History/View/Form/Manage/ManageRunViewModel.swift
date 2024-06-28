@@ -10,14 +10,17 @@ import Combine
 import Domain
 import SwiftUI
 import MapKit
+import Common
 
 final class ManageRunViewModel: ObservableObject {
     
     @Binding private var run: RunPresentation
     
+    let color: Color
     @Published var distanceText: String
     @Published var durationText: String
     @Published var averageVelocityText: String
+    @Published var runBarPercentage: CGFloat = 0
     
     @Published var distance: Double
     @Published var duration: Int
@@ -31,11 +34,16 @@ final class ManageRunViewModel: ObservableObject {
     }
     
     private let getAverageVelocityUsecase: GetAverageVelocityUsecase
+    private let getHeatMapColorUsecase: GetHeatMapColorUsecase
     private var cancellables = Set<AnyCancellable>()
     
-    init(run: Binding<RunPresentation>) {
+    init(
+        run: Binding<RunPresentation>,
+        userRepository: UserRepository
+    ) {
         self._run = run
         getAverageVelocityUsecase = .init()
+        getHeatMapColorUsecase = .init(userRepository: userRepository)
         
         distance = run.distance.wrappedValue
         duration = run.duration.wrappedValue
@@ -43,8 +51,10 @@ final class ManageRunViewModel: ObservableObject {
         
         distanceText = MKDistanceFormatter().string(fromDistance: run.distance.wrappedValue)
         durationText = Self.durationFormatter.string(from: TimeInterval(run.duration.wrappedValue)) ?? ""
-        averageVelocityText = String(format: "%.2f", getAverageVelocityUsecase.implement(run: run.wrappedValue.domain))
-
+        averageVelocityText = "\(getAverageVelocityUsecase.implement(run: run.wrappedValue.domain)) km/h"
+        
+        color = Common.HeatMapColor(domain: getHeatMapColorUsecase.implement()).color
+        
         bind()
     }
     
@@ -61,8 +71,13 @@ final class ManageRunViewModel: ObservableObject {
         
         $averageVelocity
             .receive(on: DispatchQueue.main)
-            .map({ String(format: "%.2f", $0) })
+            .map({ "\($0) km/h" })
             .assign(to: &$averageVelocityText)
+        
+        $averageVelocity
+            .receive(on: DispatchQueue.main)
+            .map({ $0 / 10 })
+            .assign(to: &$runBarPercentage)
         
         $distance
             .combineLatest($duration)
