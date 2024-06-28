@@ -84,6 +84,9 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             coordinator?.deleteAccountConfirm()
         case "logs":
             coordinator?.logs()
+        case "setrundistance":
+            let distance = URLManager.shared.getParameter(url: url, name: "distance") ?? ""
+            coordinator?.setDistance(distance: Double(distance) ?? 0)
         default: break
         }
     }

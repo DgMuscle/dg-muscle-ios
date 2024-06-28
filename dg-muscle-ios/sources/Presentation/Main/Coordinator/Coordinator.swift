@@ -86,6 +86,10 @@ public final class Coordinator {
         path.append(HistoryNavigation(name: .manageRun(run: run)))
     }
     
+    public func setDistance(distance: Double) {
+        path.append(HistoryNavigation(name: .setDistance(distance)))
+    }
+    
     public func profile() {
         path.append(MyNavigation(name: .profile))
     }

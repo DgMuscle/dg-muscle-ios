@@ -91,6 +91,11 @@ public struct NavigationView: View {
                         run: run,
                         userRepository: userRepository
                     )
+                case .setDistance(let distance):
+                    SetDistanceView(
+                        distance: distance,
+                        historyRepository: historyRepository
+                    )
                 }
             }
             .navigationDestination(for: MyNavigation.self) { navigation in
