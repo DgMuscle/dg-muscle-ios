@@ -18,7 +18,14 @@ public struct ManageRunView: View {
     }
     
     public var body: some View {
-        Text("ManageRunView")
+        VStack(alignment: .leading) {
+            HStack {
+                Text("Average Velocity: \(viewModel.averageVelocityText)")
+                Spacer()
+            }
+            
+        }
+        .padding()
     }
 }
 

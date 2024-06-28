@@ -13,7 +13,7 @@ private func createHistory(date: String, memo: String?, records: [ExerciseRecord
     dateFormatter.dateFormat = "yyyyMMdd"
     let date = dateFormatter.date(from: date)!
     
-    let run: Run = .init(duration: 3600, distance: 3600)
+    let run: Run = .init(duration: 3600, distance: 6700)
     
     return .init(id: UUID().uuidString, date: date, memo: memo, records: records, run: run)
 }
