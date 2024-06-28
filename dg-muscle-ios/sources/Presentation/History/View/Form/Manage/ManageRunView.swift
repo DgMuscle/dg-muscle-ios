@@ -8,6 +8,7 @@
 import SwiftUI
 import Domain
 import MockData
+import Common
 
 public struct ManageRunView: View {
     
@@ -56,7 +57,7 @@ public struct ManageRunView: View {
             HStack {
                 Text("Distance: ")
                 Button {
-                    print("tap distance")
+                    URLManager.shared.open(url: "dgmuscle://setrundistance?distance=\(viewModel.distance)")
                 } label: {
                     Text(viewModel.distanceText)
                         .padding(.vertical, 4)
@@ -72,7 +73,7 @@ public struct ManageRunView: View {
             HStack {
                 Text("Duration: ")
                 Button {
-                    print("tap duration")
+                    URLManager.shared.open(url: "dgmuscle://setrunduration?duration=\(viewModel.duration)")
                 } label: {
                     Text(viewModel.durationText)
                         .padding(.vertical, 4)
