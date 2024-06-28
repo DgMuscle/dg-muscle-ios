@@ -83,7 +83,7 @@ class PostHistoryViewModel: ObservableObject {
     
     private func bind() {
         $history
-            .receive(on: DispatchQueue.main)
+            .debounce(for: 0.5, scheduler: DispatchQueue.main)
             .sink { [weak self] history in
                 let domain: Domain.History = history.domain
                 
