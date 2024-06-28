@@ -13,6 +13,7 @@ import Common
 public struct SetDistanceView: View {
     
     @State var distance: Double
+    @FocusState var focus
     
     private let pushRunDistanceUsecase: PushRunDistanceUsecase
     
@@ -36,13 +37,13 @@ public struct SetDistanceView: View {
         VStack(spacing: 40) {
             HStack(spacing: 20) {
                 TextField("Distance", value: $distance, formatter: numberFormatter)
-                    .padding(.vertical, 4)
-                    .padding(.horizontal, 8)
+                    .padding(10)
                     .background(
                         RoundedRectangle(cornerRadius: 8)
                             .fill(Color(uiColor: .tertiarySystemFill))
                     )
                     .keyboardType(.decimalPad)
+                    .focused($focus)
                 Text("km")
             }
             
@@ -53,6 +54,9 @@ public struct SetDistanceView: View {
             .buttonStyle(.bordered)
         }
         .padding()
+        .onAppear {
+            focus.toggle()
+        }
     }
 }
 
