@@ -36,6 +36,7 @@ final class ManageRunViewModel: ObservableObject {
     private let getAverageVelocityUsecase: GetAverageVelocityUsecase
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
     private let subscribeRunDistanceUsecase: SubscribeRunDistanceUsecase
+    private let subscribeRunDurationUsecase: SubscribeRunDurationUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
@@ -47,6 +48,7 @@ final class ManageRunViewModel: ObservableObject {
         getAverageVelocityUsecase = .init()
         getHeatMapColorUsecase = .init(userRepository: userRepository)
         subscribeRunDistanceUsecase = .init(historyRepository: historyRepository)
+        subscribeRunDurationUsecase = .init(historyRepository: historyRepository)
         
         distance = run.distance.wrappedValue
         duration = run.duration.wrappedValue
@@ -74,12 +76,13 @@ final class ManageRunViewModel: ObservableObject {
         
         $averageVelocity
             .receive(on: DispatchQueue.main)
-            .map({ "\($0) km/h" })
+            .map({ "\($0.rounded()) km/h" })
             .assign(to: &$averageVelocityText)
         
         $averageVelocity
             .receive(on: DispatchQueue.main)
             .map({ $0 / 10 })
+            .map({ min($0, 1) })
             .assign(to: &$runBarPercentage)
         
         $distance
@@ -88,6 +91,8 @@ final class ManageRunViewModel: ObservableObject {
             .sink { [weak self] distance, duration in
                 self?.run.duration = duration
                 self?.run.distance = distance
+                guard let self else { return }
+                averageVelocity = getAverageVelocityUsecase.implement(run: run.domain)
             }
             .store(in: &cancellables)
         
@@ -95,5 +100,10 @@ final class ManageRunViewModel: ObservableObject {
             .implement()
             .receive(on: DispatchQueue.main)
             .assign(to: &$distance)
+        
+        subscribeRunDurationUsecase
+            .implement()
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$duration)
     }
 }

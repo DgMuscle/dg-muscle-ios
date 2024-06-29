@@ -87,6 +87,9 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         case "setrundistance":
             let distance = URLManager.shared.getParameter(url: url, name: "distance") ?? ""
             coordinator?.setDistance(distance: Double(distance) ?? 0)
+        case "setrunduration":
+            let duration = URLManager.shared.getParameter(url: url, name: "duration") ?? ""
+            coordinator?.setDuration(duration: Int(duration) ?? 0)
         default: break
         }
     }

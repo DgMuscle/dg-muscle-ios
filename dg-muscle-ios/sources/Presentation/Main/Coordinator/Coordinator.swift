@@ -90,6 +90,10 @@ public final class Coordinator {
         path.append(HistoryNavigation(name: .setDistance(distance)))
     }
     
+    public func setDuration(duration: Int) {
+        path.append(HistoryNavigation(name: .setDuration(duration)))
+    }
+    
     public func profile() {
         path.append(MyNavigation(name: .profile))
     }

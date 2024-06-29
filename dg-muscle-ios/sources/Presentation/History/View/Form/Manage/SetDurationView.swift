@@ -76,6 +76,7 @@ public struct SetDurationView: View {
     
     func textField(placeholder: String, value: Binding<Int>) -> some View {
         TextField(placeholder, value: value, formatter: NumberFormatter())
+            .keyboardType(.numberPad)
             .multilineTextAlignment(.center)
             .padding(.vertical, 8)
             .padding(.horizontal, 12)

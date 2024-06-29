@@ -38,7 +38,7 @@ public struct ManageRunView: View {
                         RoundedRectangle(cornerRadius: 8)
                             .foregroundStyle(
                                 LinearGradient(
-                                    colors: [viewModel.color.opacity(0.4), viewModel.color.opacity(0.9)],
+                                    colors: [viewModel.color.opacity(0.9), viewModel.color.opacity(0.3)],
                                     startPoint: .leading,
                                     endPoint: .trailing
                                 )
@@ -78,6 +78,7 @@ public struct ManageRunView: View {
             
             HStack {
                 Text("Duration: ")
+                
                 Button {
                     URLManager.shared.open(url: "dgmuscle://setrunduration?duration=\(viewModel.duration)")
                 } label: {

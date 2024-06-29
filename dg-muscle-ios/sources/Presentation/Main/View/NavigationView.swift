@@ -97,6 +97,11 @@ public struct NavigationView: View {
                         distance: distance,
                         historyRepository: historyRepository
                     )
+                case .setDuration(let duration):
+                    SetDurationView(
+                        duration: duration,
+                        historyRepository: historyRepository
+                    )
                 }
             }
             .navigationDestination(for: MyNavigation.self) { navigation in
