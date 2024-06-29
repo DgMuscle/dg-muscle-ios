@@ -76,7 +76,17 @@ final class ManageRunViewModel: ObservableObject {
         
         $averageVelocity
             .receive(on: DispatchQueue.main)
-            .map({ "\($0.rounded()) km/h" })
+            .map({ String(format: "%.2f", $0) })
+            .map({ velocityText in
+                var velocityText = velocityText
+                
+                while velocityText.last == "0" {
+                    velocityText.removeLast()
+                }
+                
+                return velocityText
+            })
+            .map({ "\($0) km/h" })
             .assign(to: &$averageVelocityText)
         
         $averageVelocity

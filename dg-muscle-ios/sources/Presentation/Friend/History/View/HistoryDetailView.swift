@@ -8,6 +8,7 @@
 import SwiftUI
 import Domain
 import MockData
+import MapKit
 
 public struct HistoryDetailView: View {
     
@@ -35,6 +36,10 @@ public struct HistoryDetailView: View {
                 }
             } else {
                 Text("Can't find data")
+            }
+            
+            if let run = viewModel.history?.run {
+                RunSectionView(run: run)
             }
             
             Text("Total Volume is ") +
