@@ -2,52 +2,26 @@
 //  Run.swift
 //  DataLayer
 //
-//  Created by 신동규 on 6/15/24.
+//  Created by Donggyu Shin on 6/25/24.
 //
 
 import Foundation
 import Domain
 
 struct Run: Codable {
-    let id: String
-    let pieces: [RunPiece]
-    let status: Status?
+    let duration: Int
+    let distance: Double
     
     init(domain: Domain.Run) {
-        id = domain.id
-        pieces = domain.pieces.map({ .init(domain: $0) })
-        status = .init(domain: domain.status)
+        self.duration = domain.duration
+        self.distance = domain.distance
     }
     
     var domain: Domain.Run {
         .init(
-            id: id,
-            pieces: pieces.map({ $0.domain }), status: status?.domain ?? .notRunning
+            duration: duration,
+            distance: distance
         )
     }
 }
 
-extension Run {
-    enum Status: Codable {
-        case running
-        case notRunning
-        
-        var domain: Domain.Run.Status {
-            switch self {
-            case .running:
-                return .running
-            case .notRunning:
-                return .notRunning
-            }
-        }
-        
-        init(domain: Domain.Run.Status) {
-            switch domain {
-            case .running:
-                self = .running
-            case .notRunning:
-                self = .notRunning
-            }
-        }
-    }
-}

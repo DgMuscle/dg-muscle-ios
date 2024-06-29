@@ -167,37 +167,12 @@ public final class UserRepositoryImpl: UserRepository {
     
     private func postUserProfileToServer(user: Domain.User) async throws {
         let url = FunctionsURL.user(.postprofile)
-        
-        struct Body: Codable {
-            let id: String
-            let displayName: String
-            let photoURL: String?
-            let fcmtoken: String?
-            let heatmapColor: String
-            let backgroundImageURL: String?
-            let link: String?
-            let developer: Bool
-            let deleted: Bool
-        }
-        
         let user: UserData = .init(domain: user)
-        
-        let body: Body = .init(
-            id: user.id,
-            displayName: user.displayName ?? "",
-            photoURL: user.photoURL,
-            fcmtoken: user.fcmToken,
-            heatmapColor: user.heatmapColor?.rawValue ?? "green", 
-            backgroundImageURL: user.backgroundImageURL,
-            link: user.link,
-            developer: user.developer ?? false,
-            deleted: user.deleted ?? false
-        )
         
         let _: DataResponse = try await APIClient.shared.request(
             method: .post,
             url: url,
-            body: body
+            body: user
         )
     }
 }

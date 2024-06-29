@@ -18,11 +18,13 @@ final class ManageRecordViewModel: ObservableObject {
     @Published var currentVolume: Int
     @Published var previousRecord: ExerciseRecord?
     @Published var diffWithPreviousRecord: Int?
+    @Published var goal: Goal?
     
     private let recordId: String
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
     private let subscribeHeatMapColorUsecase: SubscribeHeatMapColorUsecase
     private let getPreviousRecordUsecase: GetPreviousRecordUsecase
+    private let getRecordGoalUsecase: GetRecordGoalUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
@@ -45,6 +47,7 @@ final class ManageRecordViewModel: ObservableObject {
         getHeatMapColorUsecase = .init(userRepository: userRepository)
         subscribeHeatMapColorUsecase = .init(userRepository: userRepository)
         getPreviousRecordUsecase = .init(historyRepository: historyRepository)
+        getRecordGoalUsecase = .init()
         
         let color: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
         self.color = color.color
@@ -90,14 +93,33 @@ final class ManageRecordViewModel: ObservableObject {
             .compactMap({ $0 })
             .map({ Common.HeatMapColor(domain: $0) })
             .map({ $0.color })
-            .assign(to: \.color, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$color)
         
         $record
             .combineLatest($previousRecord.compactMap({ $0 }))
             .receive(on: DispatchQueue.main)
             .map({ $0.volume - $1.volume })
-            .assign(to: \.diffWithPreviousRecord, on: self)
+            .assign(to: &$diffWithPreviousRecord)
+        
+        $previousRecord
+            .compactMap({ $0?.domain })
+            .map({ [weak self] in self?.getRecordGoalUsecase.implement(previousRecord: $0) })
+            .map({ (set) -> Goal? in
+                guard let set else { return nil }
+                return Goal(weight: set.weight, reps: set.reps, achive: false)
+            })
+            .combineLatest($record)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] goal, record in
+                if var goal {
+                    var sets = record.sets
+                    sets = sets.filter({ $0.weight >= goal.weight && $0.reps >= goal.reps })
+                    goal.achive = sets.isEmpty == false
+                    self?.goal = goal
+                } else {
+                    self?.goal = nil
+                }
+            }
             .store(in: &cancellables)
     }
 }

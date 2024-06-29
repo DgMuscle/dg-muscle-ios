@@ -18,7 +18,6 @@ final class PostExerciseViewModel: ObservableObject {
     
     private let postExerciseUsecase: PostExerciseUsecase
     private let pop: (() -> ())?
-    private var cancellables = Set<AnyCancellable>()
     
     init(
         exercise: Exercise?,
@@ -52,13 +51,11 @@ final class PostExerciseViewModel: ObservableObject {
         $exercise
             .debounce(for: 0.5, scheduler: DispatchQueue.main)
             .map({ !$0.name.isEmpty && !$0.parts.isEmpty })
-            .assign(to: \.isSaveButtonVisible, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$isSaveButtonVisible)
         
         $exercise
             .debounce(for: 0.5, scheduler: DispatchQueue.main)
             .map({ !$0.name.isEmpty })
-            .assign(to: \.isPartsSelectionVisible, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$isPartsSelectionVisible)
     }
 }

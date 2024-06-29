@@ -12,7 +12,6 @@ public final class SubscribeHeatMapColorUsecase {
     @Published private var heatMapColor: HeatMapColor? = nil
     var temp: HeatMapColor? = nil
     private let userRepository: UserRepository
-    private var cancellables = Set<AnyCancellable>()
     public init(userRepository: UserRepository) {
         self.userRepository = userRepository
         bind()
@@ -26,8 +25,7 @@ public final class SubscribeHeatMapColorUsecase {
         userRepository
             .user
             .map({ $0?.heatMapColor })
-            .assign(to: \.heatMapColor, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$heatMapColor)
             
     }
 }

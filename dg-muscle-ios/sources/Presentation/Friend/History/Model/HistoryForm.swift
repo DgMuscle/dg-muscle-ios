@@ -31,11 +31,10 @@ public struct History {
         date = domain.date
         memo = domain.memo
         records = domain.records.map({ .init(domain: $0) })
-        
         if let domain = domain.run {
-            self.run = .init(domain: domain)
+            run = .init(domain: domain)
         } else {
-            self.run = nil
+            run = nil
         }
     }
     

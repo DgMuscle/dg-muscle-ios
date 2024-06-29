@@ -63,7 +63,6 @@ final class SearchUsersViewModel: ObservableObject {
                 let users: [Common.User] = domainUsers.map({ .init(domain: $0) })
                 return users
             })
-            .assign(to: \.users, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$users)
     }
 }

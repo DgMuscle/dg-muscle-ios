@@ -19,7 +19,6 @@ final class ExerciseListViewModel: ObservableObject {
     private let subscribeExercisesGroupedByPartUsecase: SubscribeExercisesGroupedByPartUsecase
     private let deleteExerciseUsecase: DeleteExerciseUsecase
     private let postExerciseUsecase: PostExerciseUsecase
-    private var cancellables = Set<AnyCancellable>()
     
     init(
         exerciseRepository: any ExerciseRepository
@@ -67,8 +66,7 @@ final class ExerciseListViewModel: ObservableObject {
             .implement()
             .compactMap({ [weak self] in self?.getExerciseSections(from: $0) })
             .receive(on: DispatchQueue.main)
-            .assign(to: \.exerciseSections, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$exerciseSections)
     }
     
     private func getExerciseSections(from group: [Domain.Exercise.Part: [Domain.Exercise]]) -> [ExerciseSection] {

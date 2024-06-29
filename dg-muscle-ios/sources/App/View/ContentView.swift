@@ -31,7 +31,6 @@ struct ContentView: View {
                     heatMapRepository: HeatMapRepositoryImpl.shared,
                     userRepository: UserRepositoryImpl.shared, 
                     friendRepository: FriendRepositoryImpl.shared, 
-                    runRepository: RunRepositoryImpl.shared, 
                     logRepository: LogRepositoryImpl.shared
                 )
             } else {

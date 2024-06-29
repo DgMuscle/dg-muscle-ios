@@ -10,6 +10,7 @@ import SwiftUI
 import Domain
 import History
 import Friend
+import Common
 
 public var coordinator: Coordinator?
 
@@ -81,12 +82,16 @@ public final class Coordinator {
         path.append(HistoryNavigation(name: .heatMapColor))
     }
     
-    public func updateRunVelocity(velocity: Double) {
-        path.append(HistoryNavigation(name: .updateRunVelocity(velocity)))
+    public func manageRun(run: Binding<RunPresentation>) {
+        path.append(HistoryNavigation(name: .manageRun(run: run)))
     }
     
-    public func historyManageRun(run: Binding<RunPresentation>) {
-        path.append(HistoryNavigation(name: .manageRun(run)))
+    public func setDistance(distance: Double) {
+        path.append(HistoryNavigation(name: .setDistance(distance)))
+    }
+    
+    public func setDuration(duration: Int) {
+        path.append(HistoryNavigation(name: .setDuration(duration)))
     }
     
     public func profile() {
