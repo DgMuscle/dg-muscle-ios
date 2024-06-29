@@ -25,7 +25,7 @@ public struct History {
         self.date = date
         self.memo = memo
         self.records = records
-        self.run = run 
+        self.run = run
     }
     
     public var volume: Double {

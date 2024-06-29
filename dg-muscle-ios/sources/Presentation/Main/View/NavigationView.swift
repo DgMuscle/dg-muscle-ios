@@ -21,7 +21,6 @@ public struct NavigationView: View {
     let heatMapRepository: HeatMapRepository
     let userRepository: UserRepository
     let friendRepository: FriendRepository
-    let runRepository: RunRepository
     let logRepository: LogRepository
     
     public init(
@@ -31,7 +30,6 @@ public struct NavigationView: View {
         heatMapRepository: HeatMapRepository,
         userRepository: UserRepository,
         friendRepository: FriendRepository,
-        runRepository: RunRepository,
         logRepository: LogRepository
     ) {
         self.today = today
@@ -40,7 +38,6 @@ public struct NavigationView: View {
         self.heatMapRepository = heatMapRepository
         self.userRepository = userRepository
         self.friendRepository = friendRepository
-        self.runRepository = runRepository
         self.logRepository = logRepository
     }
     
@@ -79,8 +76,8 @@ public struct NavigationView: View {
                         userRepository: userRepository,
                         history: history) { historyForm, recordId in
                             coordinator?.historyFormStep2(historyForm: historyForm, recordId: recordId)
-                        } runAction: { run in
-                            coordinator?.historyManageRun(run: run)
+                        } manageRun: { run in
+                            coordinator?.manageRun(run: run)
                         }
                 case .historyFormStep2(let historyForm, let recordId):
                     ManageRecordView(
@@ -93,13 +90,17 @@ public struct NavigationView: View {
                     ManageRunView(
                         run: run,
                         userRepository: userRepository, 
-                        runRepository: runRepository
+                        historyRepository: historyRepository
                     )
-                case .updateRunVelocity(let velocity):
-                    UpdateRunVelocityView(
-                        runRepository: runRepository, 
-                        userRepository: userRepository,
-                        velocity: velocity
+                case .setDistance(let distance):
+                    SetDistanceView(
+                        distance: distance,
+                        historyRepository: historyRepository
+                    )
+                case .setDuration(let duration):
+                    SetDurationView(
+                        duration: duration,
+                        historyRepository: historyRepository
                     )
                 }
             }

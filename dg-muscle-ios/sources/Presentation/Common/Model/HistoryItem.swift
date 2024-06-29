@@ -17,8 +17,18 @@ public struct HistoryItem: Hashable {
     public let color: Color
     public let time: Double?
     public let kcal: Double?
+    public let runDistance: Double?
     
-    public init(id: String, date: Date, parts: [String], volume: Double, color: Color, time: Double?, kcal: Double?) {
+    public init(
+        id: String,
+        date: Date,
+        parts: [String],
+        volume: Double,
+        color: Color,
+        time: Double?,
+        kcal: Double?,
+        runDistance: Double?
+    ) {
         self.id = id
         self.date = date
         self.parts = parts
@@ -26,6 +36,7 @@ public struct HistoryItem: Hashable {
         self.color = color
         self.time = time
         self.kcal = kcal
+        self.runDistance = runDistance
     }
     
     public init(history: Domain.History, exercises: [Domain.Exercise], color: Color) {
@@ -50,7 +61,9 @@ public struct HistoryItem: Hashable {
                      volume: history.volume,
                      color: color,
                      time: nil,
-                     kcal: nil)
+                     kcal: nil,
+                     runDistance: history.run?.distance
+        )
     }
     
     static private func convert(part: Domain.Exercise.Part) -> String {

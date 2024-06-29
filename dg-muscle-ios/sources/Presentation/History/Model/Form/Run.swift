@@ -1,75 +1,31 @@
 //
 //  Run.swift
-//  Presentation
+//  History
 //
-//  Created by 신동규 on 6/15/24.
+//  Created by Donggyu Shin on 6/25/24.
 //
 
 import Foundation
 import Domain
 
 public struct RunPresentation: Hashable {
-    public let id: String
-    public var pieces: [RunPiece]
-    public var status: Status
+    public var duration: Int
+    public var distance: Double
     
-    var distance: Double {
-        pieces.map({ $0.distance }).reduce(0, +)
-    }
-    
-    var start: Date? {
-        pieces.first?.start
-    }
-    
-    var end: Date? {
-        pieces.last?.end ?? pieces.last?.start
-    }
-    
-    var duration: Int {
-        pieces.map({ $0.duration }).reduce(0, +)
-    }
-    
-    public init() {
-        id = UUID().uuidString
-        pieces = []
-        status = .notRunning
+    init() {
+        duration = 0
+        distance = 0
     }
     
     public init(domain: Domain.Run) {
-        id = domain.id
-        pieces = domain.pieces.map({ .init(domain: $0) })
-        status = .init(domain: domain.status)
+        self.duration = domain.duration
+        self.distance = domain.distance
     }
     
     public var domain: Domain.Run {
         .init(
-            id: id,
-            pieces: pieces.map({ $0.domain }), status: status.domain
+            duration: duration,
+            distance: distance
         )
-    }
-}
-
-extension RunPresentation {
-    public enum Status {
-        case running
-        case notRunning
-        
-        var domain: Domain.Run.Status {
-            switch self {
-            case .running:
-                return .running
-            case .notRunning:
-                return .notRunning
-            }
-        }
-        
-        init(domain: Domain.Run.Status) {
-            switch domain {
-            case .running:
-                self = .running
-            case .notRunning:
-                self = .notRunning
-            }
-        }
     }
 }

@@ -38,7 +38,6 @@ final class FriendListViewModel: ObservableObject {
             .implement()
             .receive(on: DispatchQueue.main)
             .map({ $0.map({ Friend(domain: $0) }) })
-            .assign(to: \.friends, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$friends)
     }
 }

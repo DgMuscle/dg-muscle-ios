@@ -12,7 +12,6 @@ public final class SubscribeExercisesGroupedByPartUsecase {
     @Published var data: [Exercise.Part: [Exercise]] = [:]
     
     private let exerciseRepository: ExerciseRepository
-    private var cancellables = Set<AnyCancellable>()
     public init(exerciseRepository: ExerciseRepository) {
         self.exerciseRepository = exerciseRepository
         bind()
@@ -26,7 +25,6 @@ public final class SubscribeExercisesGroupedByPartUsecase {
         exerciseRepository
             .exercises
             .map({ GroupExercisesByPartUsecase().implement(exercises: $0) })
-            .assign(to: \.data, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$data)
     }
 }

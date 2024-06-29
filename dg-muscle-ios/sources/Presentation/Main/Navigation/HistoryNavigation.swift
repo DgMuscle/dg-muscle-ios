@@ -9,6 +9,7 @@ import Foundation
 import Domain
 import History
 import SwiftUI
+import Common
 
 public struct HistoryNavigation: Hashable {
     public static func == (lhs: HistoryNavigation, rhs: HistoryNavigation) -> Bool {
@@ -32,7 +33,8 @@ extension HistoryNavigation {
         case heatMapColor
         case historyFormStep1(Domain.History?)
         case historyFormStep2(historyForm: Binding<HistoryForm>, recordId: String)
-        case manageRun(Binding<RunPresentation>)
-        case updateRunVelocity(Double)
+        case manageRun(run: Binding<RunPresentation>)
+        case setDistance(Double)
+        case setDuration(Int)
     }
 }

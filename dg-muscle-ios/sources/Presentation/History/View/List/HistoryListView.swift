@@ -45,6 +45,22 @@ public struct HistoryListView: View {
                 }
                 .padding(.bottom)
                 
+                if viewModel.historiesGroupedByMonth.isEmpty {
+                    Text("First time DgMuscle?")
+                    
+                    Text("Swipe right to go to My Page")
+                    
+                    if viewModel.hasExercise == false {
+                        Button("Generate your first exercise!") {
+                            URLManager.shared.open(url: "dgmuscle://exercisemanage")
+                        }
+                    } else {
+                        Button("Generate your first history!") {
+                            URLManager.shared.open(url: "dgmuscle://history")
+                        }
+                    }
+                }
+                
                 ForEach(viewModel.historiesGroupedByMonth, id: \.self) { section in
                     Section {
                         VStack(spacing: 12) {

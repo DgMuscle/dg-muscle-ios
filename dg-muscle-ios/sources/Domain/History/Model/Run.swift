@@ -2,30 +2,20 @@
 //  Run.swift
 //  Domain
 //
-//  Created by 신동규 on 6/15/24.
+//  Created by Donggyu Shin on 6/25/24.
 //
 
 import Foundation
 
 public struct Run {
-    public let id: String
-    public let pieces: [RunPiece]
-    public var status: Status
+    public let duration: Int
+    public let distance: Double
     
     public init(
-        id: String,
-        pieces: [RunPiece],
-        status: Status
+        duration: Int,
+        distance: Double
     ) {
-        self.id = id
-        self.pieces = pieces
-        self.status = status
-    }
-}
-
-extension Run {
-    public enum Status {
-        case running
-        case notRunning
+        self.duration = duration
+        self.distance = distance
     }
 }

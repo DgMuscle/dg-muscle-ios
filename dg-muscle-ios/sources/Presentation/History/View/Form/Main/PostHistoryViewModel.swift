@@ -14,7 +14,6 @@ import Common
 class PostHistoryViewModel: ObservableObject {
     @Published var history: HistoryForm
     @Published var color: Common.HeatMapColor
-    @Published var run: [RunPresentation] = []
     
     private let postHistoryUsecase: PostHistoryUsecase
     private let getExercisesUsecase: GetExercisesUsecase
@@ -71,35 +70,28 @@ class PostHistoryViewModel: ObservableObject {
     }
     
     func delete(record indexSet: IndexSet) {
-        history.records.remove(atOffsets: indexSet)
-    }
-    
-    func deleteRun(run indexSet: IndexSet) {
-        run.remove(atOffsets: indexSet)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            self?.history.run.pieces = []
+            self?.history.records.remove(atOffsets: indexSet)
         }
     }
     
+    func deleteRun(indexSet: IndexSet) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.history.run.remove(atOffsets: indexSet)
+        }
+    }
     
     private func bind() {
         $history
-            .receive(on: DispatchQueue.main)
+            .debounce(for: 0.5, scheduler: DispatchQueue.main)
             .sink { [weak self] history in
                 let domain: Domain.History = history.domain
                 
-                if history.volume == 0 && history.run.pieces.isEmpty && history.memo == nil {
+                if history.volume == 0 && history.memo == nil {
                     self?.deleteHistoryUsecase.implement(history: domain)
                 } else {
                     self?.postHistoryUsecase.implement(history: domain)
                 }
-                
-                if history.run.pieces.isEmpty {
-                    self?.run = []
-                } else {
-                    self?.run = [history.run]
-                }
-                
             }
             .store(in: &cancellables)
         
@@ -108,7 +100,6 @@ class PostHistoryViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .compactMap({ $0 })
             .map({ Common.HeatMapColor(domain: $0) })
-            .assign(to: \.color, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$color)
     }
 }

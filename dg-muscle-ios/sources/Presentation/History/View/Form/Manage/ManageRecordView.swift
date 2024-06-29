@@ -31,6 +31,11 @@ public struct ManageRecordView: View {
     
     public var body: some View {
         List {
+            
+            if let goal = viewModel.goal {
+                GoalView(goal: goal, color: viewModel.color)
+            }
+            
             Section {
                 ForEach(viewModel.record.sets, id: \.self) { set in
                     Button {
@@ -98,6 +103,7 @@ public struct ManageRecordView: View {
                 }
             }
         }
+        .animation(.default, value: viewModel.goal)
     }
 }
 

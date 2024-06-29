@@ -16,6 +16,7 @@ final class HistoryListViewModel: ObservableObject {
     @Published var heatMap: [HistoryHeatMap.HeatMap] = []
     @Published var historiesGroupedByMonth: [Common.HistorySection] = []
     @Published var color: Color = .green
+    @Published var hasExercise: Bool = true
     
     let subscribeHeatMapUsecase: SubscribeHeatMapUsecase
     let subscribeExercisesUsecase: SubscribeExercisesUsecase
@@ -62,8 +63,7 @@ final class HistoryListViewModel: ObservableObject {
             .implement()
             .map({ $0.map({ HeatMap(domain: $0) }) })
             .receive(on: DispatchQueue.main)
-            .assign(to: \.heatMap, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$heatMap)
         
         subscribeHeatMapColorUsecase
             .implement()
@@ -71,7 +71,14 @@ final class HistoryListViewModel: ObservableObject {
             .map({ Common.HeatMapColor(domain: $0) })
             .map({ $0.color })
             .receive(on: DispatchQueue.main)
-            .assign(to: \.color, on: self)
+            .assign(to: &$color)
+        
+        subscribeExercisesUsecase
+            .implement()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] exercises in
+                self?.hasExercise = !exercises.isEmpty
+            }
             .store(in: &cancellables)
     }
 }

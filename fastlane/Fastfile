@@ -31,4 +31,18 @@ platform :ios do
       skip_waiting_for_build_processing: true
     )
   end
+  desc "Push a existing build to TestFlight"
+  lane :retry do
+    match
+    api_key = app_store_connect_api_key(
+      key_id: "LPRRPF9RMN",
+      issuer_id: "c60be45c-20c8-4bad-b6b2-7aee665f0f11",
+      # AuthKey_LPRRPF9RMN 파일 노션에 올리기
+      key_filepath: "./AuthKey_LPRRPF9RMN.p8"
+    )
+    upload_to_testflight(
+      api_key: api_key,
+      skip_waiting_for_build_processing: true
+    )
+  end
 end
