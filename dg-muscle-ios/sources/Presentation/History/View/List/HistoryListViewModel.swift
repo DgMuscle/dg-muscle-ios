@@ -80,6 +80,14 @@ final class HistoryListViewModel: ObservableObject {
                 self?.hasExercise = !exercises.isEmpty
             }
             .store(in: &cancellables)
+        
+        subscribeExercisesUsecase
+            .implement()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] exercises in
+                self?.hasExercise = !exercises.isEmpty
+            }
+            .store(in: &cancellables)
     }
 }
 
