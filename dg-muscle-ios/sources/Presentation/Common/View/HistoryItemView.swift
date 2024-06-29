@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 public struct HistoryItemView: View {
     
@@ -32,6 +33,15 @@ public struct HistoryItemView: View {
                 .foregroundStyle(Color(uiColor: .secondaryLabel)).italic()
                 .font(.caption2)
                 .padding(.top, 1)
+                
+                if let distance = history.runDistance {
+                    HStack {
+                        Image(systemName: "figure.run")
+                            .foregroundStyle(history.color)
+                        Text(MKDistanceFormatter().string(fromDistance: distance))
+                    }
+                    
+                }
             }
             .foregroundStyle(Color(uiColor: .label))
             Spacer()
@@ -97,7 +107,19 @@ public struct HistoryItemView: View {
 }
 
 #Preview {
-    let history: HistoryItem = .init(id: UUID().uuidString, date: Date(), parts: ["leg", "chest"], volume: 6890, color: .blue, time: 1500, kcal: 500)
+    let history: HistoryItem = .init(
+        id: UUID().uuidString,
+        date: Date(),
+        parts: [
+            "leg",
+            "chest"
+        ],
+        volume: 6890,
+        color: .blue,
+        time: 1500,
+        kcal: 500,
+        runDistance: 3600
+    )
     
     return HistoryItemView(history: history).preferredColorScheme(.dark)
 }
