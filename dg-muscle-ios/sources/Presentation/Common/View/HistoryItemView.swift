@@ -33,15 +33,6 @@ public struct HistoryItemView: View {
                 .foregroundStyle(Color(uiColor: .secondaryLabel)).italic()
                 .font(.caption2)
                 .padding(.top, 1)
-                
-                if let distance = history.runDistance {
-                    HStack {
-                        Image(systemName: "figure.run")
-                            .foregroundStyle(history.color)
-                        Text(MKDistanceFormatter().string(fromDistance: distance))
-                    }
-                    
-                }
             }
             .foregroundStyle(Color(uiColor: .label))
             Spacer()
@@ -54,7 +45,8 @@ public struct HistoryItemView: View {
         if history.parts.isEmpty {
             return VStack {
                 Text("On the \(day(date: history.date))th, I worked out as much as ") +
-                Text("\(Int(history.volume))").fontWeight(.bold).foregroundStyle(history.color)
+                Text("\(Int(history.volume))").fontWeight(.bold).foregroundStyle(history.color) +
+                Text(runText(runDistance: history.runDistance))
             }
             .multilineTextAlignment(.leading)
         } else {
@@ -73,10 +65,21 @@ public struct HistoryItemView: View {
                 Text("On the \(day(date: history.date))th, I worked out my ") +
                 combinedPartTexts +
                 Text(" as much as ") +
-                Text("\(Int(history.volume))").fontWeight(.bold)
+                Text("\(Int(history.volume))").fontWeight(.bold) +
+                Text(runText(runDistance: history.runDistance))
             }
             .multilineTextAlignment(.leading)
         }
+    }
+    
+    private func runText(runDistance: Double?) -> String {
+        var result = ""
+        
+        if let runDistance {
+            result = ", run \(MKDistanceFormatter().string(fromDistance: runDistance))"
+        }
+        
+        return result
     }
     
     private func day(date: Date) -> String {
