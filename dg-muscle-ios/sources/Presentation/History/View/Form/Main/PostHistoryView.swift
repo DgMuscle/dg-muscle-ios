@@ -93,7 +93,21 @@ public struct PostHistoryView: View {
                                   backgroundColor: viewModel.color.color)
         }
         .scrollIndicators(.hidden)
-        .toolbar { EditButton() }
+        .toolbar {
+            Button {
+                if viewModel.history.memo.isEmpty {
+                    viewModel.history.memo.append("")
+                }
+                
+                if let memoBinding = $viewModel.history.memo.first {
+                    manageMemo?(memoBinding)
+                }
+                
+            } label: {
+                Image(systemName: "text.book.closed")
+            }
+            EditButton()
+        }
         .fullScreenCover(isPresented: $isPresentSelectExercise, content: {
             SelectExerciseView(exerciseRepository: exerciseRepository) { exercise in
                 isPresentSelectExercise.toggle()
