@@ -78,8 +78,15 @@ public struct PostHistoryView: View {
                     Button {
                         manageMemo?(memo)
                     } label: {
-                        Text(memo.wrappedValue)
-                            .lineLimit(1)
+                        
+                        if memo.wrappedValue.isEmpty {
+                            Text("Empty")
+                                .italic()
+                                .foregroundStyle(Color(uiColor: .secondaryLabel))
+                        } else {
+                            Text(memo.wrappedValue)
+                                .lineLimit(1)
+                        }
                     }
                     .buttonStyle(.plain)
                 }
