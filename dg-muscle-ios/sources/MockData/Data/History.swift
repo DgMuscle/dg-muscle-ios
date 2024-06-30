@@ -8,6 +8,8 @@
 import Foundation
 import Domain
 
+private let defaultMemo: String = "The health is the most important thing if the person's life"
+
 private func createHistory(date: String, memo: String?, records: [ExerciseRecord]) -> History {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyyMMdd"
@@ -48,7 +50,7 @@ public let RECORD_2: ExerciseRecord = .init(id: UUID().uuidString, exerciseId: "
 public let RECORD_3: ExerciseRecord = .init(id: UUID().uuidString, exerciseId: "deadlift", sets: SETS_2)
 public let RECORD_4: ExerciseRecord = .init(id: UUID().uuidString, exerciseId: "squat", sets: SETS_3)
 
-public let HISTORY_1: History = createHistory(date: "20240515", memo: nil, records: [RECORD_1])
-public let HISTORY_2: History = createHistory(date: "20240513", memo: nil, records: [RECORD_2])
-public let HISTORY_3: History = createHistory(date: "20240415", memo: nil, records: [RECORD_3])
-public let HISTORY_4: History = createHistory(date: "20240415", memo: nil, records: [RECORD_1, RECORD_2, RECORD_3])
+public let HISTORY_1: History = createHistory(date: "20240515", memo: defaultMemo, records: [RECORD_1])
+public let HISTORY_2: History = createHistory(date: "20240513", memo: defaultMemo, records: [RECORD_2])
+public let HISTORY_3: History = createHistory(date: "20240415", memo: defaultMemo, records: [RECORD_3])
+public let HISTORY_4: History = createHistory(date: "20240415", memo: defaultMemo, records: [RECORD_1, RECORD_2, RECORD_3])
