@@ -10,6 +10,7 @@ import SwiftUI
 public struct ManageMemoView: View {
     
     @StateObject var viewModel: ManageMemoViewModel
+    @FocusState var focus
     
     public init(memo: Binding<String>) {
         _viewModel = .init(wrappedValue: .init(memo: memo))
@@ -17,10 +18,24 @@ public struct ManageMemoView: View {
     
     public var body: some View {
         TextEditor(text: $viewModel.stateMemo)
+            .focused($focus)
+            .overlay {
+                if viewModel.stateMemo.isEmpty {
+                    VStack {
+                        HStack {
+                            Text("Write memo")
+                                .italic()
+                                .foregroundStyle(Color(uiColor: .secondaryLabel))
+                            Spacer()
+                        }
+                        Spacer()
+                    }
+                }
+            }
     }
 }
 
 #Preview {
-    return ManageMemoView(memo: .constant("Memo\nasd\nasjdhakjsdhaksjhd\n"))
+    return ManageMemoView(memo: .constant(""))
         .preferredColorScheme(.dark)
 }
