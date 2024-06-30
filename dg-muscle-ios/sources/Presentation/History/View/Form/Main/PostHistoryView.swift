@@ -18,6 +18,7 @@ public struct PostHistoryView: View {
     private let exerciseRepository: ExerciseRepository
     private let setRecordAction: ((Binding<HistoryForm>, String) -> ())?
     private let manageRun: ((Binding<RunPresentation>) -> ())?
+    private let manageMemo: ((Binding<String>) -> ())?
     
     public init(
         historyRepository: HistoryRepository,
@@ -25,7 +26,8 @@ public struct PostHistoryView: View {
         userRepository: UserRepository,
         history: Domain.History?,
         setRecordAction: ((Binding<HistoryForm>, String) -> ())?,
-        manageRun: ((Binding<RunPresentation>) -> ())?
+        manageRun: ((Binding<RunPresentation>) -> ())?,
+        manageMemo: ((Binding<String>) -> ())?
     ) {
         _viewModel = .init(
             wrappedValue: .init(
@@ -38,6 +40,7 @@ public struct PostHistoryView: View {
         self.setRecordAction = setRecordAction
         self.exerciseRepository = exerciseRepository
         self.manageRun = manageRun
+        self.manageMemo = manageMemo
     }
     
     public var body: some View {
@@ -73,7 +76,7 @@ public struct PostHistoryView: View {
             ForEach($viewModel.history.memo, id: \.self) { memo in
                 Section("memo") {
                     Button {
-                        print("tap memo")
+                        manageMemo?(memo)
                     } label: {
                         Text(memo.wrappedValue)
                             .lineLimit(1)
@@ -129,7 +132,8 @@ public struct PostHistoryView: View {
         userRepository: UserRepositoryMock(),
         history: HISTORY_4,
         setRecordAction: action,
-        manageRun: nil
+        manageRun: nil,
+        manageMemo: nil
     )
     .preferredColorScheme(.dark)
 }
