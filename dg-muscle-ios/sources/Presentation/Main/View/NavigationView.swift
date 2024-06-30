@@ -102,6 +102,8 @@ public struct NavigationView: View {
                         duration: duration,
                         historyRepository: historyRepository
                     )
+                case .manageMemo(let memo):
+                    ManageMemoView(memo: memo)
                 }
             }
             .navigationDestination(for: MyNavigation.self) { navigation in
