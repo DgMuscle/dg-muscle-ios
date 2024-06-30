@@ -26,6 +26,7 @@ public struct ManageMemoView: View {
                             Text("Write memo")
                                 .italic()
                                 .foregroundStyle(Color(uiColor: .secondaryLabel))
+                                .offset(x: 8, y: 8)
                             Spacer()
                         }
                         Spacer()
