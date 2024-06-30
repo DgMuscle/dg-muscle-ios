@@ -70,6 +70,7 @@ public struct HistoryListView: View {
                                 } label: {
                                     Common.HistoryItemView(history: history)
                                 }
+                                .buttonStyle(.plain)
                             }
                         }
                         .padding(.bottom)

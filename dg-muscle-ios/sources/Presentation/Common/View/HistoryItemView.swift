@@ -17,7 +17,12 @@ public struct HistoryItemView: View {
     }
     
     public var body: some View {
-        HStack {
+        HStack(alignment: .top, spacing: 12) {
+            if history.memo != nil {
+                Image(systemName: "text.book.closed")
+                    .padding(.top, 1)
+            }
+            
             VStack(alignment: .leading) {
                 coloredText
                 
@@ -33,16 +38,9 @@ public struct HistoryItemView: View {
                 .foregroundStyle(Color(uiColor: .secondaryLabel)).italic()
                 .font(.caption2)
                 .padding(.top, 1)
-                
-                if history.memo != nil {
-                    Image(systemName: "text.book.closed")
-                        .padding(.top, 1)
-                }
             }
-            .foregroundStyle(Color(uiColor: .label))
             Spacer()
         }
-        
     }
     
     var coloredText: some View {
