@@ -70,6 +70,19 @@ public struct PostHistoryView: View {
             }
             .onDelete(perform: viewModel.deleteRun)
             
+            ForEach($viewModel.history.memo, id: \.self) { memo in
+                Section("memo") {
+                    Button {
+                        print("tap memo")
+                    } label: {
+                        Text(memo.wrappedValue)
+                            .lineLimit(1)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .onDelete(perform: viewModel.deleteMemo)
+            
             Common.GradientButton(action: {
                 isPresentSelectExercise.toggle()
             },
