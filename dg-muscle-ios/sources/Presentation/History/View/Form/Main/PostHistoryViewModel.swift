@@ -81,6 +81,12 @@ class PostHistoryViewModel: ObservableObject {
         }
     }
     
+    func deleteMemo(indexSet: IndexSet) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.history.memo.remove(atOffsets: indexSet)
+        }
+    }
+    
     private func bind() {
         $history
             .debounce(for: 0.5, scheduler: DispatchQueue.main)

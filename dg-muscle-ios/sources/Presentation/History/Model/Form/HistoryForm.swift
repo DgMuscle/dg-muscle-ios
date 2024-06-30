@@ -12,7 +12,7 @@ import Common
 public struct HistoryForm {
     let id: String
     let date: Date
-    let memo: [String]
+    var memo: [String]
     var records: [ExerciseRecord]
     var run: [RunPresentation]
     var volume: Int {
