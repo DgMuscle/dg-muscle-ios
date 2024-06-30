@@ -33,6 +33,11 @@ public struct HistoryItemView: View {
                 .foregroundStyle(Color(uiColor: .secondaryLabel)).italic()
                 .font(.caption2)
                 .padding(.top, 1)
+                
+                if history.memo != nil {
+                    Image(systemName: "text.book.closed")
+                        .padding(.top, 1)
+                }
             }
             .foregroundStyle(Color(uiColor: .label))
             Spacer()
@@ -121,7 +126,8 @@ public struct HistoryItemView: View {
         color: .blue,
         time: 1500,
         kcal: 500,
-        runDistance: 3600
+        runDistance: 3600, 
+        memo: "Health is the most important thing of person's life"
     )
     
     return HistoryItemView(history: history).preferredColorScheme(.dark)
