@@ -9,14 +9,14 @@ import SwiftUI
 
 public struct ManageMemoView: View {
     
-    @Binding var memo: String
+    @StateObject var viewModel: ManageMemoViewModel
     
     public init(memo: Binding<String>) {
-        self._memo = memo
+        _viewModel = .init(wrappedValue: .init(memo: memo))
     }
     
     public var body: some View {
-        TextEditor(text: $memo)
+        TextEditor(text: $viewModel.stateMemo)
     }
 }
 
