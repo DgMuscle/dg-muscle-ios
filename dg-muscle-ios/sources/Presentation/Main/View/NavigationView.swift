@@ -78,6 +78,8 @@ public struct NavigationView: View {
                             coordinator?.historyFormStep2(historyForm: historyForm, recordId: recordId)
                         } manageRun: { run in
                             coordinator?.manageRun(run: run)
+                        } manageMemo: { memo in
+                            coordinator?.manageMemo(memo: memo)
                         }
                 case .historyFormStep2(let historyForm, let recordId):
                     ManageRecordView(
@@ -102,6 +104,8 @@ public struct NavigationView: View {
                         duration: duration,
                         historyRepository: historyRepository
                     )
+                case .manageMemo(let memo):
+                    ManageMemoView(memo: memo)
                 }
             }
             .navigationDestination(for: MyNavigation.self) { navigation in

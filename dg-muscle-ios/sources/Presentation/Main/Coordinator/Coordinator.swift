@@ -94,6 +94,10 @@ public final class Coordinator {
         path.append(HistoryNavigation(name: .setDuration(duration)))
     }
     
+    public func manageMemo(memo: Binding<String>) {
+        path.append(HistoryNavigation(name: .manageMemo(memo)))
+    }
+    
     public func profile() {
         path.append(MyNavigation(name: .profile))
     }

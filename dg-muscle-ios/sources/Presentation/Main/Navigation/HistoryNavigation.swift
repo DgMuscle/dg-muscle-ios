@@ -36,5 +36,6 @@ extension HistoryNavigation {
         case manageRun(run: Binding<RunPresentation>)
         case setDistance(Double)
         case setDuration(Int)
+        case manageMemo(Binding<String>)
     }
 }

@@ -18,6 +18,7 @@ public struct HistoryItem: Hashable {
     public let time: Double?
     public let kcal: Double?
     public let runDistance: Double?
+    public let memo: String?
     
     public init(
         id: String,
@@ -27,7 +28,8 @@ public struct HistoryItem: Hashable {
         color: Color,
         time: Double?,
         kcal: Double?,
-        runDistance: Double?
+        runDistance: Double?,
+        memo: String?
     ) {
         self.id = id
         self.date = date
@@ -37,6 +39,7 @@ public struct HistoryItem: Hashable {
         self.time = time
         self.kcal = kcal
         self.runDistance = runDistance
+        self.memo = memo
     }
     
     public init(history: Domain.History, exercises: [Domain.Exercise], color: Color) {
@@ -62,7 +65,8 @@ public struct HistoryItem: Hashable {
                      color: color,
                      time: nil,
                      kcal: nil,
-                     runDistance: history.run?.distance
+                     runDistance: history.run?.distance,
+                     memo: history.memo
         )
     }
     

@@ -12,7 +12,7 @@ import Common
 public struct HistoryForm {
     let id: String
     let date: Date
-    let memo: String?
+    var memo: [String]
     var records: [ExerciseRecord]
     var run: [RunPresentation]
     var volume: Int {
@@ -22,7 +22,7 @@ public struct HistoryForm {
     public init() {
         id = UUID().uuidString
         date = .init()
-        memo = nil
+        memo = []
         records = []
         run = []
     }
@@ -30,7 +30,7 @@ public struct HistoryForm {
     public init(domain: Domain.History) {
         id = domain.id
         date = domain.date
-        memo = domain.memo
+        memo = [domain.memo].compactMap({ $0 })
         records = domain.records.map({ .init(domain: $0) })
         if let domain = domain.run {
             run = [.init(domain: domain)]
@@ -43,7 +43,7 @@ public struct HistoryForm {
         .init(
             id: id,
             date: date,
-            memo: memo,
+            memo: memo.first,
             records: records.map({
                 $0.domain
             }),

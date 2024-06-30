@@ -17,7 +17,12 @@ public struct HistoryItemView: View {
     }
     
     public var body: some View {
-        HStack {
+        HStack(alignment: .top, spacing: 12) {
+            if history.memo != nil {
+                Image(systemName: "text.book.closed")
+                    .padding(.top, 1)
+            }
+            
             VStack(alignment: .leading) {
                 coloredText
                 
@@ -34,10 +39,8 @@ public struct HistoryItemView: View {
                 .font(.caption2)
                 .padding(.top, 1)
             }
-            .foregroundStyle(Color(uiColor: .label))
             Spacer()
         }
-        
     }
     
     var coloredText: some View {
@@ -121,7 +124,8 @@ public struct HistoryItemView: View {
         color: .blue,
         time: 1500,
         kcal: 500,
-        runDistance: 3600
+        runDistance: 3600, 
+        memo: "Health is the most important thing of person's life"
     )
     
     return HistoryItemView(history: history).preferredColorScheme(.dark)

@@ -81,13 +81,19 @@ class PostHistoryViewModel: ObservableObject {
         }
     }
     
+    func deleteMemo(indexSet: IndexSet) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.history.memo.remove(atOffsets: indexSet)
+        }
+    }
+    
     private func bind() {
         $history
             .debounce(for: 0.5, scheduler: DispatchQueue.main)
             .sink { [weak self] history in
                 let domain: Domain.History = history.domain
                 
-                if history.volume == 0 && history.memo == nil {
+                if history.volume == 0 && history.memo.isEmpty && history.run.isEmpty {
                     self?.deleteHistoryUsecase.implement(history: domain)
                 } else {
                     self?.postHistoryUsecase.implement(history: domain)
