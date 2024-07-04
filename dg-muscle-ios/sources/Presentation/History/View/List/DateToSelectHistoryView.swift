@@ -31,7 +31,7 @@ public struct DateToSelectHistoryView: View {
                 Button("Select") {
                     URLManager.shared.open(url: "dgmuscle://pop")
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         pushDateToSelectHistoryUsecase.implement(date: date)
                     }
                 }
