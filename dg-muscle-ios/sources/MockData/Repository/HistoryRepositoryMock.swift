@@ -17,6 +17,7 @@ public final class HistoryRepositoryMock: HistoryRepository {
     
     public var runDistanceSubject: PassthroughSubject<Double, Never> = .init()
     public var runDurationSubject: PassthroughSubject<Int, Never> = .init()
+    public var dateToSelectHistory: PassthroughSubject<Date, Never> = .init()
     
     public init() { }
     
