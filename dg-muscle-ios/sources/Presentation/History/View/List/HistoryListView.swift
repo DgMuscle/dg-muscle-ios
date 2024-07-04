@@ -105,6 +105,11 @@ public struct HistoryListView: View {
                             )
                     }
                     .padding(.trailing)
+                    .contextMenu {
+                        Button("Record past workout") {
+                            print("Record past workout")
+                        }
+                    }
                 }
             }
         }
