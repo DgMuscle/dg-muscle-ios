@@ -42,7 +42,10 @@ public final class HistoryRepositoryImpl: Domain.HistoryRepository {
         if let index = _histories.firstIndex(where: { $0.id == history.id }) {
             _histories[index] = history
         } else {
-            _histories.insert(history, at: 0)
+            var histories = _histories
+            histories.append(history)
+            histories.sort(by: {$0.date > $1.date})
+            _histories = histories
         }
         
         let url = FunctionsURL.history(.posthistory)

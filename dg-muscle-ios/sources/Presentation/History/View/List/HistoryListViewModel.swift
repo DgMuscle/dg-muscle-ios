@@ -22,6 +22,9 @@ final class HistoryListViewModel: ObservableObject {
     let subscribeExercisesUsecase: SubscribeExercisesUsecase
     let subscribeHistoriesGroupedByMonthUsecase: SubscribeHistoriesGroupedByMonthUsecase
     let subscribeHeatMapColorUsecase: SubscribeHeatMapColorUsecase
+    let subscribeDateToSelectHistoryUsecase: SubscribeDateToSelectHistoryUsecase
+    let getHistoryFromDateUsecase: GetHistoryFromDateUsecase
+    let postHistoryUsecase: PostHistoryUsecase
     
     private var cancellables = Set<AnyCancellable>()
     init(today: Date,
@@ -34,6 +37,9 @@ final class HistoryListViewModel: ObservableObject {
         subscribeExercisesUsecase = .init(exerciseRepository: exerciseRepository)
         subscribeHistoriesGroupedByMonthUsecase = .init(historyRepository: historyRepository)
         subscribeHeatMapColorUsecase = .init(userRepository: userRepository)
+        subscribeDateToSelectHistoryUsecase = .init(historyRepository: historyRepository)
+        getHistoryFromDateUsecase = .init(historyRepository: historyRepository)
+        postHistoryUsecase = .init(historyRepository: historyRepository)
         
         bind()
     }
@@ -88,6 +94,19 @@ final class HistoryListViewModel: ObservableObject {
                 self?.hasExercise = !exercises.isEmpty
             }
             .store(in: &cancellables)
+        
+        subscribeDateToSelectHistoryUsecase
+            .implement()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] date in
+                if let history = self?.getHistoryFromDateUsecase.implement(date: date) {
+                    URLManager.shared.open(url: "dgmuscle://history?id=\(history.id)")
+                } else {
+                    let history: Domain.History = .init(id: UUID().uuidString, date: date, memo: nil, records: [], run: nil)
+                    self?.postHistoryUsecase.implement(history: history)
+                    URLManager.shared.open(url: "dgmuscle://history?id=\(history.id)")
+                }
+            }
+            .store(in: &cancellables)
     }
 }
-
