@@ -40,4 +40,19 @@ public final class DependencyInjector: Injector {
     public func resolve<T>(_ serviceType: T.Type) -> T {
         container.resolve(serviceType)!
     }
+    
+    // 한 개의 인수를 처리하는 resolve 함수
+    public func resolve<T, Arg1>(_ serviceType: T.Type, argument: Arg1) -> T {
+        container.resolve(serviceType, argument: argument)!
+    }
+
+    // 두 개의 인수를 처리하는 resolve 함수
+    public func resolve<T, Arg1, Arg2>(_ serviceType: T.Type, arguments arg1: Arg1, _ arg2: Arg2) -> T {
+        container.resolve(serviceType, arguments: arg1, arg2)!
+    }
+
+    // 세 개의 인수를 처리하는 resolve 함수
+    public func resolve<T, Arg1, Arg2, Arg3>(_ serviceType: T.Type, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3) -> T {
+        container.resolve(serviceType, arguments: arg1, arg2, arg3)!
+    }
 }
