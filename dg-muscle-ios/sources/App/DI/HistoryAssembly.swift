@@ -52,5 +52,17 @@ public struct HistoryNavigation: Assembly {
                 historyRepository: historyRepository
             )
         }
+        
+        container.register(ManageRunView.self) { (resolver, run: Binding<RunPresentation>) in
+            
+            let userRepository = resolver.resolve(UserRepository.self)!
+            let historyRepository = resolver.resolve(HistoryRepository.self)!
+            
+            return ManageRunView(
+                run: run,
+                userRepository: userRepository,
+                historyRepository: historyRepository
+            )
+        }
     }
 }
