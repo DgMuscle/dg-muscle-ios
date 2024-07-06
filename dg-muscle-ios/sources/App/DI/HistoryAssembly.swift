@@ -74,5 +74,26 @@ public struct HistoryNavigation: Assembly {
                 historyRepository: historyRepository
             )
         }
+        
+        container.register(SetDurationView.self) { (resolver, duration: Int) in
+            
+            let historyRepository = resolver.resolve(HistoryRepository.self)!
+            
+            return SetDurationView(
+                duration: duration,
+                historyRepository: historyRepository
+            )
+        }
+        
+        container.register(ManageMemoView.self) { (_, memo: Binding<String>) in
+            return ManageMemoView(memo: memo)
+        }
+        
+        container.register(DateToSelectHistoryView.self) { resolver in
+            
+            let historyRepository = resolver.resolve(HistoryRepository.self)!
+            
+            return DateToSelectHistoryView(historyRepository: historyRepository)
+        }
     }
 }
