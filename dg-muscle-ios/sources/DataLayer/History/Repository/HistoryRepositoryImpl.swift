@@ -15,6 +15,7 @@ public final class HistoryRepositoryImpl: Domain.HistoryRepository {
     
     public var runDistanceSubject: PassthroughSubject<Double, Never> = .init()
     public var runDurationSubject: PassthroughSubject<Int, Never> = .init()
+    public var dateToSelectHistory: PassthroughSubject<Date, Never> = .init()
     
     public var histories: AnyPublisher<[Domain.History], Never> { $_histories.eraseToAnyPublisher() }
     private var cancellables = Set<AnyCancellable>()
@@ -41,7 +42,10 @@ public final class HistoryRepositoryImpl: Domain.HistoryRepository {
         if let index = _histories.firstIndex(where: { $0.id == history.id }) {
             _histories[index] = history
         } else {
-            _histories.insert(history, at: 0)
+            var histories = _histories
+            histories.append(history)
+            histories.sort(by: {$0.date > $1.date})
+            _histories = histories
         }
         
         let url = FunctionsURL.history(.posthistory)

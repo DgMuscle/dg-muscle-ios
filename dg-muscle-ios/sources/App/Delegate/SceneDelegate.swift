@@ -90,6 +90,9 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         case "setrunduration":
             let duration = URLManager.shared.getParameter(url: url, name: "duration") ?? ""
             coordinator?.setDuration(duration: Int(duration) ?? 0)
+        case "datetoselecthistory":
+            coordinator?.dateToSelectHistory()
+            
         default: break
         }
     }

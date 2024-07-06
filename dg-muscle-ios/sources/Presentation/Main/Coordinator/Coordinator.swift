@@ -98,6 +98,10 @@ public final class Coordinator {
         path.append(HistoryNavigation(name: .manageMemo(memo)))
     }
     
+    public func dateToSelectHistory() {
+        path.append(HistoryNavigation(name: .dateToSelectHistory))
+    }
+    
     public func profile() {
         path.append(MyNavigation(name: .profile))
     }
