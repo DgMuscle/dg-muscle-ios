@@ -64,5 +64,15 @@ public struct HistoryNavigation: Assembly {
                 historyRepository: historyRepository
             )
         }
+        
+        container.register(SetDistanceView.self) { (resolver, distance: Double) in
+            
+            let historyRepository = resolver.resolve(HistoryRepository.self)!
+            
+            return SetDistanceView(
+                distance: distance,
+                historyRepository: historyRepository
+            )
+        }
     }
 }
