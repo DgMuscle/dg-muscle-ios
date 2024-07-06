@@ -36,5 +36,21 @@ public struct HistoryNavigation: Assembly {
                     coordinator?.manageMemo(memo: memo)
                 }
         }
+        
+        container.register(ManageRecordView.self) { (
+            resolver,
+            historyForm: Binding<HistoryForm>,
+            recordId: String
+        ) in
+            let userRepository = resolver.resolve(UserRepository.self)!
+            let historyRepository = resolver.resolve(HistoryRepository.self)!
+            
+            return ManageRecordView(
+                historyForm: historyForm,
+                recordId: recordId,
+                userRepository: userRepository,
+                historyRepository: historyRepository
+            )
+        }
     }
 }
