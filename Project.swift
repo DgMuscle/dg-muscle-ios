@@ -61,7 +61,8 @@ func createApp() -> Target {
         dependencies: [
             .target(name: Layer.Presentation.rawValue, condition: nil),
             .target(name: Layer.DataLayer.rawValue, condition: nil),
-            .target(name: widgetName, condition: nil)
+            .target(name: widgetName, condition: nil),
+            .package(product: "Swinject", type: .runtime, condition: nil)
         ],
         settings: .settings(configurations: [
             .debug(name: "debug", xcconfig: "\(projectName)/configs/app.xcconfig"),
@@ -235,7 +236,8 @@ let project = Project(
     packages: [
         .remote(url: "https://github.com/firebase/firebase-ios-sdk", requirement: .upToNextMajor(from: "10.15.0")),
         .remote(url: "https://github.com/onevcat/Kingfisher", requirement: .upToNextMajor(from: "7.11.0")),
-        .remote(url: "https://github.com/SnapKit/SnapKit", requirement: .upToNextMajor(from: "5.7.1"))
+        .remote(url: "https://github.com/SnapKit/SnapKit", requirement: .upToNextMajor(from: "5.7.1")),
+        .remote(url: "https://github.com/Swinject/Swinject", requirement: .upToNextMajor(from: "2.9.1"))
     ],
     settings: .settings(configurations: [
         .debug(name: "debug", xcconfig: "\(projectName)/configs/project.xcconfig"),
