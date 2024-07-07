@@ -11,14 +11,27 @@ import Domain
 import Auth
 import Presentation
 import Foundation
+import Swinject
 
 struct ContentView: View {
     typealias FoundationData = Data
+    let injector: Injector
     @Environment(\.window) var window: UIWindow?
     @StateObject var viewModel: ContentViewModel
     @State var splash: Bool = true
     
     init() {
+        let injector = DependencyInjector(container: Container())
+        injector.assemble([
+            DataAssembly(),
+            ExerciseAssembly(),
+            FriendAssembly(),
+            HistoryAssembly(),
+            HomeAssembly(),
+            MyAssembly(),
+            MainAssembly()
+        ])
+        self.injector = injector
         self._viewModel = .init(wrappedValue: injector.resolve(ContentViewModel.self))
     }
     
