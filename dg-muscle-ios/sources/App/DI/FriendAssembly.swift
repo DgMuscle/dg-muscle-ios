@@ -35,5 +35,16 @@ public struct FriendAssembly: Assembly {
                 today: today
             )
         }
+        
+        container.register(HistoryDetailView.self) { (resolver, friendId: String, historyId: String) in
+            
+            let friendRepository = resolver.resolve(FriendRepository.self)!
+            
+            return HistoryDetailView(
+                friendRepository: friendRepository,
+                friendId: friendId,
+                historyId: historyId
+            )
+        }
     }
 }

@@ -10,6 +10,7 @@ import DataLayer
 import Domain
 import Auth
 import Presentation
+import Foundation
 
 struct ContentView: View {
     typealias FoundationData = Data
@@ -24,15 +25,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if viewModel.isLogin {
-                Presentation.NavigationView(
-                    today: Date(),
-                    historyRepository: HistoryRepositoryImpl.shared,
-                    exerciseRepository: ExerciseRepositoryImpl.shared,
-                    heatMapRepository: HeatMapRepositoryImpl.shared,
-                    userRepository: UserRepositoryImpl.shared, 
-                    friendRepository: FriendRepositoryImpl.shared, 
-                    logRepository: LogRepositoryImpl.shared
-                )
+                injector.resolve(Presentation.NavigationView.self, argument: Date())
             } else {
                 AuthenticationView(
                     appleAuthCoordinator: AppleAuthCoordinatorImpl(

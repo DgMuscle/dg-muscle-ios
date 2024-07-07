@@ -10,10 +10,24 @@ import Presentation
 import Friend
 import Common
 import DataLayer
+import Swinject
+
+let injector: Injector = DependencyInjector(container: Container())
 
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
+        injector.assemble([
+            DataAssembly(),
+            ExerciseAssembly(),
+            FriendAssembly(),
+            HistoryAssembly(),
+            HomeAssembly(),
+            MyAssembly(),
+            MainAssembly()
+        ])
+        
         if let shortcutItem = connectionOptions.shortcutItem {
             print("dg: shortcutItem is \(shortcutItem)")
         }

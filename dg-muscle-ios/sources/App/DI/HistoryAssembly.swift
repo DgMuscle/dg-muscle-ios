@@ -11,7 +11,7 @@ import History
 import SwiftUI
 import Presentation
 
-public struct HistoryNavigation: Assembly {
+public struct HistoryAssembly: Assembly {
     public func assemble(container: Swinject.Container) {
         container.register(HeatMapColorSelectView.self) { resolver in
             let userRepository = resolver.resolve(UserRepository.self)!
