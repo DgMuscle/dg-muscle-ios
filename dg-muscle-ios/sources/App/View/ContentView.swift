@@ -6,51 +6,43 @@
 //
 
 import SwiftUI
-import DataLayer
-import Domain
 import Auth
 import Presentation
+import Foundation
+import Swinject
 
 struct ContentView: View {
     typealias FoundationData = Data
+    let injector: Injector
     @Environment(\.window) var window: UIWindow?
     @StateObject var viewModel: ContentViewModel
-    @State var splash: Bool = true
     
     init() {
-        self._viewModel = .init(wrappedValue: .init(userRepository: UserRepositoryImpl.shared))
+        let injector = DependencyInjector(container: Container())
+        injector.assemble([
+            DataAssembly(),
+            ExerciseAssembly(),
+            FriendAssembly(),
+            HistoryAssembly(),
+            HomeAssembly(),
+            MyAssembly(),
+            MainAssembly()
+        ])
+        self.injector = injector
+        self._viewModel = .init(wrappedValue: injector.resolve(ContentViewModel.self))
     }
     
     var body: some View {
         ZStack {
             if viewModel.isLogin {
-                Presentation.NavigationView(
-                    today: Date(),
-                    historyRepository: HistoryRepositoryImpl.shared,
-                    exerciseRepository: ExerciseRepositoryImpl.shared,
-                    heatMapRepository: HeatMapRepositoryImpl.shared,
-                    userRepository: UserRepositoryImpl.shared, 
-                    friendRepository: FriendRepositoryImpl.shared, 
-                    logRepository: LogRepositoryImpl.shared
-                )
+                injector.resolve(Presentation.NavigationView.self, argument: Date())
             } else {
-                AuthenticationView(
-                    appleAuthCoordinator: AppleAuthCoordinatorImpl(
-                        window: window,
-                        logRepository: LogRepositoryImpl.shared,
-                        userRepository: UserRepositoryImpl.shared
-                    )
-                )
+                injector.resolve(AuthenticationView.self, argument: window)
             }
-            SplashView().opacity((splash || UserRepositoryImpl.shared.isReady == false) ? 1 : 0)
+            
+            SplashView().opacity(viewModel.splash ? 1 : 0)
         }
-        .animation(.default, value: splash)
-        .animation(.default, value: UserRepositoryImpl.shared.isReady)
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                splash.toggle()
-            }
-        }
+        .animation(.default, value: viewModel.splash)
     }
 }
 
