@@ -19,7 +19,7 @@ struct ContentView: View {
     @State var splash: Bool = true
     
     init() {
-        self._viewModel = .init(wrappedValue: .init(userRepository: UserRepositoryImpl.shared))
+        self._viewModel = .init(wrappedValue: injector.resolve(ContentViewModel.self))
     }
     
     var body: some View {

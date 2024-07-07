@@ -49,5 +49,10 @@ public struct MainAssembly: Assembly {
             let appleAuthCoordinator = resolver.resolve(AppleAuthCoordinator.self, argument: window)!
             return AuthenticationView(appleAuthCoordinator: appleAuthCoordinator)
         }
+        
+        container.register(ContentViewModel.self) { (resolver) in
+            let userRepository = resolver.resolve(UserRepository.self)!
+            return ContentViewModel(userRepository: userRepository)
+        }
     }
 }
