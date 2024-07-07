@@ -14,6 +14,7 @@ import History
 import SwiftUI
 import My
 import Friend
+import Auth
 
 public struct MainAssembly: Assembly {
     public func assemble(container: Swinject.Container) {
@@ -42,6 +43,11 @@ public struct MainAssembly: Assembly {
                 friendHistoryFactory: { friendId, today in resolver.resolve(FriendHistoryView.self, arguments: friendId, today)! },
                 historyDetailFactory: { friendId, historyId in resolver.resolve(HistoryDetailView.self, arguments: friendId, historyId)! }
             )
+        }
+        
+        container.register(AuthenticationView.self) { (resolver, window: UIWindow?) in
+            let appleAuthCoordinator = resolver.resolve(AppleAuthCoordinator.self, argument: window)!
+            return AuthenticationView(appleAuthCoordinator: appleAuthCoordinator)
         }
     }
 }

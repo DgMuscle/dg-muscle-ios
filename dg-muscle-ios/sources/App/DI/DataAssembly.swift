@@ -8,6 +8,7 @@
 import Swinject
 import Domain
 import DataLayer
+import UIKit
 
 public struct DataAssembly: Assembly {
     public func assemble(container: Swinject.Container) {
@@ -33,6 +34,18 @@ public struct DataAssembly: Assembly {
         
         container.register(LogRepository.self) { _ in
             return LogRepositoryImpl.shared
+        }
+        
+        container.register(AppleAuthCoordinator.self) { (resolver, window: UIWindow?) in
+            
+            let logRepository = resolver.resolve(LogRepository.self)!
+            let userRepository = resolver.resolve(UserRepository.self)!
+            
+            return AppleAuthCoordinatorImpl(
+                window: window,
+                logRepository: logRepository,
+                userRepository: userRepository
+            )
         }
     }
 }

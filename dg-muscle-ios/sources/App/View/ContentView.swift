@@ -27,13 +27,7 @@ struct ContentView: View {
             if viewModel.isLogin {
                 injector.resolve(Presentation.NavigationView.self, argument: Date())
             } else {
-                AuthenticationView(
-                    appleAuthCoordinator: AppleAuthCoordinatorImpl(
-                        window: window,
-                        logRepository: LogRepositoryImpl.shared,
-                        userRepository: UserRepositoryImpl.shared
-                    )
-                )
+                injector.resolve(AuthenticationView.self, argument: window)
             }
             SplashView().opacity((splash || UserRepositoryImpl.shared.isReady == false) ? 1 : 0)
         }
