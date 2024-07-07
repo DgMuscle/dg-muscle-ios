@@ -18,7 +18,6 @@ struct ContentView: View {
     let injector: Injector
     @Environment(\.window) var window: UIWindow?
     @StateObject var viewModel: ContentViewModel
-    @State var splash: Bool = true
     
     init() {
         let injector = DependencyInjector(container: Container())
@@ -42,15 +41,10 @@ struct ContentView: View {
             } else {
                 injector.resolve(AuthenticationView.self, argument: window)
             }
-            SplashView().opacity((splash || UserRepositoryImpl.shared.isReady == false) ? 1 : 0)
+            
+            SplashView().opacity(viewModel.splash ? 1 : 0)
         }
-        .animation(.default, value: splash)
-        .animation(.default, value: UserRepositoryImpl.shared.isReady)
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                splash.toggle()
-            }
-        }
+        .animation(.default, value: viewModel.splash)
     }
 }
 

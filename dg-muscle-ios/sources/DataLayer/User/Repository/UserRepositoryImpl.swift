@@ -16,13 +16,18 @@ public final class UserRepositoryImpl: UserRepository {
     public static let shared = UserRepositoryImpl()
     
     public var user: AnyPublisher<Domain.User?, Never> { $_user.eraseToAnyPublisher() }
-    public var isReady: Bool = false
+    
+    public var isAppReady: AnyPublisher<Bool, Never> {
+        $isReady.eraseToAnyPublisher()
+    }
+    
     public var startDeleteAccount: PassthroughSubject<(), Never> = .init()
     
     private var cancellables = Set<AnyCancellable>()
     
     @Published var _user: Domain.User? = nil
     @Published var isLogin: Bool = false
+    @Published public var isReady: Bool = false
     
     private init() {
         bind()
