@@ -17,17 +17,7 @@ struct ContentView: View {
     @Environment(\.window) var window: UIWindow?
     @StateObject var viewModel: ContentViewModel
     
-    init() {
-        let injector = DependencyInjector(container: Container())
-        injector.assemble([
-            DataAssembly(),
-            ExerciseAssembly(),
-            FriendAssembly(),
-            HistoryAssembly(),
-            HomeAssembly(),
-            MyAssembly(),
-            MainAssembly()
-        ])
+    init(injector: Injector) {
         self.injector = injector
         self._viewModel = .init(wrappedValue: injector.resolve(ContentViewModel.self))
     }
@@ -44,8 +34,4 @@ struct ContentView: View {
         }
         .animation(.default, value: viewModel.splash)
     }
-}
-
-#Preview {
-    ContentView()
 }
