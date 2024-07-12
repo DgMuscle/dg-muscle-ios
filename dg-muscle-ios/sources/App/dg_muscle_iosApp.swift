@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Swinject
 
 struct WindowKey: EnvironmentKey {
     struct Value {
@@ -30,9 +31,24 @@ extension EnvironmentValues {
 struct dg_muscle_iosApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    let injector: Injector
+    
+    init() {
+        injector = DependencyInjector(container: Container())
+        injector.assemble([
+            DataAssembly(),
+            ExerciseAssembly(),
+            FriendAssembly(),
+            HistoryAssembly(),
+            HomeAssembly(),
+            MyAssembly(),
+            MainAssembly()
+        ])
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(injector: injector)
         }
     }
 }

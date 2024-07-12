@@ -62,36 +62,35 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
                 anchor = .search
             default: break
             }
-            
-            coordinator?.friendMainView(anchor: anchor)
+            coordinator?.friend.friendMainView(anchor: anchor)
         case "friendhistory":
             guard let friendId = URLManager.shared.getParameter(url: url, name: "id") else { return }
-            coordinator?.friendHistory(friendId: friendId)
+            coordinator?.friend.friendHistory(friendId: friendId)
         case "profile":
-            coordinator?.profile()
+            coordinator?.my.profile()
         case "exercisemanage":
-            coordinator?.exerciseManage()
+            coordinator?.exercise.exerciseManage()
         case "heatmapcolorselect":
-            coordinator?.heatMapColorSelectView()
+            coordinator?.history.heatMapColorSelectView()
         case "history":
             let historyId = URLManager.shared.getParameter(url: url, name: "id")
-            coordinator?.historyFormStep1(historyId: historyId)
+            coordinator?.history.historyFormStep1(historyId: historyId)
         case "friendhistorydetail":
             guard let friendId = URLManager.shared.getParameter(url: url, name: "friend_id") else { return }
             guard let historyId = URLManager.shared.getParameter(url: url, name: "history_id") else { return }
-            coordinator?.friendHistoryDetail(friendId: friendId, historyId: historyId)
+            coordinator?.friend.friendHistoryDetail(friendId: friendId, historyId: historyId)
         case "deleteaccountconfirm":
-            coordinator?.deleteAccountConfirm()
+            coordinator?.my.deleteAccountConfirm()
         case "logs":
-            coordinator?.logs()
+            coordinator?.my.logs()
         case "setrundistance":
             let distance = URLManager.shared.getParameter(url: url, name: "distance") ?? ""
-            coordinator?.setDistance(distance: Double(distance) ?? 0)
+            coordinator?.history.setDistance(distance: Double(distance) ?? 0)
         case "setrunduration":
             let duration = URLManager.shared.getParameter(url: url, name: "duration") ?? ""
-            coordinator?.setDuration(duration: Int(duration) ?? 0)
+            coordinator?.history.setDuration(duration: Int(duration) ?? 0)
         case "datetoselecthistory":
-            coordinator?.dateToSelectHistory()
+            coordinator?.history.dateToSelectHistory()
             
         default: break
         }
