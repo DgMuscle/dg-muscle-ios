@@ -73,11 +73,19 @@ public struct MyView: View {
                 }
             } header: {
                 if let user = viewModel.user {
-                    Button {
-                        URLManager.shared.open(url: "dgmuscle://profile")
-                    } label: {
-                        UserItemView(user: user)
-                            .padding(.bottom)
+                    
+                    if user.displayName?.isEmpty == false {
+                        Button {
+                            URLManager.shared.open(url: "dgmuscle://profile")
+                        } label: {
+                            UserItemView(user: user)
+                                .padding(.bottom)
+                        }
+                    } else {
+                        Button("Update Profile") {
+                            URLManager.shared.open(url: "dgmuscle://profile")
+                        }
+                        .padding(.bottom)
                     }
                 }
             }
