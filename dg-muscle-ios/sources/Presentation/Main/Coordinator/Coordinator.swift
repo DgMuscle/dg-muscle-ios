@@ -22,6 +22,7 @@ public final class Coordinator {
     public let exercise: ExerciseCoordinator
     public let friend: FriendCoordinator
     public let history: HistoryCoordinator
+    public let my: MyCoordinator
     
     init(
         path: Binding<NavigationPath>,
@@ -31,21 +32,10 @@ public final class Coordinator {
         self.exercise = .init(path: path)
         self.friend = .init(path: path)
         self.history = .init(path: path, historyRepository: historyRepository)
+        self.my = .init(path: path)
     }
     
     public func pop(_ k: Int = 1) {
         path.removeLast(k)
-    }
-    
-    public func profile() {
-        path.append(MyNavigation(name: .profile))
-    }
-    
-    public func deleteAccountConfirm() {
-        path.append(MyNavigation(name: .deleteAccountConfirm))
-    }
-    
-    public func logs() {
-        path.append(MyNavigation(name: .logs))
     }
 }

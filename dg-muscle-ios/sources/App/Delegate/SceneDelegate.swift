@@ -67,7 +67,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             guard let friendId = URLManager.shared.getParameter(url: url, name: "id") else { return }
             coordinator?.friend.friendHistory(friendId: friendId)
         case "profile":
-            coordinator?.profile()
+            coordinator?.my.profile()
         case "exercisemanage":
             coordinator?.exercise.exerciseManage()
         case "heatmapcolorselect":
@@ -80,9 +80,9 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             guard let historyId = URLManager.shared.getParameter(url: url, name: "history_id") else { return }
             coordinator?.friend.friendHistoryDetail(friendId: friendId, historyId: historyId)
         case "deleteaccountconfirm":
-            coordinator?.deleteAccountConfirm()
+            coordinator?.my.deleteAccountConfirm()
         case "logs":
-            coordinator?.logs()
+            coordinator?.my.logs()
         case "setrundistance":
             let distance = URLManager.shared.getParameter(url: url, name: "distance") ?? ""
             coordinator?.history.setDistance(distance: Double(distance) ?? 0)
