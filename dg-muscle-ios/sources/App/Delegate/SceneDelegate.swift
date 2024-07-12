@@ -71,10 +71,10 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         case "exercisemanage":
             coordinator?.exercise.exerciseManage()
         case "heatmapcolorselect":
-            coordinator?.heatMapColorSelectView()
+            coordinator?.history.heatMapColorSelectView()
         case "history":
             let historyId = URLManager.shared.getParameter(url: url, name: "id")
-            coordinator?.historyFormStep1(historyId: historyId)
+            coordinator?.history.historyFormStep1(historyId: historyId)
         case "friendhistorydetail":
             guard let friendId = URLManager.shared.getParameter(url: url, name: "friend_id") else { return }
             guard let historyId = URLManager.shared.getParameter(url: url, name: "history_id") else { return }
@@ -85,12 +85,12 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             coordinator?.logs()
         case "setrundistance":
             let distance = URLManager.shared.getParameter(url: url, name: "distance") ?? ""
-            coordinator?.setDistance(distance: Double(distance) ?? 0)
+            coordinator?.history.setDistance(distance: Double(distance) ?? 0)
         case "setrunduration":
             let duration = URLManager.shared.getParameter(url: url, name: "duration") ?? ""
-            coordinator?.setDuration(duration: Int(duration) ?? 0)
+            coordinator?.history.setDuration(duration: Int(duration) ?? 0)
         case "datetoselecthistory":
-            coordinator?.dateToSelectHistory()
+            coordinator?.history.dateToSelectHistory()
             
         default: break
         }
