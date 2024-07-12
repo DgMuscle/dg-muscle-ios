@@ -70,7 +70,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         case "profile":
             coordinator?.profile()
         case "exercisemanage":
-            coordinator?.exerciseManage()
+            coordinator?.exercise.exerciseManage()
         case "heatmapcolorselect":
             coordinator?.heatMapColorSelectView()
         case "history":

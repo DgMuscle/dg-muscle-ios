@@ -21,24 +21,19 @@ public final class Coordinator {
     
     private let historyRepository: HistoryRepository
     
+    public let exercise: ExerciseCoordinator
+    
     init(
         path: Binding<NavigationPath>,
         historyRepository: HistoryRepository
     ) {
         self._path = path
         self.historyRepository = historyRepository
+        self.exercise = .init(path: path)
     }
     
     public func pop(_ k: Int = 1) {
         path.removeLast(k)
-    }
-    
-    public func addExercise(exercise: Exercise?) {
-        path.append(ExerciseNavigation(name: .add(exercise)))
-    }
-    
-    public func exerciseManage() {
-        path.append(ExerciseNavigation(name: .manage))
     }
     
     public func friendMainView(anchor: PageAnchorView.Page) {
