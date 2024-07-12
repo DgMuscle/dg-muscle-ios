@@ -15,9 +15,6 @@ public final class LogRepositoryImpl: LogRepository {
     public var logs: AnyPublisher<[Domain.DGLog], Never> { $_logs.eraseToAnyPublisher() }
     @Published var _logs: [Domain.DGLog] = []
     
-    private var postLogTask: Task<(), Never>? = nil
-    private var fetchLogsTask: Task<(), Never>? = nil
-    
     private var cancellables = Set<AnyCancellable>()
     
     private init() {
@@ -31,8 +28,7 @@ public final class LogRepositoryImpl: LogRepository {
             _logs.insert(log, at: 0)
         }
         
-        guard postLogTask == nil else { return }
-        postLogTask = Task {
+        Task {
             let log: DGLog = .init(domain: log)
             
             let _: DataResponse? = try? await APIClient.shared.request(
@@ -41,7 +37,6 @@ public final class LogRepositoryImpl: LogRepository {
                 body: log
             )
             
-            postLogTask = nil
         }
     }
     
@@ -52,8 +47,7 @@ public final class LogRepositoryImpl: LogRepository {
     }
     
     private func fetchLogs() {
-        guard fetchLogsTask == nil else { return }
-        fetchLogsTask = Task {
+        Task {
             do {
                 let logs: [DGLog] = try await APIClient.shared.request(
                     method: .get,
@@ -64,8 +58,6 @@ public final class LogRepositoryImpl: LogRepository {
             } catch {
                 print("dg: \(error.localizedDescription)")
             }
-            
-            fetchLogsTask = nil
         }
     }
     
