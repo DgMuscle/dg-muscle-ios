@@ -62,11 +62,10 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
                 anchor = .search
             default: break
             }
-            
-            coordinator?.friendMainView(anchor: anchor)
+            coordinator?.friend.friendMainView(anchor: anchor)
         case "friendhistory":
             guard let friendId = URLManager.shared.getParameter(url: url, name: "id") else { return }
-            coordinator?.friendHistory(friendId: friendId)
+            coordinator?.friend.friendHistory(friendId: friendId)
         case "profile":
             coordinator?.profile()
         case "exercisemanage":
@@ -79,7 +78,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         case "friendhistorydetail":
             guard let friendId = URLManager.shared.getParameter(url: url, name: "friend_id") else { return }
             guard let historyId = URLManager.shared.getParameter(url: url, name: "history_id") else { return }
-            coordinator?.friendHistoryDetail(friendId: friendId, historyId: historyId)
+            coordinator?.friend.friendHistoryDetail(friendId: friendId, historyId: historyId)
         case "deleteaccountconfirm":
             coordinator?.deleteAccountConfirm()
         case "logs":
