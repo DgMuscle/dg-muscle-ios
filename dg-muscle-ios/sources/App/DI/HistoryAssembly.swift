@@ -29,11 +29,11 @@ public struct HistoryAssembly: Assembly {
                 exerciseRepository: exerciseRepository,
                 userRepository: userRepository,
                 history: history) { historyForm, recordId in
-                    coordinator?.historyFormStep2(historyForm: historyForm, recordId: recordId)
+                    coordinator?.history.historyFormStep2(historyForm: historyForm, recordId: recordId)
                 } manageRun: { run in
-                    coordinator?.manageRun(run: run)
+                    coordinator?.history.manageRun(run: run)
                 } manageMemo: { memo in
-                    coordinator?.manageMemo(memo: memo)
+                    coordinator?.history.manageMemo(memo: memo)
                 }
         }
         

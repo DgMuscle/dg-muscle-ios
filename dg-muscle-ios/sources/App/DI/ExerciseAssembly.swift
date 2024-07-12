@@ -16,7 +16,7 @@ public struct ExerciseAssembly: Assembly {
         container.register(ExerciseListView.self) { resolver in
             let repository = resolver.resolve(ExerciseRepository.self)!
             return ExerciseListView(exerciseRepository: repository) { exercise in
-                coordinator?.addExercise(exercise: exercise)
+                coordinator?.exercise.addExercise(exercise: exercise)
             }
         }
         
