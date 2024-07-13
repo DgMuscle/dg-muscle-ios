@@ -88,6 +88,10 @@ public final class UserRepositoryImpl: UserRepository {
         try await AuthManager().updateUser(photoURL: _user?.photoURL)
     }
     
+    public func updateUser(onlyShowsFavoriteExercises: Bool) {
+        _user?.onlyShowsFavoriteExercises = onlyShowsFavoriteExercises
+    }
+    
     public func withDrawal() async -> (any Error)? {
         
         if _user?.uid == "taEJh30OpGVsR3FEFN2s67A8FvF3" {
