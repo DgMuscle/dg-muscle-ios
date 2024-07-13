@@ -164,7 +164,8 @@ public final class UserRepositoryImpl: UserRepository {
                 heatMapColor: .green,
                 fcmToken: nil,
                 link: nil,
-                developer: false
+                developer: false,
+                onlyShowsFavoriteExercises: false
             )
             return user
         }

@@ -18,6 +18,7 @@ struct UserData: Codable {
     var fcmToken: String?
     var link: String?
     var developer: Bool?
+    var onlyShowsFavoriteExercises: Bool?
     
     init(domain: Domain.User) {
         self.id = domain.uid
@@ -29,6 +30,7 @@ struct UserData: Codable {
         self.link = domain.link?.absoluteString
         self.deleted = false
         self.developer = domain.developer
+        self.onlyShowsFavoriteExercises = domain.onlyShowsFavoriteExercises
     }
     
     var domain: Domain.User {
@@ -40,7 +42,8 @@ struct UserData: Codable {
             heatMapColor: heatmapColor?.domain ?? .green,
             fcmToken: fcmToken,
             link: .init(string: link ?? ""),
-            developer: developer ?? false
+            developer: developer ?? false,
+            onlyShowsFavoriteExercises: onlyShowsFavoriteExercises ?? false
         )
     }
 }

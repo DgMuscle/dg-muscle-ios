@@ -18,6 +18,7 @@ struct Friend: Hashable, Identifiable {
     var heatMapColor: Common.HeatMapColor
     var link: URL?
     var developer: Bool
+    var onlyShowsFavoriteExercises: Bool
     
     init(domain: Domain.User) {
         uid = domain.uid
@@ -27,6 +28,7 @@ struct Friend: Hashable, Identifiable {
         heatMapColor = .init(domain: domain.heatMapColor)
         link = domain.link
         developer = domain.developer
+        onlyShowsFavoriteExercises = domain.onlyShowsFavoriteExercises
     }
     
     var domain: Domain.User {
@@ -38,7 +40,8 @@ struct Friend: Hashable, Identifiable {
             heatMapColor: heatMapColor.domain,
             fcmToken: nil, 
             link: link,
-            developer: developer
+            developer: developer,
+            onlyShowsFavoriteExercises: onlyShowsFavoriteExercises
         )
     }
 }

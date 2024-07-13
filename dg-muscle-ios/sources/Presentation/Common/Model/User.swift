@@ -19,6 +19,7 @@ public struct User: Hashable, Identifiable {
     public let fcmToken: String?
     public let link: URL?
     public let developer: Bool
+    public let onlyShowsFavoriteExercises: Bool
     
     public init() {
         uid = UUID().uuidString
@@ -29,6 +30,7 @@ public struct User: Hashable, Identifiable {
         fcmToken = nil 
         link = nil
         developer = false
+        onlyShowsFavoriteExercises = false
     }
     
     public init(domain: Domain.User) {
@@ -40,6 +42,7 @@ public struct User: Hashable, Identifiable {
         self.fcmToken = domain.fcmToken
         self.link = domain.link
         self.developer = domain.developer
+        self.onlyShowsFavoriteExercises = domain.onlyShowsFavoriteExercises
     }
     
     public var domain: Domain.User {
@@ -51,7 +54,8 @@ public struct User: Hashable, Identifiable {
             heatMapColor: heatMapColor.domain,
             fcmToken: fcmToken,
             link: link,
-            developer: developer
+            developer: developer,
+            onlyShowsFavoriteExercises: onlyShowsFavoriteExercises
         )
     }
 }

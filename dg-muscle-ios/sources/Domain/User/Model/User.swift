@@ -16,6 +16,7 @@ public struct User {
     public var fcmToken: String?
     public var link: URL?
     public var developer: Bool
+    public var onlyShowsFavoriteExercises: Bool
     
     public init(
         uid: String, 
@@ -25,7 +26,8 @@ public struct User {
         heatMapColor: HeatMapColor,
         fcmToken: String?,
         link: URL?,
-        developer: Bool
+        developer: Bool,
+        onlyShowsFavoriteExercises: Bool
     ) {
         self.uid = uid
         self.displayName = displayName
@@ -35,5 +37,6 @@ public struct User {
         self.fcmToken = fcmToken
         self.link = link
         self.developer = developer
+        self.onlyShowsFavoriteExercises = onlyShowsFavoriteExercises
     }
 }
