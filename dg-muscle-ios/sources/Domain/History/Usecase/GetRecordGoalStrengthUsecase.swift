@@ -13,9 +13,16 @@ public final class GetRecordGoalStrengthUsecase {
     
     public func implement(previousRecord: ExerciseRecord) -> ExerciseSet? {
         var result: ExerciseSet?
-        let sets = previousRecord.sets
+        var sets = previousRecord.sets
         guard let maxWeight = sets.map({ $0.weight }).max() else { return nil }
-        result = .init(id: UUID().uuidString, unit: .kg, reps: 5, weight: maxWeight)
+        var goalWeight = maxWeight
+        sets = sets.filter({ $0.weight >= maxWeight })
+        
+        if sets.count >= 5 {
+            goalWeight += 5
+        }
+        
+        result = .init(id: UUID().uuidString, unit: .kg, reps: 5, weight: goalWeight)
         return result
     }
 }
