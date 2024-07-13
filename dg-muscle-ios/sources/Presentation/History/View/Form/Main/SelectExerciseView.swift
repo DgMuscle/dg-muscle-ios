@@ -19,13 +19,17 @@ struct SelectExerciseView: View {
     
     init(
         exerciseRepository: ExerciseRepository,
+        userRepository: UserRepository,
         tapExercise: ((Exercise) -> ())?,
         add: (() -> ())?,
         close: (() -> ())?,
         run: (() -> ())?
     ) {
         _viewModel = .init(
-            wrappedValue: .init(exerciseRepository: exerciseRepository)
+            wrappedValue: .init(
+                exerciseRepository: exerciseRepository,
+                userRepository: userRepository
+            )
         )
         self.tapExercise = tapExercise
         self.add = add
@@ -96,6 +100,7 @@ struct SelectExerciseView: View {
 #Preview {
     return SelectExerciseView(
         exerciseRepository: ExerciseRepositoryMock(),
+        userRepository: UserRepositoryMock(),
         tapExercise: nil,
         add: nil,
         close: nil, 

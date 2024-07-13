@@ -19,6 +19,7 @@ public struct PostHistoryView: View {
     private let setRecordAction: ((Binding<HistoryForm>, String) -> ())?
     private let manageRun: ((Binding<RunPresentation>) -> ())?
     private let manageMemo: ((Binding<String>) -> ())?
+    private let userRepository: UserRepository
     
     public init(
         historyRepository: HistoryRepository,
@@ -39,6 +40,7 @@ public struct PostHistoryView: View {
         )
         self.setRecordAction = setRecordAction
         self.exerciseRepository = exerciseRepository
+        self.userRepository = userRepository
         self.manageRun = manageRun
         self.manageMemo = manageMemo
     }
@@ -116,7 +118,7 @@ public struct PostHistoryView: View {
             EditButton()
         }
         .fullScreenCover(isPresented: $isPresentSelectExercise, content: {
-            SelectExerciseView(exerciseRepository: exerciseRepository) { exercise in
+            SelectExerciseView(exerciseRepository: exerciseRepository, userRepository: userRepository) { exercise in
                 isPresentSelectExercise.toggle()
                 let recordId = viewModel.select(exercise: exercise)
                 setRecordAction?($viewModel.history, recordId)

@@ -11,14 +11,23 @@ import Domain
 
 final class SelectExerciseViewModel: ObservableObject {
     @Published var exericeSections: [ExerciseSection]
+    @Published var onlyShowsFavoriteExercises: Bool
     
     private let getExercisesUsecase: GetExercisesUsecase
     private let groupExercisesByPartUsecase: GroupExercisesByPartUsecase
-    private var cancellables = Set<AnyCancellable>()
+    private let updateOnlyShowsFavoriteExercisesUsecase: UpdateOnlyShowsFavoriteExercisesUsecase
+    private let subscribeOnlyShowsFavoriteExercisesUsecase: SubscribeOnlyShowsFavoriteExercisesUsecase
     
-    init(exerciseRepository: ExerciseRepository) {
+    init(
+        exerciseRepository: ExerciseRepository,
+        userRepository: UserRepository
+    ) {
         getExercisesUsecase = .init(exerciseRepository: exerciseRepository)
         groupExercisesByPartUsecase = .init()
+        updateOnlyShowsFavoriteExercisesUsecase = .init(userRepository: userRepository)
+        subscribeOnlyShowsFavoriteExercisesUsecase = .init(userRepository: userRepository)
+        
+        onlyShowsFavoriteExercises = userRepository.get()?.onlyShowsFavoriteExercises ?? false
         
         let grouped = groupExercisesByPartUsecase.implement(
             exercises: getExercisesUsecase.implement()
@@ -44,5 +53,18 @@ final class SelectExerciseViewModel: ObservableObject {
             .sorted(by: { $0.part.rawValue < $1.part.rawValue })
         
         self.exericeSections = exericeSections
+        
+        bind()
+    }
+    
+    func updateOnlyShowsFavoriteExercises(value: Bool) {
+        updateOnlyShowsFavoriteExercisesUsecase.implement(value: value)
+    }
+    
+    private func bind() {
+        subscribeOnlyShowsFavoriteExercisesUsecase
+            .implement()
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$onlyShowsFavoriteExercises)
     }
 }
