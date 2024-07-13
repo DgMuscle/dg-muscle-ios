@@ -13,11 +13,10 @@ public final class CheckStrengthGoalAchievedUsecase {
     public func implement(goal: ExerciseSet, record: ExerciseRecord) -> Bool {
         var result: Bool = false
         
-        guard let maxWeight = record.sets.sorted(by: { $0.weight > $1.weight }).first?.weight else { return result }
         var sets = record.sets
         
         sets = sets
-            .filter({ $0.weight >= maxWeight })
+            .filter({ $0.weight >= goal.weight && $0.reps >= goal.reps })
         
         result = sets.count >= 5
         

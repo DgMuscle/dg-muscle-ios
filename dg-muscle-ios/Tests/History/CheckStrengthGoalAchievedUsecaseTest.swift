@@ -17,7 +17,7 @@ final class CheckStrengthGoalAchievedUsecaseTest: XCTestCase {
             id: UUID().uuidString,
             unit: .kg,
             reps: 5,
-            weight: 60
+            weight: 65
         )
         
         let record: ExerciseRecord = .init(
@@ -27,7 +27,8 @@ final class CheckStrengthGoalAchievedUsecaseTest: XCTestCase {
                 .init(id: UUID().uuidString, unit: .kg, reps: 5, weight: 60),
                 .init(id: UUID().uuidString, unit: .kg, reps: 5, weight: 60),
                 .init(id: UUID().uuidString, unit: .kg, reps: 5, weight: 60),
-                .init(id: UUID().uuidString, unit: .kg, reps: 5, weight: 60)
+                .init(id: UUID().uuidString, unit: .kg, reps: 5, weight: 60),
+                .init(id: UUID().uuidString, unit: .kg, reps: 5, weight: 60),
             ]
         )
         
