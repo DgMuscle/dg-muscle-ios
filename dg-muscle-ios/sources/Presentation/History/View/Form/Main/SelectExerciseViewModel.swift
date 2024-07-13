@@ -10,7 +10,7 @@ import Combine
 import Domain
 
 final class SelectExerciseViewModel: ObservableObject {
-    @Published var exericeSections: [ExerciseSection]
+    @Published var exericeSections: [ExerciseSection] = []
     @Published var onlyShowsFavoriteExercises: Bool
     
     private let getExercisesUsecase: GetExercisesUsecase
@@ -29,31 +29,6 @@ final class SelectExerciseViewModel: ObservableObject {
         
         onlyShowsFavoriteExercises = userRepository.get()?.onlyShowsFavoriteExercises ?? false
         
-        let grouped = groupExercisesByPartUsecase.implement(
-            exercises: getExercisesUsecase.implement()
-        )
-        
-        var exericeSections: [ExerciseSection] = []
-        
-        for (part, exercises) in grouped {
-            let section = ExerciseSection(
-                part: .init(
-                    domain: part
-                ),
-                exercises: exercises.map({
-                    .init(
-                        domain: $0
-                    )
-                })
-            )
-            exericeSections.append(section)
-        }
-        
-        exericeSections = exericeSections
-            .sorted(by: { $0.part.rawValue < $1.part.rawValue })
-        
-        self.exericeSections = exericeSections
-        
         bind()
     }
     
@@ -66,5 +41,19 @@ final class SelectExerciseViewModel: ObservableObject {
             .implement()
             .receive(on: DispatchQueue.main)
             .assign(to: &$onlyShowsFavoriteExercises)
+        
+        $onlyShowsFavoriteExercises
+            .receive(on: DispatchQueue.main)
+            .compactMap({ [weak self] (favorite) -> [Exercise.Part: [Exercise]]? in
+                guard let self else { return nil }
+                let exercises = getExercisesUsecase.implement()
+                let grouped = groupExercisesByPartUsecase.implement(exercises: exercises, onlyShowsFavorite: favorite)
+                return grouped
+            })
+            .map({
+                $0.map({ part, exercises in ExerciseSection(part: .init(domain: part), exercises: exercises.map({ .init(domain: $0) }))})
+            })
+            .assign(to: &$exericeSections)
+            
     }
 }

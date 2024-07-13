@@ -43,6 +43,10 @@ public struct SelectExerciseView: View {
                 
                 Spacer()
                 
+                Button(viewModel.onlyShowsFavoriteExercises ? "Show all" : "Show only favorites") {
+                    viewModel.updateOnlyShowsFavoriteExercises(value: !viewModel.onlyShowsFavoriteExercises)
+                }
+                
                 Button("Manage") {
                     add?()
                 }
