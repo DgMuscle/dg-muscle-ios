@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-public enum TrainingMode {
+public enum TrainingMode: CaseIterable {
     case mass
     case strength
     
@@ -27,6 +27,15 @@ public enum TrainingMode {
             return .mass
         case .strength:
             return .strength
+        }
+    }
+    
+    public var text: String {
+        switch self {
+        case .mass:
+            "Muscle Mass"
+        case .strength:
+            "Strengh"
         }
     }
 }
