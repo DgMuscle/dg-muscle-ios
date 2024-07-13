@@ -97,7 +97,8 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             coordinator?.history.setDuration(duration: Int(duration) ?? 0)
         case "datetoselecthistory":
             coordinator?.history.dateToSelectHistory()
-            
+        case "managetraingmode":
+            coordinator?.history.manageTrainigMode()
         default: break
         }
     }

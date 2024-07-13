@@ -34,6 +34,7 @@ public struct NavigationView: View {
     let friendMainFactory: (PageAnchorView.Page) -> FriendMainView
     let friendHistoryFactory: (String, Date) -> FriendHistoryView
     let historyDetailFactory: (String, String) -> HistoryDetailView
+    let manageTrainingModeFactory: () -> ManageTrainingModeView
     
     public init(
         today: Date,
@@ -54,7 +55,8 @@ public struct NavigationView: View {
         logsFactory: @escaping () -> LogsView,
         friendMainFactory: @escaping (PageAnchorView.Page) -> FriendMainView,
         friendHistoryFactory: @escaping (String, Date) -> FriendHistoryView,
-        historyDetailFactory: @escaping (String, String) -> HistoryDetailView
+        historyDetailFactory: @escaping (String, String) -> HistoryDetailView,
+        manageTrainingModeFactory: @escaping () -> ManageTrainingModeView
     ) {
         self.today = today
         self.historyRepository = historyRepository
@@ -75,6 +77,7 @@ public struct NavigationView: View {
         self.friendMainFactory = friendMainFactory
         self.friendHistoryFactory = friendHistoryFactory
         self.historyDetailFactory = historyDetailFactory
+        self.manageTrainingModeFactory = manageTrainingModeFactory
     }
     
     public var body: some View {
@@ -106,6 +109,8 @@ public struct NavigationView: View {
                     manageMemoFactory(memo)
                 case .dateToSelectHistory:
                     dateToSelectHistoryFactory()
+                case .manageTrainingMode:
+                    manageTrainingModeFactory()
                 }
             }
             .navigationDestination(for: MyNavigation.self) { navigation in

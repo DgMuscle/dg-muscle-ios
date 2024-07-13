@@ -38,5 +38,6 @@ extension HistoryNavigation {
         case setDuration(Int)
         case manageMemo(Binding<String>)
         case dateToSelectHistory
+        case manageTrainingMode
     }
 }
