@@ -9,7 +9,14 @@ import Foundation
 
 public final class GroupExercisesByPartUsecase {
     public init() { }
-    public func implement(exercises: [Exercise]) -> [Exercise.Part: [Exercise]] {
+    public func implement(exercises: [Exercise], onlyShowsFavorite: Bool) -> [Exercise.Part: [Exercise]] {
+        var exercises = exercises
+        
+        if onlyShowsFavorite {
+            exercises = exercises
+                .filter({ $0.favorite })
+        }
+        
         var hashMap: [Exercise.Part: Set<Exercise>] = [:]
         
         for exercise in exercises {

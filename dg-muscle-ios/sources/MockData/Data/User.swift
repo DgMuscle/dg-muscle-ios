@@ -18,7 +18,8 @@ public let USER_DG: User = .init(
     heatMapColor: .purple, 
     fcmToken: nil, 
     link: .init(string: "https://github.com/donggyushin"), 
-    developer: true
+    developer: true, 
+    onlyShowsFavoriteExercises: true
 )
 
 
@@ -30,7 +31,8 @@ public let USER_1: User = .init(
     heatMapColor: .green,
     fcmToken: nil, 
     link: nil,
-    developer: false
+    developer: false,
+    onlyShowsFavoriteExercises: false
 )
 
 public let USER_2: User = .init(
@@ -41,7 +43,8 @@ public let USER_2: User = .init(
     heatMapColor: .green,
     fcmToken: nil,
     link: nil,
-    developer: false
+    developer: false,
+    onlyShowsFavoriteExercises: false
 )
 
 public let USER_3: User = .init(
@@ -52,7 +55,8 @@ public let USER_3: User = .init(
     heatMapColor: .mint,
     fcmToken: nil,
     link: nil,
-    developer: false
+    developer: false,
+    onlyShowsFavoriteExercises: false
 )
 
 public let USER_4: User = .init(
@@ -63,5 +67,6 @@ public let USER_4: User = .init(
     heatMapColor: .mint,
     fcmToken: nil,
     link: .init(string: "https://github.com/donggyushin"),
-    developer: false
+    developer: false,
+    onlyShowsFavoriteExercises: false
 )

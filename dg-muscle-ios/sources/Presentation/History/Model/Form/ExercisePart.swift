@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-enum ExercisePart: String, CaseIterable {
+public enum ExercisePart: String, CaseIterable {
     case arm
     case back
     case chest
@@ -16,7 +16,7 @@ enum ExercisePart: String, CaseIterable {
     case leg
     case shoulder
     
-    init(domain: Domain.Exercise.Part) {
+    public init(domain: Domain.Exercise.Part) {
         switch domain {
         case .arm:
             self = .arm
@@ -33,7 +33,7 @@ enum ExercisePart: String, CaseIterable {
         }
     }
     
-    var domain: Domain.Exercise.Part {
+    public var domain: Domain.Exercise.Part {
         switch self {
         case .arm:
             return .arm

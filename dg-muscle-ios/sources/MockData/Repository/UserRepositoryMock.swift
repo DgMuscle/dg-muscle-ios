@@ -48,6 +48,10 @@ public final class UserRepositoryMock: UserRepository {
         _user?.link = link
     }
     
+    public func updateUser(onlyShowsFavoriteExercises: Bool) {
+        _user?.onlyShowsFavoriteExercises = onlyShowsFavoriteExercises
+    }
+    
     public func withDrawal() async -> (any Error)? {
         nil
     }

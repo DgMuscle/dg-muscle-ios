@@ -55,7 +55,7 @@ class PostHistoryViewModel: ObservableObject {
         bind()
     }
     
-    func select(exercise: Exercise) -> (String) {
+    func select(exercise: HistoryExercise) -> (String) {
         let selectedRecordId: String
         
         if let record = history.records.first(where: { $0.exerciseId == exercise.id }) {

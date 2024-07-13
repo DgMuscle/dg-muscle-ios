@@ -24,7 +24,7 @@ public final class SubscribeExercisesGroupedByPartUsecase {
     private func bind() {
         exerciseRepository
             .exercises
-            .map({ GroupExercisesByPartUsecase().implement(exercises: $0) })
+            .map({ GroupExercisesByPartUsecase().implement(exercises: $0, onlyShowsFavorite: false) })
             .assign(to: &$data)
     }
 }

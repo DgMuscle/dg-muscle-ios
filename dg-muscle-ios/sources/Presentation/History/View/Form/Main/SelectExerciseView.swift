@@ -9,23 +9,27 @@ import SwiftUI
 import Domain
 import MockData
 
-struct SelectExerciseView: View {
+public struct SelectExerciseView: View {
     
     @StateObject var viewModel: SelectExerciseViewModel
-    let tapExercise: ((Exercise) -> ())?
+    let tapExercise: ((HistoryExercise) -> ())?
     let add: (() -> ())?
     let close: (() -> ())?
     let run: (() -> ())?
     
-    init(
+    public init(
         exerciseRepository: ExerciseRepository,
-        tapExercise: ((Exercise) -> ())?,
+        userRepository: UserRepository,
+        tapExercise: ((HistoryExercise) -> ())?,
         add: (() -> ())?,
         close: (() -> ())?,
         run: (() -> ())?
     ) {
         _viewModel = .init(
-            wrappedValue: .init(exerciseRepository: exerciseRepository)
+            wrappedValue: .init(
+                exerciseRepository: exerciseRepository,
+                userRepository: userRepository
+            )
         )
         self.tapExercise = tapExercise
         self.add = add
@@ -33,11 +37,15 @@ struct SelectExerciseView: View {
         self.run = run
     }
     
-    var body: some View {
+    public var body: some View {
         VStack {
             HStack {
                 
                 Spacer()
+                
+                Button(viewModel.onlyShowsFavoriteExercises ? "Show all" : "Show only favorites") {
+                    viewModel.updateOnlyShowsFavoriteExercises(value: !viewModel.onlyShowsFavoriteExercises)
+                }
                 
                 Button("Manage") {
                     add?()
@@ -96,6 +104,7 @@ struct SelectExerciseView: View {
 #Preview {
     return SelectExerciseView(
         exerciseRepository: ExerciseRepositoryMock(),
+        userRepository: UserRepositoryMock(),
         tapExercise: nil,
         add: nil,
         close: nil, 
