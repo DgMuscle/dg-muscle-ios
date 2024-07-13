@@ -19,6 +19,7 @@ struct Friend: Hashable, Identifiable {
     var link: URL?
     var developer: Bool
     var onlyShowsFavoriteExercises: Bool
+    var traningMode: TrainingMode
     
     init(domain: Domain.User) {
         uid = domain.uid
@@ -29,6 +30,7 @@ struct Friend: Hashable, Identifiable {
         link = domain.link
         developer = domain.developer
         onlyShowsFavoriteExercises = domain.onlyShowsFavoriteExercises
+        traningMode = .init(domain: domain.trainingMode)
     }
     
     var domain: Domain.User {
@@ -41,7 +43,8 @@ struct Friend: Hashable, Identifiable {
             fcmToken: nil, 
             link: link,
             developer: developer,
-            onlyShowsFavoriteExercises: onlyShowsFavoriteExercises
+            onlyShowsFavoriteExercises: onlyShowsFavoriteExercises,
+            trainingMode: traningMode.domain
         )
     }
 }

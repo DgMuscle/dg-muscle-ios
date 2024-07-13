@@ -19,6 +19,7 @@ struct UserData: Codable {
     var link: String?
     var developer: Bool?
     var onlyShowsFavoriteExercises: Bool?
+    var trainingMode: TrainingMode?
     
     init(domain: Domain.User) {
         self.id = domain.uid
@@ -31,6 +32,7 @@ struct UserData: Codable {
         self.deleted = false
         self.developer = domain.developer
         self.onlyShowsFavoriteExercises = domain.onlyShowsFavoriteExercises
+        self.trainingMode = .init(domain: domain.trainingMode)
     }
     
     var domain: Domain.User {
@@ -43,7 +45,8 @@ struct UserData: Codable {
             fcmToken: fcmToken,
             link: .init(string: link ?? ""),
             developer: developer ?? false,
-            onlyShowsFavoriteExercises: onlyShowsFavoriteExercises ?? false
+            onlyShowsFavoriteExercises: onlyShowsFavoriteExercises ?? false, 
+            trainingMode: trainingMode?.domain ?? .mass
         )
     }
 }

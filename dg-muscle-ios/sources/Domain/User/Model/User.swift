@@ -17,6 +17,7 @@ public struct User {
     public var link: URL?
     public var developer: Bool
     public var onlyShowsFavoriteExercises: Bool
+    public var trainingMode: TrainingMode
     
     public init(
         uid: String, 
@@ -27,7 +28,8 @@ public struct User {
         fcmToken: String?,
         link: URL?,
         developer: Bool,
-        onlyShowsFavoriteExercises: Bool
+        onlyShowsFavoriteExercises: Bool,
+        trainingMode: TrainingMode
     ) {
         self.uid = uid
         self.displayName = displayName
@@ -38,5 +40,6 @@ public struct User {
         self.link = link
         self.developer = developer
         self.onlyShowsFavoriteExercises = onlyShowsFavoriteExercises
+        self.trainingMode = trainingMode
     }
 }

@@ -19,7 +19,8 @@ public let USER_DG: User = .init(
     fcmToken: nil, 
     link: .init(string: "https://github.com/donggyushin"), 
     developer: true, 
-    onlyShowsFavoriteExercises: true
+    onlyShowsFavoriteExercises: true, 
+    trainingMode: .mass
 )
 
 
@@ -32,7 +33,8 @@ public let USER_1: User = .init(
     fcmToken: nil, 
     link: nil,
     developer: false,
-    onlyShowsFavoriteExercises: false
+    onlyShowsFavoriteExercises: false,
+    trainingMode: .mass
 )
 
 public let USER_2: User = .init(
@@ -44,7 +46,8 @@ public let USER_2: User = .init(
     fcmToken: nil,
     link: nil,
     developer: false,
-    onlyShowsFavoriteExercises: false
+    onlyShowsFavoriteExercises: false,
+    trainingMode: .mass
 )
 
 public let USER_3: User = .init(
@@ -56,7 +59,8 @@ public let USER_3: User = .init(
     fcmToken: nil,
     link: nil,
     developer: false,
-    onlyShowsFavoriteExercises: false
+    onlyShowsFavoriteExercises: false,
+    trainingMode: .mass
 )
 
 public let USER_4: User = .init(
@@ -68,5 +72,6 @@ public let USER_4: User = .init(
     fcmToken: nil,
     link: .init(string: "https://github.com/donggyushin"),
     developer: false,
-    onlyShowsFavoriteExercises: false
+    onlyShowsFavoriteExercises: false,
+    trainingMode: .mass
 )

@@ -169,7 +169,8 @@ public final class UserRepositoryImpl: UserRepository {
                 fcmToken: nil,
                 link: nil,
                 developer: false,
-                onlyShowsFavoriteExercises: false
+                onlyShowsFavoriteExercises: false, 
+                trainingMode: .mass
             )
             return user
         }
