@@ -143,6 +143,14 @@ public final class FriendRepositoryImpl: FriendRepository {
               
             self._friends = friends
             self._requests = requests
+            
+            let friendIds = friends.map({ $0.uid })
+            
+            for id in friendIds {
+                Task {
+                    try? await getHistories(friendId: id)
+                }
+            }
         }
     }
     
