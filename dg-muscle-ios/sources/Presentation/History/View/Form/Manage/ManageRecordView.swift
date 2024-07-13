@@ -32,8 +32,8 @@ public struct ManageRecordView: View {
     public var body: some View {
         List {
             
-            if let goal = viewModel.goal {
-                GoalView(goal: goal, color: viewModel.color)
+            if let goal = viewModel.goal, let mode = viewModel.traingMode {
+                GoalView(goal: goal, color: viewModel.color, trainingMode: mode)
             }
             
             Section {
