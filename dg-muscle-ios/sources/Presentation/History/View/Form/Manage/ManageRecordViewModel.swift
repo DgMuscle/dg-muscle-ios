@@ -29,6 +29,7 @@ final class ManageRecordViewModel: ObservableObject {
     private let getRecordGoalUsecase: GetRecordGoalUsecase
     private let getRecordGoalStrengthUsecase: GetRecordGoalStrengthUsecase
     private let subscribeTrainingModeUsecase: SubscribeTrainingModeUsecase
+    private let checkGoalAchievedUsecase: CheckGoalAchievedUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
@@ -54,6 +55,7 @@ final class ManageRecordViewModel: ObservableObject {
         getRecordGoalUsecase = .init()
         getRecordGoalStrengthUsecase = .init()
         subscribeTrainingModeUsecase = .init(userRepository: userRepository)
+        checkGoalAchievedUsecase = .init()
         
         let color: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
         self.color = color.color
@@ -110,17 +112,12 @@ final class ManageRecordViewModel: ObservableObject {
         $previousRecord
             .compactMap({ $0?.domain })
             .map({ [weak self] in self?.getRecordGoalUsecase.implement(previousRecord: $0) })
-            .map({ (set) -> Goal? in
-                guard let set else { return nil }
-                return Goal(weight: set.weight, reps: set.reps, achive: false)
-            })
             .combineLatest($record)
-            .map({ (goal, record) -> Goal? in
-                if var goal = goal {
-                    var sets = record.sets
-                    sets = sets.filter({ $0.weight >= goal.weight && $0.reps >= goal.reps })
-                    goal.achive = sets.isEmpty == false
-                    return goal
+            .map({ [weak self] (goal, record) -> Goal? in
+                guard let self else { return nil }
+                if let goal = goal {
+                    let achieved = checkGoalAchievedUsecase.implement(goal: goal, record: record.domain)
+                    return Goal(weight: goal.weight, reps: goal.reps, achive: achieved)
                 } else {
                     return nil
                 }
