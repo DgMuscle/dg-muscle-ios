@@ -20,6 +20,7 @@ public struct User: Hashable, Identifiable {
     public let link: URL?
     public let developer: Bool
     public let onlyShowsFavoriteExercises: Bool
+    public let trainingMode: TrainingMode
     
     public init() {
         uid = UUID().uuidString
@@ -31,6 +32,7 @@ public struct User: Hashable, Identifiable {
         link = nil
         developer = false
         onlyShowsFavoriteExercises = false
+        trainingMode = .mass
     }
     
     public init(domain: Domain.User) {
@@ -43,6 +45,7 @@ public struct User: Hashable, Identifiable {
         self.link = domain.link
         self.developer = domain.developer
         self.onlyShowsFavoriteExercises = domain.onlyShowsFavoriteExercises
+        self.trainingMode = .init(domain: domain.trainingMode)
     }
     
     public var domain: Domain.User {
@@ -55,7 +58,8 @@ public struct User: Hashable, Identifiable {
             fcmToken: fcmToken,
             link: link,
             developer: developer,
-            onlyShowsFavoriteExercises: onlyShowsFavoriteExercises
+            onlyShowsFavoriteExercises: onlyShowsFavoriteExercises, 
+            trainingMode: trainingMode.domain
         )
     }
 }

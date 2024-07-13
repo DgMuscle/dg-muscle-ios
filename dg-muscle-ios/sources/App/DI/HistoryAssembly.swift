@@ -108,5 +108,12 @@ public struct HistoryAssembly: Assembly {
             
             return DateToSelectHistoryView(historyRepository: historyRepository)
         }
+        
+        container.register(ManageTrainingModeView.self) { resolver in
+            
+            let userRepository = resolver.resolve(UserRepository.self)!
+            
+            return ManageTrainingModeView(userRepository: userRepository)
+        }
     }
 }

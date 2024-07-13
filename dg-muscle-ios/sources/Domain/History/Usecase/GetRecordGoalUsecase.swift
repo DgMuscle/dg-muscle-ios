@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Recommends Goal of ExerciseSet
+/// Recommends Goal of ExerciseSet for muscle mass
 public final class GetRecordGoalUsecase {
     public init() { }
     

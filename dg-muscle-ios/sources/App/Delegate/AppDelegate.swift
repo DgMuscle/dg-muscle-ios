@@ -21,6 +21,16 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { _, _ in }
         application.registerForRemoteNotifications()
         Messaging.messaging().delegate = self
+        
+        application.shortcutItems = [
+            UIApplicationShortcutItem(
+                type: "dgmuscle://history",
+                localizedTitle: "Quick Record",
+                localizedSubtitle: "move to today record page directly",
+                icon: .init(systemImageName: "figure.snowboarding")
+            )
+        ]
+        
         return true
     }
     

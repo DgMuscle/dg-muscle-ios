@@ -15,7 +15,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let shortcutItem = connectionOptions.shortcutItem {
-            print("dg: shortcutItem is \(shortcutItem)")
+            handleShortCutItem(item: shortcutItem)
         }
         
         if let urlContext = connectionOptions.urlContexts.first {
@@ -26,13 +26,19 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     }
     
     func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        print("dg: shortcutItem is \(shortcutItem)")
+        handleShortCutItem(item: shortcutItem)
         completionHandler(true)
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         guard let url = URLContexts.map({ $0.url }).first else { return }
         handleURL(url: url)
+    }
+    
+    private func handleShortCutItem(item: UIApplicationShortcutItem) {
+        if let url = URL(string: item.type) {
+            handleURL(url: url)
+        }
     }
     
     private func handleURL(url: URL) {
@@ -91,7 +97,8 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             coordinator?.history.setDuration(duration: Int(duration) ?? 0)
         case "datetoselecthistory":
             coordinator?.history.dateToSelectHistory()
-            
+        case "managetraingmode":
+            coordinator?.history.manageTrainigMode()
         default: break
         }
     }

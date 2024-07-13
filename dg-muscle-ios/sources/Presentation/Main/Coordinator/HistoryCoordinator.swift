@@ -71,4 +71,8 @@ public final class HistoryCoordinator {
     public func dateToSelectHistory() {
         path.append(HistoryNavigation(name: .dateToSelectHistory))
     }
+    
+    public func manageTrainigMode() {
+        path.append(HistoryNavigation(name: .manageTrainingMode))
+    }
 }

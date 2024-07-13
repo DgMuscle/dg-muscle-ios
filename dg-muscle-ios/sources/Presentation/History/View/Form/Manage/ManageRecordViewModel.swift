@@ -19,12 +19,18 @@ final class ManageRecordViewModel: ObservableObject {
     @Published var previousRecord: ExerciseRecord?
     @Published var diffWithPreviousRecord: Int?
     @Published var goal: Goal?
+    @Published var strengthGoal: Goal?
+    @Published var traingMode: Common.TrainingMode?
     
     private let recordId: String
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
     private let subscribeHeatMapColorUsecase: SubscribeHeatMapColorUsecase
     private let getPreviousRecordUsecase: GetPreviousRecordUsecase
     private let getRecordGoalUsecase: GetRecordGoalUsecase
+    private let getRecordGoalStrengthUsecase: GetRecordGoalStrengthUsecase
+    private let subscribeTrainingModeUsecase: SubscribeTrainingModeUsecase
+    private let checkGoalAchievedUsecase: CheckGoalAchievedUsecase
+    private let checkStrengthGoalAchievedUsecase: CheckStrengthGoalAchievedUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
@@ -48,6 +54,10 @@ final class ManageRecordViewModel: ObservableObject {
         subscribeHeatMapColorUsecase = .init(userRepository: userRepository)
         getPreviousRecordUsecase = .init(historyRepository: historyRepository)
         getRecordGoalUsecase = .init()
+        getRecordGoalStrengthUsecase = .init()
+        subscribeTrainingModeUsecase = .init(userRepository: userRepository)
+        checkGoalAchievedUsecase = .init()
+        checkStrengthGoalAchievedUsecase = .init()
         
         let color: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
         self.color = color.color
@@ -104,22 +114,39 @@ final class ManageRecordViewModel: ObservableObject {
         $previousRecord
             .compactMap({ $0?.domain })
             .map({ [weak self] in self?.getRecordGoalUsecase.implement(previousRecord: $0) })
-            .map({ (set) -> Goal? in
-                guard let set else { return nil }
-                return Goal(weight: set.weight, reps: set.reps, achive: false)
-            })
             .combineLatest($record)
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] goal, record in
-                if var goal {
-                    var sets = record.sets
-                    sets = sets.filter({ $0.weight >= goal.weight && $0.reps >= goal.reps })
-                    goal.achive = sets.isEmpty == false
-                    self?.goal = goal
+            .map({ [weak self] (goal, record) -> Goal? in
+                guard let self else { return nil }
+                if let goal = goal {
+                    let achieved = checkGoalAchievedUsecase.implement(goal: goal, record: record.domain)
+                    return Goal(weight: goal.weight, reps: goal.reps, achive: achieved)
                 } else {
-                    self?.goal = nil
+                    return nil
                 }
-            }
-            .store(in: &cancellables)
+            })
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$goal)
+        
+        $previousRecord
+            .compactMap({ $0?.domain })
+            .map({ [weak self] in self?.getRecordGoalStrengthUsecase.implement(previousRecord: $0) })
+            .combineLatest($record)
+            .map({ [weak self] (goal, record) -> Goal? in
+                guard let self else { return nil }
+                if let goal = goal {
+                    let achieved = checkStrengthGoalAchievedUsecase.implement(goal: goal, record: record.domain)
+                    return Goal(weight: goal.weight, reps: goal.reps, achive: achieved)
+                } else {
+                    return nil
+                }
+            })
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$strengthGoal)
+        
+        subscribeTrainingModeUsecase
+            .implement()
+            .receive(on: DispatchQueue.main)
+            .map({ Common.TrainingMode(domain: $0) })
+            .assign(to: &$traingMode)
     }
 }

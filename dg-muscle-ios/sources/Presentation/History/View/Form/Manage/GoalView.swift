@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Common
 
 struct GoalView: View {
     
     let goal: Goal
     let color: Color
+    let trainingMode: TrainingMode
     
     var body: some View {
         Section {
@@ -18,6 +20,10 @@ struct GoalView: View {
                 Text(String(goal.weight)).foregroundStyle(color) +
                 Text(" kg x ") +
                 Text("\(goal.reps)").foregroundStyle(color)
+                
+                if trainingMode == .strength {
+                    Text("x 5")
+                }
                 
                 Spacer()
                 
@@ -36,7 +42,9 @@ struct GoalView: View {
 
 #Preview {
     List {
-        GoalView(goal: .init(weight: 70, reps: 9, achive: true), color: .purple)
+        GoalView(goal: .init(weight: 70, reps: 9, achive: true), color: .purple, trainingMode: .mass)
+        
+        GoalView(goal: .init(weight: 70, reps: 5, achive: true), color: .purple, trainingMode: .strength)
     }
     .preferredColorScheme(.dark)
 }
