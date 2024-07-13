@@ -20,7 +20,7 @@ public let USER_DG: User = .init(
     link: .init(string: "https://github.com/donggyushin"), 
     developer: true, 
     onlyShowsFavoriteExercises: true, 
-    trainingMode: .mass
+    trainingMode: .strength
 )
 
 
