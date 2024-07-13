@@ -20,14 +20,18 @@ public struct ManageTrainingModeView: View {
     
     public var body: some View {
         List {
-            ForEach(Common.TrainingMode.allCases, id: \.self) { mode in
-                Button {
-                    viewModel.updateMode(mode: mode)
-                } label: {
+            Section {
+                ForEach(Common.TrainingMode.allCases, id: \.self) { mode in
                     modeView(mode: mode, selectedMode: viewModel.mode)
+                        .onTapGesture {
+                            viewModel.updateMode(mode: mode)
+                        }
                 }
-                .buttonStyle(.plain)
+            } footer: {
+                Text("Select your training mode")
             }
+            
+            
         }
         .animation(.default, value: viewModel.mode)
     }
