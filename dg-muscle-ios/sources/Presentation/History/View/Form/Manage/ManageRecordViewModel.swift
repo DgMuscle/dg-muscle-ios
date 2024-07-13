@@ -30,6 +30,7 @@ final class ManageRecordViewModel: ObservableObject {
     private let getRecordGoalStrengthUsecase: GetRecordGoalStrengthUsecase
     private let subscribeTrainingModeUsecase: SubscribeTrainingModeUsecase
     private let checkGoalAchievedUsecase: CheckGoalAchievedUsecase
+    private let checkStrengthGoalAchievedUsecase: CheckStrengthGoalAchievedUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
@@ -56,6 +57,7 @@ final class ManageRecordViewModel: ObservableObject {
         getRecordGoalStrengthUsecase = .init()
         subscribeTrainingModeUsecase = .init(userRepository: userRepository)
         checkGoalAchievedUsecase = .init()
+        checkStrengthGoalAchievedUsecase = .init()
         
         let color: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
         self.color = color.color
@@ -124,6 +126,22 @@ final class ManageRecordViewModel: ObservableObject {
             })
             .receive(on: DispatchQueue.main)
             .assign(to: &$goal)
+        
+        $previousRecord
+            .compactMap({ $0?.domain })
+            .map({ [weak self] in self?.getRecordGoalStrengthUsecase.implement(previousRecord: $0) })
+            .combineLatest($record)
+            .map({ [weak self] (goal, record) -> Goal? in
+                guard let self else { return nil }
+                if let goal = goal {
+                    let achieved = checkStrengthGoalAchievedUsecase.implement(goal: goal, record: record.domain)
+                    return Goal(weight: goal.weight, reps: goal.reps, achive: achieved)
+                } else {
+                    return nil
+                }
+            })
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$strengthGoal)
         
         subscribeTrainingModeUsecase
             .implement()
