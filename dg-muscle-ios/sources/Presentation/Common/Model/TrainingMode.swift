@@ -12,7 +12,7 @@ public enum TrainingMode {
     case mass
     case strength
     
-    init(domain: Domain.TrainingMode) {
+    public init(domain: Domain.TrainingMode) {
         switch domain {
         case .mass:
             self = .mass
@@ -21,7 +21,7 @@ public enum TrainingMode {
         }
     }
     
-    var domain: Domain.TrainingMode {
+    public var domain: Domain.TrainingMode {
         switch self {
         case .mass:
             return .mass
