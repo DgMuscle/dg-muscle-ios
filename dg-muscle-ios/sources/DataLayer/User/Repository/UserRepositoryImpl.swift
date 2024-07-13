@@ -92,6 +92,10 @@ public final class UserRepositoryImpl: UserRepository {
         _user?.onlyShowsFavoriteExercises = onlyShowsFavoriteExercises
     }
     
+    public func updateUser(trainingMode: Domain.TrainingMode) {
+        _user?.trainingMode = trainingMode
+    }
+    
     public func withDrawal() async -> (any Error)? {
         
         if _user?.uid == "taEJh30OpGVsR3FEFN2s67A8FvF3" {

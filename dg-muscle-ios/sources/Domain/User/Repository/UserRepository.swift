@@ -26,5 +26,6 @@ public protocol UserRepository {
     func updateUser(backgroundImage: UIImage?) async throws
     func updateUser(link: URL?)
     func updateUser(onlyShowsFavoriteExercises: Bool)
+    func updateUser(trainingMode: TrainingMode)
     func withDrawal() async -> Error?
 }

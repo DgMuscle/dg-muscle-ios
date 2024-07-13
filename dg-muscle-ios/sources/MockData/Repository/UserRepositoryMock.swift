@@ -52,6 +52,10 @@ public final class UserRepositoryMock: UserRepository {
         _user?.onlyShowsFavoriteExercises = onlyShowsFavoriteExercises
     }
     
+    public func updateUser(trainingMode: TrainingMode) {
+        _user?.trainingMode = trainingMode
+    }
+    
     public func withDrawal() async -> (any Error)? {
         nil
     }
