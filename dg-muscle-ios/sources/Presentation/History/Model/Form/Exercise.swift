@@ -8,20 +8,20 @@
 import Foundation
 import Domain
 
-struct Exercise: Hashable {
-    let id: String
-    let name: String
-    let favorite: Bool
-    let parts: [ExercisePart]
+public struct HistoryExercise: Hashable {
+    public let id: String
+    public let name: String
+    public let favorite: Bool
+    public let parts: [ExercisePart]
     
-    init(domain: Domain.Exercise) {
+    public init(domain: Domain.Exercise) {
         self.id = domain.id
         self.name = domain.name
         self.favorite = domain.favorite
         self.parts = domain.parts.map({ .init(domain: $0) })
     }
     
-    var domain: Domain.Exercise {
+    public var domain: Domain.Exercise {
         .init(
             id: id,
             name: name,

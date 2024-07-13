@@ -12,6 +12,7 @@ import SwiftUI
 import Presentation
 
 public struct HistoryAssembly: Assembly {
+    
     public func assemble(container: Swinject.Container) {
         container.register(HeatMapColorSelectView.self) { resolver in
             let userRepository = resolver.resolve(UserRepository.self)!
@@ -34,6 +35,18 @@ public struct HistoryAssembly: Assembly {
                     coordinator?.history.manageRun(run: run)
                 } manageMemo: { memo in
                     coordinator?.history.manageMemo(memo: memo)
+                } selectExerciseViewFactory: { tapExercise, add, close, run in
+                    let exerciseRepository = resolver.resolve(ExerciseRepository.self)!
+                    let userRepository = resolver.resolve(UserRepository.self)!
+                    
+                    return SelectExerciseView(
+                        exerciseRepository: exerciseRepository,
+                        userRepository: userRepository,
+                        tapExercise: tapExercise,
+                        add: add,
+                        close: close,
+                        run: run
+                    )
                 }
         }
         

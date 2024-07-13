@@ -9,18 +9,18 @@ import SwiftUI
 import Domain
 import MockData
 
-struct SelectExerciseView: View {
+public struct SelectExerciseView: View {
     
     @StateObject var viewModel: SelectExerciseViewModel
-    let tapExercise: ((Exercise) -> ())?
+    let tapExercise: ((HistoryExercise) -> ())?
     let add: (() -> ())?
     let close: (() -> ())?
     let run: (() -> ())?
     
-    init(
+    public init(
         exerciseRepository: ExerciseRepository,
         userRepository: UserRepository,
-        tapExercise: ((Exercise) -> ())?,
+        tapExercise: ((HistoryExercise) -> ())?,
         add: (() -> ())?,
         close: (() -> ())?,
         run: (() -> ())?
@@ -37,7 +37,7 @@ struct SelectExerciseView: View {
         self.run = run
     }
     
-    var body: some View {
+    public var body: some View {
         VStack {
             HStack {
                 

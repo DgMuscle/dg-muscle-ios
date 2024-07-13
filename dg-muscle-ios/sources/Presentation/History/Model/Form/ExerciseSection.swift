@@ -9,5 +9,5 @@ import Foundation
 
 struct ExerciseSection: Hashable {
     let part: ExercisePart
-    let exercises: [Exercise]
+    let exercises: [HistoryExercise]
 }

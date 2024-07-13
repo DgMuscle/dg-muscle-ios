@@ -19,7 +19,7 @@ public struct PostHistoryView: View {
     private let setRecordAction: ((Binding<HistoryForm>, String) -> ())?
     private let manageRun: ((Binding<RunPresentation>) -> ())?
     private let manageMemo: ((Binding<String>) -> ())?
-    private let userRepository: UserRepository
+    private let selectExerciseViewFactory: (((HistoryExercise) -> ())?, (() -> ())?, (() -> ())?, (() -> ())?) -> SelectExerciseView
     
     public init(
         historyRepository: HistoryRepository,
@@ -28,7 +28,8 @@ public struct PostHistoryView: View {
         history: Domain.History?,
         setRecordAction: ((Binding<HistoryForm>, String) -> ())?,
         manageRun: ((Binding<RunPresentation>) -> ())?,
-        manageMemo: ((Binding<String>) -> ())?
+        manageMemo: ((Binding<String>) -> ())?,
+        selectExerciseViewFactory: @escaping (((HistoryExercise) -> ())?, (() -> ())?, (() -> ())?, (() -> ())?) -> SelectExerciseView
     ) {
         _viewModel = .init(
             wrappedValue: .init(
@@ -40,9 +41,9 @@ public struct PostHistoryView: View {
         )
         self.setRecordAction = setRecordAction
         self.exerciseRepository = exerciseRepository
-        self.userRepository = userRepository
         self.manageRun = manageRun
         self.manageMemo = manageMemo
+        self.selectExerciseViewFactory = selectExerciseViewFactory
     }
     
     public var body: some View {
@@ -118,16 +119,21 @@ public struct PostHistoryView: View {
             EditButton()
         }
         .fullScreenCover(isPresented: $isPresentSelectExercise, content: {
-            SelectExerciseView(exerciseRepository: exerciseRepository, userRepository: userRepository) { exercise in
+            
+            selectExerciseViewFactory { exercise in
+                // tap exercise
                 isPresentSelectExercise.toggle()
                 let recordId = viewModel.select(exercise: exercise)
                 setRecordAction?($viewModel.history, recordId)
-            } add: {
+            } _: {
+                // add
                 isPresentSelectExercise.toggle()
                 URLManager.shared.open(url: "dgmuscle://exercisemanage")
-            } close: {
+            } _: {
+                // close
                 isPresentSelectExercise.toggle()
-            } run: {
+            } _: {
+                // run
                 isPresentSelectExercise.toggle()
                 
                 if let run = $viewModel.history.run.first {
@@ -149,6 +155,17 @@ public struct PostHistoryView: View {
         print(recordId)
     }
     
+    let selectExerciseViewFactory: (((HistoryExercise) -> ())?, (() -> ())?, (() -> ())?, (() -> ())?) -> SelectExerciseView = { tapExercise, add, close, run in
+        return SelectExerciseView(
+            exerciseRepository: ExerciseRepositoryMock(),
+            userRepository: UserRepositoryMock(),
+            tapExercise: tapExercise,
+            add: add,
+            close: close,
+            run: run
+        )
+    }
+    
     return PostHistoryView(
         historyRepository: HistoryRepositoryMock(),
         exerciseRepository: ExerciseRepositoryMock(),
@@ -156,7 +173,8 @@ public struct PostHistoryView: View {
         history: HISTORY_4,
         setRecordAction: action,
         manageRun: nil,
-        manageMemo: nil
+        manageMemo: nil,
+        selectExerciseViewFactory: selectExerciseViewFactory
     )
     .preferredColorScheme(.dark)
 }
