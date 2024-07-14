@@ -2,6 +2,23 @@
 
 효율적으로 비교하고 기록하여 점진적 과부하를 이루고 근 성장을 이루자는 목적의 프로젝트.
 
+<details>
+<summary> __Update Third Party Libraries Acknowledgments__(Manually) </summary>
+
+Install `swift-package-list`
+
+```
+brew tap FelixHerrmann/tap & brew install swift-package-list
+```
+
+Generate Settings.bundle
+
+```
+swift-package-list dg-muscle-ios.xcworkspace --output-type settings-bundle --requires-license --output-path dg-muscle-ios/resources
+```
+
+</details>
+
 ## Environment
 
 - xcodes: 15.4
