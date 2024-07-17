@@ -4,7 +4,7 @@
 import Foundation// MARK: - Swift Bundle Accessor for Frameworks
 private class BundleFinder {}
 extension Foundation.Bundle {
-/// Since HistoryHeatMap is a framework, the bundle for classes within this module can be used directly.
+/// Since HistoryHeatMap is a dynamic framework, the bundle for classes within this module can be used directly.
 static let module = Bundle(for: BundleFinder.self)
 }// MARK: - Objective-C Bundle Accessor
 @objc
