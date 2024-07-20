@@ -14,7 +14,7 @@ final class GetPreviousRecordUsecaseTest: XCTestCase {
         let historyRepository = HistoryRepositoryMock()
         let usecase = GetPreviousRecordUsecase(historyRepository: historyRepository)
         
-        let history = historiesFromJsonResponse[0]
+        let history = HISTORIES[0]
         
         let result = usecase.implement(history: history, record: history.records[0])
         XCTAssertEqual(result?.exerciseId, "C43C0CD2-1F65-447F-BB87-4206B8B8CB36")

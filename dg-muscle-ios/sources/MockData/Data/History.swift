@@ -8,7 +8,9 @@
 import Foundation
 import Domain
 
-public var historiesFromJsonResponse: [Domain.History] {
+
+
+public var HISTORIES: [Domain.History] {
     
     if let filePath = Bundle(for: ForBundle.self).url(forResource: "histories", withExtension: "json") {
         if let data = try? Data(contentsOf: filePath) {
@@ -22,8 +24,8 @@ public var historiesFromJsonResponse: [Domain.History] {
     return []
 }
 
-public var runsFromJsonResponse: [Domain.Run] {
-    return historiesFromJsonResponse.compactMap({ $0.run })
+public var RUNS: [Domain.Run] {
+    return HISTORIES.compactMap({ $0.run })
 }
 
 private class ForBundle { }

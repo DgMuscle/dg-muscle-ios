@@ -14,7 +14,7 @@ final class GroupByMonthHistoriesUsecaseTest: XCTestCase {
     func testImplement() {
         
         let usecase = GroupByMonthHistoriesUsecase()
-        let groupedByMonthHistories = usecase.implement(histories: historiesFromJsonResponse)
+        let groupedByMonthHistories = usecase.implement(histories: HISTORIES)
         
         XCTAssertEqual(groupedByMonthHistories["202405"]?.count, 15)
         XCTAssertEqual(groupedByMonthHistories["202404"]?.count, 10)

@@ -18,7 +18,7 @@ public final class HistoryRepositoryMock: HistoryRepository {
     public var dateToSelectHistory: PassthroughSubject<Date, Never> = .init()
     
     public init() {
-        _histories = historiesFromJsonResponse
+        _histories = HISTORIES
     }
     
     public func get() -> [Domain.History] {

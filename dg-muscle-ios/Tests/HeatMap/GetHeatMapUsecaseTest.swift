@@ -16,7 +16,7 @@ final class GetHeatMapUsecaseTest: XCTestCase {
         dateFormatter.dateFormat = "yyyyMMdd"
         let date = dateFormatter.date(from: "20240615")!
         let usecase = GetHeatMapUsecase(today: date)
-        let heatMap = usecase.implement(histories: historiesFromJsonResponse)
+        let heatMap = usecase.implement(histories: HISTORIES)
         
         let lastHeatmap = heatMap.last!
         XCTAssertEqual(lastHeatmap.volume.reduce(0, +), 25832.0)

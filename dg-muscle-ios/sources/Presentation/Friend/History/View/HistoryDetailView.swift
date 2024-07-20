@@ -51,7 +51,7 @@ public struct HistoryDetailView: View {
 
 #Preview {
     
-    let history = historiesFromJsonResponse[4]
+    let history = HISTORIES[4]
     
     let view = HistoryDetailView(
         friendRepository: FriendRepositoryMock(),

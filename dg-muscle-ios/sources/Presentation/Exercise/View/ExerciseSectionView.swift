@@ -54,7 +54,7 @@ struct ExerciseSectionView: View {
     
     let section: ExerciseSection = .init(
         part: .leg, 
-        exercises: exercisesFromJsonResponse.map({ .init(domain: $0) })
+        exercises: EXERCISES.map({ .init(domain: $0) })
     )
     return List {
         ExerciseSectionView(

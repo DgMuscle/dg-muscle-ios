@@ -13,7 +13,7 @@ final class GetRecordGoalUsecaseTest: XCTestCase {
 
     func testExample() throws {
         /// given
-        let previousRecord = historiesFromJsonResponse[0].records[0]
+        let previousRecord = HISTORIES[0].records[0]
         let usecase = GetRecordGoalUsecase()
         
         /// when

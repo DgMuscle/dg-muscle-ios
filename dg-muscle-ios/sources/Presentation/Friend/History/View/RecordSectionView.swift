@@ -53,7 +53,7 @@ struct RecordSectionView: View {
 
 #Preview {
     
-    let history = historiesFromJsonResponse[0]
+    let history = HISTORIES[0]
     
     var record: ExerciseRecord = .init(domain: history.records[0])
     record.exerciseName = "sample exercise name"

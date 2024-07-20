@@ -90,7 +90,7 @@ struct ManageSetView: View {
 
 #Preview {
     
-    let history = historiesFromJsonResponse[0]
+    let history = HISTORIES[0]
     let set = history.records[0].sets[0]
     
     return ManageSetView(

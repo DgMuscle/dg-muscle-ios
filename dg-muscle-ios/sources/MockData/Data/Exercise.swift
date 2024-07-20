@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-public var exercisesFromJsonResponse: [Domain.Exercise] {
+public var EXERCISES: [Domain.Exercise] {
     
     let bundle = Bundle(for: ForBundle.self)
     

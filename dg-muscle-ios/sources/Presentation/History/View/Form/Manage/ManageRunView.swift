@@ -100,7 +100,7 @@ public struct ManageRunView: View {
 
 #Preview {
     
-    let run = runsFromJsonResponse[0]
+    let run = RUNS[0]
     let view = ManageRunView(
         run: .constant(
             .init(

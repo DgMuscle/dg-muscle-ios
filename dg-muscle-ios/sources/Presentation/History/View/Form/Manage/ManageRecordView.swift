@@ -123,7 +123,7 @@ public struct ManageRecordView: View {
 }
 
 #Preview {
-    let history = historiesFromJsonResponse[0]
+    let history = HISTORIES[0]
     let historyForm: HistoryForm = .init(domain: history)
     
     return NavigationStack {

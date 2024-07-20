@@ -16,7 +16,7 @@ public final class ExerciseRepositoryMock: ExerciseRepository {
     @Published var _exercises: [Exercise]
     
     public init() {
-        _exercises = exercisesFromJsonResponse
+        _exercises = EXERCISES
     }
     
     public func get() -> [Domain.Exercise] {

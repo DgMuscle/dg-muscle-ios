@@ -18,7 +18,7 @@ final class GroupExercisesByPartUsecaseTest: XCTestCase {
         
         // when
         let result = usecase.implement(
-            exercises: exercisesFromJsonResponse,
+            exercises: EXERCISES,
             onlyShowsFavorite: onlyShowsFavorite
         )
         
