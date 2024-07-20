@@ -64,10 +64,32 @@ final class SelectExerciseViewModel: ObservableObject {
                 let grouped = groupExercisesByPartUsecase.implement(exercises: exercises, onlyShowsFavorite: favorite)
                 return grouped
             })
-            .map({
-                $0.map({ part, exercises in ExerciseSection(part: .init(domain: part), exercises: exercises.map({ .init(domain: $0) }))})
+            .compactMap({ [weak self] in
+                let sections = $0.map({ part, exercises in ExerciseSection(part: .init(domain: part), exercises: exercises.map({ .init(domain: $0) }))})
+                return self?.configureExercisePopularity(sections: sections)
             })
             .assign(to: &$exericeSections)
             
+    }
+    
+    private func configureExercisePopularity(sections: [ExerciseSection]) -> [ExerciseSection] {
+        var sectionsWithPopularity: [ExerciseSection] = []
+        let exercisePopularity = getExercisePopularityUsecase.implement()
+        
+        for section in sections {
+            var section = section
+            var exercises = section.exercises
+            
+            for (index, exercise) in exercises.enumerated() {
+                if let popularity = exercisePopularity[exercise.id] {
+                    exercises[index].popularity = popularity
+                }
+            }
+            
+            section.exercises = exercises
+            sectionsWithPopularity.append(section)
+        }
+        
+        return sectionsWithPopularity
     }
 }
