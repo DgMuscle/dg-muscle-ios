@@ -7,19 +7,23 @@
 
 import SwiftUI
 import MockData
+import Common
 
 struct ExerciseSectionView: View {
     
     let exerciseSection: ExerciseSection
+    let color: Color
     let tapExercise: ((Exercise) -> ())?
     let deleteExercise: ((Exercise.Part, IndexSet) -> ())?
     
     init(
         exerciseSection: ExerciseSection,
+        color: Color,
         tapExercise: ((Exercise) -> ())?,
         deleteExercise: ((Exercise.Part, IndexSet) -> ())?
     ) {
         self.exerciseSection = exerciseSection
+        self.color = color
         self.tapExercise = tapExercise
         self.deleteExercise = deleteExercise
     }
@@ -37,6 +41,12 @@ struct ExerciseSectionView: View {
                         Text(exercise.name)
                             .foregroundStyle(Color(uiColor: .label))
                         Spacer()
+                        Common.CircularProgressView(
+                            progress: exercise.popularity,
+                            lineWidth: 4,
+                            color: color
+                        )
+                        .frame(width: 18)
                     }
                 }
                 .buttonStyle(.borderless)
@@ -59,6 +69,7 @@ struct ExerciseSectionView: View {
     return List {
         ExerciseSectionView(
             exerciseSection: section,
+            color: .purple,
             tapExercise: nil,
             deleteExercise: nil
         )

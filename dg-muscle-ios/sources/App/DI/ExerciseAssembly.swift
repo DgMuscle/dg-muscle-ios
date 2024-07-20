@@ -14,8 +14,13 @@ import Common
 public struct ExerciseAssembly: Assembly {
     public func assemble(container: Swinject.Container) {
         container.register(ExerciseListView.self) { resolver in
-            let repository = resolver.resolve(ExerciseRepository.self)!
-            return ExerciseListView(exerciseRepository: repository) { exercise in
+            let exerciseRepository = resolver.resolve(ExerciseRepository.self)!
+            let historyRepository = resolver.resolve(HistoryRepository.self)!
+            let userRepository = resolver.resolve(UserRepository.self)!
+            
+            return ExerciseListView(exerciseRepository: exerciseRepository,
+                                    historyRepository: historyRepository, 
+                                    userRepository: userRepository) { exercise in
                 coordinator?.exercise.addExercise(exercise: exercise)
             }
         }

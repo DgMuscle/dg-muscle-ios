@@ -13,6 +13,7 @@ public struct Exercise: Hashable {
     var name: String
     var parts: [Part]
     var favorite: Bool
+    var popularity: Double = 0 
     
     init() {
         self.id = UUID().uuidString

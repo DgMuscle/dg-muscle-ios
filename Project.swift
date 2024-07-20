@@ -172,6 +172,7 @@ func createLayers() -> [Target] {
                 product: .framework,
                 bundleId: bundleId + ".\(Layer.Presentation.rawValue).\($0.rawValue)".lowercased(),
                 sources: ["\(projectName)/sources/\($0.rawValue)/**"],
+                resources: ["\(projectName)/resources/**"],
                 dependencies: [
                     .target(name: Layer.Domain.rawValue, condition: nil)
                 ]
