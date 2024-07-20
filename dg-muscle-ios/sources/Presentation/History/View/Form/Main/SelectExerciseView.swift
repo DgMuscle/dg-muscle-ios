@@ -8,6 +8,7 @@
 import SwiftUI
 import Domain
 import MockData
+import Common
 
 public struct SelectExerciseView: View {
     
@@ -91,6 +92,15 @@ public struct SelectExerciseView: View {
                                     }
                                     
                                     Text(exercise.name)
+                                    
+                                    Spacer()
+                                    
+                                    Common.CircularProgressView(
+                                        progress: exercise.popularity,
+                                        lineWidth: 4,
+                                        color: viewModel.color
+                                    )
+                                    .frame(width: 18)
                                 }
                                 .foregroundStyle(Color(uiColor: .label))
                             }
