@@ -13,13 +13,11 @@ public final class ExerciseRepositoryMock: ExerciseRepository {
     
     public var exercises: AnyPublisher<[Domain.Exercise], Never> { $_exercises.eraseToAnyPublisher() }
     
-    @Published var _exercises: [Exercise] = [
-        EXERCISE_SQUAT,
-        EXERCISE_BENCH,
-        EXERCISE_DEAD
-    ]
+    @Published var _exercises: [Exercise]
     
-    public init() { }
+    public init() {
+        _exercises = exercisesFromJsonResponse
+    }
     
     public func get() -> [Domain.Exercise] {
         _exercises

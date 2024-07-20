@@ -17,16 +17,15 @@ final class GroupExercisesByPartUsecaseTest: XCTestCase {
         let usecase = Domain.GroupExercisesByPartUsecase()
         
         // when
-        let result = usecase.implement(exercises: [
-            EXERCISE_SQUAT,
-            EXERCISE_BENCH,
-            EXERCISE_DEAD,
-        ], onlyShowsFavorite: onlyShowsFavorite)
+        let result = usecase.implement(
+            exercises: exercisesFromJsonResponse,
+            onlyShowsFavorite: onlyShowsFavorite
+        )
         
         // then
-        XCTAssertEqual(2, result[.leg]?.count)
-        XCTAssertEqual(1, result[.back]?.count)
-        XCTAssertEqual(1, result[.chest]?.count)
+        XCTAssertEqual(8, result[.leg]?.count)
+        XCTAssertEqual(8, result[.back]?.count)
+        XCTAssertEqual(5, result[.chest]?.count)
         
     }
 }

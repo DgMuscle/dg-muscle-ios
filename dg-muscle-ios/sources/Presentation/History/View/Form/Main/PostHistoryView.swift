@@ -170,7 +170,7 @@ public struct PostHistoryView: View {
         historyRepository: HistoryRepositoryMock(),
         exerciseRepository: ExerciseRepositoryMock(),
         userRepository: UserRepositoryMock(),
-        history: HISTORY_4,
+        history: historiesFromJsonResponse[0],
         setRecordAction: action,
         manageRun: nil,
         manageMemo: nil,

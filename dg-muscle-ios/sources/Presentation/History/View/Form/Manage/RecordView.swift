@@ -39,8 +39,10 @@ struct RecordView: View {
 }
 
 #Preview {
-    RecordView(
-        record: .init(domain: RECORD_1),
+    let history = historiesFromJsonResponse[0]
+    
+    return RecordView(
+        record: .init(domain: history.records[0]),
         color: .mint,
         closeAction: nil
     )

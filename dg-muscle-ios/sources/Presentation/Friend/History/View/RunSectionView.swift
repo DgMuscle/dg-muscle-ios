@@ -54,8 +54,8 @@ struct RunSectionView: View {
 }
 
 #Preview {
-    List {
-        RunSectionView(run: .init(domain: HISTORY_1.run!))
+    return List {
+        RunSectionView(run: .init(domain: runsFromJsonResponse[0]))
     }
     .preferredColorScheme(.dark)
 }

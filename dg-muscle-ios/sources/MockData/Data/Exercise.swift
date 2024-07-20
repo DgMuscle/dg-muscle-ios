@@ -8,6 +8,20 @@
 import Foundation
 import Domain
 
-public let EXERCISE_SQUAT: Exercise = .init(id: "squat", name: "Squat", parts: [.leg], favorite: true)
-public let EXERCISE_BENCH: Exercise = .init(id: "bench press", name: "Bench Press", parts: [.chest], favorite: false)
-public let EXERCISE_DEAD: Exercise = .init(id: "deadlift", name: "Deadlift", parts: [.leg, .back], favorite: false)
+public var exercisesFromJsonResponse: [Domain.Exercise] {
+    
+    let bundle = Bundle(for: ForBundle.self)
+    
+    if let url = bundle.url(forResource: "exercises", withExtension: "json") {
+        if let data = try? Data(contentsOf: url) {
+            let decoder = JSONDecoder()
+            if let exercises: [ExerciseMockData] = try? decoder.decode([ExerciseMockData].self, from: data) {
+                return exercises.map({ $0.domain })
+            }
+        }
+    }
+    
+    return []
+}
+
+private class ForBundle { }
