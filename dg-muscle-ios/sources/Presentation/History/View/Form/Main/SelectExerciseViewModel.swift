@@ -21,16 +21,22 @@ final class SelectExerciseViewModel: ObservableObject {
     private let updateOnlyShowsFavoriteExercisesUsecase: UpdateOnlyShowsFavoriteExercisesUsecase
     private let subscribeOnlyShowsFavoriteExercisesUsecase: SubscribeOnlyShowsFavoriteExercisesUsecase
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
+    private let getExercisePopularityUsecase: GetExercisePopularityUsecase
     
     init(
         exerciseRepository: ExerciseRepository,
-        userRepository: UserRepository
+        userRepository: UserRepository,
+        historyRepository: HistoryRepository
     ) {
         getExercisesUsecase = .init(exerciseRepository: exerciseRepository)
         groupExercisesByPartUsecase = .init()
         updateOnlyShowsFavoriteExercisesUsecase = .init(userRepository: userRepository)
         subscribeOnlyShowsFavoriteExercisesUsecase = .init(userRepository: userRepository)
         getHeatMapColorUsecase = .init(userRepository: userRepository)
+        getExercisePopularityUsecase = .init(
+            exerciseRepository: exerciseRepository,
+            historyRepository: historyRepository
+        )
         
         onlyShowsFavoriteExercises = userRepository.get()?.onlyShowsFavoriteExercises ?? false
         

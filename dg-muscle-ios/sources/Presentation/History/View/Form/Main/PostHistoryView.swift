@@ -158,7 +158,8 @@ public struct PostHistoryView: View {
     let selectExerciseViewFactory: (((HistoryExercise) -> ())?, (() -> ())?, (() -> ())?, (() -> ())?) -> SelectExerciseView = { tapExercise, add, close, run in
         return SelectExerciseView(
             exerciseRepository: ExerciseRepositoryMock(),
-            userRepository: UserRepositoryMock(),
+            userRepository: UserRepositoryMock(), 
+            historyRepository: HistoryRepositoryMock(),
             tapExercise: tapExercise,
             add: add,
             close: close,
