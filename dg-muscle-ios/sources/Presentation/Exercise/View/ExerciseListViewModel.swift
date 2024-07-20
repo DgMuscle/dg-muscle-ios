@@ -9,21 +9,25 @@ import Foundation
 import Combine
 import Domain
 import Common
+import SwiftUI
 
 final class ExerciseListViewModel: ObservableObject {
     
     @Published var exerciseSections: [ExerciseSection] = []
     @Published var status: Common.StatusView.Status? = nil
     @Published var deletedExercises: [Exercise] = []
+    let color: Color
     
     private let subscribeExercisesGroupedByPartUsecase: SubscribeExercisesGroupedByPartUsecase
     private let deleteExerciseUsecase: DeleteExerciseUsecase
     private let postExerciseUsecase: PostExerciseUsecase
     private let getExercisePopularityUsecase: GetExercisePopularityUsecase
+    private let getHeatMapColorUsecase: GetHeatMapColorUsecase
     
     init(
         exerciseRepository: any ExerciseRepository,
-        historyRepository: any HistoryRepository
+        historyRepository: any HistoryRepository,
+        userRepository: any UserRepository
     ) {
         subscribeExercisesGroupedByPartUsecase = .init(exerciseRepository: exerciseRepository)
         deleteExerciseUsecase = .init(exerciseRepository: exerciseRepository)
@@ -32,6 +36,11 @@ final class ExerciseListViewModel: ObservableObject {
             exerciseRepository: exerciseRepository,
             historyRepository: historyRepository
         )
+        getHeatMapColorUsecase = .init(userRepository: userRepository)
+        
+        let commonHeatMapColor: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
+        self.color = commonHeatMapColor.color
+        
         bind()
     }
     

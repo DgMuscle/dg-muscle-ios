@@ -18,12 +18,14 @@ public struct ExerciseListView: View {
     public init(
         exerciseRepository: any ExerciseRepository,
         historyRepository: any HistoryRepository,
+        userRepository: any UserRepository,
         addExerciseAction: ((Domain.Exercise?) -> ())?
     ) {
         _viewModel = .init(wrappedValue:
                 .init(
                     exerciseRepository: exerciseRepository, 
-                    historyRepository: historyRepository
+                    historyRepository: historyRepository, 
+                    userRepository: userRepository
                 )
         )
         
@@ -96,11 +98,13 @@ public struct ExerciseListView: View {
 #Preview {
     let exerciseRepository = ExerciseRepositoryMock()
     let historyRepository = HistoryRepositoryMock()
+    let userRepository = UserRepositoryMock()
     
     return NavigationStack {
         ExerciseListView(
             exerciseRepository: exerciseRepository,
-            historyRepository: historyRepository,
+            historyRepository: historyRepository, 
+            userRepository: userRepository,
             addExerciseAction: nil
         )
         .preferredColorScheme(.dark)

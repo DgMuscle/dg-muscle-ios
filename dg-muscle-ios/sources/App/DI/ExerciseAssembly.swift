@@ -16,9 +16,11 @@ public struct ExerciseAssembly: Assembly {
         container.register(ExerciseListView.self) { resolver in
             let exerciseRepository = resolver.resolve(ExerciseRepository.self)!
             let historyRepository = resolver.resolve(HistoryRepository.self)!
+            let userRepository = resolver.resolve(UserRepository.self)!
             
             return ExerciseListView(exerciseRepository: exerciseRepository,
-                                    historyRepository: historyRepository) { exercise in
+                                    historyRepository: historyRepository, 
+                                    userRepository: userRepository) { exercise in
                 coordinator?.exercise.addExercise(exercise: exercise)
             }
         }
