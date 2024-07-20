@@ -1,42 +1,33 @@
 //
 //  Exercise.swift
-//  App
+//  MockData
 //
-//  Created by 신동규 on 5/15/24.
+//  Created by 신동규 on 7/20/24.
 //
 
 import Foundation
 import Domain
 
-public struct Exercise: Hashable {
+struct ExerciseMockData: Codable {
     let id: String
-    var name: String
-    var parts: [Part]
-    var favorite: Bool
-    var popularity: Double = 0 
+    let name: String
+    let parts: [Part]
+    let favorite: Bool
     
-    init() {
-        self.id = UUID().uuidString
-        self.name = ""
-        self.parts = []
-        self.favorite = false
-    }
-    
-    public init(domain: Domain.Exercise) {
+    init(domain: Domain.Exercise) {
         self.id = domain.id
         self.name = domain.name
         self.parts = domain.parts.map({ .init(domain: $0) })
         self.favorite = domain.favorite
     }
     
-    public var domain: Domain.Exercise {
-        return .init(id: id, name: name, parts: parts.map({ $0.domain }), favorite: favorite)
+    var domain: Domain.Exercise {
+        .init(id: id, name: name, parts: parts.map({ $0.domain }), favorite: favorite)
     }
-    
 }
 
-extension Exercise {
-    public enum Part: String, CaseIterable {
+extension ExerciseMockData {
+    enum Part: String, Codable {
         case arm
         case back
         case chest
@@ -44,7 +35,7 @@ extension Exercise {
         case leg
         case shoulder
         
-        public init(domain: Domain.Exercise.Part) {
+        init(domain: Domain.Exercise.Part) {
             switch domain {
             case .arm:
                 self = .arm
@@ -61,7 +52,7 @@ extension Exercise {
             }
         }
         
-        public var domain: Domain.Exercise.Part {
+        var domain: Domain.Exercise.Part {
             switch self {
             case .arm:
                 return .arm
@@ -79,3 +70,4 @@ extension Exercise {
         }
     }
 }
+

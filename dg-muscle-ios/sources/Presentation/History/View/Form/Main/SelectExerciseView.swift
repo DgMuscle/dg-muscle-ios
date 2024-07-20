@@ -8,6 +8,7 @@
 import SwiftUI
 import Domain
 import MockData
+import Common
 
 public struct SelectExerciseView: View {
     
@@ -20,6 +21,7 @@ public struct SelectExerciseView: View {
     public init(
         exerciseRepository: ExerciseRepository,
         userRepository: UserRepository,
+        historyRepository: HistoryRepository,
         tapExercise: ((HistoryExercise) -> ())?,
         add: (() -> ())?,
         close: (() -> ())?,
@@ -28,7 +30,8 @@ public struct SelectExerciseView: View {
         _viewModel = .init(
             wrappedValue: .init(
                 exerciseRepository: exerciseRepository,
-                userRepository: userRepository
+                userRepository: userRepository, 
+                historyRepository: historyRepository
             )
         )
         self.tapExercise = tapExercise
@@ -89,6 +92,15 @@ public struct SelectExerciseView: View {
                                     }
                                     
                                     Text(exercise.name)
+                                    
+                                    Spacer()
+                                    
+                                    Common.CircularProgressView(
+                                        progress: exercise.popularity,
+                                        lineWidth: 4,
+                                        color: viewModel.color
+                                    )
+                                    .frame(width: 18)
                                 }
                                 .foregroundStyle(Color(uiColor: .label))
                             }
@@ -105,6 +117,7 @@ public struct SelectExerciseView: View {
     return SelectExerciseView(
         exerciseRepository: ExerciseRepositoryMock(),
         userRepository: UserRepositoryMock(),
+        historyRepository: HistoryRepositoryMock(),
         tapExercise: nil,
         add: nil,
         close: nil, 

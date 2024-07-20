@@ -17,11 +17,15 @@ public struct ExerciseListView: View {
     
     public init(
         exerciseRepository: any ExerciseRepository,
+        historyRepository: any HistoryRepository,
+        userRepository: any UserRepository,
         addExerciseAction: ((Domain.Exercise?) -> ())?
     ) {
         _viewModel = .init(wrappedValue:
                 .init(
-                    exerciseRepository: exerciseRepository
+                    exerciseRepository: exerciseRepository, 
+                    historyRepository: historyRepository, 
+                    userRepository: userRepository
                 )
         )
         
@@ -38,11 +42,13 @@ public struct ExerciseListView: View {
             } else {
                 List {
                     ForEach(viewModel.exerciseSections, id: \.self) { section in
-                        ExerciseSectionView(exerciseSection: section) { exercise in
-                            addExerciseAction?(exercise.domain)
-                        } deleteExercise: { part, indexSet in
-                            viewModel.delete(part: part, indexSet: indexSet)
-                        }
+                        ExerciseSectionView(
+                            exerciseSection: section,
+                            color: viewModel.color) { exercise in
+                                addExerciseAction?(exercise.domain)
+                            } deleteExercise: { part, indexSet in
+                                viewModel.delete(part: part, indexSet: indexSet)
+                            }
                     }
                     
                     if viewModel.deletedExercises.isEmpty == false {
@@ -92,9 +98,15 @@ public struct ExerciseListView: View {
 }
 
 #Preview {
+    let exerciseRepository = ExerciseRepositoryMock()
+    let historyRepository = HistoryRepositoryMock()
+    let userRepository = UserRepositoryMock()
+    
     return NavigationStack {
         ExerciseListView(
-            exerciseRepository: ExerciseRepositoryMock(),
+            exerciseRepository: exerciseRepository,
+            historyRepository: historyRepository, 
+            userRepository: userRepository,
             addExerciseAction: nil
         )
         .preferredColorScheme(.dark)

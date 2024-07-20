@@ -41,7 +41,8 @@ public struct HistoryAssembly: Assembly {
                     
                     return SelectExerciseView(
                         exerciseRepository: exerciseRepository,
-                        userRepository: userRepository,
+                        userRepository: userRepository, 
+                        historyRepository: historyRepository,
                         tapExercise: tapExercise,
                         add: add,
                         close: close,

@@ -13,6 +13,7 @@ public struct HistoryExercise: Hashable {
     public let name: String
     public let favorite: Bool
     public let parts: [ExercisePart]
+    public var popularity: Double = 0 
     
     public init(domain: Domain.Exercise) {
         self.id = domain.id

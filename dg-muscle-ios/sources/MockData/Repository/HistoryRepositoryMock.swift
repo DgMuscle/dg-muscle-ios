@@ -11,15 +11,15 @@ import Domain
 
 public final class HistoryRepositoryMock: HistoryRepository {
     public var histories: AnyPublisher<[Domain.History], Never> { $_histories.eraseToAnyPublisher() }
-    @Published var _histories: [History] = [
-        HISTORY_1, HISTORY_2, HISTORY_3, HISTORY_4
-    ]
+    @Published var _histories: [History]
     
     public var runDistanceSubject: PassthroughSubject<Double, Never> = .init()
     public var runDurationSubject: PassthroughSubject<Int, Never> = .init()
     public var dateToSelectHistory: PassthroughSubject<Date, Never> = .init()
     
-    public init() { }
+    public init() {
+        _histories = HISTORIES
+    }
     
     public func get() -> [Domain.History] {
         _histories

@@ -123,13 +123,13 @@ public struct ManageRecordView: View {
 }
 
 #Preview {
-    
-    let historyForm: HistoryForm = .init(domain: HISTORY_1)
+    let history = HISTORIES[0]
+    let historyForm: HistoryForm = .init(domain: history)
     
     return NavigationStack {
         ManageRecordView(
             historyForm: .constant(historyForm),
-            recordId: RECORD_1.id,
+            recordId: history.records[0].id,
             userRepository: UserRepositoryMock(),
             historyRepository: HistoryRepositoryMock()
         )

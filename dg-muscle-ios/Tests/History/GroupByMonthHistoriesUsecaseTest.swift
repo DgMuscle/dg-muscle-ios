@@ -12,12 +12,11 @@ import Domain
 
 final class GroupByMonthHistoriesUsecaseTest: XCTestCase {
     func testImplement() {
-        let usecase = GroupByMonthHistoriesUsecase()
-        let groupedByMonthHistories = usecase.implement(histories: [
-            HISTORY_1, HISTORY_2, HISTORY_3
-        ])
         
-        XCTAssertEqual(groupedByMonthHistories["202405"]?.count, 2)
-        XCTAssertEqual(groupedByMonthHistories["202404"]?.count, 1)
+        let usecase = GroupByMonthHistoriesUsecase()
+        let groupedByMonthHistories = usecase.implement(histories: HISTORIES)
+        
+        XCTAssertEqual(groupedByMonthHistories["202405"]?.count, 15)
+        XCTAssertEqual(groupedByMonthHistories["202404"]?.count, 10)
     }
 }
