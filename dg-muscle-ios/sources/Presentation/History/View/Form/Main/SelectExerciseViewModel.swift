@@ -8,15 +8,19 @@
 import Foundation
 import Combine
 import Domain
+import SwiftUI
+import Common
 
 final class SelectExerciseViewModel: ObservableObject {
     @Published var exericeSections: [ExerciseSection] = []
     @Published var onlyShowsFavoriteExercises: Bool
+    let color: Color
     
     private let getExercisesUsecase: GetExercisesUsecase
     private let groupExercisesByPartUsecase: GroupExercisesByPartUsecase
     private let updateOnlyShowsFavoriteExercisesUsecase: UpdateOnlyShowsFavoriteExercisesUsecase
     private let subscribeOnlyShowsFavoriteExercisesUsecase: SubscribeOnlyShowsFavoriteExercisesUsecase
+    private let getHeatMapColorUsecase: GetHeatMapColorUsecase
     
     init(
         exerciseRepository: ExerciseRepository,
@@ -26,8 +30,12 @@ final class SelectExerciseViewModel: ObservableObject {
         groupExercisesByPartUsecase = .init()
         updateOnlyShowsFavoriteExercisesUsecase = .init(userRepository: userRepository)
         subscribeOnlyShowsFavoriteExercisesUsecase = .init(userRepository: userRepository)
+        getHeatMapColorUsecase = .init(userRepository: userRepository)
         
         onlyShowsFavoriteExercises = userRepository.get()?.onlyShowsFavoriteExercises ?? false
+        
+        let heatmapColor: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
+        self.color = heatmapColor.color
         
         bind()
     }
