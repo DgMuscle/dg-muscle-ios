@@ -14,7 +14,7 @@ jobs:
         run: |
           echo "Available macOS versions:"
           curl -s https://api.github.com/meta | jq -r '.runner | .macos'
- 
+
   build:
     name: Build and Test default scheme using any available iPhone simulator
     runs-on: macos-14
@@ -31,7 +31,7 @@ jobs:
       - name: Mise
         uses: jdx/mise-action@v2
       - name: Install Tuist
-        run: mise install tuist
+        run: mise install tuist@4.21.1
       - name: Use Tuist
         run: mise use -g tuist
       - name: Build
