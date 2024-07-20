@@ -92,9 +92,11 @@ public struct ExerciseListView: View {
 }
 
 #Preview {
+    let exerciseRepository = ExerciseRepositoryMock()
+    
     return NavigationStack {
         ExerciseListView(
-            exerciseRepository: ExerciseRepositoryMock(),
+            exerciseRepository: exerciseRepository,
             addExerciseAction: nil
         )
         .preferredColorScheme(.dark)
