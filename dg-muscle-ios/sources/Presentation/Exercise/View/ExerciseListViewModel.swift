@@ -81,9 +81,17 @@ final class ExerciseListViewModel: ObservableObject {
         for (part, exercises) in group {
             
             let part: Exercise.Part = .init(domain: part)
-            let exercises: [Exercise] = exercises
+            var exercises: [Exercise] = exercises
                 .map({ .init(domain: $0) })
                 .sorted(by: { $0.name < $1.name })
+            
+            let exercisePopularities = getExercisePopularityUsecase.implement()
+            
+            for (exerciseId, popularity) in exercisePopularities {
+                if let index = exercises.firstIndex(where: { $0.id == exerciseId }) {
+                    exercises[index].popularity = popularity
+                }
+            }
             
             let section: ExerciseSection = .init(
                 part: part,
