@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MockData
+import Common
 
 struct ExerciseSectionView: View {
     
@@ -40,6 +41,12 @@ struct ExerciseSectionView: View {
                         Text(exercise.name)
                             .foregroundStyle(Color(uiColor: .label))
                         Spacer()
+                        Common.CircularProgressView(
+                            progress: exercise.popularity,
+                            lineWidth: 4,
+                            color: color
+                        )
+                        .frame(width: 18)
                     }
                 }
                 .buttonStyle(.borderless)
