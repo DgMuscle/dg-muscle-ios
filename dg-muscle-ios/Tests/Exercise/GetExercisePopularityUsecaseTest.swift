@@ -18,7 +18,7 @@ final class GetExercisePopularityUsecaseTest: XCTestCase {
         )
         let result = usecase.implement()
         
-        XCTAssertEqual(1, result["squat"])
+        XCTAssertEqual(0.65, result["970C5E9E-780D-4C0F-BA6E-337580B04229"])
     }
 
 }

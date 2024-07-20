@@ -50,10 +50,13 @@ public struct HistoryDetailView: View {
 }
 
 #Preview {
+    
+    let history = HISTORIES[4]
+    
     let view = HistoryDetailView(
         friendRepository: FriendRepositoryMock(),
         friendId: USER_DG.uid,
-        historyId: HISTORY_4.id
+        historyId: history.id
     )
     
     return view.preferredColorScheme(.dark)

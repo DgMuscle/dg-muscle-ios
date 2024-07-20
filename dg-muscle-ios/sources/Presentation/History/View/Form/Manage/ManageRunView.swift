@@ -99,7 +99,8 @@ public struct ManageRunView: View {
 }
 
 #Preview {
-    let run = HISTORY_1.run!
+    
+    let run = RUNS[0]
     let view = ManageRunView(
         run: .constant(
             .init(

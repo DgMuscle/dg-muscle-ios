@@ -54,10 +54,7 @@ struct ExerciseSectionView: View {
     
     let section: ExerciseSection = .init(
         part: .leg, 
-        exercises: [
-            .init(domain: EXERCISE_DEAD),
-            .init(domain: EXERCISE_SQUAT)
-        ]
+        exercises: EXERCISES.map({ .init(domain: $0) })
     )
     return List {
         ExerciseSectionView(

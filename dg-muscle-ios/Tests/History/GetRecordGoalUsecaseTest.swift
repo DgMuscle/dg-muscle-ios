@@ -13,14 +13,14 @@ final class GetRecordGoalUsecaseTest: XCTestCase {
 
     func testExample() throws {
         /// given
-        let previousRecord = RECORD_4
+        let previousRecord = HISTORIES[0].records[0]
         let usecase = GetRecordGoalUsecase()
         
         /// when
         let recommendedSet = usecase.implement(previousRecord: previousRecord)
         
         /// then
-        XCTAssertEqual(recommendedSet?.weight, 70)
-        XCTAssertEqual(recommendedSet?.reps, 9)
+        XCTAssertEqual(recommendedSet?.weight, 45)
+        XCTAssertEqual(recommendedSet?.reps, 14)
     }
 }

@@ -53,7 +53,9 @@ struct RecordSectionView: View {
 
 #Preview {
     
-    var record: ExerciseRecord = .init(domain: RECORD_1)
+    let history = HISTORIES[0]
+    
+    var record: ExerciseRecord = .init(domain: history.records[0])
     record.exerciseName = "sample exercise name"
     
     return List {

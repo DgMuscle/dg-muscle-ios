@@ -2,7 +2,7 @@
 //  GetAverageVelocityUsecaseTest.swift
 //  AppTests
 //
-//  Created by 신동규 on 6/28/24.
+//  Created by 신동규 on 7/20/24.
 //
 
 import XCTest
@@ -11,9 +11,9 @@ import MockData
 
 final class GetAverageVelocityUsecaseTest: XCTestCase {
 
-    func testExample() throws {
+    func testExample() {
         let usecase = GetAverageVelocityUsecase()
-        let velocity = usecase.implement(run: HISTORY_1.run!)
-        XCTAssertEqual(velocity, 6.7)
+        let velocity = usecase.implement(run: RUNS[0])
+        XCTAssertEqual(round(velocity), 7)
     }
 }
