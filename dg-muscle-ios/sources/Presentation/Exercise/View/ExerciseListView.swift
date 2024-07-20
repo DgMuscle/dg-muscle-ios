@@ -42,11 +42,13 @@ public struct ExerciseListView: View {
             } else {
                 List {
                     ForEach(viewModel.exerciseSections, id: \.self) { section in
-                        ExerciseSectionView(exerciseSection: section) { exercise in
-                            addExerciseAction?(exercise.domain)
-                        } deleteExercise: { part, indexSet in
-                            viewModel.delete(part: part, indexSet: indexSet)
-                        }
+                        ExerciseSectionView(
+                            exerciseSection: section,
+                            color: viewModel.color) { exercise in
+                                addExerciseAction?(exercise.domain)
+                            } deleteExercise: { part, indexSet in
+                                viewModel.delete(part: part, indexSet: indexSet)
+                            }
                     }
                     
                     if viewModel.deletedExercises.isEmpty == false {

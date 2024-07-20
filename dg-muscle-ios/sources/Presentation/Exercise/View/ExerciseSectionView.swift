@@ -11,15 +11,18 @@ import MockData
 struct ExerciseSectionView: View {
     
     let exerciseSection: ExerciseSection
+    let color: Color
     let tapExercise: ((Exercise) -> ())?
     let deleteExercise: ((Exercise.Part, IndexSet) -> ())?
     
     init(
         exerciseSection: ExerciseSection,
+        color: Color,
         tapExercise: ((Exercise) -> ())?,
         deleteExercise: ((Exercise.Part, IndexSet) -> ())?
     ) {
         self.exerciseSection = exerciseSection
+        self.color = color
         self.tapExercise = tapExercise
         self.deleteExercise = deleteExercise
     }
@@ -59,6 +62,7 @@ struct ExerciseSectionView: View {
     return List {
         ExerciseSectionView(
             exerciseSection: section,
+            color: .purple,
             tapExercise: nil,
             deleteExercise: nil
         )
