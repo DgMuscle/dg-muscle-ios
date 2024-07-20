@@ -19,13 +19,19 @@ final class ExerciseListViewModel: ObservableObject {
     private let subscribeExercisesGroupedByPartUsecase: SubscribeExercisesGroupedByPartUsecase
     private let deleteExerciseUsecase: DeleteExerciseUsecase
     private let postExerciseUsecase: PostExerciseUsecase
+    private let getExercisePopularityUsecase: GetExercisePopularityUsecase
     
     init(
-        exerciseRepository: any ExerciseRepository
+        exerciseRepository: any ExerciseRepository,
+        historyRepository: any HistoryRepository
     ) {
         subscribeExercisesGroupedByPartUsecase = .init(exerciseRepository: exerciseRepository)
         deleteExerciseUsecase = .init(exerciseRepository: exerciseRepository)
         postExerciseUsecase = .init(exerciseRepository: exerciseRepository)
+        getExercisePopularityUsecase = .init(
+            exerciseRepository: exerciseRepository,
+            historyRepository: historyRepository
+        )
         bind()
     }
     
