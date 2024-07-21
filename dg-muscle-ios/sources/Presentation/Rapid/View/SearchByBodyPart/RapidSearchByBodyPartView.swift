@@ -35,7 +35,7 @@ public struct RapidSearchByBodyPartView: View {
     }
     
     func bodyPart(data: BodyPart) -> some View {
-        Text(data.name)
+        Text(data.name.capitalized)
             .padding(.vertical, 4)
             .padding(.horizontal, 12)
             .background(
