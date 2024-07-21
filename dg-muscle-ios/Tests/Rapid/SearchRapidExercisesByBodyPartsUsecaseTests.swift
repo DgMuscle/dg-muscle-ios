@@ -28,7 +28,7 @@ final class SearchRapidExercisesByBodyPartsUsecaseTests: XCTestCase {
             .waist
         ])
         
-        XCTAssertEqual(100, result.count)
+        XCTAssertEqual(RAPID_EXERCISES.count, result.count)
     }
     
     func testEmptyCase() {
