@@ -10,5 +10,6 @@ import Combine
 
 public protocol RapidRepository {
     var exercises: AnyPublisher<[RapidExerciseDomain], Never> { get }
+    var exercisesLoading: AnyPublisher<Bool, Never> { get }
     func get() -> [RapidExerciseDomain]
 }

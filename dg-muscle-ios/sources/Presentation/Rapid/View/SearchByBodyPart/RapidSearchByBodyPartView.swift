@@ -32,6 +32,11 @@ public struct RapidSearchByBodyPartView: View {
                 }
             }
             
+            if viewModel.loading {
+                ProgressView()
+                    .padding(.top)
+            }
+            
             VStack {
                 ForEach(viewModel.datas, id: \.self) { data in
                     Button {

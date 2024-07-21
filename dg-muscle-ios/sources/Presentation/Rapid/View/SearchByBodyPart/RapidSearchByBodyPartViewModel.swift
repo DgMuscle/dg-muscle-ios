@@ -16,10 +16,12 @@ final class RapidSearchByBodyPartViewModel: ObservableObject {
     
     @Published var datas: [Thumbnail] = []
     @Published var bodyParts: [BodyPart] = RapidBodyPartPresentation.allCases.map({ .init(bodyPart: $0) })
+    @Published var loading: Bool = true
     let color: Color
     
     private let searchRapidExercisesByBodyPartsUsecase: SearchRapidExercisesByBodyPartsUsecase
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
+    private let subscribeRapidExercisesLoadingUsecase: SubscribeRapidExercisesLoadingUsecase
     
     init(
         rapidRepository: RapidRepository,
@@ -27,6 +29,7 @@ final class RapidSearchByBodyPartViewModel: ObservableObject {
     ) {
         searchRapidExercisesByBodyPartsUsecase = .init(rapidRepository: rapidRepository)
         getHeatMapColorUsecase = .init(userRepository: userRepository)
+        subscribeRapidExercisesLoadingUsecase = .init(rapidRepository: rapidRepository)
         
         let commonColor: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
         color = commonColor.color
@@ -45,6 +48,11 @@ final class RapidSearchByBodyPartViewModel: ObservableObject {
             .compactMap({ [weak self] parts in self?.configureDatas(parts: parts) })
             .receive(on: DispatchQueue.main)
             .assign(to: &$datas)
+        
+        subscribeRapidExercisesLoadingUsecase
+            .implement()
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$loading)
     }
     
     private func configureDatas(parts: [BodyPart]) -> [Thumbnail] {
