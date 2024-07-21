@@ -11,6 +11,7 @@ import Exercise
 import History
 import My
 import Friend
+import Rapid
 
 public struct NavigationView: View {
     
@@ -35,6 +36,7 @@ public struct NavigationView: View {
     let friendHistoryFactory: (String, Date) -> FriendHistoryView
     let historyDetailFactory: (String, String) -> HistoryDetailView
     let manageTrainingModeFactory: () -> ManageTrainingModeView
+    let rapidSearchTypeListFactory: () -> RapidSearchTypeListView
     
     public init(
         today: Date,
@@ -56,7 +58,8 @@ public struct NavigationView: View {
         friendMainFactory: @escaping (PageAnchorView.Page) -> FriendMainView,
         friendHistoryFactory: @escaping (String, Date) -> FriendHistoryView,
         historyDetailFactory: @escaping (String, String) -> HistoryDetailView,
-        manageTrainingModeFactory: @escaping () -> ManageTrainingModeView
+        manageTrainingModeFactory: @escaping () -> ManageTrainingModeView,
+        rapidSearchTypeListFactory: @escaping () -> RapidSearchTypeListView
     ) {
         self.today = today
         self.historyRepository = historyRepository
@@ -78,6 +81,7 @@ public struct NavigationView: View {
         self.friendHistoryFactory = friendHistoryFactory
         self.historyDetailFactory = historyDetailFactory
         self.manageTrainingModeFactory = manageTrainingModeFactory
+        self.rapidSearchTypeListFactory = rapidSearchTypeListFactory
     }
     
     public var body: some View {
@@ -132,6 +136,13 @@ public struct NavigationView: View {
                 case .historyDetail(let friendId, let historyId):
                     historyDetailFactory(friendId, historyId)
                 }
+            }
+            .navigationDestination(for: RapidNavigation.self) { navigation in
+                switch navigation.name {
+                case .rapidSearchTypeList:
+                    rapidSearchTypeListFactory()
+                }
+        
             }
         }
         .onAppear {

@@ -23,6 +23,7 @@ public final class Coordinator {
     public let friend: FriendCoordinator
     public let history: HistoryCoordinator
     public let my: MyCoordinator
+    public let rapid: RapidCoordinator
     
     init(
         path: Binding<NavigationPath>,
@@ -33,6 +34,7 @@ public final class Coordinator {
         self.friend = .init(path: path)
         self.history = .init(path: path, historyRepository: historyRepository)
         self.my = .init(path: path)
+        self.rapid = .init(path: path)
     }
     
     public func pop(_ k: Int = 1) {

@@ -42,6 +42,7 @@ struct dg_muscle_iosApp: App {
             HistoryAssembly(),
             HomeAssembly(),
             MyAssembly(),
+            RapidAssembly(),
             MainAssembly()
         ])
     }

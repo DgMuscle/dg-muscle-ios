@@ -99,6 +99,8 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             coordinator?.history.dateToSelectHistory()
         case "managetraingmode":
             coordinator?.history.manageTrainigMode()
+        case "rapidsearchtype":
+            coordinator?.rapid.rapidSearchTypeList()
         default: break
         }
     }
