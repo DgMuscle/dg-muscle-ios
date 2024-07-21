@@ -7,6 +7,7 @@
 
 import Foundation
 import Domain
+import SwiftUI
 
 public enum RapidBodyPartPresentation: String, CaseIterable {
     case back
@@ -67,6 +68,31 @@ public enum RapidBodyPartPresentation: String, CaseIterable {
             return .upperLegs
         case .waist:
             return .waist
+        }
+    }
+    
+    var color: Color {
+        switch self {
+        case .back:
+            return .accentColor
+        case .cardio:
+            return .green
+        case .chest:
+            return .red
+        case .lowerArms:
+            return .brown
+        case .lowerLegs:
+            return .indigo
+        case .neck:
+            return .mint
+        case .shoulders:
+            return .orange
+        case .upperArms:
+            return .purple
+        case .upperLegs:
+            return .brown
+        case .waist:
+            return .cyan
         }
     }
 }
