@@ -31,19 +31,18 @@ final class RapidSearchByBodyPartViewModel: ObservableObject {
     
     private func bind() {
         $selectedBodyParts
-            .compactMap({ (parts) -> [RapidBodyPartPresentation] in
-                parts.compactMap({ $0.bodyPart })
-            })
-            .compactMap({ (parts) -> [RapidBodyPartDomain] in
-                parts.compactMap({ $0.domain })
-            })
-            .compactMap({ [weak self] parts in
-                self?.searchRapidExercisesByBodyPartsUsecase.implement(parts: parts)
-            })
-            .compactMap({ (exercises) -> [Thumbnail] in
-                exercises.compactMap({ .init(domain: $0) })
-            })
+            .compactMap({ [weak self] parts in self?.configureDatas(parts: parts) })
             .receive(on: DispatchQueue.main)
             .assign(to: &$datas)
+    }
+    
+    private func configureDatas(parts: [BodyPart]) -> [Thumbnail] {
+        var result: [Thumbnail] = []
+        let parts = parts.filter({ $0.selected })
+        let rapidBodyPartsDomain: [RapidBodyPartDomain] = parts.compactMap({ $0.bodyPart?.domain })
+        let exercieses = searchRapidExercisesByBodyPartsUsecase.implement(parts: rapidBodyPartsDomain)
+        result = exercieses.map({ .init(domain: $0) })
+        
+        return result
     }
 }
