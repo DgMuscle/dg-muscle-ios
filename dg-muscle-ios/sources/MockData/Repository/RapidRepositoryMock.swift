@@ -19,4 +19,8 @@ public final class RapidRepositoryMock: RapidRepository {
     public init() {
         _exercises = RAPID_EXERCISES
     }
+    
+    public func get() -> [RapidExerciseDomain] {
+        RAPID_EXERCISES
+    }
 }
