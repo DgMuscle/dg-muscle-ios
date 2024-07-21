@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-public enum RapidBodyPartPresentation: String {
+public enum RapidBodyPartPresentation: String, CaseIterable {
     case back
     case cardio
     case chest
