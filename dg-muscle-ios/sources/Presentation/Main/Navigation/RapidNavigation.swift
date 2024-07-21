@@ -14,5 +14,6 @@ public struct RapidNavigation: Hashable {
 extension RapidNavigation {
     public enum Name {
         case rapidSearchTypeList
+        case rapidSearchByBodyPart
     }
 }

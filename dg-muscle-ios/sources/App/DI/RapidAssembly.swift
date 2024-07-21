@@ -16,5 +16,10 @@ public struct RapidAssembly: Assembly {
         container.register(RapidSearchTypeListView.self) { resolver in
             return RapidSearchTypeListView()
         }
+        
+        container.register(RapidSearchByBodyPartView.self) { resolver in
+            let rapidRepository = resolver.resolve(RapidRepository.self)!
+            return RapidSearchByBodyPartView(rapidRepository: rapidRepository)
+        }
     }
 }

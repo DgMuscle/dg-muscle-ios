@@ -101,6 +101,8 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             coordinator?.history.manageTrainigMode()
         case "rapidsearchtype":
             coordinator?.rapid.rapidSearchTypeList()
+        case "rapid_search_by_part":
+            coordinator?.rapid.rapidSearchByBodyPart()
         default: break
         }
     }

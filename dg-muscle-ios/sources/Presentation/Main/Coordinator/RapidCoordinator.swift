@@ -18,4 +18,8 @@ public final class RapidCoordinator {
     public func rapidSearchTypeList() {
         path.append(RapidNavigation(name: .rapidSearchTypeList))
     }
+    
+    public func rapidSearchByBodyPart() {
+        path.append(RapidNavigation(name: .rapidSearchByBodyPart))
+    }
 }

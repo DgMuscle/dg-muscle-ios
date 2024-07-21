@@ -44,7 +44,8 @@ public struct MainAssembly: Assembly {
                 friendHistoryFactory: { friendId, today in resolver.resolve(FriendHistoryView.self, arguments: friendId, today)! },
                 historyDetailFactory: { friendId, historyId in resolver.resolve(HistoryDetailView.self, arguments: friendId, historyId)! }, 
                 manageTrainingModeFactory: { resolver.resolve(ManageTrainingModeView.self)! }, 
-                rapidSearchTypeListFactory: { resolver.resolve(RapidSearchTypeListView.self)! }
+                rapidSearchTypeListFactory: { resolver.resolve(RapidSearchTypeListView.self)! },
+                rapidSearchByBodyPartFactory: { resolver.resolve(RapidSearchByBodyPartView.self)! }
             )
         }
         
