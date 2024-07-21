@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-struct RapidExerciseThumbnailPresentation {
+struct RapidExerciseThumbnailPresentation: Hashable {
     public let id: String
     public let name: String
     public let bodyPart: RapidBodyPartPresentation

@@ -20,7 +20,7 @@ public struct RapidSearchByBodyPartView: View {
     }
     
     public var body: some View {
-        VStack {
+        ScrollView {
             HFlow {
                 ForEach(viewModel.bodyParts, id: \.self) { data in
                     bodyPart(data: data)
@@ -30,8 +30,23 @@ public struct RapidSearchByBodyPartView: View {
                 }
             }
             
-            Spacer()
+            VStack {
+                ForEach(viewModel.datas, id: \.self) { data in
+                    Button {
+                        print("tap \(data.id)")
+                    } label: {
+                        VStack {
+                            ExerciseThumbnailView(data: data)
+                            Divider()
+                        }
+                        .foregroundStyle(Color(uiColor: .label))
+                    }
+                }
+            }
+            .padding()
+            
         }
+        .scrollIndicators(.hidden)
     }
     
     func bodyPart(data: BodyPart) -> some View {

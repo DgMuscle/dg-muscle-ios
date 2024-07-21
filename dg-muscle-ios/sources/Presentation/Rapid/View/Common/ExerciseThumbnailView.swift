@@ -16,18 +16,16 @@ struct ExerciseThumbnailView: View {
     let data: Thumbnail
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text(data.name)
-                Spacer()
-            }
-            
+        HStack {
             Text(data.bodyPart.rawValue)
                 .padding(.vertical, 4)
                 .padding(.horizontal, 8)
                 .background(
                     Capsule().fill(data.bodyPart.color)
                 )
+            Text(data.name)
+                .multilineTextAlignment(.leading)
+            Spacer()
         }
     }
 }
