@@ -24,6 +24,8 @@ public final class RapidRepositoryImpl: RapidRepository {
         Task {
             let apiKey = try await fetchApiKey()
             self.apiKey = apiKey
+            
+            _exercises = try await fetch1000Exercises()
         }
     }
     
@@ -38,6 +40,19 @@ public final class RapidRepositoryImpl: RapidRepository {
         
         let response: Response = try await APIClient.shared.request(url: FunctionsURL.rapid(.getapikey))
         return response.apiKey
+    }
+    
+    private func fetch1000Exercises() async throws -> [Domain.RapidExerciseDomain] {
+        let exercises: [RapidExerciseData] = try await APIClient.shared.request(
+            method: .get,
+            url: "https://exercisedb.p.rapidapi.com/exercises?limit=1000",
+            body: nil,
+            additionalHeaders: [
+                "x-rapidapi-key": apiKey
+            ]
+        )
+        
+        return exercises.compactMap({ $0.domain })
     }
     
 }
