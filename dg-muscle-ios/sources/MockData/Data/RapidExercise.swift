@@ -9,7 +9,6 @@ import Foundation
 import Domain
 
 public var RAPID_EXERCISES: [Domain.RapidExerciseDomain] {
-    
     guard let filePath = Bundle(for: ForBundle.self).url(forResource: "rapid_exercises_response", withExtension: "json") else { return [] }
     guard let data = try? Data(contentsOf: filePath) else { return [] }
     let decoder = JSONDecoder()

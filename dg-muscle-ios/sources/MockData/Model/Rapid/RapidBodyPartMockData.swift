@@ -8,30 +8,17 @@
 import Foundation
 import Domain
 
-enum RapidBodyPartMockData: Codable {
+enum RapidBodyPartMockData: String, Codable {
     case back
     case cardio
     case chest
-    case lowerArms
-    case lowerLegs
+    case lowerArms = "lower arms"
+    case lowerLegs = "lower legs"
     case neck
     case shoulders
-    case upperArms
-    case upperLegs
+    case upperArms = "upper arms"
+    case upperLegs = "upper legs"
     case waist
-    
-    enum CodingKeys: String, CodingKey {
-        case back
-        case cardio
-        case chest
-        case lowerArms = "lower arms"
-        case lowerLegs = "lower legs"
-        case neck
-        case shoulders
-        case upperArms = "upper arms"
-        case upperLegs = "upper legs"
-        case waist
-    }
     
     init(domain: Domain.RapidBodyPartDomain) {
         switch domain {
