@@ -16,6 +16,7 @@ public final class SearchRapidExercisesByNameUsecase {
     
     public func implement(name: String) -> [RapidExerciseDomain] {
         var result: [RapidExerciseDomain] = []
+        guard name.isEmpty == false else { return result }
         
         let allExercises = rapidRepository.get()
         
