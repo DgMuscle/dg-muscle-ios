@@ -18,11 +18,26 @@ public final class RapidRepositoryImpl: RapidRepository {
     
     @Published private var _exercises: [Domain.RapidExerciseDomain] = []
     
+    private var apiKey: String = ""
+    
+    private init() {
+        Task {
+            let apiKey = try await fetchApiKey()
+            self.apiKey = apiKey
+        }
+    }
+    
     public func get() -> [Domain.RapidExerciseDomain] {
         _exercises
     }
     
-    private init() { }
-    
+    private func fetchApiKey() async throws -> String {
+        struct Response: Codable {
+            let apiKey: String
+        }
+        
+        let response: Response = try await APIClient.shared.request(url: FunctionsURL.rapid(.getapikey))
+        return response.apiKey
+    }
     
 }
