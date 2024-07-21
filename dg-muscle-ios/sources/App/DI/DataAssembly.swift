@@ -36,6 +36,10 @@ public struct DataAssembly: Assembly {
             return LogRepositoryImpl.shared
         }
         
+        container.register(RapidRepository.self) { _ in
+            return RapidRepositoryImpl.shared
+        }
+        
         container.register(AppleAuthCoordinator.self) { (resolver, window: UIWindow?) in
             
             let logRepository = resolver.resolve(LogRepository.self)!
