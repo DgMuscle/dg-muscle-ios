@@ -23,4 +23,6 @@ public final class RapidRepositoryImpl: RapidRepository {
     }
     
     private init() { }
+    
+    
 }
