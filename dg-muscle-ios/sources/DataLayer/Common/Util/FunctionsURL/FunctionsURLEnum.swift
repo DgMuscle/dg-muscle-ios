@@ -72,3 +72,13 @@ extension FunctionsURL {
         }
     }
 }
+
+extension FunctionsURL {
+    enum RapidAPI: String {
+        case getapikey
+        
+        var value: String {
+            return "rapidapi-\(self.rawValue)"
+        }
+    }
+}
