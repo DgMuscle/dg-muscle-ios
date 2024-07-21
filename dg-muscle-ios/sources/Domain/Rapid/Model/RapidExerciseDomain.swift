@@ -17,7 +17,7 @@ public struct RapidExerciseDomain {
     public let secondaryMuscles: [String]
     public let instructions: [String]
     
-    init(
+    public init(
         bodyPart: RapidBodyPartDomain,
         equipment: String,
         gifUrl: String,
