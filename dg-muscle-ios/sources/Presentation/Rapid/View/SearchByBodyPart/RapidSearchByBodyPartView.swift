@@ -15,8 +15,10 @@ public struct RapidSearchByBodyPartView: View {
     
     @StateObject var viewModel: RapidSearchByBodyPartViewModel
     
-    public init(rapidRepository: RapidRepository) {
-        _viewModel = .init(wrappedValue: .init(rapidRepository: rapidRepository))
+    public init(rapidRepository: RapidRepository,
+                userRepository: UserRepository) {
+        _viewModel = .init(wrappedValue: .init(rapidRepository: rapidRepository,
+                                               userRepository: userRepository))
     }
     
     public var body: some View {
@@ -57,7 +59,7 @@ public struct RapidSearchByBodyPartView: View {
                 Capsule()
                     .fill(
                         data.selected ?
-                            .blue :
+                        viewModel.color :
                             Color(uiColor: .secondarySystemGroupedBackground)
                     )
             )
@@ -65,6 +67,9 @@ public struct RapidSearchByBodyPartView: View {
 }
 
 #Preview {
-    RapidSearchByBodyPartView(rapidRepository: RapidRepositoryMock())
-        .preferredColorScheme(.dark)
+    RapidSearchByBodyPartView(
+        rapidRepository: RapidRepositoryMock(),
+        userRepository: UserRepositoryMock()
+    )
+    .preferredColorScheme(.dark)
 }

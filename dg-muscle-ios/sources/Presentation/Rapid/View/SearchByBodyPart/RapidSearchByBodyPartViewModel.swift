@@ -8,17 +8,28 @@
 import Foundation
 import Combine
 import Domain
+import Common
+import SwiftUI
 
 final class RapidSearchByBodyPartViewModel: ObservableObject {
     typealias Thumbnail = RapidExerciseThumbnailPresentation
     
     @Published var datas: [Thumbnail] = []
     @Published var bodyParts: [BodyPart] = RapidBodyPartPresentation.allCases.map({ .init(bodyPart: $0) })
+    let color: Color
     
     private let searchRapidExercisesByBodyPartsUsecase: SearchRapidExercisesByBodyPartsUsecase
+    private let getHeatMapColorUsecase: GetHeatMapColorUsecase
     
-    init(rapidRepository: RapidRepository) {
+    init(
+        rapidRepository: RapidRepository,
+        userRepository: UserRepository
+    ) {
         searchRapidExercisesByBodyPartsUsecase = .init(rapidRepository: rapidRepository)
+        getHeatMapColorUsecase = .init(userRepository: userRepository)
+        
+        let commonColor: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
+        color = commonColor.color
         
         bind()
     }

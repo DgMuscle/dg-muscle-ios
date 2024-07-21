@@ -19,7 +19,11 @@ public struct RapidAssembly: Assembly {
         
         container.register(RapidSearchByBodyPartView.self) { resolver in
             let rapidRepository = resolver.resolve(RapidRepository.self)!
-            return RapidSearchByBodyPartView(rapidRepository: rapidRepository)
+            let userRepository = resolver.resolve(UserRepository.self)!
+            return RapidSearchByBodyPartView(
+                rapidRepository: rapidRepository,
+                userRepository: userRepository
+            )
         }
     }
 }
