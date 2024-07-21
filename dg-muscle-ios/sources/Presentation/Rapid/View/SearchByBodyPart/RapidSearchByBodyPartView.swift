@@ -8,6 +8,8 @@
 import SwiftUI
 import Domain
 import MockData
+import Common
+import Flow
 
 public struct RapidSearchByBodyPartView: View {
     
@@ -19,17 +21,31 @@ public struct RapidSearchByBodyPartView: View {
     
     public var body: some View {
         VStack {
-            HStack {
+            HFlow {
                 ForEach(viewModel.bodyParts, id: \.self) { data in
                     bodyPart(data: data)
+                        .onTapGesture {
+                            viewModel.tapPart(part: data)
+                        }
                 }
             }
             
+            Spacer()
         }
     }
     
     func bodyPart(data: BodyPart) -> some View {
         Text(data.name)
+            .padding(.vertical, 4)
+            .padding(.horizontal, 12)
+            .background(
+                Capsule()
+                    .fill(
+                        data.selected ?
+                            .blue :
+                            Color(uiColor: .secondarySystemGroupedBackground)
+                    )
+            )
     }
 }
 
