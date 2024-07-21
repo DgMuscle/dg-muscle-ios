@@ -13,7 +13,7 @@ final class RapidSearchByBodyPartViewModel: ObservableObject {
     typealias Thumbnail = RapidExerciseThumbnailPresentation
     
     @Published var datas: [Thumbnail] = []
-    @Published var selectedBodyParts: [BodyPart] = RapidBodyPartPresentation.allCases.map({ .init(bodyPart: $0) })
+    @Published var bodyParts: [BodyPart] = RapidBodyPartPresentation.allCases.map({ .init(bodyPart: $0) })
     
     private let searchRapidExercisesByBodyPartsUsecase: SearchRapidExercisesByBodyPartsUsecase
     
@@ -24,13 +24,13 @@ final class RapidSearchByBodyPartViewModel: ObservableObject {
     }
     
     func tapPart(part: BodyPart) {
-        if let index = selectedBodyParts.firstIndex(of: part) {
-            selectedBodyParts[index].toggle()
+        if let index = bodyParts.firstIndex(of: part) {
+            bodyParts[index].toggle()
         }
     }
     
     private func bind() {
-        $selectedBodyParts
+        $bodyParts
             .compactMap({ [weak self] parts in self?.configureDatas(parts: parts) })
             .receive(on: DispatchQueue.main)
             .assign(to: &$datas)

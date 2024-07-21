@@ -18,7 +18,18 @@ public struct RapidSearchByBodyPartView: View {
     }
     
     public var body: some View {
-        Text("RapidSearchByBodyPartView")
+        VStack {
+            HStack {
+                ForEach(viewModel.bodyParts, id: \.self) { data in
+                    bodyPart(data: data)
+                }
+            }
+            
+        }
+    }
+    
+    func bodyPart(data: BodyPart) -> some View {
+        Text(data.name)
     }
 }
 
