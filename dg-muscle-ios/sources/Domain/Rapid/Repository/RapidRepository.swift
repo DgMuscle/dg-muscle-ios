@@ -10,4 +10,5 @@ import Combine
 
 public protocol RapidRepository {
     var exercises: AnyPublisher<[RapidExerciseDomain], Never> { get }
+    func get() -> [RapidExerciseDomain]
 }
