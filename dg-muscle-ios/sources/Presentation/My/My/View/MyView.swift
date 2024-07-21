@@ -52,6 +52,13 @@ public struct MyView: View {
                     }
                     .buttonStyle(.borderless)
                     
+                    Button {
+                        URLManager.shared.open(url: "dgmuscle://rapidsearchtype")
+                    } label: {
+                        ListItemView(systemName: "doc", text: "Exercise DB", color: .blue)
+                    }
+                    .buttonStyle(.borderless)
+                    
                     if viewModel.user?.developer == true {
                         Button {
                             URLManager.shared.open(url: "dgmuscle://logs")
