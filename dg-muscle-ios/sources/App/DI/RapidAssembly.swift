@@ -25,5 +25,9 @@ public struct RapidAssembly: Assembly {
                 userRepository: userRepository
             )
         }
+        
+        container.register(RapidSearchByNameView.self) { resolver in
+            return RapidSearchByNameView()
+        }
     }
 }

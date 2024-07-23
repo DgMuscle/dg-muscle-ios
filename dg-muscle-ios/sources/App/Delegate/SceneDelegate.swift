@@ -103,6 +103,8 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             coordinator?.rapid.rapidSearchTypeList()
         case "rapid_search_by_part":
             coordinator?.rapid.rapidSearchByBodyPart()
+        case "rapid_search_by_name":
+            coordinator?.rapid.rapidSearchByName()
         default: break
         }
     }

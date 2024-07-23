@@ -38,6 +38,7 @@ public struct NavigationView: View {
     let manageTrainingModeFactory: () -> ManageTrainingModeView
     let rapidSearchTypeListFactory: () -> RapidSearchTypeListView
     let rapidSearchByBodyPartFactory: () -> RapidSearchByBodyPartView
+    let rapidSearchByNameFactory: () -> RapidSearchByNameView
     
     public init(
         today: Date,
@@ -61,7 +62,8 @@ public struct NavigationView: View {
         historyDetailFactory: @escaping (String, String) -> HistoryDetailView,
         manageTrainingModeFactory: @escaping () -> ManageTrainingModeView,
         rapidSearchTypeListFactory: @escaping () -> RapidSearchTypeListView,
-        rapidSearchByBodyPartFactory: @escaping () -> RapidSearchByBodyPartView
+        rapidSearchByBodyPartFactory: @escaping () -> RapidSearchByBodyPartView,
+        rapidSearchByNameFactory: @escaping () -> RapidSearchByNameView
     ) {
         self.today = today
         self.historyRepository = historyRepository
@@ -85,6 +87,7 @@ public struct NavigationView: View {
         self.manageTrainingModeFactory = manageTrainingModeFactory
         self.rapidSearchTypeListFactory = rapidSearchTypeListFactory
         self.rapidSearchByBodyPartFactory = rapidSearchByBodyPartFactory
+        self.rapidSearchByNameFactory = rapidSearchByNameFactory
     }
     
     public var body: some View {
@@ -146,6 +149,8 @@ public struct NavigationView: View {
                     rapidSearchTypeListFactory()
                 case .rapidSearchByBodyPart:
                     rapidSearchByBodyPartFactory()
+                case .rapidSearchByName:
+                    rapidSearchByNameFactory()
                 }
         
             }

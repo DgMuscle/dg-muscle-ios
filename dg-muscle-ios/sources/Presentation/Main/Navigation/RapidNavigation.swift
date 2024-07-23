@@ -15,5 +15,6 @@ extension RapidNavigation {
     public enum Name {
         case rapidSearchTypeList
         case rapidSearchByBodyPart
+        case rapidSearchByName
     }
 }
