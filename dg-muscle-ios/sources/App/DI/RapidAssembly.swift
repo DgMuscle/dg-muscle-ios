@@ -27,7 +27,8 @@ public struct RapidAssembly: Assembly {
         }
         
         container.register(RapidSearchByNameView.self) { resolver in
-            return RapidSearchByNameView()
+            let rapidRepository = resolver.resolve(RapidRepository.self)!
+            return RapidSearchByNameView(rapidRepository: rapidRepository)
         }
     }
 }
