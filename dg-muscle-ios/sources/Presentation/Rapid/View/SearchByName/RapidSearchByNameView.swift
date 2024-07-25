@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Domain
+import MockData
 
 public struct RapidSearchByNameView: View {
     
@@ -19,4 +20,9 @@ public struct RapidSearchByNameView: View {
     public var body: some View {
         Text("rapid search by name")
     }
+}
+
+#Preview {
+    return RapidSearchByNameView(rapidRepository: RapidRepositoryMock())
+        .preferredColorScheme(.dark)
 }
