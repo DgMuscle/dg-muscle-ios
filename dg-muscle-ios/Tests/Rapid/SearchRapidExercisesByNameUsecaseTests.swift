@@ -18,4 +18,12 @@ final class SearchRapidExercisesByNameUsecaseTests: XCTestCase {
         let allNames = exercises.map { $0.name }
         XCTAssertTrue(allNames.contains("band one arm single leg split squat"))
     }
+    
+    func testCapitalCase() {
+        let usecase = SearchRapidExercisesByNameUsecase(rapidRepository: RapidRepositoryMock())
+        let exercises = usecase.implement(name: "Squat")
+        
+        let allNames = exercises.map { $0.name }
+        XCTAssertTrue(allNames.contains("band one arm single leg split squat"))
+    }
 }

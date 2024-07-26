@@ -19,7 +19,25 @@ public struct RapidSearchByNameView: View {
     
     public var body: some View {
         ScrollView {
+            if viewModel.loading {
+                ProgressView()
+                    .padding(.top)
+            }
             
+            VStack {
+                ForEach(viewModel.datas, id: \.self) { data in
+                    Button {
+                        print("tap \(data.id)")
+                    } label: {
+                        VStack {
+                            ExerciseThumbnailView(data: data)
+                            Divider()
+                        }
+                        .foregroundStyle(Color(uiColor: .label))
+                    }
+                }
+            }
+            .padding()
         }
         .scrollIndicators(.hidden)
         .searchable(text: $viewModel.query)
