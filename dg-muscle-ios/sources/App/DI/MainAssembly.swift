@@ -46,7 +46,9 @@ public struct MainAssembly: Assembly {
                 manageTrainingModeFactory: { resolver.resolve(ManageTrainingModeView.self)! }, 
                 rapidSearchTypeListFactory: { resolver.resolve(RapidSearchTypeListView.self)! },
                 rapidSearchByBodyPartFactory: { resolver.resolve(RapidSearchByBodyPartView.self)! }, 
-                rapidSearchByNameFactory: { resolver.resolve(RapidSearchByNameView.self)! }
+                rapidSearchByNameFactory: { resolver.resolve(RapidSearchByNameView.self)! },
+                rapidExerciseDetailFactory: { exercise in resolver.resolve(RapidExerciseDetailView.self, argument: exercise)! },
+                coordinatorFactory: { path in resolver.resolve(Coordinator.self, argument: path)! }
             )
         }
         

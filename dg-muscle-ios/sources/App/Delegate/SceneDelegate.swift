@@ -105,6 +105,9 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             coordinator?.rapid.rapidSearchByBodyPart()
         case "rapid_search_by_name":
             coordinator?.rapid.rapidSearchByName()
+        case "rapid_detail":
+            guard let id = URLManager.shared.getParameter(url: url, name: "id") else { return }
+            coordinator?.rapid.rapidDetail(id: id)
         default: break
         }
     }

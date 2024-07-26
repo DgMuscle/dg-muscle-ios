@@ -39,6 +39,8 @@ public struct NavigationView: View {
     let rapidSearchTypeListFactory: () -> RapidSearchTypeListView
     let rapidSearchByBodyPartFactory: () -> RapidSearchByBodyPartView
     let rapidSearchByNameFactory: () -> RapidSearchByNameView
+    let rapidExerciseDetailFactory: (Domain.RapidExerciseDomain) -> RapidExerciseDetailView
+    let coordinatorFactory: (Binding<NavigationPath>) -> Coordinator
     
     public init(
         today: Date,
@@ -63,7 +65,9 @@ public struct NavigationView: View {
         manageTrainingModeFactory: @escaping () -> ManageTrainingModeView,
         rapidSearchTypeListFactory: @escaping () -> RapidSearchTypeListView,
         rapidSearchByBodyPartFactory: @escaping () -> RapidSearchByBodyPartView,
-        rapidSearchByNameFactory: @escaping () -> RapidSearchByNameView
+        rapidSearchByNameFactory: @escaping () -> RapidSearchByNameView,
+        rapidExerciseDetailFactory: @escaping (Domain.RapidExerciseDomain) -> RapidExerciseDetailView,
+        coordinatorFactory: @escaping (Binding<NavigationPath>) -> Coordinator
     ) {
         self.today = today
         self.historyRepository = historyRepository
@@ -88,6 +92,8 @@ public struct NavigationView: View {
         self.rapidSearchTypeListFactory = rapidSearchTypeListFactory
         self.rapidSearchByBodyPartFactory = rapidSearchByBodyPartFactory
         self.rapidSearchByNameFactory = rapidSearchByNameFactory
+        self.rapidExerciseDetailFactory = rapidExerciseDetailFactory
+        self.coordinatorFactory = coordinatorFactory
     }
     
     public var body: some View {
@@ -151,15 +157,13 @@ public struct NavigationView: View {
                     rapidSearchByBodyPartFactory()
                 case .rapidSearchByName:
                     rapidSearchByNameFactory()
+                case .detail(let exercise):
+                    rapidExerciseDetailFactory(exercise)
                 }
-        
             }
         }
         .onAppear {
-            coordinator = .init(
-                path: $path,
-                historyRepository: historyRepository
-            )
+            coordinator = coordinatorFactory($path)
         }
     }
 }

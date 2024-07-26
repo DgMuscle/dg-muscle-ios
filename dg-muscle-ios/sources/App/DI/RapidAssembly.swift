@@ -30,5 +30,9 @@ public struct RapidAssembly: Assembly {
             let rapidRepository = resolver.resolve(RapidRepository.self)!
             return RapidSearchByNameView(rapidRepository: rapidRepository)
         }
+        
+        container.register(RapidExerciseDetailView.self) { (resolver, exercise: RapidExerciseDomain) in
+            return RapidExerciseDetailView(exercise: exercise)
+        }
     }
 }

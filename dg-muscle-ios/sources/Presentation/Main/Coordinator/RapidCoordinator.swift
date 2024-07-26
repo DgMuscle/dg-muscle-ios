@@ -7,12 +7,19 @@
 
 import SwiftUI
 import Rapid
+import Domain
 
 public final class RapidCoordinator {
     @Binding var path: NavigationPath
     
-    init(path: Binding<NavigationPath>) {
+    private let rapidRepository: RapidRepository
+    
+    init(
+        path: Binding<NavigationPath>,
+        rapidRepository: RapidRepository
+    ) {
         _path = path
+        self.rapidRepository = rapidRepository
     }
     
     public func rapidSearchTypeList() {
@@ -25,5 +32,12 @@ public final class RapidCoordinator {
     
     public func rapidSearchByName() {
         path.append(RapidNavigation(name: .rapidSearchByName))
+    }
+    
+    public func rapidDetail(id: String) {
+        let usecase = SearchRapidExerciseByIdUsecase(rapidRepository: rapidRepository)
+        if let exercise = usecase.implement(id: id) {
+            path.append(RapidNavigation(name: .detail(exercise)))
+        }
     }
 }

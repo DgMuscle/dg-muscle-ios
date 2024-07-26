@@ -8,6 +8,7 @@
 import SwiftUI
 import Domain
 import MockData
+import Common
 
 public struct RapidSearchByNameView: View {
     
@@ -23,11 +24,10 @@ public struct RapidSearchByNameView: View {
                 ProgressView()
                     .padding(.top)
             }
-            
             VStack {
                 ForEach(viewModel.datas, id: \.self) { data in
                     Button {
-                        print("tap \(data.id)")
+                        URLManager.shared.open(url: "dgmuscle://rapid_detail?id=\(data.id)")
                     } label: {
                         VStack {
                             ExerciseThumbnailView(data: data)
