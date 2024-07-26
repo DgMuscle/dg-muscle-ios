@@ -18,11 +18,17 @@ public struct RapidSearchByNameView: View {
     }
     
     public var body: some View {
-        Text("rapid search by name")
+        ScrollView {
+            
+        }
+        .scrollIndicators(.hidden)
+        .searchable(text: $viewModel.query)
     }
 }
 
 #Preview {
-    return RapidSearchByNameView(rapidRepository: RapidRepositoryMock())
-        .preferredColorScheme(.dark)
+    return NavigationStack {
+        RapidSearchByNameView(rapidRepository: RapidRepositoryMock())
+    }
+    .preferredColorScheme(.dark)
 }
