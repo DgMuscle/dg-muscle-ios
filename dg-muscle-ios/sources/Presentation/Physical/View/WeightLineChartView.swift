@@ -26,6 +26,7 @@ struct WeightLineChartView: View {
             }
         }
         .chartScrollableAxes(.horizontal)
+        .chartScrollPosition(initialX: Int.max)
         .frame(height: 300)
         .chartYScale(domain: 50...80) // 범위 구하는 UseCase 추가 필요
     }
