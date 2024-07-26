@@ -40,7 +40,7 @@ public struct RapidSearchByNameView: View {
             .padding()
         }
         .scrollIndicators(.hidden)
-        .searchable(text: $viewModel.query)
+        .searchable(text: $viewModel.query, placement: .navigationBarDrawer(displayMode: .always))
     }
 }
 
