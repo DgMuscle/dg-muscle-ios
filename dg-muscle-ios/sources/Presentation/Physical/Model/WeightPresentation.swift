@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Charts
 
-struct WeightPresentation {
+struct WeightPresentation: Hashable {
     let date: Date
     let value: Double
     let unit: Unit

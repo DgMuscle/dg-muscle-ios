@@ -6,13 +6,28 @@
 //
 
 import SwiftUI
+import Charts
 
 struct WeightLineChartView: View {
     
     let data: [WeightPresentation]
     
+    private let dotSize: CGFloat = 6
+    private let cellSize: CGFloat = 30
+    
     var body: some View {
-        Text("WeightLineChartView")
+        Chart(data, id: \.self) { data in
+            LineMark(x: .value("date", data.date, unit: .day),
+                     y: .value("weight", data.value))
+            .interpolationMethod(.catmullRom)
+            .symbol {
+                Circle()
+                    .frame(width: dotSize, height: dotSize)
+            }
+        }
+        .chartScrollableAxes(.horizontal)
+        .frame(height: 300)
+        .chartYScale(domain: 50...80) // 범위 구하는 UseCase 추가 필요
     }
 }
 
@@ -63,7 +78,7 @@ struct WeightLineChartView: View {
     
     let data: [WeightPresentation] = dateStrings.map({
         .init(date: generateSampleDate(dateString: $0), 
-              value: 70,
+              value: Double.random(in: 60...75),
               unit: .kg)
     })
     
