@@ -15,6 +15,7 @@ import SwiftUI
 import My
 import Friend
 import Auth
+import Rapid
 
 public struct MainAssembly: Assembly {
     public func assemble(container: Swinject.Container) {
@@ -42,7 +43,12 @@ public struct MainAssembly: Assembly {
                 friendMainFactory: { anchor in resolver.resolve(FriendMainView.self, argument: anchor)! },
                 friendHistoryFactory: { friendId, today in resolver.resolve(FriendHistoryView.self, arguments: friendId, today)! },
                 historyDetailFactory: { friendId, historyId in resolver.resolve(HistoryDetailView.self, arguments: friendId, historyId)! }, 
-                manageTrainingModeFactory: { resolver.resolve(ManageTrainingModeView.self)! }
+                manageTrainingModeFactory: { resolver.resolve(ManageTrainingModeView.self)! }, 
+                rapidSearchTypeListFactory: { resolver.resolve(RapidSearchTypeListView.self)! },
+                rapidSearchByBodyPartFactory: { resolver.resolve(RapidSearchByBodyPartView.self)! }, 
+                rapidSearchByNameFactory: { resolver.resolve(RapidSearchByNameView.self)! },
+                rapidExerciseDetailFactory: { exercise in resolver.resolve(RapidExerciseDetailView.self, argument: exercise)! },
+                coordinatorFactory: { path in resolver.resolve(Coordinator.self, argument: path)! }
             )
         }
         

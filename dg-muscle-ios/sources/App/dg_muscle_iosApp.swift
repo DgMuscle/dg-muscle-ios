@@ -37,11 +37,13 @@ struct dg_muscle_iosApp: App {
         injector = DependencyInjector(container: Container())
         injector.assemble([
             DataAssembly(),
+            CoordinatorAssembly(),
             ExerciseAssembly(),
             FriendAssembly(),
             HistoryAssembly(),
             HomeAssembly(),
             MyAssembly(),
+            RapidAssembly(),
             MainAssembly()
         ])
     }

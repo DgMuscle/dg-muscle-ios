@@ -18,14 +18,29 @@ public final class RapidRepositoryImpl: RapidRepository {
     
     @Published private var _exercises: [Domain.RapidExerciseDomain] = []
     
+    public var exercisesLoading: AnyPublisher<Bool, Never> {
+        $_exercisesLoading.eraseToAnyPublisher()
+    }
+    
+    @Published var _exercisesLoading: Bool = true
+    
     private var apiKey: String = ""
     
     private init() {
         Task {
-            let apiKey = try await fetchApiKey()
-            self.apiKey = apiKey
-            
-            _exercises = try await fetch1000Exercises()
+            do {
+                let apiKey = try await fetchApiKey()
+                self.apiKey = apiKey
+                
+                _exercises = try await fetch1000Exercises()
+            } catch {
+                PostLogUsecase(
+                    logRepository: LogRepositoryImpl.shared,
+                    userRepository: UserRepositoryImpl.shared
+                )
+                .implement(message: error.localizedDescription, category: .error)
+            }
+            _exercisesLoading = false
         }
     }
     

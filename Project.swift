@@ -20,6 +20,8 @@ enum Presentation: String, CaseIterable {
     case History
     case My
     case Friend
+    case Rapid
+    case Physical
 }
 
 func createApp() -> Target {
@@ -200,7 +202,7 @@ func createPresentations() -> [Target] {
 
     return Presentation.allCases.map({
         switch $0 {
-        case .Auth, .HistoryHeatMap, .Exercise, .My:
+        case .Auth, .HistoryHeatMap, .Exercise, .My, .Rapid, .Physical:
             return createPresentation($0, dependencies: [])
         case .History, .Friend:
             return createPresentation($0, dependencies: [
@@ -218,7 +220,8 @@ func createPresentations() -> [Target] {
                     .target(name: Layer.MockData.rawValue, condition: nil),
                     .target(name: Layer.Domain.rawValue, condition: nil),
                     .package(product: "Kingfisher", type: .runtime, condition: nil),
-                    .package(product: "SnapKit", type: .runtime, condition: nil)
+                    .package(product: "SnapKit", type: .runtime, condition: nil),
+                    .package(product: "Flow", type: .runtime, condition: nil)
                 ]
             )
         }
@@ -241,7 +244,8 @@ let project = Project(
         .remote(url: "https://github.com/firebase/firebase-ios-sdk", requirement: .upToNextMajor(from: "10.15.0")),
         .remote(url: "https://github.com/onevcat/Kingfisher", requirement: .upToNextMajor(from: "7.11.0")),
         .remote(url: "https://github.com/SnapKit/SnapKit", requirement: .upToNextMajor(from: "5.7.1")),
-        .remote(url: "https://github.com/Swinject/Swinject", requirement: .upToNextMajor(from: "2.9.1"))
+        .remote(url: "https://github.com/Swinject/Swinject", requirement: .upToNextMajor(from: "2.9.1")),
+        .remote(url: "https://github.com/tevelee/SwiftUI-Flow", requirement: .upToNextMajor(from: "2.2.0"))
     ],
     settings: .settings(configurations: [
         .debug(name: "debug", xcconfig: "\(projectName)/configs/project.xcconfig"),

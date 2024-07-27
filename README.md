@@ -24,7 +24,7 @@ swift-package-list dg-muscle-ios.xcworkspace --output-type settings-bundle --req
 - xcodes: 15.4
 - ruby: 3.3.2(managed by rbenv)
 - bundler: 2.5.9
-- mise: 2024.5.9 macos-arm64 (b9089f8 2024-05-12)
+- mise: 2024.7.4
 - tuist: 4.21.1
 
 ## Tech
@@ -85,7 +85,7 @@ swift-package-list dg-muscle-ios.xcworkspace --output-type settings-bundle --req
 
 ### Module Graph
 
-<img width=750 src="https://github.com/DgMuscle/dg-muscle-ios/assets/34573243/6c0d69cc-9192-4faf-b73f-b5e926336fe9" />
+<img width=750 src="https://github.com/user-attachments/assets/4d943783-6b76-4f02-8b79-a9410bd31675" />
 
 ### Concern
 
