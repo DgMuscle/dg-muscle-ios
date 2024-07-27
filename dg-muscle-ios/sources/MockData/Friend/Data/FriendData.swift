@@ -1,8 +1,8 @@
 //
-//  Friend.swift
+//  FriendData.swift
 //  MockData
 //
-//  Created by 신동규 on 5/26/24.
+//  Created by 신동규 on 7/27/24.
 //
 
 import Foundation
@@ -16,3 +16,4 @@ func generateDate(date: String) -> Date {
     dateFormatter.dateFormat = "yyyyMMdd"
     return dateFormatter.date(from: date) ?? Date()
 }
+
