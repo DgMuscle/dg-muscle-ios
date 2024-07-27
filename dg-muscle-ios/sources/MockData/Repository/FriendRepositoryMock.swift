@@ -21,9 +21,7 @@ public final class FriendRepositoryMock: FriendRepository {
     ]
     
     public var users: AnyPublisher<[Domain.User], Never> { $_users.eraseToAnyPublisher() }
-    @Published var _users: [Domain.User] = [
-        USER_DG, USER_1, USER_2, USER_3, USER_4
-    ]
+    @Published var _users: [Domain.User] = USERS
     
     public init() { }
     

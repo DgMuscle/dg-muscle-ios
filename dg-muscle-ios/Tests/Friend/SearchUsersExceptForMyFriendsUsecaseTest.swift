@@ -22,8 +22,8 @@ final class SearchUsersExceptForMyFriendsUsecaseTest: XCTestCase {
     }
 
     func testWithQuery() {
-        let users = usecase.implement(query: "JI")
-        XCTAssertEqual(users.first!.displayName?.lowercased(), "jin")
+        let users = usecase.implement(query: "CO")
+        XCTAssertEqual(users.first!.displayName?.lowercased(), "conan")
     }
     
     func testWithoutQuery() throws {

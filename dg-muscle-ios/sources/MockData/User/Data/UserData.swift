@@ -20,4 +20,8 @@ public var USERS: [Domain.User] {
     return users
 }
 
+public var USER_DG: Domain.User {
+    USERS.first(where: { $0.uid == "taEJh30OpGVsR3FEFN2s67A8FvF3" })!
+}
+
 private class ForBundle { }

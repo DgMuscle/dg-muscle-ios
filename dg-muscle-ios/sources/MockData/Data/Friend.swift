@@ -8,11 +8,11 @@
 import Foundation
 import Domain
 
-public let FRIEND_1 = USER_4
+public let FRIEND_1 = USERS[0]
 
 
-public let FRIEND_REQUEST_1: Domain.FriendRequest = .init(fromId: USER_3.uid, createdAt: generateDate(date: "20240526"))
-public let FRIEND_REQUEST_2: Domain.FriendRequest = .init(fromId: USER_2.uid, createdAt: generateDate(date: "20240426"))
+public let FRIEND_REQUEST_1: Domain.FriendRequest = .init(fromId: USERS[1].uid, createdAt: generateDate(date: "20240526"))
+public let FRIEND_REQUEST_2: Domain.FriendRequest = .init(fromId: USERS[2].uid, createdAt: generateDate(date: "20240426"))
 
 func generateDate(date: String) -> Date {
     let dateFormatter = DateFormatter()

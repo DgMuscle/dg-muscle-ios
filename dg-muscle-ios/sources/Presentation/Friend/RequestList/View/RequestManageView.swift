@@ -51,7 +51,7 @@ struct RequestManageView: View {
 
 #Preview {
     RequestManageView(
-        request: .init(user: .init(domain: USER_4), createdAt: Date()),
+        request: .init(user: .init(domain: USERS[4]), createdAt: Date()),
         accept: nil,
         refuse: nil,
         color: .purple

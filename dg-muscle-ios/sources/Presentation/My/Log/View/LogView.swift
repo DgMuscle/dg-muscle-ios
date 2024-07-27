@@ -71,7 +71,7 @@ struct LogView: View {
     
     var log: DGLog = .init(domain: LOG_1)
     log.expanded = true
-    log.user = .init(displayName: USER_DG.displayName ?? "DG", photoURL: USER_DG.photoURL)
+    log.user = .init(displayName: USERS[0].displayName ?? "DG", photoURL: USERS[0].photoURL)
     
     return LogView(log: log, resolve: nil)
         .preferredColorScheme(.dark)
