@@ -28,9 +28,8 @@ public final class FriendRepositoryImpl: FriendRepository {
     private init() {
         Task {
             _users = try await getUsersFromServer()
+            bind()
         }
-        
-        bind()
     }
     
     public func getUser(uid: String) -> Domain.User? {
