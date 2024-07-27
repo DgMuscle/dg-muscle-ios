@@ -8,8 +8,6 @@
 import Foundation
 import Domain
 
-
-
 public var HISTORIES: [Domain.History] {
     
     if let filePath = Bundle(for: ForBundle.self).url(forResource: "histories", withExtension: "json") {

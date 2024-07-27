@@ -69,7 +69,7 @@ struct LogView: View {
 
 #Preview {
     
-    var log: DGLog = .init(domain: LOG_1)
+    var log: DGLog = .init(domain: LOGS[0])
     log.expanded = true
     log.user = .init(displayName: USERS[0].displayName ?? "DG", photoURL: USERS[0].photoURL)
     

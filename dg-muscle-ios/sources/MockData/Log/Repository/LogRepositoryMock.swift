@@ -10,10 +10,7 @@ import Domain
 
 public final class LogRepositoryMock: LogRepository {
     public var logs: AnyPublisher<[Domain.DGLog], Never> { $_logs.eraseToAnyPublisher() }
-    @Published var _logs: [Domain.DGLog] = [
-        LOG_1,
-        LOG_2
-    ]
+    @Published var _logs: [Domain.DGLog] = LOGS
     
     public init() { }
     
