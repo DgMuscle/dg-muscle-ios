@@ -12,7 +12,10 @@ import Combine
 public final class FriendRepositoryMock: FriendRepository {
     public var friends: AnyPublisher<[Domain.User], Never> { $_friends.eraseToAnyPublisher() }
     @Published var _friends: [Domain.User] = [
-        FRIEND_1
+        USERS[0],
+        USERS[1],
+        USERS[2],
+        USERS[3],
     ]
     
     public var requests: AnyPublisher<[Domain.FriendRequest], Never> { $_requests.eraseToAnyPublisher() }

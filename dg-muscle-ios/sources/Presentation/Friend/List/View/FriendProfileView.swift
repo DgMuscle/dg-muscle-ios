@@ -89,8 +89,8 @@ struct FriendProfileView: View {
 
 #Preview {
     let view = FriendProfileView(
-        friend: .init(domain: FRIEND_1),
-        selectedFriend: .constant(.init(domain: FRIEND_1))
+        friend: .init(domain: USER_DG),
+        selectedFriend: .constant(.init(domain: USER_DG))
     )
         .preferredColorScheme(.dark)
     return view

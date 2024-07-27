@@ -32,7 +32,7 @@ struct FriendListItemView: View {
 
 #Preview {
     List {
-        FriendListItemView(friend: .init(domain: FRIEND_1))
+        FriendListItemView(friend: .init(domain: USER_DG))
             .preferredColorScheme(.dark)
     }
 }
