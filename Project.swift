@@ -3,7 +3,7 @@ import ProjectDescription
 let projectName = "dg-muscle-ios"
 let widgetName = "DgWidget"
 let bundleId = "com.donggyu.dg-muscle-ios"
-let appVersion: String = "2.7.0"
+let appVersion: String = "2.8.0"
 
 enum Layer: String, CaseIterable {
     case Domain
