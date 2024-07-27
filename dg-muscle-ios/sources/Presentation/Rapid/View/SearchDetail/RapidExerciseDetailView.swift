@@ -85,10 +85,10 @@ public struct RapidExerciseDetailView: View {
             }
             .padding(.horizontal)
             
-            
+            Spacer(minLength: 60)
         }
         .animation(.default, value: showsSecondaryMuscles)
-        .navigationTitle(data.name)
+        .navigationTitle(data.name.capitalized)
         .scrollIndicators(.hidden)
     }
 }

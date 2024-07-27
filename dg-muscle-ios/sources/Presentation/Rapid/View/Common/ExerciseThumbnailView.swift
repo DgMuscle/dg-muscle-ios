@@ -17,13 +17,13 @@ struct ExerciseThumbnailView: View {
     
     var body: some View {
         HStack {
-            Text(data.bodyPart.rawValue)
+            Text(data.bodyPart.rawValue.capitalized)
                 .padding(.vertical, 4)
                 .padding(.horizontal, 8)
                 .background(
                     Capsule().fill(data.bodyPart.color)
                 )
-            Text(data.name)
+            Text(data.name.capitalized)
                 .multilineTextAlignment(.leading)
             Spacer()
         }
