@@ -1,25 +1,25 @@
 //
-//  UserData.swift
-//  App
+//  UserMockData.swift
+//  MockData
 //
-//  Created by Donggyu Shin on 5/14/24.
+//  Created by 신동규 on 7/27/24.
 //
 
 import Foundation
 import Domain
 
-struct UserData: Codable {
+struct UserMockData: Codable {
     let id: String
     let deleted: Bool?
     var displayName: String?
     var backgroundImageURL: String?
     var photoURL: String?
-    var heatmapColor: HeatMapColor?
+    var heatmapColor: HeatMapColorMockData?
     var fcmToken: String?
     var link: String?
     var developer: Bool?
     var onlyShowsFavoriteExercises: Bool?
-    var trainingModeV2: TrainingMode?
+    var trainingModeV2: TrainingModeMockData?
     
     init(domain: Domain.User) {
         self.id = domain.uid
@@ -38,15 +38,16 @@ struct UserData: Codable {
     var domain: Domain.User {
         .init(
             uid: id,
-            displayName: displayName, 
+            displayName: displayName,
             backgroundImageURL: .init(string: backgroundImageURL ?? ""),
             photoURL: .init(string: photoURL ?? ""),
             heatMapColor: heatmapColor?.domain ?? .green,
             fcmToken: fcmToken,
             link: .init(string: link ?? ""),
             developer: developer ?? false,
-            onlyShowsFavoriteExercises: onlyShowsFavoriteExercises ?? false, 
+            onlyShowsFavoriteExercises: onlyShowsFavoriteExercises ?? false,
             trainingMode: trainingModeV2?.domain ?? .mass
         )
     }
 }
+

@@ -1,14 +1,14 @@
 //
-//  TrainingMode.swift
-//  DataLayer
+//  TrainingModeMockData.swift
+//  MockData
 //
-//  Created by 신동규 on 7/13/24.
+//  Created by 신동규 on 7/27/24.
 //
 
 import Foundation
 import Domain
 
-public enum TrainingMode: String, Codable {
+public enum TrainingModeMockData: String, Codable {
     case mass
     case strength
     
@@ -30,3 +30,4 @@ public enum TrainingMode: String, Codable {
         }
     }
 }
+

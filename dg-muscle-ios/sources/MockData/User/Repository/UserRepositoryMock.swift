@@ -17,7 +17,7 @@ public final class UserRepositoryMock: UserRepository {
         $isReady.eraseToAnyPublisher()
     }
     public var startDeleteAccount: PassthroughSubject<(), Never> = .init()
-    @Published var _user: Domain.User? = USER_DG
+    @Published var _user: Domain.User? = USERS.first(where: { $0.uid == "taEJh30OpGVsR3FEFN2s67A8FvF3" })
     @Published var isReady: Bool = true
     
     public init() {

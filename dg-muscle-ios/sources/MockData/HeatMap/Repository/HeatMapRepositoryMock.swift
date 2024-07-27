@@ -11,7 +11,15 @@ import Domain
 public final class HeatMapRepositoryMock: HeatMapRepository {
     public init() { }
     public func get() -> [Domain.HeatMap] {
-        []
+        var today = Date()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        if let date = dateFormatter.date(from: "20240727") {
+            today = date
+        }
+        
+        return GetHeatMapUsecase(today: today).implement(histories: HISTORIES)
     }
     
     public func post(heatMap: [Domain.HeatMap]) { }
