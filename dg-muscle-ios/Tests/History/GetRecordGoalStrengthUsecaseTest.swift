@@ -10,6 +10,30 @@ import Domain
 
 final class GetRecordGoalStrengthUsecaseTest: XCTestCase {
     
+    func testEdgeCase() {
+        // given
+        let useCase = GetRecordGoalStrengthUsecase()
+        
+        let record: ExerciseRecord = .init(
+            id: UUID().uuidString,
+            exerciseId: "squat",
+            sets: [
+                .init(id: UUID().uuidString, unit: .kg, reps: 3, weight: 70),
+                .init(id: UUID().uuidString, unit: .kg, reps: 7, weight: 70),
+                .init(id: UUID().uuidString, unit: .kg, reps: 5, weight: 70),
+                .init(id: UUID().uuidString, unit: .kg, reps: 3, weight: 70),
+                .init(id: UUID().uuidString, unit: .kg, reps: 3, weight: 70)
+            ]
+        )
+        
+        // when
+        let goal = useCase.implement(previousRecord: record)
+        
+        // then
+        XCTAssertEqual(goal?.weight, 70)
+        XCTAssertEqual(goal?.reps, 5)
+    }
+    
     func testMoreWeight() {
         // given
         let useCase = GetRecordGoalStrengthUsecase()

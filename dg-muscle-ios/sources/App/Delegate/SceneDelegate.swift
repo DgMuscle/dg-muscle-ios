@@ -99,6 +99,15 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             coordinator?.history.dateToSelectHistory()
         case "managetraingmode":
             coordinator?.history.manageTrainigMode()
+        case "rapidsearchtype":
+            coordinator?.rapid.rapidSearchTypeList()
+        case "rapid_search_by_part":
+            coordinator?.rapid.rapidSearchByBodyPart()
+        case "rapid_search_by_name":
+            coordinator?.rapid.rapidSearchByName()
+        case "rapid_detail":
+            guard let id = URLManager.shared.getParameter(url: url, name: "id") else { return }
+            coordinator?.rapid.rapidDetail(id: id)
         default: break
         }
     }

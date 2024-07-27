@@ -11,6 +11,7 @@ import Exercise
 import History
 import My
 import Friend
+import Rapid
 
 public struct NavigationView: View {
     
@@ -35,6 +36,11 @@ public struct NavigationView: View {
     let friendHistoryFactory: (String, Date) -> FriendHistoryView
     let historyDetailFactory: (String, String) -> HistoryDetailView
     let manageTrainingModeFactory: () -> ManageTrainingModeView
+    let rapidSearchTypeListFactory: () -> RapidSearchTypeListView
+    let rapidSearchByBodyPartFactory: () -> RapidSearchByBodyPartView
+    let rapidSearchByNameFactory: () -> RapidSearchByNameView
+    let rapidExerciseDetailFactory: (Domain.RapidExerciseDomain) -> RapidExerciseDetailView
+    let coordinatorFactory: (Binding<NavigationPath>) -> Coordinator
     
     public init(
         today: Date,
@@ -56,7 +62,12 @@ public struct NavigationView: View {
         friendMainFactory: @escaping (PageAnchorView.Page) -> FriendMainView,
         friendHistoryFactory: @escaping (String, Date) -> FriendHistoryView,
         historyDetailFactory: @escaping (String, String) -> HistoryDetailView,
-        manageTrainingModeFactory: @escaping () -> ManageTrainingModeView
+        manageTrainingModeFactory: @escaping () -> ManageTrainingModeView,
+        rapidSearchTypeListFactory: @escaping () -> RapidSearchTypeListView,
+        rapidSearchByBodyPartFactory: @escaping () -> RapidSearchByBodyPartView,
+        rapidSearchByNameFactory: @escaping () -> RapidSearchByNameView,
+        rapidExerciseDetailFactory: @escaping (Domain.RapidExerciseDomain) -> RapidExerciseDetailView,
+        coordinatorFactory: @escaping (Binding<NavigationPath>) -> Coordinator
     ) {
         self.today = today
         self.historyRepository = historyRepository
@@ -78,6 +89,11 @@ public struct NavigationView: View {
         self.friendHistoryFactory = friendHistoryFactory
         self.historyDetailFactory = historyDetailFactory
         self.manageTrainingModeFactory = manageTrainingModeFactory
+        self.rapidSearchTypeListFactory = rapidSearchTypeListFactory
+        self.rapidSearchByBodyPartFactory = rapidSearchByBodyPartFactory
+        self.rapidSearchByNameFactory = rapidSearchByNameFactory
+        self.rapidExerciseDetailFactory = rapidExerciseDetailFactory
+        self.coordinatorFactory = coordinatorFactory
     }
     
     public var body: some View {
@@ -133,12 +149,21 @@ public struct NavigationView: View {
                     historyDetailFactory(friendId, historyId)
                 }
             }
+            .navigationDestination(for: RapidNavigation.self) { navigation in
+                switch navigation.name {
+                case .rapidSearchTypeList:
+                    rapidSearchTypeListFactory()
+                case .rapidSearchByBodyPart:
+                    rapidSearchByBodyPartFactory()
+                case .rapidSearchByName:
+                    rapidSearchByNameFactory()
+                case .detail(let exercise):
+                    rapidExerciseDetailFactory(exercise)
+                }
+            }
         }
         .onAppear {
-            coordinator = .init(
-                path: $path,
-                historyRepository: historyRepository
-            )
+            coordinator = coordinatorFactory($path)
         }
     }
 }

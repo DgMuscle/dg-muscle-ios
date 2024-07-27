@@ -16,7 +16,7 @@ public final class GetRecordGoalStrengthUsecase {
         var sets = previousRecord.sets
         guard let maxWeight = sets.map({ $0.weight }).max() else { return nil }
         var goalWeight = maxWeight
-        sets = sets.filter({ $0.weight >= maxWeight })
+        sets = sets.filter({ $0.weight >= maxWeight && $0.reps >= 5 })
         
         if sets.count >= 5 {
             goalWeight += 5

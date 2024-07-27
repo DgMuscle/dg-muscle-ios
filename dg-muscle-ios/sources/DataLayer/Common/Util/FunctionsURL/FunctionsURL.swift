@@ -33,4 +33,8 @@ struct FunctionsURL {
     static func log(_ type: Log) -> String {
         "\(prefix)\(type.value)\(suffix)"
     }
+    
+    static func rapid(_ type: RapidAPI) -> String {
+        "\(prefix)\(type.value)\(suffix)"
+    }
 }
