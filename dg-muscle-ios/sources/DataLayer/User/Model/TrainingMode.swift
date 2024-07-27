@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-public enum TrainingMode: Codable {
+public enum TrainingMode: String, Codable {
     case mass
     case strength
     

@@ -19,7 +19,7 @@ struct UserMockData: Codable {
     var link: String?
     var developer: Bool?
     var onlyShowsFavoriteExercises: Bool?
-    var trainingMode: TrainingModeMockData?
+    var trainingModeV2: TrainingModeMockData?
     
     init(domain: Domain.User) {
         self.id = domain.uid
@@ -32,7 +32,7 @@ struct UserMockData: Codable {
         self.deleted = false
         self.developer = domain.developer
         self.onlyShowsFavoriteExercises = domain.onlyShowsFavoriteExercises
-        self.trainingMode = .init(domain: domain.trainingMode)
+        self.trainingModeV2 = .init(domain: domain.trainingMode)
     }
     
     var domain: Domain.User {
@@ -46,7 +46,7 @@ struct UserMockData: Codable {
             link: .init(string: link ?? ""),
             developer: developer ?? false,
             onlyShowsFavoriteExercises: onlyShowsFavoriteExercises ?? false,
-            trainingMode: trainingMode?.domain ?? .mass
+            trainingMode: trainingModeV2?.domain ?? .mass
         )
     }
 }
