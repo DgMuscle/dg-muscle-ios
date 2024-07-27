@@ -21,7 +21,7 @@ final class SubscribeRapidAllExercisesUsecaseTests: XCTestCase {
         let usecase = SubscribeRapidAllExercisesUsecase(rapidRepository: RapidRepositoryMock())
         usecase.implement()
             .sink { exercises in
-                XCTAssertEqual(100, exercises.count)
+                XCTAssertEqual(1000, exercises.count)
                 expectation.fulfill()
             }
             .store(in: &cancellables)
