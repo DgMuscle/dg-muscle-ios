@@ -38,16 +38,17 @@ public struct HomeView: View {
             TabView {
                 historyListFactory(today)
                 myViewFactory {
-                    showProfileView.toggle()
+                    if showProfileView == false {
+                        showProfileView = true 
+                    }
                 }
             }
             .ignoresSafeArea()
             .tabViewStyle(.page(indexDisplayMode: showProfileView ? .never : .always))
             .indexViewStyle(.page(backgroundDisplayMode: showProfileView ? .never : .always))
             
-            GeometryReader { geometryProxy in
+            if showProfileView {
                 myProfileViewFactory($showProfileView)
-                    .offset(y: showProfileView ? 0 : geometryProxy.size.height + 100)
             }
         }
         .animation(.default, value: showProfileView)
