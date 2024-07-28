@@ -30,89 +30,19 @@ public struct MyProfileView: View {
     
     public var body: some View {
         ZStack {
-            Rectangle()
-                .fill(.clear)
-                .background {
-                    ZStack {
-                        Rectangle()
-                            .fill(Color(uiColor: .secondarySystemGroupedBackground))
-                        
-                        if let url = viewModel.user?.backgroundImageURL {
-                            KFImage(url)
-                                .resizable()
-                                .scaledToFill()
-                        }
-                    }
-                }
-                .ignoresSafeArea()
+            backgroundView
             
             VStack {
+                xButton
                 Spacer()
-                
-                RoundedRectangle(cornerRadius: 25.0, style: .continuous)
-                    .stroke(.white.opacity(0.6))
-                    .fill(.clear)
-                    .frame(width: 100, height: 100)
-                    .background {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 25.0, style: .continuous)
-                                .fill(Color(uiColor: .secondarySystemBackground))
-                            
-                            Image(systemName: "person")
-                                .font(.title)
-                                .foregroundStyle(.white)
-                            
-                            if let url = viewModel.user?.photoURL {
-                                KFImage(url)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 100, height: 100)
-                                    .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                            }
-                        }
-                    }
-                
-                let name = viewModel.user?.displayName ?? "name"
-                
-                Text(name)
+                profileView
+                Text(viewModel.user?.displayName ?? "null")
                     .foregroundStyle(.white)
-                
-                Rectangle()
-                    .fill(.white.opacity(0.7))
-                    .frame(height: 1)
+                whiteLine
                     .padding(.top, 30)
-                    
-                
-                HStack(spacing: 40) {
-                    
-                    if let link = viewModel.user?.link {
-                        Button {
-                            URLManager.shared.open(url: link)
-                        } label: {
-                            VStack(spacing: 12) {
-                                Image(systemName: "link")
-                                Text("Link")
-                            }
-                        }
-                        .foregroundStyle(.white)
-                    }
-                    
-                    Button {
-                        print("tap edit")
-                    } label: {
-                        VStack(spacing: 12) {
-                            Image(systemName: "pencil")
-                            Text("Edit")
-                        }
-                    }
-                    .foregroundStyle(.white)
-                }
-                .padding(.top)
-                
-                
+                bottomSection
+                    .padding(.top)
             }
-            
-            
         }
         .offset(y: viewOffset)
         .gesture (
@@ -125,20 +55,118 @@ public struct MyProfileView: View {
                     let dismissableLocation = gesture.translation.height > 150
                     let dismissableVolocity = gesture.velocity.height > 150
                     if dismissableLocation || dismissableVolocity {
-                        withAnimation {
-                            viewOffset = 1000
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                shows = false
-                            }
-                        }
+                        dismiss()
                     } else {
-                        withAnimation {
-                            viewOffset = 0
-                        }
+                        dragViewUp()
                     }
                 }
         )
-        
+    }
+    
+    private func dismiss() {
+        withAnimation {
+            viewOffset = 1000
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                shows = false
+            }
+        }
+    }
+    
+    private func dragViewUp() {
+        withAnimation {
+            viewOffset = 0
+        }
+    }
+    
+    var xButton: some View {
+        HStack {
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "xmark")
+                    .foregroundStyle(.white)
+                    .font(.title)
+            }
+            
+            Spacer()
+        }
+        .padding(.horizontal)
+    }
+    
+    var backgroundView: some View {
+        Rectangle()
+            .fill(.clear)
+            .background {
+                ZStack {
+                    Rectangle()
+                        .fill(Color(uiColor: .secondarySystemGroupedBackground))
+                    
+                    if let url = viewModel.user?.backgroundImageURL {
+                        KFImage(url)
+                            .resizable()
+                            .scaledToFill()
+                    }
+                }
+            }
+            .ignoresSafeArea()
+    }
+    
+    var profileView: some View {
+        RoundedRectangle(cornerRadius: 25.0, style: .continuous)
+            .stroke(.white.opacity(0.6))
+            .fill(.clear)
+            .frame(width: 100, height: 100)
+            .background {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 25.0, style: .continuous)
+                        .fill(Color(uiColor: .secondarySystemBackground))
+                    
+                    Image(systemName: "person")
+                        .font(.title)
+                        .foregroundStyle(.white)
+                    
+                    if let url = viewModel.user?.photoURL {
+                        KFImage(url)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 100, height: 100)
+                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                    }
+                }
+            }
+    }
+    
+    var whiteLine: some View {
+        Rectangle()
+            .fill(.white.opacity(0.7))
+            .frame(height: 1)
+    }
+    
+    var bottomSection: some View {
+        HStack(spacing: 40) {
+            
+            if let link = viewModel.user?.link {
+                Button {
+                    URLManager.shared.open(url: link)
+                } label: {
+                    VStack(spacing: 12) {
+                        Image(systemName: "link")
+                        Text("Link")
+                    }
+                }
+                .foregroundStyle(.white)
+            }
+            
+            Button {
+                print("tap edit")
+            } label: {
+                VStack(spacing: 12) {
+                    Image(systemName: "pencil")
+                    Text("Edit")
+                }
+            }
+            .foregroundStyle(.white)
+        }
     }
 }
 
