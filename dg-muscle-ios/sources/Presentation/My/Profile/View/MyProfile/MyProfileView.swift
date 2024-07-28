@@ -17,10 +17,14 @@ public struct MyProfileView: View {
     
     @State private var viewOffset: CGFloat = 0
     
+    @StateObject var viewModel: MyProfileViewModel
+    
     public init(
-        shows: Binding<Bool>
+        shows: Binding<Bool>,
+        userRepository: UserRepository
     ) {
         _shows = shows
+        _viewModel = .init(wrappedValue: .init(userRepository: userRepository))
     }
     
     public var body: some View {
@@ -59,6 +63,9 @@ public struct MyProfileView: View {
 }
 
 #Preview {
-    return MyProfileView(shows: .constant(true))
+    return MyProfileView(
+        shows: .constant(true),
+        userRepository: UserRepositoryMock()
+    )
         .preferredColorScheme(.dark)
 }
