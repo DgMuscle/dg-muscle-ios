@@ -15,10 +15,6 @@ public final class MyCoordinator {
         self._path = path
     }
     
-    public func profile() {
-        path.append(MyNavigation(name: .profile))
-    }
-    
     public func deleteAccountConfirm() {
         path.append(MyNavigation(name: .deleteAccountConfirm))
     }

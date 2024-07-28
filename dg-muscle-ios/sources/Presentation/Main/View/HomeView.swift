@@ -13,46 +13,45 @@ import MockData
 
 public struct HomeView: View {
     
-    let today: Date
-    let historyRepository: HistoryRepository
-    let exerciseRepository: ExerciseRepository
-    let heatMapRepository: HeatMapRepository
-    let userRepository: UserRepository
-    let logRepository: LogRepository
+    @State private var showProfileView: Bool = false
     
-    public init(today: Date,
-                historyRepository: HistoryRepository,
-                exerciseRepository: ExerciseRepository,
-                heatMapRepository: HeatMapRepository,
-                userRepository: UserRepository,
-                logRepository: LogRepository
+    let today: Date
+    let historyListFactory: (Date) -> HistoryListView
+    let myViewFactory: ((() -> Void)?) -> MyView
+    let myProfileViewFactory: (Binding<Bool>) -> MyProfileView
+    
+    public init(
+        today: Date,
+        historyListFactory: @escaping (Date) -> HistoryListView,
+        myViewFactory: @escaping ((() -> Void)?) -> MyView,
+        myProfileViewFactory: @escaping (Binding<Bool>) -> MyProfileView
     ) {
         self.today = today
-        self.historyRepository = historyRepository
-        self.exerciseRepository = exerciseRepository
-        self.heatMapRepository = heatMapRepository
-        self.userRepository = userRepository
-        self.logRepository = logRepository
+        self.historyListFactory = historyListFactory
+        self.myViewFactory = myViewFactory
+        self.myProfileViewFactory = myProfileViewFactory
     }
     
     public var body: some View {
         ZStack {
             Rectangle().fill(Color(uiColor: .systemBackground))
             TabView {
-                HistoryListView(today: today,
-                                historyRepository: historyRepository,
-                                exerciseRepository: exerciseRepository,
-                                heatMapRepository: heatMapRepository,
-                                userRepository: userRepository)
-                
-                MyView(userRepository: userRepository, 
-                       logRepository: logRepository)
-
+                historyListFactory(today)
+                myViewFactory {
+                    if showProfileView == false {
+                        showProfileView = true 
+                    }
+                }
             }
             .ignoresSafeArea()
-            .tabViewStyle(.page(indexDisplayMode: .always))
-            .indexViewStyle(.page(backgroundDisplayMode: .always))
+            .tabViewStyle(.page(indexDisplayMode: showProfileView ? .never : .always))
+            .indexViewStyle(.page(backgroundDisplayMode: showProfileView ? .never : .always))
+            
+            if showProfileView {
+                myProfileViewFactory($showProfileView)
+            }
         }
+        .animation(.default, value: showProfileView)
     }
 }
 
@@ -62,12 +61,33 @@ public struct HomeView: View {
     dateFormatter.dateFormat = "yyyyMMdd"
     let today = dateFormatter.date(from: "20240515")!
     
-    return HomeView(today: today,
-                    historyRepository: HistoryRepositoryMock(),
-                    exerciseRepository: ExerciseRepositoryMock(),
-                    heatMapRepository: HeatMapRepositoryMock(),
-                    userRepository: UserRepositoryMock(),
-                    logRepository: LogRepositoryMock()
+    let historyRepository = HistoryRepositoryMock()
+    let exerciseRepository = ExerciseRepositoryMock()
+    let heatMapRepository = HeatMapRepositoryMock()
+    let userRepository = UserRepositoryMock()
+    let logRepository = LogRepositoryMock()
+    
+    return HomeView(
+        today: today,
+        historyListFactory: {
+            today in HistoryListView(
+                today: today,
+                historyRepository: historyRepository,
+                exerciseRepository: exerciseRepository,
+                heatMapRepository: heatMapRepository,
+                userRepository: userRepository
+            )
+        },
+        myViewFactory: { _ in 
+            MyView(
+                userRepository: userRepository,
+                logRepository: logRepository, 
+                presentProfileViewAction: nil
+            )
+        },
+        myProfileViewFactory: {_ in 
+            MyProfileView(shows: .constant(false))
+        }
     )
     .preferredColorScheme(.dark)
 }

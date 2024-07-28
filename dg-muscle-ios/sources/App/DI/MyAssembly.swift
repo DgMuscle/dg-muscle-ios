@@ -9,14 +9,24 @@ import Swinject
 import Domain
 import Presentation
 import My
+import SwiftUI
 
 public struct MyAssembly: Assembly {
     public func assemble(container: Swinject.Container) {
-        container.register(MyProfileView.self) { resolver in
+        container.register(MyView.self) { (resolver, presentProfileViewAction: (() -> Void)?) in
             
             let userRepository = resolver.resolve(UserRepository.self)!
+            let logRepository = resolver.resolve(LogRepository.self)!
             
-            return MyProfileView(userRepository: userRepository)
+            return MyView(
+                userRepository: userRepository,
+                logRepository: logRepository, 
+                presentProfileViewAction: presentProfileViewAction
+            )
+        }
+        
+        container.register(MyProfileView.self) { (resolver, shows: Binding<Bool>) in
+            return MyProfileView(shows: shows)
         }
         
         container.register(DeleteAccountConfirmView.self) { resolver in
