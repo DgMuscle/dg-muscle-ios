@@ -18,13 +18,13 @@ public struct HomeView: View {
     let today: Date
     let historyListFactory: (Date) -> HistoryListView
     let myViewFactory: ((() -> Void)?) -> MyView
-    let myProfileViewFactory: () -> MyProfileView
+    let myProfileViewFactory: (Binding<Bool>) -> MyProfileView
     
     public init(
         today: Date,
         historyListFactory: @escaping (Date) -> HistoryListView,
         myViewFactory: @escaping ((() -> Void)?) -> MyView,
-        myProfileViewFactory: @escaping () -> MyProfileView
+        myProfileViewFactory: @escaping (Binding<Bool>) -> MyProfileView
     ) {
         self.today = today
         self.historyListFactory = historyListFactory
@@ -46,7 +46,7 @@ public struct HomeView: View {
             .indexViewStyle(.page(backgroundDisplayMode: showProfileView ? .never : .always))
             
             GeometryReader { geometryProxy in
-                myProfileViewFactory()
+                myProfileViewFactory($showProfileView)
                     .offset(y: showProfileView ? 0 : geometryProxy.size.height + 100)
             }
         }
@@ -84,8 +84,8 @@ public struct HomeView: View {
                 presentProfileViewAction: nil
             )
         },
-        myProfileViewFactory: {
-            MyProfileView()
+        myProfileViewFactory: {_ in 
+            MyProfileView(shows: .constant(false))
         }
     )
     .preferredColorScheme(.dark)

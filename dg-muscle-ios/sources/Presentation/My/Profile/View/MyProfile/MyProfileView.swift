@@ -13,7 +13,13 @@ import Common
 
 public struct MyProfileView: View {
     
-    public init() { }
+    @Binding var shows: Bool
+    
+    public init(
+        shows: Binding<Bool>
+    ) {
+        _shows = shows
+    }
     
     public var body: some View {
         ZStack {
@@ -26,6 +32,6 @@ public struct MyProfileView: View {
 }
 
 #Preview {
-    return MyProfileView()
+    return MyProfileView(shows: .constant(true))
         .preferredColorScheme(.dark)
 }

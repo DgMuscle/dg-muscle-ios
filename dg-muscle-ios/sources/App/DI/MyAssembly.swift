@@ -9,6 +9,7 @@ import Swinject
 import Domain
 import Presentation
 import My
+import SwiftUI
 
 public struct MyAssembly: Assembly {
     public func assemble(container: Swinject.Container) {
@@ -24,9 +25,8 @@ public struct MyAssembly: Assembly {
             )
         }
         
-        container.register(MyProfileView.self) { resolver in
-            
-            return MyProfileView()
+        container.register(MyProfileView.self) { (resolver, shows: Binding<Bool>) in
+            return MyProfileView(shows: shows)
         }
         
         container.register(DeleteAccountConfirmView.self) { resolver in

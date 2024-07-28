@@ -20,7 +20,7 @@ public struct HomeAssembly: Assembly {
                 today: today,
                 historyListFactory: { today in resolver.resolve(HistoryListView.self, argument: today)! },
                 myViewFactory: { presentProfileAction in resolver.resolve(MyView.self, argument: presentProfileAction)! },
-                myProfileViewFactory: { resolver.resolve(MyProfileView.self)! }
+                myProfileViewFactory: { shows in resolver.resolve(MyProfileView.self, argument: shows)! }
             )
         }
     }
