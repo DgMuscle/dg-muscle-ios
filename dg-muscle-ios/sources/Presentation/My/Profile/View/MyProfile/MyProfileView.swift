@@ -46,7 +46,73 @@ public struct MyProfileView: View {
                 }
                 .ignoresSafeArea()
             
-            Text("MyProfileView")
+            VStack {
+                Spacer()
+                
+                RoundedRectangle(cornerRadius: 25.0, style: .continuous)
+                    .stroke(.white.opacity(0.6))
+                    .fill(.clear)
+                    .frame(width: 100, height: 100)
+                    .background {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 25.0, style: .continuous)
+                                .fill(Color(uiColor: .secondarySystemBackground))
+                            
+                            Image(systemName: "person")
+                                .font(.title)
+                                .foregroundStyle(.white)
+                            
+                            if let url = viewModel.user?.photoURL {
+                                KFImage(url)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 100, height: 100)
+                                    .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                            }
+                        }
+                    }
+                
+                let name = viewModel.user?.displayName ?? "name"
+                
+                Text(name)
+                    .foregroundStyle(.white)
+                
+                Rectangle()
+                    .fill(.white.opacity(0.7))
+                    .frame(height: 1)
+                    .padding(.top, 30)
+                    
+                
+                HStack(spacing: 40) {
+                    
+                    if let link = viewModel.user?.link {
+                        Button {
+                            URLManager.shared.open(url: link)
+                        } label: {
+                            VStack(spacing: 12) {
+                                Image(systemName: "link")
+                                Text("Link")
+                            }
+                        }
+                        .foregroundStyle(.white)
+                    }
+                    
+                    Button {
+                        print("tap edit")
+                    } label: {
+                        VStack(spacing: 12) {
+                            Image(systemName: "pencil")
+                            Text("Edit")
+                        }
+                    }
+                    .foregroundStyle(.white)
+                }
+                .padding(.top)
+                
+                
+            }
+            
+            
         }
         .offset(y: viewOffset)
         .gesture (
@@ -81,5 +147,5 @@ public struct MyProfileView: View {
         shows: .constant(true),
         userRepository: UserRepositoryMock()
     )
-        .preferredColorScheme(.dark)
+//        .preferredColorScheme(.dark)
 }
