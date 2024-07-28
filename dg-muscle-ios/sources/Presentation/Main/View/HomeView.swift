@@ -16,11 +16,11 @@ public struct HomeView: View {
     let today: Date
     
     let historyListFactory: (Date) -> HistoryListView
-    let myViewFactory: () -> MyView
+    let myViewFactory: ((() -> Void)?) -> MyView
     
     public init(today: Date,
                 historyListFactory: @escaping (Date) -> HistoryListView,
-                myViewFactory: @escaping () -> MyView) {
+                myViewFactory: @escaping ((() -> Void)?) -> MyView) {
         self.today = today
         self.historyListFactory = historyListFactory
         self.myViewFactory = myViewFactory
@@ -31,7 +31,9 @@ public struct HomeView: View {
             Rectangle().fill(Color(uiColor: .systemBackground))
             TabView {
                 historyListFactory(today)
-                myViewFactory()
+                myViewFactory {
+                    print("dg: open provile view")
+                }
             }
             .ignoresSafeArea()
             .tabViewStyle(.page(indexDisplayMode: .always))
@@ -63,10 +65,11 @@ public struct HomeView: View {
                 userRepository: userRepository
             )
         },
-        myViewFactory: {
+        myViewFactory: { _ in 
             MyView(
                 userRepository: userRepository,
-                logRepository: logRepository
+                logRepository: logRepository, 
+                presentProfileViewAction: nil
             )
         }
     )

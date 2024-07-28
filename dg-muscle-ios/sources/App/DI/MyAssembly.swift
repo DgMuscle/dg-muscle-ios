@@ -12,14 +12,15 @@ import My
 
 public struct MyAssembly: Assembly {
     public func assemble(container: Swinject.Container) {
-        container.register(MyView.self) { resolver in
+        container.register(MyView.self) { (resolver, presentProfileViewAction: (() -> Void)?) in
             
             let userRepository = resolver.resolve(UserRepository.self)!
             let logRepository = resolver.resolve(LogRepository.self)!
             
             return MyView(
                 userRepository: userRepository,
-                logRepository: logRepository
+                logRepository: logRepository, 
+                presentProfileViewAction: presentProfileViewAction
             )
         }
         

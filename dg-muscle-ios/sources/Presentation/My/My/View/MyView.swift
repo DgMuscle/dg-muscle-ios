@@ -14,14 +14,18 @@ import Common
 public struct MyView: View {
     @StateObject var viewModel: MyViewModel
     
+    let presentProfileViewAction: (() -> Void)?
+    
     public init(
         userRepository: any UserRepository,
-        logRepository: LogRepository
+        logRepository: LogRepository,
+        presentProfileViewAction: (() -> Void)?
     ) {
         _viewModel = .init(
             wrappedValue: .init(userRepository: userRepository, 
                                 logRepository: logRepository)
         )
+        self.presentProfileViewAction = presentProfileViewAction
     }
     
     public var body: some View {
@@ -83,14 +87,14 @@ public struct MyView: View {
                     
                     if user.displayName?.isEmpty == false {
                         Button {
-                            URLManager.shared.open(url: "dgmuscle://profile")
+                            presentProfileViewAction?()
                         } label: {
                             UserItemView(user: user)
                                 .padding(.bottom)
                         }
                     } else {
                         Button("Update Profile") {
-                            URLManager.shared.open(url: "dgmuscle://profile")
+                            presentProfileViewAction?()
                         }
                         .padding(.bottom)
                     }
@@ -121,7 +125,8 @@ public struct MyView: View {
 #Preview {
     return MyView(
         userRepository: UserRepositoryMock(),
-        logRepository: LogRepositoryMock()
+        logRepository: LogRepositoryMock(),
+        presentProfileViewAction: nil
     )
         .preferredColorScheme(.dark)
 }
