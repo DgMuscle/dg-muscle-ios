@@ -14,45 +14,24 @@ import MockData
 public struct HomeView: View {
     
     let today: Date
-    let historyRepository: HistoryRepository
-    let exerciseRepository: ExerciseRepository
-    let heatMapRepository: HeatMapRepository
-    let userRepository: UserRepository
-    let logRepository: LogRepository
     
-    let myProfileFactory: () -> MyProfileView
+    let historyListFactory: (Date) -> HistoryListView
+    let myViewFactory: () -> MyView
     
     public init(today: Date,
-                historyRepository: HistoryRepository,
-                exerciseRepository: ExerciseRepository,
-                heatMapRepository: HeatMapRepository,
-                userRepository: UserRepository,
-                logRepository: LogRepository,
-                myProfileFactory: @escaping () -> MyProfileView
-    ) {
+                historyListFactory: @escaping (Date) -> HistoryListView,
+                myViewFactory: @escaping () -> MyView) {
         self.today = today
-        self.historyRepository = historyRepository
-        self.exerciseRepository = exerciseRepository
-        self.heatMapRepository = heatMapRepository
-        self.userRepository = userRepository
-        self.logRepository = logRepository
-        self.myProfileFactory = myProfileFactory
+        self.historyListFactory = historyListFactory
+        self.myViewFactory = myViewFactory
     }
     
     public var body: some View {
         ZStack {
             Rectangle().fill(Color(uiColor: .systemBackground))
             TabView {
-                HistoryListView(today: today,
-                                historyRepository: historyRepository,
-                                exerciseRepository: exerciseRepository,
-                                heatMapRepository: heatMapRepository,
-                                userRepository: userRepository)
-                
-                MyView(userRepository: userRepository, 
-                       logRepository: logRepository, 
-                       myProfileFactory: myProfileFactory)
-
+                historyListFactory(today)
+                myViewFactory()
             }
             .ignoresSafeArea()
             .tabViewStyle(.page(indexDisplayMode: .always))
@@ -67,15 +46,29 @@ public struct HomeView: View {
     dateFormatter.dateFormat = "yyyyMMdd"
     let today = dateFormatter.date(from: "20240515")!
     
-    return HomeView(today: today,
-                    historyRepository: HistoryRepositoryMock(),
-                    exerciseRepository: ExerciseRepositoryMock(),
-                    heatMapRepository: HeatMapRepositoryMock(),
-                    userRepository: UserRepositoryMock(),
-                    logRepository: LogRepositoryMock(), 
-                    myProfileFactory: {
-        MyProfileView()
-    }
+    let historyRepository = HistoryRepositoryMock()
+    let exerciseRepository = ExerciseRepositoryMock()
+    let heatMapRepository = HeatMapRepositoryMock()
+    let userRepository = UserRepositoryMock()
+    let logRepository = LogRepositoryMock()
+    
+    return HomeView(
+        today: today,
+        historyListFactory: {
+            today in HistoryListView(
+                today: today,
+                historyRepository: historyRepository,
+                exerciseRepository: exerciseRepository,
+                heatMapRepository: heatMapRepository,
+                userRepository: userRepository
+            )
+        },
+        myViewFactory: {
+            MyView(
+                userRepository: userRepository,
+                logRepository: logRepository
+            )
+        }
     )
     .preferredColorScheme(.dark)
 }

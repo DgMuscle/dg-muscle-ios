@@ -14,6 +14,23 @@ import Presentation
 public struct HistoryAssembly: Assembly {
     
     public func assemble(container: Swinject.Container) {
+        
+        container.register(HistoryListView.self) { (resolver, today: Date) in
+            
+            let historyRepository = resolver.resolve(HistoryRepository.self)!
+            let exerciseRepository = resolver.resolve(ExerciseRepository.self)!
+            let heatMapRepository = resolver.resolve(HeatMapRepository.self)!
+            let userRepository = resolver.resolve(UserRepository.self)!
+            
+            return HistoryListView(
+                today: today,
+                historyRepository: historyRepository,
+                exerciseRepository: exerciseRepository,
+                heatMapRepository: heatMapRepository,
+                userRepository: userRepository
+            )
+        }
+        
         container.register(HeatMapColorSelectView.self) { resolver in
             let userRepository = resolver.resolve(UserRepository.self)!
             return HeatMapColorSelectView(userRepository: userRepository)

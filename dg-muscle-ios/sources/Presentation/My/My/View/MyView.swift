@@ -14,18 +14,14 @@ import Common
 public struct MyView: View {
     @StateObject var viewModel: MyViewModel
     
-    private let myProfileFactory: () -> MyProfileView
-    
     public init(
         userRepository: any UserRepository,
-        logRepository: LogRepository,
-        myProfileFactory: @escaping () -> MyProfileView
+        logRepository: LogRepository
     ) {
         _viewModel = .init(
             wrappedValue: .init(userRepository: userRepository, 
                                 logRepository: logRepository)
         )
-        self.myProfileFactory = myProfileFactory
     }
     
     public var body: some View {
@@ -125,10 +121,7 @@ public struct MyView: View {
 #Preview {
     return MyView(
         userRepository: UserRepositoryMock(),
-        logRepository: LogRepositoryMock(),
-        myProfileFactory: {
-            MyProfileView()
-        }
+        logRepository: LogRepositoryMock()
     )
         .preferredColorScheme(.dark)
 }

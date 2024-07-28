@@ -12,6 +12,17 @@ import My
 
 public struct MyAssembly: Assembly {
     public func assemble(container: Swinject.Container) {
+        container.register(MyView.self) { resolver in
+            
+            let userRepository = resolver.resolve(UserRepository.self)!
+            let logRepository = resolver.resolve(LogRepository.self)!
+            
+            return MyView(
+                userRepository: userRepository,
+                logRepository: logRepository
+            )
+        }
+        
         container.register(MyProfileView.self) { resolver in
             
             return MyProfileView()
