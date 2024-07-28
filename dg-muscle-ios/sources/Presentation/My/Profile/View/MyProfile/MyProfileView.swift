@@ -14,9 +14,15 @@ import Kingfisher
 
 public struct MyProfileView: View {
     
+    struct IdentifiableURL: Identifiable {
+        let id = UUID().uuidString
+        let url: URL
+    }
+    
     @Binding var shows: Bool
     
     @State private var viewOffset: CGFloat = 0
+    @State private var selectedImageURL: IdentifiableURL? = nil
     
     @StateObject var viewModel: MyProfileViewModel
     
@@ -31,7 +37,6 @@ public struct MyProfileView: View {
     public var body: some View {
         ZStack {
             backgroundView
-            
             VStack {
                 xButton
                 Spacer()
@@ -61,6 +66,9 @@ public struct MyProfileView: View {
                     }
                 }
         )
+        .fullScreenCover(item: $selectedImageURL) { url in
+            selectedURLImageView(url: url)
+        }
     }
     
     private func dismiss() {
@@ -75,6 +83,40 @@ public struct MyProfileView: View {
     private func dragViewUp() {
         withAnimation {
             viewOffset = 0
+        }
+    }
+    
+    private func selectedURLImageView(url: IdentifiableURL) -> some View {
+        ZStack {
+            
+            Rectangle()
+                .fill(.black)
+                .ignoresSafeArea()
+            
+            Rectangle()
+                .fill(.clear)
+                .background {
+                    KFImage(url.url)
+                        .resizable()
+                        .scaledToFill()
+                }
+                
+            VStack {
+                HStack {
+                    Button {
+                        selectedImageURL = nil
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundStyle(.white)
+                            .font(.title)
+                    }
+                    Spacer()
+                }
+                .padding(.top)
+                .padding(.horizontal)
+                
+                Spacer()
+            }
         }
     }
     
@@ -99,12 +141,15 @@ public struct MyProfileView: View {
             .background {
                 ZStack {
                     Rectangle()
-                        .fill(Color(uiColor: .secondarySystemGroupedBackground))
+                        .fill(.gray)
                     
                     if let url = viewModel.user?.backgroundImageURL {
                         KFImage(url)
                             .resizable()
                             .scaledToFill()
+                            .onTapGesture {
+                                selectedImageURL = .init(url: url)
+                            }
                     }
                 }
             }
@@ -119,7 +164,7 @@ public struct MyProfileView: View {
             .background {
                 ZStack {
                     RoundedRectangle(cornerRadius: 25.0, style: .continuous)
-                        .fill(Color(uiColor: .secondarySystemBackground))
+                        .fill(.gray)
                     
                     Image(systemName: "person")
                         .font(.title)
@@ -131,6 +176,9 @@ public struct MyProfileView: View {
                             .scaledToFill()
                             .frame(width: 100, height: 100)
                             .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                            .onTapGesture {
+                                selectedImageURL = .init(url: url)
+                            }
                     }
                 }
             }
