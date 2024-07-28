@@ -223,5 +223,5 @@ public struct MyProfileView: View {
         shows: .constant(true),
         userRepository: UserRepositoryMock()
     )
-//        .preferredColorScheme(.dark)
+        .preferredColorScheme(.dark)
 }
