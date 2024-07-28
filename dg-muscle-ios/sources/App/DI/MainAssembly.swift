@@ -37,7 +37,6 @@ public struct MainAssembly: Assembly {
                 setDurationFactory: { duration in resolver.resolve(SetDurationView.self, argument: duration)! },
                 manageMemoFactory: { memo in resolver.resolve(ManageMemoView.self, argument: memo)! },
                 dateToSelectHistoryFactory: { resolver.resolve(DateToSelectHistoryView.self)! },
-                myProfileFactory: { resolver.resolve(MyProfileView.self)! },
                 deleteAccountConfirmFactory: { resolver.resolve(DeleteAccountConfirmView.self)! },
                 logsFactory: { resolver.resolve(LogsView.self)! },
                 friendMainFactory: { anchor in resolver.resolve(FriendMainView.self, argument: anchor)! },

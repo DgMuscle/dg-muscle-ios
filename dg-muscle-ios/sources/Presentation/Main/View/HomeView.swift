@@ -20,12 +20,15 @@ public struct HomeView: View {
     let userRepository: UserRepository
     let logRepository: LogRepository
     
+    let myProfileFactory: () -> MyProfileView
+    
     public init(today: Date,
                 historyRepository: HistoryRepository,
                 exerciseRepository: ExerciseRepository,
                 heatMapRepository: HeatMapRepository,
                 userRepository: UserRepository,
-                logRepository: LogRepository
+                logRepository: LogRepository,
+                myProfileFactory: @escaping () -> MyProfileView
     ) {
         self.today = today
         self.historyRepository = historyRepository
@@ -33,6 +36,7 @@ public struct HomeView: View {
         self.heatMapRepository = heatMapRepository
         self.userRepository = userRepository
         self.logRepository = logRepository
+        self.myProfileFactory = myProfileFactory
     }
     
     public var body: some View {
@@ -46,7 +50,8 @@ public struct HomeView: View {
                                 userRepository: userRepository)
                 
                 MyView(userRepository: userRepository, 
-                       logRepository: logRepository)
+                       logRepository: logRepository, 
+                       myProfileFactory: myProfileFactory)
 
             }
             .ignoresSafeArea()
@@ -67,7 +72,10 @@ public struct HomeView: View {
                     exerciseRepository: ExerciseRepositoryMock(),
                     heatMapRepository: HeatMapRepositoryMock(),
                     userRepository: UserRepositoryMock(),
-                    logRepository: LogRepositoryMock()
+                    logRepository: LogRepositoryMock(), 
+                    myProfileFactory: {
+        MyProfileView()
+    }
     )
     .preferredColorScheme(.dark)
 }

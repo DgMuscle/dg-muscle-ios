@@ -9,6 +9,7 @@ import Swinject
 import Domain
 import Presentation
 import Foundation
+import My
 
 public struct HomeAssembly: Assembly {
     public func assemble(container: Swinject.Container) {
@@ -26,7 +27,8 @@ public struct HomeAssembly: Assembly {
                 exerciseRepository: exerciseRepository,
                 heatMapRepository: heatMapRepository,
                 userRepository: userRepository,
-                logRepository: logRepository
+                logRepository: logRepository, 
+                myProfileFactory: { resolver.resolve(MyProfileView.self)! }
             )
         }
     }

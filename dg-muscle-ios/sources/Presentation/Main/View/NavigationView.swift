@@ -29,7 +29,6 @@ public struct NavigationView: View {
     let setDurationFactory: (Int) -> SetDurationView
     let manageMemoFactory: (Binding<String>) -> ManageMemoView
     let dateToSelectHistoryFactory: () -> DateToSelectHistoryView
-    let myProfileFactory: () -> MyProfileView
     let deleteAccountConfirmFactory: () -> DeleteAccountConfirmView
     let logsFactory: () -> LogsView
     let friendMainFactory: (PageAnchorView.Page) -> FriendMainView
@@ -56,7 +55,6 @@ public struct NavigationView: View {
         setDurationFactory: @escaping (Int) -> SetDurationView,
         manageMemoFactory: @escaping (Binding<String>) -> ManageMemoView,
         dateToSelectHistoryFactory: @escaping () -> DateToSelectHistoryView,
-        myProfileFactory: @escaping () -> MyProfileView,
         deleteAccountConfirmFactory: @escaping () -> DeleteAccountConfirmView,
         logsFactory: @escaping () -> LogsView,
         friendMainFactory: @escaping (PageAnchorView.Page) -> FriendMainView,
@@ -82,7 +80,6 @@ public struct NavigationView: View {
         self.setDurationFactory = setDurationFactory
         self.manageMemoFactory = manageMemoFactory
         self.dateToSelectHistoryFactory = dateToSelectHistoryFactory
-        self.myProfileFactory = myProfileFactory
         self.deleteAccountConfirmFactory = deleteAccountConfirmFactory
         self.logsFactory = logsFactory
         self.friendMainFactory = friendMainFactory
@@ -131,8 +128,6 @@ public struct NavigationView: View {
             }
             .navigationDestination(for: MyNavigation.self) { navigation in
                 switch navigation.name {
-                case .profile:
-                    myProfileFactory()
                 case .deleteAccountConfirm:
                     deleteAccountConfirmFactory()
                 case .logs:
