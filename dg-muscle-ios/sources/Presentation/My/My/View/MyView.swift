@@ -42,24 +42,33 @@ public struct MyView: View {
             
             Section {
                 VStack(spacing: 20) {
+                    
+                    Button {
+                        presentProfileViewAction?()
+                    } label: {
+                        ListItemView(systemName: "person", text: "Profile", color: Color(uiColor: .secondaryLabel))
+                    }
+                    .buttonStyle(.borderless)
+                    
+                    
                     Button {
                         URLManager.shared.open(url: "dgmuscle://friend")
                     } label: {
-                        ListItemView(systemName: "person", text: "Friend", color: .green)
+                        ListItemView(systemName: "link", text: "Friend", color: Color(uiColor: .secondaryLabel))
                     }
                     .buttonStyle(.borderless)
                     
                     Button {
                         URLManager.shared.open(url: "dgmuscle://exercisemanage")
                     } label: {
-                        ListItemView(systemName: "dumbbell", text: "Exercise", color: .blue)
+                        ListItemView(systemName: "dumbbell", text: "Exercise", color: Color(uiColor: .secondaryLabel))
                     }
                     .buttonStyle(.borderless)
                     
                     Button {
                         URLManager.shared.open(url: "dgmuscle://rapidsearchtype")
                     } label: {
-                        ListItemView(systemName: "doc", text: "Exercise DB", color: .blue)
+                        ListItemView(systemName: "doc", text: "Exercise DB", color: Color(uiColor: .secondaryLabel))
                     }
                     .buttonStyle(.borderless)
                     
@@ -67,7 +76,7 @@ public struct MyView: View {
                         Button {
                             URLManager.shared.open(url: "dgmuscle://logs")
                         } label: {
-                            ListItemView(systemName: "doc", text: "Logs", color: .purple)
+                            ListItemView(systemName: "doc", text: "Logs", color: Color(uiColor: .secondaryLabel))
                         }
                         .buttonStyle(.borderless)
                         .overlay {

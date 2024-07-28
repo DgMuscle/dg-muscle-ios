@@ -26,7 +26,11 @@ public struct MyAssembly: Assembly {
         }
         
         container.register(MyProfileView.self) { (resolver, shows: Binding<Bool>) in
-            return MyProfileView(shows: shows)
+            let userRepository = resolver.resolve(UserRepository.self)!
+            return MyProfileView(
+                shows: shows,
+                userRepository: userRepository
+            )
         }
         
         container.register(DeleteAccountConfirmView.self) { resolver in

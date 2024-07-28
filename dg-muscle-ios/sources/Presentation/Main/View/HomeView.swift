@@ -86,7 +86,10 @@ public struct HomeView: View {
             )
         },
         myProfileViewFactory: {_ in 
-            MyProfileView(shows: .constant(false))
+            MyProfileView(
+                shows: .constant(false),
+                userRepository: userRepository
+            )
         }
     )
     .preferredColorScheme(.dark)
