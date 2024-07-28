@@ -19,7 +19,8 @@ public struct HomeAssembly: Assembly {
             return HomeView(
                 today: today,
                 historyListFactory: { today in resolver.resolve(HistoryListView.self, argument: today)! },
-                myViewFactory: { presentProfileAction in resolver.resolve(MyView.self, argument: presentProfileAction)! }
+                myViewFactory: { presentProfileAction in resolver.resolve(MyView.self, argument: presentProfileAction)! },
+                myProfileViewFactory: { resolver.resolve(MyProfileView.self)! }
             )
         }
     }

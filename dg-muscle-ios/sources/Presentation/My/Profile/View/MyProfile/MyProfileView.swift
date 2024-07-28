@@ -16,7 +16,12 @@ public struct MyProfileView: View {
     public init() { }
     
     public var body: some View {
-        Text("MyProfileView")
+        ZStack {
+            Rectangle()
+                .fill(Color(uiColor: .systemBackground))
+            
+            Text("MyProfileView")
+        }
     }
 }
 

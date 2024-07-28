@@ -13,17 +13,23 @@ import MockData
 
 public struct HomeView: View {
     
-    let today: Date
+    @State private var showProfileView: Bool = false
     
+    let today: Date
     let historyListFactory: (Date) -> HistoryListView
     let myViewFactory: ((() -> Void)?) -> MyView
+    let myProfileViewFactory: () -> MyProfileView
     
-    public init(today: Date,
-                historyListFactory: @escaping (Date) -> HistoryListView,
-                myViewFactory: @escaping ((() -> Void)?) -> MyView) {
+    public init(
+        today: Date,
+        historyListFactory: @escaping (Date) -> HistoryListView,
+        myViewFactory: @escaping ((() -> Void)?) -> MyView,
+        myProfileViewFactory: @escaping () -> MyProfileView
+    ) {
         self.today = today
         self.historyListFactory = historyListFactory
         self.myViewFactory = myViewFactory
+        self.myProfileViewFactory = myProfileViewFactory
     }
     
     public var body: some View {
@@ -32,13 +38,19 @@ public struct HomeView: View {
             TabView {
                 historyListFactory(today)
                 myViewFactory {
-                    print("dg: open provile view")
+                    showProfileView.toggle()
                 }
             }
             .ignoresSafeArea()
-            .tabViewStyle(.page(indexDisplayMode: .always))
-            .indexViewStyle(.page(backgroundDisplayMode: .always))
+            .tabViewStyle(.page(indexDisplayMode: showProfileView ? .never : .always))
+            .indexViewStyle(.page(backgroundDisplayMode: showProfileView ? .never : .always))
+            
+            GeometryReader { geometryProxy in
+                myProfileViewFactory()
+                    .offset(y: showProfileView ? 0 : geometryProxy.size.height + 100)
+            }
         }
+        .animation(.default, value: showProfileView)
     }
 }
 
@@ -71,6 +83,9 @@ public struct HomeView: View {
                 logRepository: logRepository, 
                 presentProfileViewAction: nil
             )
+        },
+        myProfileViewFactory: {
+            MyProfileView()
         }
     )
     .preferredColorScheme(.dark)
