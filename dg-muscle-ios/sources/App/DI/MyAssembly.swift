@@ -14,9 +14,7 @@ public struct MyAssembly: Assembly {
     public func assemble(container: Swinject.Container) {
         container.register(MyProfileView.self) { resolver in
             
-            let userRepository = resolver.resolve(UserRepository.self)!
-            
-            return MyProfileView(userRepository: userRepository)
+            return MyProfileView()
         }
         
         container.register(DeleteAccountConfirmView.self) { resolver in
