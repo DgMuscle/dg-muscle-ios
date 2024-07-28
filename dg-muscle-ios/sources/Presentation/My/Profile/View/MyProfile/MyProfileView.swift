@@ -10,6 +10,7 @@ import SwiftUI
 import Domain
 import MockData
 import Common
+import Kingfisher
 
 public struct MyProfileView: View {
     
@@ -30,7 +31,20 @@ public struct MyProfileView: View {
     public var body: some View {
         ZStack {
             Rectangle()
-                .fill(Color(uiColor: .systemBackground))
+                .fill(.clear)
+                .background {
+                    ZStack {
+                        Rectangle()
+                            .fill(Color(uiColor: .secondarySystemGroupedBackground))
+                        
+                        if let url = viewModel.user?.backgroundImageURL {
+                            KFImage(url)
+                                .resizable()
+                                .scaledToFill()
+                        }
+                    }
+                }
+                .ignoresSafeArea()
             
             Text("MyProfileView")
         }
