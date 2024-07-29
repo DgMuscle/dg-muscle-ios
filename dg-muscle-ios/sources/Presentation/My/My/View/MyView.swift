@@ -121,8 +121,8 @@ public struct MyView: View {
                                 }
                                 .padding(.trailing, 10)
                             
-                            Text(user.displayName ?? "null")
-                                .foregroundStyle(Color(uiColor: .label))
+                            Text((user.displayName?.isEmpty == false) ? user.displayName! : user.uid)
+                                .foregroundStyle((user.displayName?.isEmpty == false) ? Color(uiColor: .label) : Color(uiColor: .secondaryLabel))
                         }
                         .padding(.bottom)
                     }

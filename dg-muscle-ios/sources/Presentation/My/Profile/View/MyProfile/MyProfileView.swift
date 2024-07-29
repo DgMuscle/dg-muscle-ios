@@ -41,8 +41,11 @@ public struct MyProfileView: View {
                 xButton
                 Spacer()
                 profileView
-                Text(viewModel.user?.displayName ?? "null")
-                    .foregroundStyle(.white)
+                if let user = viewModel.user {
+                    Text((user.displayName?.isEmpty == false) ? user.displayName! : user.uid)
+                        .foregroundStyle((user.displayName?.isEmpty == false) ? .white : .gray)
+                }
+                
                 whiteLine
                     .padding(.top, 30)
                 bottomSection
