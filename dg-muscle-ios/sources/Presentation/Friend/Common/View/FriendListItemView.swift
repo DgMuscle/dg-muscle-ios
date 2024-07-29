@@ -16,16 +16,35 @@ struct FriendListItemView: View {
     
     var body: some View {
         HStack(spacing: 20) {
-            if let profilePhotoURL = friend.photoURL {
-                KFImage(profilePhotoURL)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: imageSize, height: imageSize)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-            }
             
-            Text(friend.displayName ?? "Display Name")
-                .foregroundStyle(Color(uiColor: friend.displayName == nil ? .secondaryLabel : .label))
+            
+            RoundedRectangle(cornerRadius: 8)
+                .fill(.clear)
+                .strokeBorder(.white.opacity(0.8), lineWidth: 1)
+                .frame(width: imageSize, height: imageSize)
+                .background {
+                    if let profilePhotoURL = friend.photoURL {
+                        KFImage(profilePhotoURL)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: imageSize, height: imageSize)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                    } else {
+                        
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(.gray)
+                            
+                            Image(systemName: "person")
+                                .foregroundStyle(.white)
+                        }
+                    }
+                }
+            
+            
+            
+            Text((friend.displayName?.isEmpty == false) ? friend.displayName! : friend.uid)
+                .foregroundStyle(Color(uiColor: (friend.displayName?.isEmpty == false) ? .label : .secondaryLabel))
         }
     }
 }
