@@ -10,6 +10,12 @@ import Domain
 import Combine
 
 public final class FriendRepositoryMock: FriendRepository {
+    public var loading: AnyPublisher<Bool, Never> {
+        $_loading.eraseToAnyPublisher()
+    }
+    
+    @Published var _loading: Bool = true
+    
     public var friends: AnyPublisher<[Domain.User], Never> { $_friends.eraseToAnyPublisher() }
     @Published var _friends: [Domain.User] = [
         USERS[0],

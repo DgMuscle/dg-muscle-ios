@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 public protocol FriendRepository {
+    var loading: AnyPublisher<Bool, Never> { get }
     var friends: AnyPublisher<[User], Never> { get }
     var requests: AnyPublisher<[FriendRequest], Never> { get }
     var users: AnyPublisher<[User], Never> { get }

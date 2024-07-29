@@ -12,6 +12,9 @@ import Combine
 public final class FriendRepositoryImpl: FriendRepository {
     public static let shared = FriendRepositoryImpl()
     
+    public var loading: AnyPublisher<Bool, Never> { $_loading.eraseToAnyPublisher() }
+    @Published var _loading: Bool = true
+    
     public var friends: AnyPublisher<[Domain.User], Never> { $_friends.eraseToAnyPublisher() }
     @Published var _friends: [Domain.User] = []
     
@@ -142,6 +145,7 @@ public final class FriendRepositoryImpl: FriendRepository {
               
             self._friends = friends
             self._requests = requests
+            self._loading = false
             
             let friendIds = friends.map({ $0.uid })
             

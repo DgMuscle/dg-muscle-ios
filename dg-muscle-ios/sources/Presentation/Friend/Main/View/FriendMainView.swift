@@ -16,6 +16,8 @@ public struct FriendMainView: View {
     
     @State var page: PageAnchorView.Page
     
+    @StateObject var viewModel: FriendMainViewModel
+    
     public init(
         friendRepository: FriendRepository,
         userRepository: UserRepository,
@@ -24,6 +26,7 @@ public struct FriendMainView: View {
         self.friendRepository = friendRepository
         self.userRepository = userRepository
         self.page = page
+        self._viewModel = .init(wrappedValue: .init(friendRepository: friendRepository))
     }
     
     public var body: some View {
@@ -33,6 +36,11 @@ public struct FriendMainView: View {
                 page: $page,
                 friendRepository: friendRepository
             )
+            
+            if viewModel.loading {
+                ProgressView()
+            }
+            
             TabView(selection: $page) {
                 FriendListView(friendRepository: friendRepository)
                     .tag(PageAnchorView.Page.friend)
@@ -52,6 +60,7 @@ public struct FriendMainView: View {
             .tabViewStyle(.page)
         }
         .animation(.default, value: page)
+        .animation(.default, value: viewModel.loading)
     }
 }
 
