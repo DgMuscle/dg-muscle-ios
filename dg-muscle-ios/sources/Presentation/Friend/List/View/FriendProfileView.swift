@@ -140,7 +140,7 @@ struct FriendProfileView: View {
             }
             
             Button {
-                print("tap edit")
+                URLManager.shared.open(url: "dgmuscle://friendhistory?id=\(friend.uid)")
             } label: {
                 VStack(spacing: 12) {
                     Image(systemName: "doc.richtext.ko")
