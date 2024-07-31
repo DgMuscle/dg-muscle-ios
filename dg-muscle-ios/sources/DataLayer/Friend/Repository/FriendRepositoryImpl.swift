@@ -151,7 +151,8 @@ public final class FriendRepositoryImpl: FriendRepository {
             
             for id in friendIds {
                 Task {
-                    try? await getHistories(friendId: id)
+                    let _ = try? await getHistories(friendId: id)
+                    let _ = try? await getExercises(friendId: id)
                 }
             }
         }
