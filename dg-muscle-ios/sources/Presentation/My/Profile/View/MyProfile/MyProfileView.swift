@@ -91,7 +91,6 @@ public struct MyProfileView: View {
     
     private func selectedURLImageView(url: IdentifiableURL) -> some View {
         ZStack {
-            
             Rectangle()
                 .fill(.black)
                 .ignoresSafeArea()
