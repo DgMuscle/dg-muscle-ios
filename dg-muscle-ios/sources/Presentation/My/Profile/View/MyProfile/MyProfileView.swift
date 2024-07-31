@@ -14,15 +14,10 @@ import Kingfisher
 
 public struct MyProfileView: View {
     
-    struct IdentifiableURL: Identifiable {
-        let id = UUID().uuidString
-        let url: URL
-    }
-    
     @Binding var shows: Bool
     
     @State private var viewOffset: CGFloat = 0
-    @State private var selectedImageURL: IdentifiableURL? = nil
+    @State private var selectedImageURL: URL? = nil
     
     @StateObject var viewModel: MyProfileViewModel
     
@@ -51,7 +46,12 @@ public struct MyProfileView: View {
                 bottomSection
                     .padding(.top)
             }
+            
+            if selectedImageURL != nil {
+                FullScreenImageView(url: $selectedImageURL)
+            }
         }
+        .animation(.default, value: selectedImageURL)
         .offset(y: viewOffset)
         .gesture (
             DragGesture(minimumDistance: 15)
@@ -69,15 +69,12 @@ public struct MyProfileView: View {
                     }
                 }
         )
-        .fullScreenCover(item: $selectedImageURL) { url in
-            selectedURLImageView(url: url)
-        }
     }
     
     private func dismiss() {
         withAnimation {
             viewOffset = 1000
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 shows = false
             }
         }
@@ -86,39 +83,6 @@ public struct MyProfileView: View {
     private func dragViewUp() {
         withAnimation {
             viewOffset = 0
-        }
-    }
-    
-    private func selectedURLImageView(url: IdentifiableURL) -> some View {
-        ZStack {
-            Rectangle()
-                .fill(.black)
-                .ignoresSafeArea()
-            
-            Rectangle()
-                .fill(.clear)
-                .background {
-                    KFImage(url.url)
-                        .resizable()
-                        .scaledToFill()
-                }
-                
-            VStack {
-                HStack {
-                    Button {
-                        selectedImageURL = nil
-                    } label: {
-                        Image(systemName: "xmark")
-                            .foregroundStyle(.white)
-                            .font(.title)
-                    }
-                    Spacer()
-                }
-                .padding(.top)
-                .padding(.horizontal)
-                
-                Spacer()
-            }
         }
     }
     
@@ -150,7 +114,7 @@ public struct MyProfileView: View {
                             .resizable()
                             .scaledToFill()
                             .onTapGesture {
-                                selectedImageURL = .init(url: url)
+                                selectedImageURL = url
                             }
                     }
                 }
@@ -179,7 +143,7 @@ public struct MyProfileView: View {
                             .frame(width: 100, height: 100)
                             .clipShape(RoundedRectangle(cornerRadius: 25.0))
                             .onTapGesture {
-                                selectedImageURL = .init(url: url)
+                                selectedImageURL = url
                             }
                     }
                 }
