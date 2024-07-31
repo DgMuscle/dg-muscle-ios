@@ -77,7 +77,7 @@ public struct MyProfileView: View {
     private func dismiss() {
         withAnimation {
             viewOffset = 1000
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 shows = false
             }
         }
