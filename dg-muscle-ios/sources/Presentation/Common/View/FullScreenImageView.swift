@@ -11,18 +11,13 @@ import MockData
 
 public struct FullScreenImageView: View {
     
-    @Binding var isPresent: Bool
-    
+    @Binding private var url: URL?
     @State private var viewOffset: CGFloat = 0
     
-    private let url: URL
-    
     public init(
-        isPresent: Binding<Bool>,
-        url: URL
+        url: Binding<URL?>
     ) {
-        self._isPresent = isPresent
-        self.url = url
+        self._url = url
     }
     
     public var body: some View {
@@ -81,7 +76,7 @@ public struct FullScreenImageView: View {
         withAnimation {
             viewOffset = 1000
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                isPresent = false
+                url = nil
             }
         }
     }
@@ -94,6 +89,6 @@ public struct FullScreenImageView: View {
 }
 
 #Preview {
-    FullScreenImageView(isPresent: .constant(true), url: USER_DG.photoURL!)
+    FullScreenImageView(url: .constant(USER_DG.photoURL))
         .preferredColorScheme(.dark)
 }
