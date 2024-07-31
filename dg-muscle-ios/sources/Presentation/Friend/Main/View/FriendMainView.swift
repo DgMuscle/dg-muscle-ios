@@ -15,6 +15,7 @@ public struct FriendMainView: View {
     private let userRepository: UserRepository
     
     @State var page: PageAnchorView.Page
+    @State var selectedFriend: Friend?
     
     @StateObject var viewModel: FriendMainViewModel
     
@@ -30,37 +31,47 @@ public struct FriendMainView: View {
     }
     
     public var body: some View {
-        
-        VStack {
-            PageAnchorView(
-                page: $page,
-                friendRepository: friendRepository
-            )
-            
-            if viewModel.loading {
-                ProgressView()
-            }
-            
-            TabView(selection: $page) {
-                FriendListView(friendRepository: friendRepository)
+        ZStack {
+            VStack {
+                PageAnchorView(
+                    page: $page,
+                    friendRepository: friendRepository
+                )
+                
+                if viewModel.loading {
+                    ProgressView()
+                }
+                
+                TabView(selection: $page) {
+                    FriendListView(
+                        friendRepository: friendRepository,
+                        selectedFriend: $selectedFriend
+                    )
                     .tag(PageAnchorView.Page.friend)
-                
-                SearchUsersView(
-                    friendRepository: friendRepository,
-                    userRepository: userRepository
-                )
-                .tag(PageAnchorView.Page.search)
-                
-                RequestListView(
-                    friendRepository: friendRepository,
-                    userRepository: userRepository
-                )
-                .tag(PageAnchorView.Page.request)
+                    
+                    SearchUsersView(
+                        friendRepository: friendRepository,
+                        userRepository: userRepository
+                    )
+                    .tag(PageAnchorView.Page.search)
+                    
+                    RequestListView(
+                        friendRepository: friendRepository,
+                        userRepository: userRepository
+                    )
+                    .tag(PageAnchorView.Page.request)
+                }
+                .tabViewStyle(.page)
             }
-            .tabViewStyle(.page)
+            .animation(.default, value: page)
+            .animation(.default, value: viewModel.loading)
+            
+            if let selectedFriend {
+                FriendProfileView(friend: selectedFriend, selectedFriend: $selectedFriend)
+            }
         }
-        .animation(.default, value: page)
-        .animation(.default, value: viewModel.loading)
+        .animation(.default, value: selectedFriend)
+        .navigationBarBackButtonHidden(selectedFriend != nil)
     }
 }
 

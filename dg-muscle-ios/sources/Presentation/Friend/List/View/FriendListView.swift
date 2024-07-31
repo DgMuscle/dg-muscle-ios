@@ -12,10 +12,14 @@ import MockData
 struct FriendListView: View {
     
     @StateObject var viewModel: FriendListViewModel
-    @State private var selectedFriend: Friend?
+    @Binding var selectedFriend: Friend?
     
-    init(friendRepository: FriendRepository) {
+    init(
+        friendRepository: FriendRepository,
+        selectedFriend: Binding<Friend?>
+    ) {
         _viewModel = .init(wrappedValue: .init(friendRepository: friendRepository))
+        _selectedFriend = selectedFriend
     }
     
     var body: some View {
@@ -33,13 +37,13 @@ struct FriendListView: View {
             }
         }
         .scrollIndicators(.hidden)
-        .fullScreenCover(item: $selectedFriend) { friend in
-            FriendProfileView(friend: friend, selectedFriend: $selectedFriend)
-        }
     }
 }
 
 #Preview {
-    return FriendListView(friendRepository: FriendRepositoryMock())
+    return FriendListView(
+        friendRepository: FriendRepositoryMock(),
+        selectedFriend: .constant(nil)
+    )
         .preferredColorScheme(.dark)
 }
