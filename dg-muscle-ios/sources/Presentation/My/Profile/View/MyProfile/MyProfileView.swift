@@ -114,7 +114,9 @@ public struct MyProfileView: View {
                             .resizable()
                             .scaledToFill()
                             .onTapGesture {
-                                selectedImageURL = url
+                                if selectedImageURL == nil {
+                                    selectedImageURL = url
+                                }
                             }
                     }
                 }
@@ -143,7 +145,9 @@ public struct MyProfileView: View {
                             .frame(width: 100, height: 100)
                             .clipShape(RoundedRectangle(cornerRadius: 25.0))
                             .onTapGesture {
-                                selectedImageURL = url
+                                if selectedImageURL == nil {
+                                    selectedImageURL = url
+                                }
                             }
                     }
                 }
