@@ -38,7 +38,10 @@ public final class RapidRepositoryImpl: RapidRepository {
                     logRepository: LogRepositoryImpl.shared,
                     userRepository: UserRepositoryImpl.shared
                 )
-                .implement(message: error.localizedDescription, category: .error)
+                .implement(message: """
+                location is RapidRepositoryImpl
+                \(error.localizedDescription)
+                """, category: .error)
             }
             _exercisesLoading = false
         }
