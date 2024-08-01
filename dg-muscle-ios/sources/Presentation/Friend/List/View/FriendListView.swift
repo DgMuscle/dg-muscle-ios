@@ -27,7 +27,9 @@ struct FriendListView: View {
             ForEach(viewModel.friends, id: \.self) { friend in
                 FriendListItemView(friend: friend)
                     .onTapGesture {
-                        selectedFriend = friend
+                        if selectedFriend == nil {
+                            selectedFriend = friend
+                        }
                     }
                     .contextMenu {
                         Button("delete") {
