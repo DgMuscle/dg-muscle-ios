@@ -9,9 +9,18 @@ import SwiftUI
 
 public struct MyProfileEditView: View {
     
-    public init() { }
+    @StateObject var viewModel: MyProfileEditViewModel
+    
+    public init() {
+        _viewModel = .init(wrappedValue: .init())
+    }
     
     public var body: some View {
         Text("MyProfileEditView")
     }
+}
+
+#Preview {
+    MyProfileEditView()
+        .preferredColorScheme(.dark)
 }
