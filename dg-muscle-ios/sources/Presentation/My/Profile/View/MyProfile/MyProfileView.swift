@@ -35,7 +35,9 @@ public struct MyProfileView: View {
     
     public var body: some View {
         ZStack {
-            backgroundView
+            BackgroundImageView(url: viewModel.user?.backgroundImageURL) { url in
+                selectedImageURL = url
+            }
             VStack {
                 xButton
                 Spacer()
@@ -107,29 +109,6 @@ public struct MyProfileView: View {
             Spacer()
         }
         .padding(.horizontal)
-    }
-    
-    var backgroundView: some View {
-        Rectangle()
-            .fill(.clear)
-            .background {
-                ZStack {
-                    Rectangle()
-                        .fill(.gray)
-                    
-                    if let url = viewModel.user?.backgroundImageURL {
-                        KFImage(url)
-                            .resizable()
-                            .scaledToFill()
-                            .onTapGesture {
-                                if selectedImageURL == nil {
-                                    selectedImageURL = url
-                                }
-                            }
-                    }
-                }
-            }
-            .ignoresSafeArea()
     }
     
     var profileView: some View {
