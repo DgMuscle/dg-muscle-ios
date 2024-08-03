@@ -20,6 +20,8 @@ struct ProfileTextInputView: View {
     
     @Binding var showing: Bool
     
+    @FocusState var focus
+    
     let enter: ((String) -> ())?
     let maxLength: Int
     
@@ -48,6 +50,9 @@ struct ProfileTextInputView: View {
         }
         .foregroundStyle(.white)
         .opacity(opacity)
+        .onAppear {
+            focus = true
+        }
     }
     
     func dismiss() {
@@ -92,6 +97,7 @@ struct ProfileTextInputView: View {
     var textInput: some View {
         VStack(spacing: 12) {
             TextField("", text: $text)
+                .focused($focus)
                 .multilineTextAlignment(.center)
                 .overlay {
                     HStack {
