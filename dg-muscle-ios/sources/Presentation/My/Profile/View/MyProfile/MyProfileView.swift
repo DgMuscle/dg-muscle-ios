@@ -50,6 +50,10 @@ public struct MyProfileView: View {
             if selectedImageURL != nil {
                 FullScreenImageView(url: $selectedImageURL)
             }
+            
+            if viewModel.isEditing {
+                MyProfileEditView()
+            }
         }
         .animation(.default, value: selectedImageURL)
         .offset(y: viewOffset)
@@ -176,7 +180,7 @@ public struct MyProfileView: View {
             }
             
             Button {
-                print("tap edit")
+                viewModel.isEditing = true
             } label: {
                 VStack(spacing: 12) {
                     Image(systemName: "pencil")
