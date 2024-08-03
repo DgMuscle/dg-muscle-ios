@@ -70,7 +70,6 @@ public struct FriendMainView: View {
                 FriendProfileView(friend: selectedFriend, selectedFriend: $selectedFriend)
             }
         }
-        .animation(.default, value: selectedFriend)
         .navigationBarBackButtonHidden(selectedFriend != nil)
     }
 }

@@ -19,6 +19,7 @@ struct FriendProfileView: View {
     
     @State private var viewOffset: CGFloat = 0
     @State private var selectedImageURL: URL? = nil
+    @State private var opacity: CGFloat = 0
     
     var body: some View {
         ZStack {
@@ -55,6 +56,12 @@ struct FriendProfileView: View {
                     }
                 }
         )
+        .opacity(opacity)
+        .onAppear {
+            withAnimation {
+                opacity = 1
+            }
+        }
     }
     
     var backgroundView: some View {

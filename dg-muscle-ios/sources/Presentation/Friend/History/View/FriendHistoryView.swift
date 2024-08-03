@@ -82,7 +82,6 @@ public struct FriendHistoryView: View {
             .padding()
         }
         .scrollIndicators(.hidden)
-        .animation(.default, value: viewModel.status)
         .toolbar {
             if let user = viewModel.user {
                 if let profileImage = user.photoURL {
