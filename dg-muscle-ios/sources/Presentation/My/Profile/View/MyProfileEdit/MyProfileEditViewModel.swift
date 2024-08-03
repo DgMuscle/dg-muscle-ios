@@ -21,6 +21,9 @@ final class MyProfileEditViewModel: ObservableObject {
     @Published var userImage: UIImage?
     private var userImageChanged: Bool = false
     
+    @Published var displayName: String = ""
+    private var displayNameChanged: Bool = false
+    
     private let getUserUsecase: GetUserUsecase
     private let postBackgroundImageUsecase: PostBackgroundImageUsecase
     private let postDisplayNameUsecase: PostDisplayNameUsecase
@@ -56,7 +59,14 @@ final class MyProfileEditViewModel: ObservableObject {
             }
         }
         
+        self.displayName = (user.displayName ?? "Display Name")
+        
         bind()
+    }
+    
+    @MainActor
+    func setDisplayName(_ value: String) {
+        self.displayName = value
     }
     
     private func bind() {

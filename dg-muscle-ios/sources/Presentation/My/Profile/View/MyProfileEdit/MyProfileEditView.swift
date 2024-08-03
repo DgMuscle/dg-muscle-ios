@@ -31,6 +31,14 @@ public struct MyProfileEditView: View {
                 topSection
                 Spacer()
                 profileImageView
+                
+                VStack {
+                    WhiteUnderlineTextLabel(text: viewModel.displayName) {
+                        print("tap display name")
+                    }
+                }
+                .padding(.horizontal)
+                
             }
         }
     }
