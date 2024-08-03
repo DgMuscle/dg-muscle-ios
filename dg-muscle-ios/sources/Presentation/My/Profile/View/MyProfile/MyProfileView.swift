@@ -112,13 +112,13 @@ public struct MyProfileView: View {
     }
     
     var profileView: some View {
-        RoundedRectangle(cornerRadius: 25.0, style: .continuous)
+        RoundedRectangle(cornerRadius: 40, style: .continuous)
             .stroke(.white.opacity(0.6))
             .fill(.clear)
             .frame(width: 100, height: 100)
             .background {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 25.0, style: .continuous)
+                    RoundedRectangle(cornerRadius: 40, style: .continuous)
                         .fill(.gray)
                     
                     Image(systemName: "person")
@@ -130,7 +130,7 @@ public struct MyProfileView: View {
                             .resizable()
                             .scaledToFill()
                             .frame(width: 100, height: 100)
-                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                            .clipShape(RoundedRectangle(cornerRadius: 40))
                             .onTapGesture {
                                 if selectedImageURL == nil {
                                     selectedImageURL = url

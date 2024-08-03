@@ -75,7 +75,7 @@ public struct MyProfileEditView: View {
     }
     
     var profileImageView: some View {
-        RoundedRectangle(cornerRadius: 25)
+        RoundedRectangle(cornerRadius: 40)
             .stroke(.white.opacity(0.6))
             .frame(width: 100, height: 100)
             .background {
@@ -85,10 +85,10 @@ public struct MyProfileEditView: View {
                             .resizable()
                             .scaledToFill()
                             .frame(width: 100, height: 100)
-                            .clipShape(RoundedRectangle(cornerRadius: 25))
+                            .clipShape(RoundedRectangle(cornerRadius: 40))
                     } else {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 25.0)
+                            RoundedRectangle(cornerRadius: 40)
                                 .fill(.gray)
                             
                             Image(systemName: "person")

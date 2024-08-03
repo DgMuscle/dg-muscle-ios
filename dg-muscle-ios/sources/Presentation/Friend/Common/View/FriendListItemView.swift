@@ -18,7 +18,7 @@ struct FriendListItemView: View {
         HStack(spacing: 20) {
             
             
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: 20)
                 .fill(.clear)
                 .strokeBorder(.white.opacity(0.8), lineWidth: 1)
                 .frame(width: imageSize, height: imageSize)
@@ -28,11 +28,11 @@ struct FriendListItemView: View {
                             .resizable()
                             .scaledToFill()
                             .frame(width: imageSize, height: imageSize)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
                     } else {
                         
                         ZStack {
-                            RoundedRectangle(cornerRadius: 8)
+                            RoundedRectangle(cornerRadius: 20)
                                 .fill(.gray)
                             
                             Image(systemName: "person")
