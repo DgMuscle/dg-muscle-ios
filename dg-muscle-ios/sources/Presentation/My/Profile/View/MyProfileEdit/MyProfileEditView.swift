@@ -7,8 +7,11 @@
 
 import SwiftUI
 
-struct MyProfileEditView: View {
-    var body: some View {
+public struct MyProfileEditView: View {
+    
+    public init() { }
+    
+    public var body: some View {
         Text("MyProfileEditView")
     }
 }

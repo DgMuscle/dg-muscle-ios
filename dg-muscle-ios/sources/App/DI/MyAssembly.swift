@@ -29,7 +29,10 @@ public struct MyAssembly: Assembly {
             let userRepository = resolver.resolve(UserRepository.self)!
             return MyProfileView(
                 shows: shows,
-                userRepository: userRepository
+                userRepository: userRepository, 
+                myProfileEditFactory: {
+                    MyProfileEditView()
+                }
             )
         }
         
