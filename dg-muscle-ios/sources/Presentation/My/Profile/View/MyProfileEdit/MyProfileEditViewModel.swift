@@ -69,6 +69,12 @@ final class MyProfileEditViewModel: ObservableObject {
     }
     
     @MainActor
+    func deleteUserPhoto() {
+        userImage = nil
+        userImageChanged = true
+    }
+    
+    @MainActor
     func deleteBackgroundImage() {
         backgroundImage = nil
         backgroundImageChanged = true

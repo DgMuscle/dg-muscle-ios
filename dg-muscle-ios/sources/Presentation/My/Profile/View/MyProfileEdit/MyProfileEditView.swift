@@ -116,6 +116,11 @@ public struct MyProfileEditView: View {
                             .scaledToFill()
                             .frame(width: 100, height: 100)
                             .clipShape(RoundedRectangle(cornerRadius: 40))
+                            .contextMenu {
+                                Button("Delete", systemImage: "trash") {
+                                    viewModel.deleteUserPhoto()
+                                }
+                            }
                     } else {
                         ZStack {
                             RoundedRectangle(cornerRadius: 40)
