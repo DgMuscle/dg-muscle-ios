@@ -27,6 +27,9 @@ final class MyProfileEditViewModel: ObservableObject {
     @Published var link: URL?
     private var linkChanged: Bool = false
     
+    @Published var loading: Bool = false
+    @Published var snackbar: String?
+    
     private let getUserUsecase: GetUserUsecase
     private let postBackgroundImageUsecase: PostBackgroundImageUsecase
     private let postDisplayNameUsecase: PostDisplayNameUsecase
@@ -66,6 +69,46 @@ final class MyProfileEditViewModel: ObservableObject {
         self.link = user.link
         
         bind()
+    }
+    
+    @MainActor
+    func done() async {
+        loading = true
+        do {
+            async let postBackgroundImage: Void = {
+                if backgroundImageChanged {
+                    try await postBackgroundImageUsecase.implement(backgroundImage: backgroundImage)
+                }
+            }()
+            
+            async let postProfilePhoto: Void = {
+                if userImageChanged {
+                    try await postProfilePhotoUsecase.implement(photo: userImage)
+                }
+            }()
+            
+            async let postDisplayName: Void = {
+                if displayNameChanged {
+                    try await postDisplayNameUsecase.implement(displayName: displayName.isEmpty ? nil : displayName)
+                }
+            }()
+            
+            let postLink: Void = {
+                if linkChanged {
+                    postLinkUsecase.implement(link: link)
+                }
+            }()
+            
+            // 병렬로 시작된 모든 작업이 완료될 때까지 기다립니다.
+            try await postBackgroundImage
+            try await postProfilePhoto
+            try await postDisplayName
+            postLink // 이 부분은 비동기가 아니므로 try await가 필요 없습니다.
+
+        } catch {
+            snackbar = error.localizedDescription
+        }
+        loading = false
     }
     
     @MainActor

@@ -19,8 +19,6 @@ public struct MyProfileEditView: View {
     @State var isEditingDisplayName: Bool = false
     @State var isEditingLink: Bool = false
     
-    @State var snackbarMessage: String?
-    
     private let makeURLFromStringUsecase: MakeURLFromStringUsecase
     private let makeStringFromURLUsecase: MakeStringFromURLUsecase
     
@@ -54,13 +52,18 @@ public struct MyProfileEditView: View {
             }
         }
         .overlay {
-            if snackbarMessage != nil {
-                Common.SnackbarView(message: $snackbarMessage)
+            ZStack {
+                if viewModel.snackbar != nil {
+                    Common.SnackbarView(message: $viewModel.snackbar)
+                }
+                
+                if viewModel.loading {
+                    ProgressView()
+                }
             }
         }
     }
         
-    
     var backgroundView: some View {
         Rectangle()
             .fill(.clear)
@@ -99,7 +102,14 @@ public struct MyProfileEditView: View {
             
             Spacer()
             
-            Text("Done")
+            Button {
+                Task {
+                    await viewModel.done()
+                    isEditing = false
+                }
+            } label: {
+                Text("Done")
+            }
         }
         .padding(.horizontal)
         .foregroundStyle(.white)
@@ -200,7 +210,7 @@ public struct MyProfileEditView: View {
                 viewModel.setLink(link)
                 
                 if link == nil {
-                    snackbarMessage = "Please enter a valid URL"
+                    viewModel.snackbar = "Please enter a valid URL"
                 }
             }
     }
