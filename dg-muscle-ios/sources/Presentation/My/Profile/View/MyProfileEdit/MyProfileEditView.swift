@@ -41,9 +41,10 @@ public struct MyProfileEditView: View {
                 topSection
                 Spacer()
                 profileImageView
-                    .padding(.bottom)
+                    .padding(.bottom, 39)
                 labels
                     .padding(.horizontal)
+                    .padding(.bottom)
             }
             
             if isEditingDisplayName {
