@@ -24,6 +24,9 @@ final class MyProfileEditViewModel: ObservableObject {
     @Published var displayName: String = ""
     private var displayNameChanged: Bool = false
     
+    @Published var link: URL?
+    private var linkChanged: Bool = false
+    
     private let getUserUsecase: GetUserUsecase
     private let postBackgroundImageUsecase: PostBackgroundImageUsecase
     private let postDisplayNameUsecase: PostDisplayNameUsecase
@@ -60,8 +63,15 @@ final class MyProfileEditViewModel: ObservableObject {
         }
         
         self.displayName = (user.displayName ?? "Display Name")
+        self.link = user.link
         
         bind()
+    }
+    
+    @MainActor
+    func setLink(_ value: URL?) {
+        linkChanged = true
+        self.link = value
     }
     
     @MainActor

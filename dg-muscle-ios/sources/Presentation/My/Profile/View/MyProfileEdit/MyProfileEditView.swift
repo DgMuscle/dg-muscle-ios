@@ -33,6 +33,7 @@ public struct MyProfileEditView: View {
                 topSection
                 Spacer()
                 profileImageView
+                    .padding(.bottom)
                 
                 VStack {
                     Button {
