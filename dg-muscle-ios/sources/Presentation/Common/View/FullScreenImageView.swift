@@ -13,6 +13,7 @@ public struct FullScreenImageView: View {
     
     @Binding private var url: URL?
     @State private var viewOffset: CGFloat = 0
+    @State private var opacity: CGFloat = 0
     
     public init(
         url: Binding<URL?>
@@ -53,6 +54,7 @@ public struct FullScreenImageView: View {
                 Spacer()
             }
         }
+        .opacity(opacity)
         .offset(y: viewOffset)
         .gesture(
             DragGesture(minimumDistance: 15)
@@ -70,6 +72,11 @@ public struct FullScreenImageView: View {
                     }
                 }
         )
+        .onAppear {
+            withAnimation {
+                opacity = 1
+            }
+        }
     }
     
     private func dismiss() {

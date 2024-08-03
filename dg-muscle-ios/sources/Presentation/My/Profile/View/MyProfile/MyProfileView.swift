@@ -63,7 +63,6 @@ public struct MyProfileView: View {
             }
         }
         .opacity(opacity)
-        .animation(.default, value: selectedImageURL)
         .offset(y: viewOffset)
         .gesture (
             DragGesture(minimumDistance: 15)
