@@ -51,7 +51,6 @@ public struct HomeView: View {
                 myProfileViewFactory($showProfileView)
             }
         }
-        .animation(.default, value: showProfileView)
     }
 }
 

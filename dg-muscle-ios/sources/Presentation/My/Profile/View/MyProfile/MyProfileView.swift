@@ -18,6 +18,7 @@ public struct MyProfileView: View {
     
     @State private var viewOffset: CGFloat = 0
     @State private var selectedImageURL: URL? = nil
+    @State private var opacity: CGFloat = 0
     
     @StateObject var viewModel: MyProfileViewModel
     
@@ -61,6 +62,7 @@ public struct MyProfileView: View {
                 myProfileEditFactory($viewModel.isEditing)
             }
         }
+        .opacity(opacity)
         .animation(.default, value: selectedImageURL)
         .offset(y: viewOffset)
         .gesture (
@@ -79,6 +81,11 @@ public struct MyProfileView: View {
                     }
                 }
         )
+        .onAppear {
+            withAnimation {
+                opacity = 1
+            }
+        }
     }
     
     private func dismiss() {
