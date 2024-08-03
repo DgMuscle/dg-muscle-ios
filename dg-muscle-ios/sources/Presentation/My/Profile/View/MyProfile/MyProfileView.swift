@@ -180,7 +180,7 @@ public struct MyProfileView: View {
         shows: .constant(true),
         userRepository: UserRepositoryMock(),
         myProfileEditFactory: {
-            MyProfileEditView()
+            MyProfileEditView(userRepository: UserRepositoryMock())
         }
     )
         .preferredColorScheme(.dark)

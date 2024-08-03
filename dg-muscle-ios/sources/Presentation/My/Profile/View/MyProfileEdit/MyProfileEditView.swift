@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import MockData
+import Domain
 
 public struct MyProfileEditView: View {
     
     @StateObject var viewModel: MyProfileEditViewModel
     
-    public init() {
-        _viewModel = .init(wrappedValue: .init())
+    public init(userRepository: UserRepository) {
+        _viewModel = .init(wrappedValue: .init(userRepository: userRepository))
     }
     
     public var body: some View {
@@ -21,6 +23,6 @@ public struct MyProfileEditView: View {
 }
 
 #Preview {
-    MyProfileEditView()
+    MyProfileEditView(userRepository: UserRepositoryMock())
         .preferredColorScheme(.dark)
 }

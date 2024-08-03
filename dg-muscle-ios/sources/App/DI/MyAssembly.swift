@@ -31,7 +31,7 @@ public struct MyAssembly: Assembly {
                 shows: shows,
                 userRepository: userRepository, 
                 myProfileEditFactory: {
-                    MyProfileEditView()
+                    MyProfileEditView(userRepository: userRepository)
                 }
             )
         }

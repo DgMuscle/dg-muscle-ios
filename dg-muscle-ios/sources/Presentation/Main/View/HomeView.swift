@@ -90,7 +90,7 @@ public struct HomeView: View {
                 shows: .constant(false),
                 userRepository: userRepository, 
                 myProfileEditFactory: {
-                    MyProfileEditView()
+                    MyProfileEditView(userRepository: userRepository)
                 }
             )
         }
