@@ -29,8 +29,8 @@ public struct MyProfileEditView: View {
             
             VStack {
                 topSection
-                
                 Spacer()
+                profileImageView
             }
         }
     }
@@ -72,6 +72,48 @@ public struct MyProfileEditView: View {
         }
         .padding(.horizontal)
         .foregroundStyle(.white)
+    }
+    
+    var profileImageView: some View {
+        RoundedRectangle(cornerRadius: 25)
+            .stroke(.white.opacity(0.6))
+            .frame(width: 100, height: 100)
+            .background {
+                PhotosPicker(selection: $viewModel.selectedUserPhoto) {
+                    if let image = viewModel.userImage {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 100, height: 100)
+                            .clipShape(RoundedRectangle(cornerRadius: 25))
+                    } else {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 25.0)
+                                .fill(.gray)
+                            
+                            Image(systemName: "person")
+                                .foregroundStyle(.white)
+                        }
+                    }
+                }
+            }
+            .overlay {
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        PhotosPicker(selection: $viewModel.selectedUserPhoto) {
+                            Image(systemName: "camera.fill")
+                                .foregroundStyle(.black)
+                                .background {
+                                    Circle()
+                                        .fill(.white)
+                                        .frame(width: 30, height: 30)
+                                }
+                        }
+                    }
+                }
+            }
     }
 }
 
