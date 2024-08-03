@@ -38,6 +38,10 @@ struct FriendProfileView: View {
                 bottomSection
                     .padding(.top)
             }
+            
+            if let selectedImageURL {
+                FullScreenImageView(url: $selectedImageURL)
+            }
         }
         .offset(y: viewOffset)
         .gesture (
@@ -76,6 +80,9 @@ struct FriendProfileView: View {
                         KFImage(url)
                             .resizable()
                             .scaledToFill()
+                            .onTapGesture {
+                                selectedImageURL = url
+                            }
                     }
                 }
             }
