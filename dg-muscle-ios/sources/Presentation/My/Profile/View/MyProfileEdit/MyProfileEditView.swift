@@ -22,6 +22,7 @@ public struct MyProfileEditView: View {
     @State var snackbarMessage: String?
     
     private let makeURLFromStringUsecase: MakeURLFromStringUsecase
+    private let makeStringFromURLUsecase: MakeStringFromURLUsecase
     
     public init(
         userRepository: UserRepository,
@@ -30,6 +31,7 @@ public struct MyProfileEditView: View {
         _viewModel = .init(wrappedValue: .init(userRepository: userRepository))
         _isEditing = isEditing
         makeURLFromStringUsecase = .init()
+        makeStringFromURLUsecase = .init()
     }
     
     public var body: some View {
@@ -152,7 +154,11 @@ public struct MyProfileEditView: View {
             Button {
                 isEditingLink = true
             } label: {
-                WhiteUnderlineTextLabel(text: viewModel.link?.absoluteString ?? "Enter a link to express yourself")
+                if let link = viewModel.link {
+                    WhiteUnderlineTextLabel(text: makeStringFromURLUsecase.implement(url: link))
+                } else {
+                    WhiteUnderlineTextLabel(text: "Enter a link to express yourself")
+                }
             }
         }
     }
