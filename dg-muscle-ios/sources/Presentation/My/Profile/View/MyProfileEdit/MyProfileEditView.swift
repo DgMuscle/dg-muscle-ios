@@ -99,6 +99,7 @@ public struct MyProfileEditView: View {
             } label: {
                 Text("Cancel")
             }
+            .disabled(viewModel.loading)
             
             Spacer()
             
@@ -110,6 +111,7 @@ public struct MyProfileEditView: View {
             } label: {
                 Text("Done")
             }
+            .disabled(viewModel.loading)
         }
         .padding(.horizontal)
         .foregroundStyle(.white)
