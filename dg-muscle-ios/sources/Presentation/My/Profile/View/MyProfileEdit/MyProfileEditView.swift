@@ -72,6 +72,11 @@ public struct MyProfileEditView: View {
                                 Image(uiImage: image)
                                     .resizable()
                                     .scaledToFill()
+                                    .contextMenu {
+                                        Button("Delete", systemImage: "trash") {
+                                            viewModel.deleteBackgroundImage()
+                                        }
+                                    }
                             } else {
                                 Rectangle()
                                     .fill(.gray)

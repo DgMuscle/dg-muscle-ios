@@ -69,6 +69,12 @@ final class MyProfileEditViewModel: ObservableObject {
     }
     
     @MainActor
+    func deleteBackgroundImage() {
+        backgroundImage = nil
+        backgroundImageChanged = true
+    }
+    
+    @MainActor
     func setLink(_ value: URL?) {
         linkChanged = true
         self.link = value
