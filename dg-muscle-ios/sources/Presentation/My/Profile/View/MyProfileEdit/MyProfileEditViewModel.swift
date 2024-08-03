@@ -23,6 +23,8 @@ final class MyProfileEditViewModel: ObservableObject {
     private let postLinkUsecase: PostLinkUsecase
     private let postProfilePhotoUsecase: PostProfilePhotoUsecase
     
+    private var cancellables = Set<AnyCancellable>()
+    
     init(userRepository: UserRepository) {
         getUserUsecase = .init(userRepository: userRepository)
         postBackgroundImageUsecase = .init(userRepository: userRepository)
@@ -37,6 +39,35 @@ final class MyProfileEditViewModel: ObservableObject {
                 let backgroundImage =  try await UIImageGenerator.shared.generateImageFrom(url: backgroundImageURL)
                 self.backgroundImage = backgroundImage
             }
+        }
+        
+        bind()
+    }
+    
+    private func bind() {
+        $selectedBackgroundPhoto
+            .dropFirst()
+            .sink { [weak self] photo in
+                self?.configureBackgroundImage(photo: photo)
+            }
+            .store(in: &cancellables)
+            
+    }
+    
+    private func configureBackgroundImage(photo: PhotosPickerItem?) {
+        Task {
+            backgroundImageChanged = true
+            guard let photo else {
+                self.backgroundImage = nil
+                return
+            }
+            
+            guard let data = try await photo.loadTransferable(type: Data.self) else {
+                self.backgroundImage = nil
+                return
+            }
+            
+            self.backgroundImage = UIImage(data: data)
         }
     }
 }
