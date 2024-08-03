@@ -38,8 +38,6 @@ struct SearchUsersView: View {
                             }
                         }
                 }
-                
-                
             }
             
             TextField("Search users by display name", text: $viewModel.query)

@@ -13,42 +13,61 @@ import Common
 import Kingfisher
 
 public struct MyProfileView: View {
-    
+
     struct IdentifiableURL: Identifiable {
         let id = UUID().uuidString
         let url: URL
     }
-    
+
     @Binding var shows: Bool
-    
+
     @State private var viewOffset: CGFloat = 0
-    @State private var selectedImageURL: IdentifiableURL? = nil
-    
+    @State private var selectedImageURL: URL? = nil
+    @State private var opacity: CGFloat = 0
+
     @StateObject var viewModel: MyProfileViewModel
-    
+
+    private let myProfileEditFactory: (Binding<Bool>) -> MyProfileEditView
+
     public init(
         shows: Binding<Bool>,
-        userRepository: UserRepository
+        userRepository: UserRepository,
+        myProfileEditFactory: @escaping (Binding<Bool>) -> MyProfileEditView
     ) {
         _shows = shows
         _viewModel = .init(wrappedValue: .init(userRepository: userRepository))
+        self.myProfileEditFactory = myProfileEditFactory
     }
-    
+
     public var body: some View {
         ZStack {
-            backgroundView
+            BackgroundImageView(url: viewModel.user?.backgroundImageURL) { url in
+                selectedImageURL = url
+            }
             VStack {
                 xButton
                 Spacer()
                 profileView
-                Text(viewModel.user?.displayName ?? "null")
-                    .foregroundStyle(.white)
+                if let user = viewModel.user {
+                    Text((user.displayName?.isEmpty == false) ? user.displayName! : user.uid)
+                        .foregroundStyle((user.displayName?.isEmpty == false) ? .white : .gray)
+                }
+
                 whiteLine
                     .padding(.top, 30)
                 bottomSection
                     .padding(.top)
             }
+
+            if selectedImageURL != nil {
+                FullScreenImageView(url: $selectedImageURL)
+            }
+
+            if viewModel.isEditing {
+                myProfileEditFactory($viewModel.isEditing)
+            }
         }
+        .opacity(opacity)
         .offset(y: viewOffset)
         .gesture (
             DragGesture(minimumDistance: 15)
@@ -66,11 +85,13 @@ public struct MyProfileView: View {
                     }
                 }
         )
-        .fullScreenCover(item: $selectedImageURL) { url in
-            selectedURLImageView(url: url)
+        .onAppear {
+            withAnimation {
+                opacity = 1
+            }
         }
     }
-    
+
     private func dismiss() {
         withAnimation {
             viewOffset = 1000
@@ -79,47 +100,13 @@ public struct MyProfileView: View {
             }
         }
     }
-    
+
     private func dragViewUp() {
         withAnimation {
             viewOffset = 0
         }
     }
-    
-    private func selectedURLImageView(url: IdentifiableURL) -> some View {
-        ZStack {
-            
-            Rectangle()
-                .fill(.black)
-                .ignoresSafeArea()
-            
-            Rectangle()
-                .fill(.clear)
-                .background {
-                    KFImage(url.url)
-                        .resizable()
-                        .scaledToFill()
-                }
-                
-            VStack {
-                HStack {
-                    Button {
-                        selectedImageURL = nil
-                    } label: {
-                        Image(systemName: "xmark")
-                            .foregroundStyle(.white)
-                            .font(.title)
-                    }
-                    Spacer()
-                }
-                .padding(.top)
-                .padding(.horizontal)
-                
-                Spacer()
-            }
-        }
-    }
-    
+
     var xButton: some View {
         HStack {
             Button {
@@ -129,70 +116,51 @@ public struct MyProfileView: View {
                     .foregroundStyle(.white)
                     .font(.title)
             }
-            
+
             Spacer()
         }
         .padding(.horizontal)
     }
-    
-    var backgroundView: some View {
-        Rectangle()
-            .fill(.clear)
-            .background {
-                ZStack {
-                    Rectangle()
-                        .fill(.gray)
-                    
-                    if let url = viewModel.user?.backgroundImageURL {
-                        KFImage(url)
-                            .resizable()
-                            .scaledToFill()
-                            .onTapGesture {
-                                selectedImageURL = .init(url: url)
-                            }
-                    }
-                }
-            }
-            .ignoresSafeArea()
-    }
-    
+
     var profileView: some View {
-        RoundedRectangle(cornerRadius: 25.0, style: .continuous)
+        RoundedRectangle(cornerRadius: 40, style: .continuous)
             .stroke(.white.opacity(0.6))
             .fill(.clear)
             .frame(width: 100, height: 100)
             .background {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 25.0, style: .continuous)
+                    RoundedRectangle(cornerRadius: 40, style: .continuous)
                         .fill(.gray)
-                    
+
                     Image(systemName: "person")
                         .font(.title)
                         .foregroundStyle(.white)
-                    
+
                     if let url = viewModel.user?.photoURL {
                         KFImage(url)
                             .resizable()
                             .scaledToFill()
                             .frame(width: 100, height: 100)
-                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                            .clipShape(RoundedRectangle(cornerRadius: 40))
                             .onTapGesture {
-                                selectedImageURL = .init(url: url)
+                                if selectedImageURL == nil {
+                                    selectedImageURL = url
+                                }
                             }
                     }
                 }
             }
     }
-    
+
     var whiteLine: some View {
         Rectangle()
             .fill(.white.opacity(0.7))
             .frame(height: 1)
     }
-    
+
     var bottomSection: some View {
         HStack(spacing: 40) {
-            
+
             if let link = viewModel.user?.link {
                 Button {
                     URLManager.shared.open(url: link)
@@ -204,9 +172,9 @@ public struct MyProfileView: View {
                 }
                 .foregroundStyle(.white)
             }
-            
+
             Button {
-                print("tap edit")
+                viewModel.isEditing = true
             } label: {
                 VStack(spacing: 12) {
                     Image(systemName: "pencil")
@@ -221,7 +189,13 @@ public struct MyProfileView: View {
 #Preview {
     return MyProfileView(
         shows: .constant(true),
-        userRepository: UserRepositoryMock()
+        userRepository: UserRepositoryMock(),
+        myProfileEditFactory: { _ in
+            MyProfileEditView(
+                userRepository: UserRepositoryMock(),
+                isEditing: .constant(true)
+            )
+        }
     )
         .preferredColorScheme(.dark)
 }

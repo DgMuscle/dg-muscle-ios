@@ -94,19 +94,39 @@ public struct MyView: View {
             } header: {
                 if let user = viewModel.user {
                     
-                    if user.displayName?.isEmpty == false {
-                        Button {
-                            presentProfileViewAction?()
-                        } label: {
-                            UserItemView(user: user)
-                                .padding(.bottom)
-                        }
-                    } else {
-                        Button("Update Profile") {
-                            presentProfileViewAction?()
+                    Button {
+                        presentProfileViewAction?()
+                    } label: {
+                        let size: CGFloat = 50
+                        HStack {
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(.clear)
+                                .strokeBorder(.white.opacity(0.7), lineWidth: 1)
+                                .frame(width: size, height: size)
+                                .background {
+                                    ZStack {
+                                        if let url = user.photoURL {
+                                            KFImage(url)
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(width: size, height: size)
+                                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                        } else {
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .fill(.gray)
+                                            Image(systemName: "person")
+                                                .foregroundStyle(.white)
+                                        }
+                                    }
+                                }
+                                .padding(.trailing, 10)
+                            
+                            Text((user.displayName?.isEmpty == false) ? user.displayName! : user.uid)
+                                .foregroundStyle((user.displayName?.isEmpty == false) ? Color(uiColor: .label) : Color(uiColor: .secondaryLabel))
                         }
                         .padding(.bottom)
                     }
+                    .buttonStyle(.plain)
                 }
             }
             

@@ -45,13 +45,12 @@ public final class SearchUsersExceptForMyFriendsUsecase {
         
         users = users
             .filter({ !excludeIds.contains($0.uid) })
-            .filter({ $0.displayName?.isEmpty == false })
             .sorted(by: { user1, user2 in
                 if user1.photoURL != nil && user2.photoURL == nil {
                     return true
                 }
                 
-                if user1.displayName != nil && user2.displayName == nil {
+                if (user1.displayName?.isEmpty == false) && (user2.displayName?.isEmpty != false) {
                     return true
                 }
                 
