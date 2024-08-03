@@ -13,17 +13,22 @@ import Common
 import Kingfisher
 
 public struct MyProfileView: View {
-    
+
+    struct IdentifiableURL: Identifiable {
+        let id = UUID().uuidString
+        let url: URL
+    }
+
     @Binding var shows: Bool
-    
+
     @State private var viewOffset: CGFloat = 0
     @State private var selectedImageURL: URL? = nil
     @State private var opacity: CGFloat = 0
-    
+
     @StateObject var viewModel: MyProfileViewModel
-    
+
     private let myProfileEditFactory: (Binding<Bool>) -> MyProfileEditView
-    
+
     public init(
         shows: Binding<Bool>,
         userRepository: UserRepository,
@@ -33,7 +38,7 @@ public struct MyProfileView: View {
         _viewModel = .init(wrappedValue: .init(userRepository: userRepository))
         self.myProfileEditFactory = myProfileEditFactory
     }
-    
+
     public var body: some View {
         ZStack {
             BackgroundImageView(url: viewModel.user?.backgroundImageURL) { url in
@@ -47,17 +52,17 @@ public struct MyProfileView: View {
                     Text((user.displayName?.isEmpty == false) ? user.displayName! : user.uid)
                         .foregroundStyle((user.displayName?.isEmpty == false) ? .white : .gray)
                 }
-                
+
                 whiteLine
                     .padding(.top, 30)
                 bottomSection
                     .padding(.top)
             }
-            
+
             if selectedImageURL != nil {
                 FullScreenImageView(url: $selectedImageURL)
             }
-            
+
             if viewModel.isEditing {
                 myProfileEditFactory($viewModel.isEditing)
             }
@@ -86,7 +91,7 @@ public struct MyProfileView: View {
             }
         }
     }
-    
+
     private func dismiss() {
         withAnimation {
             viewOffset = 1000
@@ -95,13 +100,13 @@ public struct MyProfileView: View {
             }
         }
     }
-    
+
     private func dragViewUp() {
         withAnimation {
             viewOffset = 0
         }
     }
-    
+
     var xButton: some View {
         HStack {
             Button {
@@ -111,12 +116,12 @@ public struct MyProfileView: View {
                     .foregroundStyle(.white)
                     .font(.title)
             }
-            
+
             Spacer()
         }
         .padding(.horizontal)
     }
-    
+
     var profileView: some View {
         RoundedRectangle(cornerRadius: 40, style: .continuous)
             .stroke(.white.opacity(0.6))
@@ -126,11 +131,11 @@ public struct MyProfileView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 40, style: .continuous)
                         .fill(.gray)
-                    
+
                     Image(systemName: "person")
                         .font(.title)
                         .foregroundStyle(.white)
-                    
+
                     if let url = viewModel.user?.photoURL {
                         KFImage(url)
                             .resizable()
@@ -146,16 +151,16 @@ public struct MyProfileView: View {
                 }
             }
     }
-    
+
     var whiteLine: some View {
         Rectangle()
             .fill(.white.opacity(0.7))
             .frame(height: 1)
     }
-    
+
     var bottomSection: some View {
         HStack(spacing: 40) {
-            
+
             if let link = viewModel.user?.link {
                 Button {
                     URLManager.shared.open(url: link)
@@ -167,7 +172,7 @@ public struct MyProfileView: View {
                 }
                 .foregroundStyle(.white)
             }
-            
+
             Button {
                 viewModel.isEditing = true
             } label: {
@@ -185,7 +190,7 @@ public struct MyProfileView: View {
     return MyProfileView(
         shows: .constant(true),
         userRepository: UserRepositoryMock(),
-        myProfileEditFactory: { _ in 
+        myProfileEditFactory: { _ in
             MyProfileEditView(
                 userRepository: UserRepositoryMock(),
                 isEditing: .constant(true)

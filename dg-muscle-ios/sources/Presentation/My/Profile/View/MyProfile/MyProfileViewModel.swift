@@ -11,19 +11,19 @@ import Common
 import Domain
 
 final class MyProfileViewModel: ObservableObject {
-    
+
     @Published var user: Common.User?
     @Published var isEditing: Bool = false
-    
+
     private let subscribeUserUsecase: SubscribeUserUsecase
-    
+
     init(
         userRepository: UserRepository
     ) {
         subscribeUserUsecase = .init(userRepository: userRepository)
         bind()
     }
-    
+
     private func bind() {
         subscribeUserUsecase
             .implement()
