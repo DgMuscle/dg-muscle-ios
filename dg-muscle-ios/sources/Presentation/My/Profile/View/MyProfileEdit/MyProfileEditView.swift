@@ -8,6 +8,7 @@
 import SwiftUI
 import MockData
 import Domain
+import PhotosUI
 
 public struct MyProfileEditView: View {
     
@@ -18,7 +19,22 @@ public struct MyProfileEditView: View {
     }
     
     public var body: some View {
-        Text("MyProfileEditView")
+        ZStack {
+            Rectangle()
+                .fill(.clear)
+                .background {
+                    ZStack {
+                        PhotosPicker(
+                            selection: $viewModel.selectedPhoto,
+                            label: {
+                                Rectangle()
+                                    .fill(.gray)
+                            }
+                        )
+                    }
+                }
+                .ignoresSafeArea()
+        }
     }
 }
 
