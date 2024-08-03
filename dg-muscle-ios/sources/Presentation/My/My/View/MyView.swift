@@ -99,7 +99,7 @@ public struct MyView: View {
                     } label: {
                         let size: CGFloat = 50
                         HStack {
-                            RoundedRectangle(cornerRadius: 8)
+                            RoundedRectangle(cornerRadius: 20)
                                 .fill(.clear)
                                 .strokeBorder(.white.opacity(0.7), lineWidth: 1)
                                 .frame(width: size, height: size)
@@ -110,9 +110,9 @@ public struct MyView: View {
                                                 .resizable()
                                                 .scaledToFill()
                                                 .frame(width: size, height: size)
-                                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                                .clipShape(RoundedRectangle(cornerRadius: 20))
                                         } else {
-                                            RoundedRectangle(cornerRadius: 8)
+                                            RoundedRectangle(cornerRadius: 20)
                                                 .fill(.gray)
                                             Image(systemName: "person")
                                                 .foregroundStyle(.white)
