@@ -9,6 +9,7 @@ import SwiftUI
 import MockData
 import Domain
 import PhotosUI
+import Common
 
 public struct MyProfileEditView: View {
     
@@ -16,6 +17,11 @@ public struct MyProfileEditView: View {
     @Binding var isEditing: Bool
     
     @State var isEditingDisplayName: Bool = false
+    @State var isEditingLink: Bool = false
+    
+    @State var snackbarMessage: String?
+    
+    private let makeURLFromStringUsecase: MakeURLFromStringUsecase
     
     public init(
         userRepository: UserRepository,
@@ -23,42 +29,34 @@ public struct MyProfileEditView: View {
     ) {
         _viewModel = .init(wrappedValue: .init(userRepository: userRepository))
         _isEditing = isEditing
+        makeURLFromStringUsecase = .init()
     }
     
     public var body: some View {
         ZStack {
             backgroundView
-            
             VStack {
                 topSection
                 Spacer()
                 profileImageView
                     .padding(.bottom)
-                
-                VStack {
-                    Button {
-                        if isEditingDisplayName == false {
-                            isEditingDisplayName = true
-                        }
-                    } label: {
-                        WhiteUnderlineTextLabel(text: viewModel.displayName)
-                    }
-                }
-                .padding(.horizontal)
-                
+                labels
+                    .padding(.horizontal)
             }
             
             if isEditingDisplayName {
-                ProfileTextInputView(
-                    text: viewModel.displayName,
-                    showing: $isEditingDisplayName,
-                    maxLength: 20
-                ) { value in
-                    viewModel.setDisplayName(value)
-                }
+                displayNameForm
+            } else if isEditingLink {
+                linkForm
+            }
+        }
+        .overlay {
+            if snackbarMessage != nil {
+                Common.SnackbarView(message: $snackbarMessage)
             }
         }
     }
+        
     
     var backgroundView: some View {
         Rectangle()
@@ -137,6 +135,55 @@ public struct MyProfileEditView: View {
                                 }
                         }
                     }
+                }
+            }
+    }
+    
+    var labels: some View {
+        VStack(spacing: 20) {
+            Button {
+                if isEditingDisplayName == false {
+                    isEditingDisplayName = true
+                }
+            } label: {
+                WhiteUnderlineTextLabel(text: viewModel.displayName)
+            }
+            
+            Button {
+                isEditingLink = true
+            } label: {
+                WhiteUnderlineTextLabel(text: viewModel.link?.absoluteString ?? "Enter a link to express yourself")
+            }
+        }
+    }
+    
+    var displayNameForm: some View {
+        return ProfileTextInputView(
+            text: viewModel.displayName,
+            showing: $isEditingDisplayName,
+            maxLength: 20
+        ) { value in
+            viewModel.setDisplayName(value)
+        }
+    }
+    
+    var linkForm: some View {
+        ProfileTextInputView(
+            text: viewModel.link?.absoluteString ?? "",
+            showing: $isEditingLink,
+            maxLength: 200) { value in
+                
+                if value.isEmpty {
+                    viewModel.setLink(nil)
+                    return
+                }
+                
+                let link = makeURLFromStringUsecase.implement(link: value)
+                
+                viewModel.setLink(link)
+                
+                if link == nil {
+                    snackbarMessage = "Please enter a valid URL"
                 }
             }
     }
