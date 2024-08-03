@@ -9,11 +9,13 @@ import Combine
 import Domain
 import SwiftUI
 import PhotosUI
+import Common
 
 final class MyProfileEditViewModel: ObservableObject {
     
-    @Published var selectedPhoto: PhotosPickerItem?
-    @Published var image: UIImage?
+    @Published var selectedBackgroundPhoto: PhotosPickerItem?
+    @Published var backgroundImage: UIImage?
+    private var backgroundImageChanged: Bool = false
     
     private let getUserUsecase: GetUserUsecase
     private let postBackgroundImageUsecase: PostBackgroundImageUsecase
@@ -27,5 +29,14 @@ final class MyProfileEditViewModel: ObservableObject {
         postDisplayNameUsecase = .init(userRepository: userRepository)
         postLinkUsecase = .init(userRepository: userRepository)
         postProfilePhotoUsecase = .init(userRepository: userRepository)
+        
+        guard let user = getUserUsecase.implement() else { return }
+        
+        if let backgroundImageURL = user.backgroundImageURL {
+            Task {
+                let backgroundImage =  try await UIImageGenerator.shared.generateImageFrom(url: backgroundImageURL)
+                self.backgroundImage = backgroundImage
+            }
+        }
     }
 }

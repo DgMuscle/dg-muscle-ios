@@ -25,10 +25,16 @@ public struct MyProfileEditView: View {
                 .background {
                     ZStack {
                         PhotosPicker(
-                            selection: $viewModel.selectedPhoto,
+                            selection: $viewModel.selectedBackgroundPhoto,
                             label: {
-                                Rectangle()
-                                    .fill(.gray)
+                                if let image = viewModel.backgroundImage {
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .scaledToFill()
+                                } else {
+                                    Rectangle()
+                                        .fill(.gray)
+                                }
                             }
                         )
                     }
