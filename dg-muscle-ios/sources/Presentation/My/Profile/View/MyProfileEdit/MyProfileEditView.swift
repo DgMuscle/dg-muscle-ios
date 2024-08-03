@@ -57,7 +57,6 @@ public struct MyProfileEditView: View {
                 }
             }
         }
-        .animation(.default, value: isEditingDisplayName)
     }
     
     var backgroundView: some View {

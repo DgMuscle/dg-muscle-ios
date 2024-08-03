@@ -16,7 +16,7 @@ struct ProfileTextInputView: View {
             }
         }
     }
-    @State var opacity: CGFloat = 1
+    @State var opacity: CGFloat = 0
     
     @Binding var showing: Bool
     
@@ -52,6 +52,9 @@ struct ProfileTextInputView: View {
         .opacity(opacity)
         .onAppear {
             focus = true
+            withAnimation {
+                opacity = 1
+            }
         }
     }
     
