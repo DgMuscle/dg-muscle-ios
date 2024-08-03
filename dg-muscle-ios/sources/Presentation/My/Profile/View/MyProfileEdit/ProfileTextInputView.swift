@@ -27,9 +27,9 @@ struct ProfileTextInputView: View {
     
     init(
         text: String,
-        enter: ((String) -> ())?,
         showing: Binding<Bool>,
-        maxLength: Int
+        maxLength: Int,
+        enter: ((String) -> ())?
     ) {
         self.text = text
         self._showing = showing
@@ -130,5 +130,5 @@ struct ProfileTextInputView: View {
 }
 
 #Preview {
-    ProfileTextInputView(text: "동규", enter: nil, showing: .constant(true), maxLength: 20)
+    ProfileTextInputView(text: "동규", showing: .constant(true), maxLength: 20, enter: nil)
 }

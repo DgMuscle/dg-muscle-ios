@@ -66,6 +66,7 @@ final class MyProfileEditViewModel: ObservableObject {
     
     @MainActor
     func setDisplayName(_ value: String) {
+        displayNameChanged = true
         self.displayName = value
     }
     

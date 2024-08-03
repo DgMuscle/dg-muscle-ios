@@ -10,7 +10,6 @@ import SwiftUI
 struct WhiteUnderlineTextLabel: View {
     
     let text: String
-    let tap: (() -> ())?
     
     var body: some View {
         VStack {
@@ -31,6 +30,6 @@ struct WhiteUnderlineTextLabel: View {
 }
 
 #Preview {
-    WhiteUnderlineTextLabel(text: "동규", tap: nil)
+    WhiteUnderlineTextLabel(text: "동규")
         .preferredColorScheme(.dark)
 }

@@ -15,6 +15,8 @@ public struct MyProfileEditView: View {
     @StateObject var viewModel: MyProfileEditViewModel
     @Binding var isEditing: Bool
     
+    @State var isEditingDisplayName: Bool = false
+    
     public init(
         userRepository: UserRepository,
         isEditing: Binding<Bool>
@@ -33,14 +35,29 @@ public struct MyProfileEditView: View {
                 profileImageView
                 
                 VStack {
-                    WhiteUnderlineTextLabel(text: viewModel.displayName) {
-                        print("tap display name")
+                    Button {
+                        if isEditingDisplayName == false {
+                            isEditingDisplayName = true
+                        }
+                    } label: {
+                        WhiteUnderlineTextLabel(text: viewModel.displayName)
                     }
                 }
                 .padding(.horizontal)
                 
             }
+            
+            if isEditingDisplayName {
+                ProfileTextInputView(
+                    text: viewModel.displayName,
+                    showing: $isEditingDisplayName,
+                    maxLength: 20
+                ) { value in
+                    viewModel.setDisplayName(value)
+                }
+            }
         }
+        .animation(.default, value: isEditingDisplayName)
     }
     
     var backgroundView: some View {
