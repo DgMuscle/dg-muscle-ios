@@ -21,12 +21,12 @@ public struct MyProfileView: View {
     
     @StateObject var viewModel: MyProfileViewModel
     
-    private let myProfileEditFactory: () -> MyProfileEditView
+    private let myProfileEditFactory: (Binding<Bool>) -> MyProfileEditView
     
     public init(
         shows: Binding<Bool>,
         userRepository: UserRepository,
-        myProfileEditFactory: @escaping () -> MyProfileEditView
+        myProfileEditFactory: @escaping (Binding<Bool>) -> MyProfileEditView
     ) {
         _shows = shows
         _viewModel = .init(wrappedValue: .init(userRepository: userRepository))
@@ -58,7 +58,7 @@ public struct MyProfileView: View {
             }
             
             if viewModel.isEditing {
-                myProfileEditFactory()
+                myProfileEditFactory($viewModel.isEditing)
             }
         }
         .animation(.default, value: selectedImageURL)
@@ -179,8 +179,11 @@ public struct MyProfileView: View {
     return MyProfileView(
         shows: .constant(true),
         userRepository: UserRepositoryMock(),
-        myProfileEditFactory: {
-            MyProfileEditView(userRepository: UserRepositoryMock())
+        myProfileEditFactory: { _ in 
+            MyProfileEditView(
+                userRepository: UserRepositoryMock(),
+                isEditing: .constant(true)
+            )
         }
     )
         .preferredColorScheme(.dark)

@@ -37,7 +37,9 @@ final class MyProfileEditViewModel: ObservableObject {
         if let backgroundImageURL = user.backgroundImageURL {
             Task {
                 let backgroundImage =  try await UIImageGenerator.shared.generateImageFrom(url: backgroundImageURL)
-                self.backgroundImage = backgroundImage
+                DispatchQueue.main.async { [weak self] in
+                    self?.backgroundImage = backgroundImage
+                }
             }
         }
         
@@ -58,16 +60,22 @@ final class MyProfileEditViewModel: ObservableObject {
         Task {
             backgroundImageChanged = true
             guard let photo else {
-                self.backgroundImage = nil
+                DispatchQueue.main.async { [weak self] in
+                    self?.backgroundImage = nil
+                }
                 return
             }
             
             guard let data = try await photo.loadTransferable(type: Data.self) else {
-                self.backgroundImage = nil
+                DispatchQueue.main.async { [weak self] in
+                    self?.backgroundImage = nil
+                }
                 return
             }
             
-            self.backgroundImage = UIImage(data: data)
+            DispatchQueue.main.async { [weak self] in
+                self?.backgroundImage = UIImage(data: data)
+            }
         }
     }
 }

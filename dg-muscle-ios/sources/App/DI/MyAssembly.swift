@@ -30,8 +30,8 @@ public struct MyAssembly: Assembly {
             return MyProfileView(
                 shows: shows,
                 userRepository: userRepository, 
-                myProfileEditFactory: {
-                    MyProfileEditView(userRepository: userRepository)
+                myProfileEditFactory: { isEditing in
+                    MyProfileEditView(userRepository: userRepository, isEditing: isEditing)
                 }
             )
         }

@@ -89,8 +89,11 @@ public struct HomeView: View {
             MyProfileView(
                 shows: .constant(false),
                 userRepository: userRepository, 
-                myProfileEditFactory: {
-                    MyProfileEditView(userRepository: userRepository)
+                myProfileEditFactory: { _ in
+                    MyProfileEditView(
+                        userRepository: userRepository,
+                        isEditing: .constant(true)
+                    )
                 }
             )
         }

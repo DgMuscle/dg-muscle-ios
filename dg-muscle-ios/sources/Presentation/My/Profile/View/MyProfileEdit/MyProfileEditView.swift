@@ -13,9 +13,14 @@ import PhotosUI
 public struct MyProfileEditView: View {
     
     @StateObject var viewModel: MyProfileEditViewModel
+    @Binding var isEditing: Bool
     
-    public init(userRepository: UserRepository) {
+    public init(
+        userRepository: UserRepository,
+        isEditing: Binding<Bool>
+    ) {
         _viewModel = .init(wrappedValue: .init(userRepository: userRepository))
+        _isEditing = isEditing
     }
     
     public var body: some View {
@@ -55,17 +60,25 @@ public struct MyProfileEditView: View {
     
     var topSection: some View {
         HStack {
-            Text("Cancel")
+            Button {
+                isEditing = false
+            } label: {
+                Text("Cancel")
+            }
             
             Spacer()
             
             Text("Done")
         }
         .padding(.horizontal)
+        .foregroundStyle(.white)
     }
 }
 
 #Preview {
-    MyProfileEditView(userRepository: UserRepositoryMock())
-        .preferredColorScheme(.dark)
+    MyProfileEditView(
+        userRepository: UserRepositoryMock(),
+        isEditing: .constant(true)
+    )
+    .preferredColorScheme(.dark)
 }
