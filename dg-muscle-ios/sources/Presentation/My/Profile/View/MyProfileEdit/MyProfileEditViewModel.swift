@@ -17,6 +17,10 @@ final class MyProfileEditViewModel: ObservableObject {
     @Published var backgroundImage: UIImage?
     private var backgroundImageChanged: Bool = false
     
+    @Published var selectedUserPhoto: PhotosPickerItem?
+    @Published var userImage: UIImage?
+    private var userImageChanged: Bool = false
+    
     private let getUserUsecase: GetUserUsecase
     private let postBackgroundImageUsecase: PostBackgroundImageUsecase
     private let postDisplayNameUsecase: PostDisplayNameUsecase
@@ -36,9 +40,18 @@ final class MyProfileEditViewModel: ObservableObject {
         
         if let backgroundImageURL = user.backgroundImageURL {
             Task {
-                let backgroundImage =  try await UIImageGenerator.shared.generateImageFrom(url: backgroundImageURL)
+                let backgroundImage = try await UIImageGenerator.shared.generateImageFrom(url: backgroundImageURL)
                 DispatchQueue.main.async { [weak self] in
                     self?.backgroundImage = backgroundImage
+                }
+            }
+        }
+        
+        if let userImageUrl = user.photoURL {
+            Task {
+                let userImage = try await UIImageGenerator.shared.generateImageFrom(url: userImageUrl)
+                DispatchQueue.main.async { [weak self] in
+                    self?.userImage = userImage
                 }
             }
         }
@@ -54,6 +67,12 @@ final class MyProfileEditViewModel: ObservableObject {
             }
             .store(in: &cancellables)
             
+        $selectedUserPhoto
+            .dropFirst()
+            .sink { [weak self] photo in
+                self?.configureUserImage(photo: photo)
+            }
+            .store(in: &cancellables)
     }
     
     private func configureBackgroundImage(photo: PhotosPickerItem?) {
@@ -75,6 +94,29 @@ final class MyProfileEditViewModel: ObservableObject {
             
             DispatchQueue.main.async { [weak self] in
                 self?.backgroundImage = UIImage(data: data)
+            }
+        }
+    }
+    
+    private func configureUserImage(photo: PhotosPickerItem?) {
+        Task {
+            userImageChanged = true
+            guard let photo else {
+                DispatchQueue.main.async { [weak self] in
+                    self?.userImage = nil
+                }
+                return
+            }
+            
+            guard let data = try await photo.loadTransferable(type: Data.self) else {
+                DispatchQueue.main.async { [weak self] in
+                    self?.userImage = nil
+                }
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.userImage = UIImage(data: data)
             }
         }
     }
