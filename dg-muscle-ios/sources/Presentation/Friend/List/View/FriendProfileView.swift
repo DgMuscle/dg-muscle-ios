@@ -39,7 +39,7 @@ struct FriendProfileView: View {
                     .padding(.top)
             }
             
-            if let selectedImageURL {
+            if selectedImageURL != nil {
                 FullScreenImageView(url: $selectedImageURL)
             }
         }
