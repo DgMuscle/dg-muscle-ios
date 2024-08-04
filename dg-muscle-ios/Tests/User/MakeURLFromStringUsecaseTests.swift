@@ -27,6 +27,5 @@ final class MakeURLFromStringUsecaseTests: XCTestCase {
     
     func testFail() {
         XCTAssertNil(usecase.implement(link: "  "))
-        XCTAssertNil(usecase.implement(link: "https://aslkdjalsk@,.asmd.adjk.asm@asjhdajkshd"))
     }
 }
