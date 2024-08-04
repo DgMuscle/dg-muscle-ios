@@ -72,8 +72,6 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         case "friendhistory":
             guard let friendId = URLManager.shared.getParameter(url: url, name: "id") else { return }
             coordinator?.friend.friendHistory(friendId: friendId)
-        case "profile":
-            coordinator?.my.profile()
         case "exercisemanage":
             coordinator?.exercise.exerciseManage()
         case "heatmapcolorselect":

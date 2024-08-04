@@ -1,48 +1,73 @@
 //
-//  FriendProfileView.swift
-//  Friend
+//  MyProfileView.swift
+//  My
 //
-//  Created by 신동규 on 6/12/24.
+//  Created by 신동규 on 5/25/24.
 //
 
+import Foundation
 import SwiftUI
 import Domain
 import MockData
-import Kingfisher
 import Common
+import Kingfisher
 
-struct FriendProfileView: View {
-    
-    let friend: Friend
-    
-    @Binding var selectedFriend: Friend?
-    
+public struct MyProfileView: View {
+
+    struct IdentifiableURL: Identifiable {
+        let id = UUID().uuidString
+        let url: URL
+    }
+
+    @Binding var shows: Bool
+
     @State private var viewOffset: CGFloat = 0
     @State private var selectedImageURL: URL? = nil
     @State private var opacity: CGFloat = 0
-    
-    var body: some View {
+
+    @StateObject var viewModel: MyProfileViewModel
+
+    private let myProfileEditFactory: (Binding<Bool>) -> MyProfileEditView
+
+    public init(
+        shows: Binding<Bool>,
+        userRepository: UserRepository,
+        myProfileEditFactory: @escaping (Binding<Bool>) -> MyProfileEditView
+    ) {
+        _shows = shows
+        _viewModel = .init(wrappedValue: .init(userRepository: userRepository))
+        self.myProfileEditFactory = myProfileEditFactory
+    }
+
+    public var body: some View {
         ZStack {
-            backgroundView
-            
+            BackgroundImageView(url: viewModel.user?.backgroundImageURL) { url in
+                selectedImageURL = url
+            }
             VStack {
                 xButton
                 Spacer()
                 profileView
-                
-                Text((friend.displayName?.isEmpty == false) ? friend.displayName! : friend.uid)
-                    .foregroundStyle((friend.displayName?.isEmpty == false) ? .white : .gray)
-                
+                if let user = viewModel.user {
+                    Text((user.displayName?.isEmpty == false) ? user.displayName! : user.uid)
+                        .foregroundStyle((user.displayName?.isEmpty == false) ? .white : .gray)
+                }
+
                 whiteLine
                     .padding(.top, 30)
                 bottomSection
                     .padding(.top)
             }
-            
+
             if selectedImageURL != nil {
                 FullScreenImageView(url: $selectedImageURL)
             }
+
+            if viewModel.isEditing {
+                myProfileEditFactory($viewModel.isEditing)
+            }
         }
+        .opacity(opacity)
         .offset(y: viewOffset)
         .gesture (
             DragGesture(minimumDistance: 15)
@@ -60,35 +85,28 @@ struct FriendProfileView: View {
                     }
                 }
         )
-        .opacity(opacity)
         .onAppear {
             withAnimation {
                 opacity = 1
             }
         }
     }
-    
-    var backgroundView: some View {
-        Rectangle()
-            .fill(.clear)
-            .background {
-                ZStack {
-                    Rectangle()
-                        .fill(.gray)
-                    
-                    if let url = friend.backgroundImageURL {
-                        KFImage(url)
-                            .resizable()
-                            .scaledToFill()
-                            .onTapGesture {
-                                selectedImageURL = url
-                            }
-                    }
-                }
+
+    private func dismiss() {
+        withAnimation {
+            viewOffset = 1000
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                shows = false
             }
-            .ignoresSafeArea()
+        }
     }
-    
+
+    private func dragViewUp() {
+        withAnimation {
+            viewOffset = 0
+        }
+    }
+
     var xButton: some View {
         HStack {
             Button {
@@ -98,50 +116,52 @@ struct FriendProfileView: View {
                     .foregroundStyle(.white)
                     .font(.title)
             }
-            
+
             Spacer()
         }
         .padding(.horizontal)
     }
-    
+
     var profileView: some View {
-        RoundedRectangle(cornerRadius: 25.0, style: .continuous)
+        RoundedRectangle(cornerRadius: 40, style: .continuous)
             .stroke(.white.opacity(0.6))
             .fill(.clear)
             .frame(width: 100, height: 100)
             .background {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 25.0, style: .continuous)
+                    RoundedRectangle(cornerRadius: 40, style: .continuous)
                         .fill(.gray)
-                    
+
                     Image(systemName: "person")
                         .font(.title)
                         .foregroundStyle(.white)
-                    
-                    if let url = friend.photoURL {
+
+                    if let url = viewModel.user?.photoURL {
                         KFImage(url)
                             .resizable()
                             .scaledToFill()
                             .frame(width: 100, height: 100)
-                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                            .clipShape(RoundedRectangle(cornerRadius: 40))
                             .onTapGesture {
-                                selectedImageURL = url
+                                if selectedImageURL == nil {
+                                    selectedImageURL = url
+                                }
                             }
                     }
                 }
             }
     }
-    
+
     var whiteLine: some View {
         Rectangle()
             .fill(.white.opacity(0.7))
             .frame(height: 1)
     }
-    
+
     var bottomSection: some View {
         HStack(spacing: 40) {
-            
-            if let link = friend.link {
+
+            if let link = viewModel.user?.link {
                 Button {
                     URLManager.shared.open(url: link)
                 } label: {
@@ -152,39 +172,30 @@ struct FriendProfileView: View {
                 }
                 .foregroundStyle(.white)
             }
-            
+
             Button {
-                URLManager.shared.open(url: "dgmuscle://friendhistory?id=\(friend.uid)")
+                viewModel.isEditing = true
             } label: {
                 VStack(spacing: 12) {
-                    Image(systemName: "doc.richtext.ko")
-                    Text("Exercise Record")
+                    Image(systemName: "pencil")
+                    Text("Edit")
                 }
             }
             .foregroundStyle(.white)
         }
     }
-    
-    private func dismiss() {
-        withAnimation {
-            viewOffset = 1000
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                selectedFriend = nil
-            }
-        }
-    }
-    
-    private func dragViewUp() {
-        withAnimation {
-            viewOffset = 0
-        }
-    }
 }
 
 #Preview {
-    FriendProfileView(
-        friend: .init(domain: USER_DG),
-        selectedFriend: .constant(.init(domain: USER_DG))
+    return MyProfileView(
+        shows: .constant(true),
+        userRepository: UserRepositoryMock(),
+        myProfileEditFactory: { _ in
+            MyProfileEditView(
+                userRepository: UserRepositoryMock(),
+                isEditing: .constant(true)
+            )
+        }
     )
-    .preferredColorScheme(.dark)
+        .preferredColorScheme(.dark)
 }

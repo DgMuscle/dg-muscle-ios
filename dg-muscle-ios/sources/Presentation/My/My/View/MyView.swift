@@ -14,14 +14,18 @@ import Common
 public struct MyView: View {
     @StateObject var viewModel: MyViewModel
     
+    let presentProfileViewAction: (() -> Void)?
+    
     public init(
         userRepository: any UserRepository,
-        logRepository: LogRepository
+        logRepository: LogRepository,
+        presentProfileViewAction: (() -> Void)?
     ) {
         _viewModel = .init(
             wrappedValue: .init(userRepository: userRepository, 
                                 logRepository: logRepository)
         )
+        self.presentProfileViewAction = presentProfileViewAction
     }
     
     public var body: some View {
@@ -38,24 +42,33 @@ public struct MyView: View {
             
             Section {
                 VStack(spacing: 20) {
+                    
+                    Button {
+                        presentProfileViewAction?()
+                    } label: {
+                        ListItemView(systemName: "person", text: "Profile", color: Color(uiColor: .secondaryLabel))
+                    }
+                    .buttonStyle(.borderless)
+                    
+                    
                     Button {
                         URLManager.shared.open(url: "dgmuscle://friend")
                     } label: {
-                        ListItemView(systemName: "person", text: "Friend", color: .green)
+                        ListItemView(systemName: "link", text: "Friend", color: Color(uiColor: .secondaryLabel))
                     }
                     .buttonStyle(.borderless)
                     
                     Button {
                         URLManager.shared.open(url: "dgmuscle://exercisemanage")
                     } label: {
-                        ListItemView(systemName: "dumbbell", text: "Exercise", color: .blue)
+                        ListItemView(systemName: "dumbbell", text: "Exercise", color: Color(uiColor: .secondaryLabel))
                     }
                     .buttonStyle(.borderless)
                     
                     Button {
                         URLManager.shared.open(url: "dgmuscle://rapidsearchtype")
                     } label: {
-                        ListItemView(systemName: "doc", text: "Exercise DB", color: .blue)
+                        ListItemView(systemName: "doc", text: "Exercise DB", color: Color(uiColor: .secondaryLabel))
                     }
                     .buttonStyle(.borderless)
                     
@@ -63,7 +76,7 @@ public struct MyView: View {
                         Button {
                             URLManager.shared.open(url: "dgmuscle://logs")
                         } label: {
-                            ListItemView(systemName: "doc", text: "Logs", color: .purple)
+                            ListItemView(systemName: "doc", text: "Logs", color: Color(uiColor: .secondaryLabel))
                         }
                         .buttonStyle(.borderless)
                         .overlay {
@@ -81,19 +94,42 @@ public struct MyView: View {
             } header: {
                 if let user = viewModel.user {
                     
-                    if user.displayName?.isEmpty == false {
-                        Button {
-                            URLManager.shared.open(url: "dgmuscle://profile")
-                        } label: {
-                            UserItemView(user: user)
-                                .padding(.bottom)
-                        }
-                    } else {
-                        Button("Update Profile") {
-                            URLManager.shared.open(url: "dgmuscle://profile")
+                    Button {
+                        presentProfileViewAction?()
+                    } label: {
+                        let size: CGFloat = 50
+                        HStack {
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(.clear)
+                                .strokeBorder(.white.opacity(0.7), lineWidth: 1)
+                                .frame(width: size, height: size)
+                                .background {
+                                    ZStack {
+                                        if let url = user.photoURL {
+                                            KFImage(url)
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(width: size, height: size)
+                                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                        } else {
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .fill(.gray)
+                                            Image(systemName: "person")
+                                                .foregroundStyle(.white)
+                                        }
+                                    }
+                                }
+                                .padding(.trailing, 10)
+                            
+                            Text((user.displayName?.isEmpty == false) ? user.displayName! : user.uid)
+                                .foregroundStyle((user.displayName?.isEmpty == false) ? Color(uiColor: .label) : Color(uiColor: .secondaryLabel))
+                            
+                            Spacer()
                         }
                         .padding(.bottom)
+                        .contentShape(Rectangle())
                     }
+                    .buttonStyle(.plain)
                 }
             }
             
@@ -121,7 +157,8 @@ public struct MyView: View {
 #Preview {
     return MyView(
         userRepository: UserRepositoryMock(),
-        logRepository: LogRepositoryMock()
+        logRepository: LogRepositoryMock(),
+        presentProfileViewAction: nil
     )
         .preferredColorScheme(.dark)
 }
