@@ -123,8 +123,11 @@ public struct MyView: View {
                             
                             Text((user.displayName?.isEmpty == false) ? user.displayName! : user.uid)
                                 .foregroundStyle((user.displayName?.isEmpty == false) ? Color(uiColor: .label) : Color(uiColor: .secondaryLabel))
+                            
+                            Spacer()
                         }
                         .padding(.bottom)
+                        .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
                 }
