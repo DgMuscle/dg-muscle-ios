@@ -34,8 +34,10 @@ public struct MyView: View {
             if let errorMessage = viewModel.errorMessage {
                 Common.StatusView(status: .error(errorMessage))
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
-                            viewModel.errorMessage = nil
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) {
+                            withAnimation {
+                                viewModel.errorMessage = nil
+                            }
                         }
                     }
             }
