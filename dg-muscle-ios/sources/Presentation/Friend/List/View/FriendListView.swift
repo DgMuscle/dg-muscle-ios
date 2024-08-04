@@ -26,6 +26,7 @@ struct FriendListView: View {
         List {
             ForEach(viewModel.friends, id: \.self) { friend in
                 FriendListItemView(friend: friend)
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         if selectedFriend == nil {
                             selectedFriend = friend
