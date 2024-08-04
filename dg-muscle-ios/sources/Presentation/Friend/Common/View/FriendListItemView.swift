@@ -43,6 +43,8 @@ struct FriendListItemView: View {
             
             Text((friend.displayName?.isEmpty == false) ? friend.displayName! : friend.uid)
                 .foregroundStyle(Color(uiColor: (friend.displayName?.isEmpty == false) ? .label : .secondaryLabel))
+            
+            Spacer()
         }
     }
 }
