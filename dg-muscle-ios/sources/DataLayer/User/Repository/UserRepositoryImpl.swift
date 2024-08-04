@@ -142,7 +142,9 @@ public final class UserRepositoryImpl: UserRepository {
                 return
             }
             Task {
-                self._user = await self.getUserProfileFromUid(uid: user.uid)
+                do {
+                    self._user = try await self.getUserProfileFromUid(uid: user.uid)
+                } catch { }
                 self.isReady = true
             }
         }
@@ -160,24 +162,10 @@ public final class UserRepositoryImpl: UserRepository {
             .store(in: &cancellables)
     }
     
-    private func getUserProfileFromUid(uid: String) async -> Domain.User {
-        do {
-            let url = FunctionsURL.user(.getprofilefromuid) + "?uid=\(uid)"
-            let data: UserData = try await APIClient.shared.request(url: url)
-            return data.domain
-        } catch {
-            let user: Domain.User = .init(
-                uid: uid,
-                backgroundImageURL: nil,
-                heatMapColor: .green,
-                fcmToken: nil,
-                link: nil,
-                developer: false,
-                onlyShowsFavoriteExercises: false, 
-                trainingMode: .mass
-            )
-            return user
-        }
+    private func getUserProfileFromUid(uid: String) async throws -> Domain.User {
+        let url = FunctionsURL.user(.getprofilefromuid) + "?uid=\(uid)"
+        let data: UserData = try await APIClient.shared.request(url: url)
+        return data.domain
     }
     
     private func postUserProfileToServer(user: Domain.User) async throws {
