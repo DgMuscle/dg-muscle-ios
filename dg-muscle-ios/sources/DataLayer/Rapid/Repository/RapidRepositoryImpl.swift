@@ -32,7 +32,7 @@ public final class RapidRepositoryImpl: RapidRepository {
                 let apiKey = try await fetchApiKey()
                 self.apiKey = apiKey
                 
-                _exercises = try await fetch1000Exercises()
+                _exercises = try await fetch1000Exercises(apiKey: apiKey)
             } catch {
                 PostLogUsecase(
                     logRepository: LogRepositoryImpl.shared,
@@ -60,7 +60,7 @@ public final class RapidRepositoryImpl: RapidRepository {
         return response.apiKey
     }
     
-    private func fetch1000Exercises() async throws -> [Domain.RapidExerciseDomain] {
+    private func fetch1000Exercises(apiKey: String) async throws -> [Domain.RapidExerciseDomain] {
         let exercises: [RapidExerciseData] = try await APIClient.shared.request(
             method: .get,
             url: "https://exercisedb.p.rapidapi.com/exercises?limit=1000",
