@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-struct WeightPresentation {
+struct WeightPresentation: Hashable {
     public let value: Double
     public let unit: Unit
     public let date: Date
