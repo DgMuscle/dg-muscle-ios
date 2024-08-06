@@ -42,6 +42,7 @@ final class WeightLineChartViewModel: ObservableObject {
                 guard let self else { return nil }
                 return getWeightsRangeUsecase.implement(weights: weights)
             })
+            .receive(on: DispatchQueue.main)
             .assign(to: &$range)
         
         $selectedDate
@@ -51,6 +52,7 @@ final class WeightLineChartViewModel: ObservableObject {
                 guard let weight = searchWeightFromDateUsecase.implement(date: date) else { return nil }
                 return WeightPresentation(domain: weight)
             })
+            .receive(on: DispatchQueue.main)
             .assign(to: &$selectedWeight)
     }
 }
