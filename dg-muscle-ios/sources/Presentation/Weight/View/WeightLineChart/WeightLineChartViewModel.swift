@@ -13,13 +13,16 @@ final class WeightLineChartViewModel: ObservableObject {
     @Published var weights: [WeightPresentation] = []
     @Published var range: (Double, Double) = (0, 0)
     @Published var selectedDate: Date? 
+    @Published var selectedWeight: WeightPresentation?
     
     private let subscribeWeightsUsecase: SubscribeWeightsUsecase
     private let getWeightsRangeUsecase: GetWeightsRangeUsecase
+    private let searchWeightFromDateUsecase: SearchWeightFromDateUsecase
     
     init(weightRepository: WeightRepository) {
         subscribeWeightsUsecase = .init(weightRepository: weightRepository)
         getWeightsRangeUsecase = .init()
+        searchWeightFromDateUsecase = .init(weightRepository: weightRepository)
         
         bind()
     }
@@ -40,5 +43,14 @@ final class WeightLineChartViewModel: ObservableObject {
                 return getWeightsRangeUsecase.implement(weights: weights)
             })
             .assign(to: &$range)
+        
+        $selectedDate
+            .compactMap({ $0 })
+            .map({ [weak self] date -> WeightPresentation? in
+                guard let self else { return nil }
+                guard let weight = searchWeightFromDateUsecase.implement(date: date) else { return nil }
+                return WeightPresentation(domain: weight)
+            })
+            .assign(to: &$selectedWeight)
     }
 }
