@@ -15,7 +15,6 @@ import Domain
 struct WeightLineChartView: View {
     
     @StateObject var viewModel: WeightLineChartViewModel
-    @State private var selectedDate: Date?
     
     init(weightRepository: WeightRepository) {
         _viewModel = .init(wrappedValue: .init(weightRepository: weightRepository))
@@ -46,7 +45,7 @@ struct WeightLineChartView: View {
                 )
             )
         }
-        .chartXSelection(value: $selectedDate)
+        .chartXSelection(value: $viewModel.selectedDate)
         .chartScrollableAxes(.horizontal)
         .chartScrollPosition(initialX: Int.max)
         .frame(height: 300)
