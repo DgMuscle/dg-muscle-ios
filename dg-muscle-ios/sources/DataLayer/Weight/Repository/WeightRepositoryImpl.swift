@@ -22,16 +22,12 @@ public final class WeightRepositoryImpl: WeightRepository {
     private init() {
         Task {
             try await requestPermission()
-            fetchWeights()
+            _weights = try await getWeights()
         }
     }
     
     public func get() -> [Domain.WeightDomain] {
         _weights
-    }
-    
-    private func fetchWeights() {
-        
     }
     
     private func requestPermission() async throws {
@@ -45,5 +41,52 @@ public final class WeightRepositoryImpl: WeightRepository {
                 }
             }
         }
+    }
+    
+    private func fetchWeightSamples(completion: @escaping ([HKQuantitySample]?, Error?) -> Void) {
+        guard let weightType = HKSampleType.quantityType(forIdentifier: .bodyMass) else {
+            completion(nil, nil)
+            return
+        }
+
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        let query = HKSampleQuery(sampleType: weightType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { (query, samples, error) in
+            guard let samples = samples as? [HKQuantitySample] else {
+                completion(nil, error)
+                return
+            }
+
+            completion(samples, nil)
+        }
+
+        healthStore.execute(query)
+    }
+    
+    private func fetchWeights() async throws -> [HKQuantitySample] {
+        return try await withCheckedThrowingContinuation { continuation in
+            fetchWeightSamples { samples, error in
+                if let samples {
+                    continuation.resume(returning: samples)
+                } else {
+                    continuation.resume(throwing: error ?? DataError.unknown)
+                }
+            }
+        }
+    }
+    
+    private func convertSampleToWeight(sample: HKQuantitySample) -> Domain.WeightDomain {
+        var result: Domain.WeightDomain
+        
+        let value = sample.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
+        let date = sample.startDate
+        
+        result = .init(value: value, unit: .kg, date: date)
+        
+        return result
+    }
+    
+    private func getWeights() async throws -> [Domain.WeightDomain] {
+        let samples = try await fetchWeights()
+        return samples.map({ convertSampleToWeight(sample: $0) })
     }
 }
