@@ -15,7 +15,7 @@ final class GetWeightsRangeUsecaseTests: XCTestCase {
         let usecase = GetWeightsRangeUsecase()
         let repository: WeightRepository = WeightRepositoryMock()
         let result = usecase.implement(weights: repository.get())
-        XCTAssertEqual(result.0, 58)
-        XCTAssertEqual(result.1, 72)
+        XCTAssertEqual(result.0, 57)
+        XCTAssertEqual(result.1, 73)
     }
 }

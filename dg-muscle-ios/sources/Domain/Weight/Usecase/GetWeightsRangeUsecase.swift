@@ -16,9 +16,9 @@ public final class GetWeightsRangeUsecase {
         guard var min = weights.map({ $0.value }).min() else { return result }
         guard var max = weights.map({ $0.value }).max() else { return result }
         
-        min -= 1.1
+        min -= 3
         min = floor(min)
-        max += 1.1
+        max += 3
         max = ceil(max)
         
         result = (min, max)

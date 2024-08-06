@@ -44,12 +44,44 @@ struct WeightLineChartView: View {
                     endPoint: .bottom
                 )
             )
+            
+            if let selectedWeight = viewModel.selectedWeight {
+                RuleMark(
+                    x: .value("date", selectedWeight.date, unit: .day),
+                    yStart: .value("weight", selectedWeight.value),
+                    yEnd: .value("weight", max(selectedWeight.value, viewModel.range.1 - 1))
+                )
+                .annotation(position: .top) {
+                    VStack {
+                        Text("\(String(selectedWeight.value))kg")
+                            .bold()
+                        Text(dateString(date: selectedWeight.date))
+                            .italic()
+                    }
+                    .padding(.vertical, 4)
+                    .padding(.horizontal, 12)
+                    .background {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color(uiColor: .secondarySystemBackground))
+                    }
+                    .offset(y: 40)
+                }
+            }
+        }
+        .chartXAxis {
+            AxisMarks(values: .stride(by: .month))
         }
         .chartXSelection(value: $viewModel.selectedDate)
         .chartScrollableAxes(.horizontal)
-        .chartScrollPosition(initialX: Int.max)
-        .frame(height: 300)
+        .chartScrollPosition(initialX: Date())
         .chartYScale(domain: viewModel.range.0...viewModel.range.1)
+        .frame(height: 360)
+    }
+    
+    private func dateString(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M.dd"
+        return dateFormatter.string(from: date)
     }
 }
 
