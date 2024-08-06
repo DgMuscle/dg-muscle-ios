@@ -11,7 +11,7 @@ import MockData
 
 final class GetWeightsWithoutDuplicatesUsecaseTests: XCTestCase {
 
-    func testExample() throws {
+    func testNormalCase() throws {
         let usecase = GetWeightsWithoutDuplicatesUsecase()
         let repository = WeightRepositoryMock()
         let result = usecase.implement(weights: repository.get())
