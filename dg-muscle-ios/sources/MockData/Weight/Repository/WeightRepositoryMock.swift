@@ -20,4 +20,8 @@ public final class WeightRepositoryMock: WeightRepository {
     public func get() -> [Domain.WeightDomain] {
         _weights
     }
+    
+    public func post(weight: Domain.WeightDomain) {
+        _weights.append(weight)
+    }
 }

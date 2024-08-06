@@ -30,6 +30,24 @@ public final class WeightRepositoryImpl: WeightRepository {
         _weights
     }
     
+    public func post(weight: Domain.WeightDomain) {
+        guard let weightType = HKQuantityType.quantityType(forIdentifier: .bodyMass) else {
+            print("Weight type is no longer available in HealthKit")
+            return
+        }
+
+        let weightQuantity = HKQuantity(unit: HKUnit.gramUnit(with: .kilo), doubleValue: weight.value)
+        let weightSample = HKQuantitySample(type: weightType, quantity: weightQuantity, start: weight.date, end: weight.date)
+
+        healthStore.save(weightSample) { (success, error) in
+            if let error = error {
+                print("Error saving weight sample: \(error.localizedDescription)")
+            } else {
+                self._weights.append(weight)
+            }
+        }
+    }
+    
     private func requestPermission() async throws {
         return try await withCheckedThrowingContinuation { continuation in
             healthStore.requestAuthorization(toShare: allTypes, read: allTypes) { (success, error) in

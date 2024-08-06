@@ -12,4 +12,5 @@ public protocol WeightRepository {
     var weights: AnyPublisher<[WeightDomain], Never> { get }
     
     func get() -> [WeightDomain]
+    func post(weight: WeightDomain)
 }
