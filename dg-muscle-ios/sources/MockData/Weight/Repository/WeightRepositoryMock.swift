@@ -13,7 +13,7 @@ public final class WeightRepositoryMock: WeightRepository {
     public var weights: AnyPublisher<[Domain.WeightDomain], Never> { $_weights.eraseToAnyPublisher() }
     @Published var _weights: [WeightDomain] = []
     
-    init() {
+    public init() {
         _weights = WEIGHTS
     }
     

@@ -10,6 +10,7 @@ import Domain
 
 func dateGenerator(string: String) -> Date {
     let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyyMMdd"
     return dateFormatter.date(from: string)!
 }
 

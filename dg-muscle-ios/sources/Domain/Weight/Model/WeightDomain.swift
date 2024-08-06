@@ -19,6 +19,7 @@ public struct WeightDomain {
         self.date = date
         
         let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
         
         self.yyyyMMdd = dateFormatter.string(from: date)
     }
