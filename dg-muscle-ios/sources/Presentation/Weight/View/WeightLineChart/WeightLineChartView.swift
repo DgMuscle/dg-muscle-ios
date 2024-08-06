@@ -29,6 +29,19 @@ struct WeightLineChartView: View {
             .symbol {
                 Circle().frame(width: dotSize, height: dotSize)
             }
+            
+            AreaMark(
+                x: .value("date", data.date, unit: .day),
+                y: .value("weight", data.value)
+            )
+            .interpolationMethod(.catmullRom)
+            .foregroundStyle(
+                LinearGradient(
+                    colors: [.blue.opacity(0.1), .blue.opacity(1)],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
         }
         .chartScrollableAxes(.horizontal)
         .chartScrollPosition(initialX: Int.max)
