@@ -85,7 +85,7 @@ swift-package-list dg-muscle-ios.xcworkspace --output-type settings-bundle --req
 
 ### Module Graph
 
-<img width=750 src="https://github.com/user-attachments/assets/4d943783-6b76-4f02-8b79-a9410bd31675" />
+<img width=750 src="https://github.com/user-attachments/assets/7ce436ce-ee71-4a02-8ba8-5b80c4a71ad3" />
 
 ### Concern
 
@@ -97,6 +97,8 @@ swift-package-list dg-muscle-ios.xcworkspace --output-type settings-bundle --req
 | My       | 유저의 프로필 이미지 등록 및 닉네임 설정 등 그 외의 자잘한 기능들 포함 |
 | HeatMap  | 위젯 및 History 모듈에서 공통으로 사용될 히트맵 UI 관련 기능           |
 | Friend   | 다른 유저들과의 Connection 구축                                        |
+| Rapid   | Rapid API 를 이용한 Exercise DB 구축                                        |
+| Weight   | Apple HealthKit 을 이용한 유저의 체중 관리 모듈                                        |
 
 ## CI/CD
 
