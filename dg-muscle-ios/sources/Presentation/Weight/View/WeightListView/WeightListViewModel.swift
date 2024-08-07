@@ -12,13 +12,16 @@ import Domain
 final class WeightListViewModel: ObservableObject {
     @Published var weightRange: (Double, Double) = (0, 0)
     @Published var weights: [WeightPresentation] = []
+    @Published var sections: [WeightSection] = []
     
     let getWeightsRangeUsecase: GetWeightsRangeUsecase
     let subscribeWeightsUsecase: SubscribeWeightsUsecase
+    let groupWeightsByGroupUsecase: GroupWeightsByGroupUsecase
     
     init(weightRepository: WeightRepository) {
         getWeightsRangeUsecase = .init()
         subscribeWeightsUsecase = .init(weightRepository: weightRepository)
+        groupWeightsByGroupUsecase = .init()
         
         bind()
     }
@@ -40,5 +43,23 @@ final class WeightListViewModel: ObservableObject {
             })
             .receive(on: DispatchQueue.main)
             .assign(to: &$weightRange)
+        
+        subscribeWeightsUsecase
+            .implement()
+            .compactMap({ [weak self] weights -> [String: [WeightDomain]]? in
+                guard let self else { return nil }
+                return groupWeightsByGroupUsecase.implement(weights: weights)
+            })
+            .map({ dictionary -> [WeightSection] in
+                var sections: [WeightSection] = []
+                
+                for (key, value) in dictionary {
+                    sections.append(.init(yyyyMM: key, weights: value.map({ .init(domain: $0) })))
+                }
+                
+                return sections
+            })
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$sections)
     }
 }
