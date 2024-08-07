@@ -24,5 +24,5 @@ public struct WeightListView: View {
 
 #Preview {
     return WeightListView(weightRepository: WeightRepositoryMock())
-        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+        .preferredColorScheme(.dark)
 }
