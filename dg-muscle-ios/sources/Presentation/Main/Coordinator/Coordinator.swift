@@ -24,6 +24,7 @@ public final class Coordinator {
     public let history: HistoryCoordinator
     public let my: MyCoordinator
     public let rapid: RapidCoordinator
+    public let weight: WeightCoordinator
     
     public init(
         path: Binding<NavigationPath>,
@@ -36,6 +37,7 @@ public final class Coordinator {
         self.history = .init(path: path, historyRepository: historyRepository)
         self.my = .init(path: path)
         self.rapid = .init(path: path, rapidRepository: rapidRepository)
+        self.weight = .init(path: path)
     }
     
     public func pop(_ k: Int = 1) {
