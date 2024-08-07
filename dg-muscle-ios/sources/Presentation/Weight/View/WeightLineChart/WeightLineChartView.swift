@@ -76,9 +76,6 @@ struct WeightLineChartView: View {
                 }
             }
         }
-        .chartXAxis {
-            AxisMarks(values: .stride(by: .month))
-        }
         .chartXSelection(value: $viewModel.selectedDate)
         .chartScrollableAxes(.horizontal)
         .chartScrollPosition(initialX: Date())
