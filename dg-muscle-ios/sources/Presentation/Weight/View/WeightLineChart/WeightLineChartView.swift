@@ -14,7 +14,7 @@ import Domain
 
 struct WeightLineChartView: View {
     
-    @StateObject var viewModel: WeightLineChartViewModel
+    @ObservedObject var viewModel: WeightLineChartViewModel
     
     init(
         weightRepository: WeightRepository,

@@ -32,12 +32,17 @@ public struct WeightListView: View {
                     WeightSectionView(section: section)
                 }
             }
+            
+            Spacer(minLength: 60)
         }
         .scrollIndicators(.hidden)
+        .navigationTitle("Weight")
     }
 }
 
 #Preview {
-    return WeightListView(weightRepository: WeightRepositoryMock())
-        .preferredColorScheme(.dark)
+    return NavigationStack {
+        WeightListView(weightRepository: WeightRepositoryMock())
+    }
+    .preferredColorScheme(.dark)
 }
