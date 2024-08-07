@@ -16,8 +16,16 @@ struct WeightLineChartView: View {
     
     @StateObject var viewModel: WeightLineChartViewModel
     
-    init(weightRepository: WeightRepository) {
-        _viewModel = .init(wrappedValue: .init(weightRepository: weightRepository))
+    init(
+        weightRepository: WeightRepository,
+        weights: [WeightPresentation],
+        range: (Double, Double)
+    ) {
+        _viewModel = .init(wrappedValue: .init(
+            weightRepository: weightRepository,
+            weights: weights,
+            range: range
+        ))
     }
     
     private let dotSize: CGFloat = 6
@@ -86,6 +94,15 @@ struct WeightLineChartView: View {
 }
 
 #Preview {
-    return WeightLineChartView(weightRepository: WeightRepositoryMock())
-        .preferredColorScheme(.dark)
+    
+    let repository = WeightRepositoryMock()
+    let weights = GetWeightsWithoutDuplicatesUsecase().implement(weights: repository.get())
+    let range = GetWeightsRangeUsecase().implement(weights: weights)
+    
+    return WeightLineChartView(
+        weightRepository: repository,
+        weights: weights.map({ .init(domain: $0) }),
+        range: range
+    )
+    .preferredColorScheme(.dark)
 }
