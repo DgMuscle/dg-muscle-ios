@@ -23,7 +23,7 @@ struct WeightPresentation: Hashable {
 }
 
 extension WeightPresentation {
-    enum Unit {
+    enum Unit: String {
         case kg
         case lbs
         
