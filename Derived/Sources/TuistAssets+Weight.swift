@@ -19,10 +19,10 @@
 // MARK: - Asset Catalogs
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
-public enum PhysicalAsset {
+public enum WeightAsset: Sendable {
   public enum Assets {
-  public static let accentColor = PhysicalColors(name: "AccentColor")
-    public static let splash = PhysicalImages(name: "Splash")
+  public static let accentColor = WeightColors(name: "AccentColor")
+    public static let splash = WeightImages(name: "Splash")
   }
   public enum PreviewAssets {
   }
@@ -31,8 +31,8 @@ public enum PhysicalAsset {
 
 // MARK: - Implementation Details
 
-public final class PhysicalColors {
-  public fileprivate(set) var name: String
+public final class WeightColors: Sendable {
+  public let name: String
 
   #if os(macOS)
   public typealias Color = NSColor
@@ -41,27 +41,17 @@ public final class PhysicalColors {
   #endif
 
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, visionOS 1.0, *)
-  public private(set) lazy var color: Color = {
+  public var color: Color {
     guard let color = Color(asset: self) else {
       fatalError("Unable to load color asset named \(name).")
     }
     return color
-  }()
+  }
 
   #if canImport(SwiftUI)
-  private var _swiftUIColor: Any? = nil
   @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
-  public private(set) var swiftUIColor: SwiftUI.Color {
-    get {
-      if self._swiftUIColor == nil {
-        self._swiftUIColor = SwiftUI.Color(asset: self)
-      }
-
-      return self._swiftUIColor as! SwiftUI.Color
-    }
-    set {
-      self._swiftUIColor = newValue
-    }
+  public var swiftUIColor: SwiftUI.Color {
+      return SwiftUI.Color(asset: self)
   }
   #endif
 
@@ -70,9 +60,9 @@ public final class PhysicalColors {
   }
 }
 
-public extension PhysicalColors.Color {
+public extension WeightColors.Color {
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, visionOS 1.0, *)
-  convenience init?(asset: PhysicalColors) {
+  convenience init?(asset: WeightColors) {
     let bundle = Bundle.module
     #if os(iOS) || os(tvOS) || os(visionOS)
     self.init(named: asset.name, in: bundle, compatibleWith: nil)
@@ -87,15 +77,15 @@ public extension PhysicalColors.Color {
 #if canImport(SwiftUI)
 @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
 public extension SwiftUI.Color {
-  init(asset: PhysicalColors) {
+  init(asset: WeightColors) {
     let bundle = Bundle.module
     self.init(asset.name, bundle: bundle)
   }
 }
 #endif
 
-public struct PhysicalImages {
-  public fileprivate(set) var name: String
+public struct WeightImages: Sendable {
+  public let name: String
 
   #if os(macOS)
   public typealias Image = NSImage
@@ -129,17 +119,17 @@ public struct PhysicalImages {
 #if canImport(SwiftUI)
 @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
 public extension SwiftUI.Image {
-  init(asset: PhysicalImages) {
+  init(asset: WeightImages) {
     let bundle = Bundle.module
     self.init(asset.name, bundle: bundle)
   }
 
-  init(asset: PhysicalImages, label: Text) {
+  init(asset: WeightImages, label: Text) {
     let bundle = Bundle.module
     self.init(asset.name, bundle: bundle, label: label)
   }
 
-  init(decorative asset: PhysicalImages) {
+  init(decorative asset: WeightImages) {
     let bundle = Bundle.module
     self.init(decorative: asset.name, bundle: bundle)
   }
