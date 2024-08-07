@@ -16,6 +16,7 @@ import My
 import Friend
 import Auth
 import Rapid
+import Weight
 
 public struct MainAssembly: Assembly {
     public func assemble(container: Swinject.Container) {
@@ -47,6 +48,7 @@ public struct MainAssembly: Assembly {
                 rapidSearchByBodyPartFactory: { resolver.resolve(RapidSearchByBodyPartView.self)! }, 
                 rapidSearchByNameFactory: { resolver.resolve(RapidSearchByNameView.self)! },
                 rapidExerciseDetailFactory: { exercise in resolver.resolve(RapidExerciseDetailView.self, argument: exercise)! },
+                weightListFactory: { resolver.resolve(WeightListView.self)! },
                 coordinatorFactory: { path in resolver.resolve(Coordinator.self, argument: path)! }
             )
         }
