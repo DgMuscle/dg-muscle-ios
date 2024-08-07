@@ -52,25 +52,31 @@ public struct MyView: View {
                     }
                     .buttonStyle(.borderless)
                     
+                    Button {
+                        URLManager.shared.open(url: "dgmuscle://weight_list")
+                    } label: {
+                        ListItemView(systemName: "person", text: "Physical", color: Color(uiColor: .secondaryLabel))
+                    }
+                    .buttonStyle(.borderless)
                     
                     Button {
                         URLManager.shared.open(url: "dgmuscle://friend")
                     } label: {
-                        ListItemView(systemName: "link", text: "Friend", color: Color(uiColor: .secondaryLabel))
+                        ListItemView(systemName: "person", text: "Friend", color: Color(uiColor: .secondaryLabel))
                     }
                     .buttonStyle(.borderless)
                     
                     Button {
                         URLManager.shared.open(url: "dgmuscle://exercisemanage")
                     } label: {
-                        ListItemView(systemName: "dumbbell", text: "Exercise", color: Color(uiColor: .secondaryLabel))
+                        ListItemView(systemName: "figure.strengthtraining.traditional", text: "Exercise", color: Color(uiColor: .secondaryLabel))
                     }
                     .buttonStyle(.borderless)
                     
                     Button {
                         URLManager.shared.open(url: "dgmuscle://rapidsearchtype")
                     } label: {
-                        ListItemView(systemName: "doc", text: "Exercise DB", color: Color(uiColor: .secondaryLabel))
+                        ListItemView(systemName: "figure.strengthtraining.traditional", text: "Exercise DB", color: Color(uiColor: .secondaryLabel))
                     }
                     .buttonStyle(.borderless)
                     
