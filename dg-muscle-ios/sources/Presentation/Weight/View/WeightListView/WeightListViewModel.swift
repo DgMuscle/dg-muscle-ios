@@ -50,15 +50,8 @@ final class WeightListViewModel: ObservableObject {
                 guard let self else { return nil }
                 return groupWeightsByGroupUsecase.implement(weights: weights)
             })
-            .map({ dictionary -> [WeightSection] in
-                var sections: [WeightSection] = []
-                
-                for (key, value) in dictionary {
-                    sections.append(.init(yyyyMM: key, weights: value.map({ .init(domain: $0) })))
-                }
-                
-                return sections
-            })
+            .map({ $0.map({ WeightSection(yyyyMM: $0.key, weights: $0.value.map({ .init(domain: $0) })) }) })
+            .map({ $0.sorted(by: { $0.yyyyMM > $1.yyyyMM }) })
             .receive(on: DispatchQueue.main)
             .assign(to: &$sections)
     }
