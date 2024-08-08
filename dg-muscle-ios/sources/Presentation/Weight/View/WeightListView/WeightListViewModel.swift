@@ -17,11 +17,13 @@ final class WeightListViewModel: ObservableObject {
     let getWeightsRangeUsecase: GetWeightsRangeUsecase
     let subscribeWeightsUsecase: SubscribeWeightsUsecase
     let groupWeightsByGroupUsecase: GroupWeightsByGroupUsecase
+    let filterWeightsOneYearRangeUsecase: FilterWeightsOneYearRangeUsecase
     
     init(weightRepository: WeightRepository) {
         getWeightsRangeUsecase = .init()
         subscribeWeightsUsecase = .init(weightRepository: weightRepository)
         groupWeightsByGroupUsecase = .init()
+        filterWeightsOneYearRangeUsecase = .init()
         
         bind()
     }
@@ -29,6 +31,10 @@ final class WeightListViewModel: ObservableObject {
     private func bind() {
         subscribeWeightsUsecase
             .implement()
+            .compactMap({ [weak self] weights -> [WeightDomain]? in
+                guard let self else { return nil }
+                return filterWeightsOneYearRangeUsecase.implement(weights: weights)
+            })
             .map({ weights -> [WeightPresentation] in
                 weights.map({ .init(domain: $0) })
             })
@@ -37,6 +43,10 @@ final class WeightListViewModel: ObservableObject {
         
         subscribeWeightsUsecase
             .implement()
+            .compactMap({ [weak self] weights -> [WeightDomain]? in
+                guard let self else { return nil }
+                return filterWeightsOneYearRangeUsecase.implement(weights: weights)
+            })
             .compactMap({ [weak self] weights -> (Double, Double)? in
                 guard let self else { return nil }
                 return getWeightsRangeUsecase.implement(weights: weights)
