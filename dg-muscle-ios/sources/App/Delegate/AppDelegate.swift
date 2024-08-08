@@ -52,10 +52,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             .$isLogin
             .removeDuplicates()
             .filter({ $0 })
-            .debounce(for: 0.5, scheduler: DispatchQueue.main)
             .sink { isLogin in
                 Task {
                     try await HistoryRepositoryImpl.shared.getMyHistoriesFromServer(lastId: nil, limit: 365)
+                }
+                
+                Task {
+                    try await ExerciseRepositoryImpl.shared.getMyExercisesFromServer()
                 }
             }
             .store(in: &cancellables)
