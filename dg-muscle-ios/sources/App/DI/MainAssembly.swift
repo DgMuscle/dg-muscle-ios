@@ -49,6 +49,7 @@ public struct MainAssembly: Assembly {
                 rapidSearchByNameFactory: { resolver.resolve(RapidSearchByNameView.self)! },
                 rapidExerciseDetailFactory: { exercise in resolver.resolve(RapidExerciseDetailView.self, argument: exercise)! },
                 weightListFactory: { resolver.resolve(WeightListView.self)! },
+                weightAddFactory: { resolver.resolve(WeightAddView.self)! },
                 coordinatorFactory: { path in resolver.resolve(Coordinator.self, argument: path)! }
             )
         }

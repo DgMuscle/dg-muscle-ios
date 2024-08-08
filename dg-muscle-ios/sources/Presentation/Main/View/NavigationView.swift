@@ -42,6 +42,7 @@ public struct NavigationView: View {
     let rapidExerciseDetailFactory: (Domain.RapidExerciseDomain) -> RapidExerciseDetailView
     let coordinatorFactory: (Binding<NavigationPath>) -> Coordinator
     let weightListFactory: () -> WeightListView
+    let weightAddFactory: () -> WeightAddView
     
     public init(
         today: Date,
@@ -68,6 +69,7 @@ public struct NavigationView: View {
         rapidSearchByNameFactory: @escaping () -> RapidSearchByNameView,
         rapidExerciseDetailFactory: @escaping (Domain.RapidExerciseDomain) -> RapidExerciseDetailView,
         weightListFactory: @escaping () -> WeightListView,
+        weightAddFactory: @escaping () -> WeightAddView,
         coordinatorFactory: @escaping (Binding<NavigationPath>) -> Coordinator
     ) {
         self.today = today
@@ -94,6 +96,7 @@ public struct NavigationView: View {
         self.rapidSearchByNameFactory = rapidSearchByNameFactory
         self.rapidExerciseDetailFactory = rapidExerciseDetailFactory
         self.weightListFactory = weightListFactory
+        self.weightAddFactory = weightAddFactory
         self.coordinatorFactory = coordinatorFactory
     }
     
@@ -164,6 +167,8 @@ public struct NavigationView: View {
                 switch navigation.name {
                 case .weightList:
                     weightListFactory()
+                case .weightAdd:
+                    weightAddFactory()
                 }
             }
         }
