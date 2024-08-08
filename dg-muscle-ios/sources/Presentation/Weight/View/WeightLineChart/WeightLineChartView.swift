@@ -78,7 +78,7 @@ struct WeightLineChartView: View {
         }
         .chartXSelection(value: $viewModel.selectedDate)
         .chartScrollableAxes(.horizontal)
-        .chartScrollPosition(initialX: Date())
+        .chartScrollPosition(initialX: Int.max)
         .chartYScale(domain: viewModel.range.0...viewModel.range.1)
         .frame(height: 360)
     }

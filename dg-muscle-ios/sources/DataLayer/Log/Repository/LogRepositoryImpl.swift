@@ -52,7 +52,7 @@ public final class LogRepositoryImpl: LogRepository {
                     url: FunctionsURL.log(.getlogs)
                 )
                 
-                self._logs = logs.map({ $0.domain })
+                self._logs = logs.compactMap({ $0.domain })
             } catch {
                 print("dg: \(error.localizedDescription)")
             }

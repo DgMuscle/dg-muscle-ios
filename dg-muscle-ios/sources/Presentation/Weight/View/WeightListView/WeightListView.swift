@@ -32,7 +32,6 @@ public struct WeightListView: View {
                 .background {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(.regularMaterial)
-                        .frame(width: .infinity)
                 }
                 .padding(.horizontal)
                 .padding(.top, 60)

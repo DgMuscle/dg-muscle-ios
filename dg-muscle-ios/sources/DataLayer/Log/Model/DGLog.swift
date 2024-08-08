@@ -8,11 +8,11 @@
 import Domain
 
 struct DGLog: Codable {
-    let id: String
-    let category: Category
-    let message: String
-    let resolved: Bool
-    let createdAt: CreatedAt
+    let id: String?
+    let category: Category?
+    let message: String?
+    let resolved: Bool?
+    let createdAt: CreatedAt?
     let creator: String?
     
     init(domain: Domain.DGLog) {
@@ -24,8 +24,17 @@ struct DGLog: Codable {
         creator = domain.creator
     }
     
-    var domain: Domain.DGLog {
-        .init(
+    var domain: Domain.DGLog? {
+        
+        guard let id,
+              let category,
+              let message,
+              let resolved,
+              let createdAt else {
+            return nil
+        }
+        
+        return .init(
             id: id,
             category: category.domain,
             message: message,
