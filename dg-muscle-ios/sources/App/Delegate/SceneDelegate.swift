@@ -108,6 +108,8 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             coordinator?.rapid.rapidDetail(id: id)
         case "weight_list":
             coordinator?.weight.weightList()
+        case "weight_add":
+            coordinator?.weight.weightAdd()
         default: break
         }
     }

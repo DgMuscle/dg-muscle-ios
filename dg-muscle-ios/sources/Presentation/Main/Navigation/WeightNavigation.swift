@@ -15,5 +15,6 @@ public struct WeightNavigation: Hashable {
 extension WeightNavigation {
     public enum Name {
         case weightList
+        case weightAdd
     }
 }

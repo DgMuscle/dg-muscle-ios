@@ -18,4 +18,8 @@ public final class WeightCoordinator {
     public func weightList() {
         path.append(WeightNavigation(name: .weightList))
     }
+    
+    public func weightAdd() {
+        path.append(WeightNavigation(name: .weightAdd))
+    }
 }

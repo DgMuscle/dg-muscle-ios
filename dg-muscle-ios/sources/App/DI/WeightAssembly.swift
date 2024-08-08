@@ -15,5 +15,10 @@ public struct WeightAssembly: Assembly {
             let weightRepository = resolver.resolve(WeightRepository.self)!
             return WeightListView(weightRepository: weightRepository)
         }
+        
+        container.register(WeightAddView.self) { resolver in
+            let weightRepository = resolver.resolve(WeightRepository.self)!
+            return WeightAddView(weightRepository: weightRepository)
+        }
     }
 }

@@ -14,7 +14,7 @@ import Domain
 
 struct WeightLineChartView: View {
     
-    @StateObject var viewModel: WeightLineChartViewModel
+    @ObservedObject var viewModel: WeightLineChartViewModel
     
     init(
         weightRepository: WeightRepository,
@@ -75,9 +75,6 @@ struct WeightLineChartView: View {
                     .offset(y: 40)
                 }
             }
-        }
-        .chartXAxis {
-            AxisMarks(values: .stride(by: .month))
         }
         .chartXSelection(value: $viewModel.selectedDate)
         .chartScrollableAxes(.horizontal)

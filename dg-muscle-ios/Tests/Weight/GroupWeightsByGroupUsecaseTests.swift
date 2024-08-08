@@ -15,6 +15,6 @@ final class GroupWeightsByGroupUsecaseTests: XCTestCase {
         let usecase = GroupWeightsByGroupUsecase()
         let repository = WeightRepositoryMock()
         let result = usecase.implement(weights: repository.get())
-        XCTAssertEqual(result.count, 6)
+        XCTAssertEqual(result.count, 7)
     }
 }

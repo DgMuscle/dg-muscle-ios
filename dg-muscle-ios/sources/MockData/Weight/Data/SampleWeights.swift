@@ -35,4 +35,5 @@ public var WEIGHTS: [WeightDomain] = [
     .init(value: 60, unit: .kg, date: dateGenerator(string: "20240206")),
     .init(value: 61, unit: .kg, date: dateGenerator(string: "20240202")),
     .init(value: 61.3, unit: .kg, date: dateGenerator(string: "20240101")),
+    .init(value: 61.3, unit: .kg, date: dateGenerator(string: "20200101")),
 ]

@@ -17,9 +17,7 @@ public final class LogRepositoryImpl: LogRepository {
     
     private var cancellables = Set<AnyCancellable>()
     
-    private init() {
-        bind()
-    }
+    private init() { }
     
     public func post(log: Domain.DGLog) {
         if let index = _logs.firstIndex(where: { $0.id == log.id }) {
@@ -46,7 +44,7 @@ public final class LogRepositoryImpl: LogRepository {
         post(log: _logs[index])
     }
     
-    private func fetchLogs() {
+    public func fetchLogs() {
         Task {
             do {
                 let logs: [DGLog] = try await APIClient.shared.request(
@@ -59,17 +57,5 @@ public final class LogRepositoryImpl: LogRepository {
                 print("dg: \(error.localizedDescription)")
             }
         }
-    }
-    
-    private func bind() {
-        UserRepositoryImpl
-            .shared
-            .user
-            .compactMap({ $0 })
-            .debounce(for: 1, scheduler: DispatchQueue.main)
-            .sink { _ in
-                self.fetchLogs()
-            }
-            .store(in: &cancellables)
     }
 }

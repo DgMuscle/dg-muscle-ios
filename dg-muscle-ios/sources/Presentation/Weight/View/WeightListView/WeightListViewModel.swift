@@ -17,11 +17,13 @@ final class WeightListViewModel: ObservableObject {
     let getWeightsRangeUsecase: GetWeightsRangeUsecase
     let subscribeWeightsUsecase: SubscribeWeightsUsecase
     let groupWeightsByGroupUsecase: GroupWeightsByGroupUsecase
+    let filterWeightsOneYearRangeUsecase: FilterWeightsOneYearRangeUsecase
     
     init(weightRepository: WeightRepository) {
         getWeightsRangeUsecase = .init()
         subscribeWeightsUsecase = .init(weightRepository: weightRepository)
         groupWeightsByGroupUsecase = .init()
+        filterWeightsOneYearRangeUsecase = .init()
         
         bind()
     }
@@ -29,6 +31,10 @@ final class WeightListViewModel: ObservableObject {
     private func bind() {
         subscribeWeightsUsecase
             .implement()
+            .compactMap({ [weak self] weights -> [WeightDomain]? in
+                guard let self else { return nil }
+                return filterWeightsOneYearRangeUsecase.implement(weights: weights)
+            })
             .map({ weights -> [WeightPresentation] in
                 weights.map({ .init(domain: $0) })
             })
@@ -37,6 +43,10 @@ final class WeightListViewModel: ObservableObject {
         
         subscribeWeightsUsecase
             .implement()
+            .compactMap({ [weak self] weights -> [WeightDomain]? in
+                guard let self else { return nil }
+                return filterWeightsOneYearRangeUsecase.implement(weights: weights)
+            })
             .compactMap({ [weak self] weights -> (Double, Double)? in
                 guard let self else { return nil }
                 return getWeightsRangeUsecase.implement(weights: weights)
@@ -50,15 +60,8 @@ final class WeightListViewModel: ObservableObject {
                 guard let self else { return nil }
                 return groupWeightsByGroupUsecase.implement(weights: weights)
             })
-            .map({ dictionary -> [WeightSection] in
-                var sections: [WeightSection] = []
-                
-                for (key, value) in dictionary {
-                    sections.append(.init(yyyyMM: key, weights: value.map({ .init(domain: $0) })))
-                }
-                
-                return sections
-            })
+            .map({ $0.map({ WeightSection(yyyyMM: $0.key, weights: $0.value.map({ .init(domain: $0) })) }) })
+            .map({ $0.sorted(by: { $0.yyyyMM > $1.yyyyMM }) })
             .receive(on: DispatchQueue.main)
             .assign(to: &$sections)
     }

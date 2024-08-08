@@ -26,7 +26,9 @@ public final class RapidRepositoryImpl: RapidRepository {
     
     private var apiKey: String = ""
     
-    private init() {
+    private init() { }
+    
+    public func fetch() {
         Task {
             do {
                 let apiKey = try await fetchApiKey()
