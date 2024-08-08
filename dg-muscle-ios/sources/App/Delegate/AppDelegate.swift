@@ -52,6 +52,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             .$isLogin
             .removeDuplicates()
             .filter({ $0 })
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
             .sink { isLogin in
                 Task {
                     try await HistoryRepositoryImpl.shared.getMyHistoriesFromServer(lastId: nil, limit: 365)
