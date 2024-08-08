@@ -10,8 +10,12 @@ import Firebase
 import FirebaseMessaging
 import DataLayer
 import Common
+import Combine
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    
+    private var cancellables = Set<AnyCancellable>()
+    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
@@ -31,6 +35,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             )
         ]
         
+        applicationDataBinding()
+        
         return true
     }
     
@@ -38,6 +44,21 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         let configuration = UISceneConfiguration(name: connectingSceneSession.configuration.name, sessionRole: connectingSceneSession.role)
         configuration.delegateClass = SceneDelegate.self
         return configuration
+    }
+    
+    private func applicationDataBinding() {
+        UserRepositoryImpl
+            .shared
+            .$isLogin
+            .removeDuplicates()
+            .filter({ $0 })
+            .debounce(for: 0.5, scheduler: DispatchQueue.main)
+            .sink { isLogin in
+                Task {
+                    try await HistoryRepositoryImpl.shared.getMyHistoriesFromServer(lastId: nil, limit: 365)
+                }
+            }
+            .store(in: &cancellables)
     }
 }
 
