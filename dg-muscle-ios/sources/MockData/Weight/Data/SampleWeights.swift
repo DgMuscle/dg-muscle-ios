@@ -15,6 +15,7 @@ func dateGenerator(string: String) -> Date {
 }
 
 public var WEIGHTS: [WeightDomain] = [
+    .init(value: 66, unit: .kg, date: dateGenerator(string: "20240808")),
     .init(value: 70, unit: .kg, date: dateGenerator(string: "20240806")),
     .init(value: 69, unit: .kg, date: dateGenerator(string: "20240806")),
     .init(value: 65, unit: .kg, date: dateGenerator(string: "20240728")),
