@@ -18,6 +18,24 @@ public struct WeightAddView: View {
     }
     
     public var body: some View {
-        Text("WeightAddView")
+        List {
+            DatePicker("Date", selection: $viewModel.selectedDate)
+            
+            TextField("Weight(kg)", value: $viewModel.value, format: .number)
+                .keyboardType(.decimalPad)
+        }
+        .scrollIndicators(.hidden)
+        .toolbar {
+            Button("save") {
+                viewModel.save()
+            }
+        }
     }
+}
+
+#Preview {
+    return NavigationStack {
+        WeightAddView(weightRepository: WeightRepositoryMock())
+    }
+    .preferredColorScheme(.dark)
 }
