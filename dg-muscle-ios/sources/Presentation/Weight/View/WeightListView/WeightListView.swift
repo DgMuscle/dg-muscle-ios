@@ -21,15 +21,31 @@ public struct WeightListView: View {
     
     public var body: some View {
         ScrollView {
-            WeightLineChartView(
-                weightRepository: weightRepository,
-                weights: viewModel.weights,
-                range: viewModel.weightRange
-            )
-            
-            VStack {
-                ForEach(viewModel.sections, id: \.self) { section in
-                    WeightSectionView(section: section)
+            if viewModel.weights.isEmpty {
+                HStack {
+                    Spacer()
+                    Text("There is not recent weight data.\nLet's record your weights changes!")
+                    Spacer()
+                }
+                .padding(.vertical)
+                .background {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(.regularMaterial)
+                        .frame(width: .infinity)
+                }
+                .padding(.horizontal)
+                .padding(.top, 60)
+            } else {
+                WeightLineChartView(
+                    weightRepository: weightRepository,
+                    weights: viewModel.weights,
+                    range: viewModel.weightRange
+                )
+                
+                VStack {
+                    ForEach(viewModel.sections, id: \.self) { section in
+                        WeightSectionView(section: section)
+                    }
                 }
             }
             
