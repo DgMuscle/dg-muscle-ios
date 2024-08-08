@@ -8,6 +8,7 @@
 import SwiftUI
 import Domain
 import MockData
+import Common
 
 public struct WeightListView: View {
     
@@ -53,6 +54,11 @@ public struct WeightListView: View {
         }
         .scrollIndicators(.hidden)
         .navigationTitle("Weight")
+        .toolbar {
+            Button("Add") {
+                URLManager.shared.open(url: "dgmuscle://weight_add")
+            }
+        }
     }
 }
 
