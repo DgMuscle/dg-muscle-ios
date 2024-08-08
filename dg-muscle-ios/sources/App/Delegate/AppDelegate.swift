@@ -61,6 +61,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                 Task {
                     try await ExerciseRepositoryImpl.shared.getMyExercisesFromServer()
                 }
+                
+                Task {
+                    FriendRepositoryImpl.shared.fetch()
+                }
             }
             .store(in: &cancellables)
     }

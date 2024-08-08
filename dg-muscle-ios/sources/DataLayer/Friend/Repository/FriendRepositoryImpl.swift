@@ -31,7 +31,6 @@ public final class FriendRepositoryImpl: FriendRepository {
     private init() {
         Task {
             _users = try await getUsersFromServer()
-            bind()
         }
     }
     
@@ -175,22 +174,6 @@ public final class FriendRepositoryImpl: FriendRepository {
             url: url,
             body: body(friendId: friendId)
         )
-    }
-    
-    private func bind() {
-        // fetch friends
-        // fetch requests
-        
-        UserRepositoryImpl
-            .shared
-            .$isLogin
-            .removeDuplicates()
-            .delay(for: 0.5, scheduler: DispatchQueue.main)
-            .filter({ $0 })
-            .sink { _ in
-                self.fetch()
-            }
-            .store(in: &cancellables)
     }
     
     private func getUsersFromServer() async throws -> [Domain.User] {
