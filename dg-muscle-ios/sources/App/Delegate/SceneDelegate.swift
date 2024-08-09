@@ -106,6 +106,10 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         case "rapid_detail":
             guard let id = URLManager.shared.getParameter(url: url, name: "id") else { return }
             coordinator?.rapid.rapidDetail(id: id)
+        case "weight_list":
+            coordinator?.weight.weightList()
+        case "weight_add":
+            coordinator?.weight.weightAdd()
         default: break
         }
     }

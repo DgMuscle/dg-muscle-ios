@@ -25,22 +25,9 @@ public final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
     }
     
     private init() { 
-        
         Task {
             self._exercises = await self.geyMyExercisesFromFileManager()
         }
-        
-        UserRepositoryImpl
-            .shared
-            .$isLogin
-            .removeDuplicates()
-            .filter({ $0 })
-            .sink { _ in
-                Task {
-                    self._exercises = try await self.getMyExercisesFromServer()
-                }
-            }
-            .store(in: &cancellables)
     }
     
     public func post(_ exercise: Domain.Exercise) async throws {
@@ -77,10 +64,11 @@ public final class ExerciseRepositoryImpl: Domain.ExerciseRepository {
         )
     }
     
-    private func getMyExercisesFromServer() async throws -> [Domain.Exercise] {
+    public func getMyExercisesFromServer() async throws {
         let url = FunctionsURL.exercise(.getexercises)
         let exercises: [Exercise] = try await APIClient.shared.request(url: url)
-        return exercises.map({ $0.domain })
+        let domainData = exercises.map({ $0.domain })
+        self._exercises = domainData
     }
     
     private func geyMyExercisesFromFileManager() async -> [Domain.Exercise] {

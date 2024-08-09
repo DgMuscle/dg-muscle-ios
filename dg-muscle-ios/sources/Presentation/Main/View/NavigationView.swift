@@ -12,6 +12,7 @@ import History
 import My
 import Friend
 import Rapid
+import Weight
 
 public struct NavigationView: View {
     
@@ -40,6 +41,8 @@ public struct NavigationView: View {
     let rapidSearchByNameFactory: () -> RapidSearchByNameView
     let rapidExerciseDetailFactory: (Domain.RapidExerciseDomain) -> RapidExerciseDetailView
     let coordinatorFactory: (Binding<NavigationPath>) -> Coordinator
+    let weightListFactory: () -> WeightListView
+    let weightAddFactory: () -> WeightAddView
     
     public init(
         today: Date,
@@ -65,6 +68,8 @@ public struct NavigationView: View {
         rapidSearchByBodyPartFactory: @escaping () -> RapidSearchByBodyPartView,
         rapidSearchByNameFactory: @escaping () -> RapidSearchByNameView,
         rapidExerciseDetailFactory: @escaping (Domain.RapidExerciseDomain) -> RapidExerciseDetailView,
+        weightListFactory: @escaping () -> WeightListView,
+        weightAddFactory: @escaping () -> WeightAddView,
         coordinatorFactory: @escaping (Binding<NavigationPath>) -> Coordinator
     ) {
         self.today = today
@@ -90,6 +95,8 @@ public struct NavigationView: View {
         self.rapidSearchByBodyPartFactory = rapidSearchByBodyPartFactory
         self.rapidSearchByNameFactory = rapidSearchByNameFactory
         self.rapidExerciseDetailFactory = rapidExerciseDetailFactory
+        self.weightListFactory = weightListFactory
+        self.weightAddFactory = weightAddFactory
         self.coordinatorFactory = coordinatorFactory
     }
     
@@ -154,6 +161,14 @@ public struct NavigationView: View {
                     rapidSearchByNameFactory()
                 case .detail(let exercise):
                     rapidExerciseDetailFactory(exercise)
+                }
+            }
+            .navigationDestination(for: WeightNavigation.self) { navigation in
+                switch navigation.name {
+                case .weightList:
+                    weightListFactory()
+                case .weightAdd:
+                    weightAddFactory()
                 }
             }
         }

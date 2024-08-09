@@ -27,7 +27,9 @@ public final class HistoryRepositoryImpl: Domain.HistoryRepository {
     }
     
     private init() {
-        bind()
+        Task {
+            self._histories = await self.getMyHistoriesFromFilemanager()
+        }
     }
     
     public func get() -> [Domain.History] {
@@ -74,32 +76,15 @@ public final class HistoryRepositoryImpl: Domain.HistoryRepository {
         )
     }
     
-    private func bind() {
-        Task {
-            self._histories = await self.getMyHistoriesFromFilemanager()
-        }
-        
-        UserRepositoryImpl
-            .shared
-            .$isLogin
-            .removeDuplicates()
-            .filter({ $0 })
-            .sink { isLogin in
-                Task {
-                    self._histories = try await self.getMyHistoriesFromServer(lastId: nil, limit: 365)
-                }
-            }
-            .store(in: &cancellables)
-    }
-    
-    private func getMyHistoriesFromServer(lastId: String?, limit: Int) async throws -> [Domain.History] {
+    public func getMyHistoriesFromServer(lastId: String?, limit: Int) async throws {
         var url = FunctionsURL.history(.gethistories)
         url.append("?limit=\(limit)")
         if let lastId {
             url.append("&lastId=\(lastId)")
         }
         let histories: [History] = try await APIClient.shared.request(url: url)
-        return histories.map({ $0.domain })
+        let domainData = histories.map({ $0.domain })
+        self._histories = domainData
     }
     
     private func getMyHistoriesFromFilemanager() async -> [Domain.History] {

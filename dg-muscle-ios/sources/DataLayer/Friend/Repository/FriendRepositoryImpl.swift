@@ -28,12 +28,7 @@ public final class FriendRepositoryImpl: FriendRepository {
     private var friendsExercises: [String: [Domain.Exercise]] = [:]
     
     private var cancellables = Set<AnyCancellable>()
-    private init() {
-        Task {
-            _users = try await getUsersFromServer()
-            bind()
-        }
-    }
+    private init() { }
     
     public func getUser(uid: String) -> Domain.User? {
         _users.first(where: { $0.uid == uid })
@@ -137,6 +132,8 @@ public final class FriendRepositoryImpl: FriendRepository {
     
     public func fetch() {
         Task {
+            _users = try await getUsersFromServer()
+            
             async let getFriendsTask = self.getFriendsFromServer()
             async let getRequestsTask = self.getRequestsFromServer()
             
@@ -175,22 +172,6 @@ public final class FriendRepositoryImpl: FriendRepository {
             url: url,
             body: body(friendId: friendId)
         )
-    }
-    
-    private func bind() {
-        // fetch friends
-        // fetch requests
-        
-        UserRepositoryImpl
-            .shared
-            .$isLogin
-            .removeDuplicates()
-            .delay(for: 0.5, scheduler: DispatchQueue.main)
-            .filter({ $0 })
-            .sink { _ in
-                self.fetch()
-            }
-            .store(in: &cancellables)
     }
     
     private func getUsersFromServer() async throws -> [Domain.User] {

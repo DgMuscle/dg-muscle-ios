@@ -19,7 +19,7 @@
 // MARK: - Asset Catalogs
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
-public enum FriendAsset {
+public enum FriendAsset: Sendable {
   public enum Assets {
   public static let accentColor = FriendColors(name: "AccentColor")
     public static let splash = FriendImages(name: "Splash")
@@ -31,8 +31,8 @@ public enum FriendAsset {
 
 // MARK: - Implementation Details
 
-public final class FriendColors {
-  public fileprivate(set) var name: String
+public final class FriendColors: Sendable {
+  public let name: String
 
   #if os(macOS)
   public typealias Color = NSColor
@@ -41,27 +41,17 @@ public final class FriendColors {
   #endif
 
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, visionOS 1.0, *)
-  public private(set) lazy var color: Color = {
+  public var color: Color {
     guard let color = Color(asset: self) else {
       fatalError("Unable to load color asset named \(name).")
     }
     return color
-  }()
+  }
 
   #if canImport(SwiftUI)
-  private var _swiftUIColor: Any? = nil
   @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
-  public private(set) var swiftUIColor: SwiftUI.Color {
-    get {
-      if self._swiftUIColor == nil {
-        self._swiftUIColor = SwiftUI.Color(asset: self)
-      }
-
-      return self._swiftUIColor as! SwiftUI.Color
-    }
-    set {
-      self._swiftUIColor = newValue
-    }
+  public var swiftUIColor: SwiftUI.Color {
+      return SwiftUI.Color(asset: self)
   }
   #endif
 
@@ -94,8 +84,8 @@ public extension SwiftUI.Color {
 }
 #endif
 
-public struct FriendImages {
-  public fileprivate(set) var name: String
+public struct FriendImages: Sendable {
+  public let name: String
 
   #if os(macOS)
   public typealias Image = NSImage

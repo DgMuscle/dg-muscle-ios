@@ -44,6 +44,7 @@ struct dg_muscle_iosApp: App {
             HomeAssembly(),
             MyAssembly(),
             RapidAssembly(),
+            WeightAssembly(),
             MainAssembly()
         ])
     }
