@@ -8,5 +8,9 @@
 import Foundation
 
 public struct ExerciseTimerDomain {
-    let targetDate: Date 
+    public let targetDate: Date
+    
+    public init(targetDate: Date) {
+        self.targetDate = targetDate
+    }
 }
