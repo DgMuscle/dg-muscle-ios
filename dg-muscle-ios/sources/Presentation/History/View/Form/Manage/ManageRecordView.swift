@@ -21,12 +21,14 @@ public struct ManageRecordView: View {
         historyForm: Binding<HistoryForm>,
         recordId: String,
         userRepository: UserRepository,
-        historyRepository: HistoryRepository
+        historyRepository: HistoryRepository,
+        exerciseTimerRepository: ExerciseTimerRepository
     ) {
         _viewModel = .init(wrappedValue: .init(historyForm: historyForm,
                                                recordId: recordId, 
                                                userRepository: userRepository, 
-                                               historyRepository: historyRepository))
+                                               historyRepository: historyRepository, 
+                                               exerciseTimerRepository: exerciseTimerRepository))
     }
     
     public var body: some View {
@@ -131,7 +133,8 @@ public struct ManageRecordView: View {
             historyForm: .constant(historyForm),
             recordId: history.records[0].id,
             userRepository: UserRepositoryMock(),
-            historyRepository: HistoryRepositoryMock()
+            historyRepository: HistoryRepositoryMock(),
+            exerciseTimerRepository: ExerciseTimerRepositoryMockData()
         )
         .preferredColorScheme(.dark)
     }

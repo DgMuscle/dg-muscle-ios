@@ -75,12 +75,14 @@ public struct HistoryAssembly: Assembly {
         ) in
             let userRepository = resolver.resolve(UserRepository.self)!
             let historyRepository = resolver.resolve(HistoryRepository.self)!
+            let exerciseTimerRepository = resolver.resolve(ExerciseTimerRepository.self)!
             
             return ManageRecordView(
                 historyForm: historyForm,
                 recordId: recordId,
                 userRepository: userRepository,
-                historyRepository: historyRepository
+                historyRepository: historyRepository, 
+                exerciseTimerRepository: exerciseTimerRepository
             )
         }
         

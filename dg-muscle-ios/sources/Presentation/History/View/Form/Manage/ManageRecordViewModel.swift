@@ -22,6 +22,7 @@ final class ManageRecordViewModel: ObservableObject {
     @Published var strengthGoal: Goal?
     @Published var traingMode: Common.TrainingMode?
     
+    
     private let recordId: String
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
     private let subscribeHeatMapColorUsecase: SubscribeHeatMapColorUsecase
@@ -31,13 +32,17 @@ final class ManageRecordViewModel: ObservableObject {
     private let subscribeTrainingModeUsecase: SubscribeTrainingModeUsecase
     private let checkGoalAchievedUsecase: CheckGoalAchievedUsecase
     private let checkStrengthGoalAchievedUsecase: CheckStrengthGoalAchievedUsecase
+    private let cancelExerciseTimerUsecase: CancelExerciseTimerUsecase
+    private let registerExerciseTimerUsecase: RegisterExerciseTimerUsecase
+    private let subscribeExerciseTimerUsecase: SubscribeExerciseTimerUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
         historyForm: Binding<HistoryForm>,
         recordId: String,
         userRepository: UserRepository,
-        historyRepository: HistoryRepository
+        historyRepository: HistoryRepository,
+        exerciseTimerRepository: ExerciseTimerRepository
     ) {
         self._historyForm = historyForm
         self.recordId = recordId
@@ -58,6 +63,9 @@ final class ManageRecordViewModel: ObservableObject {
         subscribeTrainingModeUsecase = .init(userRepository: userRepository)
         checkGoalAchievedUsecase = .init()
         checkStrengthGoalAchievedUsecase = .init()
+        cancelExerciseTimerUsecase = .init(exerciseTimerRepository: exerciseTimerRepository)
+        registerExerciseTimerUsecase = .init(exerciseTimerRepository: exerciseTimerRepository)
+        subscribeExerciseTimerUsecase = .init(exerciseTimerRepository: exerciseTimerRepository)
         
         let color: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
         self.color = color.color
