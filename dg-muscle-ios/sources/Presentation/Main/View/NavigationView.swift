@@ -18,6 +18,8 @@ import ExerciseTimer
 public struct NavigationView: View {
     
     @State var path = NavigationPath()
+    @StateObject var viewModel: NavigationViewModel
+    
     let today: Date
     let historyRepository: HistoryRepository
     let exerciseTimerRepository: ExerciseTimerRepository
@@ -105,6 +107,8 @@ public struct NavigationView: View {
         self.weightAddFactory = weightAddFactory
         self.floatingTimerFactory = floatingTimerFactory
         self.coordinatorFactory = coordinatorFactory
+        
+        _viewModel = .init(wrappedValue: .init(exerciseTimerRepository: exerciseTimerRepository))
     }
     
     public var body: some View {
@@ -181,6 +185,16 @@ public struct NavigationView: View {
         }
         .onAppear {
             coordinator = coordinatorFactory($path)
+        }
+        .overlay {
+            VStack {
+                
+                if let timer = viewModel.timer {
+                    ExerciseTimer.FloatingTimerView(timer: timer)
+                }
+                
+                Spacer()
+            }
         }
     }
 }
