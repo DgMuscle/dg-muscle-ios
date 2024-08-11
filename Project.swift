@@ -16,6 +16,7 @@ enum Presentation: String, CaseIterable {
     case Auth
     case Common
     case Exercise
+    case ExerciseTimer
     case HistoryHeatMap
     case History
     case My
@@ -202,8 +203,12 @@ func createPresentations() -> [Target] {
 
     return Presentation.allCases.map({
         switch $0 {
-        case .Auth, .HistoryHeatMap, .Exercise, .My, .Rapid, .Weight:
+        case .Auth, .HistoryHeatMap, .ExerciseTimer, .My, .Rapid, .Weight:
             return createPresentation($0, dependencies: [])
+        case .Exercise:
+            return createPresentation($0, dependencies: [
+                .target(name: Presentation.ExerciseTimer.rawValue, condition: nil)
+            ])
         case .History, .Friend:
             return createPresentation($0, dependencies: [
                 .target(name: Presentation.HistoryHeatMap.rawValue, condition: nil)
