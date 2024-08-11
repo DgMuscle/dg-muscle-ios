@@ -10,7 +10,6 @@ import Combine
 import SwiftUI
 import Domain
 import Common
-import ExerciseTimer
 
 final class ManageRecordViewModel: ObservableObject {
     @Binding var historyForm: HistoryForm
@@ -22,7 +21,6 @@ final class ManageRecordViewModel: ObservableObject {
     @Published var goal: Goal?
     @Published var strengthGoal: Goal?
     @Published var traingMode: Common.TrainingMode?
-    @Published var timer: ExerciseTimerPresentation?
     @Published var lastSelectedTime: Int?
     
     private let recordId: String
@@ -36,7 +34,6 @@ final class ManageRecordViewModel: ObservableObject {
     private let checkStrengthGoalAchievedUsecase: CheckStrengthGoalAchievedUsecase
     private let cancelExerciseTimerUsecase: CancelExerciseTimerUsecase
     private let registerExerciseTimerUsecase: RegisterExerciseTimerUsecase
-    private let subscribeExerciseTimerUsecase: SubscribeExerciseTimerUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
@@ -67,7 +64,6 @@ final class ManageRecordViewModel: ObservableObject {
         checkStrengthGoalAchievedUsecase = .init()
         cancelExerciseTimerUsecase = .init(exerciseTimerRepository: exerciseTimerRepository)
         registerExerciseTimerUsecase = .init(exerciseTimerRepository: exerciseTimerRepository)
-        subscribeExerciseTimerUsecase = .init(exerciseTimerRepository: exerciseTimerRepository)
         
         let color: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
         self.color = color.color
@@ -87,14 +83,13 @@ final class ManageRecordViewModel: ObservableObject {
         
         if lastSelectedTime == time {
             cancelExerciseTimerUsecase.implement()
+            lastSelectedTime = nil
         } else {
             if let date = Calendar.current.date(byAdding: .second, value: time, to: Date()) {
                 registerExerciseTimerUsecase.implement(timer: .init(targetDate: date))
             }
-            
+            lastSelectedTime = time
         }
-        
-        lastSelectedTime = time
     }
     
     func post(set: ExerciseSet) {
@@ -172,17 +167,5 @@ final class ManageRecordViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .map({ Common.TrainingMode(domain: $0) })
             .assign(to: &$traingMode)
-        
-        subscribeExerciseTimerUsecase
-            .implement()
-            .map({ timer -> ExerciseTimerPresentation? in
-                var presentationModel: ExerciseTimerPresentation? = nil
-                if let timer {
-                    presentationModel = .init(domain: timer)
-                }
-                return presentationModel
-            })
-            .receive(on: DispatchQueue.main)
-            .assign(to: &$timer)
     }
 }
