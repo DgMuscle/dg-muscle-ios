@@ -8,14 +8,29 @@
 import Foundation
 import Domain
 
-struct ExerciseTimerPresentation {
-    let targetDate: Date
+public struct ExerciseTimerPresentation {
+    public let targetDate: Date
     
-    init(domain: ExerciseTimerDomain) {
+    var remainTime: String {
+        let target = targetDate.timeIntervalSince1970
+        let now = Date().timeIntervalSince1970
+        let diff = Int(target - now)
+        return formatTime(seconds: diff)
+    }
+    
+    public init(domain: ExerciseTimerDomain) {
         targetDate = domain.targetDate
     }
     
-    var domain: ExerciseTimerDomain {
+    public var domain: ExerciseTimerDomain {
         .init(targetDate: targetDate)
+    }
+    
+    private func formatTime(seconds: Int) -> String {
+        let minutes = seconds / 60
+        let remainingSeconds = seconds % 60
+        
+        // "%02d"는 두 자리의 숫자를 항상 표시하겠다는 의미로, 만약 한 자리 수일 경우 앞에 0을 추가합니다.
+        return String(format: "%d:%02d", minutes, remainingSeconds)
     }
 }
