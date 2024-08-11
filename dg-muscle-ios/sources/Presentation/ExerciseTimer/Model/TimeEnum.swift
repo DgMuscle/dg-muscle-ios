@@ -13,4 +13,19 @@ enum TimeEnum: String, CaseIterable, Hashable {
     case two = "2:00"
     case twoThirty = "2:30"
     case three = "3:00"
+    
+    var seconds: Int {
+        switch self {
+        case .one:
+            return 60
+        case .oneThirty:
+            return 90
+        case .two:
+            return 120
+        case .twoThirty:
+            return 150
+        case .three:
+            return 180
+        }
+    }
 }
