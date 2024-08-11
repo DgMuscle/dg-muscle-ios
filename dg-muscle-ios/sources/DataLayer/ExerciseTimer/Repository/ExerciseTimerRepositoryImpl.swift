@@ -24,6 +24,10 @@ public final class ExerciseTimerRepositoryImpl: ExerciseTimerRepository {
         }
     }
     
+    public func get() -> Domain.ExerciseTimerDomain? {
+        _timer
+    }
+    
     public func post(timer: Domain.ExerciseTimerDomain) {
         _timer = timer
         Task {

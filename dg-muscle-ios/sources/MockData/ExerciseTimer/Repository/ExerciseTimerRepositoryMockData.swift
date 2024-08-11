@@ -20,6 +20,10 @@ public final class ExerciseTimerRepositoryMockData: ExerciseTimerRepository {
         _timer = .init(targetDate: date)
     }
     
+    public func get() -> Domain.ExerciseTimerDomain? {
+        _timer
+    }
+    
     public func post(timer: Domain.ExerciseTimerDomain) {
         _timer = timer
     }
