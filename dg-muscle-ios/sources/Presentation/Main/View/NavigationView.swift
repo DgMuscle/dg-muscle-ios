@@ -191,10 +191,12 @@ public struct NavigationView: View {
                 
                 if let timer = viewModel.timer {
                     ExerciseTimer.FloatingTimerView(timer: timer)
+                        .transition(.move(edge: .top))
                 }
                 
                 Spacer()
             }
+            .animation(.default, value: viewModel.timer)
         }
     }
 }

@@ -8,7 +8,8 @@
 import Foundation
 import Domain
 
-public struct ExerciseTimerPresentation {
+public struct ExerciseTimerPresentation: Equatable {
+    public let id: String
     public let targetDate: Date
     
     var remainTime: String {
@@ -19,6 +20,7 @@ public struct ExerciseTimerPresentation {
     }
     
     public init(domain: ExerciseTimerDomain) {
+        id = UUID().uuidString
         targetDate = domain.targetDate
     }
     
