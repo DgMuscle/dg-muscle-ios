@@ -44,6 +44,7 @@ extension FileManagerHelper {
     enum File: String, CaseIterable {
         case history
         case exercise
+        case exerciseTimer
         case historyMetaData
         case heatmapColor
         case heatmap

@@ -10,6 +10,9 @@ import Domain
 
 public struct ExerciseTimerData: Codable {
     public let targetDate: Date
+    var isValid: Bool {
+        targetDate > Date()
+    }
     
     public init(domain: ExerciseTimerDomain) {
         targetDate = domain.targetDate
