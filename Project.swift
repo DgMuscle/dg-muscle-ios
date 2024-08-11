@@ -203,13 +203,14 @@ func createPresentations() -> [Target] {
 
     return Presentation.allCases.map({
         switch $0 {
-        case .Auth, .HistoryHeatMap, .ExerciseTimer, .My, .Rapid, .Weight:
+        case .Auth, .HistoryHeatMap, .Exercise, .ExerciseTimer, .My, .Rapid, .Weight:
             return createPresentation($0, dependencies: [])
-        case .Exercise:
+        case .History:
             return createPresentation($0, dependencies: [
+                .target(name: Presentation.HistoryHeatMap.rawValue, condition: nil),
                 .target(name: Presentation.ExerciseTimer.rawValue, condition: nil)
             ])
-        case .History, .Friend:
+        case .Friend:
             return createPresentation($0, dependencies: [
                 .target(name: Presentation.HistoryHeatMap.rawValue, condition: nil)
             ])
