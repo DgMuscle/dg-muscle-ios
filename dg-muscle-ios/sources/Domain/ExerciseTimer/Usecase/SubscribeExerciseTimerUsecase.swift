@@ -14,6 +14,7 @@ public final class SubscribeExerciseTimerUsecase {
     
     public init(exerciseTimerRepository: ExerciseTimerRepository) {
         self.exerciseTimerRepository = exerciseTimerRepository
+        startTimer()
         bind()
     }
     
@@ -21,20 +22,25 @@ public final class SubscribeExerciseTimerUsecase {
         $timer.eraseToAnyPublisher()
     }
     
+    private func startTimer() {
+        // Timer.scheduledTimer는 지정된 간격으로 타이머를 설정합니다.
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerDidFire), userInfo: nil, repeats: true)
+    }
+    
+    // 1초마다 호출할 함수
+    @objc private func timerDidFire() {
+        if let timer {
+            if timer.targetDate < Date() {
+                self.timer = nil
+            } else {
+                self.timer = timer
+            }
+        }
+    }
+    
     private func bind() {
         exerciseTimerRepository
             .timer
-            .map({ timer -> ExerciseTimerDomain? in
-                var timer = timer
-                
-                if let exist = timer {
-                    if exist.targetDate < Date() {
-                        timer = nil
-                    }
-                }
-                
-                return timer
-            })
             .assign(to: &$timer)
     }
 }

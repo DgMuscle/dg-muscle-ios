@@ -22,7 +22,7 @@ final class SubscribeExerciseTimerUsecaseTests: XCTestCase {
         usecase
             .implement()
             .sink { timer in
-                XCTAssertNil(timer)
+                XCTAssertNotNil(timer)
                 expectation.fulfill()
             }
             .store(in: &cancellables)

@@ -11,6 +11,7 @@ import Combine
 public protocol ExerciseTimerRepository {
     var timer: AnyPublisher<ExerciseTimerDomain?, Never> { get }
     
+    func get() -> ExerciseTimerDomain?
     func post(timer: ExerciseTimerDomain)
     func delete()
 }
