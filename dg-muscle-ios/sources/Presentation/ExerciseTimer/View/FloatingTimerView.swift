@@ -20,11 +20,11 @@ public struct FloatingTimerView: View {
             Text(timer.remainTime)
                 .opacity(0.9)
         }
+        .frame(width: 200)
         .padding(.vertical, 8)
         .background {
             Capsule()
                 .fill(.thinMaterial)
-                .frame(width: 200)
                 .overlay {
                     HStack {
                         Spacer()
@@ -45,5 +45,10 @@ public struct FloatingTimerView: View {
     date = Calendar.current.date(byAdding: .second, value: 90, to: date)!
     
     return FloatingTimerView(timer: .init(domain: .init(targetDate: date)))
+        .contextMenu {
+            Button("Cancel") {
+                print("cancel")
+            }
+        }
         .preferredColorScheme(.dark)
 }

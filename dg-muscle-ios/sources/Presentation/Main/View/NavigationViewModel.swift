@@ -12,13 +12,19 @@ import ExerciseTimer
 
 final class NavigationViewModel: ObservableObject {
     let subscribeExerciseTimerUsecase: SubscribeExerciseTimerUsecase
+    let cancelExerciseTimerUsecase: CancelExerciseTimerUsecase
     
     @Published var timer: ExerciseTimerPresentation?
     
     init(exerciseTimerRepository: ExerciseTimerRepository) {
         subscribeExerciseTimerUsecase = .init(exerciseTimerRepository: exerciseTimerRepository)
+        cancelExerciseTimerUsecase = .init(exerciseTimerRepository: exerciseTimerRepository)
         
         bind()
+    }
+    
+    func cancelTimer() {
+        cancelExerciseTimerUsecase.implement()
     }
     
     private func bind() {

@@ -192,6 +192,11 @@ public struct NavigationView: View {
                 if let timer = viewModel.timer {
                     ExerciseTimer.FloatingTimerView(timer: timer)
                         .transition(.move(edge: .top))
+                        .contextMenu {
+                            Button("Cancel") {
+                                viewModel.cancelTimer()
+                            }
+                        }
                 }
                 
                 Spacer()
