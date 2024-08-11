@@ -1,6 +1,6 @@
 //
-//  ExerciseTimerMockData.swift
-//  MockData
+//  ExerciseTimerData.swift
+//  DataLayer
 //
 //  Created by 신동규 on 8/11/24.
 //
@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-public struct ExerciseTimerMockData {
+public struct ExerciseTimerData: Codable {
     public let targetDate: Date
     
     public init(domain: ExerciseTimerDomain) {
