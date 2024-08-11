@@ -14,7 +14,7 @@ public final class ExerciseTimerRepositoryMockData: ExerciseTimerRepository {
     @Published var _timer: ExerciseTimerDomain?
     
     public init() {
-        
+        _timer = .init(targetDate: Date())
     }
     
     public func post(timer: Domain.ExerciseTimerDomain) {
