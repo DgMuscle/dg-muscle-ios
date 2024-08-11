@@ -17,13 +17,28 @@ public struct TimeSelectionView: View {
     }
     
     public var body: some View {
-        HStack {
-            ForEach(times, id: \.self) { time in
-                Button {
-                    selection?(time.seconds)
-                } label: {
-                    TimerItemView(time: time)
-                        .foregroundStyle(Color(uiColor: .label))
+        VStack {
+            HStack {
+                ForEach(times[0...2], id: \.self) { time in
+                    Button {
+                        selection?(time.seconds)
+                    } label: {
+                        TimerItemView(time: time)
+                            .foregroundStyle(Color(uiColor: .label))
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            
+            HStack {
+                ForEach(times[3...], id: \.self) { time in
+                    Button {
+                        selection?(time.seconds)
+                    } label: {
+                        TimerItemView(time: time)
+                            .foregroundStyle(Color(uiColor: .label))
+                    }
+                    .buttonStyle(.plain)
                 }
             }
         }

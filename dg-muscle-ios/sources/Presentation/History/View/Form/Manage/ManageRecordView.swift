@@ -10,6 +10,7 @@ import SwiftUI
 import MockData
 import Domain
 import Common
+import ExerciseTimer
 
 public struct ManageRecordView: View {
     
@@ -53,38 +54,9 @@ public struct ManageRecordView: View {
                 }
             }
             
-            Section {
-                ForEach(viewModel.record.sets, id: \.self) { set in
-                    Button {
-                        selectedExercise = set
-                    } label: {
-                        HStack {
-                            Text(String(set.weight)).foregroundStyle(viewModel.color) +
-                            Text(" \(set.unit.rawValue)") +
-                            Text(" x ").fontWeight(.heavy) +
-                            Text(" \(set.reps) ").foregroundStyle(viewModel.color)
-                            
-                        }
-                        .foregroundStyle(Color(.label))
-                    }
-                }
-                .onDelete(perform: viewModel.delete)
-            } header: {
-                Text("\(viewModel.currentVolume)")
-            } footer: {
-                if let diff = viewModel.diffWithPreviousRecord {
-                    Text("\(diff)").foregroundStyle(diff >= 0 ? .mint : .red)
-                }
-            }
-            
-            Button("NEW SET") {
-                let previousSet = viewModel.record.sets.last
-                selectedExercise = .init(
-                    unit: previousSet?.unit ?? .kg,
-                    reps: previousSet?.reps ?? 0,
-                    weight: previousSet?.weight ?? 0
-                )
-            }
+            timerSelection
+            setList
+            newSetButton
             
         }
         .toolbar { 
@@ -121,6 +93,53 @@ public struct ManageRecordView: View {
             }
         }
         .animation(.default, value: viewModel.goal)
+    }
+    
+    var timerSelection: some View {
+        HStack {
+            Spacer()
+            ExerciseTimer.TimeSelectionView { time in
+                viewModel.selectTime(time: time)
+            }
+            Spacer()
+        }
+    }
+    
+    var setList: some View {
+        Section {
+            ForEach(viewModel.record.sets, id: \.self) { set in
+                Button {
+                    selectedExercise = set
+                } label: {
+                    HStack {
+                        Text(String(set.weight)).foregroundStyle(viewModel.color) +
+                        Text(" \(set.unit.rawValue)") +
+                        Text(" x ").fontWeight(.heavy) +
+                        Text(" \(set.reps) ").foregroundStyle(viewModel.color)
+                        
+                    }
+                    .foregroundStyle(Color(.label))
+                }
+            }
+            .onDelete(perform: viewModel.delete)
+        } header: {
+            Text("\(viewModel.currentVolume)")
+        } footer: {
+            if let diff = viewModel.diffWithPreviousRecord {
+                Text("\(diff)").foregroundStyle(diff >= 0 ? .mint : .red)
+            }
+        }
+    }
+    
+    var newSetButton: some View {
+        Button("NEW SET") {
+            let previousSet = viewModel.record.sets.last
+            selectedExercise = .init(
+                unit: previousSet?.unit ?? .kg,
+                reps: previousSet?.reps ?? 0,
+                weight: previousSet?.weight ?? 0
+            )
+        }
     }
 }
 
