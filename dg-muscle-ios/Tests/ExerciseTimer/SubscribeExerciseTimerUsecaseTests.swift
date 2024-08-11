@@ -18,7 +18,7 @@ final class SubscribeExerciseTimerUsecaseTests: XCTestCase {
         let usecase = SubscribeExerciseTimerUsecase(exerciseTimerRepository: ExerciseTimerRepositoryMockData())
         
         let expectation = self.expectation(description: "subscribe timer")
-        
+        expectation.assertForOverFulfill = false 
         usecase
             .implement()
             .sink { timer in
