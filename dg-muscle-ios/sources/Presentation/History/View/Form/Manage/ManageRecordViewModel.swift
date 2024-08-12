@@ -81,34 +81,21 @@ final class ManageRecordViewModel: ObservableObject {
     
     func selectTime(time: Int) {
         
+        for i in (0..<10) {
+            Common.PushNotificationManager.shared.delete(ids: ["ExerciseTimer\(i)"])
+        }
+        
         if lastSelectedTime == time {
             cancelExerciseTimerUsecase.implement()
             lastSelectedTime = nil
-            Common.PushNotificationManager.shared.delete(ids: ["ExerciseTimer"])
         } else {
             if var date = Calendar.current.date(byAdding: .second, value: time, to: Date()) {
                 registerExerciseTimerUsecase.implement(timer: .init(targetDate: date))
-                Common.PushNotificationManager.shared.delete(ids: ["ExerciseTimer"])
-                Common.PushNotificationManager.shared.register(
-                    title: "Ring Ring Ring...",
-                    body: "",
-                    date: date,
-                    id: "ExerciseTimer",
-                    userInfo: [
-                        "type": "timer",
-                        "targetDate": date
-                    ]
-                )
                 
                 for i in (0..<10) {
-                    
-                    if let updatedDate = Calendar.current.date(byAdding: .second, value: 3, to: date) {
-                        date = updatedDate
-                    }
-                    
                     Common.PushNotificationManager.shared.register(
                         title: "Ring Ring Ring...",
-                        body: "",
+                        body: "Tap to stop alarm",
                         date: date,
                         id: "ExerciseTimer\(i)",
                         userInfo: [
@@ -116,6 +103,10 @@ final class ManageRecordViewModel: ObservableObject {
                             "targetDate": date
                         ]
                     )
+                    
+                    if let updatedDate = Calendar.current.date(byAdding: .second, value: 3, to: date) {
+                        date = updatedDate
+                    }
                 }
             }
             

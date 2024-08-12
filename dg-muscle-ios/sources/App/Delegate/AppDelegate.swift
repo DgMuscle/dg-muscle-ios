@@ -100,7 +100,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         if let type = userInfo["type"] as? String {
             if type == "timer" {
-                Common.PushNotificationManager.shared.delete(ids: ["ExerciseTimer"])
                 for i in (0..<10) {
                     Common.PushNotificationManager.shared.delete(ids: ["ExerciseTimer\(i)"])
                 }
