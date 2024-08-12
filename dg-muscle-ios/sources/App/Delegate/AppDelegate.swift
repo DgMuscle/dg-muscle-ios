@@ -21,7 +21,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         FirebaseApp.configure()
         UNUserNotificationCenter.current().delegate = self
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound, .provisional]
         UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { _, _ in }
         application.registerForRemoteNotifications()
         Messaging.messaging().delegate = self
@@ -78,8 +78,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     // Foreground(앱 켜진 상태)에서도 알림 오는 설정
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.list, .banner])
-        FriendRepositoryImpl.shared.fetch()
+        completionHandler([.list, .banner, .sound])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
@@ -96,6 +95,15 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             case "logs":
                 URLManager.shared.open(url: "dgmuscle://logs")
             default: break
+            }
+        }
+        
+        if let type = userInfo["type"] as? String {
+            if type == "timer" {
+                Common.PushNotificationManager.shared.delete(ids: ["ExerciseTimer"])
+                for i in (0..<10) {
+                    Common.PushNotificationManager.shared.delete(ids: ["ExerciseTimer\(i)"])
+                }
             }
         }
     }

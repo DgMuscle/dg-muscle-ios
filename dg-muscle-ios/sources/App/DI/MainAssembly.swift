@@ -17,16 +17,19 @@ import Friend
 import Auth
 import Rapid
 import Weight
+import ExerciseTimer
 
 public struct MainAssembly: Assembly {
     public func assemble(container: Swinject.Container) {
         container.register(Presentation.NavigationView.self) { (resolver, today: Date) in
             
             let historyRepository = resolver.resolve(HistoryRepository.self)!
+            let exerciseTimerRepository = resolver.resolve(ExerciseTimerRepository.self)!
             
             return Presentation.NavigationView(
                 today: today,
                 historyRepository: historyRepository,
+                exerciseTimerRepository: exerciseTimerRepository,
                 homeFactory: { today in resolver.resolve(HomeView.self, argument: today)! },
                 exerciseListFactory: { resolver.resolve(ExerciseListView.self)! },
                 postExerciseFactory: { exercise in resolver.resolve(PostExerciseView.self, argument: exercise)! },
@@ -50,6 +53,7 @@ public struct MainAssembly: Assembly {
                 rapidExerciseDetailFactory: { exercise in resolver.resolve(RapidExerciseDetailView.self, argument: exercise)! },
                 weightListFactory: { resolver.resolve(WeightListView.self)! },
                 weightAddFactory: { resolver.resolve(WeightAddView.self)! },
+                floatingTimerFactory: { timer in resolver.resolve(FloatingTimerView.self, argument: timer)! },
                 coordinatorFactory: { path in resolver.resolve(Coordinator.self, argument: path)! }
             )
         }

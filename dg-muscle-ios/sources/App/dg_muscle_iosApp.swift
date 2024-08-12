@@ -39,6 +39,7 @@ struct dg_muscle_iosApp: App {
             DataAssembly(),
             CoordinatorAssembly(),
             ExerciseAssembly(),
+            ExerciseTimerAssembly(),
             FriendAssembly(),
             HistoryAssembly(),
             HomeAssembly(),

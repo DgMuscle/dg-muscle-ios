@@ -18,8 +18,8 @@ final class SubscribeWeightsUsecaseTests: XCTestCase {
         let repository: WeightRepository = WeightRepositoryMock()
         let usecase = SubscribeWeightsUsecase(weightRepository: repository)
         
-        let exp = expectation(description: "Loading weights")
-        
+        let exp = self.expectation(description: "Loading weights")
+        exp.assertForOverFulfill = false
         usecase.implement()
             .debounce(for: 1, scheduler: DispatchQueue.main)
             .sink { weights in

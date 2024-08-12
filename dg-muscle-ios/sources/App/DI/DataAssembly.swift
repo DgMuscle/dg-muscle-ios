@@ -20,6 +20,10 @@ public struct DataAssembly: Assembly {
             return ExerciseRepositoryImpl.shared
         }
         
+        container.register(ExerciseTimerRepository.self) { _ in
+            return ExerciseTimerRepositoryImpl.shared
+        }
+        
         container.register(HeatMapRepository.self) { _ in
             return HeatMapRepositoryImpl.shared
         }

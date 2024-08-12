@@ -13,12 +13,16 @@ import My
 import Friend
 import Rapid
 import Weight
+import ExerciseTimer
 
 public struct NavigationView: View {
     
     @State var path = NavigationPath()
+    @StateObject var viewModel: NavigationViewModel
+    
     let today: Date
     let historyRepository: HistoryRepository
+    let exerciseTimerRepository: ExerciseTimerRepository
     let homeFactory: (Date) -> HomeView
     let exerciseListFactory: () -> ExerciseListView
     let postExerciseFactory: (Domain.Exercise?) -> PostExerciseView
@@ -43,10 +47,12 @@ public struct NavigationView: View {
     let coordinatorFactory: (Binding<NavigationPath>) -> Coordinator
     let weightListFactory: () -> WeightListView
     let weightAddFactory: () -> WeightAddView
+    let floatingTimerFactory: (ExerciseTimerDomain) -> FloatingTimerView
     
     public init(
         today: Date,
         historyRepository: HistoryRepository,
+        exerciseTimerRepository: ExerciseTimerRepository,
         homeFactory: @escaping (Date) -> HomeView,
         exerciseListFactory: @escaping () -> ExerciseListView,
         postExerciseFactory: @escaping (Domain.Exercise?) -> PostExerciseView,
@@ -70,10 +76,12 @@ public struct NavigationView: View {
         rapidExerciseDetailFactory: @escaping (Domain.RapidExerciseDomain) -> RapidExerciseDetailView,
         weightListFactory: @escaping () -> WeightListView,
         weightAddFactory: @escaping () -> WeightAddView,
+        floatingTimerFactory: @escaping (ExerciseTimerDomain) -> FloatingTimerView,
         coordinatorFactory: @escaping (Binding<NavigationPath>) -> Coordinator
     ) {
         self.today = today
         self.historyRepository = historyRepository
+        self.exerciseTimerRepository = exerciseTimerRepository
         self.homeFactory = homeFactory
         self.exerciseListFactory = exerciseListFactory
         self.postExerciseFactory = postExerciseFactory
@@ -97,7 +105,10 @@ public struct NavigationView: View {
         self.rapidExerciseDetailFactory = rapidExerciseDetailFactory
         self.weightListFactory = weightListFactory
         self.weightAddFactory = weightAddFactory
+        self.floatingTimerFactory = floatingTimerFactory
         self.coordinatorFactory = coordinatorFactory
+        
+        _viewModel = .init(wrappedValue: .init(exerciseTimerRepository: exerciseTimerRepository))
     }
     
     public var body: some View {
@@ -174,6 +185,23 @@ public struct NavigationView: View {
         }
         .onAppear {
             coordinator = coordinatorFactory($path)
+        }
+        .overlay {
+            VStack {
+                
+                if let timer = viewModel.timer {
+                    ExerciseTimer.FloatingTimerView(timer: timer)
+                        .transition(.move(edge: .top))
+                        .contextMenu {
+                            Button("Cancel") {
+                                viewModel.cancelTimer()
+                            }
+                        }
+                }
+                
+                Spacer()
+            }
+            .animation(.default, value: viewModel.timer)
         }
     }
 }

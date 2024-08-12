@@ -21,6 +21,7 @@ final class ManageRecordViewModel: ObservableObject {
     @Published var goal: Goal?
     @Published var strengthGoal: Goal?
     @Published var traingMode: Common.TrainingMode?
+    @Published var lastSelectedTime: Int?
     
     private let recordId: String
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
@@ -31,13 +32,16 @@ final class ManageRecordViewModel: ObservableObject {
     private let subscribeTrainingModeUsecase: SubscribeTrainingModeUsecase
     private let checkGoalAchievedUsecase: CheckGoalAchievedUsecase
     private let checkStrengthGoalAchievedUsecase: CheckStrengthGoalAchievedUsecase
+    private let cancelExerciseTimerUsecase: CancelExerciseTimerUsecase
+    private let registerExerciseTimerUsecase: RegisterExerciseTimerUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
         historyForm: Binding<HistoryForm>,
         recordId: String,
         userRepository: UserRepository,
-        historyRepository: HistoryRepository
+        historyRepository: HistoryRepository,
+        exerciseTimerRepository: ExerciseTimerRepository
     ) {
         self._historyForm = historyForm
         self.recordId = recordId
@@ -58,6 +62,8 @@ final class ManageRecordViewModel: ObservableObject {
         subscribeTrainingModeUsecase = .init(userRepository: userRepository)
         checkGoalAchievedUsecase = .init()
         checkStrengthGoalAchievedUsecase = .init()
+        cancelExerciseTimerUsecase = .init(exerciseTimerRepository: exerciseTimerRepository)
+        registerExerciseTimerUsecase = .init(exerciseTimerRepository: exerciseTimerRepository)
         
         let color: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
         self.color = color.color
@@ -71,6 +77,50 @@ final class ManageRecordViewModel: ObservableObject {
         }
         
         bind()
+    }
+    
+    func selectTime(time: Int) {
+        
+        if lastSelectedTime == time {
+            cancelExerciseTimerUsecase.implement()
+            lastSelectedTime = nil
+            Common.PushNotificationManager.shared.delete(ids: ["ExerciseTimer"])
+        } else {
+            if var date = Calendar.current.date(byAdding: .second, value: time, to: Date()) {
+                registerExerciseTimerUsecase.implement(timer: .init(targetDate: date))
+                Common.PushNotificationManager.shared.delete(ids: ["ExerciseTimer"])
+                Common.PushNotificationManager.shared.register(
+                    title: "Ring Ring Ring...",
+                    body: "",
+                    date: date,
+                    id: "ExerciseTimer",
+                    userInfo: [
+                        "type": "timer",
+                        "targetDate": date
+                    ]
+                )
+                
+                for i in (0..<10) {
+                    
+                    if let updatedDate = Calendar.current.date(byAdding: .second, value: 3, to: date) {
+                        date = updatedDate
+                    }
+                    
+                    Common.PushNotificationManager.shared.register(
+                        title: "Ring Ring Ring...",
+                        body: "",
+                        date: date,
+                        id: "ExerciseTimer\(i)",
+                        userInfo: [
+                            "type": "timer",
+                            "targetDate": date
+                        ]
+                    )
+                }
+            }
+            
+            lastSelectedTime = time
+        }
     }
     
     func post(set: ExerciseSet) {
