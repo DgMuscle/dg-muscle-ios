@@ -79,6 +79,23 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     // Foreground(앱 켜진 상태)에서도 알림 오는 설정
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.list, .banner, .sound])
+        
+        let userInfo = notification.request.content.userInfo
+        
+        guard let type = userInfo["type"] as? String else { return }
+        
+        if type == "timer" {
+            guard let targetDate = userInfo["targetDate"] as? Date else { return }
+            let nowTimeInterval = Date().timeIntervalSince1970
+            let targetDateTimeInterval = targetDate.timeIntervalSince1970
+            let diff = nowTimeInterval - targetDateTimeInterval
+            
+            if diff < 180 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    print("dg: keep sending timer push")
+                }
+            }
+        }
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
