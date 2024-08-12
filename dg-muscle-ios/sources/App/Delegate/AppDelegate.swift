@@ -78,8 +78,16 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     // Foreground(앱 켜진 상태)에서도 알림 오는 설정
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.list, .banner])
-        FriendRepositoryImpl.shared.fetch()
+        completionHandler([.list, .banner, .sound])
+        
+        let userInfo = notification.request.content.userInfo
+        
+        if let type = userInfo["type"] as? String, let targetDate = userInfo["targetDate"] as? Date {
+            if type == "timer" {
+                print("dg: keep sending timer push every 3 seconds")
+                print("dg: until 3 minutes")
+            }
+        }
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
@@ -96,6 +104,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             case "logs":
                 URLManager.shared.open(url: "dgmuscle://logs")
             default: break
+            }
+        }
+        
+        if let type = userInfo["type"] as? String {
+            if type == "timer" {
+                print("dg: cancel all timer pushs")
             }
         }
     }
