@@ -86,7 +86,7 @@ final class ManageRecordViewModel: ObservableObject {
             lastSelectedTime = nil
             Common.PushNotificationManager.shared.delete(ids: ["ExerciseTimer"])
         } else {
-            if let date = Calendar.current.date(byAdding: .second, value: time, to: Date()) {
+            if var date = Calendar.current.date(byAdding: .second, value: time, to: Date()) {
                 registerExerciseTimerUsecase.implement(timer: .init(targetDate: date))
                 Common.PushNotificationManager.shared.delete(ids: ["ExerciseTimer"])
                 Common.PushNotificationManager.shared.register(
@@ -99,7 +99,26 @@ final class ManageRecordViewModel: ObservableObject {
                         "targetDate": date
                     ]
                 )
+                
+                for i in (0..<10) {
+                    
+                    if let updatedDate = Calendar.current.date(byAdding: .second, value: 3, to: date) {
+                        date = updatedDate
+                    }
+                    
+                    Common.PushNotificationManager.shared.register(
+                        title: "Ring Ring Ring...",
+                        body: "",
+                        date: date,
+                        id: "ExerciseTimer\(i)",
+                        userInfo: [
+                            "type": "timer",
+                            "targetDate": date
+                        ]
+                    )
+                }
             }
+            
             lastSelectedTime = time
         }
     }

@@ -79,31 +79,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     // Foreground(앱 켜진 상태)에서도 알림 오는 설정
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.list, .banner, .sound])
-        
-        let userInfo = notification.request.content.userInfo
-        
-        guard let type = userInfo["type"] as? String else { return }
-        
-        if type == "timer" {
-            guard let targetDate = userInfo["targetDate"] as? Date else { return }
-            let nowTimeInterval = Date().timeIntervalSince1970
-            let targetDateTimeInterval = targetDate.timeIntervalSince1970
-            let diff = nowTimeInterval - targetDateTimeInterval
-            
-            if diff < 180 {
-                var date = Date()
-                if let targetDate = Calendar.current.date(byAdding: .second, value: 3, to: date) {
-                    date = targetDate
-                }
-                Common.PushNotificationManager.shared.register(
-                    title: notification.request.content.title,
-                    body: notification.request.content.body,
-                    date: date,
-                    id: notification.request.identifier,
-                    userInfo: userInfo
-                )
-            }
-        }
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
@@ -125,8 +100,10 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         if let type = userInfo["type"] as? String {
             if type == "timer" {
-                Common.PushNotificationManager.shared
-                    .delete(ids: ["ExerciseTimer"])
+                Common.PushNotificationManager.shared.delete(ids: ["ExerciseTimer"])
+                for i in (0..<10) {
+                    Common.PushNotificationManager.shared.delete(ids: ["ExerciseTimer\(i)"])
+                }
             }
         }
     }
