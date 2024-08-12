@@ -91,9 +91,17 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             let diff = nowTimeInterval - targetDateTimeInterval
             
             if diff < 180 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    print("dg: keep sending timer push")
+                var date = Date()
+                if let targetDate = Calendar.current.date(byAdding: .second, value: 3, to: date) {
+                    date = targetDate
                 }
+                Common.PushNotificationManager.shared.register(
+                    title: notification.request.content.title,
+                    body: notification.request.content.body,
+                    date: date,
+                    id: notification.request.identifier,
+                    userInfo: userInfo
+                )
             }
         }
     }
@@ -117,7 +125,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         if let type = userInfo["type"] as? String {
             if type == "timer" {
-                print("dg: cancel all timer pushs")
+                Common.PushNotificationManager.shared
+                    .delete(ids: ["ExerciseTimer"])
             }
         }
     }

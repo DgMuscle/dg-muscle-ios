@@ -8,16 +8,17 @@
 import Foundation
 import UserNotifications
 
-final class PushNotificationManager {
-    static let shared = PushNotificationManager()
+public final class PushNotificationManager {
+    public static let shared = PushNotificationManager()
     
     private init() { }
     
-    func register(title: String, body: String, date: Date, id: String) {
+    public func register(title: String, body: String, date: Date, id: String, userInfo: [AnyHashable: Any]) {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
         content.sound = .default
+        content.userInfo = userInfo
         
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
         
@@ -27,7 +28,7 @@ final class PushNotificationManager {
         center.add(request)
     }
     
-    func delete(ids: [String]) {
+    public func delete(ids: [String]) {
         let center = UNUserNotificationCenter.current()
         center.removePendingNotificationRequests(withIdentifiers: ids)
     }
