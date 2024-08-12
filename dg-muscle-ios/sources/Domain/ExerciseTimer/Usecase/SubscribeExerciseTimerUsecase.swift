@@ -41,6 +41,13 @@ public final class SubscribeExerciseTimerUsecase {
     private func bind() {
         exerciseTimerRepository
             .timer
+            .filter({ timer in
+                if let target = timer?.targetDate {
+                    return target > Date()
+                } else {
+                    return true
+                }
+            })
             .assign(to: &$timer)
     }
 }
