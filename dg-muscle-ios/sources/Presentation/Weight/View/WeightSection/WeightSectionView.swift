@@ -12,6 +12,8 @@ import MockData
 struct WeightSectionView: View {
     let section: WeightSection
     
+    let deleteAction: ((WeightPresentation) -> ())?
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -58,6 +60,11 @@ struct WeightSectionView: View {
                         Divider()
                     }
                 }
+                .contextMenu {
+                    Button("Delete") {
+                        deleteAction?(weight)
+                    }
+                }
             }
         }
     }
@@ -82,6 +89,6 @@ struct WeightSectionView: View {
     let group = usecase.implement(weights: GetWeightsWithoutDuplicatesUsecase().implement(weights: WeightRepositoryMock().get()))
     let section = WeightSection(yyyyMM: "202407", weights: group["202407"]!.map({ .init(domain: $0) }))
     
-    return WeightSectionView(section: section)
+    return WeightSectionView(section: section, deleteAction: nil)
         .preferredColorScheme(.dark)
 }

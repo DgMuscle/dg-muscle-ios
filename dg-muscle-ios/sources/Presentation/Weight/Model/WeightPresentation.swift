@@ -20,6 +20,14 @@ struct WeightPresentation: Hashable {
         date = domain.date
         yyyyMMdd = domain.yyyyMMdd
     }
+    
+    var domain: Domain.WeightDomain {
+        .init(
+            value: value,
+            unit: unit.domain,
+            date: date
+        )
+    }
 }
 
 extension WeightPresentation {
@@ -33,6 +41,15 @@ extension WeightPresentation {
                 self = .kg
             case .lbs:
                 self = .lbs
+            }
+        }
+        
+        var domain: Domain.WeightDomain.Unit {
+            switch self {
+            case .kg:
+                return .kg
+            case .lbs:
+                return .lbs
             }
         }
     }
