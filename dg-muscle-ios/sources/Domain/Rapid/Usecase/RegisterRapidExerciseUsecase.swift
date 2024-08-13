@@ -39,7 +39,7 @@ public final class RegisterRapidExerciseUsecase {
         guard parts.isEmpty == false else { return }
         
         exerciseDomain = .init(
-            id: exercise.name,
+            id: exercise.name.filter({ $0.isLetter }),
             name: exercise.name,
             parts: parts,
             favorite: true
