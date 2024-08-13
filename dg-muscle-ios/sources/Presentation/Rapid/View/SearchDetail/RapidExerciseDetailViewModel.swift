@@ -34,6 +34,7 @@ final class RapidExerciseDetailViewModel: ObservableObject {
     @MainActor
     func add() {
         Task {
+            guard loading == false else { return }
             loading = true
             do {
                 try await registerRapidExerciseUsecase.implement(exercise: data.domain)
