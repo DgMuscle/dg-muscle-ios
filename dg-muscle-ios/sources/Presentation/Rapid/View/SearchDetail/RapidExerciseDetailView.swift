@@ -13,18 +13,23 @@ import Flow
 
 public struct RapidExerciseDetailView: View {
     
-    let data: RapidExercisePresentation
-    @State private var showsSecondaryMuscles: Bool = false
+    @StateObject var viewModel: RapidExerciseDetailViewModel
     
-    public init(exercise: Domain.RapidExerciseDomain) {
-        data = .init(domain: exercise)
+    public init(
+        exercise: Domain.RapidExerciseDomain,
+        exerciseRepository: ExerciseRepository
+    ) {
+        _viewModel = .init(wrappedValue: .init(
+            exercise: exercise,
+            exerciseRepository: exerciseRepository
+        ))
     }
     
     public var body: some View {
         ScrollView {
-            KFAnimatedImage(.init(string: data.gifUrl))
+            KFAnimatedImage(.init(string: viewModel.data.gifUrl))
             VStack(alignment: .leading) {
-                Text(data.equipment.capitalized)
+                Text(viewModel.data.equipment.capitalized)
                     .fontWeight(.black)
                 Divider()
                 bodyPartsView
@@ -40,8 +45,8 @@ public struct RapidExerciseDetailView: View {
             
             Spacer(minLength: 60)
         }
-        .animation(.default, value: showsSecondaryMuscles)
-        .navigationTitle(data.name.capitalized)
+        .animation(.default, value: viewModel.showsSecondaryMuscles)
+        .navigationTitle(viewModel.data.name.capitalized)
         .scrollIndicators(.hidden)
     }
     
@@ -50,15 +55,15 @@ public struct RapidExerciseDetailView: View {
             Text("Body Part:")
                 .foregroundStyle(Color(uiColor: .secondaryLabel))
                 .italic()
-            Text("\(data.bodyPart.rawValue.capitalized)(\(data.target.capitalized))")
+            Text("\(viewModel.data.bodyPart.rawValue.capitalized)(\(viewModel.data.target.capitalized))")
         }
     }
     
     var secondayMusclesView: some View {
         Section {
-            if showsSecondaryMuscles {
+            if viewModel.showsSecondaryMuscles {
                 HFlow {
-                    ForEach(data.secondaryMuscles, id: \.self) { secondaryMuscle in
+                    ForEach(viewModel.data.secondaryMuscles, id: \.self) { secondaryMuscle in
                         Text(secondaryMuscle)
                             .padding(.vertical, 4)
                             .padding(.horizontal, 8)
@@ -71,7 +76,7 @@ public struct RapidExerciseDetailView: View {
             }
         } header: {
             Button {
-                showsSecondaryMuscles.toggle()
+                viewModel.showsSecondaryMuscles.toggle()
             } label: {
                 HStack {
                     Text("secondary muscles".capitalized)
@@ -81,7 +86,7 @@ public struct RapidExerciseDetailView: View {
     }
     
     var instructionsView: some View {
-        ForEach(Array(zip(data.instructions.indices, data.instructions)), id: \.0) { (index, instruction) in
+        ForEach(Array(zip(viewModel.data.instructions.indices, viewModel.data.instructions)), id: \.0) { (index, instruction) in
             HStack(alignment: .top) {
                 Text("\(index + 1). ")
                 Text(instruction)
@@ -97,7 +102,10 @@ public struct RapidExerciseDetailView: View {
     let repository = RapidRepositoryMock()
     
     return NavigationStack {
-        RapidExerciseDetailView(exercise: repository.get()[0])
+        RapidExerciseDetailView(
+            exercise: repository.get()[0],
+            exerciseRepository: ExerciseRepositoryMock()
+        )
             .preferredColorScheme(.dark)
     }
 }
