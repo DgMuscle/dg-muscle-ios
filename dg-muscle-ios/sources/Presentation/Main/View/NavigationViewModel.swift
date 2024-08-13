@@ -9,6 +9,7 @@ import Foundation
 import Domain
 import Combine
 import ExerciseTimer
+import Common
 
 final class NavigationViewModel: ObservableObject {
     let subscribeExerciseTimerUsecase: SubscribeExerciseTimerUsecase
@@ -25,6 +26,9 @@ final class NavigationViewModel: ObservableObject {
     
     func cancelTimer() {
         cancelExerciseTimerUsecase.implement()
+        for i in (0..<10) {
+            Common.PushNotificationManager.shared.delete(ids: ["ExerciseTimer\(i)"])
+        }
     }
     
     private func bind() {
