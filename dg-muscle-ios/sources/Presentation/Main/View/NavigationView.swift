@@ -189,6 +189,8 @@ public struct NavigationView: View {
         .overlay {
             VStack {
                 
+                Spacer(minLength: 20)
+                
                 if let timer = viewModel.timer {
                     ExerciseTimer.FloatingTimerView(timer: timer)
                         .transition(.move(edge: .top))

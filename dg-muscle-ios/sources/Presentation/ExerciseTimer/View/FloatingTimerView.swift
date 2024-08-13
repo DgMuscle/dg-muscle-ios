@@ -33,7 +33,8 @@ public struct FloatingTimerView: View {
                             .padding(.trailing)
                     }
                 }
-                .opacity(0.6)
+                .opacity(0.9)
+                .shadow(radius: 6)
         }
     }
 }
@@ -44,11 +45,16 @@ public struct FloatingTimerView: View {
     
     date = Calendar.current.date(byAdding: .second, value: 90, to: date)!
     
-    return FloatingTimerView(timer: .init(domain: .init(targetDate: date)))
-        .contextMenu {
-            Button("Cancel") {
-                print("cancel")
+    return ZStack {
+        
+        Rectangle()
+        
+        FloatingTimerView(timer: .init(domain: .init(targetDate: date)))
+            .contextMenu {
+                Button("Cancel") {
+                    print("cancel")
+                }
             }
-        }
-        .preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
+    }
 }
