@@ -21,7 +21,6 @@ final class ManageRecordViewModel: ObservableObject {
     @Published var goal: Goal?
     @Published var strengthGoal: Goal?
     @Published var traingMode: Common.TrainingMode?
-    @Published var lastSelectedTime: Int?
     
     private let recordId: String
     private let getHeatMapColorUsecase: GetHeatMapColorUsecase
@@ -32,7 +31,6 @@ final class ManageRecordViewModel: ObservableObject {
     private let subscribeTrainingModeUsecase: SubscribeTrainingModeUsecase
     private let checkGoalAchievedUsecase: CheckGoalAchievedUsecase
     private let checkStrengthGoalAchievedUsecase: CheckStrengthGoalAchievedUsecase
-    private let cancelExerciseTimerUsecase: CancelExerciseTimerUsecase
     private let registerExerciseTimerUsecase: RegisterExerciseTimerUsecase
     private var cancellables = Set<AnyCancellable>()
     
@@ -62,7 +60,6 @@ final class ManageRecordViewModel: ObservableObject {
         subscribeTrainingModeUsecase = .init(userRepository: userRepository)
         checkGoalAchievedUsecase = .init()
         checkStrengthGoalAchievedUsecase = .init()
-        cancelExerciseTimerUsecase = .init(exerciseTimerRepository: exerciseTimerRepository)
         registerExerciseTimerUsecase = .init(exerciseTimerRepository: exerciseTimerRepository)
         
         let color: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
@@ -85,32 +82,25 @@ final class ManageRecordViewModel: ObservableObject {
             Common.PushNotificationManager.shared.delete(ids: ["ExerciseTimer\(i)"])
         }
         
-        if lastSelectedTime == time {
-            cancelExerciseTimerUsecase.implement()
-            lastSelectedTime = nil
-        } else {
-            if var date = Calendar.current.date(byAdding: .second, value: time, to: Date()) {
-                registerExerciseTimerUsecase.implement(timer: .init(targetDate: date))
+        if var date = Calendar.current.date(byAdding: .second, value: time, to: Date()) {
+            registerExerciseTimerUsecase.implement(timer: .init(targetDate: date))
+            
+            for i in (0..<10) {
+                Common.PushNotificationManager.shared.register(
+                    title: "Ring Ring Ring...",
+                    body: "Tap to stop alarm",
+                    date: date,
+                    id: "ExerciseTimer\(i)",
+                    userInfo: [
+                        "type": "timer",
+                        "targetDate": date
+                    ]
+                )
                 
-                for i in (0..<10) {
-                    Common.PushNotificationManager.shared.register(
-                        title: "Ring Ring Ring...",
-                        body: "Tap to stop alarm",
-                        date: date,
-                        id: "ExerciseTimer\(i)",
-                        userInfo: [
-                            "type": "timer",
-                            "targetDate": date
-                        ]
-                    )
-                    
-                    if let updatedDate = Calendar.current.date(byAdding: .second, value: 3, to: date) {
-                        date = updatedDate
-                    }
+                if let updatedDate = Calendar.current.date(byAdding: .second, value: 3, to: date) {
+                    date = updatedDate
                 }
             }
-            
-            lastSelectedTime = time
         }
     }
     
