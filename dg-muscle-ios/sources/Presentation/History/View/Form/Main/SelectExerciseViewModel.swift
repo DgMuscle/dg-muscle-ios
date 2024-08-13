@@ -68,6 +68,9 @@ final class SelectExerciseViewModel: ObservableObject {
                 let sections = $0.map({ part, exercises in ExerciseSection(part: .init(domain: part), exercises: exercises.map({ .init(domain: $0) }))})
                 return self?.configureExercisePopularity(sections: sections)
             })
+            .map({ (sections: [ExerciseSection]) -> [ExerciseSection] in
+                sections.sorted(by: { $0.part.rawValue < $1.part.rawValue })
+            })
             .assign(to: &$exericeSections)
             
     }

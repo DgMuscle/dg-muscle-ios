@@ -32,7 +32,11 @@ public struct RapidAssembly: Assembly {
         }
         
         container.register(RapidExerciseDetailView.self) { (resolver, exercise: RapidExerciseDomain) in
-            return RapidExerciseDetailView(exercise: exercise)
+            
+            let exerciseRepository = resolver.resolve(ExerciseRepository.self)!
+            
+            return RapidExerciseDetailView(exercise: exercise,
+                                           exerciseRepository: exerciseRepository)
         }
     }
 }
