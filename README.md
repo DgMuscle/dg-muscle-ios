@@ -85,7 +85,7 @@ swift-package-list dg-muscle-ios.xcworkspace --output-type settings-bundle --req
 
 ### Module Graph
 
-<img width=750 src="https://github.com/user-attachments/assets/7ce436ce-ee71-4a02-8ba8-5b80c4a71ad3" />
+<img width=750 src="https://github.com/user-attachments/assets/4a8826d9-3c8a-499a-95cf-2e969bb40e2a" />
 
 ### Concern
 
