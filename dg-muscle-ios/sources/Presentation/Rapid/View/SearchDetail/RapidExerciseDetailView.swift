@@ -10,86 +10,125 @@ import Domain
 import MockData
 import Kingfisher
 import Flow
+import Common
 
 public struct RapidExerciseDetailView: View {
     
-    let data: RapidExercisePresentation
-    @State private var showsSecondaryMuscles: Bool = false
+    @StateObject var viewModel: RapidExerciseDetailViewModel
     
-    public init(exercise: Domain.RapidExerciseDomain) {
-        data = .init(domain: exercise)
+    public init(
+        exercise: Domain.RapidExerciseDomain,
+        exerciseRepository: ExerciseRepository
+    ) {
+        _viewModel = .init(wrappedValue: .init(
+            exercise: exercise,
+            exerciseRepository: exerciseRepository
+        ))
     }
     
     public var body: some View {
         ScrollView {
-            
-            KFAnimatedImage(.init(string: data.gifUrl))
-            
+            KFAnimatedImage(.init(string: viewModel.data.gifUrl))
             VStack(alignment: .leading) {
-                Text(data.equipment.capitalized)
+                Text(viewModel.data.equipment.capitalized)
                     .fontWeight(.black)
-                
                 Divider()
-                
-                HStack {
-                    Text("Body Part:")
-                        .foregroundStyle(Color(uiColor: .secondaryLabel))
-                        .italic()
-                    Text("\(data.bodyPart.rawValue.capitalized)(\(data.target.capitalized))")
-                }
-                
+                bodyPartsView
                 Spacer(minLength: 8)
-                
-                Section {
-                    if showsSecondaryMuscles {
-                        HFlow {
-                            ForEach(data.secondaryMuscles, id: \.self) { secondaryMuscle in
-                                Text(secondaryMuscle)
-                                    .padding(.vertical, 4)
-                                    .padding(.horizontal, 8)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .fill(Color(uiColor: .secondarySystemGroupedBackground))
-                                    )
-                            }
-                        }
-                    }
-                } header: {
-                    Button {
-                        showsSecondaryMuscles.toggle()
-                    } label: {
-                        HStack {
-                            Text("secondary muscles".capitalized)
-                        }
-                    }
-                }
-                
+                secondayMusclesView
                 Spacer(minLength: 12)
-                
-                
                 Text("Instructions")
                     .font(.title)
                     .padding(.bottom, 8)
-                
-                
-                ForEach(Array(zip(data.instructions.indices, data.instructions)), id: \.0) { (index, instruction) in
-                    HStack(alignment: .top) {
-                        Text("\(index + 1). ")
-                        Text(instruction)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                    .padding(.bottom, 8)
-                }
-                
-                
+                instructionsView
             }
             .padding(.horizontal)
             
             Spacer(minLength: 60)
         }
-        .animation(.default, value: showsSecondaryMuscles)
-        .navigationTitle(data.name.capitalized)
+        .animation(.default, value: viewModel.showsSecondaryMuscles)
+        .navigationTitle(viewModel.data.name.capitalized)
         .scrollIndicators(.hidden)
+        .overlay {
+            ZStack {
+                if viewModel.loading {
+                    ProgressView()
+                }
+                
+                if viewModel.showsAddButton {
+                    VStack {
+                        Spacer()
+                        
+                        HStack {
+                            Spacer()
+                            Button {
+                                viewModel.add()
+                            } label: {
+                                Image(systemName: "pencil.tip.crop.circle.badge.plus")
+                                    .padding()
+                                    .background {
+                                        Circle()
+                                            .fill(.thickMaterial)
+                                            .shadow(radius: 10)
+                                    }
+                            }
+                            .buttonStyle(.plain)
+                            .padding()
+                        }
+                    }
+                }
+                
+                if viewModel.snackbarMessage != nil {
+                    Common.SnackbarView(message: $viewModel.snackbarMessage)
+                }
+            }
+        }
+    }
+    
+    var bodyPartsView: some View {
+        HStack {
+            Text("Body Part:")
+                .foregroundStyle(Color(uiColor: .secondaryLabel))
+                .italic()
+            Text("\(viewModel.data.bodyPart.rawValue.capitalized)(\(viewModel.data.target.capitalized))")
+        }
+    }
+    
+    var secondayMusclesView: some View {
+        Section {
+            if viewModel.showsSecondaryMuscles {
+                HFlow {
+                    ForEach(viewModel.data.secondaryMuscles, id: \.self) { secondaryMuscle in
+                        Text(secondaryMuscle)
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 8)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color(uiColor: .secondarySystemGroupedBackground))
+                            )
+                    }
+                }
+            }
+        } header: {
+            Button {
+                viewModel.showsSecondaryMuscles.toggle()
+            } label: {
+                HStack {
+                    Text("secondary muscles".capitalized)
+                }
+            }
+        }
+    }
+    
+    var instructionsView: some View {
+        ForEach(Array(zip(viewModel.data.instructions.indices, viewModel.data.instructions)), id: \.0) { (index, instruction) in
+            HStack(alignment: .top) {
+                Text("\(index + 1). ")
+                Text(instruction)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .padding(.bottom, 8)
+        }
     }
 }
 
@@ -98,7 +137,10 @@ public struct RapidExerciseDetailView: View {
     let repository = RapidRepositoryMock()
     
     return NavigationStack {
-        RapidExerciseDetailView(exercise: repository.get()[0])
+        RapidExerciseDetailView(
+            exercise: repository.get()[0],
+            exerciseRepository: ExerciseRepositoryMock()
+        )
             .preferredColorScheme(.dark)
     }
 }
