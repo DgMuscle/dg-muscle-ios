@@ -197,6 +197,7 @@ public struct NavigationView: View {
                                 viewModel.cancelTimer()
                             }
                         }
+                        .padding(.top, 40)
                 }
                 
                 Spacer()
