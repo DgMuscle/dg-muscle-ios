@@ -22,7 +22,6 @@ public struct RapidExerciseDetailView: View {
     
     public var body: some View {
         ScrollView {
-            
             KFAnimatedImage(.init(string: data.gifUrl))
             VStack(alignment: .leading) {
                 Text(data.equipment.capitalized)

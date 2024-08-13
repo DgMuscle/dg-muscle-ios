@@ -14,7 +14,7 @@ public final class RegisterRapidExerciseUsecase {
         self.exerciseRepository = exerciseRepository
     }
     
-    public func implement(exercise: RapidExerciseDomain) {
+    public func implement(exercise: RapidExerciseDomain) async throws {
         var exerciseDomain: Exercise?
         
         var parts: [Exercise.Part] = []
@@ -46,8 +46,6 @@ public final class RegisterRapidExerciseUsecase {
         )
         
         guard let exerciseDomain else { return }
-        Task {
-            try await exerciseRepository.post(exerciseDomain)
-        }
+        try await exerciseRepository.post(exerciseDomain)
     }
 }
