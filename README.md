@@ -87,9 +87,9 @@ swift-package-list dg-muscle-ios.xcworkspace --output-type settings-bundle --req
 
 <img width=750 src="https://github.com/user-attachments/assets/4a8826d9-3c8a-499a-95cf-2e969bb40e2a" />
 
-### Concern
+### Features
 
-| Concern  | Purpose                                                                |
+| Feature  | Purpose                                                                |
 | -------- | ---------------------------------------------------------------------- |
 | Auth     | 회원가입 및 로그인의 유저의 인증 관리                                  |
 | History  | 유저의 운동일지 기록 추가, 수정, 삭제 및 UI                            |
