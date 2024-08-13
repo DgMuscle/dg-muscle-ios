@@ -13,4 +13,5 @@ public protocol WeightRepository {
     
     func get() -> [WeightDomain]
     func post(weight: WeightDomain)
+    func delete(weight: WeightDomain)
 }

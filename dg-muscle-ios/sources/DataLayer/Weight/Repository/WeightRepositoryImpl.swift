@@ -48,6 +48,19 @@ public final class WeightRepositoryImpl: WeightRepository {
         }
     }
     
+    public func delete(weight: Domain.WeightDomain) {
+        Task {
+            let hkWeights = try await fetchWeights()
+            guard let target = hkWeights.first(where: { hkWeight in
+                hkWeight.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo)) == weight.value &&
+                hkWeight.startDate == weight.date
+            }) else { return }
+            try await healthStore.delete(target)
+            guard let removeIndex = _weights.firstIndex(where: { $0.date == weight.date && $0.value == weight.value }) else { return }
+            _weights.remove(at: removeIndex)
+        }
+    }
+    
     private func requestPermission() async throws {
         return try await withCheckedThrowingContinuation { continuation in
             healthStore.requestAuthorization(toShare: allTypes, read: allTypes) { (success, error) in

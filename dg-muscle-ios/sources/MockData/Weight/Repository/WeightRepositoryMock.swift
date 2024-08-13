@@ -24,4 +24,9 @@ public final class WeightRepositoryMock: WeightRepository {
     public func post(weight: Domain.WeightDomain) {
         _weights.append(weight)
     }
+    
+    public func delete(weight: Domain.WeightDomain) {
+        guard let removeIndex = _weights.firstIndex(where: { $0.date == weight.date && $0.value == weight.value }) else { return }
+        _weights.remove(at: removeIndex)
+    }
 }
