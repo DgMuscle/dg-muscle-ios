@@ -11,7 +11,7 @@ import MockData
 
 final class CheckAddableExerciseUsecaseTests: XCTestCase {
     func testExample() {
-        let usecase = CheckAddableExerciseUsecase(rapidRepository: RapidRepositoryMock())
+        let usecase = CheckAddableExerciseUsecase()
         let exercise = RAPID_EXERCISES[0]
         XCTAssertTrue(usecase.implement(exercise: exercise))
     }

@@ -8,11 +8,8 @@
 import Foundation
 
 public final class CheckAddableExerciseUsecase {
-    private let rapidRepository: RapidRepository
     
-    public init(rapidRepository: RapidRepository) {
-        self.rapidRepository = rapidRepository
-    }
+    public init() { }
     
     public func implement(exercise: RapidExerciseDomain) -> Bool {
         var result: Bool = false
