@@ -10,6 +10,7 @@ import Domain
 import MockData
 import Kingfisher
 import Flow
+import Common
 
 public struct RapidExerciseDetailView: View {
     
@@ -48,6 +49,40 @@ public struct RapidExerciseDetailView: View {
         .animation(.default, value: viewModel.showsSecondaryMuscles)
         .navigationTitle(viewModel.data.name.capitalized)
         .scrollIndicators(.hidden)
+        .overlay {
+            ZStack {
+                if viewModel.loading {
+                    ProgressView()
+                }
+                
+                if viewModel.showsAddButton {
+                    VStack {
+                        Spacer()
+                        
+                        HStack {
+                            Spacer()
+                            Button {
+                                viewModel.add()
+                            } label: {
+                                Image(systemName: "pencil.tip.crop.circle.badge.plus")
+                                    .padding()
+                                    .background {
+                                        Circle()
+                                            .fill(.thickMaterial)
+                                            .shadow(radius: 10)
+                                    }
+                            }
+                            .buttonStyle(.plain)
+                            .padding()
+                        }
+                    }
+                }
+                
+                if viewModel.snackbarMessage != nil {
+                    Common.SnackbarView(message: $viewModel.snackbarMessage)
+                }
+            }
+        }
     }
     
     var bodyPartsView: some View {
