@@ -44,7 +44,9 @@ public struct WeightListView: View {
                 
                 VStack {
                     ForEach(viewModel.sections, id: \.self) { section in
-                        WeightSectionView(section: section)
+                        WeightSectionView(section: section) { weight in
+                            viewModel.delete(weight: weight)
+                        }
                     }
                 }
             }

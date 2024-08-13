@@ -18,14 +18,20 @@ final class WeightListViewModel: ObservableObject {
     let subscribeWeightsUsecase: SubscribeWeightsUsecase
     let groupWeightsByGroupUsecase: GroupWeightsByGroupUsecase
     let filterWeightsOneYearRangeUsecase: FilterWeightsOneYearRangeUsecase
+    let deleteWeightUsecase: DeleteWeightUsecase
     
     init(weightRepository: WeightRepository) {
         getWeightsRangeUsecase = .init()
-        subscribeWeightsUsecase = .init(weightRepository: weightRepository)
         groupWeightsByGroupUsecase = .init()
         filterWeightsOneYearRangeUsecase = .init()
+        deleteWeightUsecase = .init(weightRepository: weightRepository)
+        subscribeWeightsUsecase = .init(weightRepository: weightRepository)
         
         bind()
+    }
+    
+    func delete(weight: WeightPresentation) {
+        deleteWeightUsecase.implement(weight: weight.domain)
     }
     
     private func bind() {
