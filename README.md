@@ -87,13 +87,14 @@ swift-package-list dg-muscle-ios.xcworkspace --output-type settings-bundle --req
 
 <img width=750 src="https://github.com/user-attachments/assets/4a8826d9-3c8a-499a-95cf-2e969bb40e2a" />
 
-### Features
+### Features
 
 | Feature  | Purpose                                                                |
 | -------- | ---------------------------------------------------------------------- |
 | Auth     | 회원가입 및 로그인의 유저의 인증 관리                                  |
 | History  | 유저의 운동일지 기록 추가, 수정, 삭제 및 UI                            |
 | Exercise | 유저의 운동종목 추가, 수정, 삭제                                       |
+| Exercise Timer | 세트 사이 휴식시간 관리 모듈                                       |
 | My       | 유저의 프로필 이미지 등록 및 닉네임 설정 등 그 외의 자잘한 기능들 포함 |
 | HeatMap  | 위젯 및 History 모듈에서 공통으로 사용될 히트맵 UI 관련 기능           |
 | Friend   | 다른 유저들과의 Connection 구축                                        |
