@@ -24,64 +24,18 @@ public struct RapidExerciseDetailView: View {
         ScrollView {
             
             KFAnimatedImage(.init(string: data.gifUrl))
-            
             VStack(alignment: .leading) {
                 Text(data.equipment.capitalized)
                     .fontWeight(.black)
-                
                 Divider()
-                
-                HStack {
-                    Text("Body Part:")
-                        .foregroundStyle(Color(uiColor: .secondaryLabel))
-                        .italic()
-                    Text("\(data.bodyPart.rawValue.capitalized)(\(data.target.capitalized))")
-                }
-                
+                bodyPartsView
                 Spacer(minLength: 8)
-                
-                Section {
-                    if showsSecondaryMuscles {
-                        HFlow {
-                            ForEach(data.secondaryMuscles, id: \.self) { secondaryMuscle in
-                                Text(secondaryMuscle)
-                                    .padding(.vertical, 4)
-                                    .padding(.horizontal, 8)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .fill(Color(uiColor: .secondarySystemGroupedBackground))
-                                    )
-                            }
-                        }
-                    }
-                } header: {
-                    Button {
-                        showsSecondaryMuscles.toggle()
-                    } label: {
-                        HStack {
-                            Text("secondary muscles".capitalized)
-                        }
-                    }
-                }
-                
+                secondayMusclesView
                 Spacer(minLength: 12)
-                
-                
                 Text("Instructions")
                     .font(.title)
                     .padding(.bottom, 8)
-                
-                
-                ForEach(Array(zip(data.instructions.indices, data.instructions)), id: \.0) { (index, instruction) in
-                    HStack(alignment: .top) {
-                        Text("\(index + 1). ")
-                        Text(instruction)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                    .padding(.bottom, 8)
-                }
-                
-                
+                instructionsView
             }
             .padding(.horizontal)
             
@@ -90,6 +44,52 @@ public struct RapidExerciseDetailView: View {
         .animation(.default, value: showsSecondaryMuscles)
         .navigationTitle(data.name.capitalized)
         .scrollIndicators(.hidden)
+    }
+    
+    var bodyPartsView: some View {
+        HStack {
+            Text("Body Part:")
+                .foregroundStyle(Color(uiColor: .secondaryLabel))
+                .italic()
+            Text("\(data.bodyPart.rawValue.capitalized)(\(data.target.capitalized))")
+        }
+    }
+    
+    var secondayMusclesView: some View {
+        Section {
+            if showsSecondaryMuscles {
+                HFlow {
+                    ForEach(data.secondaryMuscles, id: \.self) { secondaryMuscle in
+                        Text(secondaryMuscle)
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 8)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color(uiColor: .secondarySystemGroupedBackground))
+                            )
+                    }
+                }
+            }
+        } header: {
+            Button {
+                showsSecondaryMuscles.toggle()
+            } label: {
+                HStack {
+                    Text("secondary muscles".capitalized)
+                }
+            }
+        }
+    }
+    
+    var instructionsView: some View {
+        ForEach(Array(zip(data.instructions.indices, data.instructions)), id: \.0) { (index, instruction) in
+            HStack(alignment: .top) {
+                Text("\(index + 1). ")
+                Text(instruction)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .padding(.bottom, 8)
+        }
     }
 }
 
