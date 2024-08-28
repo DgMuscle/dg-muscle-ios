@@ -34,23 +34,15 @@ public struct ManageRecordView: View {
     
     public var body: some View {
         List {
-            
             if let mode = viewModel.traingMode {
-                switch mode {
-                case .mass:
-                    if let goal = viewModel.goal {
-                        GoalView(goal: goal, color: viewModel.color, trainingMode: mode)
-                            .onTapGesture {
-                                URLManager.shared.open(url: "dgmuscle://managetraingmode")
-                            }
-                    }
-                case .strength:
-                    if let goal = viewModel.strengthGoal {
-                        GoalView(goal: goal, color: viewModel.color, trainingMode: mode)
-                            .onTapGesture {
-                                URLManager.shared.open(url: "dgmuscle://managetraingmode")
-                            }
-                    }
+                if let goal = viewModel.goal ?? viewModel.strengthGoal {
+                    GoalView(goal: goal, color: viewModel.color, trainingMode: mode)
+                        .onTapGesture {
+                            URLManager.shared.open(url: "dgmuscle://managetraingmode")
+                        }
+                        .onLongPressGesture {
+                            viewModel.toggleTraningMode()
+                        }
                 }
             }
             

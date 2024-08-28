@@ -31,7 +31,7 @@ struct GoalView: View {
                     .foregroundStyle(goal.achive ? .green : .gray)
             }
         } header: {
-            Text("give it a try")
+            Text("give it a try(\(trainingMode.text))")
         } footer: {
             if goal.achive {
                 Text("You did it!").foregroundStyle(.green)

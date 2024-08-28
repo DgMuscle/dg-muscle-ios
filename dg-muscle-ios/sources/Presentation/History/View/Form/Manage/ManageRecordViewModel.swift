@@ -32,6 +32,7 @@ final class ManageRecordViewModel: ObservableObject {
     private let checkGoalAchievedUsecase: CheckGoalAchievedUsecase
     private let checkStrengthGoalAchievedUsecase: CheckStrengthGoalAchievedUsecase
     private let registerExerciseTimerUsecase: RegisterExerciseTimerUsecase
+    private let toggleTrainingModeUsecase: ToggleTrainingModeUsecase
     private var cancellables = Set<AnyCancellable>()
     
     init(
@@ -61,6 +62,7 @@ final class ManageRecordViewModel: ObservableObject {
         checkGoalAchievedUsecase = .init()
         checkStrengthGoalAchievedUsecase = .init()
         registerExerciseTimerUsecase = .init(exerciseTimerRepository: exerciseTimerRepository)
+        toggleTrainingModeUsecase = .init(userRepository: userRepository)
         
         let color: Common.HeatMapColor = .init(domain: getHeatMapColorUsecase.implement())
         self.color = color.color
@@ -74,6 +76,14 @@ final class ManageRecordViewModel: ObservableObject {
         }
         
         bind()
+    }
+    
+    func toggleTraningMode() {
+        toggleTrainingModeUsecase.implement()
+        let type = UINotificationFeedbackGenerator.FeedbackType.success // .error, .error
+        let generator = UINotificationFeedbackGenerator()
+        generator.prepare()
+        generator.notificationOccurred(type)
     }
     
     func selectTime(time: Int) {
