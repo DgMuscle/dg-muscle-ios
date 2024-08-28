@@ -37,6 +37,7 @@ public struct ManageRecordView: View {
             if let mode = viewModel.traingMode {
                 if let goal = viewModel.goal ?? viewModel.strengthGoal {
                     GoalView(goal: goal, color: viewModel.color, trainingMode: mode)
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             URLManager.shared.open(url: "dgmuscle://managetraingmode")
                         }

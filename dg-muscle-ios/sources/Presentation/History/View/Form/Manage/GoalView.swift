@@ -35,6 +35,8 @@ struct GoalView: View {
         } footer: {
             if goal.achive {
                 Text("You did it!").foregroundStyle(.green)
+            } else {
+                Text("Long press to toggle")
             }
         }
     }
