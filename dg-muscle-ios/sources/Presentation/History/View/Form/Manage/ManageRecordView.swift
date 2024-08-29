@@ -34,17 +34,25 @@ public struct ManageRecordView: View {
     
     public var body: some View {
         List {
-            if let mode = viewModel.traingMode {
-                if let goal = viewModel.goal ?? viewModel.strengthGoal {
-                    GoalView(goal: goal, color: viewModel.color, trainingMode: mode)
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            URLManager.shared.open(url: "dgmuscle://managetraingmode")
-                        }
-                        .onLongPressGesture {
-                            viewModel.toggleTraningMode()
-                        }
-                }
+            
+            if viewModel.traingMode == .mass, let goal = viewModel.goal {
+                GoalView(goal: goal, color: viewModel.color, trainingMode: .mass)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        URLManager.shared.open(url: "dgmuscle://managetraingmode")
+                    }
+                    .onLongPressGesture {
+                        viewModel.toggleTraningMode()
+                    }
+            } else if viewModel.traingMode == .strength, let goal = viewModel.strengthGoal {
+                GoalView(goal: goal, color: viewModel.color, trainingMode: .strength)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        URLManager.shared.open(url: "dgmuscle://managetraingmode")
+                    }
+                    .onLongPressGesture {
+                        viewModel.toggleTraningMode()
+                    }
             }
             
             timerSelection
